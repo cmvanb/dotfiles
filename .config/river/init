@@ -1,0 +1,179 @@
+#!/bin/sh
+
+#-------------------------------------------------------------------------------
+# River configuration script
+#
+# See the river(1), riverctl(1), and rivercarro(1) man pages for complete
+# documentation.
+#-------------------------------------------------------------------------------
+
+# Systemd integration
+#-------------------------------------------------------------------------------
+
+systemd-cat --identifier=river echo "Initializing River."
+
+VARIABLES="XDG_SESSION_TYPE WAYLAND_DISPLAY"
+
+# Share part of river environment with systemd.
+dbus-update-activation-environment --systemd $VARIABLES
+systemctl --user import-environment $VARIABLES
+
+# Other system services can respond to the underlying wayland-session or graphical-session.target.
+systemctl --user start river-session.target
+
+# Output configuration
+#-------------------------------------------------------------------------------
+
+# NOTE: Temporary solution.
+XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-HOME/.config}"
+
+# Input configuration
+#-------------------------------------------------------------------------------
+
+riverctl focus-follows-cursor normal
+
+# Keyboard repeat rate
+riverctl set-repeat 50 300
+
+# Mouse configuration
+riverctl input 1133:49295:Logitech_G403_HERO_Gaming_Mouse_Keyboard accel-profile adaptive
+riverctl input 1133:49295:Logitech_G403_HERO_Gaming_Mouse_Keyboard pointer-accel 1.0
+
+# Hide inactive cursor
+riverctl hide-cursor timeout 3000
+
+# Styling
+#-------------------------------------------------------------------------------
+
+source "$XDG_CONFIG_HOME/theme/theme.sh"
+
+riverctl background-color "$(color_zerox $system_bg)"
+riverctl border-color-focused "$(color_zerox $primary_6)"
+riverctl border-color-unfocused "$(color_zerox $primary_2)"
+riverctl border-color-urgent "$(color_zerox $red_4)"
+
+riverctl border-width 2
+
+riverctl xcursor-theme Simp1e 24
+
+# Key bindings
+#-------------------------------------------------------------------------------
+# See all valid keybindings here: `/usr/include/xkbcommon/xkbcommon-keysyms.h`
+
+# New terminal
+riverctl map normal Alt T spawn "wezterm"
+
+# Command menu
+riverctl map normal Alt O spawn "wofi --no-actions --show drun"
+
+# Browser
+riverctl map normal Alt B spawn "qutebrowser"
+
+# Dismiss notifications
+riverctl map normal Alt D spawn "makoctl dismiss -a"
+
+# Close view
+riverctl map normal Alt Q close
+
+# Exit river
+riverctl map normal Alt+Shift Q exit
+
+# Lock system
+riverctl map normal Alt+Shift Z spawn "$XDG_CONFIG_HOME/river/lock.sh"
+
+# Focus the next/previous view in the layout stack
+riverctl map normal Alt J focus-view next
+riverctl map normal Alt K focus-view previous
+
+# Swap the focused view with the next/previous view in the layout stack
+riverctl map normal Alt+Shift J swap next
+riverctl map normal Alt+Shift K swap previous
+
+# Focus the next/previous output
+riverctl map normal Alt L focus-output next
+riverctl map normal Alt H focus-output previous
+
+# Send the focused view to the next/previous output
+# TODO: Save active tag on source output, restore it on destination output.
+riverctl map normal Alt+Shift L spawn "$XDG_CONFIG_HOME/river/send-and-focus-output.sh next"
+riverctl map normal Alt+Shift H spawn "$XDG_CONFIG_HOME/river/send-and-focus-output.sh previous"
+
+# Cycle focused tags
+# see: https://gitlab.com/akumar-xyz/river-shifttags/-/tree/master
+riverctl map normal Alt Tab spawn "river-shifttags"
+riverctl map normal Alt Backspace spawn "river-shifttags --shift -1"
+
+# Manage specific tags
+for i in $(seq 1 9); do
+    # NOTE: Unconventional formatting here is to avoid a bug in tree-sitter-bash when parsing `<<`.
+    # see: https://github.com/tree-sitter/tree-sitter-bash
+    tags=$((1<<($i - 1)))
+
+    # Focus tag
+    riverctl map normal Alt $i set-focused-tags $tags
+
+    # Tag focused view
+    riverctl map normal Alt+Shift $i set-view-tags $tags
+
+    # Toggle focus of tag
+    riverctl map normal Alt+Control $i toggle-focused-tags $tags
+done
+
+# Bump the focused view to the top of the layout stack
+riverctl map normal Alt Z zoom
+
+# Toggle fullscreen
+riverctl map normal Alt F toggle-fullscreen
+
+# Change layout orientation
+riverctl map normal Alt Right send-layout-cmd rivercarro "main-location right"
+riverctl map normal Alt Down send-layout-cmd rivercarro "main-location bottom"
+riverctl map normal Alt Left send-layout-cmd rivercarro "main-location left"
+riverctl map normal Alt Up send-layout-cmd rivercarro "main-location top"
+
+# Adjust layout main ratio
+riverctl map normal Alt Page_Down send-layout-cmd rivercarro "main-ratio +0.05"
+riverctl map normal Alt Page_Up send-layout-cmd rivercarro "main-ratio -0.05"
+
+# Take a screenshot of a selected rectangle
+riverctl map normal Alt P spawn "$HOME/.scripts/screenshot-rectangle.sh"
+riverctl map normal Alt+Shift P spawn "$HOME/.scripts/screenshot-rectangle.sh --upload"
+
+# Toggle window float
+riverctl map normal Alt Space toggle-float
+
+# Move views with mouse
+riverctl map-pointer normal Shift BTN_LEFT move-view
+
+# Resize views with mouse
+riverctl map-pointer normal Shift BTN_RIGHT resize-view
+
+# Layout generator
+#-------------------------------------------------------------------------------
+
+# Assign and launch rivercarro (layout generator).
+riverctl default-layout rivercarro
+riverctl spawn "rivercarro -inner-gaps 4 -outer-gaps 0 -main-ratio 0.60"
+
+# Systemd integration
+#-------------------------------------------------------------------------------
+
+# Clean up the shared environment when river is interrupted or terminated.
+session_cleanup () {
+    systemd-cat --identifier=river echo "Cleaning River."
+
+    # VARIABLES="XDG_SESSION_TYPE WAYLAND_DISPLAY"
+
+    systemctl --user unset-environment $VARIABLES
+
+    exit
+}
+
+trap session_cleanup INT TERM
+
+# NOTE: The assumption is: if WAYLAND_DISPLAY is in use, river is running.
+while [ -n "$WAYLAND_DISPLAY" ]
+do
+    sleep 0.10
+done
+

@@ -1,0 +1,5 @@
+# bat is like cat, but better
+
+# use the ansi theme
+--theme="base16"
+

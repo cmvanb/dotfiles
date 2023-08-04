@@ -1,0 +1,7 @@
+--no-ignore
+--hidden
+--colors
+match:fg:yellow
+--colors
+path:fg:cyan
+

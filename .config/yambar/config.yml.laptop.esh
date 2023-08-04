@@ -1,0 +1,109 @@
+<% source $XDG_CONFIG_HOME/theme/theme.sh %>bar:
+  height: 20
+  location: top
+
+  left-margin: 0
+  right-margin: 8
+
+  foreground: <% color_named $system_text %>ff
+  background: <% color_named $system_bg %>ff
+  font: <%= $font_mono %>:pixelsize=14:style=bold
+  left:
+    - river:
+        anchors:
+          - base: &river_base
+              left-margin: 10
+              right-margin: 10
+              default: {string: {text: "{id}"}}
+              conditions:
+                id == 0: {string: {text: ""}}
+
+        content:
+          map:
+            on-click:
+              left: sh -c "riverctl set-focused-tags $((1 << ({id} - 1)))"
+            conditions:
+              state == urgent:
+                map:
+                  <<: *river_base
+                  deco: {background: {color: <% color_named $red_4 %>ff}}
+              state == focused:
+                map:
+                  <<: *river_base
+                  deco: {background: {color: <% color_named $primary_6 %>ff}}
+              state == unfocused:
+                map:
+                  <<: *river_base
+                  deco: {background: {color: <% color_named $primary_2 %>ff}}
+              state == invisible:
+                map:
+                  conditions:
+                    ~occupied:
+                      empty: {}
+                    occupied:
+                      map:
+                        <<: *river_base
+
+  center:
+    - river:
+        title: {string: {text: "{title}", max: 120}}
+        content:
+          empty: {}
+
+  right:
+    - clock:
+        date-format: "%Y-%m-%d"
+        time-format: "%H:%M:%S"
+        content:
+          - string: {text: "{date}"}
+          - string: {text: "{time}", left-margin: 10}
+
+    - battery:
+        name: BAT0
+        poll-interval: 30
+        anchors:
+          discharging: &discharging
+            list:
+              items:
+                - string: {text: "", left-margin: 10}
+                - ramp:
+                    tag: capacity
+                    items:
+                      - string: {text: "󰁺"}
+                      - string: {text: "󰁻"}
+                      - string: {text: "󰁼"}
+                      - string: {text: "󰁽"}
+                      - string: {text: "󰁾"}
+                      - string: {text: "󰁿"}
+                      - string: {text: "󰂀"}
+                      - string: {text: "󰂀"}
+                      - string: {text: "󰂂"}
+                - string: {text: " {capacity}%"}
+        content:
+          map:
+            conditions:
+              state == unknown:
+                <<: *discharging
+              state == discharging:
+                <<: *discharging
+              state == charging:
+                list:
+                  items:
+                    - string: {text: "", left-margin: 10}
+                    - ramp:
+                        tag: capacity
+                        items:
+                          - string: {text: "󰁺"}
+                          - string: {text: "󰁻"}
+                          - string: {text: "󰁼"}
+                          - string: {text: "󰁽"}
+                          - string: {text: "󰁾"}
+                          - string: {text: "󰁿"}
+                          - string: {text: "󰂀"}
+                          - string: {text: "󰂀"}
+                          - string: {text: "󰂂"}
+                    - string: {text: " {capacity}%"}
+              state == full:
+                string: {text: "󰁹 {capacity}%", left-margin: 10}
+              state == "not charging":
+                string: {text: "󰁹 {capacity}%", left-margin: 10}

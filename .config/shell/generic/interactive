@@ -1,0 +1,29 @@
+# NOTE: This file is sourced in fish shell by `~/.config/shell/fish/interactive`.
+# If you need to use anything other than simple commands, this won't work anymore.
+
+# Disable unwanted bindings.
+stty start undef
+stty stop undef
+stty susp undef
+stty rprnt undef
+stty werase undef
+stty lnext undef
+stty discard undef
+
+# Quit signal
+stty quit ^Q
+
+# Backspace
+stty erase "^?"
+
+# Clear line
+# TODO: Sync with other clear line bindings.
+stty kill ^W
+
+# Interrupt signal
+# NOTE: This binding is passed through by Wezterm.
+stty intr ^C
+
+# EOF signal
+# NOTE: This binding is passed through by Wezterm.
+stty eof ^D

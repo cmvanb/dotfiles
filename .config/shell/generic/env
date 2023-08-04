@@ -1,0 +1,25 @@
+#-------------------------------------------------------------------------------
+# Generic environment configuration
+#-------------------------------------------------------------------------------
+
+# We need to set $ENV so that if you use shell X as your login shell, and then
+# start "sh" as a non-login interactive shell the startup scripts will
+# correctly run.
+export ENV=~/.config/shell/sh/interactive
+
+# We also need to set BASH_ENV, which is run for *non-interactive* shells.
+# (unlike $ENV, which is for interactive shells)
+export BASH_ENV=~/.config/shell/bash/env
+
+# No write permissions for group or others.
+umask 0022
+
+# Some programs respect these defaults, others are supported by XDG with
+# configuration in `.config/mimeapps.list` and `.local/share/applications/`.
+export BROWSER="qutebrowser"
+export EDITOR="nvim"
+export VISUAL="$EDITOR"
+
+# Configure ls/exa.
+export LS_COLORS="no=37:fi=37:di=34;1:ln=33:or=31:mi=31:ex=32;1:*.pdf=37:*.zip=37"
+

@@ -1,0 +1,5 @@
+[user]
+	email = draakie@protonmail.com
+	name = Casper
+[core]
+	editor = nvim

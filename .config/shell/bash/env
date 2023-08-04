@@ -1,0 +1,3 @@
+# WARNING: This will $BASH_ENV to get a correct startup sequence.
+. ~/.config/shell/generic/env
+

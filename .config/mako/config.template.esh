@@ -1,0 +1,39 @@
+<% source $XDG_CONFIG_HOME/theme/theme.sh %>
+#-------------------------------------------------------------------------------
+# Mako notification daemon configuration
+#-------------------------------------------------------------------------------
+
+# Behavior
+#-------------------------------------------------------------------------------
+
+# NOTE: Mako crashes if max-visible is too large and too many notifications are
+# spawned.
+max-visible=15
+
+sort=+time
+
+default-timeout=15000
+
+# Appearance
+#-------------------------------------------------------------------------------
+
+anchor=bottom-right
+
+text-alignment=left
+icon-location=left
+
+width=500
+height=250
+margin=16,14
+# top,right,bottom,left
+padding=8,8
+
+font=Iosevka Nerd Font Mono 12
+
+background-color=<% color_hash $primary_0 %>ff
+text-color=<% color_hash $text_15 %>ff
+
+border-size=2
+border-color=<% color_hash $primary_6 %>ff
+border-radius=0
+

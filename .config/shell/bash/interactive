@@ -1,0 +1,121 @@
+#-------------------------------------------------------------------------------
+# Bash interactive configuration
+#-------------------------------------------------------------------------------
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+source ~/.config/shell/generic/interactive
+
+# General configuration
+#-------------------------------------------------------------------------------
+
+# Save history in an XDG compliant directory.
+[[ ! -d "$DATA_DIR" ]] && mkdir -p "$DATA_DIR"
+export HISTFILE=$XDG_DATA_HOME/bash/bash_history
+
+# GNU readline configuration
+export INPUTRC=~/.config/readline/config
+
+# Aliases
+#-------------------------------------------------------------------------------
+
+# NOTE: These are Arch specific... needs cleaner separation.
+alias sysyadm="sudo yadm --yadm-dir /etc/yadm --yadm-data /etc/yadm/data"
+alias yaya="yay -S --removemake --answerclean All --answerdiff None --noconfirm"
+
+alias edit="$EDITOR"
+alias exa="exa -l --group-directories-first"
+
+alias gs="git status"
+alias gsu="git status -u"
+alias gl="git log --pretty='%C(yellow)[%h]%C(reset) %<(16,trunc)%ad %C(cyan)%an%C(reset) %C(green)%s%C(reset)' --date=format:'%Y-%m-%d %H:%M'"
+alias gd="git diff"
+alias gds="git diff --staged"
+alias ga="git add"
+alias gaa="git add -A"
+alias gc="git commit -m"
+alias gca="git commit --amend"
+alias gco="git checkout"
+alias gp="git push"
+alias gpa="git push --all"
+alias gpf="git push --force"
+alias grb="git rebase -i"
+alias grc="git rm --cached"
+alias e="edit"
+alias ed="edit"
+alias edi="edit"
+alias ex="exa"
+alias lf="lfcd"
+alias ls="exa"
+alias lsa="exa -a"
+alias lsi="exa --git-ignore"
+alias lst="exa -T --git-ignore"
+alias lst="exa -aT --git-ignore"
+alias ip="ip -c"
+
+# Bindings
+#-------------------------------------------------------------------------------
+#
+bind '"\C-e":"edit\C-m"'
+bind '"\C-f":"lfcd\C-m"'
+
+# Colors
+#-------------------------------------------------------------------------------
+
+# Import and parse system colors.
+source $XDG_CONFIG_HOME/theme/theme.sh
+
+# LF CD integration
+#-------------------------------------------------------------------------------
+
+LFCD="$HOME/.scripts/lfcd.sh"
+if [[ -f "$LFCD" ]]; then
+    source "$LFCD"
+fi
+
+# Prompt
+#-------------------------------------------------------------------------------
+
+# TODO: Handle differences in terminal capabilities. see: `TERM=`
+construct_prompt() {
+    local time="\[$(color_ansi_fg $primary_12)\]\t\[$(color_ansi_reset)\] "
+    local user=""
+    local hostname=""
+
+    if [[ $(whoami) == "root" ]]; then
+        user="\[$(color_ansi_fg $red_7)\]\u\[$(color_ansi_reset)\]"
+        hostname="@\h "
+    fi
+
+    local git_modified_color="\[$(color_ansi_fg $green_4)\]"
+
+    local git_status=$(git status 2>/dev/null | grep "Your branch is ahead" 2>/dev/null)
+    if [[ "$git_status" != "" ]]; then
+        git_modified_color="\[$(color_ansi_fg $orange_6)\]"
+    fi
+
+    local git_status=$(git status --porcelain 2>/dev/null)
+    if [[ "$git_status" != "" ]]; then
+        git_modified_color="\[$(color_ansi_fg $orange_6)\]"
+    fi
+
+    local git_branch=$(git branch --show-current 2>/dev/null)
+    if [[ "$git_branch" != "" ]]; then
+        git_branch="$git_modified_color $git_branch\[$(color_ansi_reset)\] "
+    fi
+
+    local cwd="\[$(color_ansi_fg $primary_12)\] \w\[$(color_ansi_reset)\] "
+    local prompt="\[$(color_ansi_fg $text_15)\]\$\[$(color_ansi_reset)\] "
+
+    PS1="$time$user$hostname$git_branch$cwd$prompt"
+}
+PROMPT_COMMAND='construct_prompt'
+
+# Python environment
+#-------------------------------------------------------------------------------
+if command -v pyenv &> /dev/null
+then
+    eval "$(pyenv init -)"
+fi
+
