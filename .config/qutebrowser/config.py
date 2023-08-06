@@ -230,6 +230,8 @@ c.colors.statusbar.url.warn.fg = theme.color_hash('yellow_6')
 # Behavior
 c.tabs.last_close = 'default-page'
 c.tabs.mode_on_change = 'normal'
+c.tabs.new_position.related = 'next'
+c.tabs.new_position.unrelated = 'next'
 c.tabs.select_on_remove = 'last-used'
 c.tabs.show = 'multiple'
 c.tabs.tooltips = False
