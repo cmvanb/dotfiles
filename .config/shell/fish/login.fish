@@ -19,18 +19,16 @@ set -x XDG_CACHE_HOME $HOME/.cache
 set -x XDG_DATA_HOME $HOME/.local/share
 set -x XDG_STATE_HOME $HOME/.local/state
 
+# Custom directories.
+set -x XDG_BIN_HOME $HOME/.local/bin
+set -x XDG_SCRIPTS_HOME $HOME/.local/scripts
+
 # XDG user directories.
 set -x XDG_DOCUMENTS_DIR $HOME/Documents
 set -x XDG_DOWNLOAD_DIR $HOME/Downloads
 set -x XDG_MUSIC_DIR $HOME/Media/Music
 set -x XDG_PICTURES_DIR $HOME/Media/Images
 set -x XDG_VIDEOS_DIR $HOME/Media/Videos
-
-# Provide ssh-agent socket.
-set -x SSH_AUTH_SOCK $XDG_RUNTIME_DIR/ssh-agent.sock
-
-# Configure pyenv (for dynamically swapping python versions).
-set -x PYENV_ROOT $HOME/.pyenv
 
 # User directories
 #-------------------------------------------------------------------------------
@@ -41,8 +39,6 @@ mkdir -p $XDG_DOCUMENTS_DIR $XDG_DOWNLOAD_DIR $XDG_MUSIC_DIR $XDG_PICTURES_DIR $
 #-------------------------------------------------------------------------------
 
 # Add user binaries to path.
-fish_add_path -pP $HOME/.local/bin
-
-# Add pyenv python shims to path.
-fish_add_path -pP $PYENV_ROOT/bin
+fish_add_path -pP $XDG_BIN_HOME
+fish_add_path -pP $XDG_SCRIPTS_HOME
 

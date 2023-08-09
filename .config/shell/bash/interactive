@@ -5,7 +5,7 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-source ~/.config/shell/generic/interactive
+. $XDG_CONFIG_HOME/shell/generic/interactive
 
 # General configuration
 #-------------------------------------------------------------------------------
@@ -64,14 +64,14 @@ bind '"\C-f":"lfcd\C-m"'
 #-------------------------------------------------------------------------------
 
 # Import and parse system colors.
-source $XDG_CONFIG_HOME/theme/theme.sh
+. $XDG_CONFIG_HOME/theme/theme.sh
 
 # LF CD integration
 #-------------------------------------------------------------------------------
 
 LFCD="$HOME/.scripts/lfcd.sh"
 if [[ -f "$LFCD" ]]; then
-    source "$LFCD"
+    . "$LFCD"
 fi
 
 # Prompt
@@ -111,11 +111,4 @@ construct_prompt() {
     PS1="$time$user$hostname$git_branch$cwd$prompt"
 }
 PROMPT_COMMAND='construct_prompt'
-
-# Python environment
-#-------------------------------------------------------------------------------
-if command -v pyenv &> /dev/null
-then
-    eval "$(pyenv init -)"
-fi
 

@@ -2,45 +2,6 @@
 # Generic POSIX shell login configuration
 #-------------------------------------------------------------------------------
 
-# Functions
-#-------------------------------------------------------------------------------
-
-# Usage: indirect_expand PATH -> $PATH
-indirect_expand () {
-    env |sed -n "s/^$1=//p"
-}
-
-# Usage: pathremove /path/to/bin [PATH]
-# E.g., to remove ~/bin from $PATH
-#     pathremove ~/bin PATH
-pathremove () {
-    local IFS=':'
-    local newpath
-    local dir
-    local var=${2:-PATH}
-    # Bash has ${!var}, but this is not portable.
-    for dir in `indirect_expand "$var"`; do
-        IFS=''
-        if [ "$dir" != "$1" ]; then
-            newpath=$newpath:$dir
-        fi
-    done
-    export $var=${newpath#:}
-}
-
-# Usage: pathprepend /path/to/bin [PATH]
-# E.g., to prepend ~/bin to $PATH
-#     pathprepend ~/bin PATH
-pathprepend () {
-    # if the path is already in the variable,
-    # remove it so we can move it to the front
-    pathremove "$1" "$2"
-    #[ -d "${1}" ] || return
-    local var="${2:-PATH}"
-    local value=`indirect_expand "$var"`
-    export ${var}="${1}${value:+:${value}}"
-}
-
 # Environment
 # Put your shell-independent, login environment variables here.
 #-------------------------------------------------------------------------------
@@ -51,18 +12,16 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
 
+# Custom directories.
+export XDG_BIN_HOME="$HOME/.local/bin"
+export XDG_SCRIPTS_HOME="$HOME/.local/scripts"
+
 # XDG user directories.
 export XDG_DOCUMENTS_DIR="$HOME/Documents"
 export XDG_DOWNLOAD_DIR="$HOME/Downloads"
 export XDG_MUSIC_DIR="$HOME/Media/Music"
 export XDG_PICTURES_DIR="$HOME/Media/Images"
 export XDG_VIDEOS_DIR="$HOME/Media/Videos"
-
-# Provide ssh-agent socket.
-export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.sock"
-
-# Configure pyenv (for dynamically swapping python versions).
-export PYENV_ROOT="$HOME/.pyenv"
 
 # User directories
 #-------------------------------------------------------------------------------
@@ -72,9 +31,10 @@ mkdir -p $XDG_DOCUMENTS_DIR $XDG_DOWNLOAD_DIR $XDG_MUSIC_DIR $XDG_PICTURES_DIR $
 # Path
 #-------------------------------------------------------------------------------
 
-# Add user binaries to path
-pathprepend "$HOME/.local/bin" PATH
+# Import path utility functions.
+. $XDG_SCRIPTS_HOME/path-utils.sh
 
-# Add pyenv python shims to path
-pathprepend "$PYENV_ROOT/bin" PATH
+# Add user binaries to path
+pathprepend "$XDG_BIN_HOME" PATH
+pathprepend "$XDG_SCRIPTS_HOME" PATH
 

@@ -139,9 +139,3 @@ source $HOME/.scripts/lfcd.fish
 
 # TODO: Implement.
 
-# Python environment
-#-------------------------------------------------------------------------------
-if command -v pyenv &> /dev/null
-    pyenv init - | source
-end
-
