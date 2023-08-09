@@ -231,6 +231,11 @@ noremap('<leader>q', ':qa!<cr>')
 noremap('<leader>s', '<cmd>SessionsSave<cr>:echo "Session saved."<cr>')
 noremap('<leader>o', '<cmd>SessionsLoad<cr>:echo "Session loaded."<cr>')
 
+-- Git
+--------------------------------------------------------------------------------
+
+noremap('<C-g>b', '<cmd>GitBlameToggle<cr>')
+
 -- Plugin management
 --------------------------------------------------------------------------------
 
