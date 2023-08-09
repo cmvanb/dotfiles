@@ -60,7 +60,7 @@
 
     - battery:
         name: BAT0
-        poll-interval: 30
+        poll-interval: 250
         anchors:
           discharging: &discharging
             list:
