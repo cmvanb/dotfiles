@@ -32,6 +32,7 @@ c.content.blocking.method = 'both'
 c.content.headers.do_not_track = True
 c.content.javascript.enabled = False
 c.content.notifications.enabled = False
+c.content.user_stylesheets = [ 'stylesheet.css' ]
 
 # Font settings
 #-------------------------------------------------------------------------------
