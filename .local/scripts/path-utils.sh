@@ -7,10 +7,10 @@ indirect_expand () {
     env |sed -n "s/^$1=//p"
 }
 
-# Usage: pathremove /path/to/bin [PATH]
+# Usage: path_remove /path/to/bin [PATH]
 # E.g., to remove ~/bin from $PATH
-#     pathremove ~/bin PATH
-pathremove () {
+#     path_remove ~/bin PATH
+path_remove () {
     local IFS=':'
     local newpath
     local dir
@@ -25,10 +25,10 @@ pathremove () {
     export $var=${newpath#:}
 }
 
-# Usage: pathprepend /path/to/bin [PATH]
+# Usage: path_prepend /path/to/bin [PATH]
 # E.g., to prepend ~/bin to $PATH
-#     pathprepend ~/bin PATH
-pathprepend () {
+#     path_prepend ~/bin PATH
+path_prepend () {
     # if the path is already in the variable,
     # remove it so we can move it to the front
     pathremove "$1" "$2"
@@ -36,5 +36,18 @@ pathprepend () {
     local var="${2:-PATH}"
     local value=`indirect_expand "$var"`
     export ${var}="${1}${value:+:${value}}"
+}
+
+# Usage: path_array [PATH]
+# E.g., to get an array of path components.
+path_array () {
+    local result=()
+    local IFS=:
+
+    for component in $1; do
+        result+=("$component")
+    done
+
+    echo "${result[@]}"
 }
 

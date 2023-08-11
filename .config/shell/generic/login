@@ -35,6 +35,6 @@ mkdir -p $XDG_DOCUMENTS_DIR $XDG_DOWNLOAD_DIR $XDG_MUSIC_DIR $XDG_PICTURES_DIR $
 . $XDG_SCRIPTS_HOME/path-utils.sh
 
 # Add user binaries to path
-pathprepend "$XDG_BIN_HOME" PATH
-pathprepend "$XDG_SCRIPTS_HOME" PATH
+path_prepend "$XDG_BIN_HOME" PATH
+path_prepend "$XDG_SCRIPTS_HOME" PATH
 
