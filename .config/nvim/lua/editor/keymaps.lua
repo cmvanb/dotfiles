@@ -189,6 +189,7 @@ noremap('<leader>i', function() require('telescope.builtin').symbols({}) end)
 -- Clear search highlight, clear command line and clear search pattern.
 noremap('<leader>l', ':noh<cr>:let @/=""<cr>:echo ""<cr>')
 
+-- TODO: Move these mappings to lsp_attach() in `lua/plugins/lsp/init.lua`.
 -- LSP
 --------------------------------------------------------------------------------
 noremap('gd', function() require('telescope.builtin').lsp_definitions({}) end)

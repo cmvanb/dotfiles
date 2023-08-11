@@ -4,9 +4,9 @@
 -- Based on: https://github.com/VonHeikemen/lsp-zero.nvim/wiki/Under-the-hood
 --------------------------------------------------------------------------------
 
+-- LSP configuration
 local lspconfig = require('lspconfig')
 
--- LSP configuration
 local sign = function(opts)
     vim.fn.sign_define(opts.name, {
         texthl = opts.name,
@@ -100,13 +100,16 @@ mason_lspconfig.setup({
     },
 })
 
+local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
+lsp_capabilities.textDocument.completion.completionItem.snippetSupport = true
+
 mason_lspconfig.setup_handlers({
     -- The first entry (without a key) will be the default handler and will be
     -- called for each installed server that doesn't have a dedicated handler.
     function(server_name)
         require('lspconfig')[server_name].setup({
             on_attach = lsp_attach,
-            capabilities = require('cmp_nvim_lsp').default_capabilities(),
+            capabilities = lsp_capabilities,
         })
     end
 
