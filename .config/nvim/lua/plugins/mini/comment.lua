@@ -8,6 +8,8 @@ require('mini.comment').setup({
         comment = '<C-/>',
         -- Toggle comment on current line
         comment_line = '<C-/>',
+        -- Toggle comment on current line
+        textobject = nil,
     },
 })
 
