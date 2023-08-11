@@ -4,6 +4,8 @@
 -- Based on: https://github.com/VonHeikemen/lsp-zero.nvim/wiki/Under-the-hood
 --------------------------------------------------------------------------------
 
+local lspconfig = require('lspconfig')
+
 local function lsp_keymaps(bufnr)
     -- TODO: Extract
     local map = function(m, lhs, rhs)
@@ -40,7 +42,7 @@ local function lsp_settings()
 
     sign({ name = 'DiagnosticSignError', text = '✘' })
     sign({ name = 'DiagnosticSignWarn', text = '⚠' })
-    sign({ name = 'DiagnosticSignHint', text = '' })
+    sign({ name = 'DiagnosticSignHint', text = '󰌵' })
     sign({ name = 'DiagnosticSignInfo', text = 'ℹ' })
 
     vim.diagnostic.config({
@@ -87,21 +89,35 @@ end
 -- Setup
 lsp_settings()
 
-require('mason').setup({
-    ui = {
-        border = 'rounded',
+local mason_lspconfig = require('mason-lspconfig')
+mason_lspconfig.setup({
+    -- A list of servers to automatically install if they're not already installed.
+    ensure_installed = {
+        "bashls",
+        "clangd",
+        "cssls",
+        "dockerls",
+        "html",
+        "jsonls",
+        "lua_ls",
+        "pyright",
+        "terraformls",
+        "tsserver",
+        "yamlls",
     },
 })
 
-local mason_lspconfig = require('mason-lspconfig')
-mason_lspconfig.setup({})
-
 mason_lspconfig.setup_handlers({
+    -- The first entry (without a key) will be the default handler and will be
+    -- called for each installed server that doesn't have a dedicated handler.
     function(server_name)
         require('lspconfig')[server_name].setup({
             on_attach = lsp_attach,
             capabilities = require('cmp_nvim_lsp').default_capabilities(),
         })
     end
+
+    -- Here you can provide targeted overrides for specific servers.
+    --  see: https://github.com/williamboman/mason.nvim/discussions/92
 })
 

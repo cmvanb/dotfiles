@@ -54,6 +54,13 @@ return {
     -- debug servers, linters and formatters.
     {
         'williamboman/mason.nvim',
+        config = function()
+            require('mason').setup({
+                ui = {
+                    border = 'rounded',
+                },
+            })
+        end,
     },
     {
         'williamboman/mason-lspconfig.nvim',
@@ -62,7 +69,7 @@ return {
         },
     },
 
-    -- Default language server configurations
+    -- LSP configuration. Includes configuration for mason-lspconfig.
     {
         'neovim/nvim-lspconfig',
         after = {
