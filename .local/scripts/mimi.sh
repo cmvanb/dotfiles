@@ -5,6 +5,8 @@
 # https://github.com/BachoSeven/mimi
 #---------------------------------------------------------------------------------------------------
 
+set -o pipefail
+
 readonly CONFIG="$XDG_CONFIG_HOME/mimi/mimi.conf"
 
 find_in_config() {
@@ -30,8 +32,23 @@ find_desktop_file_by() {
     local desktop="$(find_desktop_file_in_path "$XDG_DATA_HOME/applications" MimeType "$1")"
 
     if [[ -z $desktop ]]; then
-        # TODO: Iterate over $XDG_DATA_DIRS instead of hardcoded path.
-        desktop="$(find_desktop_file_in_path "/usr/share/applications" MimeType "$1")"
+        local search_dirs=()
+
+        if [[ -n $XDG_DATA_DIRS ]]; then
+            . $XDG_SCRIPTS_HOME/path-utils.sh
+            readarray -t search_dirs < <(path_array "$XDG_DATA_DIRS")
+        fi
+
+        search_dirs+=("/usr/share/applications")
+
+        for dir in ${search_dirs[@]}; do
+            if [[ -d $dir ]]; then
+                desktop="$(find_desktop_file_in_path "$dir" MimeType "$1")"
+                if [[ -n $desktop ]]; then
+                    break
+                fi
+            fi
+        done
     fi
 
     echo $desktop
@@ -186,10 +203,8 @@ done
 for search in $mime $general_mime; do
     desktop="$(find_desktop_file_by "$search")"
     if [[ "$desktop" ]]; then
-        # echo "$desktop"
         app=($(find_exec_in_desktop_file <"$desktop"))
         if need_terminal <"$desktop"; then
-            # echo "term: $TERM"
             exists "$TERM" && fork_run "$TERM" -e "${app[@]}" "$arg"
         else
             fork_run "${app[@]}" "$arg"
