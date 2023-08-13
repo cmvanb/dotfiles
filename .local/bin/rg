@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+RIPGREP_CONFIG_PATH=$XDG_CONFIG_HOME/ripgrep/config /run/current-system/sw/bin/rg "$@"
+
