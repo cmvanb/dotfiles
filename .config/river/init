@@ -136,8 +136,8 @@ riverctl map normal Alt Page_Down send-layout-cmd rivercarro "main-ratio +0.05"
 riverctl map normal Alt Page_Up send-layout-cmd rivercarro "main-ratio -0.05"
 
 # Take a screenshot of a selected rectangle
-riverctl map normal Alt P spawn "$HOME/.scripts/screenshot-rectangle.sh"
-riverctl map normal Alt+Shift P spawn "$HOME/.scripts/screenshot-rectangle.sh --upload"
+riverctl map normal Alt P spawn "$XDG_SCRIPTS_HOME/screenshot-rectangle.sh"
+riverctl map normal Alt+Shift P spawn "$XDG_SCRIPTS_HOME/screenshot-rectangle.sh --upload"
 
 # Toggle window float
 riverctl map normal Alt Space toggle-float

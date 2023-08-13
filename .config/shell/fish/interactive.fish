@@ -132,7 +132,7 @@ set -U fish_color_selection (color_named 'debug') # --bold --background=brblack
 # LF CD integration
 #-------------------------------------------------------------------------------
 
-source $HOME/.scripts/lfcd.fish
+source $XDG_SCRIPTS_HOME/lfcd.fish
 
 # Prompt
 #-------------------------------------------------------------------------------

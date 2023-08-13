@@ -26,16 +26,16 @@ color_zerox () {
 
 # Usage: `$(color_ansi $colorfg $colorbg)`
 color_ansi () {
-    $HOME/.scripts/color-hex-to-ansi.sh --fg=${1:1} --bg=${2:1}
+    $XDG_SCRIPTS_HOME/color-hex-to-ansi.sh --fg=${1:1} --bg=${2:1}
 }
 
 # Usage: `$(color_ansi_fg $colorfg)`
 color_ansi_fg () {
-    $HOME/.scripts/color-hex-to-ansi.sh --fg=${1:1}
+    $XDG_SCRIPTS_HOME/color-hex-to-ansi.sh --fg=${1:1}
 }
 
 # Usage: `$(color_ansi_reset)`
 color_ansi_reset () {
-    $HOME/.scripts/color-hex-to-ansi.sh --reset
+    $XDG_SCRIPTS_HOME/color-hex-to-ansi.sh --reset
 }
 

@@ -104,7 +104,7 @@ map c change_dir
 #         *) for f in $fx; do $OPENER $f > /dev/null 2> /dev/null & done;;
 #     esac
 # }}
-cmd open $open $f
+cmd open $xdg-open $f
 
 # define a custom 'rename' command without prompt for overwrite
 # cmd rename %[ -e $1 ] && printf "file exists" || mv $f $1
