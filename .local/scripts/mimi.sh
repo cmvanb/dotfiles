@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 #---------------------------------------------------------------------------------------------------
-# mimi file opener
+# Find an appropriate application to open a file (replaces xdg-open).
 #
-# https://github.com/BachoSeven/mimi
+# Based on the `mimi` file opener script:
+#   https://github.com/BachoSeven/mimi
 #---------------------------------------------------------------------------------------------------
 
 set -o pipefail
