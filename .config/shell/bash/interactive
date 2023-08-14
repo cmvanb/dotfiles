@@ -69,7 +69,7 @@ bind '"\C-f":"lfcd\C-m"'
 # LF CD integration
 #-------------------------------------------------------------------------------
 
-LFCD="$XDG_SCRIPTS_HOME/lfcd.sh"
+LFCD="$XDG_CONFIG_HOME/lf/lfcd.sh"
 if [[ -f "$LFCD" ]]; then
     . "$LFCD"
 fi
