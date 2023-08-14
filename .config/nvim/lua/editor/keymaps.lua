@@ -244,6 +244,7 @@ noremap('<leader>o', '<cmd>SessionsLoad<cr>:echo "Session loaded."<cr>')
 --------------------------------------------------------------------------------
 
 noremap('<C-g>b', '<cmd>GitBlameToggle<cr>')
+noremap('<C-g>w', '<cmd>set wrap!<cr>:set linebreak!<cr>')
 
 -- Plugin management
 --------------------------------------------------------------------------------
