@@ -16,7 +16,7 @@ local sign = function(opts)
 end
 
 sign({ name = 'DiagnosticSignError', text = '✘' })
-sign({ name = 'DiagnosticSignWarn', text = '⚠' })
+sign({ name = 'DiagnosticSignWarn', text = '' })
 sign({ name = 'DiagnosticSignHint', text = '󰌵' })
 sign({ name = 'DiagnosticSignInfo', text = 'ℹ' })
 
@@ -71,7 +71,7 @@ local function lsp_keymaps(bufnr)
     map('n', 'gk', '<cmd>lua vim.diagnostic.goto_next()<cr>')
 end
 
-local function lsp_attach(client, bufnr)
+local function lsp_attach(_, bufnr)
     local buf_command = vim.api.nvim_buf_create_user_command
 
     lsp_keymaps(bufnr)
@@ -107,7 +107,7 @@ mason_lspconfig.setup_handlers({
     -- The first entry (without a key) will be the default handler and will be
     -- called for each installed server that doesn't have a dedicated handler.
     function(server_name)
-        require('lspconfig')[server_name].setup({
+        lspconfig[server_name].setup({
             on_attach = lsp_attach,
             capabilities = lsp_capabilities,
         })
