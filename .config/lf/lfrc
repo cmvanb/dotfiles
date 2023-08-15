@@ -30,8 +30,9 @@ set scrolloff 10
 # Enable icons
 set icons
 
+# NOTE: You can't use environment vars in lfrc ;(
 # Custom previewer
-set previewer $XDG_SCRIPTS_HOME/terminal-preview.sh
+set previewer ~/.local/scripts/terminal-preview.sh
 
 # Key mappings
 #-------------------------------------------------------------------------------
@@ -82,18 +83,18 @@ map . set hidden!
 # Open in editor.
 map e $edit $f
 
+# Custom open command.
+cmd open $xdg-open $f
+
+# Configuration graveyard
+#-------------------------------------------------------------------------------
+
 # Execute current file (must be executable).
 # map x $$f
 # map X !$f
 
 # Dedicated keys for file opener actions.
 # map o &xdg-open $f
-
-# Custom open command.
-cmd open $xdg-open $f
-
-# Configuration graveyard
-#-------------------------------------------------------------------------------
 
 # make sure trash folder exists
 # %mkdir -p ~/.trash
