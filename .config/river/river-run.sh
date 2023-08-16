@@ -3,6 +3,8 @@
 set -o nounset
 set -o pipefail
 
+# TODO: This should be part of the river/systemd integration.
+
 # Load river environment.
 source $XDG_CONFIG_HOME/river/environment.sh
 

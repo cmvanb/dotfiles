@@ -8,6 +8,7 @@
 #-------------------------------------------------------------------------------
 
 # Systemd integration
+# TODO: This should be part of the river/systemd integration.
 #-------------------------------------------------------------------------------
 
 systemd-cat --identifier=river echo "Initializing River."
@@ -24,8 +25,7 @@ systemctl --user start river-session.target
 # Output configuration
 #-------------------------------------------------------------------------------
 
-# NOTE: Temporary solution.
-XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-HOME/.config}"
+# TODO: Configure outputs.
 
 # Input configuration
 #-------------------------------------------------------------------------------
@@ -79,7 +79,7 @@ riverctl map normal Alt Q close
 riverctl map normal Alt+Shift Q exit
 
 # Lock system
-riverctl map normal Alt+Shift Z spawn "$XDG_CONFIG_HOME/river/lock.sh"
+riverctl map normal Alt+Shift Z spawn "$XDG_SCRIPTS_HOME/lock-screen.sh"
 
 # Focus the next/previous view in the layout stack
 riverctl map normal Alt J focus-view next
