@@ -30,3 +30,6 @@ set -x VISUAL "$EDITOR"
 # Configure ls/exa.
 set -x LS_COLORS "no=37:fi=37:di=34;1:ln=33:or=31:mi=31:ex=32;1:*.pdf=37:*.zip=37"
 
+# Configure less pager.
+set -x LESS "-c -R"
+
