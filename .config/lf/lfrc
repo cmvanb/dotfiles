@@ -40,31 +40,31 @@ set previewer ~/.local/scripts/terminal-preview.sh
 # Clear defaults
 map <c-y>
 map <c-e>
-map H
-map M
-map L
-map v
-map u
-map y
-map d
-map p
 map c
-map r
-map "$"
-map "%"
-map "!"
-map "&"
+map d
 map f
 map F
+map H
+map L
+map m
+map M
+map p
+map r
+map t
+map u
+map v
+map w
+map x
+map y
+map z
+map "!"
+map "$"
+map "%"
+map "&"
 map ";"
 map ","
-map m
 map "'"
 map '"'
-map t
-
-# Enter lf commands.
-map ":" read
 
 # Navigation.
 map h updir
@@ -72,8 +72,17 @@ map j down
 map k up
 map l open
 
+# Enter lf commands.
+map ":" read
+
 # Enter shell commands.
 map <enter> shell
+
+# Search.
+map "/" search
+map "?" search-back
+map n search-next
+map N search-prev
 
 # Quit
 map <esc> quit
@@ -84,6 +93,10 @@ map . set hidden!
 
 # Open in editor.
 map e $edit $f
+
+# NOTE: You can't use environment vars in lfrc ;(
+# Open in pager.
+map i $~/.local/scripts/terminal-preview.sh $f | less -R
 
 # Custom open command.
 cmd open $xdg-open $f
