@@ -15,11 +15,8 @@ source $XDG_CONFIG_HOME/shell/generic/interactive
 # Aliases & Abbreviations
 #-------------------------------------------------------------------------------
 
-# NOTE: These are Arch specific... needs cleaner separation.
-alias sysyadm "sudo yadm --yadm-dir /etc/yadm --yadm-data /etc/yadm/data"
-alias yaya "yay -S --removemake --answerclean All --answerdiff None --noconfirm"
-
 alias exa "exa -l --group-directories-first"
+alias bat "bat --force-colorization --no-paging --style=grid,numbers"
 
 abbr -a gs git status
 abbr -a gsu git status -u
