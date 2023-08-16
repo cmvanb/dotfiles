@@ -50,7 +50,6 @@ map d
 map p
 map c
 map r
-map ":"
 map "$"
 map "%"
 map "!"
@@ -63,6 +62,9 @@ map m
 map "'"
 map '"'
 map t
+
+# Enter lf commands.
+map ":" read
 
 # Navigation.
 map h updir
