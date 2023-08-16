@@ -191,6 +191,9 @@ return {
     -- Fish syntax highlighting.
     { 'khaveesh/vim-fish-syntax' },
 
+    -- lf syntax highlighting.
+    { 'camnw/lf-vim' },
+
     -- Nix syntax highlighting.
     { 'LnL7/vim-nix' },
 
