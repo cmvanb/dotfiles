@@ -24,7 +24,6 @@ export INPUTRC=~/.config/readline/config
 alias sysyadm="sudo yadm --yadm-dir /etc/yadm --yadm-data /etc/yadm/data"
 alias yaya="yay -S --removemake --answerclean All --answerdiff None --noconfirm"
 
-alias edit="$EDITOR"
 alias exa="exa -l --group-directories-first"
 
 alias gs="git status"
@@ -56,9 +55,10 @@ alias ip="ip -c"
 
 # Bindings
 #-------------------------------------------------------------------------------
-#
+
 bind '"\C-e":"edit\C-m"'
 bind '"\C-f":"lfcd\C-m"'
+bind '"\C-y":"clear\C-m exa -al \C-m"'
 
 # Colors
 #-------------------------------------------------------------------------------

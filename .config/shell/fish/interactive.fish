@@ -19,7 +19,6 @@ source $XDG_CONFIG_HOME/shell/generic/interactive
 alias sysyadm "sudo yadm --yadm-dir /etc/yadm --yadm-data /etc/yadm/data"
 alias yaya "yay -S --removemake --answerclean All --answerdiff None --noconfirm"
 
-alias edit "$EDITOR"
 alias exa "exa -l --group-directories-first"
 
 abbr -a gs git status
@@ -54,14 +53,17 @@ abbr -a ip ip -c
 # Unbindings
 bind \cb ''
 
-# lfcd
+# Open file browser
 bind \cf 'lfcd; commandline -f repaint'
 
-# nvim
+# Open editor
 bind \ce 'edit; commandline -f repaint'
 
 # Clear screen
 bind \cl 'clear; commandline -f repaint'
+
+# List files
+bind \cy 'clear; commandline -f repaint; exa -al'
 
 # Clear command line
 # NOTE: Ctrl+C is bound to `Copy` by Wezterm, Ctrl+X is bound to emulate
