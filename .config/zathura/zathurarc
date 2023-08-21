@@ -1,0 +1,49 @@
+
+#-------------------------------------------------------------------------------
+# Zathura PDF viewer configuration
+#-------------------------------------------------------------------------------
+
+# Enable clipboard.
+set selection-clipboard clipboard
+
+# Don't recolor (invert) by default. Ctrl+r to invert.
+set recolor "false"
+
+# Don't change image hues when recoloring.
+set recolor-keephue "true"
+
+# Show notification when text is selected. Useful because the selection
+# mechanism is finicky.
+set selection-notification "true"
+
+set font "Iosevka Nerd Font Mono 12"
+
+set default-bg "#0b0b0e"
+set default-fg "#f1f1f4"
+
+set statusbar-bg "#00152d"
+set statusbar-fg "#dfefff"
+
+set inputbar-bg "#0b0b0e"
+set inputbar-fg "#637383"
+
+set n-completion-items 10
+set completion-bg "#0b0b0e"
+set completion-fg "#dfefff"
+set completion-group-bg "#00152d"
+set completion-group-fg ""#dfefff""
+set completion-highlight-bg "#ff3399"
+set completion-highlight-fg "#000000"
+
+set notification-error-bg "#2f0408"
+set notification-error-fg "#ec1329"
+
+set notification-warning-bg "#333100"
+set notification-warning-fg "#fff700"
+
+set notification-bg "#17171c"
+set notification-fg "#f1f1f4"
+
+set highlight-color "#ff3399"
+set highlight-active-color "#33ff85"
+
