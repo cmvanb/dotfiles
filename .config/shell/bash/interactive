@@ -25,7 +25,7 @@ alias bat "bat --force-colorization --no-paging --style=grid,numbers"
 
 alias gs="git status"
 alias gsu="git status -u"
-alias gl="git log --pretty='%C(yellow)[%h]%C(reset) %<(16,trunc)%ad %C(cyan)%an%C(reset) %C(green)%s%C(reset)' --date=format:'%Y-%m-%d %H:%M'"
+alias gl="git --no-pager log --pretty='%C(yellow)[%h]%C(reset) %<(16,trunc)%ad %C(cyan)%an%C(reset) %C(green)%s%C(reset)' --date=format:'%Y-%m-%d %H:%M'"
 alias gd="git diff"
 alias gds="git diff --staged"
 alias ga="git add"

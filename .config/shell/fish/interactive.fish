@@ -20,7 +20,7 @@ alias bat "bat --force-colorization --no-paging --style=grid,numbers"
 
 abbr -a gs git status
 abbr -a gsu git status -u
-abbr -a gl 'git log --pretty=\'%C(yellow)[%h]%C(reset) %<(16,trunc)%ad %C(cyan)%an%C(reset) %C(green)%s%C(reset)\' --date=format:\'%Y-%m-%d %H:%M\''
+abbr -a gl 'git --no-pager log --pretty=\'%C(yellow)[%h]%C(reset) %<(16,trunc)%ad %C(cyan)%an%C(reset) %C(green)%s%C(reset)\' --date=format:\'%Y-%m-%d %H:%M\''
 abbr -a gd git diff
 abbr -a gds git diff --staged
 abbr -a ga git add
