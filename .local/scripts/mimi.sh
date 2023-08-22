@@ -35,12 +35,17 @@ find_desktop_file_by() {
     if [[ -z $desktop ]]; then
         local search_dirs=()
 
-        if [[ -n $XDG_DATA_DIRS ]]; then
-            . $XDG_SCRIPTS_HOME/path-utils.sh
-            readarray -t search_dirs < <(path_array "$XDG_DATA_DIRS")
-        fi
+        # TODO: Works, but performance appears bad... needs further investigation.
+        # if [[ -n $XDG_DATA_DIRS ]]; then
+        #     . $XDG_SCRIPTS_HOME/path-utils.sh
+        #     readarray -t search_dirs < <(path_array "$XDG_DATA_DIRS")
+        # fi
 
+        # Unix FHS
         search_dirs+=("/usr/share/applications")
+
+        # NixOS
+        search_dirs+=("/run/current-system/sw/share")
 
         for dir in ${search_dirs[@]}; do
             if [[ -d $dir ]]; then
@@ -205,11 +210,7 @@ for search in $mime $general_mime; do
     desktop="$(find_desktop_file_by "$search")"
     if [[ "$desktop" ]]; then
         app=($(find_exec_in_desktop_file <"$desktop"))
-        if need_terminal <"$desktop"; then
-            exists "$TERM" && fork_run "$TERM" -e "${app[@]}" "$arg"
-        else
-            fork_run "${app[@]}" "$arg"
-        fi
+        fork_run "${app[@]}" "$arg"
     fi
 done
 
