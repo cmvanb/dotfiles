@@ -5,8 +5,7 @@
 
 set -euo pipefail
 
-if ! command -v esh &> /dev/null
-then
+if ! command -v esh &> /dev/null; then
     echo "ERROR: "$(basename "$0")" missing dependency: esh"
     exit
 fi
