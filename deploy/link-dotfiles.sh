@@ -5,25 +5,15 @@
 
 set -euo pipefail
 
-# Setup
-#-------------------------------------------------------------------------------
-
+bash_dir=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+source_dir=$( realpath "$bash_dir/.." )
 home_dir=$HOME
-script_dir=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
-source_dir=$( realpath "$script_dir/.." )
-
-echo "Linking dotfiles from \`$source_dir\` to \`$home_dir\`."
-
 bin_dir=${XDG_BIN_HOME:-$HOME/.local/bin}
 config_dir=${XDG_CONFIG_HOME:-$HOME/.config}
 data_dir=${XDG_DATA_HOME:-$HOME/.local/share}
 scripts_dir=${XDG_SCRIPTS_HOME:-$HOME/.local/scripts}
 
-# Create directories if necessary.
-mkdir -p $bin_dir
-mkdir -p $config_dir
-mkdir -p $data_dir
-mkdir -p $scripts_dir
+echo "Linking dotfiles from \`$source_dir\` to \`$home_dir\`."
 
 # Link dotfiles
 #-------------------------------------------------------------------------------
@@ -35,11 +25,8 @@ ln -sfT "$source_dir/.profile" "$home_dir/.profile"
 mkdir -p "$home_dir/.ssh"
 ln -sfT "$source_dir/.ssh/config" "$home_dir/.ssh/config"
 
-# .desktop files
-mkdir -p "$data_dir/applications"
-ln -sfT "$source_dir/.local/share/applications/org.qutebrowser.qutebrowser.desktop" "$data_dir/applications/org.qutebrowser.qutebrowser.desktop"
-
 # Bin
+mkdir -p $bin_dir
 ln -sfT "$source_dir/.local/bin/0x0" "$bin_dir/0x0"
 ln -sfT "$source_dir/.local/bin/edit" "$bin_dir/edit"
 ln -sfT "$source_dir/.local/bin/fetchpw" "$bin_dir/fetchpw"
@@ -54,6 +41,7 @@ ln -sfT "$source_dir/.local/bin/shutdown" "$bin_dir/shutdown"
 ln -sfT "$source_dir/.local/bin/xdg-open" "$bin_dir/xdg-open"
 
 # Scripts
+mkdir -p $scripts_dir
 ln -sfT "$source_dir/.local/scripts/color-hex-to-ansi.sh" "$scripts_dir/color-hex-to-ansi.sh"
 ln -sfT "$source_dir/.local/scripts/color-index-to-ansi.sh" "$scripts_dir/color-index-to-ansi.sh"
 ln -sfT "$source_dir/.local/scripts/estimate-disk-space-usage.sh" "$scripts_dir/estimate-disk-space-usage.sh"
@@ -76,13 +64,19 @@ ln -sfT "$source_dir/.local/scripts/wl-get-output-transform.sh" "$scripts_dir/wl
 ln -sfT "$source_dir/.local/scripts/wl-get-outputs.sh" "$scripts_dir/wl-get-outputs.sh"
 ln -sfT "$source_dir/.local/scripts/wl-rotate-display.sh" "$scripts_dir/wl-rotate-display.sh"
 
-# AppData
+# XDG .desktop files
+mkdir -p $data_dir
+mkdir -p "$data_dir/applications"
+ln -sfT "$source_dir/.local/share/applications/org.qutebrowser.qutebrowser.desktop" "$data_dir/applications/org.qutebrowser.qutebrowser.desktop"
+
+# Application data
 mkdir -p "$data_dir/qutebrowser/userscripts"
 ln -sfT "$source_dir/.local/share/qutebrowser/userscripts/readability.py" "$data_dir/qutebrowser/userscripts/readability.py"
 ln -sfT "$source_dir/.local/share/pandoc" "$data_dir/pandoc"
 
 # Configuration
 # TODO: Include vimium local storage.
+mkdir -p $config_dir
 ln -sfT "$source_dir/.config/bash" "$config_dir/bash"
 ln -sfT "$source_dir/.config/bat" "$config_dir/bat"
 ln -sfT "$source_dir/.config/fish/config.fish" "$config_dir/fish/config.fish"

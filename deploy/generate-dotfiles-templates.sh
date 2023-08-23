@@ -11,16 +11,15 @@ then
     exit
 fi
 
-# Setup
-#-------------------------------------------------------------------------------
-
+bash_dir=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+source_dir=$( realpath "$bash_dir/.." )
 home_dir=$HOME
-script_dir=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
-source_dir=$( realpath "$script_dir/.." )
+config_dir=${XDG_CONFIG_HOME:-$HOME/.config}
 
 echo "Generating dotfiles templates from \`$source_dir\` to \`$home_dir\`."
 
-config_dir=${XDG_CONFIG_HOME:-$HOME/.config}
+# Generate dotfiles templates
+#-------------------------------------------------------------------------------
 
 mkdir -p "$config_dir/mako"
 esh "$source_dir/.config/mako/config~esh" > "$config_dir/mako/config"
