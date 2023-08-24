@@ -38,6 +38,7 @@ ln -sfT "$source_dir/.local/bin/reboot" "$bin_dir/reboot"
 ln -sfT "$source_dir/.local/bin/river-run" "$bin_dir/river-run"
 ln -sfT "$source_dir/.local/bin/rg" "$bin_dir/rg"
 ln -sfT "$source_dir/.local/bin/shutdown" "$bin_dir/shutdown"
+ln -sfT "$source_dir/.local/bin/view" "$bin_dir/view"
 ln -sfT "$source_dir/.local/bin/xdg-open" "$bin_dir/xdg-open"
 
 # Scripts
