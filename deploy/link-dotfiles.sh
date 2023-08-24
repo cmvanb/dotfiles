@@ -48,6 +48,7 @@ force_link "$source_dir/.local/bin/xdg-open" "$bin_dir/xdg-open"
 
 # Scripts
 mkdir -p $scripts_dir
+force_link "$source_dir/.local/scripts/add-bookmark.sh" "$scripts_dir/add-bookmark.sh"
 force_link "$source_dir/.local/scripts/color-hex-to-ansi.sh" "$scripts_dir/color-hex-to-ansi.sh"
 force_link "$source_dir/.local/scripts/color-index-to-ansi.sh" "$scripts_dir/color-index-to-ansi.sh"
 force_link "$source_dir/.local/scripts/estimate-disk-space-usage.sh" "$scripts_dir/estimate-disk-space-usage.sh"
