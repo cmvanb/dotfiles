@@ -1,0 +1,16 @@
+<% source $XDG_CONFIG_HOME/theme/theme.sh %><% color_hash $ansi_black %>
+<% color_hash $ansi_red %>
+<% color_hash $ansi_green %>
+<% color_hash $ansi_yellow %>
+<% color_hash $ansi_blue %>
+<% color_hash $ansi_magenta %>
+<% color_hash $ansi_cyan %>
+<% color_hash $ansi_white %>
+<% color_hash $ansi_brblack %>
+<% color_hash $ansi_brred %>
+<% color_hash $ansi_brgreen %>
+<% color_hash $ansi_bryellow %>
+<% color_hash $ansi_brblue %>
+<% color_hash $ansi_brmagenta %>
+<% color_hash $ansi_brcyan %>
+<% color_hash $ansi_brwhite %>
