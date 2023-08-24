@@ -7,4 +7,4 @@ set -euo pipefail
 
 directory=${1:-$(pwd)}
 
-du -h -d 1 $directory | sort -hr
+du -h -d 1 "$directory" | sort -hr
