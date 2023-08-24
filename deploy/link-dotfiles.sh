@@ -60,6 +60,8 @@ ln -sfT "$source_dir/.local/scripts/print-terminal-colors.sh" "$scripts_dir/prin
 ln -sfT "$source_dir/.local/scripts/rename-kebabcase.sh" "$scripts_dir/rename-kebabcase.sh"
 ln -sfT "$source_dir/.local/scripts/screenshot-rectangle.sh" "$scripts_dir/screenshot-rectangle.sh"
 ln -sfT "$source_dir/.local/scripts/terminal-preview.sh" "$scripts_dir/terminal-preview.sh"
+ln -sfT "$source_dir/.local/scripts/view.sh" "$scripts_dir/view.sh"
+ln -sfT "$source_dir/.local/scripts/view-stdin.sh" "$scripts_dir/view-stdin.sh"
 ln -sfT "$source_dir/.local/scripts/wl-get-output-transform.sh" "$scripts_dir/wl-get-output-transform.sh"
 ln -sfT "$source_dir/.local/scripts/wl-get-outputs.sh" "$scripts_dir/wl-get-outputs.sh"
 ln -sfT "$source_dir/.local/scripts/wl-rotate-display.sh" "$scripts_dir/wl-rotate-display.sh"
