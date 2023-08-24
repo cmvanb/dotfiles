@@ -3,3 +3,4 @@
 	name = Casper
 [core]
 	editor = nvim
+	pager = ~/.local/scripts/view-stdin.sh
