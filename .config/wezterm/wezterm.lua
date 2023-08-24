@@ -237,7 +237,7 @@ return {
 
     -- Color scheme mapping
     colors = {
-        visual_bell = theme.color_hash('blue_6'),
+        visual_bell = theme.color_hash('primary_1'),
 
         tab_bar = {
             background = theme.color_hash('gray_0'),
