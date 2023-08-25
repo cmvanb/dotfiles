@@ -78,10 +78,12 @@ ln -sfT "$source_dir/.local/share/qutebrowser/userscripts/readability.py" "$data
 ln -sfT "$source_dir/.local/share/pandoc" "$data_dir/pandoc"
 
 # Configuration
-# TODO: Include vimium local storage.
+# TODO: Include chromium extension configuration.
 mkdir -p $config_dir
 ln -sfT "$source_dir/.config/bash" "$config_dir/bash"
 ln -sfT "$source_dir/.config/bat" "$config_dir/bat"
+# NOTE: Don't symlink Bitwarden config because it will be overwritten by the app.
+cp -n "$source_dir/.config/Bitwarden" "$config_dir/Bitwarden"
 ln -sfT "$source_dir/.config/fish/config.fish" "$config_dir/fish/config.fish"
 ln -sfT "$source_dir/.config/fish/functions" "$config_dir/fish/functions"
 ln -sfT "$source_dir/.config/git" "$config_dir/git"
