@@ -1,5 +1,5 @@
 #-------------------------------------------------------------------------------
-# POSIX shell $PATH utitilies
+# POSIX shell $PATH utilities
 #-------------------------------------------------------------------------------
 
 # Usage: indirect_expand PATH -> $PATH
@@ -22,7 +22,7 @@ path_remove () {
             newpath=$newpath:$dir
         fi
     done
-    export $var=${newpath#:}
+    export ${var}=${newpath#:}
 }
 
 # Usage: path_prepend /path/to/bin [PATH]
