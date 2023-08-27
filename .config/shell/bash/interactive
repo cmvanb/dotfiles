@@ -21,7 +21,7 @@ export INPUTRC=~/.config/readline/config
 #-------------------------------------------------------------------------------
 
 alias exa="exa -l --group-directories-first"
-alias bat "bat --force-colorization --no-paging --style=grid,numbers"
+alias bat="bat --force-colorization --no-paging --style=grid,numbers"
 
 alias gs="git status"
 alias gsu="git status -u"
