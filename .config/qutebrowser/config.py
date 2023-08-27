@@ -377,8 +377,8 @@ config.bind('<Space>q', 'close')
 config.bind('<Space>r', 'config-source ;; message-info \"Configuration reloaded.\"')
 
 #-- Session management
-config.bind('<Space>o', 'set-cmd-text -s :session-load')
-config.bind('<Space>s', 'set-cmd-text -s :session-save -o')
+config.bind('<Space>o', 'cmd-set-text -s :session-load')
+config.bind('<Space>s', 'cmd-set-text -s :session-save -o')
 
 #-- Tab management
 config.bind('<Ctrl-q>', 'tab-close')
@@ -388,7 +388,7 @@ config.bind('H', 'tab-prev')
 config.bind('L', 'tab-next')
 config.bind('<Ctrl-Shift-h>', 'tab-move -')
 config.bind('<Ctrl+Shift-l>', 'tab-move +')
-config.bind('<Ctrl-g>', 'set-cmd-text -s :tab-give')
+config.bind('<Ctrl-g>', 'cmd-set-text -s :tab-give')
 config.bind('<Ctrl-1>', 'tab-focus 1')
 config.bind('<Ctrl-2>', 'tab-focus 2')
 config.bind('<Ctrl-3>', 'tab-focus 3')
