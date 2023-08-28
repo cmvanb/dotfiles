@@ -111,6 +111,7 @@ force_link "$source_dir/.config/systemd/user/udiskie.service" "$config_dir/syste
 force_link "$source_dir/.config/systemd/user/river-session.target" "$config_dir/systemd/user/river-session.target"
 force_link "$source_dir/.config/systemd/user/wayland-session.target" "$config_dir/systemd/user/wayland-session.target"
 force_link "$source_dir/.config/theme" "$config_dir/theme"
+force_link "$source_dir/.config/vt" "$config_dir/vt"
 force_link "$source_dir/.config/wezterm" "$config_dir/wezterm"
 mkdir -p "$config_dir/wofi"
 force_link "$source_dir/.config/wofi/config" "$config_dir/wofi/config"
