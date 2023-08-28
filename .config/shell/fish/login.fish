@@ -13,6 +13,9 @@
 # Put your shell-independent, login environment variables here.
 #-------------------------------------------------------------------------------
 
+# SSH agent integration.
+set -x SSH_AUTH_SOCK $XDG_RUNTIME_DIR/ssh-agent.sock
+
 # XDG base directories.
 set -x XDG_CONFIG_HOME $HOME/.config
 set -x XDG_CACHE_HOME $HOME/.cache
