@@ -88,7 +88,7 @@ mkdir -p $config_dir
 force_link "$source_dir/.config/bash" "$config_dir/bash"
 force_link "$source_dir/.config/bat" "$config_dir/bat"
 # NOTE: Don't symlink Bitwarden config because it will be overwritten by the app.
-cp -nr "$source_dir/.config/Bitwarden" "$config_dir/Bitwarden"
+cp -nr "$source_dir/.config/Bitwarden" "$config_dir/Bitwarden" && true
 force_link "$source_dir/.config/fish/config.fish" "$config_dir/fish/config.fish"
 force_link "$source_dir/.config/fish/functions" "$config_dir/fish/functions"
 force_link "$source_dir/.config/git" "$config_dir/git"
