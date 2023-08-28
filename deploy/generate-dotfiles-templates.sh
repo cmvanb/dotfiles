@@ -25,8 +25,3 @@ esh "$source_dir/.config/mako/config~esh" > "$config_dir/mako/config"
 
 mkdir -p "$config_dir/wofi"
 esh "$source_dir/.config/wofi/style.css~esh" > "$config_dir/wofi/style.css"
-
-# TODO: Figure out how to choose this template based on the host configuration.
-mkdir -p "$config_dir/yambar"
-esh "$source_dir/.config/yambar/config.yml~desktop" > "$config_dir/yambar/config.yml"
-

@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+#-------------------------------------------------------------------------------
+# Apply host-specific configuration templates and links
+#-------------------------------------------------------------------------------
+
+set -euo pipefail
+
+if ! command -v esh &> /dev/null; then
+    echo "ERROR: "$(basename "$0")" missing dependency: esh"
+    exit 1
+fi
+
+bash_dir=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+source_dir=$( realpath "$bash_dir/.." )
+home_dir=$HOME
+config_dir=${XDG_CONFIG_HOME:-$HOME/.config}
+host=$HOSTNAME
+
+echo "Applying \`$host\` configuration to \`$home_dir\`."
+
+# Supertubes
+#-------------------------------------------------------------------------------
+
+if [[ $host == "supertubes" ]]; then
+
+    mkdir -p "$config_dir/yambar"
+    esh "$source_dir/.config/yambar/config.yml~desktop" > "$config_dir/yambar/config.yml"
+
+elif [[ $host == "dojo" ]]; then
+
+    mkdir -p "$config_dir/yambar"
+    esh "$source_dir/.config/yambar/config.yml~desktop" > "$config_dir/yambar/config.yml"
+
+elif [[ $host == "qutedell" ]]; then
+
+    mkdir -p "$config_dir/yambar"
+    esh "$source_dir/.config/yambar/config.yml~laptop" > "$config_dir/yambar/config.yml"
+
+else
+    echo "ERROR: "$(basename "$0")" did not recognize host: $host"
+    exit 1
+fi
+
