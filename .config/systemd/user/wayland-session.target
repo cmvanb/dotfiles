@@ -1,0 +1,6 @@
+[Unit]
+Description=Wayland session
+Documentation=man:systemd.special(7)
+Requires=default.target
+BindsTo=graphical-session.target
+After=graphical-session.target
