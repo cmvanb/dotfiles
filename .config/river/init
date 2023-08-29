@@ -1,5 +1,4 @@
 #!/bin/sh
-
 #-------------------------------------------------------------------------------
 # River configuration script
 #
@@ -7,13 +6,21 @@
 # documentation.
 #-------------------------------------------------------------------------------
 
+bash_dir=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+source_dir=$( realpath "$bash_dir/../.." )
+
+# Environment
+#-------------------------------------------------------------------------------
+
+source "$bash_dir/environment.sh"
+
 # Systemd integration
 # TODO: This should be part of the river/systemd integration.
 #-------------------------------------------------------------------------------
 
-systemd-cat --identifier=river echo "Initializing River."
+systemd-cat --identifier=river echo "Initializing River from $source_dir ..."
 
-VARIABLES="XDG_SESSION_TYPE WAYLAND_DISPLAY"
+VARIABLES="XDG_CURRENT_DESKTOP XDG_SESSION_TYPE WAYLAND_DISPLAY"
 
 # Share part of river environment with systemd.
 dbus-update-activation-environment --systemd $VARIABLES
