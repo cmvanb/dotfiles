@@ -6,8 +6,8 @@
 set -euo pipefail
 
 if ! command -v esh &> /dev/null; then
-    echo "ERROR: "$(basename "$0")" missing dependency: esh"
-    exit
+    echo "[$(basename "$0")] ERROR: Missing dependency: esh"
+    exit 1
 fi
 
 bash_dir=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )

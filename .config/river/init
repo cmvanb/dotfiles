@@ -29,10 +29,10 @@ systemctl --user import-environment $VARIABLES
 # Other system services can respond to the underlying wayland-session or graphical-session.target.
 systemctl --user start river-session.target
 
-# Output configuration
+# Display management
 #-------------------------------------------------------------------------------
 
-# TODO: Configure outputs.
+way-displays > /tmp/way-displays.${XDG_VTNR}.${USER}.log 2>&1 &
 
 # Input configuration
 #-------------------------------------------------------------------------------
