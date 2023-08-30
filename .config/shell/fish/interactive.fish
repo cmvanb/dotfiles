@@ -100,6 +100,7 @@ bind . 'expand-dot-to-double-dot'
 # Import and parse system colors.
 source $XDG_CONFIG_HOME/theme/theme.fish
 
+# Syntax
 set -U fish_color_autosuggestion (color_named 'text_8')
 set -U fish_color_command (color_named 'ansi_cyan')
 set -U fish_color_comment (color_named 'secondary_5')
@@ -114,6 +115,7 @@ set -U fish_color_redirection (color_named 'ansi_brmagenta')
 set -U fish_color_search_match --background=(color_named 'l1_magenta')
 set -U fish_color_valid_path (color_named 'ansi_brcyan') --bold #--underline
 
+# Pager
 set -U fish_pager_color_completion (color_named 'text_8')
 set -U fish_pager_color_description (color_named 'text_12')
 set -U fish_pager_color_prefix (color_named 'yellow_5')
@@ -122,6 +124,7 @@ set -U fish_pager_color_selected_background --background=(color_named 'primary_7
 set -U fish_pager_color_selected_completion (color_named 'text_15')
 set -U fish_pager_color_selected_description (color_named 'text_15')
 
+# Unknown
 # TODO: Find where these colors are used by fish.
 set -U fish_color_escape (color_named 'debug')
 set -U fish_color_cancel (color_named 'debug') # -r
@@ -132,9 +135,4 @@ set -U fish_color_selection (color_named 'debug') # --bold --background=brblack
 #-------------------------------------------------------------------------------
 
 source $XDG_CONFIG_HOME/lf/lfcd.fish
-
-# Prompt
-#-------------------------------------------------------------------------------
-
-# TODO: Implement.
 

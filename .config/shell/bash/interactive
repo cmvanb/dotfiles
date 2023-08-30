@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 #-------------------------------------------------------------------------------
 # Bash interactive configuration
 #-------------------------------------------------------------------------------
@@ -5,7 +6,7 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-. $XDG_CONFIG_HOME/shell/generic/interactive
+source $XDG_CONFIG_HOME/shell/generic/interactive
 
 # General configuration
 #-------------------------------------------------------------------------------
@@ -75,38 +76,50 @@ fi
 # Prompt
 #-------------------------------------------------------------------------------
 
-# TODO: Handle differences in terminal capabilities. see: `TERM=`
 construct_prompt() {
-    local time="\[$(color_ansi_fg $primary_12)\]\t\[$(color_ansi_reset)\] "
-    local user=""
-    local hostname=""
-
-    if [[ $(whoami) == "root" ]]; then
+    # Login
+    local user=$(whoami)
+    if [[ "$user" == "root" ]]; then
         user="\[$(color_ansi_fg $red_7)\]\u\[$(color_ansi_reset)\]"
-        hostname="@\h "
+    else
+        user="\[$(color_ansi_fg $ansi_brgreen)\]\u\[$(color_ansi_reset)\]"
     fi
 
-    local git_modified_color="\[$(color_ansi_fg $green_4)\]"
+    local separator="@" && [[ "$TERM" != "linux" ]] && separator="⋅"
+
+    local hostname="\h "
+
+    local login="$user$separator$hostname "
+
+    # CWD
+    local cwd="\[$(color_ansi_fg $primary_10)\]\w\[$(color_ansi_reset)\] "
+
+    # Git status
+    local vcs=""
+
+    local git_symbol="" && [[ "$TERM" != "linux" ]] && git_symbol=" "
+
+    local git_color="\[$(color_ansi_fg $green_4)\]"
 
     local git_status=$(git status 2>/dev/null | grep "Your branch is ahead" 2>/dev/null)
-    if [[ "$git_status" != "" ]]; then
-        git_modified_color="\[$(color_ansi_fg $orange_6)\]"
+    if [[ -n "$git_status" ]]; then
+        git_color="\[$(color_ansi_fg $orange_6)\]"
     fi
 
     local git_status=$(git status --porcelain 2>/dev/null)
-    if [[ "$git_status" != "" ]]; then
-        git_modified_color="\[$(color_ansi_fg $orange_6)\]"
+    if [[ -n "$git_status" ]]; then
+        git_color="\[$(color_ansi_fg $orange_6)\]"
     fi
 
     local git_branch=$(git branch --show-current 2>/dev/null)
-    if [[ "$git_branch" != "" ]]; then
-        git_branch="$git_modified_color $git_branch\[$(color_ansi_reset)\] "
+    if [[ -n "$git_branch" ]]; then
+        vcs="$git_color$git_symbol$git_branch\[$(color_ansi_reset)\] "
     fi
 
-    local cwd="\[$(color_ansi_fg $primary_12)\] \w\[$(color_ansi_reset)\] "
+    # Prompt
     local prompt="\[$(color_ansi_fg $text_15)\]\$\[$(color_ansi_reset)\] "
 
-    PS1="$time$user$hostname$git_branch$cwd$prompt"
+    PS1="$login$cwd$vcs$prompt"
 }
 PROMPT_COMMAND='construct_prompt'
 
