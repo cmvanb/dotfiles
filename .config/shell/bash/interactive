@@ -87,7 +87,7 @@ construct_prompt() {
 
     local separator="@" && [[ "$TERM" != "linux" ]] && separator="⋅"
 
-    local hostname="\h "
+    local hostname="\h"
 
     local login="$user$separator$hostname "
 
