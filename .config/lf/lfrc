@@ -27,6 +27,11 @@ set ifs "\n"
 # leave some space at the top and the bottom of the screen
 set scrolloff 10
 
+# TODO: Use system theme.
+# TODO: Use fallback symbols for virtual terminal.
+# Configure prompt
+set promptfmt "\033[92;22m%u\033[0m⋅%h \033[34;1m%d\033[0m%f"
+
 # Enable icons
 set icons
 
