@@ -46,6 +46,8 @@ elif [[ $host == "qutedell" ]]; then
 
     mkdir -p "$config_dir/yambar"
     esh "$source_dir/.config/yambar/config.yml~laptop" > "$config_dir/yambar/config.yml"
+    mkdir -p "$config_dir/way-displays"
+    force_link "$source_dir/.config/way-displays/cfg.yml~qutech-dual" "$config_dir/way-displays/cfg.yml"
 
 # ...
 else
