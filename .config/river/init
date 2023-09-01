@@ -96,14 +96,14 @@ riverctl map normal Alt K focus-view previous
 riverctl map normal Alt+Shift J swap next
 riverctl map normal Alt+Shift K swap previous
 
-# Focus the next/previous output
-riverctl map normal Alt L focus-output next
-riverctl map normal Alt H focus-output previous
+# Focus the left/right output
+riverctl map normal Alt H focus-output left
+riverctl map normal Alt L focus-output right
 
-# Send the focused view to the next/previous output
+# Send the focused view to the left/right output
 # TODO: Save active tag on source output, restore it on destination output.
-riverctl map normal Alt+Shift L spawn "$XDG_CONFIG_HOME/river/send-and-focus-output.sh next"
-riverctl map normal Alt+Shift H spawn "$XDG_CONFIG_HOME/river/send-and-focus-output.sh previous"
+riverctl map normal Alt+Shift H spawn "$XDG_CONFIG_HOME/river/send-and-focus-output.sh left"
+riverctl map normal Alt+Shift L spawn "$XDG_CONFIG_HOME/river/send-and-focus-output.sh right"
 
 # Cycle focused tags
 # see: https://gitlab.com/akumar-xyz/river-shifttags/-/tree/master
