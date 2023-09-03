@@ -35,6 +35,9 @@ set promptfmt "\033[92;22m%u\033[0m⋅%h \033[34;1m%d\033[0m%f"
 # Enable icons
 set icons
 
+# Show hidden files
+set hidden
+
 # NOTE: You can't use environment vars in lfrc ;(
 # Custom previewer
 set previewer ~/.local/scripts/terminal-preview.sh
