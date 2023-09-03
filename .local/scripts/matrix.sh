@@ -12,10 +12,11 @@ if ! command -v neo-matrix &> /dev/null; then
     exit 69
 fi
 
-message=$(fortune -n 140 -s)
+message=$(fortune -n 120 -s)
+message=$(echo -e "$message" | tr -d '\n')
 
 neo-matrix \
-    --charset cyrillic \
+    --charset punc \
     --defaultbg \
-    --fps 30 \
+    --fps 16 \
     --message "$message"
