@@ -7,9 +7,9 @@ After=wayland-session.target
 [Service]
 Type=dbus
 BusName=org.freedesktop.Notifications
-ExecCondition=/bin/sh -c '[ -n "$WAYLAND_DISPLAY" ]'
-ExecStart=mako
-ExecReload=makoctl reload
+ExecCondition=<%= $SYSTEM_BINARY_PATH %>/sh -c '[ -n "$WAYLAND_DISPLAY" ]'
+ExecStart=<%= $SYSTEM_BINARY_PATH %>/mako
+ExecReload=<%= $SYSTEM_BINARY_PATH %>/makoctl reload
 
 [Install]
 WantedBy=wayland-session.target

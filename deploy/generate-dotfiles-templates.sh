@@ -25,3 +25,11 @@ esh "$source_dir/.config/mako/config~esh" > "$config_dir/mako/config"
 
 mkdir -p "$config_dir/wofi"
 esh "$source_dir/.config/wofi/style.css~esh" > "$config_dir/wofi/style.css"
+
+# TODO: Make this cross platform.
+export SYSTEM_BINARY_PATH=/run/current-system/sw/bin
+
+mkdir -p "$config_dir/systemd/user"
+esh "$source_dir/.config/systemd/user/mako.service~esh" > "$config_dir/systemd/user/mako.service"
+esh "$source_dir/.config/systemd/user/ssh-agent.service~esh" > "$config_dir/systemd/user/ssh-agent.service"
+esh "$source_dir/.config/systemd/user/udiskie.service~esh" > "$config_dir/systemd/user/udiskie.service"
