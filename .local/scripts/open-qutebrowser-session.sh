@@ -23,4 +23,8 @@ if [[ -z $session ]]; then
     exit 1
 fi
 
-qutebrowser --target window ":session-load $session" 2> /dev/null
+if pgrep qutebrowser; then
+    qutebrowser --target window ":session-load $session" 2> /dev/null
+else
+    qutebrowser --target window --restore "$session" 2> /dev/null
+fi
