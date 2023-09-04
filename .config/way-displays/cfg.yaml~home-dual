@@ -1,0 +1,23 @@
+#-------------------------------------------------------------------------------
+# way-displays configuration
+#
+# see: https://github.com/alex-courtis/way-displays/blob/master/doc/CONFIGURATION.md
+#-------------------------------------------------------------------------------
+
+ARRANGE: ROW
+
+ALIGN: TOP
+
+ORDER:
+    - 'DP-2'
+    - 'DP-1'
+
+SCALING: false
+
+AUTO_SCALE: true
+
+TRANSFORM:
+    - NAME_DESC: 'DP-2'
+      TRANSFORM: 90
+
+LOG_THRESHOLD: INFO
