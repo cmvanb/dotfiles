@@ -37,10 +37,12 @@ cmp.setup({
         end, { 'i', 's' }),
 
         ['<CR>'] = cmp.mapping(function(fallback)
-            local entry = cmp.get_selected_entry()
-            dump_table(entry)
+            -- local entry = cmp.get_selected_entry()
+            -- dump_table(entry)
             if cmp.visible() then
                 cmp.confirm({ select = false })
+                -- TODO: Figure out how to exit insert mode without leaving
+                -- garbage chars.
             else
                 fallback()
             end
