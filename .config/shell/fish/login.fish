@@ -24,6 +24,7 @@ set -x XDG_STATE_HOME $HOME/.local/state
 
 # Custom directories.
 set -x XDG_BIN_HOME $HOME/.local/bin
+set -x XDG_OPT_HOME $HOME/.local/opt
 set -x XDG_SCRIPTS_HOME $HOME/.local/scripts
 
 # XDG user directories.
@@ -32,6 +33,10 @@ set -x XDG_DOWNLOAD_DIR $HOME/Downloads
 set -x XDG_MUSIC_DIR $HOME/Media/Music
 set -x XDG_PICTURES_DIR $HOME/Media/Images
 set -x XDG_VIDEOS_DIR $HOME/Media/Videos
+
+# NOTE: This really should be independent of the shell configuration...
+# Pyenv installation.
+set -x PYENV_ROOT $XDG_OPT_HOME/pyenv
 
 # User directories
 #-------------------------------------------------------------------------------
@@ -45,3 +50,5 @@ mkdir -p $XDG_DOCUMENTS_DIR $XDG_DOWNLOAD_DIR $XDG_MUSIC_DIR $XDG_PICTURES_DIR $
 fish_add_path -pP $XDG_BIN_HOME
 fish_add_path -pP $XDG_SCRIPTS_HOME
 
+# Add pyenv python shims to path.
+fish_add_path -pP $PYENV_ROOT/bin

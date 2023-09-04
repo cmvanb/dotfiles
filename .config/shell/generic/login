@@ -17,6 +17,7 @@ export XDG_STATE_HOME="$HOME/.local/state"
 
 # Custom directories.
 export XDG_BIN_HOME="$HOME/.local/bin"
+export XDG_OPT_HOME="$HOME/.local/opt"
 export XDG_SCRIPTS_HOME="$HOME/.local/scripts"
 
 # XDG user directories.
@@ -25,6 +26,10 @@ export XDG_DOWNLOAD_DIR="$HOME/Downloads"
 export XDG_MUSIC_DIR="$HOME/Media/Music"
 export XDG_PICTURES_DIR="$HOME/Media/Images"
 export XDG_VIDEOS_DIR="$HOME/Media/Videos"
+
+# NOTE: This really should be independent of the shell configuration...
+# Pyenv installation.
+export PYENV_ROOT="$XDG_OPT_HOME/pyenv"
 
 # User directories
 #-------------------------------------------------------------------------------
@@ -41,3 +46,5 @@ mkdir -p $XDG_DOCUMENTS_DIR $XDG_DOWNLOAD_DIR $XDG_MUSIC_DIR $XDG_PICTURES_DIR $
 path_prepend "$XDG_BIN_HOME" PATH
 path_prepend "$XDG_SCRIPTS_HOME" PATH
 
+# Add pyenv python shims to path
+path_prepend "$PYENV_ROOT/bin" PATH

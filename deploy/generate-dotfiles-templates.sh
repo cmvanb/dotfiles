@@ -27,7 +27,8 @@ mkdir -p "$config_dir/wofi"
 esh "$source_dir/.config/wofi/style.css~esh" > "$config_dir/wofi/style.css"
 
 # TODO: Make this cross platform.
-export SYSTEM_BINARY_PATH=/run/current-system/sw/bin
+# export SYSTEM_BINARY_PATH=/run/current-system/sw/bin
+export SYSTEM_BINARY_PATH=/usr/bin
 
 mkdir -p "$config_dir/systemd/user"
 esh "$source_dir/.config/systemd/user/mako.service~esh" > "$config_dir/systemd/user/mako.service"
