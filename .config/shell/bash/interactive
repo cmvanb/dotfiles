@@ -84,7 +84,7 @@ construct_prompt() {
     # Login
     local user=$(whoami)
     if [[ "$user" == "root" ]]; then
-        user="\[$(color_ansi_fg $red_7)\]\u\[$(color_ansi_reset)\]"
+        user="\[$(color_ansi_fg $ansi_brred)\]\u\[$(color_ansi_reset)\]"
     else
         user="\[$(color_ansi_fg $ansi_brgreen)\]\u\[$(color_ansi_reset)\]"
     fi
@@ -96,23 +96,23 @@ construct_prompt() {
     local login="$user$separator$hostname "
 
     # CWD
-    local cwd="\[$(color_ansi_fg $primary_10)\]\w\[$(color_ansi_reset)\] "
+    local cwd="\[$(color_ansi_fg $ansi_blue)\]\w\[$(color_ansi_reset)\] "
 
     # Git status
     local vcs=""
 
     local git_symbol="" && [[ "$TERM" != "linux" ]] && git_symbol=" "
 
-    local git_color="\[$(color_ansi_fg $green_4)\]"
+    local git_color="\[$(color_ansi_fg $ansi_green)\]"
 
     local git_status=$(git status 2>/dev/null | grep "Your branch is ahead" 2>/dev/null)
     if [[ -n "$git_status" ]]; then
-        git_color="\[$(color_ansi_fg $orange_6)\]"
+        git_color="\[$(color_ansi_fg $ansi_yellow)\]"
     fi
 
     local git_status=$(git status --porcelain 2>/dev/null)
     if [[ -n "$git_status" ]]; then
-        git_color="\[$(color_ansi_fg $orange_6)\]"
+        git_color="\[$(color_ansi_fg $ansi_yellow)\]"
     fi
 
     local git_branch=$(git branch --show-current 2>/dev/null)
