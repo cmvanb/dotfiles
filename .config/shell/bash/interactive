@@ -136,7 +136,7 @@ construct_prompt() {
     fi
 
     if [[ -n "$venv_name" ]]; then
-        venv="\[$(color_ansi_fg $ansi_brmagenta)\]$venv_symbol$venv_name\[$(color_ansi_reset)\] "
+        venv="\[$(color_ansi_fg $ansi_magenta)\]$venv_symbol$venv_name\[$(color_ansi_reset)\] "
     fi
 
     # Prompt

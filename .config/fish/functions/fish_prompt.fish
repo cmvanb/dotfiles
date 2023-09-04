@@ -78,7 +78,7 @@ function fish_prompt --description 'Write out the prompt'
     end
 
     if test "$venv_name" != ""
-        set venv (set_color brmagenta)"$venv_symbol$venv_name$normal "
+        set venv (set_color magenta)"$venv_symbol$venv_name$normal "
     end
 
     # Last command status
