@@ -78,7 +78,6 @@ force_link "$source_dir/.local/scripts/wl-get-outputs.sh" "$scripts_dir/wl-get-o
 force_link "$source_dir/.local/scripts/wl-rotate-display.sh" "$scripts_dir/wl-rotate-display.sh"
 
 # Templates
-echo $templates_dir
 mkdir -p $templates_dir
 force_link "$source_dir/.local/templates/bookmark.md~esh" "$templates_dir/bookmark.md~esh"
 
