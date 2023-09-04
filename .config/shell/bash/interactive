@@ -6,7 +6,11 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+# Imports
+#-------------------------------------------------------------------------------
+
 source $XDG_CONFIG_HOME/shell/generic/interactive
+source $XDG_SCRIPTS_HOME/string-utils.sh
 
 # General configuration
 #-------------------------------------------------------------------------------
@@ -116,10 +120,29 @@ construct_prompt() {
         vcs="$git_color$git_symbol$git_branch\[$(color_ansi_reset)\] "
     fi
 
+    # Python virtual environment
+    local venv=""
+
+    local venv_symbol="" && [[ "$TERM" != "linux" ]] && venv_symbol="󰌠 "
+
+    local venv_name=""
+    if [[ -n "$VIRTUAL_ENV" ]]; then
+        IFS='/' read -r -a split_virtual_env <<< "$VIRTUAL_ENV"
+        if string_contains "${split_virtual_env[-1]}" virtualenv venv .venv env; then
+            venv_name="${split_virtual_env[-2]}"
+        else
+            venv_name="${split_virtual_env[-1]}"
+        fi
+    fi
+
+    if [[ -n "$venv_name" ]]; then
+        venv="\[$(color_ansi_fg $ansi_brmagenta)\]$venv_symbol$venv_name\[$(color_ansi_reset)\] "
+    fi
+
     # Prompt
     local prompt="\[$(color_ansi_fg $text_15)\]\$\[$(color_ansi_reset)\] "
 
-    PS1="$login$cwd$vcs$prompt"
+    PS1="$login$cwd$vcs$venv$prompt"
 }
 PROMPT_COMMAND='construct_prompt'
 
