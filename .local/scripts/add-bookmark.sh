@@ -25,7 +25,7 @@ fi
 
 bash_dir=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 source_dir=$( realpath "$bash_dir/../.." )
-bookmark_template="$source_dir/.local/templates/bookmark.md~esh"
+bookmark_template="$XDG_TEMPLATES_DIR/bookmark.md~esh"
 bookmark_dir="$HOME/Wiki/bookmarks"
 
 if [[ ! -f $bookmark_template ]]; then
