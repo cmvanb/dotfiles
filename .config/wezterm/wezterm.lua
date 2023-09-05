@@ -55,6 +55,12 @@ return {
             mods = 'CTRL|SHIFT',
             action = wezterm.action.ReloadConfiguration,
         },
+        -- Search scrollback buffer
+        {
+            key = 'f',
+            mods = 'CTRL|SHIFT',
+            action = wezterm.action.Search { CaseInSensitiveString = ""},
+        },
         -- Spawn new terminal in current directory
         {
             key = 't',
