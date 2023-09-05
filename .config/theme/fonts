@@ -2,5 +2,12 @@
 
 font_mono='Iosevka Nerd Font Mono'
 
+# NOTE: Other fonts to consider.
+# font_mono='Hack Nerd Font Mono'
+# font_mono='SauceCodePro Nerd Font'
+# font_mono='Terminess Nerd Font'
+# font_mono='JetBrains Mono'
+# font_mono='Fira Code'
+
 font_sans='Noto Sans'
 font_serif='Noto Serif'
