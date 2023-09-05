@@ -38,6 +38,11 @@ set icons
 # Show hidden files
 set hidden
 
+# NOTE: Requires `lf-git` for sixel support.
+#   see: https://aur.archlinux.org/packages/lf-git
+# Enable sixel image previews
+set sixel
+
 # NOTE: You can't use environment vars in lfrc ;(
 # Custom previewer
 set previewer ~/.local/scripts/terminal-preview.sh
