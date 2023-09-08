@@ -32,6 +32,9 @@ export XDG_VIDEOS_DIR="$HOME/Media/Videos"
 # Pyenv installation.
 export PYENV_ROOT="$XDG_OPT_HOME/pyenv"
 
+# Docker config.
+export DOCKER_CONFIG="$XDG_CONFIG_HOME/docker"
+
 # User directories
 #-------------------------------------------------------------------------------
 

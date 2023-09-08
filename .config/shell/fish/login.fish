@@ -39,6 +39,9 @@ set -x XDG_VIDEOS_DIR $HOME/Media/Videos
 # Pyenv installation.
 set -x PYENV_ROOT $XDG_OPT_HOME/pyenv
 
+# Docker config.
+set -x DOCKER_CONFIG $XDG_CONFIG_HOME/docker
+
 # User directories
 #-------------------------------------------------------------------------------
 
