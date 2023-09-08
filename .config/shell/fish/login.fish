@@ -56,3 +56,10 @@ fish_add_path -pP $XDG_SCRIPTS_HOME
 
 # Add pyenv python shims to path.
 fish_add_path -pP $PYENV_ROOT/bin
+
+# Pyenv integration
+#-------------------------------------------------------------------------------
+
+if command -v pyenv &> /dev/null
+    pyenv init - | source
+end

@@ -52,3 +52,10 @@ path_prepend "$XDG_SCRIPTS_HOME" PATH
 
 # Add pyenv python shims to path
 path_prepend "$PYENV_ROOT/bin" PATH
+
+# Pyenv integration
+#-------------------------------------------------------------------------------
+
+if command -v pyenv &> /dev/null; then
+    eval "$(pyenv init -)"
+end
