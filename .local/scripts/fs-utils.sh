@@ -4,11 +4,11 @@
 
 force_link () {
     if [[ -z "$1" ]]; then
-        echo "[$(basename "$0")] ERROR: Missing argument: TARGET"
+        echo "[$(basename "$0")] ERROR: Missing argument: target"
         return 1
     fi
     if [[ -z "$2" ]]; then
-        echo "$(basename "$0") ERROR: Missing argument: LINK_NAME"
+        echo "$(basename "$0") ERROR: Missing argument: link name"
         return 1
     fi
     if [[ ! -f "$1" && ! -d "$1" ]]; then
