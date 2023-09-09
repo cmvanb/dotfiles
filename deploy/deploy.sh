@@ -5,8 +5,8 @@
 
 set -euo pipefail
 
-bash_dir=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
-source_dir=$( realpath "$bash_dir/.." )
+bash_dir=$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)
+source_dir=$(realpath "$bash_dir/..")
 home_dir=$HOME
 
 echo "Deploying dotfiles from \`$source_dir\` to \`$home_dir\`..."

@@ -1,9 +1,9 @@
+#!/usr/bin/env bash
 #-------------------------------------------------------------------------------
-# Generic POSIX shell login configuration
+# Bash login configuration
 #-------------------------------------------------------------------------------
 
 # Environment
-# Put your shell-independent, login environment variables here.
 #-------------------------------------------------------------------------------
 
 # SSH agent integration.
@@ -58,4 +58,4 @@ path_prepend "$PYENV_ROOT/bin" PATH
 
 if command -v pyenv &> /dev/null; then
     eval "$(pyenv init -)"
-end
+fi

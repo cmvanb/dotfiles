@@ -5,8 +5,8 @@
 
 set -euo pipefail
 
-bash_dir=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
-source_dir=$( realpath "$bash_dir/.." )
+bash_dir=$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)
+source_dir=$(realpath "$bash_dir/..")
 home_dir=$HOME
 bin_dir=${XDG_BIN_HOME:-$HOME/.local/bin}
 config_dir=${XDG_CONFIG_HOME:-$HOME/.config}
@@ -23,9 +23,6 @@ source "$source_dir/.local/scripts/fs-utils.sh"
 #-------------------------------------------------------------------------------
 
 echo "Linking dotfiles from \`$source_dir\` to \`$home_dir\`."
-
-# Shell configuration
-force_link "$source_dir/.profile" "$home_dir/.profile"
 
 # SSH configuration
 mkdir -p "$home_dir/.ssh"
@@ -98,6 +95,10 @@ force_link "$source_dir/.config/bat" "$config_dir/bat"
 # NOTE: Don't symlink Bitwarden config because it will be overwritten by the app.
 cp -nr "$source_dir/.config/Bitwarden" "$config_dir/Bitwarden" && true
 force_link "$source_dir/.config/fish/config.fish" "$config_dir/fish/config.fish"
+force_link "$source_dir/.config/fish/env.fish" "$config_dir/fish/env.fish"
+force_link "$source_dir/.config/fish/interactive.fish" "$config_dir/fish/interactive.fish"
+force_link "$source_dir/.config/fish/login.fish" "$config_dir/fish/login.fish"
+force_link "$source_dir/.config/fish/logout.fish" "$config_dir/fish/logout.fish"
 force_link "$source_dir/.config/fish/functions" "$config_dir/fish/functions"
 force_link "$source_dir/.config/git" "$config_dir/git"
 force_link "$source_dir/.config/imv" "$config_dir/imv"

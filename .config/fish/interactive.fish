@@ -1,16 +1,12 @@
 #-------------------------------------------------------------------------------
 # Fish interactive configuration
-#
-# Unfortunately, it's not trivial to source a POSIX shell script from fish, so
-# some parts of the generic script may need to be duplicated here.
-#
-# NOTE: Although `bass` works, it degrades performance to an unacceptable level.
-#   `bass 'source /home/casper/.config/shell/generic/interactive'`
 #-------------------------------------------------------------------------------
 
-# NOTE: In it's present form, the generic interactive script *can* be sourced.
-# That may not always be true.
-source $XDG_CONFIG_HOME/shell/generic/interactive
+# Imports
+#-------------------------------------------------------------------------------
+
+# Generic interactive shell configuration.
+source $XDG_CONFIG_HOME/shell/interactive
 
 # Aliases & Abbreviations
 #-------------------------------------------------------------------------------
@@ -135,4 +131,3 @@ set -U fish_color_selection (color_named 'debug') # --bold --background=brblack
 #-------------------------------------------------------------------------------
 
 source $XDG_CONFIG_HOME/lf/lfcd.fish
-

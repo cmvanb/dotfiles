@@ -1,5 +1,0 @@
-# WARNING: this will not run for non-login, non-interactive shells.
-
-# Also, you must run ~/.config/shell/generic/env, to get $ENV.
-. ~/.config/shell/generic/env
-

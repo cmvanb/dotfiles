@@ -1,5 +1,9 @@
-# NOTE: This file is sourced in fish shell by `~/.config/shell/fish/interactive`.
-# If you need to use anything other than simple commands, this won't work anymore.
+#-------------------------------------------------------------------------------
+# Generic interactive shell configuration
+#
+# NOTE: This file is sourced by both fish and bash shells, so it's important
+# the commands remain in a format compatible to both.
+#-------------------------------------------------------------------------------
 
 # Disable unwanted bindings.
 stty start undef

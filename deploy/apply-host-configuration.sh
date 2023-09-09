@@ -10,8 +10,8 @@ if ! command -v esh &> /dev/null; then
     exit 1
 fi
 
-bash_dir=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
-source_dir=$( realpath "$bash_dir/.." )
+bash_dir=$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)
+source_dir=$(realpath "$bash_dir/..")
 home_dir=$HOME
 config_dir=${XDG_CONFIG_HOME:-$HOME/.config}
 

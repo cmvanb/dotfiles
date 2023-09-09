@@ -4,17 +4,17 @@
 
 set -g fish_greeting ""
 
-source $HOME/.config/shell/fish/env.fish
+source $HOME/.config/fish/env.fish
 
 if status is-login
-    source $HOME/.config/shell/fish/login.fish
+    source $HOME/.config/fish/login.fish
 
     function on_exit --on-event fish_exit
-        source $HOME/.config/shell/fish/logout.fish
+        source $HOME/.config/fish/logout.fish
     end
 end
 
 if status is-interactive
-    source $HOME/.config/shell/fish/interactive.fish
+    source $HOME/.config/fish/interactive.fish
 end
 

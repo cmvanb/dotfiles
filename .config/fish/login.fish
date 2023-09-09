@@ -1,16 +1,8 @@
 #-------------------------------------------------------------------------------
 # Fish login configuration
-#
-# This should work exactly the same as ~/.config/shell/generic/login
-# Unfortunately, it's not trivial to source a POSIX shell script from fish, so
-# the functionality is duplicated here.
-#
-# NOTE: Although `bass` works, it degrades performance to an unacceptable level.
-#   `bass 'source /home/casper/.config/shell/generic/login'`
 #-------------------------------------------------------------------------------
 
 # Environment
-# Put your shell-independent, login environment variables here.
 #-------------------------------------------------------------------------------
 
 # SSH agent integration.
@@ -50,7 +42,7 @@ mkdir -p $XDG_DOCUMENTS_DIR $XDG_DOWNLOAD_DIR $XDG_MUSIC_DIR $XDG_PICTURES_DIR $
 # Path
 #-------------------------------------------------------------------------------
 
-# Add user binaries to path.
+# Add user executables to path.
 fish_add_path -pP $XDG_BIN_HOME
 fish_add_path -pP $XDG_SCRIPTS_HOME
 
