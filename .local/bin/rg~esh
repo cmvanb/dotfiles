@@ -3,10 +3,4 @@
 # Ripgrep shortcut (make rg use the provided configuration)
 #-------------------------------------------------------------------------------
 
-source $XDG_SCRIPTS_HOME/path-utils.sh
-
-# Exclude this shortcut from the path, so `rg` will resolve to the system binary.
-path_remove "$XDG_BIN_HOME" PATH
-
-RIPGREP_CONFIG_PATH=$XDG_CONFIG_HOME/ripgrep/config rg "$@"
-
+RIPGREP_CONFIG_PATH=$XDG_CONFIG_HOME/ripgrep/config <%= $SYSTEM_BINARY_PATH %>/rg "$@"

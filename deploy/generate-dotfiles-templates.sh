@@ -13,6 +13,7 @@ fi
 bash_dir=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 source_dir=$( realpath "$bash_dir/.." )
 home_dir=$HOME
+bin_dir=${XDG_BIN_HOME:-$HOME/.local/bin}
 config_dir=${XDG_CONFIG_HOME:-$HOME/.config}
 
 echo "Generating dotfiles templates from \`$source_dir\` to \`$home_dir\`."
@@ -20,15 +21,15 @@ echo "Generating dotfiles templates from \`$source_dir\` to \`$home_dir\`."
 # Generate dotfiles templates
 #-------------------------------------------------------------------------------
 
+mkdir -p "$bin_dir"
+esh "$source_dir/.local/bin/rg~esh" > "$bin_dir/rg"
+chmod +x "$bin_dir/rg"
+
 mkdir -p "$config_dir/mako"
 esh "$source_dir/.config/mako/config~esh" > "$config_dir/mako/config"
 
 mkdir -p "$config_dir/wofi"
 esh "$source_dir/.config/wofi/style.css~esh" > "$config_dir/wofi/style.css"
-
-# TODO: Make this cross platform.
-# export SYSTEM_BINARY_PATH=/run/current-system/sw/bin
-export SYSTEM_BINARY_PATH=/usr/bin
 
 mkdir -p "$config_dir/systemd/user"
 esh "$source_dir/.config/systemd/user/mako.service~esh" > "$config_dir/systemd/user/mako.service"

@@ -11,6 +11,10 @@ home_dir=$HOME
 
 echo "Deploying dotfiles from \`$source_dir\` to \`$home_dir\`..."
 
+# TODO: Make this cross platform.
+# export SYSTEM_BINARY_PATH=/run/current-system/sw/bin
+export SYSTEM_BINARY_PATH=/usr/bin
+
 source $bash_dir/link-dotfiles.sh
 source $bash_dir/generate-dotfiles-templates.sh
 source $bash_dir/apply-host-configuration.sh
