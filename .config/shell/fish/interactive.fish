@@ -15,7 +15,7 @@ source $XDG_CONFIG_HOME/shell/generic/interactive
 # Aliases & Abbreviations
 #-------------------------------------------------------------------------------
 
-alias exa "exa -l --group-directories-first"
+alias eza "eza -l --group-directories-first"
 alias bat "bat --force-colorization --no-paging --style=grid,numbers"
 
 abbr -a gs git status
@@ -36,12 +36,12 @@ abbr -a grv git remote -v
 abbr -a e edit
 abbr -a ed edit
 abbr -a edi edit
-abbr -a ex exa
+abbr -a ez eza
 abbr -a lf lfcd
-abbr -a ls exa
-abbr -a lsa exa -a
-abbr -a lst exa -T --git-ignore
-abbr -a lsat exa -aT --git-ignore
+abbr -a ls eza
+abbr -a lsa eza -a
+abbr -a lst eza -T --git-ignore
+abbr -a lsat eza -aT --git-ignore
 abbr -a ip ip -c
 
 # Bindings
@@ -60,7 +60,7 @@ bind \ce 'edit; commandline -f repaint'
 bind \cl 'clear; commandline -f repaint'
 
 # List files
-bind \cy 'clear; commandline -f repaint; exa -al'
+bind \cy 'clear; commandline -f repaint; eza -al'
 
 # Clear command line
 # NOTE: Ctrl+C is bound to `Copy` by Wezterm, Ctrl+X is bound to emulate

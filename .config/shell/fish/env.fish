@@ -27,7 +27,7 @@ set -x BROWSER "qutebrowser"
 set -x EDITOR "nvim"
 set -x VISUAL "$EDITOR"
 
-# Configure ls/exa.
+# Configure ls/eza.
 set -x LS_COLORS "no=37:fi=37:di=34;1:ln=33:or=31:mi=31:ex=32;1:*.pdf=37:*.zip=37"
 
 # Configure less pager.

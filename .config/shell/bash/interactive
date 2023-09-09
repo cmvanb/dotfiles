@@ -25,7 +25,7 @@ export INPUTRC=~/.config/readline/config
 # Aliases
 #-------------------------------------------------------------------------------
 
-alias exa="exa -l --group-directories-first"
+alias eza="eza -l --group-directories-first"
 alias bat="bat --force-colorization --no-paging --style=grid,numbers"
 
 alias gs="git status"
@@ -47,13 +47,13 @@ alias grv="git remote -v"
 alias e="edit"
 alias ed="edit"
 alias edi="edit"
-alias ex="exa"
+alias ez="eza"
 alias lf="lfcd"
-alias ls="exa"
-alias lsa="exa -a"
-alias lsi="exa --git-ignore"
-alias lst="exa -T --git-ignore"
-alias lst="exa -aT --git-ignore"
+alias ls="eza"
+alias lsa="eza -a"
+alias lsi="eza --git-ignore"
+alias lst="eza -T --git-ignore"
+alias lst="eza -aT --git-ignore"
 alias ip="ip -c"
 
 # Bindings
@@ -61,7 +61,7 @@ alias ip="ip -c"
 
 bind '"\C-e":"edit\C-m"'
 bind '"\C-f":"lfcd\C-m"'
-bind '"\C-y":"clear\C-m exa -al \C-m"'
+bind '"\C-y":"clear\C-m eza -al \C-m"'
 
 # Colors
 #-------------------------------------------------------------------------------

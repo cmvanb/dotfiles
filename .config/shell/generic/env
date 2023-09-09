@@ -20,7 +20,7 @@ export BROWSER="qutebrowser"
 export EDITOR="nvim"
 export VISUAL="$EDITOR"
 
-# Configure ls/exa.
+# Configure ls/eza.
 export LS_COLORS="no=37:fi=37:di=34;1:ln=33:or=31:mi=31:ex=32;1:*.pdf=37:*.zip=37"
 
 # Configure less pager.
