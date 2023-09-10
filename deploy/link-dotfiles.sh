@@ -81,6 +81,7 @@ force_link "$source_dir/.local/templates/bookmark.md~esh" "$templates_dir/bookma
 mkdir -p $data_dir
 mkdir -p "$data_dir/applications"
 force_link "$source_dir/.local/share/applications/org.qutebrowser.qutebrowser.desktop" "$data_dir/applications/org.qutebrowser.qutebrowser.desktop"
+force_link "$source_dir/.local/share/applications/chromium.desktop" "$data_dir/applications/chromium.desktop"
 
 # Application data
 mkdir -p "$data_dir/qutebrowser/userscripts"
