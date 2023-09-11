@@ -58,7 +58,7 @@ c.fonts.keyhint             = f"default_size {theme.font('font_mono')}"
 c.fonts.prompts             = f"default_size {theme.font('font_sans')}"
 c.fonts.completion.category = f"bold default_size {theme.font('font_mono')}"
 c.fonts.completion.entry    = f"default_size {theme.font('font_mono')}"
-c.fonts.hints               = f"bold 9pt {theme.font('font_mono')}"
+c.fonts.hints               = f"bold 10pt {theme.font('font_mono')}"
 c.fonts.messages.error      = f"bold 10pt  {theme.font('font_mono')}"
 c.fonts.messages.info       = f"10pt {theme.font('font_mono')}"
 c.fonts.messages.warning    = f"bold 10pt  {theme.font('font_mono')}"
@@ -138,7 +138,7 @@ c.hints.auto_follow = 'unique-match'
 c.hints.auto_follow_timeout = 0
 c.hints.leave_on_load = False
 c.hints.mode = 'letter'
-c.hints.chars = 'asdfghjkl'
+c.hints.chars = 'aghsldkfj'
 c.hints.min_chars = 1
 c.hints.uppercase = False
 
@@ -147,13 +147,12 @@ c.hints.border = f'1px solid {theme.color_hash("purple_2")}'
 c.hints.padding = { 'top': 2, 'bottom': 0, 'left': 2, 'right': 2 }
 c.hints.radius = 4
 
-
 # TODO: Provide a color formatter for RGBA.
 # TODO: Configure a color gradient.
 # c.colors.hints.bg = 'qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 rgba(255, 247, 133, 0.8), stop:1 rgba(255, 197, 66, 0.8))'
 c.colors.hints.bg = theme.color_hash('purple_3')
-c.colors.hints.fg = theme.color_hash('purple_8')
-c.colors.hints.match.fg = theme.color_hash('text_15')
+c.colors.hints.fg = theme.color_hash('purple_9')
+c.colors.hints.match.fg = theme.color_hash('magenta_6')
 
 # Keyhint component
 #-------------------------------------------------------------------------------
