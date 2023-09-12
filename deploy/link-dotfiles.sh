@@ -85,6 +85,7 @@ force_link "$source_dir/.local/share/applications/chromium.desktop" "$data_dir/a
 
 # Application data
 mkdir -p "$data_dir/qutebrowser/userscripts"
+force_link "$source_dir/.local/share/qutebrowser/userscripts/format_json.sh" "$data_dir/qutebrowser/userscripts/format_json.sh"
 force_link "$source_dir/.local/share/qutebrowser/userscripts/readability.py" "$data_dir/qutebrowser/userscripts/readability.py"
 force_link "$source_dir/.local/share/pandoc" "$data_dir/pandoc"
 
