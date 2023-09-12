@@ -275,7 +275,7 @@ return {
         cursor_bg = theme.color_hash('terminal_text'),
         cursor_fg = theme.color_hash('terminal_bg'),
 
-        selection_bg = theme.color_hash('magenta_5'),
+        selection_bg = theme.color_hash('primary_15'),
         selection_fg = theme.color_hash('gray_0'),
 
         ansi = {
