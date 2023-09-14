@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Bitwarden
+GenericName=Password Manager
+Exec=bitwarden-desktop --ozone-platform-hint=auto
+Terminal=false
+Type=Application
+Icon=bitwarden
+Categories=Utility;
+StartupWMClass=Bitwarden
