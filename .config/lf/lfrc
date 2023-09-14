@@ -47,6 +47,9 @@ set sixel
 # Custom previewer
 set previewer ~/.local/scripts/terminal-preview.sh
 
+# Column ratios
+set ratios 1:1:2
+
 # Key mappings
 #-------------------------------------------------------------------------------
 
@@ -113,6 +116,19 @@ map i $~/.local/scripts/terminal-preview.sh $f | less -R
 
 # Custom open command.
 cmd open $xdg-open $f
+
+# Terminal integration
+#-------------------------------------------------------------------------------
+
+cmd on-cd &{{
+    # '&' commands run silently in background (which is what we want here),
+    # but are not connected to stdout.
+    # To make sure our escape sequence still reaches stdout we pipe it to /dev/tty
+    printf "\033]0; $(pwd | sed "s|$HOME|~|")\007" > /dev/tty
+}}
+
+# Also run at startup.
+on-cd
 
 # Configuration graveyard
 #-------------------------------------------------------------------------------
