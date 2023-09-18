@@ -65,6 +65,7 @@ force_link "$source_dir/.local/scripts/print-environment.py" "$scripts_dir/print
 force_link "$source_dir/.local/scripts/print-terminal-colors.sh" "$scripts_dir/print-terminal-colors.sh"
 force_link "$source_dir/.local/scripts/rename-kebabcase.sh" "$scripts_dir/rename-kebabcase.sh"
 force_link "$source_dir/.local/scripts/screenshot-rectangle.sh" "$scripts_dir/screenshot-rectangle.sh"
+force_link "$source_dir/.local/scripts/set-terminal-title.sh" "$scripts_dir/set-terminal-title.sh"
 force_link "$source_dir/.local/scripts/string-utils.sh" "$scripts_dir/string-utils.sh"
 force_link "$source_dir/.local/scripts/terminal-preview.sh" "$scripts_dir/terminal-preview.sh"
 force_link "$source_dir/.local/scripts/view.sh" "$scripts_dir/view.sh"

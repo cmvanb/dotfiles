@@ -113,9 +113,7 @@ cmd open ${{
 
 # Update terminal title with current working directory.
 cmd on-cd &{{
-    # NOTE: '&' commands run silently in background (which is desired), but are
-    # not connected to stdout, so we redirect to /dev/tty.
-    printf "\033]0; $(pwd | sed "s|$HOME|~|")\007" > /dev/tty
+    $XDG_SCRIPTS_HOME/set-terminal-title.sh "$(pwd | sed "s|$HOME|~|")"
 }}
 
 # Update terminal title on start.
