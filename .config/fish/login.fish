@@ -34,6 +34,10 @@ set -x PYENV_ROOT $XDG_OPT_HOME/pyenv
 # Docker config.
 set -x DOCKER_CONFIG $XDG_CONFIG_HOME/docker
 
+# Python config.
+set -x PYTHONPYCACHEPREFIX $XDG_CACHE_HOME/python
+set -x PYTHONUSERBASE $XDG_DATA_HOME/python
+
 # User directories
 #-------------------------------------------------------------------------------
 

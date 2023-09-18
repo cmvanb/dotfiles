@@ -35,6 +35,10 @@ export PYENV_ROOT="$XDG_OPT_HOME/pyenv"
 # Docker config.
 export DOCKER_CONFIG="$XDG_CONFIG_HOME/docker"
 
+# Python config.
+export PYTHONPYCACHEPREFIX="$XDG_CACHE_HOME/python"
+export PYTHONUSERBASE="$XDG_DATA_HOME/python"
+
 # User directories
 #-------------------------------------------------------------------------------
 
