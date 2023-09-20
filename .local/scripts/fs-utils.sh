@@ -23,3 +23,39 @@ force_link () {
 
     ln -sfT "$1" "$2"
 }
+
+file_mime_type () {
+    if [[ -z "$1" ]]; then
+        echo "[$(basename "$0")] ERROR: Missing argument: file name"
+        return 1
+    fi
+
+    if [[ ! -f "$1" ]]; then
+        echo "[$(basename "$0")] ERROR: Argument is not a file"
+        return 1
+    fi
+
+    file -L -b --mime-type "$1"
+}
+
+file_encoding () {
+    if [[ -z "$1" ]]; then
+        echo "[$(basename "$0")] ERROR: Missing argument: file name"
+        return 1
+    fi
+
+    if [[ ! -f "$1" ]]; then
+        echo "[$(basename "$0")] ERROR: Argument is not a file"
+        return 1
+    fi
+
+    file -L -b --mime-encoding "$1"
+}
+
+file_is_binary () {
+    encoding=$(file_encoding "$1")
+    if [[ $encoding == "binary" ]]; then
+        return 0
+    fi
+    return 1
+}

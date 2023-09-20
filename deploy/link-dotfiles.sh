@@ -50,6 +50,7 @@ force_link "$source_dir/.local/scripts/color-hex-to-ansi.sh" "$scripts_dir/color
 force_link "$source_dir/.local/scripts/color-index-to-ansi.sh" "$scripts_dir/color-index-to-ansi.sh"
 force_link "$source_dir/.local/scripts/estimate-disk-space-usage.sh" "$scripts_dir/estimate-disk-space-usage.sh"
 force_link "$source_dir/.local/scripts/fetch-password.sh" "$scripts_dir/fetch-password.sh"
+force_link "$source_dir/.local/scripts/fs-utils.sh" "$scripts_dir/fs-utils.sh"
 force_link "$source_dir/.local/scripts/generate-color-gradient-palette.py" "$scripts_dir/generate-color-gradient-palette.py"
 force_link "$source_dir/.local/scripts/lock-screen.sh" "$scripts_dir/lock-screen.sh"
 force_link "$source_dir/.local/scripts/kebabify.sh" "$scripts_dir/kebabify.sh"

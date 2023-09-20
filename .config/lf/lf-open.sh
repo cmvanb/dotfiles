@@ -23,5 +23,5 @@ if [[ "$mime" =~ "text" || "$mime" == "application/json" ]]; then
     $XDG_SCRIPTS_HOME/terminal-preview.sh $1 | less -R --lesskey-file=$XDG_CONFIG_HOME/lf/lf-less.lesskey
     $XDG_SCRIPTS_HOME/set-terminal-title.sh "$(pwd | sed "s|$HOME|~|")"
 else
-    xdg-open $1
+    xdg-open $1 &
 fi
