@@ -5,10 +5,18 @@
 
 set -euo pipefail
 
-if ! command -v esh &> /dev/null; then
-    echo "[$(basename "$0")] ERROR: Missing dependency: esh"
-    exit 1
-fi
+# Imports
+#-------------------------------------------------------------------------------
+
+source "$source_dir/.local/scripts/debug-utils.sh"
+
+# Validation
+#-------------------------------------------------------------------------------
+
+assert_dependency esh
+
+# Generate dotfiles templates
+#-------------------------------------------------------------------------------
 
 bash_dir=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 source_dir=$( realpath "$bash_dir/.." )
@@ -17,9 +25,6 @@ bin_dir=${XDG_BIN_HOME:-$HOME/.local/bin}
 config_dir=${XDG_CONFIG_HOME:-$HOME/.config}
 
 echo "Generating dotfiles templates from \`$source_dir\` to \`$home_dir\`."
-
-# Generate dotfiles templates
-#-------------------------------------------------------------------------------
 
 mkdir -p "$bin_dir"
 esh "$source_dir/.local/bin/rg~esh" > "$bin_dir/rg"

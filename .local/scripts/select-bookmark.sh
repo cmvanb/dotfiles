@@ -5,13 +5,15 @@
 
 set -euo pipefail
 
+# Imports
+#-------------------------------------------------------------------------------
+
+source $XDG_SCRIPTS_HOME/debug-utils.sh
+
 # Validation
 #-------------------------------------------------------------------------------
 
-if ! command -v wofi &> /dev/null; then
-    echo "ERROR: "$(basename "$0")" missing dependency: wofi"
-    exit
-fi
+assert_dependency wofi
 
 # Select a bookmark
 #-------------------------------------------------------------------------------

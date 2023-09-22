@@ -5,15 +5,20 @@
 
 set -euo pipefail
 
-if ! command -v curl &> /dev/null; then
-    echo "[$(basename "$0")] ERROR: Missing dependency: curl"
-    exit 1
-fi
+# Imports
+#-------------------------------------------------------------------------------
 
-home_dir=$HOME
+source "$source_dir/.local/scripts/debug-utils.sh"
+
+# Validation
+#-------------------------------------------------------------------------------
+
+assert_dependency curl
 
 # Install user packages
 #-------------------------------------------------------------------------------
+
+home_dir=$HOME
 
 echo "Installing user packages to \`$home_dir\`."
 

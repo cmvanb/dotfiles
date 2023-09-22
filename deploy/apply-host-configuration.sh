@@ -5,10 +5,19 @@
 
 set -euo pipefail
 
-if ! command -v esh &> /dev/null; then
-    echo "[$(basename "$0")] ERROR: Missing dependency: esh"
-    exit 1
-fi
+# Imports
+#-------------------------------------------------------------------------------
+
+source "$source_dir/.local/scripts/debug-utils.sh"
+source "$source_dir/.local/scripts/fs-utils.sh"
+
+# Validation
+#-------------------------------------------------------------------------------
+
+assert_dependency esh
+
+# Host-specific configuration
+#-------------------------------------------------------------------------------
 
 bash_dir=$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)
 source_dir=$(realpath "$bash_dir/..")
@@ -16,14 +25,6 @@ home_dir=$HOME
 config_dir=${XDG_CONFIG_HOME:-$HOME/.config}
 
 host=$HOSTNAME
-
-# Imports
-#-------------------------------------------------------------------------------
-
-source "$source_dir/.local/scripts/fs-utils.sh"
-
-# Host-specific configuration
-#-------------------------------------------------------------------------------
 
 echo "Applying \`$host\` configuration to \`$home_dir\`."
 

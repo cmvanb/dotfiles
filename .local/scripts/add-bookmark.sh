@@ -8,20 +8,14 @@ set -uo pipefail
 # Imports
 #-------------------------------------------------------------------------------
 
+source $XDG_SCRIPTS_HOME/debug-utils.sh
 source $XDG_SCRIPTS_HOME/name-formatting.sh
 
 # Validation
 #-------------------------------------------------------------------------------
 
-if ! command -v yad &> /dev/null; then
-    echo "["$(basename "$0")"] ERROR: Missing dependency: yad"
-    exit 1
-fi
-
-if ! command -v esh &> /dev/null; then
-    echo "["$(basename "$0")"] ERROR: Missing dependency: esh"
-    exit 1
-fi
+assert_dependency yad
+assert_dependency esh
 
 bash_dir=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 source_dir=$( realpath "$bash_dir/../.." )

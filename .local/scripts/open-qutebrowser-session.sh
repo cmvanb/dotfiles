@@ -3,16 +3,19 @@
 # Choose a Qutebrowser session to load
 #-------------------------------------------------------------------------------
 
-if ! command -v wofi &> /dev/null; then
-    echo "["$(basename "$0")"] ERROR: Missing dependency: wofi"
-    exit 1
-fi
+# Imports
+#-------------------------------------------------------------------------------
 
-if ! command -v qutebrowser &> /dev/null; then
-    echo "["$(basename "$0")"] ERROR: Missing dependency: qutebrowser"
-    exit 1
-fi
+source $XDG_SCRIPTS_HOME/debug-utils.sh
 
+# Validation
+#-------------------------------------------------------------------------------
+
+assert_dependency wofi
+assert_dependency qutebrowser
+
+# Choose Qutebrowser session
+#-------------------------------------------------------------------------------
 
 data_dir="${XDG_DATA_HOME:-$HOME/.local/share}"
 session_dir="$data_dir/qutebrowser/sessions"
@@ -22,6 +25,9 @@ session=$(echo "$session_files" | wofi --prompt "Open browser session" --show dm
 if [[ -z $session ]]; then
     exit 1
 fi
+
+# Open Qutebrowser session
+#-------------------------------------------------------------------------------
 
 if pgrep qutebrowser; then
     qutebrowser --target window ":session-load $session"

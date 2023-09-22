@@ -8,50 +8,20 @@ set -euo pipefail
 # Imports
 #-------------------------------------------------------------------------------
 
+source $XDG_SCRIPTS_HOME/debug-utils.sh
 source $XDG_SCRIPTS_HOME/fs-utils.sh
 
 # Validation
 #-------------------------------------------------------------------------------
 
-if ! command -v chafa &> /dev/null; then
-    echo "["$(basename "$0")"] ERROR: Missing dependency: chafa"
-    exit 1
-fi
-
-if ! command -v mediainfo &> /dev/null; then
-    echo "["$(basename "$0")"] ERROR: Missing dependency: mediainfo"
-    exit 1
-fi
-
-if ! command -v gs &> /dev/null; then
-    echo "["$(basename "$0")"] ERROR: Missing dependency: gs"
-    exit 1
-fi
-
-if ! command -v zipinfo &> /dev/null; then
-    echo "["$(basename "$0")"] ERROR: Missing dependency: zipinfo"
-    exit 1
-fi
-
-if ! command -v tree &> /dev/null; then
-    echo "["$(basename "$0")"] ERROR: Missing dependency: tree"
-    exit 1
-fi
-
-if ! command -v tar &> /dev/null; then
-    echo "["$(basename "$0")"] ERROR: Missing dependency: tar"
-    exit 1
-fi
-
-if ! command -v 7z &> /dev/null; then
-    echo "["$(basename "$0")"] ERROR: Missing dependency: 7z"
-    exit 1
-fi
-
-if ! command -v bat &> /dev/null; then
-    echo "["$(basename "$0")"] ERROR: Missing dependency: bat"
-    exit 1
-fi
+assert_dependency chafa
+assert_dependency mediainfo
+assert_dependency gs
+assert_dependency zipinfo
+assert_dependency tree
+assert_dependency tar
+assert_dependency 7z
+assert_dependency bat
 
 if [[ -z "$1" ]]; then
     echo "[$(basename "$0")] ERROR: Missing argument: file name"

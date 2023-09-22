@@ -5,18 +5,11 @@
 
 set -euo pipefail
 
-if ! command -v fortune &> /dev/null; then
-    exit 42
-fi
-if ! command -v neo-matrix &> /dev/null; then
-    exit 69
-fi
+source $XDG_SCRIPTS_HOME/debug-utils.sh
 
-message=$(fortune -n 120 -s)
-message=$(echo -e "$message" | tr -d '\n')
+assert_dependency neo-matrix
 
 neo-matrix \
     --charset punc \
     --defaultbg \
     --fps 16 \
-    --message "$message"
