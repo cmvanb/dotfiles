@@ -219,6 +219,6 @@ if exists $MENU; then
     app=($(IFS=:; stest -flx $PATH | sort -u | $MENU -p "how to open $(basename $arg)" $MENUARGS))
     [[ "${app[*]}" ]] && fork_run "${app[@]}" "$arg"
 elif exists notify-send; then
-    notify-send "Could not find opener, exiting..."
+    notify-send "[$(basename $0)] ERROR: \`$(basename "$1")\` has unhandled mime type \`$mime\`"
 fi
 

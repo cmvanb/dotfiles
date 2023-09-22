@@ -28,6 +28,11 @@ if ! command -v zipinfo &> /dev/null; then
     exit 1
 fi
 
+if ! command -v tree &> /dev/null; then
+    echo "["$(basename "$0")"] ERROR: Missing dependency: tree"
+    exit 1
+fi
+
 if ! command -v tar &> /dev/null; then
     echo "["$(basename "$0")"] ERROR: Missing dependency: tar"
     exit 1
@@ -48,40 +53,45 @@ if [[ -z "$1" ]]; then
     exit 1
 fi
 
-# Choose a file preview method based on file name extension
+# Choose a file preview method based on file mime type and extension.
 #-------------------------------------------------------------------------------
 
-handle_other () {
-    mimetype=$(file_mime_type "$1")
-    encoding=$(file_encoding "$1")
+mimetype=$(file_mime_type "$1")
+encoding=$(file_encoding "$1")
+extension=$(file_extension "$1")
 
-    if [[ $mimetype == "text"* || $encoding == *"ascii" ]]; then
-        bat --force-colorization --paging=never --style=numbers --wrap never -f "$1"
-    elif file_is_binary "$1"; then
-        file -b --mime "$1" && hexdump "$1"
-    else
-        file -b --mime "$1"
-    fi
-}
+if [[ $mimetype == "image"* ]]; then
+    chafa "$1" -f sixel -s "$(($2-2))x$3" | sed 's/#/\n#/g'
 
-case "$1" in
-    *.jpg|*.jpeg|*.png) chafa "$1" -f sixel -s "$(($2-2))x$3" | sed 's/#/\n#/g'
-        ;;
-    *.mkv|*.mp4|*.m4v) mediainfo "$1"
-        ;;
-    *.pdf) gs -q -dNOPAUSE -dBATCH -sDEVICE=jpeg -r240 -sOutputFile=- \
-        -dLastPage=1 "$1" | chafa -f sixel -s "$(($2-2))x$3" | sed 's/#/\n#/g'
-        ;;
-    *.zip) zipinfo "$1"
-        ;;
-    *.tar.gz) tar -ztvf "$1"
-        ;;
-    *.tar.bz2) tar -jtvf "$1"
-        ;;
-    *.tar) tar -tvf "$1"
-        ;;
-    *.7z) 7z l "$1"
-        ;;
-    *) handle_other "$1"
-        ;;
-esac
+elif [[ $mimetype == "video"* || $mimetype == "audio"* ]]; then
+    mediainfo "$1"
+
+elif [[ $mimetype == *"pdf" ]]; then
+    gs -q -dNOPAUSE -dBATCH -sDEVICE=jpeg -r240 -sOutputFile=- -dLastPage=1 "$1" \
+        | chafa -f sixel -s "$(($2-2))x$3" | sed 's/#/\n#/g'
+
+elif [[ $mimetype == "application/zip" ]]; then
+    zipinfo -1 "$1" | tree --fromfile . | head -n -2
+
+elif [[ $mimetype == *"gzip" ]]; then
+    tar -ztvf "$1" | awk '{print $6}' | tree --fromfile . | head -n -2
+
+elif [[ $mimetype == *"x-tar" && $extension == *".tar.bz2" ]]; then
+    tar -jtvf "$1" | awk '{print $6}' | tree --fromfile . | head -n -2
+
+elif [[ $mimetype == *"x-tar" || $mimetype == *"x-xz" ]]; then
+    tar -tvf "$1" | awk '{print $6}' | tree --fromfile . | head -n -2
+
+elif [[ $mimetype == *"7z"* ]]; then
+    7z l -ba "$1" | awk '{print $NF}' | tree --fromfile . | head -n -2
+
+elif [[ $mimetype == "text"* || $encoding == *"ascii" ]]; then
+    bat --force-colorization --paging=never --style=numbers --wrap never -f "$1"
+
+elif file_is_binary "$1"; then
+    file -b --mime "$1" && echo "" && hexdump "$1"
+
+else
+    file -b --mime "$1" && echo "[$(basename "$0")] ERROR: unknown file type"
+
+fi

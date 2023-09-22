@@ -59,3 +59,17 @@ file_is_binary () {
     fi
     return 1
 }
+
+file_extension () {
+    if [[ -z "$1" ]]; then
+        echo "[$(basename "$0")] ERROR: Missing argument: file name"
+        return 1
+    fi
+
+    if [[ ! -f "$1" ]]; then
+        echo "[$(basename "$0")] ERROR: Argument is not a file"
+        return 1
+    fi
+
+    echo "${1##*.}"
+}
