@@ -18,6 +18,11 @@ if ! command -v chafa &> /dev/null; then
     exit 1
 fi
 
+if ! command -v mediainfo &> /dev/null; then
+    echo "["$(basename "$0")"] ERROR: Missing dependency: mediainfo"
+    exit 1
+fi
+
 if ! command -v gs &> /dev/null; then
     echo "["$(basename "$0")"] ERROR: Missing dependency: gs"
     exit 1
@@ -85,7 +90,7 @@ elif [[ $mimetype == *"x-tar" || $mimetype == *"x-xz" ]]; then
 elif [[ $mimetype == *"7z"* ]]; then
     7z l -ba "$1" | awk '{print $NF}' | tree --fromfile . | head -n -2
 
-elif [[ $mimetype == "text"* || $encoding == *"ascii" ]]; then
+elif [[ $mimetype == "text"* || $encoding == *"ascii" || $encoding == "utf-8" ]]; then
     bat --force-colorization --paging=never --style=numbers --wrap never -f "$1"
 
 elif file_is_binary "$1"; then
