@@ -373,7 +373,7 @@ config.unbind('.')
 config.bind('<Space>q', 'close')
 
 #-- Config management
-config.bind('<Space>r', 'config-source ;; message-info \"Configuration reloaded.\"')
+config.bind('<Space>r', 'config-source ;; spawn notify-send \"Qutebrowser configuration reloaded.\"')
 
 #-- Session management
 config.bind('<Space>o', 'cmd-set-text -s :session-load')
@@ -424,8 +424,8 @@ config.bind('<F12>', 'devtools')
 
 #-- Javascript
 # TODO: Improve the message output by converting these commands to userscripts.
-config.bind('tj', 'config-cycle -p -t -u *://*.{url:host}/* content.javascript.enabled ;; reload ;; message-info \"TEMPORARY\"')
-config.bind('tJ', 'config-cycle -p -u *://*.{url:host}/* content.javascript.enabled ;; reload ;; message-info \"PERMANENT\"')
+config.bind('tj', 'config-cycle -p -t -u *://*.{url:host}/* content.javascript.enabled ;; reload ;; spawn notify-send \"Toggled javascript for: {url:host}\"')
+config.bind('tJ', 'config-cycle -p -u *://*.{url:host}/* content.javascript.enabled ;; reload ;; spawn notify-send \"Toggled javascript for: {url:host}\"')
 
 #-- Printing
 config.bind('<Space>p', 'print')
