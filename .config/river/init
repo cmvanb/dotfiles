@@ -105,6 +105,9 @@ riverctl map normal Alt L focus-output right
 riverctl map normal Alt+Shift H spawn "$XDG_CONFIG_HOME/river/send-and-focus-output.sh left"
 riverctl map normal Alt+Shift L spawn "$XDG_CONFIG_HOME/river/send-and-focus-output.sh right"
 
+# Send the focused view to a specific output
+riverctl map normal Alt S spawn "$XDG_CONFIG_HOME/river/send-to-output.sh"
+
 # Cycle focused tags
 # see: https://gitlab.com/akumar-xyz/river-shifttags/-/tree/master
 riverctl map normal Alt Tab spawn "river-shifttags"
