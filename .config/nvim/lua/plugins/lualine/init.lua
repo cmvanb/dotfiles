@@ -4,6 +4,8 @@
 
 local theme = reload('plugins.lualine.theme')
 
+local gitblame = reload('gitblame')
+
 require('lualine').setup({
     options = {
         theme = theme,
@@ -33,8 +35,13 @@ require('lualine').setup({
         },
         lualine_c =
         {
+            {
+                gitblame.get_current_blame_text,
+                cond = gitblame.is_blame_text_available,
+            }
         },
-        lualine_x = {},
+        lualine_x = {
+        },
         lualine_y = {
             {
                 'diagnostics',
