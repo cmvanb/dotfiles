@@ -63,6 +63,11 @@ riverctl border-width 2
 
 riverctl xcursor-theme Simp1e 24
 
+# App configuration
+#-------------------------------------------------------------------------------
+
+riverctl float-filter-add app-id yad
+
 # Key bindings
 #-------------------------------------------------------------------------------
 # See all valid keybindings here: `/usr/include/xkbcommon/xkbcommon-keysyms.h`
