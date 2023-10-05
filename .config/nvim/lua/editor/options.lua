@@ -28,7 +28,7 @@ opt.listchars = { tab = '-->', eol = '⬇', trail = '▭' }
 opt.list = false
 
 -- End-of-buffer visualization
-opt.fillchars = { eob = '⨯' }
+opt.fillchars = { eob = '.' }
 
 -- Tabs should be 4 spaces
 opt.tabstop = 4
