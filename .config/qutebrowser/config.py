@@ -398,6 +398,10 @@ config.bind('<Ctrl-7>', 'tab-focus 7')
 config.bind('<Ctrl-8>', 'tab-focus 8')
 config.bind('<Ctrl-9>', 'tab-focus 9')
 
+#-- Bookmark management
+config.bind('<Ctrl-b>', 'spawn add-bookmark.sh {title} {url}')
+config.bind('<Ctrl-Shift-b>', 'spawn select-bookmark.sh {title} {url}')
+
 #-- Downloads
 config.bind('<Space>l', 'download-clear ;; clear-messages ;; search')
 

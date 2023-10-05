@@ -41,4 +41,4 @@ bookmark_file="$bookmarks_dir/$bookmark"
 url=$(rg --only-matching --no-line-number "\(([^}]*)\)" $bookmark_file)
 url=${url:1:-1}
 
-qutebrowser --target window $url 2> /dev/null
+qutebrowser --target window --untrusted-args $url 2> /dev/null
