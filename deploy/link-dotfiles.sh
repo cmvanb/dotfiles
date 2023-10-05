@@ -31,6 +31,7 @@ force_link "$source_dir/.ssh/config" "$home_dir/.ssh/config"
 # Bin
 mkdir -p $bin_dir
 force_link "$source_dir/.local/bin/0x0" "$bin_dir/0x0"
+force_link "$source_dir/.local/bin/browse" "$bin_dir/browse"
 force_link "$source_dir/.local/bin/edit" "$bin_dir/edit"
 force_link "$source_dir/.local/bin/fetchpw" "$bin_dir/fetchpw"
 force_link "$source_dir/.local/bin/kebab" "$bin_dir/kebab"

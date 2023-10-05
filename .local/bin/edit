@@ -13,4 +13,3 @@ else
     echo "Neither \$VISUAL nor \$EDITOR environment variables are set."
     exit 1
 fi
-

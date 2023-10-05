@@ -94,11 +94,11 @@ map q quit
 # Toggle hidden files.
 map . set hidden!
 
-# File interaction
-#-------------------------------------------------------------------------------
-
 # Open in editor.
 map e $edit $f
+
+# Open in browser.
+map b $browse $f
 
 # Open text files with terminal-preview script, everything else with xdg-open.
 cmd open ${{
