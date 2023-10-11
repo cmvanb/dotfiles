@@ -39,6 +39,7 @@ abbr -a lsa eza -a
 abbr -a lst eza -T --git-ignore
 abbr -a lsat eza -aT --git-ignore
 abbr -a ip ip -c
+abbr -a vv python -m venv venv
 
 # Bindings
 #-------------------------------------------------------------------------------

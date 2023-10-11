@@ -57,6 +57,7 @@ alias lsi="eza --git-ignore"
 alias lst="eza -T --git-ignore"
 alias lst="eza -aT --git-ignore"
 alias ip="ip -c"
+alias vv="python -m venv venv"
 
 # Bindings
 #-------------------------------------------------------------------------------

@@ -36,7 +36,7 @@ set -x DOCKER_CONFIG $XDG_CONFIG_HOME/docker
 
 # Python config.
 set -x PYTHONPYCACHEPREFIX $XDG_CACHE_HOME/python
-set -x PYTHONUSERBASE $XDG_DATA_HOME/python
+set -x PIP_REQUIRE_VIRTUALENV true
 
 # User directories
 #-------------------------------------------------------------------------------
