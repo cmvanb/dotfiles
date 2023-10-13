@@ -89,7 +89,7 @@ return {
             mods = 'CTRL',
             action = wezterm.action.SendKey { key = 'c', mods = 'CTRL' },
         },
-        -- STTY interrupt passthrough
+        -- STTY EOF passthrough
         {
             key = '.',
             mods = 'CTRL',
