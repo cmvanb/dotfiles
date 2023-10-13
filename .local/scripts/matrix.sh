@@ -13,3 +13,4 @@ neo-matrix \
     --charset punc \
     --defaultbg \
     --fps 16 \
+    --glitchpct 1.0 \
