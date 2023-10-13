@@ -57,7 +57,7 @@ opt.updatetime = 100
 opt.clipboard = 'unnamedplus'
 
 -- Start scrolling before cursor reaches edge of window
-opt.scrolloff = 3
+opt.scrolloff = 4
 
 -- Enable mouse in all modes
 opt.mouse = 'a'

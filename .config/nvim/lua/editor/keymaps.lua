@@ -165,6 +165,9 @@ noremap('<leader>k', function() require('leap').leap({ backward = true }) end)
 noremap('<C-j>', '<C-e>')
 noremap('<C-k>', '<C-y>')
 
+-- Toggle mini map
+noremap('<C-g>m', function() require('mini.map').toggle() end)
+
 -- Editing
 --------------------------------------------------------------------------------
 
@@ -175,6 +178,12 @@ nnoremap('K', '<esc>:m .-2<cr>==', true)
 -- Formatting
 noremap(';', '=')
 noremap('<leader>;', 'gg=G')
+
+-- Reading
+--------------------------------------------------------------------------------
+
+-- Toggle linebreaks
+noremap('<C-g>w', '<cmd>set wrap!<cr>:set linebreak!<cr>')
 
 -- Search
 --------------------------------------------------------------------------------
@@ -244,7 +253,6 @@ noremap('<leader>o', '<cmd>SessionsLoad<cr>:echo "Session loaded."<cr>')
 --------------------------------------------------------------------------------
 
 noremap('<C-g>b', '<cmd>GitBlameToggle<cr>')
-noremap('<C-g>w', '<cmd>set wrap!<cr>:set linebreak!<cr>')
 
 -- Plugin management
 --------------------------------------------------------------------------------

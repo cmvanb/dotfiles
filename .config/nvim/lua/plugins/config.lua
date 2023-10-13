@@ -16,6 +16,7 @@ return {
             do_load('plugins/mini/comment')
             do_load('plugins/mini/cursorword')
             do_load('plugins/mini/indentscope')
+            do_load('plugins/mini/map')
             do_load('plugins/mini/pairs')
         end
     },
