@@ -5,6 +5,9 @@
 
 set -euo pipefail
 
+bash_dir=$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)
+source_dir=$(realpath "$bash_dir/..")
+
 # Imports
 #-------------------------------------------------------------------------------
 
@@ -18,13 +21,10 @@ assert_dependency esh
 # Generate dotfiles templates
 #-------------------------------------------------------------------------------
 
-bash_dir=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
-source_dir=$( realpath "$bash_dir/.." )
-home_dir=$HOME
 bin_dir=${XDG_BIN_HOME:-$HOME/.local/bin}
 config_dir=${XDG_CONFIG_HOME:-$HOME/.config}
 
-echo "Generating dotfiles templates from \`$source_dir\` to \`$home_dir\`."
+echo "Generating dotfiles templates from \`$source_dir\` to \`$HOME\`."
 
 mkdir -p "$bin_dir"
 esh "$source_dir/.local/bin/rg~esh" > "$bin_dir/rg"

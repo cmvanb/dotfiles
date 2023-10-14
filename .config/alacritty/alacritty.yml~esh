@@ -1,11 +1,12 @@
 #-------------------------------------------------------------------------------
 # Alacritty configuration file
 #-------------------------------------------------------------------------------
-
+<% source $XDG_CONFIG_HOME/theme/theme.sh %>
 # Key bindings
-# NOTE: See available key codes here:
-#   https://docs.rs/winit/0.28.7/winit/event/enum.VirtualKeyCode.html#variants
 #-------------------------------------------------------------------------------
+
+# See available key codes here:
+#   https://docs.rs/winit/0.28.7/winit/event/enum.VirtualKeyCode.html#variants
 
 key_bindings:
     # Spawn new terminal in current directory
@@ -21,6 +22,11 @@ key_bindings:
     - { key: J, mods: Control, mode: ~Alt, action: ScrollLineDown }
     - { key: K, mods: Control, mode: ~Alt, action: ScrollLineUp }
 
+    # NOTE: Passthroughs not working...
+    #   see: https://www.reddit.com/r/neovim/comments/mbj8m5/how_to_setup_ctrlshiftkey_mappings_in_neovim_and/
+    #   see: https://github.com/alacritty/alacritty/issues/6378
+    #   see: https://stackoverflow.com/questions/72857879/correct-keybindings-configuration-for-zsh-in-alacritty
+
     # STTY passthroughs
     # - { key: X, mods: Control, chars: '\x1b[67;4u' }
     # - { key: Period, mods: Control, chars: '\x1b[86;4u' }
@@ -30,18 +36,11 @@ key_bindings:
     # - { key: M, mods: Control, chars: '\x1b[1;2Q' }
     # - { key: Back, mods: Control, chars: '\x1b[1;2R' }
     # - { key: Tab, mods: Control, chars: '\x1b[9;1u' }
-    # NOTE: Doesn't work...
-    #   see: https://www.reddit.com/r/neovim/comments/mbj8m5/how_to_setup_ctrlshiftkey_mappings_in_neovim_and/
-    #   see: https://github.com/alacritty/alacritty/issues/6378
 
 # Appearance
 #-------------------------------------------------------------------------------
 
-window:
-    opacity: 1.0
-    padding:
-        x: 0
-        y: 0
+draw_bold_text_with_bright_colors: false
 
 font:
     normal:
@@ -49,83 +48,211 @@ font:
 
     size: 12.0
 
-bell:
-    animation: Linear
-    duration: 200
-    color: '#ffffff'
+window:
+    opacity: 1.0
+    padding:
+        x: 0
+        y: 0
 
 cursor:
     style:
         shape: Block
         blinking: Off
 
+bell:
+    animation: Linear
+    duration: 200
+    color: '<% color_hash $primary_1 %>'
+
 # Colors
 #-------------------------------------------------------------------------------
 
 schemes:
     custom: &custom
-        # Default colors
         primary:
-            background: '0x0d0d0d'
-            foreground: '0xdedee3'
+            background: '<% color_zerox $terminal_bg %>'
+            foreground: '<% color_zerox $terminal_text %>'
 
-        # Cursor colors
         cursor:
-            text: '0x0d0d0d'
-            cursor: '0xfcfcfd'
+            cursor: '<% color_zerox $terminal_text %>'
+            text: '<% color_zerox $terminal_bg %>'
 
-        # Normal colors
         normal:
-            black:   '0x0d0d0d'
-            red:     '0xec1329'
-            green:   '0x00ff66'
-            yellow:  '0xffd900'
-            blue:    '0x0e5af1'
-            magenta: '0xff0080'
-            cyan:    '0x00bbff'
-            white:   '0xdedee3'
+            black:   '<% color_zerox $ansi_black %>'
+            red:     '<% color_zerox $ansi_red %>'
+            green:   '<% color_zerox $ansi_green %>'
+            yellow:  '<% color_zerox $ansi_yellow %>'
+            blue:    '<% color_zerox $ansi_blue %>'
+            magenta: '<% color_zerox $ansi_magenta %>'
+            cyan:    '<% color_zerox $ansi_cyan %>'
+            white:   '<% color_zerox $ansi_white %>'
 
-        # Bright colors
         bright:
-            black:   '0x71758e'
-            red:     '0xfd4342'
-            green:   '0x66ffa3'
-            yellow:  '0xffe866'
-            blue:    '0x6e9cf7'
-            magenta: '0xff66b3'
-            cyan:    '0x66d6ff'
-            white:   '0xfcfcfd'
+            black:   '<% color_zerox $ansi_brblack %>'
+            red:     '<% color_zerox $ansi_brred %>'
+            green:   '<% color_zerox $ansi_brgreen %>'
+            yellow:  '<% color_zerox $ansi_bryellow %>'
+            blue:    '<% color_zerox $ansi_brblue %>'
+            magenta: '<% color_zerox $ansi_brmagenta %>'
+            cyan:    '<% color_zerox $ansi_brcyan %>'
+            white:   '<% color_zerox $ansi_brwhite %>'
 
-        # TODO: Update indexed colors.
         indexed_colors:
-            # g2
-            - { index: 16, color: '0x2e2e38' }
+            - { index: 16, color: '<% color_zerox $primary_0 %>' }
+            - { index: 17, color: '<% color_zerox $primary_1 %>' }
+            - { index: 18, color: '<% color_zerox $primary_2 %>' }
+            - { index: 19, color: '<% color_zerox $primary_3 %>' }
+            - { index: 20, color: '<% color_zerox $primary_4 %>' }
+            - { index: 21, color: '<% color_zerox $primary_5 %>' }
+            - { index: 22, color: '<% color_zerox $primary_6 %>' }
+            - { index: 23, color: '<% color_zerox $primary_7 %>' }
+            - { index: 24, color: '<% color_zerox $primary_8 %>' }
+            - { index: 25, color: '<% color_zerox $primary_9 %>' }
+            - { index: 26, color: '<% color_zerox $primary_10 %>' }
+            - { index: 27, color: '<% color_zerox $primary_11 %>' }
+            - { index: 28, color: '<% color_zerox $primary_12 %>' }
+            - { index: 29, color: '<% color_zerox $primary_13 %>' }
+            - { index: 30, color: '<% color_zerox $primary_14 %>' }
+            - { index: 31, color: '<% color_zerox $primary_15 %>' }
 
-            # Dark colors
-            - { index: 17, color: '0x770914' }
-            - { index: 18, color: '0x066039' }
-            - { index: 19, color: '0xb38600' }
-            - { index: 20, color: '0x073592' }
-            - { index: 21, color: '0x76234d' }
-            - { index: 22, color: '0x018cb0' }
+            - { index: 32, color: '<% color_zerox $secondary_0 %>' }
+            - { index: 33, color: '<% color_zerox $secondary_1 %>' }
+            - { index: 34, color: '<% color_zerox $secondary_2 %>' }
+            - { index: 35, color: '<% color_zerox $secondary_3 %>' }
+            - { index: 36, color: '<% color_zerox $secondary_4 %>' }
+            - { index: 37, color: '<% color_zerox $secondary_5 %>' }
+            - { index: 38, color: '<% color_zerox $secondary_6 %>' }
+            - { index: 39, color: '<% color_zerox $secondary_7 %>' }
+            - { index: 40, color: '<% color_zerox $secondary_8 %>' }
+            - { index: 41, color: '<% color_zerox $secondary_9 %>' }
+            - { index: 42, color: '<% color_zerox $secondary_10 %>' }
+            - { index: 43, color: '<% color_zerox $secondary_11 %>' }
+            - { index: 44, color: '<% color_zerox $secondary_12 %>' }
+            - { index: 45, color: '<% color_zerox $secondary_13 %>' }
+            - { index: 46, color: '<% color_zerox $secondary_14 %>' }
+            - { index: 47, color: '<% color_zerox $secondary_15 %>' }
 
-            # g5
-            - { index: 23, color: '0xaeaeb7' }
-            # g1
-            - { index: 24, color: '0x1a1a1f' }
+            - { index: 48, color: '<% color_zerox $text_0 %>' }
+            - { index: 49, color: '<% color_zerox $text_1 %>' }
+            - { index: 50, color: '<% color_zerox $text_2 %>' }
+            - { index: 51, color: '<% color_zerox $text_3 %>' }
+            - { index: 52, color: '<% color_zerox $text_4 %>' }
+            - { index: 53, color: '<% color_zerox $text_5 %>' }
+            - { index: 54, color: '<% color_zerox $text_6 %>' }
+            - { index: 55, color: '<% color_zerox $text_7 %>' }
+            - { index: 56, color: '<% color_zerox $text_8 %>' }
+            - { index: 57, color: '<% color_zerox $text_9 %>' }
+            - { index: 58, color: '<% color_zerox $text_10 %>' }
+            - { index: 59, color: '<% color_zerox $text_11 %>' }
+            - { index: 60, color: '<% color_zerox $text_12 %>' }
+            - { index: 61, color: '<% color_zerox $text_13 %>' }
+            - { index: 62, color: '<% color_zerox $text_14 %>' }
+            - { index: 63, color: '<% color_zerox $text_15 %>' }
 
-            # Extra dark colors
-            - { index: 25, color: '0x37040a' }
-            - { index: 26, color: '0x03301e' }
-            - { index: 27, color: '0x534300' }
-            - { index: 28, color: '0x021231' } # Alternative background color
-            - { index: 29, color: '0x331127' }
-            - { index: 30, color: '0x004760' }
+            - { index: 64, color: '<% color_zerox $gray_0 %>' }
+            - { index: 65, color: '<% color_zerox $gray_1 %>' }
+            - { index: 66, color: '<% color_zerox $gray_2 %>' }
+            - { index: 67, color: '<% color_zerox $gray_3 %>' }
+            - { index: 68, color: '<% color_zerox $gray_4 %>' }
+            - { index: 69, color: '<% color_zerox $gray_5 %>' }
+            - { index: 70, color: '<% color_zerox $gray_6 %>' }
+            - { index: 71, color: '<% color_zerox $gray_7 %>' }
+            - { index: 72, color: '<% color_zerox $gray_8 %>' }
+            - { index: 73, color: '<% color_zerox $gray_9 %>' }
+            - { index: 74, color: '<% color_zerox $gray_10 %>' }
+            - { index: 75, color: '<% color_zerox $gray_11 %>' }
+            - { index: 76, color: '<% color_zerox $gray_12 %>' }
+            - { index: 77, color: '<% color_zerox $gray_13 %>' }
+            - { index: 78, color: '<% color_zerox $gray_14 %>' }
+            - { index: 79, color: '<% color_zerox $gray_15 %>' }
 
-            # g4
-            - { index: 31, color: '0x74748b' }
+            - { index: 80, color: '<% color_zerox $red_0 %>' }
+            - { index: 81, color: '<% color_zerox $red_1 %>' }
+            - { index: 82, color: '<% color_zerox $red_2 %>' }
+            - { index: 83, color: '<% color_zerox $red_3 %>' }
+            - { index: 84, color: '<% color_zerox $red_4 %>' }
+            - { index: 85, color: '<% color_zerox $red_5 %>' }
+            - { index: 86, color: '<% color_zerox $red_6 %>' }
+            - { index: 87, color: '<% color_zerox $red_7 %>' }
+            - { index: 88, color: '<% color_zerox $red_8 %>' }
+            - { index: 89, color: '<% color_zerox $red_9 %>' }
 
-draw_bold_text_with_bright_colors: false
+            - { index: 90, color: '<% color_zerox $orange_0 %>' }
+            - { index: 91, color: '<% color_zerox $orange_1 %>' }
+            - { index: 92, color: '<% color_zerox $orange_2 %>' }
+            - { index: 93, color: '<% color_zerox $orange_3 %>' }
+            - { index: 94, color: '<% color_zerox $orange_4 %>' }
+            - { index: 95, color: '<% color_zerox $orange_5 %>' }
+            - { index: 96, color: '<% color_zerox $orange_6 %>' }
+            - { index: 97, color: '<% color_zerox $orange_7 %>' }
+            - { index: 98, color: '<% color_zerox $orange_8 %>' }
+            - { index: 99, color: '<% color_zerox $orange_9 %>' }
 
-# Set color scheme
+            - { index: 100, color: '<% color_zerox $yellow_0 %>' }
+            - { index: 101, color: '<% color_zerox $yellow_1 %>' }
+            - { index: 102, color: '<% color_zerox $yellow_2 %>' }
+            - { index: 103, color: '<% color_zerox $yellow_3 %>' }
+            - { index: 104, color: '<% color_zerox $yellow_4 %>' }
+            - { index: 105, color: '<% color_zerox $yellow_5 %>' }
+            - { index: 106, color: '<% color_zerox $yellow_6 %>' }
+            - { index: 107, color: '<% color_zerox $yellow_7 %>' }
+            - { index: 108, color: '<% color_zerox $yellow_8 %>' }
+            - { index: 109, color: '<% color_zerox $yellow_9 %>' }
+
+            - { index: 110, color: '<% color_zerox $green_0 %>' }
+            - { index: 111, color: '<% color_zerox $green_1 %>' }
+            - { index: 112, color: '<% color_zerox $green_2 %>' }
+            - { index: 113, color: '<% color_zerox $green_3 %>' }
+            - { index: 114, color: '<% color_zerox $green_4 %>' }
+            - { index: 115, color: '<% color_zerox $green_5 %>' }
+            - { index: 116, color: '<% color_zerox $green_6 %>' }
+            - { index: 117, color: '<% color_zerox $green_7 %>' }
+            - { index: 118, color: '<% color_zerox $green_8 %>' }
+            - { index: 119, color: '<% color_zerox $green_9 %>' }
+
+            - { index: 120, color: '<% color_zerox $cyan_0 %>' }
+            - { index: 121, color: '<% color_zerox $cyan_1 %>' }
+            - { index: 122, color: '<% color_zerox $cyan_2 %>' }
+            - { index: 123, color: '<% color_zerox $cyan_3 %>' }
+            - { index: 124, color: '<% color_zerox $cyan_4 %>' }
+            - { index: 125, color: '<% color_zerox $cyan_5 %>' }
+            - { index: 126, color: '<% color_zerox $cyan_6 %>' }
+            - { index: 127, color: '<% color_zerox $cyan_7 %>' }
+            - { index: 128, color: '<% color_zerox $cyan_8 %>' }
+            - { index: 129, color: '<% color_zerox $cyan_9 %>' }
+
+            - { index: 130, color: '<% color_zerox $blue_0 %>' }
+            - { index: 131, color: '<% color_zerox $blue_1 %>' }
+            - { index: 132, color: '<% color_zerox $blue_2 %>' }
+            - { index: 133, color: '<% color_zerox $blue_3 %>' }
+            - { index: 134, color: '<% color_zerox $blue_4 %>' }
+            - { index: 135, color: '<% color_zerox $blue_5 %>' }
+            - { index: 136, color: '<% color_zerox $blue_6 %>' }
+            - { index: 137, color: '<% color_zerox $blue_7 %>' }
+            - { index: 138, color: '<% color_zerox $blue_8 %>' }
+            - { index: 139, color: '<% color_zerox $blue_9 %>' }
+
+            - { index: 140, color: '<% color_zerox $purple_0 %>' }
+            - { index: 141, color: '<% color_zerox $purple_1 %>' }
+            - { index: 142, color: '<% color_zerox $purple_2 %>' }
+            - { index: 143, color: '<% color_zerox $purple_3 %>' }
+            - { index: 144, color: '<% color_zerox $purple_4 %>' }
+            - { index: 145, color: '<% color_zerox $purple_5 %>' }
+            - { index: 146, color: '<% color_zerox $purple_6 %>' }
+            - { index: 147, color: '<% color_zerox $purple_7 %>' }
+            - { index: 148, color: '<% color_zerox $purple_8 %>' }
+            - { index: 149, color: '<% color_zerox $purple_9 %>' }
+
+            - { index: 150, color: '<% color_zerox $magenta_0 %>' }
+            - { index: 151, color: '<% color_zerox $magenta_1 %>' }
+            - { index: 152, color: '<% color_zerox $magenta_2 %>' }
+            - { index: 153, color: '<% color_zerox $magenta_3 %>' }
+            - { index: 154, color: '<% color_zerox $magenta_4 %>' }
+            - { index: 155, color: '<% color_zerox $magenta_5 %>' }
+            - { index: 156, color: '<% color_zerox $magenta_6 %>' }
+            - { index: 157, color: '<% color_zerox $magenta_7 %>' }
+            - { index: 158, color: '<% color_zerox $magenta_8 %>' }
+            - { index: 159, color: '<% color_zerox $magenta_9 %>' }
+
+# Assign color scheme
 colors: *custom
