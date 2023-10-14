@@ -98,7 +98,6 @@ force_link "$source_dir/.local/share/pandoc" "$data_dir/pandoc"
 # Configuration
 # TODO: Include chromium extension configuration.
 mkdir -p $config_dir
-force_link "$source_dir/.config/alacritty" "$config_dir/alacritty"
 force_link "$source_dir/.config/bash" "$config_dir/bash"
 force_link "$source_dir/.config/bat" "$config_dir/bat"
 # NOTE: Don't symlink Bitwarden config because it will be overwritten by the app.

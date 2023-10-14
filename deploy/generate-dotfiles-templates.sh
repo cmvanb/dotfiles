@@ -30,6 +30,9 @@ mkdir -p "$bin_dir"
 esh "$source_dir/.local/bin/rg~esh" > "$bin_dir/rg"
 chmod +x "$bin_dir/rg"
 
+mkdir -p "$config_dir/alacritty"
+esh "$source_dir/.config/alacritty/alacritty.yml~esh" > "$config_dir/alacritty/alacritty.yml"
+
 mkdir -p "$config_dir/mako"
 esh "$source_dir/.config/mako/config~esh" > "$config_dir/mako/config"
 
