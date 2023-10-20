@@ -4,6 +4,10 @@
 -- Show scope of current indent.
 --------------------------------------------------------------------------------
 
+local function get_scope_symbol()
+    if os.getenv('TERM') == 'linux' then return '|' else return '╎' end
+end
+
 local indentscope = require('mini.indentscope')
 
 indentscope.setup({
@@ -25,6 +29,6 @@ indentscope.setup({
         try_as_border = false,
     },
 
-    symbol = '╎',
+    symbol = get_scope_symbol(),
 })
 

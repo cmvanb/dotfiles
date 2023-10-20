@@ -147,7 +147,10 @@ return {
     -- Status line.
     {
         'nvim-lualine/lualine.nvim',
-        requires = { 'kyazdani42/nvim-web-devicons' },
+        requires = {
+            'kyazdani42/nvim-web-devicons',
+            'nvimdev/guard-collection',
+        },
         config = function()
             do_load('plugins/lualine')
         end,
