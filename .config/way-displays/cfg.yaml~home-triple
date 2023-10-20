@@ -9,24 +9,24 @@ ARRANGE: ROW
 ALIGN: TOP
 
 ORDER:
-    - 'DP-2'
-    - 'DP-1'
+    - 'DP-4'
     - 'DP-3'
+    - 'HDMI-A-6'
 
 MODE:
-    - NAME_DESC: 'DP-1'
+    - NAME_DESC: 'DP-3'
       WIDTH: 2560
       HEIGHT: 1440
-      HZ: 120
+      HZ: 240
 
 SCALING: false
 
 AUTO_SCALE: true
 
 TRANSFORM:
-    - NAME_DESC: 'DP-2'
+    - NAME_DESC: 'HDMI-A-6'
       TRANSFORM: 90
-    - NAME_DESC: 'DP-3'
+    - NAME_DESC: 'DP-4'
       TRANSFORM: 90
 
 LOG_THRESHOLD: INFO
