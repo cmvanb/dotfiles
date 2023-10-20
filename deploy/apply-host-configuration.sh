@@ -50,9 +50,16 @@ elif [[ $host == "qutedell" ]]; then
     mkdir -p "$config_dir/way-displays"
     force_link "$source_dir/.config/way-displays/cfg.yaml~qutech-dual" "$config_dir/way-displays/cfg.yaml"
 
+# Cyxwel
+elif [[ $host == "cyxwel" ]]; then
+
+    mkdir -p "$config_dir/yambar"
+    esh "$source_dir/.config/yambar/config.yml~desktop" > "$config_dir/yambar/config.yml"
+    mkdir -p "$config_dir/way-displays"
+    force_link "$source_dir/.config/way-displays/cfg.yaml~home-triple" "$config_dir/way-displays/cfg.yaml"
+
 # ...
 else
     echo "[$(basename "$0")] ERROR: Did not recognize host: $host"
     exit 1
 fi
-
