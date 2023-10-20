@@ -3,7 +3,7 @@
 # Preview a file
 #-------------------------------------------------------------------------------
 
-set -euo pipefail
+set -uo pipefail
 
 # Imports
 #-------------------------------------------------------------------------------
@@ -59,6 +59,14 @@ elif [[ $mimetype == *"x-tar" || $mimetype == *"x-xz" ]]; then
 
 elif [[ $mimetype == *"7z"* ]]; then
     7z l -ba "$1" | awk '{print $NF}' | tree --fromfile . | head -n -2
+
+elif [[ $mimetype == "application/json" ]] || [[ $mimetype == "text/plain" && $extension == "json" ]]; then
+    parsed=$(jq -C . "$1")
+    if [[ $? == 0 ]]; then
+        echo "$parsed" | bat --force-colorization --paging=never --style=numbers --wrap never
+    else
+        bat --force-colorization --paging=never --style=numbers --wrap never -f "$1"
+    fi
 
 elif [[ $mimetype == "text"* || $encoding == *"ascii" || $encoding == "utf-8" ]]; then
     bat --force-colorization --paging=never --style=numbers --wrap never -f "$1"
