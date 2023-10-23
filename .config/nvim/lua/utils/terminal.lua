@@ -1,9 +1,10 @@
 --------------------------------------------------------------------------------
--- Sleep
+-- Terminal integration utilities
 --------------------------------------------------------------------------------
 
-function _G.sleep(seconds)
-    local wake_time = tonumber(os.clock() + seconds);
-    while (os.clock() < wake_time) do
+function _G.is_linux_terminal()
+    if os.getenv('TERM') == 'linux' then
+        return true
     end
+    return false
 end

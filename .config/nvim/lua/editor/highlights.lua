@@ -43,8 +43,8 @@ end
 -- Settings
 --------------------------------------------------------------------------------
 
--- Use 24bit color if we are not in the kernel terminal.
-opt.termguicolors = os.getenv('TERM') ~= 'linux'
+-- Use 24bit color if we are not in the linux terminal.
+opt.termguicolors = not is_linux_terminal()
 
 -- Reset any pre-existing syntax highlighting
 cmd('syntax reset')
@@ -69,9 +69,9 @@ hi('TabLineSel',           'primary_11',         'primary_3',    'bold',    'ans
 hi('TabLineFill',          'NONE',               'primary_1',    'bold',    'ansi_white',      'ansi_blue',       'bold')
 
 hi('MsgArea',              'text_12',            'primary_0',    'NONE',    'ansi_white',      'ansi_black',      'NONE')
-hi('ErrorMsg',             'red_6',              'red_1',        'bold',    'ansi_brred',      'ansi_red',        'bold')
-hi('WarningMsg',           'yellow_6',           'orange_3',     'bold',    'ansi_bryellow',   'ansi_yellow',     'bold')
-hi('MoreMsg',              'gray_15',            'gray_5',       'bold',    'ansi_brgreen',    'ansi_green',      'bold')
+hi('ErrorMsg',             'red_6',              'red_1',        'bold',    'ansi_brred',      'ansi_red',        'NONE')
+hi('WarningMsg',           'yellow_6',           'orange_3',     'bold',    'ansi_bryellow',   'ansi_yellow',     'NONE')
+hi('MoreMsg',              'gray_15',            'gray_5',       'bold',    'ansi_white',      'ansi_brblack',    'NONE')
 
 hi('Visual',               'gray_0',             'primary_15',   'NONE',    'ansi_white',      'ansi_blue',       'NONE')
 hi('IncSearch',            'gray_0',             'green_4',      'bold',    'ansi_black',      'ansi_green',      'NONE')
@@ -122,6 +122,7 @@ ln('QuickFixLine',  'FloatMenuSelection')
 
 -- Plugin highlights
 --------------------------------------------------------------------------------
+
 -- group                     | guifg         | guibg        | guiprops         | termfg           | termbg       | termprops
 hi('LeapMatch',              'debug',        'NONE',        'bold',            'ansi_magenta',    'NONE',        'NONE')
 hi('LeapLabelPrimary',       'gray_0',       'primary_15',  'bold',            'ansi_magenta',    'NONE',        'NONE')
@@ -136,6 +137,10 @@ hi('LualineDiagError',       'red_5',        'primary_4',   'bold',            '
 hi('LualineDiagWarn',        'yellow_5',     'primary_4',   'bold',            'ansi_yellow',     'NONE',        'NONE')
 hi('LualineDiagInfo',        'primary_15',   'primary_4',   'bold',            'ansi_white',      'NONE',        'NONE')
 hi('LualineDiagHint',        'purple_7',     'primary_4',   'bold',            'ansi_magenta',    'NONE',        'NONE')
+hi('packerSuccess',          'green_4',      'NONE',        'NONE',            'ansi_green',      'NONE',        'NONE')
+hi('packerWarning',          'yellow_6',     'NONE',        'NONE',            'ansi_bryellow',   'NONE',        'NONE')
+hi('packerWorking',          'primary_8',    'NONE',        'NONE',            'ansi_brblue',     'NONE',        'NONE')
+hi('packerFail',             'red_6',        'NONE',        'NONE',            'ansi_brred',      'NONE',        'NONE')
 
 -- group                      | target
 ln('CmpMenuBackground',       'CMenuNormal')

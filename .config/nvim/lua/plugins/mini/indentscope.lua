@@ -5,7 +5,7 @@
 --------------------------------------------------------------------------------
 
 local function get_scope_symbol()
-    if os.getenv('TERM') == 'linux' then return '|' else return '╎' end
+    if is_linux_terminal() then return '|' else return '╎' end
 end
 
 local indentscope = require('mini.indentscope')

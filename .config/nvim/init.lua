@@ -14,6 +14,7 @@ require('utils.debug')
 require('utils.do_load')
 require('utils.reload')
 require('utils.reload_config')
+require('utils.terminal')
 
 -- Load editor config.
 require('editor.options')

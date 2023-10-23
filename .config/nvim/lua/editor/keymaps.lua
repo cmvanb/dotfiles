@@ -121,8 +121,10 @@ vim.g.mapleader = ' '
 
 -- System clipboard
 -- NOTE: This is only working in TUI because Wezterm is configured for it.
-vnoremap('<C-c>', '"+y')
-noremap('<C-v>', '"+p')
+if not is_linux_terminal() then
+    vnoremap('<C-c>', '"+y')
+    noremap('<C-v>', '"+p')
+end
 noremap('<C-x>', 'x')
 
 -- Windows style binds
