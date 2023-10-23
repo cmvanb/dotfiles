@@ -39,7 +39,7 @@ TARGET=$1
 
 # Retrieve secrets
 #-------------------------------------------------------------------------------
-. ~/.secrets/bitwarden
+source $XDG_SECRETS_HOME/bitwarden
 
 if [[ -z $BW_CLIENTID ]]; then
     echo "Missing secret: BW_CLIENTID" 1>&2
@@ -136,6 +136,7 @@ elif [[ $ITEMS_COUNT -gt 1 ]]; then
     echo "Selected item: \`$NAME\`"
 fi
 
+# TODO: Implement a solution for the linux virtual terminal scenario.
 # Copy result to clipboard so we can use it immediately
 wl-copy $PASSWORD
 

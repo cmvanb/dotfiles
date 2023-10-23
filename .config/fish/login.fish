@@ -10,7 +10,7 @@ set -x SSH_AUTH_SOCK $XDG_RUNTIME_DIR/ssh-agent.sock
 
 # XDG base directories.
 set -x XDG_CONFIG_HOME $HOME/.config
-set -x XDG_CACHE_HOME $HOME/.cache
+set -x XDG_CACHE_HOME $HOME/.local/cache
 set -x XDG_DATA_HOME $HOME/.local/share
 set -x XDG_STATE_HOME $HOME/.local/state
 
@@ -18,6 +18,7 @@ set -x XDG_STATE_HOME $HOME/.local/state
 set -x XDG_BIN_HOME $HOME/.local/bin
 set -x XDG_OPT_HOME $HOME/.local/opt
 set -x XDG_SCRIPTS_HOME $HOME/.local/scripts
+set -x XDG_SECRETS_HOME $HOME/.local/secrets
 
 # XDG user directories.
 set -x XDG_DOCUMENTS_DIR $HOME/Documents
@@ -32,7 +33,7 @@ set -x XDG_VIDEOS_DIR $HOME/Media/Videos
 set -x PYENV_ROOT $XDG_OPT_HOME/pyenv
 
 # Docker config.
-set -x DOCKER_CONFIG $XDG_CONFIG_HOME/docker
+set -x DOCKER_CONFIG $XDG_STATE_HOME/docker
 
 # Python config.
 set -x PYTHONPYCACHEPREFIX $XDG_CACHE_HOME/python
