@@ -4,12 +4,12 @@
 
 require('mini.comment').setup({
     mappings = {
-        -- Toggle comment on selection (VISUAL) or current line (NORMAL)
-        comment = '<C-/>',
-        -- Toggle comment on current line
+        -- Toggle comment on current line (NORMAL)
         comment_line = '<C-/>',
-        -- Toggle comment on current line
-        textobject = nil,
+        -- Toggle comment on selection (VISUAL)
+        comment_visual = '<C-/>',
+        -- Define 'comment' textobject (like `dgc` - delete whole comment block)
+        textobject = 'gc',
     },
 })
 
