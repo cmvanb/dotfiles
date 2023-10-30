@@ -96,7 +96,6 @@ force_link "$source_dir/.local/share/qutebrowser/userscripts/readability.py" "$d
 force_link "$source_dir/.local/share/pandoc" "$data_dir/pandoc"
 
 # Configuration
-# TODO: Include chromium extension configuration.
 mkdir -p $config_dir
 force_link "$source_dir/.config/bash" "$config_dir/bash"
 force_link "$source_dir/.config/bat" "$config_dir/bat"
