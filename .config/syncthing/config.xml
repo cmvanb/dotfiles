@@ -1,9 +1,6 @@
 <configuration version="37">
     <folder id="5hw6q-rmdtv" label="Media" path="/home/surfer/Media" type="sendreceive" rescanIntervalS="3600" fsWatcherEnabled="true" fsWatcherDelayS="10" ignorePerms="false" autoNormalize="true">
         <filesystemType>basic</filesystemType>
-        <device id="A6U4DXU-ZT4W6FZ-JGS3AG4-FCQTXXU-LBP56TX-6KQXDCG-UQ3YSGI-ZFHL5AN" introducedBy="">
-            <encryptionPassword></encryptionPassword>
-        </device>
         <device id="ENHZPZJ-2IS7LUS-WFLKYD2-KB3FR23-U4RAUJD-I6QVIST-XKT2PBX-KRAEZQZ" introducedBy="">
             <encryptionPassword></encryptionPassword>
         </device>
@@ -11,6 +8,9 @@
             <encryptionPassword></encryptionPassword>
         </device>
         <device id="MF4DD3Z-TGAAED5-7JXDJLM-HJNTLVY-CDXD6CH-QLOFTIW-I767E4W-JMV4SQP" introducedBy="">
+            <encryptionPassword></encryptionPassword>
+        </device>
+        <device id="PHIGEZS-QNOMGPV-MFAER7B-TBFJTFK-UQ7FXC5-3HHZ4BL-CHSQGJS-BO3KNAI" introducedBy="">
             <encryptionPassword></encryptionPassword>
         </device>
         <minDiskFree unit="%">1</minDiskFree>
@@ -51,9 +51,6 @@
     </folder>
     <folder id="emqzq-axhvp" label="Qutebrowser Config" path="/home/surfer/.config/qutebrowser" type="sendreceive" rescanIntervalS="3600" fsWatcherEnabled="true" fsWatcherDelayS="10" ignorePerms="false" autoNormalize="true">
         <filesystemType>basic</filesystemType>
-        <device id="A6U4DXU-ZT4W6FZ-JGS3AG4-FCQTXXU-LBP56TX-6KQXDCG-UQ3YSGI-ZFHL5AN" introducedBy="">
-            <encryptionPassword></encryptionPassword>
-        </device>
         <device id="ENHZPZJ-2IS7LUS-WFLKYD2-KB3FR23-U4RAUJD-I6QVIST-XKT2PBX-KRAEZQZ" introducedBy="">
             <encryptionPassword></encryptionPassword>
         </device>
@@ -61,6 +58,9 @@
             <encryptionPassword></encryptionPassword>
         </device>
         <device id="MF4DD3Z-TGAAED5-7JXDJLM-HJNTLVY-CDXD6CH-QLOFTIW-I767E4W-JMV4SQP" introducedBy="">
+            <encryptionPassword></encryptionPassword>
+        </device>
+        <device id="PHIGEZS-QNOMGPV-MFAER7B-TBFJTFK-UQ7FXC5-3HHZ4BL-CHSQGJS-BO3KNAI" introducedBy="">
             <encryptionPassword></encryptionPassword>
         </device>
         <minDiskFree unit="%">1</minDiskFree>
@@ -97,13 +97,10 @@
         <xattrFilter>
             <maxSingleEntrySize>1024</maxSingleEntrySize>
             <maxTotalSize>4096</maxTotalSize>
-        </xattrFilter>
-    </folder>
+            </xattrFilter>
+        </folder>
     <folder id="hdzxr-g5tuy" label="Documents" path="/home/surfer/Documents" type="sendreceive" rescanIntervalS="3600" fsWatcherEnabled="true" fsWatcherDelayS="10" ignorePerms="false" autoNormalize="true">
         <filesystemType>basic</filesystemType>
-        <device id="A6U4DXU-ZT4W6FZ-JGS3AG4-FCQTXXU-LBP56TX-6KQXDCG-UQ3YSGI-ZFHL5AN" introducedBy="">
-            <encryptionPassword></encryptionPassword>
-        </device>
         <device id="ENHZPZJ-2IS7LUS-WFLKYD2-KB3FR23-U4RAUJD-I6QVIST-XKT2PBX-KRAEZQZ" introducedBy="">
             <encryptionPassword></encryptionPassword>
         </device>
@@ -111,6 +108,9 @@
             <encryptionPassword></encryptionPassword>
         </device>
         <device id="MF4DD3Z-TGAAED5-7JXDJLM-HJNTLVY-CDXD6CH-QLOFTIW-I767E4W-JMV4SQP" introducedBy="">
+            <encryptionPassword></encryptionPassword>
+        </device>
+        <device id="PHIGEZS-QNOMGPV-MFAER7B-TBFJTFK-UQ7FXC5-3HHZ4BL-CHSQGJS-BO3KNAI" introducedBy="">
             <encryptionPassword></encryptionPassword>
         </device>
         <minDiskFree unit="%">1</minDiskFree>
@@ -151,9 +151,6 @@
     </folder>
     <folder id="itm3z-4sygf" label="Wiki" path="/home/surfer/Wiki" type="sendreceive" rescanIntervalS="3600" fsWatcherEnabled="true" fsWatcherDelayS="10" ignorePerms="false" autoNormalize="true">
         <filesystemType>basic</filesystemType>
-        <device id="A6U4DXU-ZT4W6FZ-JGS3AG4-FCQTXXU-LBP56TX-6KQXDCG-UQ3YSGI-ZFHL5AN" introducedBy="">
-            <encryptionPassword></encryptionPassword>
-        </device>
         <device id="ENHZPZJ-2IS7LUS-WFLKYD2-KB3FR23-U4RAUJD-I6QVIST-XKT2PBX-KRAEZQZ" introducedBy="">
             <encryptionPassword></encryptionPassword>
         </device>
@@ -161,6 +158,9 @@
             <encryptionPassword></encryptionPassword>
         </device>
         <device id="MF4DD3Z-TGAAED5-7JXDJLM-HJNTLVY-CDXD6CH-QLOFTIW-I767E4W-JMV4SQP" introducedBy="">
+            <encryptionPassword></encryptionPassword>
+        </device>
+        <device id="PHIGEZS-QNOMGPV-MFAER7B-TBFJTFK-UQ7FXC5-3HHZ4BL-CHSQGJS-BO3KNAI" introducedBy="">
             <encryptionPassword></encryptionPassword>
         </device>
         <minDiskFree unit="%">1</minDiskFree>
@@ -201,9 +201,6 @@
     </folder>
     <folder id="l4xpm-4cmds" label="Projects" path="/home/surfer/Projects" type="sendreceive" rescanIntervalS="3600" fsWatcherEnabled="true" fsWatcherDelayS="10" ignorePerms="false" autoNormalize="true">
         <filesystemType>basic</filesystemType>
-        <device id="A6U4DXU-ZT4W6FZ-JGS3AG4-FCQTXXU-LBP56TX-6KQXDCG-UQ3YSGI-ZFHL5AN" introducedBy="">
-            <encryptionPassword></encryptionPassword>
-        </device>
         <device id="ENHZPZJ-2IS7LUS-WFLKYD2-KB3FR23-U4RAUJD-I6QVIST-XKT2PBX-KRAEZQZ" introducedBy="">
             <encryptionPassword></encryptionPassword>
         </device>
@@ -211,6 +208,9 @@
             <encryptionPassword></encryptionPassword>
         </device>
         <device id="MF4DD3Z-TGAAED5-7JXDJLM-HJNTLVY-CDXD6CH-QLOFTIW-I767E4W-JMV4SQP" introducedBy="">
+            <encryptionPassword></encryptionPassword>
+        </device>
+        <device id="PHIGEZS-QNOMGPV-MFAER7B-TBFJTFK-UQ7FXC5-3HHZ4BL-CHSQGJS-BO3KNAI" introducedBy="">
             <encryptionPassword></encryptionPassword>
         </device>
         <minDiskFree unit="%">1</minDiskFree>
@@ -251,9 +251,6 @@
     </folder>
     <folder id="vrvy6-qrxxq" label="Qutebrowser Sessions" path="/home/surfer/.local/share/qutebrowser/sessions" type="sendreceive" rescanIntervalS="3600" fsWatcherEnabled="true" fsWatcherDelayS="10" ignorePerms="false" autoNormalize="true">
         <filesystemType>basic</filesystemType>
-        <device id="A6U4DXU-ZT4W6FZ-JGS3AG4-FCQTXXU-LBP56TX-6KQXDCG-UQ3YSGI-ZFHL5AN" introducedBy="">
-            <encryptionPassword></encryptionPassword>
-        </device>
         <device id="ENHZPZJ-2IS7LUS-WFLKYD2-KB3FR23-U4RAUJD-I6QVIST-XKT2PBX-KRAEZQZ" introducedBy="">
             <encryptionPassword></encryptionPassword>
         </device>
@@ -261,6 +258,9 @@
             <encryptionPassword></encryptionPassword>
         </device>
         <device id="MF4DD3Z-TGAAED5-7JXDJLM-HJNTLVY-CDXD6CH-QLOFTIW-I767E4W-JMV4SQP" introducedBy="">
+            <encryptionPassword></encryptionPassword>
+        </device>
+        <device id="PHIGEZS-QNOMGPV-MFAER7B-TBFJTFK-UQ7FXC5-3HHZ4BL-CHSQGJS-BO3KNAI" introducedBy="">
             <encryptionPassword></encryptionPassword>
         </device>
         <minDiskFree unit="%">1</minDiskFree>
@@ -299,16 +299,6 @@
             <maxTotalSize>4096</maxTotalSize>
         </xattrFilter>
     </folder>
-    <device id="A6U4DXU-ZT4W6FZ-JGS3AG4-FCQTXXU-LBP56TX-6KQXDCG-UQ3YSGI-ZFHL5AN" name="dojo" compression="metadata" introducer="false" skipIntroductionRemovals="false" introducedBy="">
-        <address>dynamic</address>
-        <paused>false</paused>
-        <autoAcceptFolders>false</autoAcceptFolders>
-        <maxSendKbps>0</maxSendKbps>
-        <maxRecvKbps>0</maxRecvKbps>
-        <maxRequestKiB>0</maxRequestKiB>
-        <untrusted>false</untrusted>
-        <remoteGUIPort>0</remoteGUIPort>
-    </device>
     <device id="ENHZPZJ-2IS7LUS-WFLKYD2-KB3FR23-U4RAUJD-I6QVIST-XKT2PBX-KRAEZQZ" name="portal-gun" compression="metadata" introducer="true" skipIntroductionRemovals="false" introducedBy="">
         <address>dynamic</address>
         <paused>false</paused>
@@ -330,6 +320,16 @@
         <remoteGUIPort>0</remoteGUIPort>
     </device>
     <device id="MF4DD3Z-TGAAED5-7JXDJLM-HJNTLVY-CDXD6CH-QLOFTIW-I767E4W-JMV4SQP" name="qutedell" compression="metadata" introducer="false" skipIntroductionRemovals="false" introducedBy="">
+        <address>dynamic</address>
+        <paused>false</paused>
+        <autoAcceptFolders>false</autoAcceptFolders>
+        <maxSendKbps>0</maxSendKbps>
+        <maxRecvKbps>0</maxRecvKbps>
+        <maxRequestKiB>0</maxRequestKiB>
+        <untrusted>false</untrusted>
+        <remoteGUIPort>0</remoteGUIPort>
+    </device>
+    <device id="PHIGEZS-QNOMGPV-MFAER7B-TBFJTFK-UQ7FXC5-3HHZ4BL-CHSQGJS-BO3KNAI" name="cyxwel" compression="metadata" introducer="false" skipIntroductionRemovals="false" introducedBy="">
         <address>dynamic</address>
         <paused>false</paused>
         <autoAcceptFolders>false</autoAcceptFolders>
@@ -403,13 +403,13 @@
     <defaults>
         <folder id="" label="" path="/home/surfer" type="sendreceive" rescanIntervalS="3600" fsWatcherEnabled="true" fsWatcherDelayS="10" ignorePerms="false" autoNormalize="true">
             <filesystemType>basic</filesystemType>
-            <device id="A6U4DXU-ZT4W6FZ-JGS3AG4-FCQTXXU-LBP56TX-6KQXDCG-UQ3YSGI-ZFHL5AN" introducedBy="">
-                <encryptionPassword></encryptionPassword>
-            </device>
             <device id="IEWMFFZ-HBZJLMN-6XKJIVN-I6HSJUD-Y7Y37SU-4TX5PO6-2E5XCAS-O7HIXA6" introducedBy="">
                 <encryptionPassword></encryptionPassword>
             </device>
             <device id="MF4DD3Z-TGAAED5-7JXDJLM-HJNTLVY-CDXD6CH-QLOFTIW-I767E4W-JMV4SQP" introducedBy="">
+                <encryptionPassword></encryptionPassword>
+            </device>
+            <device id="PHIGEZS-QNOMGPV-MFAER7B-TBFJTFK-UQ7FXC5-3HHZ4BL-CHSQGJS-BO3KNAI" introducedBy="">
                 <encryptionPassword></encryptionPassword>
             </device>
             <minDiskFree unit="%">1</minDiskFree>
