@@ -5,6 +5,9 @@
 
 set -euo pipefail
 
+bash_dir=$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)
+source_dir=$(realpath "$bash_dir/..")
+
 # Imports
 #-------------------------------------------------------------------------------
 

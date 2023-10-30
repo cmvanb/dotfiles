@@ -17,8 +17,6 @@ source $XDG_SCRIPTS_HOME/name-formatting.sh
 assert_dependency yad
 assert_dependency esh
 
-bash_dir=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
-source_dir=$( realpath "$bash_dir/../.." )
 bookmark_template="$XDG_TEMPLATES_DIR/bookmark.md~esh"
 bookmark_dir="$HOME/Wiki/bookmarks"
 
