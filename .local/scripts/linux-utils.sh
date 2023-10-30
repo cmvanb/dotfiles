@@ -5,8 +5,6 @@
 
 set -euo pipefail
 
-bash_dir=$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)
-
 # Get the currently running linux distribution ID.
 #-------------------------------------------------------------------------------
 
@@ -17,6 +15,8 @@ get_distro_id () {
         echo "[$(basename "$0")] ERROR: \`$os_release_path\` does not exist. Unable to get distribution ID."
         exit 1
     fi
+
+    bash_dir=$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)
     source $bash_dir/parse-conf.sh
 
     parse_conf "$os_release_path"
