@@ -6,9 +6,9 @@
 set -euo pipefail
 
 if [[ -n $VISUAL ]]; then
-    $VISUAL $@
+    $VISUAL "$@"
 elif [[ -n $EDITOR ]]; then
-    $EDITOR $@
+    $EDITOR "$@"
 else
     echo "Neither \$VISUAL nor \$EDITOR environment variables are set."
     exit 1
