@@ -14,5 +14,3 @@ vim.api.nvim_create_autocmd('BufWritePost', {
         reload_config()
     end,
 })
-
-

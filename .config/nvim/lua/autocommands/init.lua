@@ -7,4 +7,3 @@ reload('autocommands/reload_config')
 
 -- NOTE: Not working as desired.
 -- reload('autocommands/command_line')
-
