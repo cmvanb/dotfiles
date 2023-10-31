@@ -160,29 +160,36 @@ ln('TelescopePreviewNormal',  'Normal')
 -- Syntax highlights
 --------------------------------------------------------------------------------
 
--- group          | guifg         | guibg        | guiprops         | termfg           | termbg     | termprops
-hi('Identifier',  'secondary_9',  'NONE',        'NONE',            'ansi_cyan',       'NONE',      'NONE')
-hi('Statement',   'green_4',      'NONE',        'bold',            'ansi_brgreen',    'NONE',      'bold')
-hi('Comment',     'text_8',       'NONE',        'italic',          'ansi_brblack',    'NONE',      'NONE')
-hi('Type',        'secondary_12', 'NONE',        'NONE',            'ansi_brcyan',     'NONE',      'bold')
-hi('PreProc',     'yellow_6',     'NONE',        'NONE',            'ansi_bryellow',   'NONE',      'NONE')
-hi('Constant',    'magenta_6',    'NONE',        'NONE',            'ansi_brmagenta',  'NONE',      'NONE')
-hi('Special',     'yellow_5',     'NONE',        'bold',            'ansi_yellow',     'NONE',      'NONE')
-hi('Underlined',  'blue_5',       'NONE',        'underline',       'ansi_blue',       'NONE',      'underline')
-hi('Delimiter',   'green_4',      'NONE',        'NONE',            'ansi_green',      'NONE',      'NONE')
-hi('String',      'orange_6',     'NONE',        'NONE',            'ansi_yellow',     'NONE',      'NONE')
-hi('Keyword',     'green_4',      'NONE',        'bold',            'ansi_brgreen',    'NONE',      'bold')
-hi('Function',    'secondary_15', 'NONE',        'bold',            'ansi_brcyan',     'NONE',      'bold')
-hi('Number',      'red_6',        'NONE',        'NONE',            'ansi_brred',      'NONE',      'NONE')
-hi('Boolean',     'red_5',        'NONE',        'NONE',            'ansi_red',        'NONE',      'NONE')
-hi('Ignore',      'text_4',       'NONE',        'bold',            'ansi_brblack',    'NONE',      'NONE')
-hi('Todo',        'secondary_15', 'secondary_5', 'bold,nocombine',  'ansi_brcyan',     'ansi_cyan', 'bold')
+-- group                | guifg         | guibg        | guiprops         | termfg           | termbg     | termprops
+hi('Identifier',        'secondary_9',  'NONE',        'NONE',            'ansi_cyan',       'NONE',      'NONE')
+hi('Statement',         'green_4',      'NONE',        'bold',            'ansi_brgreen',    'NONE',      'bold')
+hi('Comment',           'text_8',       'NONE',        'italic',          'ansi_brblack',    'NONE',      'NONE')
+hi('Type',              'secondary_12', 'NONE',        'NONE',            'ansi_brcyan',     'NONE',      'bold')
+hi('Constant',          'magenta_6',    'NONE',        'NONE',            'ansi_brmagenta',  'NONE',      'NONE')
+hi('Special',           'yellow_5',     'NONE',        'bold',            'ansi_yellow',     'NONE',      'NONE')
+hi('Underlined',        'blue_5',       'NONE',        'underline',       'ansi_blue',       'NONE',      'underline')
+hi('Delimiter',         'green_4',      'NONE',        'NONE',            'ansi_green',      'NONE',      'NONE')
+hi('String',            'orange_6',     'NONE',        'NONE',            'ansi_yellow',     'NONE',      'NONE')
+hi('Keyword',           'green_4',      'NONE',        'bold',            'ansi_brgreen',    'NONE',      'bold')
+hi('Function',          'secondary_15', 'NONE',        'bold',            'ansi_brcyan',     'NONE',      'bold')
+hi('Number',            'red_6',        'NONE',        'NONE',            'ansi_brred',      'NONE',      'NONE')
+hi('Boolean',           'red_5',        'NONE',        'NONE',            'ansi_red',        'NONE',      'NONE')
+hi('Ignore',            'text_4',       'NONE',        'bold',            'ansi_brblack',    'NONE',      'NONE')
+hi('Todo',              'secondary_15', 'secondary_5', 'bold,nocombine',  'ansi_brcyan',     'ansi_cyan', 'bold')
 
--- group               | target
-ln('vimCommentTitle',  'Comment')
-ln('vimOption',        'Identifier')
-ln('Operator',         'Keyword')
-ln('@text.literal',    'String')
+-- group                    | target
+ln('vimCommentTitle',       'Comment')
+ln('vimOption',             'Identifier')
+ln('Operator',              'Keyword')
+ln('PreProc',               'Special')
+ln('@text.literal',         'String')
+ln('@constructor',          'Function')
+ln('@function.builtin',     'Special')
+ln('@type.builtin',         'Special')
+ln('@constant.builtin',     'Constant')
+ln('@variable.builtin',     'Identifier')
+ln('@type.qualifier',       'Keyword')
+ln('@string.documentation', 'Comment')
 
 -- Special snowflakes
 --------------------------------------------------------------------------------

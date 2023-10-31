@@ -17,6 +17,7 @@ source "$source_dir/.local/scripts/debug-utils.sh"
 #-------------------------------------------------------------------------------
 
 assert_dependency esh
+assert_dependency bat
 
 # Generate dotfiles templates
 #-------------------------------------------------------------------------------
@@ -32,6 +33,10 @@ chmod +x "$bin_dir/rg"
 
 mkdir -p "$config_dir/alacritty"
 esh "$source_dir/.config/alacritty/alacritty.yml~esh" > "$config_dir/alacritty/alacritty.yml"
+
+mkdir -p "$config_dir/bat/themes"
+esh "$source_dir/.config/theme/carbon-dark.tmTheme~esh" > "$config_dir/bat/themes/carbon-dark.tmTheme"
+/usr/bin/bat cache --build
 
 mkdir -p "$config_dir/mako"
 esh "$source_dir/.config/mako/config~esh" > "$config_dir/mako/config"
