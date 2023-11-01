@@ -90,9 +90,15 @@ bind ')' self-insert expand-abbr
 # Expand ... to ../..
 bind . 'expand-dot-to-double-dot'
 
-# Colors
+# Theming
 # see: https://fishshell.com/docs/current/interactive.html#color
 #-------------------------------------------------------------------------------
+
+# Configure directory colors (dircolors, ls).
+eval (dircolors --c-shell $XDG_CONFIG_HOME/theme/dircolors-16)
+
+# Configure eza colors (based on directory colors).
+set -x EZA_COLORS reset:$LS_COLORS
 
 # Import and parse system colors.
 source $XDG_CONFIG_HOME/theme/theme.fish
