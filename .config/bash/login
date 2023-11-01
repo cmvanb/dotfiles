@@ -40,6 +40,9 @@ export DOCKER_CONFIG="$XDG_STATE_HOME/docker"
 export PYTHONPYCACHEPREFIX="$XDG_CACHE_HOME/python"
 export PIP_REQUIRE_VIRTUALENV=true
 
+# Rust config.
+export CARGO_HOME="$XDG_DATA_HOME/cargo"
+
 # User directories
 #-------------------------------------------------------------------------------
 

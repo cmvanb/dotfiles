@@ -39,6 +39,9 @@ set -x DOCKER_CONFIG $XDG_STATE_HOME/docker
 set -x PYTHONPYCACHEPREFIX $XDG_CACHE_HOME/python
 set -x PIP_REQUIRE_VIRTUALENV true
 
+# Rust config.
+set -x CARGO_HOME $XDG_DATA_HOME/cargo
+
 # User directories
 #-------------------------------------------------------------------------------
 
