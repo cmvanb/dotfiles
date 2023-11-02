@@ -39,7 +39,7 @@ c.content.user_stylesheets = [ 'stylesheet.css' ]
 
 # Defaults
 c.fonts.default_family = [ f"{theme.font('font_mono')}" ]
-c.fonts.default_size = '12pt'
+c.fonts.default_size = '14pt'
 
 # Webpages
 c.fonts.web.family.fixed = f"{theme.font('font_mono')}"
@@ -47,8 +47,8 @@ c.fonts.web.family.sans_serif = f"{theme.font('font_sans')}"
 c.fonts.web.family.serif = f"{theme.font('font_serif')}"
 c.fonts.web.family.standard = f"{theme.font('font_sans')}"
 c.fonts.web.size.minimum = 6
-c.fonts.web.size.default = 16
-c.fonts.web.size.default_fixed = 18
+c.fonts.web.size.default = 18
+c.fonts.web.size.default_fixed = 20
 
 # Interface
 c.fonts.contextmenu         = f"default_size {theme.font('font_sans')}"
@@ -58,13 +58,13 @@ c.fonts.keyhint             = f"default_size {theme.font('font_mono')}"
 c.fonts.prompts             = f"default_size {theme.font('font_sans')}"
 c.fonts.completion.category = f"bold default_size {theme.font('font_mono')}"
 c.fonts.completion.entry    = f"default_size {theme.font('font_mono')}"
-c.fonts.hints               = f"bold 10pt {theme.font('font_mono')}"
-c.fonts.messages.error      = f"bold 10pt  {theme.font('font_mono')}"
+c.fonts.hints               = f"bold 12pt {theme.font('font_mono')}"
+c.fonts.messages.error      = f"bold 12pt  {theme.font('font_mono')}"
 c.fonts.messages.info       = f"10pt {theme.font('font_mono')}"
-c.fonts.messages.warning    = f"bold 10pt  {theme.font('font_mono')}"
+c.fonts.messages.warning    = f"bold 12pt  {theme.font('font_mono')}"
 c.fonts.statusbar           = f"default_size {theme.font('font_mono')}"
-c.fonts.tabs.selected       = f"bold 10pt {theme.font('font_mono')}"
-c.fonts.tabs.unselected     = f"10pt {theme.font('font_mono')}"
+c.fonts.tabs.selected       = f"bold 12pt {theme.font('font_mono')}"
+c.fonts.tabs.unselected     = f"12pt {theme.font('font_mono')}"
 
 # Input settings
 #-------------------------------------------------------------------------------
@@ -240,7 +240,7 @@ c.tabs.tooltips = False
 c.tabs.favicons.show = 'never'
 c.tabs.indicator.width = 0
 c.tabs.max_width = 240
-c.tabs.padding = { 'top': 5, 'bottom': 3, 'left': 12, 'right': 8 }
+c.tabs.padding = { 'top': 7, 'bottom': 5, 'left': 12, 'right': 8 }
 c.tabs.position = 'top'
 c.tabs.title.alignment = 'left'
 c.tabs.title.format = '{audio}[{index}] {current_title}'
