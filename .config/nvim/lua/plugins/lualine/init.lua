@@ -4,15 +4,16 @@
 
 local theme = reload('plugins.lualine.theme')
 
-local gitblame = reload('gitblame')
+-- TODO: `reload` is not working here, further investigation needed.
+local gitblame = require('gitblame')
 
 require('lualine').setup({
     options = {
         theme = theme,
         component_separators = ' ',
-        -- section_separators = { left = '', right = '' },
+        section_separators = { left = '', right = '' },
         -- section_separators = { left = '', right = '' },
-        section_separators = { left = '', right = '' },
+        -- section_separators = { left = '', right = '' },
     },
     sections = {
         lualine_a = { 'mode' },
@@ -82,7 +83,8 @@ require('lualine').setup({
 
                 icons_enabled = false,
                 padding = { left = 2, right = 2 },
-                separator = { left = '', right = '' },
+                -- separator = { left = '', right = '' },
+                separator = { left = '', right = '' },
 
                 show_filename_only = true,
                 hide_filename_extension = false,
@@ -96,6 +98,7 @@ require('lualine').setup({
                 filetype_names = {
                     TelescopePrompt = 'Telescope',
                     packer = 'Packer',
+                    mason = 'Mason',
                 },
 
                 buffers_color = {
@@ -123,7 +126,8 @@ require('lualine').setup({
                 'filename',
                 path = 3,
                 shorting_target = 0,
-                separator = { left = '', right = '' },
+                -- separator = { left = '', right = '' },
+                separator = { left = '', right = '' },
                 padding = { left = 2, right = 2 },
                 symbols = {
                     modified = '',
@@ -134,7 +138,8 @@ require('lualine').setup({
             },
             {
                 'tabs',
-                separator = { left = '', right = '' },
+                -- separator = { left = '', right = '' },
+                separator = { left = '', right = '' },
                 padding = { left = 2, right = 2 },
                 tabs_color = {
                     active = 'lualine_z_normal',
