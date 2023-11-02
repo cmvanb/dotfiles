@@ -2,3 +2,4 @@
 
 # use the custom theme
 --theme="carbon-dark"
+--italic-text=always

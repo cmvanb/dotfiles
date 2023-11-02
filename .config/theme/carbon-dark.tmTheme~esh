@@ -1,5 +1,5 @@
-<% source $XDG_CONFIG_HOME/theme/theme.sh %><?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<% source $XDG_CONFIG_HOME/theme/theme.sh %><!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
     <dict>
         <key>name</key>
@@ -19,20 +19,33 @@
                     <key>caret</key>
                     <string><% color_hash $text_0 %></string>
                     <key>foreground</key>
-                    <string><% color_hash $editor_text_normal %></string>
+                    <string><% color_hash $blue_9 %></string>
                     <key>invisibles</key>
                     <string><% color_hash $debug %></string>
                     <key>lineHighlight</key>
                     <string><% color_hash $primary_1 %></string>
                     <key>selection</key>
                     <string><% color_hash $primary_15 %></string>
+                    <key>gutterForeground</key>
+                    <string><% color_hash $primary_6 %></string>
                 </dict>
             </dict>
             <dict>
                 <key>name</key>
-                <string>Text and Source Base Colors</string>
+                <string>Text Base Colors</string>
                 <key>scope</key>
-                <string>none, source, text, meta.group</string>
+                <string>none, text</string>
+                <key>settings</key>
+                <dict>
+                    <key>foreground</key>
+                    <string><% color_hash $terminal_text %></string>
+                </dict>
+            </dict>
+            <dict>
+                <key>name</key>
+                <string>Source Base Colors</string>
+                <key>scope</key>
+                <string>source</string>
                 <key>settings</key>
                 <dict>
                     <key>foreground</key>
@@ -42,6 +55,17 @@
             <!-- 
                 Identifier
             -->
+            <dict>
+                <key>name</key>
+                <string>Parameters</string>
+                <key>scope</key>
+                <string>meta.function-call.arguments</string>
+                <key>settings</key>
+                <dict>
+                    <key>foreground</key>
+                    <string><% color_hash $secondary_9 %></string>
+                </dict>
+            </dict>
             <dict>
                 <key>name</key>
                 <string>Parameters</string>
@@ -56,6 +80,9 @@
             <dict>
                 <key>name</key>
                 <string>Variables</string>
+                <!--
+                    NOTE: Highlights `self` in python.
+                -->
                 <key>scope</key>
                 <string>support.variable, variable.language</string>
                 <key>settings</key>
@@ -66,9 +93,9 @@
             </dict>
             <dict>
                 <key>name</key>
-                <string>Other Variables</string>
+                <string>Bash Variables</string>
                 <key>scope</key>
-                <string>variable.other</string>
+                <string>variable.other.readwrite.shell</string>
                 <key>settings</key>
                 <dict>
                     <key>foreground</key>
@@ -101,7 +128,7 @@
                 <key>name</key>
                 <string>Types</string>
                 <key>scope</key>
-                <string>storage.type, entity.name, entity.other, support.type</string>
+                <string>storage.type, entity.name, entity.other.inherited-class, support.type, meta.tag.sgml.doctype.xml</string>
                 <key>settings</key>
                 <dict>
                     <key>foreground</key>
@@ -110,15 +137,13 @@
             </dict>
             <dict>
                 <key>name</key>
-                <string>Type Qualifier</string>
+                <string>Attributes</string>
                 <key>scope</key>
-                <string>storage.modifier, storage.type.struct, storage.type.function, storage.type.impl</string>
+                <string>entity.other.attribute-name</string>
                 <key>settings</key>
                 <dict>
                     <key>foreground</key>
-                    <string><% color_hash $green_4 %></string>
-                    <key>fontStyle</key>
-                    <string>bold</string>
+                    <string><% color_hash $secondary_12 %></string>
                 </dict>
             </dict>
             <!-- 
@@ -128,7 +153,7 @@
                 <key>name</key>
                 <string>Language Constants</string>
                 <key>scope</key>
-                <string>constant, constant.other, variable.other.constant, punctuation.definition.variable, punctuation.definition.constant</string>
+                <string>variable.other.constant, punctuation.definition.constant</string>
                 <key>settings</key>
                 <dict>
                     <key>foreground</key>
@@ -137,13 +162,13 @@
             </dict>
             <dict>
                 <key>name</key>
-                <string>Language Constants Other</string>
+                <string>Language Constants</string>
                 <key>scope</key>
-                <string>support.constant, support.constant.color, support.constant.font-name, support.constant.media, support.constant.prototype, constant.other, constant.other.color, constant.other.symbol</string>
+                <string>constant.language</string>
                 <key>settings</key>
                 <dict>
                     <key>foreground</key>
-                    <string><% color_hash $debug %></string>
+                    <string><% color_hash $red_5 %></string>
                 </dict>
             </dict>
             <!-- 
@@ -151,9 +176,35 @@
             -->
             <dict>
                 <key>name</key>
-                <string>Special Variables</string>
+                <string>Special</string>
                 <key>scope</key>
-                <string>support, support.other, support.module, meta.preprocessor, keyword.control.import, variable.annotation</string>
+                <string>support, support.other, support.module, meta.preprocessor, keyword.control.import, variable.annotation, punctuation.definition.annotation, constant.character.escape, entity.name.tag</string>
+                <key>settings</key>
+                <dict>
+                    <key>foreground</key>
+                    <string><% color_hash $yellow_5 %></string>
+                    <key>fontStyle</key>
+                    <string>bold</string>
+                </dict>
+            </dict>
+            <dict>
+                <key>name</key>
+                <string>Bash Special</string>
+                <key>scope</key>
+                <string>support.function, keyword.control.flow.exit.shell, meta.string.regexp.shell, comment.line.shebang.shell, comment.line.shebang.shell punctuation.definition.comment.shell, constant.language.shebang.shell, punctuation.definition.parameter.shell, variable.parameter.option.shell</string>
+                <key>settings</key>
+                <dict>
+                    <key>foreground</key>
+                    <string><% color_hash $yellow_5 %></string>
+                    <key>fontStyle</key>
+                    <string>bold</string>
+                </dict>
+            </dict>
+            <dict>
+                <key>name</key>
+                <string>XML Special</string>
+                <key>scope</key>
+                <string>keyword.declaration.doctype.xml</string>
                 <key>settings</key>
                 <dict>
                     <key>foreground</key>
@@ -169,7 +220,7 @@
                 <key>name</key>
                 <string>Punctuation</string>
                 <key>scope</key>
-                <string>punctuation</string>
+                <string>punctuation, punctuation.definition.tag</string>
                 <key>settings</key>
                 <dict>
                     <key>foreground</key>
@@ -183,7 +234,7 @@
                 <key>name</key>
                 <string>Strings</string>
                 <key>scope</key>
-                <string>meta.object-literal.key string, string, punctuation.definition.string</string>
+                <string>meta.object-literal.key string, string, punctuation.definition.string, storage.type.string.python</string>
                 <key>settings</key>
                 <dict>
                     <key>foreground</key>
@@ -194,11 +245,11 @@
                 <key>name</key>
                 <string>String Templates</string>
                 <key>scope</key>
-                <string>constant.other.placeholder, entity.name.tag.mustache, entity.tag.tagbraces, punctuation.definition.string.template, punctuation.definition.template-expression, punctuation.quasi, punctuation.section.embedded, string.interpolated</string>
+                <string>constant.other.format-spec, constant.other.placeholder, punctuation.definition.string.template, punctuation.definition.template-expression, punctuation.quasi, punctuation.section.embedded, punctuation.section.interpolation, string.interpolated</string>
                 <key>settings</key>
                 <dict>
                     <key>foreground</key>
-                    <string><% color_hash $orange_7 %></string>
+                    <string><% color_hash $yellow_5 %></string>
                 </dict>
             </dict>
             <!-- 
@@ -217,6 +268,19 @@
                     <string>bold</string>
                 </dict>
             </dict>
+            <dict>
+                <key>name</key>
+                <string>Type Qualifier</string>
+                <key>scope</key>
+                <string>storage.modifier, storage.type.struct, storage.type.function, storage.type.impl</string>
+                <key>settings</key>
+                <dict>
+                    <key>foreground</key>
+                    <string><% color_hash $green_4 %></string>
+                    <key>fontStyle</key>
+                    <string>bold</string>
+                </dict>
+            </dict>
             <!-- 
                 Operator
             -->
@@ -224,38 +288,38 @@
                 <key>name</key>
                 <string>Operators</string>
                 <key>scope</key>
-                <string>punctuation.operator, keyword.control.new, keyword.control.operator, keyword.operator, keyword.other.arrow, keyword.other.double-colon</string>
+                <string>punctuation.operator, punctuation.definition.variable, keyword.control.new, keyword.control.operator, keyword.operator, keyword.other.arrow, keyword.other.double-colon</string>
                 <key>settings</key>
                 <dict>
                     <key>foreground</key>
                     <string><% color_hash $green_4 %></string>
                 </dict>
             </dict>
-            <!-- 
+            <dict>
+                <key>name</key>
+                <string>Bash Brackets, Bash File Descriptor</string>
+                <key>scope</key>
+                <string>support.function.test.begin.shell, support.function.test.end.shell, meta.file-descriptor.shell constant.numeric</string>
+                <key>settings</key>
+                <dict>
+                    <key>foreground</key>
+                    <string><% color_hash $green_4 %></string>
+                </dict>
+            </dict>
+            <!--
                 Function
             -->
             <dict>
                 <key>name</key>
                 <string>Function Calls</string>
                 <key>scope</key>
-                <string>support.function, entity.name.function, declaration.function, meta.constructor</string>
+                <string>entity.name.function, declaration.function, meta.constructor, variable.function</string>
                 <key>settings</key>
                 <dict>
                     <key>foreground</key>
                     <string><% color_hash $secondary_15 %></string>
                     <key>fontStyle</key>
                     <string>bold</string>
-                </dict>
-            </dict>
-            <dict>
-                <key>name</key>
-                <string>Function Call Types</string>
-                <key>scope</key>
-                <string>meta.function</string>
-                <key>settings</key>
-                <dict>
-                    <key>foreground</key>
-                    <string><% color_hash $secondary_12 %></string>
                 </dict>
             </dict>
             <!-- 
@@ -272,6 +336,20 @@
                     <string><% color_hash $red_6 %></string>
                 </dict>
             </dict>
+            <!--
+                Boolean
+            -->
+            <dict>
+                <key>name</key>
+                <string>Numbers</string>
+                <key>scope</key>
+                <string>constant.language.boolean</string>
+                <key>settings</key>
+                <dict>
+                    <key>foreground</key>
+                    <string><% color_hash $red_5 %></string>
+                </dict>
+            </dict>
             <!-- 
                 Errors
             -->
@@ -282,10 +360,8 @@
                 <string>invalid, message.error</string>
                 <key>settings</key>
                 <dict>
-                    <key>background</key>
-                    <string><% color_hash $red_1 %></string>
                     <key>foreground</key>
-                    <string><% color_hash $red_6 %></string>
+                    <string><% color_hash $debug %></string>
                 </dict>
             </dict>
         </array>
