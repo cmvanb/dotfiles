@@ -57,6 +57,9 @@ fish_add_path -pP $XDG_SCRIPTS_HOME
 # Add pyenv python shims to path.
 fish_add_path -pP $PYENV_ROOT/bin
 
+# Add user rust binaries to path.
+fish_add_path -pP $XDG_DATA_HOME/cargo/bin
+
 # Pyenv integration
 #-------------------------------------------------------------------------------
 
