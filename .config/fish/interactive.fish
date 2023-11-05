@@ -94,14 +94,15 @@ bind . 'expand-dot-to-double-dot'
 # see: https://fishshell.com/docs/current/interactive.html#color
 #-------------------------------------------------------------------------------
 
+# Import and parse system colors.
+source $XDG_CONFIG_HOME/theme/theme.fish
+
 # Configure directory colors (dircolors, ls).
 eval (dircolors --c-shell $XDG_CONFIG_HOME/theme/dircolors-16)
 
+# TODO: Implement theme function to get the terminal color code.
 # Configure eza colors (based on directory colors).
-set -x EZA_COLORS reset:$LS_COLORS
-
-# Import and parse system colors.
-source $XDG_CONFIG_HOME/theme/theme.fish
+set -x EZA_COLORS reset:da=37:$LS_COLORS
 
 # Syntax
 set -U fish_color_autosuggestion (color_named 'text_8')

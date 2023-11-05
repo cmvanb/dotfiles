@@ -69,14 +69,15 @@ bind '"\C-y":"clear\C-m eza -al \C-m"'
 # Theming
 #-------------------------------------------------------------------------------
 
-# Configure directory colors (dircolors, ls).
-eval $(dircolors --bourne-shell "$XDG_CONFIG_HOME/theme/dircolors-16")
-
-# Configure eza colors (based on directory colors).
-export EZA_COLORS="reset:$LS_COLORS"
-
 # Import and parse system colors.
 source "$XDG_CONFIG_HOME/theme/theme.sh"
+
+# Configure directory colors (dircolors, ls).
+eval "$(dircolors --bourne-shell "$XDG_CONFIG_HOME/theme/dircolors-16")"
+
+# TODO: Implement theme function to get the terminal color code.
+# Configure eza colors (based on directory colors).
+export EZA_COLORS="reset:da=37:$LS_COLORS"
 
 # LF CD integration
 #-------------------------------------------------------------------------------
