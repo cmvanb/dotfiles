@@ -8,7 +8,7 @@ set -uo pipefail
 # Imports
 #-------------------------------------------------------------------------------
 
-source $XDG_SCRIPTS_HOME/debug-utils.sh
+source "$XDG_SCRIPTS_HOME/debug-utils.sh"
 source $XDG_SCRIPTS_HOME/name-formatting.sh
 
 # Validation

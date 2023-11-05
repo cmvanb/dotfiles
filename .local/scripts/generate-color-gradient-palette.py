@@ -3,6 +3,10 @@
 # Generate color gradient palette
 #-------------------------------------------------------------------------------
 
+import argparse
+import sys
+import math
+
 # TODO: Extract to a module.
 def float_range(minimum, maximum):
     # Return function handle of an argument type function for  ArgumentParser 
@@ -62,18 +66,18 @@ def interp_color(start, end, percentage):
     return Color(interp(start.r, end.r, percentage), interp(start.g, end.g, percentage), interp(start.b, end.b, percentage))
 
 def main():
-    import argparse
-    import sys
-    import math
+    startColor = None
+    middleColor = None
+    endColor = None
+
+    parser = argparse.ArgumentParser(description='Generate color gradient palette')
+    parser.add_argument('--samples',  required=True,  type=int, choices=range(2, 21), help='Number of colors to samples along the gradient.')
+    parser.add_argument('--start',    required=True,  help='The start of the gradient. Hexadecimal color in the format #RRGGBB.')
+    parser.add_argument('--end',      required=True,  help='The end of the gradient. Hexadecimal color in the format #RRGGBB.')
+    parser.add_argument('--middle',   required=False, help='The middle of the gradient, this is optional. Hexadecimal color in the format #RRGGBB.')
+    parser.add_argument('--midpoint', required=False, type=float_range(0.0, 1.0), help='Decimal in the range 0.0 to 1.0 representing the position of the middle color.')
 
     try:
-        parser = argparse.ArgumentParser(description='Generate color gradient palette')
-        parser.add_argument('--samples',  required=True,  type=int, choices=range(2, 21), help='Number of colors to samples along the gradient.')
-        parser.add_argument('--start',    required=True,  help='The start of the gradient. Hexadecimal color in the format #RRGGBB.')
-        parser.add_argument('--end',      required=True,  help='The end of the gradient. Hexadecimal color in the format #RRGGBB.')
-        parser.add_argument('--middle',   required=False, help='The middle of the gradient, this is optional. Hexadecimal color in the format #RRGGBB.')
-        parser.add_argument('--midpoint', required=False, type=float_range(0.0, 1.0), help='Decimal in the range 0.0 to 1.0 representing the position of the middle color.')
-
         args = parser.parse_args()
 
         startColor = Color.parse(args.start)
@@ -87,11 +91,8 @@ def main():
 
     maxIndex = args.samples - 1
 
-    if args.middle is not None:
-        if args.midpoint is None:
-            midPoint = 0.5
-        else:
-            midPoint = args.midpoint
+    if middleColor is not None:
+        midPoint = 0.5 if args.midpoint is None else args.midpoint
 
         # Sample the colors to the left and right of the midpoint.
         midLeftIndex = math.floor(midPoint * maxIndex)
