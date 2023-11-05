@@ -9,7 +9,7 @@ set -uo pipefail
 #-------------------------------------------------------------------------------
 
 source "$XDG_SCRIPTS_HOME/debug-utils.sh"
-source $XDG_SCRIPTS_HOME/name-formatting.sh
+source "$XDG_SCRIPTS_HOME/name-formatting.sh"
 
 # Validation
 #-------------------------------------------------------------------------------
@@ -21,7 +21,7 @@ bookmark_template="$XDG_TEMPLATES_DIR/bookmark.md~esh"
 bookmark_dir="$HOME/Wiki/bookmarks"
 
 if [[ ! -f $bookmark_template ]]; then
-    echo "["$(basename "$0")"] ERROR: Missing template: \`$bookmark_template\`"
+    echo "[$(basename "$0")] ERROR: Missing template: \`$bookmark_template\`"
     exit 1
 fi
 
@@ -39,13 +39,13 @@ form_input=$(yad --form \
     --title="Add bookmark" \
     --field="Name" "$input_name" \
     --field="URL" "$input_url" \
-    --field="Tags "!"Tags should be space separated." ""\
+    --field="Tags!Tags should be space separated." ""\
     --button="OK":0 \
     --button="Cancel":1 \
     )
 
 if [[ $? -ne 0 ]]; then
-    echo "["$(basename "$0")"] ERROR: User cancelled script."
+    echo "[$(basename "$0")] ERROR: User cancelled script."
     exit 1
 fi
 
@@ -53,29 +53,29 @@ fi
 #-------------------------------------------------------------------------------
 
 # Validate name.
-new_bookmark_name=$(echo $form_input | cut -d "|" -f 1)
+new_bookmark_name=$(echo "$form_input" | cut -d "|" -f 1)
 
 if [[ -z "$new_bookmark_name" ]]; then
-    echo "["$(basename "$0")"] ERROR: Missing or bad input for bookmark name."
+    echo "[$(basename "$0")] ERROR: Missing or bad input for bookmark name."
     exit 20
 fi
 
 new_bookmark_name_kebab=$(convert_to_kebab_case "$new_bookmark_name")
 
 # Validate URL.
-new_bookmark_url=$(echo $form_input | cut -d "|" -f 2)
+new_bookmark_url=$(echo "$form_input" | cut -d "|" -f 2)
 
 if [[ -z "$new_bookmark_url" ]]; then
-    echo "["$(basename "$0")"] ERROR: Missing or bad input for bookmark url."
+    echo "[$(basename "$0")] ERROR: Missing or bad input for bookmark url."
     exit 21
 fi
 
 # Validate tags.
-input_tags=($(echo $form_input | cut -d "|" -f 3))
+input_tags=("$(echo "$form_input" | cut -d "|" -f 3)")
 declare -a new_bookmark_tags=()
 
 for t in "${input_tags[@]}"; do
-    t=$(convert_to_kebab_case $t)
+    t=$(convert_to_kebab_case "$t")
 
     # 1-char tags are not valid.
     if [[ "${#t}" -lt 2 ]]; then
@@ -95,7 +95,7 @@ done
 new_bookmark_tags="${new_bookmark_tags[@]}"
 
 if [[ -z "$new_bookmark_tags" ]]; then
-    echo "["$(basename "$0")"] ERROR: Missing or bad input for bookmark tags."
+    echo "[$(basename "$0")] ERROR: Missing or bad input for bookmark tags."
     exit 22
 fi
 
@@ -104,7 +104,7 @@ bookmark_file_path="$bookmark_dir/$new_bookmark_name_kebab.md"
 
 # NOTE: Should we also check the URL being already being bookmarked?
 if [[ -f "$bookmark_file_path" ]]; then
-    echo "["$(basename "$0")"] ERROR: Bookmark already exists: \`$bookmark_file_path\`"
+    echo "[$(basename "$0")] ERROR: Bookmark already exists: \`$bookmark_file_path\`"
     exit 23
 fi
 

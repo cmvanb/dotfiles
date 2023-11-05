@@ -33,7 +33,7 @@ parse_conf () {
             rhs="${rhs%%\#*}"
 
             # Remove trailing spaces.
-            rhs="$(echo $rhs | xargs)"
+            rhs="$(echo "$rhs" | xargs)"
 
             # Remove opening string quotes.
             rhs="${rhs%\"*}"
@@ -44,4 +44,6 @@ parse_conf () {
             conf_vars[$lhs]="$rhs"
         fi
     done < "$conf_file"
+
+    export conf_vars
 }

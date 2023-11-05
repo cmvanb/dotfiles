@@ -5,7 +5,7 @@
 
 if [[ "${TRACE-0}" == "1" ]]; then set -o xtrace; fi
 
-scriptName=`basename "$0"`
+scriptName=$(basename "$0")
 
 # Print the usage instructions.
 usage() {
@@ -29,13 +29,13 @@ while getopts ":-:" option; do
             ;;
         help)
             usage
-            exit -1
+            exit 1
             ;;
         *)
             echo "Invalid parameter \`$OPTARG\`." >&2
             echo "" >&2
             usage
-            exit -1
+            exit 1
             ;;
     esac
 done
@@ -57,7 +57,7 @@ screenshotDir="${XDG_PICTURES_DIR:-$HOME/Media/Images}/screenshots"
 mkdir -p $screenshotDir
 
 # Screenshot file name.
-currentDateTime=`date +"%Y-%m-%d--%H-%M-%S"`
+currentDateTime=$(date +"%Y-%m-%d--%H-%M-%S")
 
 # Screenshot file path.
 filePath="$screenshotDir/$currentDateTime.jpg"
@@ -100,5 +100,3 @@ else
         xdg-open "$filePath"
     fi
 fi
-
-
