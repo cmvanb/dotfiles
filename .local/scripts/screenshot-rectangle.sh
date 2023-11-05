@@ -53,8 +53,8 @@ fatal_error() {
 }
 
 # Where to save screenshots.
-screenshotDir="${XDG_PICTURES_DIR:-$HOME/Media/Images}/screenshots"
-mkdir -p $screenshotDir
+screenshotDir="${XDG_PICTURES_DIR:-"$HOME/Media/Images"}/screenshots"
+mkdir -p "$screenshotDir"
 
 # Screenshot file name.
 currentDateTime=$(date +"%Y-%m-%d--%H-%M-%S")
@@ -77,7 +77,7 @@ fi
 # If `upload` flag was passed, upload screenshot to image share host and
 # dispatch success notification.
 if [[ "$upload" == true ]]; then
-    url=$(0x0 -f $filePath 2>/dev/null)
+    url=$(0x0 -f "$filePath" 2>/dev/null)
 
     message="Screenshot saved to $filePath and uploaded to $url"
     log "$message"
