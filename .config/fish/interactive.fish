@@ -90,7 +90,7 @@ bind ')' self-insert expand-abbr
 # Expand ... to ../..
 bind . 'expand-dot-to-double-dot'
 
-# Theming
+# Theme
 # see: https://fishshell.com/docs/current/interactive.html#color
 #-------------------------------------------------------------------------------
 
