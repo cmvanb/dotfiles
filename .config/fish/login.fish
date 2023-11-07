@@ -25,7 +25,7 @@ set -x XDG_DOCUMENTS_DIR $HOME/Documents
 set -x XDG_DOWNLOAD_DIR $HOME/Downloads
 set -x XDG_MUSIC_DIR $HOME/Media/Music
 set -x XDG_PICTURES_DIR $HOME/Media/Images
-set -x XDG_TEMPLATES_DIR $HOME/.local/templates
+set -x XDG_TEMPLATES_DIR $XDG_DATA_HOME/templates
 set -x XDG_VIDEOS_DIR $HOME/Media/Videos
 
 # NOTE: This really should be independent of the shell configuration...

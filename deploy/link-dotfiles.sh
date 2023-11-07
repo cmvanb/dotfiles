@@ -12,7 +12,7 @@ bin_dir=${XDG_BIN_HOME:-$HOME/.local/bin}
 config_dir=${XDG_CONFIG_HOME:-$HOME/.config}
 data_dir=${XDG_DATA_HOME:-$HOME/.local/share}
 scripts_dir=${XDG_SCRIPTS_HOME:-$HOME/.local/scripts}
-templates_dir=${XDG_TEMPLATES_DIR:-$HOME/.local/templates}
+templates_dir=${XDG_TEMPLATES_DIR:-$data_dir/templates}
 
 # Imports
 #-------------------------------------------------------------------------------
@@ -80,7 +80,7 @@ force_link "$source_dir/.local/scripts/wl-rotate-display.sh" "$scripts_dir/wl-ro
 
 # Templates
 mkdir -p $templates_dir
-force_link "$source_dir/.local/templates/bookmark.md~esh" "$templates_dir/bookmark.md~esh"
+force_link "$source_dir/.local/share/templates/bookmark.md~esh" "$templates_dir/bookmark.md~esh"
 
 # XDG .desktop files
 mkdir -p $data_dir
