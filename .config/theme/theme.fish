@@ -2,6 +2,12 @@
 # System theme Fish API
 #-------------------------------------------------------------------------------
 
+set config_dir $XDG_CONFIG_HOME/theme
+set lib_dir $XDG_OPT_HOME/theme
+
+# Parsing and lookup functions
+#-------------------------------------------------------------------------------
+
 function dict_get --argument-names key
     eval echo -n \$'__var_'$key
 end
@@ -9,9 +15,6 @@ end
 function dict_set --argument-names key value
     set -g '__var_'$key $value
 end
-
-# Parsing
-#-------------------------------------------------------------------------------
 
 function parse_vars --argument-names filePath
     test -z $filePath && set filePath $XDG_CONFIG_HOME"/theme/colors"
@@ -100,13 +103,7 @@ function parse_vars --argument-names filePath
     return 0
 end
 
-# Entry point
-#-------------------------------------------------------------------------------
-
-parse_vars $XDG_CONFIG_HOME"/theme/colors"
-parse_vars $XDG_CONFIG_HOME"/theme/fonts"
-
-# Lookup
+# API
 #-------------------------------------------------------------------------------
 
 function color_named --argument-names key
@@ -121,7 +118,16 @@ function color_zerox --argument-names key
     eval echo -n '0x'(dict_get $key)
 end
 
+function color_256 --argument-names key
+    $lib_dir/color-lookup-256-index.sh $key
+end
+
 function font --argument-names key
     eval echo -n (dict_get $key)
 end
 
+# Parse the system theme variables.
+#-------------------------------------------------------------------------------
+
+parse_vars $config_dir/colors
+parse_vars $config_dir/fonts

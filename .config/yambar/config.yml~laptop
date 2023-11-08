@@ -1,4 +1,4 @@
-<% source $XDG_CONFIG_HOME/theme/theme.sh %>bar:
+<% source $XDG_OPT_HOME/theme/theme.sh %>bar:
   height: 20
   location: top
 

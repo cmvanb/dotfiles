@@ -8,7 +8,7 @@
 import os
 import sys
 
-sys.path.append(f"{os.environ['XDG_CONFIG_HOME']}/theme")
+sys.path.append(f"{os.environ['XDG_OPT_HOME']}/theme")
 import theme
 
 # General settings

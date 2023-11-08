@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 #-------------------------------------------------------------------------------
 # System theme Shell API
 #
@@ -7,35 +7,47 @@
 # convenience.
 #-------------------------------------------------------------------------------
 
-source $XDG_CONFIG_HOME/theme/colors
-source $XDG_CONFIG_HOME/theme/fonts
+config_dir="$XDG_CONFIG_HOME/theme"
+lib_dir="$XDG_OPT_HOME/theme"
+
+# API
+#-------------------------------------------------------------------------------
 
 color_named () {
-    echo -n ${1:1}
+    echo -n "${1:1}"
 }
 
 # Usage: `$(color_hash $colorname)`
 color_hash () {
-    echo -n \#${1:1}
+    echo -n "#${1:1}"
 }
 
 # Usage: `$(color_zerox $colorname)`
 color_zerox () {
-    echo -n 0x${1:1}
+    echo -n "0x${1:1}"
 }
 
 # Usage: `$(color_ansi $colorfg $colorbg)`
 color_ansi () {
-    $XDG_SCRIPTS_HOME/color-hex-to-ansi.sh --fg=${1:1} --bg=${2:1}
+    "$lib_dir/color-hex-to-ansi.sh" --fg="${1:1}" --bg="${2:1}"
 }
 
 # Usage: `$(color_ansi_fg $colorfg)`
 color_ansi_fg () {
-    $XDG_SCRIPTS_HOME/color-hex-to-ansi.sh --fg=${1:1}
+    "$lib_dir/color-hex-to-ansi.sh" --fg="${1:1}"
 }
 
 # Usage: `$(color_ansi_reset)`
 color_ansi_reset () {
-    $XDG_SCRIPTS_HOME/color-hex-to-ansi.sh --reset
+    "$lib_dir/color-hex-to-ansi.sh" --reset
 }
 
+color_256 () {
+    "$lib_dir/color-lookup-256-index.sh" "$1"
+}
+
+# Import the system theme variables.
+#-------------------------------------------------------------------------------
+
+source "$config_dir/colors"
+source "$config_dir/fonts"

@@ -6,7 +6,6 @@
 set -euo pipefail
 
 bash_dir=$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)
-echo $bash_dir
 source_dir=$(realpath "$bash_dir/..")
 
 # Imports
@@ -39,11 +38,11 @@ export XDG_CONFIG_HOME="$HOME/.config"
 echo "Deploying dotfiles from \`$source_dir\` to \`$HOME\`..."
 
 source "$bash_dir/link-dotfiles.sh"
+source "$bash_dir/configure-theme.sh"
 source "$bash_dir/generate-dotfiles-templates.sh"
 source "$bash_dir/apply-host-configuration.sh"
 source "$bash_dir/configure-syncthing.sh"
 source "$bash_dir/enable-systemd-services.sh"
 source "$bash_dir/install-user-packages.sh"
-source "$bash_dir/configure-theme.sh"
 
 echo "...deployment complete."

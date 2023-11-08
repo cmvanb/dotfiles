@@ -52,7 +52,7 @@ riverctl hide-cursor timeout 3000
 # Styling
 #-------------------------------------------------------------------------------
 
-source "$XDG_CONFIG_HOME/theme/theme.sh"
+source "$XDG_OPT_HOME/theme/theme.sh"
 
 riverctl background-color "$(color_zerox $system_bg)"
 riverctl border-color-focused "$(color_zerox $primary_6)"

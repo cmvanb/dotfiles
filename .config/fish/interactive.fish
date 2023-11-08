@@ -11,7 +11,7 @@ source $XDG_CONFIG_HOME/shell/interactive
 # Aliases & Abbreviations
 #-------------------------------------------------------------------------------
 
-alias eza "eza -l --group-directories-first"
+alias eza "eza -l --group-directories-first --time-style=long-iso"
 alias bat "bat --force-colorization --no-paging --style=grid,numbers"
 
 abbr -a gs git status
@@ -94,15 +94,11 @@ bind . 'expand-dot-to-double-dot'
 # see: https://fishshell.com/docs/current/interactive.html#color
 #-------------------------------------------------------------------------------
 
-# Import and parse system colors.
-source $XDG_CONFIG_HOME/theme/theme.fish
+# Parse system theme and provide API.
+source $XDG_OPT_HOME/theme/theme.fish
 
-# Configure directory colors (dircolors, ls).
-eval (dircolors --c-shell $XDG_CONFIG_HOME/theme/dircolors-16)
-
-# TODO: Implement theme function to get the terminal color code.
-# Configure eza colors (based on directory colors).
-set -x EZA_COLORS reset:da=37:$LS_COLORS
+# Configure directory colors (ls, eza, lf).
+source $XDG_OPT_HOME/theme/configure-dircolors.fish
 
 # Syntax
 set -U fish_color_autosuggestion (color_named 'text_8')
@@ -128,8 +124,8 @@ set -U fish_pager_color_selected_background --background=(color_named 'primary_7
 set -U fish_pager_color_selected_completion (color_named 'text_15')
 set -U fish_pager_color_selected_description (color_named 'text_15')
 
-# Unknown
 # TODO: Find where these colors are used by fish.
+# Unknown
 set -U fish_color_escape (color_named 'debug')
 set -U fish_color_cancel (color_named 'debug') # -r
 set -U fish_color_history_current (color_named 'debug') # --bold

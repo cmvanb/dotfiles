@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #-------------------------------------------------------------------------------
-# Convert a terminal color index (0 -> 15) to an ANSI terminal escape sequence.
+# Convert a terminal color index (0 -> 255) to an ANSI terminal escape sequence.
 #
 # Useful for pretty printing.
 #-------------------------------------------------------------------------------

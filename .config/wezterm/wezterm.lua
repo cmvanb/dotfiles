@@ -300,7 +300,6 @@ return {
             theme.color_hash('ansi_brwhite'),
         },
 
-        -- TODO: Update indexed colors.
         indexed = {
             [16] = theme.color_hash('primary_0'),
             [17] = theme.color_hash('primary_1'),

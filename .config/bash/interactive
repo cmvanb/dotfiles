@@ -27,7 +27,7 @@ export INPUTRC="$XDG_CONFIG_HOME/readline/config"
 # Aliases
 #-------------------------------------------------------------------------------
 
-alias eza="eza -l --group-directories-first"
+alias eza="eza -l --group-directories-first --time-style=long-iso"
 alias bat="bat --force-colorization --no-paging --style=grid,numbers"
 
 alias gs="git status"
@@ -69,15 +69,11 @@ bind '"\C-y":"clear\C-m eza -al \C-m"'
 # Theme
 #-------------------------------------------------------------------------------
 
-# Import and parse system colors.
-source "$XDG_CONFIG_HOME/theme/theme.sh"
+# Parse system theme and provide API.
+source "$XDG_OPT_HOME/theme/theme.sh"
 
-# Configure directory colors (dircolors, ls).
-eval "$(dircolors --bourne-shell "$XDG_CONFIG_HOME/theme/dircolors-16")"
-
-# TODO: Implement theme function to get the terminal color code.
-# Configure eza colors (based on directory colors).
-export EZA_COLORS="reset:da=37:$LS_COLORS"
+# Configure directory colors (ls, eza, lf).
+source "$XDG_OPT_HOME/theme/configure-dircolors.sh"
 
 # LF CD integration
 #-------------------------------------------------------------------------------
@@ -94,9 +90,9 @@ construct_prompt() {
     # Login
     local user=$(whoami)
     if [[ "$user" == "root" ]]; then
-        user="\[$(color_ansi_fg $ansi_brred)\]\u\[$(color_ansi_reset)\]"
+        user="\[$(color_ansi_fg "$ansi_brred")\]\u\[$(color_ansi_reset)\]"
     else
-        user="\[$(color_ansi_fg $ansi_brgreen)\]\u\[$(color_ansi_reset)\]"
+        user="\[$(color_ansi_fg "$ansi_brgreen")\]\u\[$(color_ansi_reset)\]"
     fi
 
     local separator="@" && [[ "$TERM" != "linux" ]] && separator="⋅"
@@ -106,23 +102,23 @@ construct_prompt() {
     local login="$user$separator$hostname "
 
     # CWD
-    local cwd="\[$(color_ansi_fg $ansi_blue)\]\w\[$(color_ansi_reset)\] "
+    local cwd="\[$(color_ansi_fg "$ansi_blue")\]\w\[$(color_ansi_reset)\] "
 
     # Git status
     local vcs=""
 
     local git_symbol="" && [[ "$TERM" != "linux" ]] && git_symbol=" "
 
-    local git_color="\[$(color_ansi_fg $ansi_green)\]"
+    local git_color="\[$(color_ansi_fg "$ansi_green")\]"
 
     local git_status=$(git status 2>/dev/null | grep "Your branch is ahead" 2>/dev/null)
     if [[ -n "$git_status" ]]; then
-        git_color="\[$(color_ansi_fg $ansi_yellow)\]"
+        git_color="\[$(color_ansi_fg "$ansi_yellow")\]"
     fi
 
     local git_status=$(git status --porcelain 2>/dev/null)
     if [[ -n "$git_status" ]]; then
-        git_color="\[$(color_ansi_fg $ansi_yellow)\]"
+        git_color="\[$(color_ansi_fg "$ansi_yellow")\]"
     fi
 
     local git_branch=$(git branch --show-current 2>/dev/null)
@@ -146,13 +142,13 @@ construct_prompt() {
     fi
 
     if [[ -n "$venv_name" ]]; then
-        venv="\[$(color_ansi_fg $ansi_magenta)\]$venv_symbol$venv_name\[$(color_ansi_reset)\] "
+        venv="\[$(color_ansi_fg "$ansi_magenta")\]$venv_symbol$venv_name\[$(color_ansi_reset)\] "
     fi
 
     # Prompt
-    local prompt="\[$(color_ansi_fg $text_15)\]\$\[$(color_ansi_reset)\] "
+    local prompt="\[$(color_ansi_fg "$text_15")\]\$\[$(color_ansi_reset)\] "
 
     PS1="$login$cwd$vcs$venv$prompt"
 }
-PROMPT_COMMAND='construct_prompt'
 
+PROMPT_COMMAND='construct_prompt'
