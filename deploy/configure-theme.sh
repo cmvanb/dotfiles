@@ -21,15 +21,16 @@ source "$source_dir/.local/scripts/fs-utils.sh"
 # TODO: Move all theme API scripts to `.local/opt/theme`.
 
 mkdir -p "$opt_dir/theme"
-force_link "$source_dir/.config/theme/theme.fish" "$opt_dir/theme/theme.fish"
-force_link "$source_dir/.config/theme/theme.lua" "$opt_dir/theme/theme.lua"
-force_link "$source_dir/.config/theme/theme.py" "$opt_dir/theme/theme.py"
-force_link "$source_dir/.config/theme/theme.sh" "$opt_dir/theme/theme.sh"
-force_link "$source_dir/.config/theme/color-hex-to-ansi.sh" "$opt_dir/theme/color-hex-to-ansi.sh"
-force_link "$source_dir/.config/theme/color-index-to-ansi.sh" "$opt_dir/theme/color-index-to-ansi.sh"
-force_link "$source_dir/.config/theme/color-lookup-256-index.sh" "$opt_dir/theme/color-lookup-256-index.sh"
-force_link "$source_dir/.config/theme/configure-dircolors.sh" "$opt_dir/theme/configure-dircolors.sh"
-force_link "$source_dir/.config/theme/configure-dircolors.fish" "$opt_dir/theme/configure-dircolors.fish"
+force_link "$source_dir/.local/opt/theme/color-hex-to-ansi.sh" "$opt_dir/theme/color-hex-to-ansi.sh"
+force_link "$source_dir/.local/opt/theme/color-index-to-ansi.sh" "$opt_dir/theme/color-index-to-ansi.sh"
+force_link "$source_dir/.local/opt/theme/color-lookup-256-index.sh" "$opt_dir/theme/color-lookup-256-index.sh"
+force_link "$source_dir/.local/opt/theme/configure-dircolors.fish" "$opt_dir/theme/configure-dircolors.fish"
+force_link "$source_dir/.local/opt/theme/configure-dircolors.sh" "$opt_dir/theme/configure-dircolors.sh"
+force_link "$source_dir/.local/opt/theme/configure-gtk.sh" "$opt_dir/theme/configure-gtk.sh"
+force_link "$source_dir/.local/opt/theme/theme.fish" "$opt_dir/theme/theme.fish"
+force_link "$source_dir/.local/opt/theme/theme.lua" "$opt_dir/theme/theme.lua"
+force_link "$source_dir/.local/opt/theme/theme.py" "$opt_dir/theme/theme.py"
+force_link "$source_dir/.local/opt/theme/theme.sh" "$opt_dir/theme/theme.sh"
 
 # Select system theme
 #-------------------------------------------------------------------------------
@@ -47,7 +48,7 @@ mkdir -p "$config_dir/bat/themes"
 esh "$source_dir/.config/theme/carbon-dark.tmTheme~esh" > "$config_dir/bat/themes/carbon-dark.tmTheme"
 
 mkdir -p "$config_dir/theme"
-esh "$source_dir/.config/theme/dircolors-256~esh" > "$config_dir/theme/dircolors-256"
+esh "$source_dir/.config/theme/dircolors~esh" > "$config_dir/theme/dircolors"
 esh "$source_dir/.config/theme/eza-colors~esh" > "$config_dir/theme/eza-colors"
 
 # Re-build bat cache
@@ -69,4 +70,4 @@ source "$opt_dir/theme/configure-dircolors.sh"
 
 echo "Configuring GTK."
 
-source "$source_dir/.config/theme/configure-gtk.sh"
+source "$opt_dir/theme/configure-gtk.sh"

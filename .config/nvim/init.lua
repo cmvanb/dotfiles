@@ -30,4 +30,3 @@ Loader.init()
 
 -- Load key mappings last; some key mappings may depend on plugins.
 require('editor.keymaps')
-
