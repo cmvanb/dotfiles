@@ -58,6 +58,13 @@ echo "Re-building bat cache."
 
 /usr/bin/bat cache --build
 
+# Re-build 256-index cache
+#-------------------------------------------------------------------------------
+
+echo "Re-building 256-index cache."
+
+"$opt_dir/theme/color-lookup-256-index.sh" --cache
+
 # Configure directory colors
 #-------------------------------------------------------------------------------
 
