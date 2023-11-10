@@ -73,4 +73,3 @@ fi
 if [[ "$reset" == true ]]; then
     printf "\e[0m"
 fi
-

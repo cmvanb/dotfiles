@@ -10,4 +10,4 @@ if [[ -z "$1" ]]; then
     exit 1
 fi
 
-printf "\033]0; $1\007" > /dev/tty
+printf "\033]0; %s\007" "$1" > /dev/tty

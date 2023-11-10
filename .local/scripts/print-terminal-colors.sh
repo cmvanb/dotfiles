@@ -47,7 +47,7 @@ function contrast_color {
         band_max=$(( band_base + 15 ))
         band_index=$(( (color - 16) % 16 ))
 
-        (( band_index < 8 )) && printf "$band_max" || printf "$band_base"
+        (( band_index < 8 )) && printf "%s" "$band_max" || printf "%s" "$band_base"
         return
     fi
 
@@ -58,7 +58,7 @@ function contrast_color {
         band_max=$(( band_base + 9 ))
         band_index=$(( (color - 10) % 10 ))
 
-        (( band_index < 5 )) && printf "$band_max" || printf "$band_min"
+        (( band_index < 5 )) && printf "%s" "$band_max" || printf "%s" "$band_min"
         return
     fi
 

@@ -6,6 +6,5 @@
 set -euo pipefail
 
 for file in *; do
-    $XDG_SCRIPTS_HOME/rename-kebabcase.sh "$file"
+    "$XDG_SCRIPTS_HOME/rename-kebabcase.sh" "$file"
 done
-

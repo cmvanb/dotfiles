@@ -8,6 +8,7 @@ set -euo pipefail
 # Imports
 #-------------------------------------------------------------------------------
 
+# shellcheck disable=SC1091
 source "$XDG_OPT_HOME/shell-utils/debug.sh"
 
 # Validation

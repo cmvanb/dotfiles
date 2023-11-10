@@ -8,10 +8,13 @@ set -o pipefail
 
 # Functions
 #-------------------------------------------------------------------------------
+
 bw_abort ()
 {
     # Always lock and logout.
     bw_finalize
+
+    # Exit with the parameterized error code.
     exit $1
 }
 
@@ -28,18 +31,21 @@ newline ()
 
 # Input validation
 #-------------------------------------------------------------------------------
+
 if [[ -z $1 ]]; then
-    echo "Missing parameter: TARGET" 1>&2
+    echo "Missing parameter: target" 1>&2
     newline
 
     exit 1
 fi
 
-TARGET=$1
+declare target=$1
 
 # Retrieve secrets
 #-------------------------------------------------------------------------------
-source $XDG_SECRETS_HOME/bitwarden
+
+# shellcheck disable=SC1091
+source "$XDG_SECRETS_HOME/bitwarden"
 
 if [[ -z $BW_CLIENTID ]]; then
     echo "Missing secret: BW_CLIENTID" 1>&2
@@ -57,11 +63,10 @@ fi
 
 # Login to bitwarden CLI with personal API key
 #-------------------------------------------------------------------------------
+
 echo "Login to Bitwarden"
 
-LOGIN_RESULT=$(BW_CLIENTID=$BW_CLIENTID BW_CLIENTSECRET=$BW_CLIENTSECRET bw login --apikey --raw)
-
-if [[ $? -ne 0 ]]; then
+if ! BW_CLIENTID="$BW_CLIENTID" BW_CLIENTSECRET="$BW_CLIENTSECRET" bw login --apikey --raw; then
     echo "Error logging in." 1>&2
     newline
 
@@ -69,21 +74,22 @@ if [[ $? -ne 0 ]]; then
 fi
 
 # TODO: Improve handling of `already logged in`.
-# echo $LOGIN_RESULT =~ "You are already logged in"
+# echo $LOGIN_result =~ "You are already logged in"
 #
 # if [[ $? -ne 0 ]]; then
-#     if [[ LOGIN_RESULT =~ "You are already logged in" ]]; then
+#     if [[ LOGIN_result =~ "You are already logged in" ]]; then
 #         echo 'Already logged in, continuing.'
 #     else
-#         echo $LOGIN_RESULT
+#         echo $LOGIN_result
 #         bw_abort 4
 #     fi
 # fi
 
 # Require master password
 #-------------------------------------------------------------------------------
-SESSION_KEY=$(bw unlock)
-if [[ $? -ne 0 ]]; then
+
+declare session_key
+if ! session_key=$(bw unlock); then
     echo "Error unlocking vault." 1>&2
     newline
 
@@ -92,58 +98,60 @@ fi
 
 # Retrieve target password with session key
 #-------------------------------------------------------------------------------
-# RESULT=$(bw get item $TARGET --session $SESSION_KEY)
-RESULT=$(bw list items --search $TARGET --session $SESSION_KEY)
-if [[ $? -ne 0 ]]; then
+
+declare result
+if ! result=$(bw list items --search "$target" --session "$session_key"); then
     echo "Error listing items." 1>&2
     newline
 
     bw_abort 6
 fi
 
-ITEMS_COUNT=$(echo $RESULT | jq ". | length")
+declare items_count
+items_count=$(echo "$result" | jq ". | length")
 
 newline
 
-if [[ $ITEMS_COUNT -lt 1 ]]; then
-    echo "Did not find any items matching input: \`$TARGET\`." 1>&2
+declare name
+declare password
+
+if [[ $items_count -lt 1 ]]; then
+    echo "Did not find any items matching input: \`$target\`." 1>&2
     newline
 
     bw_abort 8
 
-elif [[ $ITEMS_COUNT -eq 1 ]]; then
-    NAME=$(printf "%s" "$RESULT" | jq -r ".[] | .name")
-    PASSWORD=$(printf "%s" "$RESULT" | jq -r ".[] | .login.password")
+elif [[ $items_count -eq 1 ]]; then
+    name=$(printf "%s" "$result" | jq -r ".[] | .name")
+    password=$(printf "%s" "$result" | jq -r ".[] | .login.password")
 
-    echo "Found item: \`$NAME\`"
+    echo "Found item: \`$name\`"
     newline
 
-elif [[ $ITEMS_COUNT -gt 1 ]]; then
-    echo "Found multiple items matching input: \`$TARGET\`." 1>&2
+elif [[ $items_count -gt 1 ]]; then
+    echo "Found multiple items matching input: \`$target\`." 1>&2
     newline
 
-    NAME="$(printf "%s" "$RESULT" | jq -r ".[].name" | fzf --reverse)"
-
-    if [[ $? -ne 0 ]]; then
-        echo "Error matching input: \`$TARGET\`." 1>&2
+    if ! name="$(printf "%s" "$result" | jq -r ".[].name" | fzf --reverse)"; then
+        echo "Error matching input: \`$target\`." 1>&2
         newline
 
         bw_abort 7
     fi
 
-    PASSWORD="$(printf "%s" "$RESULT" | jq -r ".[] | select(.name == \"$NAME\") | .login.password")"
+    password="$(printf "%s" "$result" | jq -r ".[] | select(.name == \"$name\") | .login.password")"
 
-    echo "Selected item: \`$NAME\`"
+    echo "Selected item: \`$name\`"
 fi
 
 # TODO: Implement a solution for the linux virtual terminal scenario.
 # Copy result to clipboard so we can use it immediately
-wl-copy $PASSWORD
+wl-copy "$password"
 
 echo "Password is in Wayland clipboard."
 newline
 
 # Always lock and logout
 #-------------------------------------------------------------------------------
-bw_finalize
 
+bw_finalize

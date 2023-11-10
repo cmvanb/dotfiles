@@ -5,6 +5,7 @@
 
 set -euo pipefail
 
+# shellcheck disable=SC1091
 source "$XDG_OPT_HOME/shell-utils/name-formatting.sh"
 
 # TODO: Consider making this a utility function?

@@ -50,4 +50,3 @@ path_array () {
 
     echo "${result[@]}"
 }
-

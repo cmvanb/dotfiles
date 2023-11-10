@@ -208,4 +208,3 @@ function theme.print_colors()
 end
 
 return theme
-

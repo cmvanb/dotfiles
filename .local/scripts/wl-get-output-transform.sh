@@ -5,7 +5,7 @@
 
 set -uo pipefail
 
-output=$(wlr-randr | grep -m1 -n -w $1)
+output=$(wlr-randr | grep -m1 -n -w "$1")
 
 if [[ -z $output ]]; then
     echo "ERROR: output named \`$1\` not found"
@@ -13,10 +13,10 @@ if [[ -z $output ]]; then
 fi
 
 # Find the line number on which the display info begins.
-line_number=$(echo $output | cut -d: -f1)
+line_number=$(echo "$output" | cut -d: -f1)
 
 # Tail the output from that line and match the first `Transform` line, then slice that match on spaces.
 transform=($(wlr-randr | tail -n +"$line_number" | awk '/Transform/{print $line; exit}'))
 
 # Print the second item in the array
-echo ${transform[1]}
+echo "${transform[1]}"

@@ -62,4 +62,3 @@ fi
 if [[ $reset -eq 1 ]]; then
     printf "\e[0m"
 fi
-

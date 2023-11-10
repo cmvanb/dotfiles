@@ -96,4 +96,3 @@ nf_error() {
     echo "Error: $2"
     exit $1
 }
-

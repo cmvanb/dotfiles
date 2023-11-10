@@ -9,4 +9,5 @@ config_dir="$XDG_CONFIG_HOME/theme"
 eval "$(dircolors --bourne-shell "$config_dir/dircolors")"
 
 # Configure eza colors.
-export EZA_COLORS="$(tr -d '\n' < "$config_dir/eza-colors")$LS_COLORS"
+EZA_COLORS="$(tr -d '\n' < "$config_dir/eza-colors")$LS_COLORS"
+export EZA_COLORS

@@ -3,9 +3,7 @@
 # Convert a markdown file to HTML whenever it changes.
 #-------------------------------------------------------------------------------
 
-set -o errexit
-set -o pipefail
-set -o nounset
+set -euo pipefail
 
 if [ "$#" -ne 1 ]; then
     echo "Expected only one argument: the filename of the markdown file. Received $# arguments."
@@ -20,4 +18,4 @@ if [ "$extension" != "md" ]; then
     exit 1
 fi
 
-echo $1 | entr -r $XDG_SCRIPTS_HOME/markdown-to-html.sh $1
+echo "$1" | entr -r "$XDG_SCRIPTS_HOME/markdown-to-html.sh" "$1"

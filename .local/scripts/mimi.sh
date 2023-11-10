@@ -30,7 +30,8 @@ find_desktop_file_in_path() {
 }
 
 find_desktop_file_by() {
-    local desktop="$(find_desktop_file_in_path "$XDG_DATA_HOME/applications" MimeType "$1")"
+    local desktop
+    desktop="$(find_desktop_file_in_path "$XDG_DATA_HOME/applications" MimeType "$1")"
 
     if [[ -z $desktop ]]; then
         local search_dirs=()
@@ -57,7 +58,7 @@ find_desktop_file_by() {
         done
     fi
 
-    echo $desktop
+    echo "$desktop"
 }
 
 url_decode() {
@@ -65,7 +66,7 @@ url_decode() {
 }
 
 run() {
-    $SHELL -c "'$1' $(printf "%q " "${@:2}")"
+    "$SHELL" -c "'$1' $(printf "%q " "${@:2}")"
 }
 
 fork_run() {
@@ -113,13 +114,13 @@ general_mime=''
 
 # fix file:// with support for file://.html#section
 if [[ "$arg" =~ ^file://([^#]*\.html)#.*$ ]]; then
-    protocol=file
-    mime=text/html
-    ext=html
+    protocol="file"
+    mime="text/html"
+    ext="html"
 elif [[ "$arg" =~ ^file://(.*)$ ]]; then
     # strip file://
     arg="$(url_decode <<<"${BASH_REMATCH[1]}")"
-    protocol=file
+    protocol="file"
 fi
 
 if [[ -e "$arg" ]]; then
@@ -215,10 +216,10 @@ for search in $mime $general_mime; do
 done
 
 # ask
-if exists $MENU; then
-    app=($(IFS=:; stest -flx $PATH | sort -u | $MENU -p "how to open $(basename $arg)" $MENUARGS))
+if exists "$MENU"; then
+    app=($(IFS=:; stest -flx "$PATH" | sort -u | "$MENU" -p "how to open $(basename "$arg")" "$MENUARGS"))
     [[ "${app[*]}" ]] && fork_run "${app[@]}" "$arg"
 elif exists notify-send; then
-    notify-send "[$(basename $0)] ERROR: \`$(basename "$1")\` has unhandled mime type \`$mime\`"
+    notify-send "[$(basename "$0")] ERROR: \`$(basename "$1")\` has unhandled mime type \`$mime\`"
 fi
 

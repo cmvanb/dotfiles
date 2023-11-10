@@ -22,4 +22,6 @@ fi
 
 outname="${filename%.*}.html"
 
-pandoc -s -f markdown -t html --toc --css $XDG_DATA_HOME/pandoc/templates/github-pandoc.css $filename > $outname
+pandoc -s -f markdown -t html --toc \
+    --css "$XDG_DATA_HOME/pandoc/templates/github-pandoc.css" \
+    "$filename" > "$outname"

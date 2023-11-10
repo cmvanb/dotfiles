@@ -120,4 +120,3 @@ def print_colors():
 
     for k, v in colors.items():
         print(f'{k} -> {v}')
-

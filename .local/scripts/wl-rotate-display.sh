@@ -6,19 +6,20 @@
 set -o nounset
 set -o pipefail
 
-OUTPUT="$1"
+declare output="$1"
 
-TRANSFORM="$($XDG_SCRIPTS_HOME/wl-get-output-transform.sh $OUTPUT)"
+declare transform
+transform="$("$XDG_SCRIPTS_HOME"/wl-get-output-transform.sh "$output")"
 
-if [ $TRANSFORM = "normal" ]; then
-    NEW_TRANSFORM="90"
-elif [ $TRANSFORM = 90 ]; then
-    NEW_TRANSFORM="180"
-elif [ $TRANSFORM = 180 ]; then
-    NEW_TRANSFORM="270"
+declare new_transform
+if [ "$transform" = "normal" ]; then
+    new_transform="90"
+elif [ "$transform" = 90 ]; then
+    new_transform="180"
+elif [ "$transform" = 180 ]; then
+    new_transform="270"
 else
-    NEW_TRANSFORM="normal"
+    new_transform="normal"
 fi
 
-wlr-randr --output $OUTPUT --transform $NEW_TRANSFORM
-
+wlr-randr --output "$output" --transform "$new_transform"

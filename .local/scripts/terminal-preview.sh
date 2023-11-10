@@ -8,7 +8,9 @@ set -uo pipefail
 # Imports
 #-------------------------------------------------------------------------------
 
+# shellcheck disable=SC1091
 source "$XDG_OPT_HOME/shell-utils/debug.sh"
+# shellcheck disable=SC1091
 source "$XDG_OPT_HOME/shell-utils/fs.sh"
 
 # Validation
@@ -61,8 +63,8 @@ elif [[ $mimetype == *"7z"* ]]; then
     7z l -ba "$1" | awk '{print $NF}' | tree --fromfile . | head -n -2
 
 elif [[ $mimetype == "application/json" ]] || [[ $mimetype == "text/plain" && $extension == "json" ]]; then
-    parsed=$(jq -C . "$1")
-    if [[ $? == 0 ]]; then
+    declare parsed
+    if parsed=$(jq -C . "$1"); then
         echo "$parsed" | bat --force-colorization --paging=never --style=numbers --wrap never
     else
         bat --force-colorization --paging=never --style=numbers --wrap never -f "$1"
