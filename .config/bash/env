@@ -4,7 +4,7 @@
 #-------------------------------------------------------------------------------
 
 # Tell Bash how to configure its environment (for *non-interactive* shells).
-export BASH_ENV=~/.config/bash/env
+export BASH_ENV="~/.config/bash/env"
 
 # No write permissions for group or others.
 umask 0022

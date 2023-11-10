@@ -46,12 +46,18 @@ export CARGO_HOME="$XDG_DATA_HOME/cargo"
 # User directories
 #-------------------------------------------------------------------------------
 
-mkdir -p $XDG_DOCUMENTS_DIR $XDG_DOWNLOAD_DIR $XDG_MUSIC_DIR $XDG_PICTURES_DIR $XDG_VIDEOS_DIR
+mkdir -p \
+    "$XDG_DOCUMENTS_DIR" \
+    "$XDG_DOWNLOAD_DIR" \
+    "$XDG_MUSIC_DIR" \
+    "$XDG_PICTURES_DIR" \
+    "$XDG_VIDEOS_DIR"
 
 # Path
 #-------------------------------------------------------------------------------
 
 # Import path utility functions.
+# shellcheck disable=SC1091
 source "$XDG_OPT_HOME/shell-utils/path.sh"
 
 # Add user binaries to path

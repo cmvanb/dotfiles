@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #-------------------------------------------------------------------------------
-# Bash profile
+# Bash configuration
 #
 # This file gets run in two cases:
 #   1. non-login interactive shell

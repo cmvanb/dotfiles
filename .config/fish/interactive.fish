@@ -96,15 +96,20 @@ bind ')' self-insert expand-abbr
 # Expand ... to ../..
 bind . 'expand-dot-to-double-dot'
 
+# LF CD integration
+#-------------------------------------------------------------------------------
+
+source $XDG_CONFIG_HOME/lf/lfcd.fish
+
 # Theme
 # see: https://fishshell.com/docs/current/interactive.html#color
 #-------------------------------------------------------------------------------
 
-# Parse system theme and provide API.
-source $XDG_OPT_HOME/theme/theme.fish
-
 # Configure directory colors (ls, eza, lf).
 source $XDG_OPT_HOME/theme/configure-dircolors.fish
+
+# Parse system theme and provide API.
+source $XDG_OPT_HOME/theme/theme.fish
 
 # Syntax
 set -U fish_color_autosuggestion (color_named 'text_8')
@@ -136,8 +141,3 @@ set -U fish_color_escape (color_named 'debug')
 set -U fish_color_cancel (color_named 'debug') # -r
 set -U fish_color_history_current (color_named 'debug') # --bold
 set -U fish_color_selection (color_named 'debug') # --bold --background=brblack
-
-# LF CD integration
-#-------------------------------------------------------------------------------
-
-source $XDG_CONFIG_HOME/lf/lfcd.fish

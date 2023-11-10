@@ -8,6 +8,7 @@ set -euo pipefail
 # Imports
 #-------------------------------------------------------------------------------
 
+# shellcheck disable=SC1091
 source "$XDG_OPT_HOME/shell-utils/debug.sh"
 
 # Validation
@@ -18,8 +19,9 @@ assert_dependency wofi
 # Select a bookmark
 #-------------------------------------------------------------------------------
 
-bookmarks_dir=$HOME/Wiki/bookmarks
+declare bookmarks_dir=$HOME/Wiki/bookmarks
 
+declare bookmarks
 bookmarks=$(fd . "$bookmarks_dir" --max-depth 1 --exec basename)
 
 # TODO: Use bookmark title from YAML frontmatter instead of file name.
@@ -34,11 +36,14 @@ bookmarks=$(fd . "$bookmarks_dir" --max-depth 1 --exec basename)
 #     echo "$i: $bookmark_title"
 # done
 
+declare bookmark
 bookmark=$(echo "$bookmarks" | wofi --prompt "Open bookmark" --show dmenu 2> /dev/null)
 
+declare bookmark_file
 bookmark_file="$bookmarks_dir/$bookmark"
 
-url=$(rg --only-matching --no-line-number "\(([^}]*)\)" $bookmark_file)
+declare url
+url=$(rg --only-matching --no-line-number "\(([^}]*)\)" "$bookmark_file")
 url=${url:1:-1}
 
-qutebrowser --target window --untrusted-args $url 2> /dev/null
+qutebrowser --target window --untrusted-args "$url" 2> /dev/null
