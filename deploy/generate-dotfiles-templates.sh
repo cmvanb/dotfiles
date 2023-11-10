@@ -44,3 +44,6 @@ mkdir -p "$config_dir/systemd/user"
 esh "$source_dir/.config/systemd/user/mako.service~esh" > "$config_dir/systemd/user/mako.service"
 esh "$source_dir/.config/systemd/user/ssh-agent.service~esh" > "$config_dir/systemd/user/ssh-agent.service"
 esh "$source_dir/.config/systemd/user/udiskie.service~esh" > "$config_dir/systemd/user/udiskie.service"
+
+mkdir -p "$config_dir/zathura"
+esh "$source_dir/.config/zathura/zathurarc~esh" > "$config_dir/zathura/zathurarc"

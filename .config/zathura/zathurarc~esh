@@ -1,0 +1,47 @@
+#-------------------------------------------------------------------------------
+# Zathura PDF viewer configuration
+#-------------------------------------------------------------------------------
+<% source $XDG_OPT_HOME/theme/theme.sh %>
+# Enable clipboard.
+set selection-clipboard clipboard
+
+# Don't recolor (invert) by default. Ctrl+r to invert.
+set recolor "false"
+
+# Don't change image hues when recoloring.
+set recolor-keephue "true"
+
+# Show notification when text is selected. Useful because the selection
+# mechanism is finicky.
+set selection-notification "true"
+
+set font "<%= $font_mono %> 14"
+
+set default-bg "<% color_hash $gray_0 %>"
+set default-fg "<% color_hash $gray_15 %>"
+
+set statusbar-bg "<% color_hash $primary_1 %>"
+set statusbar-fg "<% color_hash $text_15 %>"
+
+set inputbar-bg "<% color_hash $gray_0 %>"
+set inputbar-fg "<% color_hash $text_12 %>"
+
+set n-completion-items 10
+set completion-bg "<% color_hash $gray_0 %>"
+set completion-fg "<% color_hash $gray_15 %>"
+set completion-group-bg "<% color_hash $primary_1 %>"
+set completion-group-fg "#<% color_hash $gray_15 %>"
+set completion-highlight-bg "<% color_hash $primary_6 %>"
+set completion-highlight-fg "<% color_hash $text_15 %>"
+
+set notification-error-bg "<% color_hash $gray_0 %>"
+set notification-error-fg "<% color_hash $red_6 %>"
+
+set notification-warning-bg "<% color_hash $gray_0 %>"
+set notification-warning-fg "<% color_hash $yellow_6 %>"
+
+set notification-bg "<% color_hash $gray_0 %>"
+set notification-fg "<% color_hash $text_8 %>"
+
+set highlight-color "<% color_hash $magenta_5 %>"
+set highlight-active-color "#<% color_hash $green_4 %>"
