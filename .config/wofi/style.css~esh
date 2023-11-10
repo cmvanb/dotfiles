@@ -34,4 +34,3 @@
 #entry:selected {
     background-color: <% color_hash $primary_6 %>;
 }
-
