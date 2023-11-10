@@ -11,7 +11,7 @@ source $XDG_CONFIG_HOME/shell/interactive
 # Aliases & Abbreviations
 #-------------------------------------------------------------------------------
 
-alias eza "eza -l --group-directories-first --time-style=long-iso"
+alias eza "eza -l --color=always --group-directories-first --time-style=long-iso"
 alias bat "bat --force-colorization --no-paging --style=grid,numbers"
 
 abbr -a gs git status
