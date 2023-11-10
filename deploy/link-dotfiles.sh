@@ -11,13 +11,14 @@ home_dir=$HOME
 bin_dir=${XDG_BIN_HOME:-$HOME/.local/bin}
 config_dir=${XDG_CONFIG_HOME:-$HOME/.config}
 data_dir=${XDG_DATA_HOME:-$HOME/.local/share}
+opt_dir=${XDG_OPT_HOME:-$HOME/.local/opt}
 scripts_dir=${XDG_SCRIPTS_HOME:-$HOME/.local/scripts}
 templates_dir=${XDG_TEMPLATES_DIR:-$data_dir/templates}
 
 # Imports
 #-------------------------------------------------------------------------------
 
-source "$source_dir/.local/scripts/fs-utils.sh"
+source "$source_dir/.local/opt/shell-utils/fs.sh"
 
 # Link dotfiles
 #-------------------------------------------------------------------------------
@@ -29,7 +30,7 @@ mkdir -p "$home_dir/.ssh"
 force_link "$source_dir/.ssh/config" "$home_dir/.ssh/config"
 
 # Bin
-mkdir -p $bin_dir
+mkdir -p "$bin_dir"
 force_link "$source_dir/.local/bin/0x0" "$bin_dir/0x0"
 force_link "$source_dir/.local/bin/browse" "$bin_dir/browse"
 force_link "$source_dir/.local/bin/edit" "$bin_dir/edit"
@@ -45,43 +46,50 @@ force_link "$source_dir/.local/bin/view" "$bin_dir/view"
 force_link "$source_dir/.local/bin/xdg-open" "$bin_dir/xdg-open"
 
 # Scripts
-mkdir -p $scripts_dir
+mkdir -p "$scripts_dir"
 force_link "$source_dir/.local/scripts/add-bookmark.sh" "$scripts_dir/add-bookmark.sh"
-force_link "$source_dir/.local/scripts/debug-utils.sh" "$scripts_dir/debug-utils.sh"
 force_link "$source_dir/.local/scripts/estimate-disk-space-usage.sh" "$scripts_dir/estimate-disk-space-usage.sh"
 force_link "$source_dir/.local/scripts/fetch-password.sh" "$scripts_dir/fetch-password.sh"
-force_link "$source_dir/.local/scripts/fs-utils.sh" "$scripts_dir/fs-utils.sh"
 force_link "$source_dir/.local/scripts/generate-color-gradient-palette.py" "$scripts_dir/generate-color-gradient-palette.py"
-force_link "$source_dir/.local/scripts/lock-screen.sh" "$scripts_dir/lock-screen.sh"
 force_link "$source_dir/.local/scripts/kebabify.sh" "$scripts_dir/kebabify.sh"
 force_link "$source_dir/.local/scripts/kill-yambar.sh" "$scripts_dir/kill-yambar.sh"
+force_link "$source_dir/.local/scripts/lock-screen.sh" "$scripts_dir/lock-screen.sh"
 force_link "$source_dir/.local/scripts/markdown-to-html-on-changed.sh" "$scripts_dir/markdown-to-html-on-changed.sh"
 force_link "$source_dir/.local/scripts/markdown-to-html.sh" "$scripts_dir/markdown-to-html.sh"
 force_link "$source_dir/.local/scripts/matrix.sh" "$scripts_dir/matrix.sh"
 force_link "$source_dir/.local/scripts/mimi.sh" "$scripts_dir/mimi.sh"
-force_link "$source_dir/.local/scripts/name-formatting.sh" "$scripts_dir/name-formatting.sh"
 force_link "$source_dir/.local/scripts/open-qutebrowser-session.sh" "$scripts_dir/open-qutebrowser-session.sh"
-force_link "$source_dir/.local/scripts/path-utils.sh" "$scripts_dir/path-utils.sh"
 force_link "$source_dir/.local/scripts/print-environment.py" "$scripts_dir/print-environment.py"
 force_link "$source_dir/.local/scripts/print-terminal-colors.sh" "$scripts_dir/print-terminal-colors.sh"
 force_link "$source_dir/.local/scripts/rename-kebabcase.sh" "$scripts_dir/rename-kebabcase.sh"
 force_link "$source_dir/.local/scripts/screenshot-rectangle.sh" "$scripts_dir/screenshot-rectangle.sh"
 force_link "$source_dir/.local/scripts/select-bookmark.sh" "$scripts_dir/select-bookmark.sh"
 force_link "$source_dir/.local/scripts/set-terminal-title.sh" "$scripts_dir/set-terminal-title.sh"
-force_link "$source_dir/.local/scripts/string-utils.sh" "$scripts_dir/string-utils.sh"
 force_link "$source_dir/.local/scripts/terminal-preview.sh" "$scripts_dir/terminal-preview.sh"
-force_link "$source_dir/.local/scripts/view.sh" "$scripts_dir/view.sh"
 force_link "$source_dir/.local/scripts/view-stdin.sh" "$scripts_dir/view-stdin.sh"
+force_link "$source_dir/.local/scripts/view.sh" "$scripts_dir/view.sh"
+force_link "$source_dir/.local/scripts/vlc-webcam-test.sh" "$scripts_dir/vlc-webcam-test.sh"
 force_link "$source_dir/.local/scripts/wl-get-output-transform.sh" "$scripts_dir/wl-get-output-transform.sh"
 force_link "$source_dir/.local/scripts/wl-get-outputs.sh" "$scripts_dir/wl-get-outputs.sh"
+force_link "$source_dir/.local/scripts/wl-output-exists.sh" "$scripts_dir/wl-output-exists.sh"
 force_link "$source_dir/.local/scripts/wl-rotate-display.sh" "$scripts_dir/wl-rotate-display.sh"
 
+# Shell utilities
+mkdir -p "$opt_dir/shell-utils"
+force_link "$source_dir/.local/opt/shell-utils/debug.sh" "$opt_dir/shell-utils/debug.sh"
+force_link "$source_dir/.local/opt/shell-utils/fs.sh" "$opt_dir/shell-utils/fs.sh"
+force_link "$source_dir/.local/opt/shell-utils/linux.sh" "$opt_dir/shell-utils/linux.sh"
+force_link "$source_dir/.local/opt/shell-utils/name-formatting.sh" "$opt_dir/shell-utils/name-formatting.sh"
+force_link "$source_dir/.local/opt/shell-utils/parse-conf.sh" "$opt_dir/shell-utils/parse-conf.sh"
+force_link "$source_dir/.local/opt/shell-utils/path.sh" "$opt_dir/shell-utils/path.sh"
+force_link "$source_dir/.local/opt/shell-utils/string.sh" "$opt_dir/shell-utils/string.sh"
+
 # Templates
-mkdir -p $templates_dir
+mkdir -p "$templates_dir"
 force_link "$source_dir/.local/share/templates/bookmark.md~esh" "$templates_dir/bookmark.md~esh"
 
 # XDG .desktop files
-mkdir -p $data_dir
+mkdir -p "$data_dir"
 mkdir -p "$data_dir/applications"
 force_link "$source_dir/.local/share/applications/bitwarden.desktop" "$data_dir/applications/bitwarden.desktop"
 force_link "$source_dir/.local/share/applications/chromium.desktop" "$data_dir/applications/chromium.desktop"

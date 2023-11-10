@@ -5,7 +5,7 @@
 
 set -euo pipefail
 
-source $XDG_SCRIPTS_HOME/debug-utils.sh
+source "$XDG_OPT_HOME/shell-utils/debug.sh"
 
 assert_dependency neo-matrix
 

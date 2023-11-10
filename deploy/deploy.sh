@@ -5,17 +5,21 @@
 
 set -euo pipefail
 
+declare bash_dir
 bash_dir=$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)
+
+declare source_dir
 source_dir=$(realpath "$bash_dir/..")
 
 # Imports
 #-------------------------------------------------------------------------------
 
-source "$source_dir/.local/scripts/linux-utils.sh"
+source "$source_dir/.local/opt/shell-utils/linux.sh"
 
 # Determine binary path
 #-------------------------------------------------------------------------------
 
+declare distro_id
 distro_id=$(get_distro_id)
 
 if [[ $distro_id == "arch" ]]; then

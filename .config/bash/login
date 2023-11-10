@@ -52,7 +52,7 @@ mkdir -p $XDG_DOCUMENTS_DIR $XDG_DOWNLOAD_DIR $XDG_MUSIC_DIR $XDG_PICTURES_DIR $
 #-------------------------------------------------------------------------------
 
 # Import path utility functions.
-source $XDG_SCRIPTS_HOME/path-utils.sh
+source "$XDG_OPT_HOME/shell-utils/path.sh"
 
 # Add user binaries to path
 path_prepend "$XDG_BIN_HOME" PATH

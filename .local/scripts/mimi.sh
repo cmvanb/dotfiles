@@ -37,7 +37,7 @@ find_desktop_file_by() {
 
         # TODO: Works, but performance appears bad... needs further investigation.
         # if [[ -n $XDG_DATA_DIRS ]]; then
-        #     . $XDG_SCRIPTS_HOME/path-utils.sh
+        #     . $XDG_OPT_HOME/shell-utils/path.sh
         #     readarray -t search_dirs < <(path_array "$XDG_DATA_DIRS")
         # fi
 

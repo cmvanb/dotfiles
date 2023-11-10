@@ -8,7 +8,7 @@ set -euo pipefail
 # Imports
 #-------------------------------------------------------------------------------
 
-source $XDG_SCRIPTS_HOME/debug-utils.sh
+source "$XDG_OPT_HOME/shell-utils/debug.sh"
 
 # Validation
 #-------------------------------------------------------------------------------

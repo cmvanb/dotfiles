@@ -14,7 +14,7 @@
 source "$XDG_CONFIG_HOME/shell/interactive"
 
 # shellcheck disable=SC1091
-source "$XDG_SCRIPTS_HOME/string-utils.sh"
+source "$XDG_OPT_HOME/shell-utils/string.sh"
 
 # General configuration
 #-------------------------------------------------------------------------------

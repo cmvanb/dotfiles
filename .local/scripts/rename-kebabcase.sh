@@ -5,8 +5,9 @@
 
 set -euo pipefail
 
-source $XDG_SCRIPTS_HOME/name-formatting.sh
+source "$XDG_OPT_HOME/shell-utils/name-formatting.sh"
 
+# TODO: Consider making this a utility function?
 function try_move() {
     # NOTE: `mv` returns an error code if the source and destination are the
     # same, so exit early with a success code.

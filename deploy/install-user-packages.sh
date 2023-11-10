@@ -11,7 +11,7 @@ source_dir=$(realpath "$bash_dir/..")
 # Imports
 #-------------------------------------------------------------------------------
 
-source "$source_dir/.local/scripts/debug-utils.sh"
+source "$source_dir/.local/opt/shell-utils/debug.sh"
 
 # Validation
 #-------------------------------------------------------------------------------

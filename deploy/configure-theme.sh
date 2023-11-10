@@ -13,12 +13,10 @@ opt_dir=${XDG_OPT_HOME:-$HOME/.local/opt}
 # Imports
 #-------------------------------------------------------------------------------
 
-source "$source_dir/.local/scripts/fs-utils.sh"
+source "$source_dir/.local/opt/shell-utils/fs.sh"
 
 # Install system theme scripts
 #-------------------------------------------------------------------------------
-
-# TODO: Move all theme API scripts to `.local/opt/theme`.
 
 mkdir -p "$opt_dir/theme"
 force_link "$source_dir/.local/opt/theme/color-hex-to-ansi.sh" "$opt_dir/theme/color-hex-to-ansi.sh"

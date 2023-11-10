@@ -8,7 +8,7 @@ set -euo pipefail
 # Imports
 #-------------------------------------------------------------------------------
 
-source $XDG_SCRIPTS_HOME/debug-utils.sh
+source "$XDG_OPT_HOME/shell-utils/debug.sh"
 
 # Validation
 #-------------------------------------------------------------------------------
@@ -18,4 +18,4 @@ assert_dependency qutebrowser
 # Open with Qutebrowser
 #-------------------------------------------------------------------------------
 
-qutebrowser --target window --untrusted-args $@
+qutebrowser --target window --untrusted-args "$@"
