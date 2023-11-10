@@ -8,7 +8,7 @@
 # Special
 debug='#ff00ff'
 
-# Primary
+# Primary: 16-31
  primary_0='#034b96'
  primary_1='#0356a3'
  primary_2='#0362b0'
@@ -26,25 +26,7 @@ primary_13='#73cefe'
 primary_14='#86d4fe'
 primary_15='#99dbfe'
 
-# Text
- text_0='#001030'
- text_1='#0a1a38'
- text_2='#152540'
- text_3='#203048'
- text_4='#2a3a50'
- text_5='#354558'
- text_6='#405060'
- text_7='#516171'
- text_8='#637383'
- text_9='#748595'
-text_10='#8696a6'
-text_11='#98a8b8'
-text_12='#aabaca'
-text_13='#bbcbdb'
-text_14='#cddded'
-text_15='#dfefff'
-
-# Secondary
+# Secondary: 32-47
  secondary_0='#0d5d74'
  secondary_1='#0c6a81'
  secondary_2='#0b778e'
@@ -62,7 +44,25 @@ secondary_13='#68dceb'
 secondary_14='#79e0ed'
 secondary_15='#8ae4f0'
 
-# Gray
+# Text: 48-63
+ text_0='#001030'
+ text_1='#0a1a38'
+ text_2='#152540'
+ text_3='#203048'
+ text_4='#2a3a50'
+ text_5='#354558'
+ text_6='#405060'
+ text_7='#516171'
+ text_8='#637383'
+ text_9='#748595'
+text_10='#8696a6'
+text_11='#98a8b8'
+text_12='#aabaca'
+text_13='#bbcbdb'
+text_14='#cddded'
+text_15='#dfefff'
+
+# Gray: 64-79
  gray_0='#0b0b0e'
  gray_1='#191a20'
  gray_2='#282932'
@@ -80,7 +80,7 @@ gray_13='#cccdd6'
 gray_14='#dedfe5'
 gray_15='#f1f1f4'
 
-# Red
+# Red: 80-89
 red_0='#1a0200'
 red_1='#4d0500'
 red_2='#800900'
@@ -92,7 +92,7 @@ red_7='#ff584d'
 red_8='#ff8880'
 red_9='#ffb8b3'
 
-# Orange
+# Orange: 90-99
 orange_0='#1a0f00'
 orange_1='#331f00'
 orange_2='#663d00'
@@ -104,7 +104,7 @@ orange_7='#ffc266'
 orange_8='#ffd699'
 orange_9='#ffebcc'
 
-# Yellow
+# Yellow: 100-109
 yellow_0='#332a00'
 yellow_1='#665300'
 yellow_2='#997d00'
@@ -116,7 +116,7 @@ yellow_7='#ffe880'
 yellow_8='#fff1b3'
 yellow_9='#fffae6'
 
-# Green
+# Green: 110-119
 green_0='#001a0f'
 green_1='#00331f'
 green_2='#00663d'
@@ -128,7 +128,7 @@ green_7='#4dffb8'
 green_8='#80ffcc'
 green_9='#b3ffe0'
 
-# Cyan
+# Cyan: 120-129
 cyan_0='#00131a'
 cyan_1='#00384d'
 cyan_2='#005e80'
@@ -140,7 +140,7 @@ cyan_7='#66d6ff'
 cyan_8='#99e4ff'
 cyan_9='#ccf1ff'
 
-# Blue
+# Blue: 130-139
 blue_0='#00061a'
 blue_1='#000d33'
 blue_2='#001a66'
@@ -152,7 +152,7 @@ blue_7='#668cff'
 blue_8='#99b3ff'
 blue_9='#ccd9ff'
 
-# Purple
+# Purple: 140-149
 purple_0='#0e001a'
 purple_1='#1d0033'
 purple_2='#3a0066'
@@ -164,7 +164,7 @@ purple_7='#bd66ff'
 purple_8='#d399ff'
 purple_9='#e9ccff'
 
-# Magenta
+# Magenta: 150-159
 magenta_0='#1a000a'
 magenta_1='#330014'
 magenta_2='#660029'
