@@ -203,6 +203,9 @@ return {
     -- Don't render bold as bright.
     bold_brightens_ansi_colors = false,
 
+    -- Cursor
+    default_cursor_style = 'SteadyBlock',
+
     -- Font
     font = wezterm.font({
         family = theme.font('font_mono'),
@@ -234,6 +237,16 @@ return {
 
     -- Color scheme mapping
     colors = {
+        background = theme.color_hash('terminal_bg'),
+        foreground = theme.color_hash('terminal_text'),
+
+        cursor_bg = theme.color_hash('primary_15'),
+        cursor_fg = theme.color_hash('terminal_bg'),
+        cursor_border = theme.color_hash('primary_12'),
+
+        selection_bg = theme.color_hash('primary_15'),
+        selection_fg = theme.color_hash('gray_0'),
+
         visual_bell = theme.color_hash('primary_1'),
 
         tab_bar = {
@@ -268,15 +281,6 @@ return {
                 fg_color = theme.color_hash('gray_4'),
             },
         },
-
-        background = theme.color_hash('terminal_bg'),
-        foreground = theme.color_hash('terminal_text'),
-
-        cursor_bg = theme.color_hash('terminal_text'),
-        cursor_fg = theme.color_hash('terminal_bg'),
-
-        selection_bg = theme.color_hash('primary_15'),
-        selection_fg = theme.color_hash('gray_0'),
 
         ansi = {
             theme.color_hash('ansi_black'),
