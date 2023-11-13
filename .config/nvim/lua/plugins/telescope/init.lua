@@ -7,6 +7,8 @@ local actions = require('telescope.actions')
 
 telescope.setup({
     defaults = {
+        prompt_prefix = '❱ ',
+        selection_caret = ' ',
         vimgrep_arguments = {
             'rg',
             '--color=never',
