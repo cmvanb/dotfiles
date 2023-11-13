@@ -24,7 +24,7 @@ opt.cursorline = true
 opt.cursorcolumn = false
 
 -- Whitespace visualization
-opt.listchars = { tab = '-->', eol = '⬇', trail = '▭' }
+opt.listchars = { tab = '-->', eol = '', trail = '' }
 opt.list = false
 
 -- End-of-buffer visualization
