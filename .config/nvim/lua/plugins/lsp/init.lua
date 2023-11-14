@@ -86,18 +86,18 @@ local mason_lspconfig = require('mason-lspconfig')
 mason_lspconfig.setup({
     -- A list of servers to automatically install if they're not already installed.
     ensure_installed = {
-        "bashls",
-        "clangd",
-        "cssls",
-        "dockerls",
-        "html",
-        "jedi_language_server",
-        "jsonls",
-        "lua_ls",
-        -- "pyright",
-        "terraformls",
-        "tsserver",
-        "yamlls",
+        'bashls',
+        'clangd',
+        'cssls',
+        'dockerls',
+        'html',
+        -- 'jedi_language_server',
+        'jsonls',
+        'lua_ls',
+        'pyright',
+        'terraformls',
+        'tsserver',
+        'yamlls',
     },
 })
 
@@ -112,9 +112,21 @@ mason_lspconfig.setup_handlers({
             on_attach = lsp_attach,
             capabilities = lsp_capabilities,
         })
-    end
+    end,
 
     -- Here you can provide targeted overrides for specific servers.
     --  see: https://github.com/williamboman/mason.nvim/discussions/92
+    ['jedi_language_server'] = function()
+        lspconfig.jedi_language_server.setup({
+            on_attach = lsp_attach,
+            capabilities = lsp_capabilities,
+        })
+    end,
+    ['pyright'] = function()
+        lspconfig.pyright.setup({
+            on_attach = lsp_attach,
+            capabilities = lsp_capabilities,
+        })
+    end
 })
 
