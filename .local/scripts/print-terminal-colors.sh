@@ -1,151 +1,120 @@
 #!/usr/bin/env bash
 #-------------------------------------------------------------------------------
 # Print terminal colors and indices.
-#
-# NOTE: Color index assignments are defined by the terminal emulator.
-#
-# Copyright (c) 2016 Tom Hale
-
-# Permission is hereby granted, free of charge, to any person obtaining a copy
-# of this software and associated documentation files (the "Software"), to deal
-# in the Software without restriction, including without limitation the rights
-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-# copies of the Software, and to permit persons to whom the Software is
-# furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all
-# copies or substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-# SOFTWARE.
 #-------------------------------------------------------------------------------
 
-# Fail on errors or undeclared variables.
-set -eu 
+set -euo pipefail
 
-max_printable_colors=256
+terminal_supports_256_colors=false
 
-# Based on the input color index, return a contrasting color index.
-# NOTE: This is hard coded, no actual contrast/luminance calculation is done.
-function contrast_color {
-    color="$1"
+if [[ $TERM = "xterm-256color" ]]; then
+    terminal_supports_256_colors=true
+fi
 
-    # ANSI colors
-    if (( color < 16 )); then
-        (( color == 0 )) && printf "7" || printf "0"
-        return
+# Print a string with foreground color.
+#-------------------------------------------------------------------------------
+
+function print_string_in_color() {
+    local string="$1"
+    local color="$2"
+
+    local style=""
+    if [[ $terminal_supports_256_colors = false ]] && (( color > 7 )); then
+        style="1;"
     fi
-
-    # Theme 16-color bands
-    if (( color >= 16 )) && (( color < 80 )); then
-        band_base=$(( (color / 16 ) * 16 ))
-        band_max=$(( band_base + 15 ))
-        band_index=$(( (color - 16) % 16 ))
-
-        (( band_index < 8 )) && printf "%s" "$band_max" || printf "%s" "$band_base"
-        return
-    fi
-
-    # Theme 10-color bands
-    if (( color >= 80 )) && (( color < 160 )); then
-        band_base=$(( (color / 10 ) * 10 ))
-        band_min=$(( band_base + 1 ))
-        band_max=$(( band_base + 9 ))
-        band_index=$(( (color - 10) % 10 ))
-
-        (( band_index < 5 )) && printf "%s" "$band_max" || printf "%s" "$band_min"
-        return
-    fi
-
-    # Unused colors
-    printf "8"
+    printf "\e[%s38;5;%sm%s\e[0m" "$style" "$color" "$string"
 }
 
-# Print a colored block with the number of that color.
-function print_color {
-    local color="$1" index
-    index=$(contrast_color "$1")
+# Print a string with foreground and background color.
+#-------------------------------------------------------------------------------
 
-    # Color block
-    printf "\e[48;5;%sm" "$color"
+function print_string_in_color_fg_bg() {
+    local string="$1"
+    local fg="$2"
+    local bg="$3"
 
-    # Contrasted index text
-    printf "\e[38;5;%sm%4d" "$index" "$color"
-
-    # Reset
-    printf "\e[0m"
+    local fg_style=""
+    if [[ $terminal_supports_256_colors = false ]] && (( fg > 7 )); then
+        fg_style="1;"
+    fi
+    printf "\e[%s38;5;%sm\e[48;5;%sm%s\e[0m" "$fg_style" "$fg" "$bg" "$string"
 }
 
-# Starting at $1, print a band of $2 colors.
+# Print a color block to the terminal.
+#-------------------------------------------------------------------------------
+
+function print_color_block() {
+    local count="$1"
+    local color="$2"
+
+    local style=""
+    if [[ $terminal_supports_256_colors = false ]] && (( color > 7 )); then
+        style="1;"
+    fi
+
+    local string=$(for _ in $(seq 1 $count); do printf "█"; done)
+
+    print_string_in_color "$string" "$color"
+}
+
+# Print a band of $2 color blocks starting from index $1.
+#-------------------------------------------------------------------------------
+
 function print_band {
-    local i
-    for (( i = "$1"; i < "$1" + "$2" && i < max_printable_colors; i++ )) do
-        print_color "$i"
+    local start="$1"
+    local count="$2"
+
+    local color
+    for (( color = "$1"; color < "$start" + "$count"; color++ )) do
+        local buffer
+        if (( color > 99 )); then
+            buffer=5
+        elif (( color > 9 )); then
+            buffer=6
+        else
+            buffer=7
+        fi
+        print_color_block "$buffer" "$color"
+
+        # Text color is selected from the provided band range with an offset to
+        # ensure contrast.
+        local text_color=$(( (((color - start) + (5)) % count) + start ))
+        print_string_in_color_fg_bg "$color" "$text_color" "$color"
     done
-    printf "  "
+    printf "  \n"
+
+    for (( color = "$1"; color < "$1" + "$2"; color++ )) do
+        print_color_block 8 "$color"
+    done
+    printf "  \n"
 }
 
-# Print ANSI colors.
+# Output
+#-------------------------------------------------------------------------------
+
+# Print basic 16 colors.
 print_band 0 8
-printf "\n"
 print_band 8 8
-printf "\n"
+
+if [[ $terminal_supports_256_colors = false ]]; then
+    exit 0
+fi
 
 printf "\n"
 
-# Print theme colors.
+# Print themed 256-index colors.
 print_band 16 16
-printf "\n"
 print_band 32 16
-printf "\n"
 print_band 48 16
-printf "\n"
 print_band 64 16
-printf "\n"
 
 printf "\n"
 
 print_band 80 10
-printf "\n"
-
 print_band 90 10
-printf "\n"
-
 print_band 100 10
-printf "\n"
-
 print_band 110 10
-printf "\n"
-
 print_band 120 10
-printf "\n"
-
 print_band 130 10
-printf "\n"
-
 print_band 140 10
-printf "\n"
-
 print_band 150 10
-printf "\n"
-
-# print_band 56 10
-# printf "\n"
-# print_band 66 10
-# printf "\n"
-# print_band 76 10
-# printf "\n"
-# print_band 86 10
-# printf "\n"
-# print_band 96 10
-# printf "\n"
-
-# Print unused colors.
-# print_band 106 255
-# printf "\n"
-
