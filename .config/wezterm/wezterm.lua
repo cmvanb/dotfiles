@@ -32,9 +32,8 @@ return {
     -- Disable warnings
     warn_about_missing_glyphs = false,
 
-    -- NOTE: Enabling this causes problems with vim-sandwich in NVIM.
     -- Keyboard input settings
-    enable_kitty_keyboard = false,
+    enable_kitty_keyboard = true,
 
     -- Disable tab bar
     enable_tab_bar = false,
@@ -213,15 +212,42 @@ return {
                 wezterm.action.Nop
             ),
         },
-        {
-            key = 'q',
-            mods = 'CTRL|SHIFT',
-            action = alt_action(
-                window, pane,
-                wezterm.action { SendString = '\x1b[81;5u' },
-                wezterm.action.Nop
-            ),
-        },
+        -- {
+        --     key = 'h',
+        --     mods = 'SUPER',
+        --     action = alt_action(
+        --         window, pane,
+        --         wezterm.action.SendKey { key = 'F2' },
+        --         wezterm.action.Nop
+        --     ),
+        -- },
+        -- {
+        --     key = 'l',
+        --     mods = 'SUPER',
+        --     action = alt_action(
+        --         window, pane,
+        --         wezterm.action.SendKey { key = 'F3' },
+        --         wezterm.action.Nop
+        --     ),
+        -- },
+        -- {
+        --     key = 'j',
+        --     mods = 'SUPER',
+        --     action = alt_action(
+        --         window, pane,
+        --         wezterm.action.SendKey { key = 'F4' },
+        --         wezterm.action.Nop
+        --     ),
+        -- },
+        -- {
+        --     key = 'k',
+        --     mods = 'SUPER',
+        --     action = alt_action(
+        --         window, pane,
+        --         wezterm.action.SendKey { key = 'F5' },
+        --         wezterm.action.Nop
+        --     ),
+        -- },
     },
 
 --------------------------------------------------------------------------------

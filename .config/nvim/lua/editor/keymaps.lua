@@ -152,12 +152,18 @@ noremap('<leader>v', '<C-v>')
 --------------------------------------------------------------------------------
 
 -- Start/end of line
-nnoremap('H', '0')
-nnoremap('L', '$')
-xnoremap('H', '0')
-xnoremap('L', '$')
-onoremap('H', '0')
-onoremap('L', '$')
+-- nnoremap('<F2>', '0', true)
+-- nnoremap('<F3>', '$', true)
+-- xnoremap('<F2>', '0', true)
+-- xnoremap('<F3>', '$', true)
+-- onoremap('<F2>', '0', true)
+-- onoremap('<F3>', '$', true)
+nnoremap('<D-h>', '0')
+nnoremap('<D-l>', '$')
+xnoremap('<D-h>', '0')
+xnoremap('<D-l>', '$')
+onoremap('<D-h>', '0')
+onoremap('<D-l>', '$')
 
 -- Leap
 noremap('<leader>j', function() require('leap').leap({}) end)
