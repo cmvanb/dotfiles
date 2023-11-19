@@ -8,7 +8,7 @@
 # Disable unwanted bindings.
 stty start undef
 stty stop undef
-stty susp undef
+stty susp ^Z
 stty rprnt undef
 stty werase undef
 stty lnext undef
