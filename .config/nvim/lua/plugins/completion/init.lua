@@ -21,12 +21,13 @@ cmp.setup({
 
         ['<Tab>'] = cmp.mapping(function(fallback)
             if cmp.visible() then
-                local count = TableUtils.count(cmp.get_entries())
-                if count == 1 then
-                    cmp.confirm({ select = false })
-                else
-                    cmp.select_next_item()
-                end
+                cmp.confirm({ select = false })
+                -- local count = TableUtils.count(cmp.get_entries())
+                -- if count == 1 then
+                --     cmp.confirm({ select = false })
+                -- else
+                --     cmp.select_next_item()
+                -- end
             elseif luasnip.expand_or_jumpable() then
                 luasnip.expand_or_jump()
             elseif has_words_before() then
