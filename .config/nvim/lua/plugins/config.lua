@@ -100,9 +100,7 @@ return {
     {
         'L3MON4D3/LuaSnip',
         config = function()
-            local luasnip = require('luasnip')
-
-            luasnip.setup({
+            require('luasnip').setup({
                 history = true,
                 update_events = 'TextChanged,TextChangedI',
             })
