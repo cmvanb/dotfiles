@@ -71,28 +71,18 @@ if [[ -z "$new_bookmark_url" ]]; then
 fi
 
 # Validate tags.
-input_tags=("$(echo "$form_input" | cut -d "|" -f 3)")
+declare -a input_tags=()
 declare -a new_bookmark_tags=()
 
+IFS=' ' read -r -a input_tags <<< "$(echo "$form_input" | cut -d "|" -f 3)"
+
 for t in "${input_tags[@]}"; do
-    t=$(convert_to_kebab_case "$t")
-
-    # 1-char tags are not valid.
-    if [[ "${#t}" -lt 2 ]]; then
-        echo "discarding [$t] for 1-char length"
-        continue
+    # TODO: Ignore duplicate tags.
+    # Ignore 1-char tags and empty tags.
+    if [[ "${#t}" -gt 1 ]] && [[ -n "$t"  ]]; then
+        new_bookmark_tags+=("$(convert_to_kebab_case "$t")")
     fi
-    # Empty tags are not valid.
-    if [[ -z "$t" ]]; then
-        echo "discarding [$t] for being empty"
-        continue
-    fi
-    # TODO: Duplicate tags are not valid.
-
-    new_bookmark_tags=("${new_bookmark_tags[@]}" "$t")
 done
-
-new_bookmark_tags="${new_bookmark_tags[@]}"
 
 if [[ -z "$new_bookmark_tags" ]]; then
     echo "[$(basename "$0")] ERROR: Missing or bad input for bookmark tags."
@@ -114,10 +104,10 @@ fi
 # echo "$new_bookmark_name"
 # echo "$new_bookmark_name_kebab"
 # echo "$new_bookmark_url"
-# echo "$new_bookmark_tags"
+# echo "${new_bookmark_tags[*]}"
 
 esh -o "$bookmark_file_path" "$bookmark_template" \
     new_bookmark_name="$new_bookmark_name" \
     new_bookmark_name_kebab="$new_bookmark_name_kebab" \
     new_bookmark_url="$new_bookmark_url" \
-    new_bookmark_tags="$new_bookmark_tags"
+    new_bookmark_tags="${new_bookmark_tags[*]}"
