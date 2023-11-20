@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 
 font_mono='Iosevka Nerd Font Mono'
-
-# NOTE: Other fonts to consider.
+# font_mono='iosevka'
 # font_mono='Hack Nerd Font Mono'
 # font_mono='SauceCodePro Nerd Font'
 # font_mono='Terminess Nerd Font'

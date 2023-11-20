@@ -41,6 +41,41 @@ return {
     use_fancy_tab_bar = false,
 
 --------------------------------------------------------------------------------
+-- Appearance
+--------------------------------------------------------------------------------
+
+    -- Don't render bold as bright.
+    bold_brightens_ansi_colors = false,
+
+    -- Cursor
+    default_cursor_style = 'SteadyBlock',
+
+    -- Font
+    font = wezterm.font({
+        family = theme.font('font_mono'),
+        weight = 'Regular',
+    }),
+    font_size = 14.0,
+
+    -- Window
+    adjust_window_size_when_changing_font_size = false,
+    window_padding = {
+        left   = 0,
+        right  = 0,
+        top    = 0,
+        bottom = 0,
+    },
+
+    -- Terminal bell
+    audible_bell = 'Disabled',
+    visual_bell = {
+        fade_in_function = 'Linear',
+        fade_in_duration_ms = 0,
+        fade_out_function = 'EaseOut',
+        fade_out_duration_ms = 200,
+    },
+
+--------------------------------------------------------------------------------
 -- Key bindings
 --------------------------------------------------------------------------------
 
@@ -197,45 +232,10 @@ return {
     bypass_mouse_reporting_modifiers = 'SHIFT',
 
 --------------------------------------------------------------------------------
--- Appearance
---------------------------------------------------------------------------------
-
-    -- Don't render bold as bright.
-    bold_brightens_ansi_colors = false,
-
-    -- Cursor
-    default_cursor_style = 'SteadyBlock',
-
-    -- Font
-    font = wezterm.font({
-        family = theme.font('font_mono'),
-        weight = 'Regular',
-    }),
-    font_size = 14.0,
-
-    -- Window
-    adjust_window_size_when_changing_font_size = false,
-    window_padding = {
-        left   = 0,
-        right  = 0,
-        top    = 0,
-        bottom = 0,
-    },
-
-    -- Terminal bell
-    audible_bell = 'Disabled',
-    visual_bell = {
-        fade_in_function = 'Linear',
-        fade_in_duration_ms = 0,
-        fade_out_function = 'EaseOut',
-        fade_out_duration_ms = 200,
-    },
-
---------------------------------------------------------------------------------
 -- Colors
 --------------------------------------------------------------------------------
 
-    -- Color scheme mapping
+    -- Color theme mapping
     colors = {
         background = theme.color_hash('terminal_bg'),
         foreground = theme.color_hash('terminal_text'),
