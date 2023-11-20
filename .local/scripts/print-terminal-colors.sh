@@ -44,7 +44,7 @@ function print_string_in_color_fg_bg() {
 #-------------------------------------------------------------------------------
 
 function print_color_block() {
-    local count="$1"
+    local width="$1"
     local color="$2"
 
     local style=""
@@ -52,7 +52,8 @@ function print_color_block() {
         style="1;"
     fi
 
-    local string=$(for _ in $(seq 1 $count); do printf "█"; done)
+    local string
+    string=$(for _ in $(seq 1 "$width"); do printf "█"; done)
 
     print_string_in_color "$string" "$color"
 }
@@ -63,38 +64,61 @@ function print_color_block() {
 function print_band {
     local start="$1"
     local count="$2"
+    local width="${3:-4}"
+    local height="${4:-1}"
+
+    if (( width < 3 )); then
+        echo "[$(basename "$0")] ERROR: Block width must be 3 or greater."
+    fi
+
+    if (( height < 1 )); then
+        echo "[$(basename "$0")] ERROR: Block height must be 1 or greater."
+    fi
 
     local color
     for (( color = "$1"; color < "$start" + "$count"; color++ )) do
         local buffer
         if (( color > 99 )); then
-            buffer=5
+            buffer=$(( width - 3 ))
         elif (( color > 9 )); then
-            buffer=6
+            buffer=$(( width - 2 ))
         else
-            buffer=7
+            buffer=$(( width - 1 ))
         fi
+
         print_color_block "$buffer" "$color"
 
-        # Text color is selected from the provided band range with an offset to
-        # ensure contrast.
-        local text_color=$(( (((color - start) + (5)) % count) + start ))
+        # Text color is shifted along the band range with an offset for constrast.
+        local offset
+        if (( color < 16 )); then # ANSI 16
+            offset=3
+        elif (( color >= 16 && color < 80 )); then # Theme palettes
+            offset=8
+        elif (( color >= 80 )); then # Color palettes
+            offset=5
+        fi
+        local text_color=$(( (((color - start) + (offset)) % count) + start ))
         print_string_in_color_fg_bg "$color" "$text_color" "$color"
     done
     printf "  \n"
 
-    for (( color = "$1"; color < "$1" + "$2"; color++ )) do
-        print_color_block 8 "$color"
+    for (( i = 0; i < "$height" - 1; i++ )) do
+        for (( color = "$1"; color < "$start" + "$count"; color++ )) do
+            print_color_block "$width" "$color"
+        done
+        printf "  \n"
     done
-    printf "  \n"
 }
 
 # Output
 #-------------------------------------------------------------------------------
 
+declare width=6
+declare height=2
+
 # Print basic 16 colors.
-print_band 0 8
-print_band 8 8
+print_band 0 8 "$width" "$height"
+print_band 8 8 "$width" "$height"
 
 if [[ $terminal_supports_256_colors = false ]]; then
     exit 0
@@ -103,18 +127,18 @@ fi
 printf "\n"
 
 # Print themed 256-index colors.
-print_band 16 16
-print_band 32 16
-print_band 48 16
-print_band 64 16
+print_band 16 16 "$width" "$height"
+print_band 32 16 "$width" "$height"
+print_band 48 16 "$width" "$height"
+print_band 64 16 "$width" "$height"
 
 printf "\n"
 
-print_band 80 10
-print_band 90 10
-print_band 100 10
-print_band 110 10
-print_band 120 10
-print_band 130 10
-print_band 140 10
-print_band 150 10
+print_band 80 10 "$width" "$height"
+print_band 90 10 "$width" "$height"
+print_band 100 10 "$width" "$height"
+print_band 110 10 "$width" "$height"
+print_band 120 10 "$width" "$height"
+print_band 130 10 "$width" "$height"
+print_band 140 10 "$width" "$height"
+print_band 150 10 "$width" "$height"
