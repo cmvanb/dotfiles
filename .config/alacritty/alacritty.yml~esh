@@ -44,7 +44,7 @@ draw_bold_text_with_bright_colors: false
 
 font:
     normal:
-        family: "Iosevka Nerd Font Mono"
+        family: "<%= $font_mono %>"
 
     size: 12.0
 
