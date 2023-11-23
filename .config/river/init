@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 #-------------------------------------------------------------------------------
 # River configuration script
 #
@@ -23,8 +23,8 @@ systemd-cat --identifier=river echo "Initializing River from $source_dir ..."
 VARIABLES="XDG_CURRENT_DESKTOP XDG_SESSION_TYPE WAYLAND_DISPLAY"
 
 # Share part of river environment with systemd.
-dbus-update-activation-environment --systemd $VARIABLES
-systemctl --user import-environment $VARIABLES
+dbus-update-activation-environment --systemd "$VARIABLES"
+systemctl --user import-environment "$VARIABLES"
 
 # Other system services can respond to the underlying wayland-session or graphical-session.target.
 systemctl --user start river-session.target
@@ -32,7 +32,7 @@ systemctl --user start river-session.target
 # Display management
 #-------------------------------------------------------------------------------
 
-way-displays > /tmp/way-displays.${XDG_VTNR}.${USER}.log 2>&1 &
+way-displays > "/tmp/way-displays.${XDG_VTNR}.${USER}.log" 2>&1 &
 
 # Input configuration
 #-------------------------------------------------------------------------------
@@ -52,12 +52,13 @@ riverctl hide-cursor timeout 3000
 # Styling
 #-------------------------------------------------------------------------------
 
+# shellcheck disable=SC1091
 source "$XDG_OPT_HOME/theme/theme.sh"
 
-riverctl background-color "$(color_zerox $system_bg)"
-riverctl border-color-focused "$(color_zerox $primary_6)"
-riverctl border-color-unfocused "$(color_zerox $primary_2)"
-riverctl border-color-urgent "$(color_zerox $red_4)"
+riverctl background-color "$(color_zerox "$system_bg")"
+riverctl border-color-focused "$(color_zerox "$primary_6")"
+riverctl border-color-unfocused "$(color_zerox "$primary_2")"
+riverctl border-color-urgent "$(color_zerox "$red_4")"
 
 riverctl border-width 2
 
@@ -122,16 +123,16 @@ riverctl map normal Alt Backspace spawn "river-shifttags --shift -1"
 for i in $(seq 1 9); do
     # NOTE: Unconventional formatting here is to avoid a bug in tree-sitter-bash when parsing `<<`.
     # see: https://github.com/tree-sitter/tree-sitter-bash
-    tags=$((1<<($i - 1)))
+    declare tags=$(( 1 << (i - 1) ))
 
     # Focus tag
-    riverctl map normal Alt $i set-focused-tags $tags
+    riverctl map normal Alt "$i" set-focused-tags $tags
 
     # Tag focused view
-    riverctl map normal Alt+Shift $i set-view-tags $tags
+    riverctl map normal Alt+Shift "$i" set-view-tags $tags
 
     # Toggle focus of tag
-    riverctl map normal Alt+Control $i toggle-focused-tags $tags
+    riverctl map normal Alt+Control "$i" toggle-focused-tags $tags
 done
 
 # Bump the focused view to the top of the layout stack
@@ -179,7 +180,7 @@ session_cleanup () {
 
     # VARIABLES="XDG_SESSION_TYPE WAYLAND_DISPLAY"
 
-    systemctl --user unset-environment $VARIABLES
+    systemctl --user unset-environment "$VARIABLES"
 
     exit
 }
@@ -191,4 +192,3 @@ while [ -n "$WAYLAND_DISPLAY" ]
 do
     sleep 0.10
 done
-
