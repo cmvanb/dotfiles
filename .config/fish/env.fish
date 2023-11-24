@@ -16,3 +16,6 @@ set -x VISUAL "$EDITOR"
 
 # Configure less pager.
 set -x LESS "-c -R"
+
+# Enable direnv.
+direnv hook fish | source

@@ -17,3 +17,6 @@ export VISUAL="$EDITOR"
 
 # Configure less pager.
 export LESS="-c -R"
+
+# Enable direnv.
+eval "$(direnv hook bash)"
