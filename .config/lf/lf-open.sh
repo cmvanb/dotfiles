@@ -8,6 +8,7 @@ set -euo pipefail
 # Imports
 #-------------------------------------------------------------------------------
 
+# shellcheck disable=SC1091
 source "$XDG_OPT_HOME/shell-utils/fs.sh"
 
 # Validation
@@ -25,9 +26,9 @@ mimetype="$(file_mime_type "$1")"
 encoding=$(file_encoding "$1")
 
 if [[ $mimetype == "text"* || $mimetype == "application/javascript" || $encoding == *"ascii" || $encoding == "utf-8" ]]; then
-    $XDG_SCRIPTS_HOME/set-terminal-title.sh "$(echo "$1" | sed "s|$HOME|~|")"
-    $XDG_SCRIPTS_HOME/terminal-preview.sh "$1" | less -R --chop-long-lines --lesskey-file=$XDG_CONFIG_HOME/lf/lf-less.lesskey
-    $XDG_SCRIPTS_HOME/set-terminal-title.sh "$(pwd | sed "s|$HOME|~|")"
+    "$XDG_SCRIPTS_HOME/set-terminal-title.sh" "${1/$HOME/\~}"
+    "$XDG_SCRIPTS_HOME/terminal-preview.sh" "$1" | less -R --chop-long-lines --lesskey-file="$XDG_CONFIG_HOME/lf/lf-less.lesskey"
+    "$XDG_SCRIPTS_HOME/set-terminal-title.sh" "${PWD/$HOME/\~}"
 else
-    xdg-open $1 &
+    xdg-open "$1" &
 fi

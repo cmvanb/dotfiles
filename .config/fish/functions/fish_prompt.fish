@@ -2,8 +2,6 @@
 # Fish prompt configuration
 #-------------------------------------------------------------------------------
 
-# TODO: Use theme colors.
-
 function fish_prompt --description 'Write out the prompt'
     # Preserve pipestatus
     set -l last_pipestatus $pipestatus

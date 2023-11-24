@@ -417,8 +417,6 @@ config.bind('<Ctrl+a>', 'mode-enter caret ;; selection-toggle ;; move-to-end-of-
 #-- Reader mode
 config.bind('<Ctrl-r>', 'spawn --userscript readability')
 
-# TODO: Consider merging these two binds with a function to automatically
-# determine the appropriate script.
 #-- Format JSON
 config.bind('<Ctrl-;>', 'spawn --userscript format_json.sh')
 
