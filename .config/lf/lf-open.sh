@@ -30,5 +30,5 @@ if [[ $mimetype == "text"* || $mimetype == "application/javascript" || $encoding
     "$XDG_SCRIPTS_HOME/terminal-preview.sh" "$1" | less -R --chop-long-lines --lesskey-file="$XDG_CONFIG_HOME/lf/lf-less.lesskey"
     "$XDG_SCRIPTS_HOME/set-terminal-title.sh" "${PWD/$HOME/\~}"
 else
-    xdg-open "$1" &
+    nohup xdg-open "$1" &
 fi
