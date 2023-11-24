@@ -24,6 +24,16 @@ force_link () {
     ln -sfT "$1" "$2"
 }
 
+happy_move() {
+    # NOTE: `mv` returns an error code if the source and destination are the
+    # same, so exit early with a success code.
+    if [[ "$1" == "$2" ]]; then
+        return 0
+    fi
+
+    mv "$1" "$2"
+}
+
 file_mime_type () {
     if [[ -z "$1" ]]; then
         echo "[$(basename "$0")] ERROR: Missing argument: file name"
