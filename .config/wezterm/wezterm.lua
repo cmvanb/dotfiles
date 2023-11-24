@@ -180,11 +180,7 @@ return {
         {
             key = 'i',
             mods = 'CTRL',
-            action = alt_action(
-                window, pane,
-                wezterm.action { SendString = '\x1b[1;2P' },
-                wezterm.action.Nop
-            ),
+            action = wezterm.action { SendString = '\x1b[1;2P' },
         },
         {
             key = 'm',
