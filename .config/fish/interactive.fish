@@ -54,6 +54,7 @@ abbr -a vd deactivate
 
 # Unbindings
 bind \cb ''
+bind \ch ''
 
 # Open file browser
 bind \cf 'lfcd; commandline -f repaint'
