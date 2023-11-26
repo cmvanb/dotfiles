@@ -103,12 +103,20 @@ force_link "$source_dir/.local/share/pandoc" "$data_dir/pandoc"
 
 # Configuration
 mkdir -p "$config_dir"
-force_link "$source_dir/.config/bash" "$config_dir/bash"
+mkdir -p "$config_dir/bash"
+force_link "$source_dir/.config/bash/bash_profile" "$config_dir/bash/bash_profile"
+force_link "$source_dir/.config/bash/bashrc" "$config_dir/bash/bashrc"
+force_link "$source_dir/.config/bash/env.sh" "$config_dir/bash/env.sh"
+force_link "$source_dir/.config/bash/interactive.sh" "$config_dir/bash/interactive.sh"
+force_link "$source_dir/.config/bash/login.sh" "$config_dir/bash/login.sh"
+force_link "$source_dir/.config/bash/logout.sh" "$config_dir/bash/logout.sh"
+force_link "$source_dir/.config/bash/prompt.sh" "$config_dir/bash/prompt.sh"
 mkdir -p "$config_dir/bat"
 force_link "$source_dir/.config/bat/config" "$config_dir/bat/config"
 force_link "$source_dir/.config/bat/syntaxes" "$config_dir/bat/syntaxes"
 # NOTE: Don't symlink Bitwarden config because it will be overwritten by the app.
 cp -nr "$source_dir/.config/Bitwarden" "$config_dir/Bitwarden" && true
+mkdir -p "$config_dir/fish"
 force_link "$source_dir/.config/fish/config.fish" "$config_dir/fish/config.fish"
 force_link "$source_dir/.config/fish/env.fish" "$config_dir/fish/env.fish"
 force_link "$source_dir/.config/fish/interactive.fish" "$config_dir/fish/interactive.fish"

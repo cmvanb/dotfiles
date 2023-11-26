@@ -16,21 +16,6 @@ source_dir=$(realpath "$bash_dir/..")
 
 source "$source_dir/.local/opt/shell-utils/linux.sh"
 
-# Determine binary path
-#-------------------------------------------------------------------------------
-
-declare distro_id
-distro_id=$(get_distro_id)
-
-if [[ $distro_id == "arch" ]]; then
-    export SYSTEM_BINARY_PATH=/usr/bin
-elif [[ $distro_id == "nixos" ]]; then
-    export SYSTEM_BINARY_PATH=/run/current-system/sw/bin
-else
-    echo "[$(basename "$0")] ERROR: Unknown distribution \`$distro_id\`, unable to deploy."
-    exit 1
-fi
-
 # Necessary environment vars
 #-------------------------------------------------------------------------------
 
@@ -41,7 +26,9 @@ export XDG_CONFIG_HOME="$HOME/.config"
 
 echo "Deploying dotfiles from \`$source_dir\` to \`$HOME\`..."
 
+# NOTE: Order matters.
 source "$bash_dir/link-dotfiles.sh"
+source "$bash_dir/apply-distro-configuration.sh"
 source "$bash_dir/configure-theme.sh"
 source "$bash_dir/generate-dotfiles-templates.sh"
 source "$bash_dir/apply-host-configuration.sh"
