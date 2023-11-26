@@ -12,5 +12,5 @@
 # (also, my google-fu didn't find a way to distinguish them)
 #-------------------------------------------------------------------------------
 
-source "$HOME/.config/bash/env"
-source "$HOME/.config/bash/interactive"
+source "$HOME/.config/bash/env.sh"
+source "$HOME/.config/bash/interactive.sh"
