@@ -8,7 +8,9 @@ set -uo pipefail
 # Imports
 #-------------------------------------------------------------------------------
 
+# shellcheck disable=1091
 source "$XDG_OPT_HOME/shell-utils/debug.sh"
+# shellcheck disable=1091
 source "$XDG_OPT_HOME/shell-utils/name-formatting.sh"
 
 # Validation
@@ -34,7 +36,7 @@ input_url="${2:-https://}"
 # Open a form dialog to get user input for bookmark data
 #-------------------------------------------------------------------------------
 
-form_input=$(yad --form \
+if ! form_input=$(yad --form \
     --width=640 \
     --title="Add bookmark" \
     --field="Name" "$input_name" \
@@ -42,9 +44,8 @@ form_input=$(yad --form \
     --field="Tags!Tags should be space separated." ""\
     --button="OK":0 \
     --button="Cancel":1 \
-    )
-
-if [[ $? -ne 0 ]]; then
+    );
+then
     echo "[$(basename "$0")] ERROR: User cancelled script."
     exit 1
 fi
