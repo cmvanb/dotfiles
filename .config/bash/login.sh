@@ -43,6 +43,9 @@ export PIP_REQUIRE_VIRTUALENV=true
 # Rust config.
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 
+# Silence direnv.
+export DIRENV_LOG_FORMAT=""
+
 # User directories
 #-------------------------------------------------------------------------------
 

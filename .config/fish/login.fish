@@ -42,6 +42,9 @@ set -x PIP_REQUIRE_VIRTUALENV true
 # Rust config.
 set -x CARGO_HOME $XDG_DATA_HOME/cargo
 
+# Silence direnv.
+set -x DIRENV_LOG_FORMAT ""
+
 # User directories
 #-------------------------------------------------------------------------------
 

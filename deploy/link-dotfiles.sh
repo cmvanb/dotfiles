@@ -116,6 +116,7 @@ force_link "$source_dir/.config/bat/config" "$config_dir/bat/config"
 force_link "$source_dir/.config/bat/syntaxes" "$config_dir/bat/syntaxes"
 # NOTE: Don't symlink Bitwarden config because it will be overwritten by the app.
 cp -nr "$source_dir/.config/Bitwarden" "$config_dir/Bitwarden" && true
+force_link "$source_dir/.config/direnv" "$config_dir/direnv"
 mkdir -p "$config_dir/fish"
 force_link "$source_dir/.config/fish/config.fish" "$config_dir/fish/config.fish"
 force_link "$source_dir/.config/fish/env.fish" "$config_dir/fish/env.fish"
