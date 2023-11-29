@@ -51,6 +51,7 @@ force_link "$source_dir/.local/scripts/add-bookmark.sh" "$scripts_dir/add-bookma
 force_link "$source_dir/.local/scripts/estimate-disk-space-usage.sh" "$scripts_dir/estimate-disk-space-usage.sh"
 force_link "$source_dir/.local/scripts/fetch-password.sh" "$scripts_dir/fetch-password.sh"
 force_link "$source_dir/.local/scripts/generate-color-gradient-palette.py" "$scripts_dir/generate-color-gradient-palette.py"
+force_link "$source_dir/.local/scripts/generate-venv.sh" "$scripts_dir/generate-venv.sh"
 force_link "$source_dir/.local/scripts/kebabify.sh" "$scripts_dir/kebabify.sh"
 force_link "$source_dir/.local/scripts/kill-yambar.sh" "$scripts_dir/kill-yambar.sh"
 force_link "$source_dir/.local/scripts/lock-screen.sh" "$scripts_dir/lock-screen.sh"

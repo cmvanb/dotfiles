@@ -63,7 +63,7 @@ alias lsi="eza --git-ignore"
 alias lst="eza -T --git-ignore"
 alias lsta="eza -aT --git-ignore"
 alias ip="ip -c"
-alias vv="python -m venv venv"
+alias vv="generate-venv.sh"
 alias va="source venv/bin/activate"
 alias vd="deactivate"
 

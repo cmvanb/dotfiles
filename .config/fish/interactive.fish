@@ -49,7 +49,7 @@ abbr -a lsi eza --git-ignore
 abbr -a lst eza -T --git-ignore
 abbr -a lsta eza -aT --git-ignore
 abbr -a ip ip -c
-abbr -a vv python -m venv venv
+abbr -a vv generate-venv.sh
 abbr -a va source venv/bin/activate.fish
 abbr -a vd deactivate
 
