@@ -12,6 +12,12 @@ source $XDG_CONFIG_HOME/shell/interactive
 # shellcheck disable=SC1091
 source "$XDG_CONFIG_HOME/fish/interactive-distro.fish"
 
+# General configuration
+#-------------------------------------------------------------------------------
+
+# Python interactive configuration.
+set -x PYTHONSTARTUP $XDG_CONFIG_HOME/python/interactive.py
+
 # Aliases & Abbreviations
 #-------------------------------------------------------------------------------
 

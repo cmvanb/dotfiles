@@ -27,6 +27,9 @@ export HISTFILE="$XDG_DATA_HOME/bash/bash_history"
 # GNU readline configuration.
 export INPUTRC="$XDG_CONFIG_HOME/readline/config"
 
+# Python interactive configuration.
+export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/interactive.py"
+
 # Aliases
 #-------------------------------------------------------------------------------
 
