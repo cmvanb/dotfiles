@@ -5,15 +5,54 @@
 
 set -euo pipefail
 
-# Count the lines in the file.
-lines=$(wc -l < "$1")
+script_name=$(basename "$0")
 
-# Get terminal height in lines.
-# NOTE: `-2` is the magic offset.
-terminal_height=$(( $(tput lines)-2 ))
+print=false
 
-# If the file is bigger than the viewport, page it.
-[[ $lines -ge $terminal_height ]] && bat --force-colorization --paging=never --style=numbers --wrap=never "$1" | less -c -R -S
+# Print the usage instructions.
+usage() {
+    echo "$script_name [--print] FILENAME" >&2
+    echo "" >&2
+    echo "Pretty prints the inputs and passes it to a pager. Accepts either FILENAME or" >&2
+    echo "standard input." >&2
+    echo "" >&2
+    echo "Options:" >&2
+    echo "--print: Optionally print the input to the terminal after paging." >&2
+}
 
-# After paging (if it took place), print the whole file to the terminal.
-bat --force-colorization --paging=never --style=numbers --wrap=never "$1"
+# Parse command line options.
+while getopts ":-:" option; do
+    [[ "${option}" == "-" ]] || continue
+    case "${OPTARG}" in
+        print)
+            print=true
+            ;;
+        help)
+            usage
+            exit 1
+            ;;
+        *)
+            echo "Invalid parameter \`$OPTARG\`." >&2
+            echo "" >&2
+            usage
+            exit 1
+            ;;
+    esac
+done
+
+if [[ -t 0 ]]; then
+    bat --force-colorization --paging=never --style=numbers --wrap=never "$1" | less -c -R -S
+
+    if [[ "$print" == true ]]; then
+        bat --force-colorization --paging=never --style=numbers --wrap=never "$1"
+    fi
+else
+    # Read from stdin.
+    input=$(cat -)
+
+    bat --paging=never --style=plain --wrap=never <(echo "$input") | less -c -R -S
+
+    if [[ "$print" == true ]]; then
+        bat --force-colorization --paging=never --style=plain --wrap=never <(echo "$input")
+    fi
+fi

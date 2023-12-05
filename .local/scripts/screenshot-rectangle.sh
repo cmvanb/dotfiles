@@ -5,11 +5,11 @@
 
 if [[ "${TRACE-0}" == "1" ]]; then set -o xtrace; fi
 
-scriptName=$(basename "$0")
+script_name=$(basename "$0")
 
 # Print the usage instructions.
 usage() {
-    echo "$scriptName [--upload]" >&2
+    echo "$script_name [--upload]" >&2
     echo "" >&2
     echo "Takes a screenshot of a user selected rectangular region." >&2
     echo "" >&2
