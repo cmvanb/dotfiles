@@ -35,12 +35,14 @@ if [[ $host == "supertubes" ]]; then
     esh "$source_dir/.config/yambar/config.yml~desktop" > "$config_dir/yambar/config.yml"
     mkdir -p "$config_dir/way-displays"
     force_link "$source_dir/.config/way-displays/cfg.yaml~home-triple" "$config_dir/way-displays/cfg.yaml"
+    # TODO: Add wallpaper config for Supertubes.
 
 # Dojo
 elif [[ $host == "dojo" ]]; then
 
     mkdir -p "$config_dir/yambar"
     esh "$source_dir/.config/yambar/config.yml~desktop" > "$config_dir/yambar/config.yml"
+    # TODO: Add wallpaper config for Dojo.
 
 # Qutedell
 elif [[ $host == "qutedell" ]]; then
@@ -49,6 +51,7 @@ elif [[ $host == "qutedell" ]]; then
     esh "$source_dir/.config/yambar/config.yml~laptop" > "$config_dir/yambar/config.yml"
     mkdir -p "$config_dir/way-displays"
     force_link "$source_dir/.config/way-displays/cfg.yaml~qutech-dual" "$config_dir/way-displays/cfg.yaml"
+    force_link "$source_dir/.config/river/wallpaper.sh~qutech-dual" "$config_dir/river/wallpaper.sh"
 
 # Cyxwel
 elif [[ $host == "cyxwel" ]]; then
@@ -57,6 +60,7 @@ elif [[ $host == "cyxwel" ]]; then
     esh "$source_dir/.config/yambar/config.yml~desktop" > "$config_dir/yambar/config.yml"
     mkdir -p "$config_dir/way-displays"
     force_link "$source_dir/.config/way-displays/cfg.yaml~home-triple" "$config_dir/way-displays/cfg.yaml"
+    # TODO: Add wallpaper config for Cyxwel.
 
 # ...
 else

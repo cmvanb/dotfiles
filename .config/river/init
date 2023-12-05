@@ -6,24 +6,26 @@
 # documentation.
 #-------------------------------------------------------------------------------
 
-bash_dir=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
-source_dir=$( realpath "$bash_dir/../.." )
+config_dir=${XDG_CONFIG_HOME:-$HOME/.config}
+opt_dir=${XDG_OPT_HOME:-$HOME/.local/opt}
+scripts_dir=${XDG_SCRIPTS_HOME:-$HOME/.local/scripts}
 
 # Environment
 #-------------------------------------------------------------------------------
 
-source "$bash_dir/environment.sh"
+# shellcheck disable=SC1091
+source "$config_dir/river/environment.sh"
 
 # Systemd integration
 # TODO: This should be part of the river/systemd integration.
 #-------------------------------------------------------------------------------
 
-systemd-cat --identifier=river echo "Initializing River from $source_dir ..."
+systemd-cat --identifier=river echo "Initializing River..."
 
 # Share part of river environment with systemd.
 # NOTE: `spawn` is necessary, or this won't work.
-VARIABLES="XDG_CURRENT_DESKTOP XDG_SESSION_TYPE WAYLAND_DISPLAY"
-riverctl spawn "dbus-update-activation-environment --systemd $VARIABLES"
+systemd_variables="XDG_CURRENT_DESKTOP XDG_SESSION_TYPE WAYLAND_DISPLAY"
+riverctl spawn "dbus-update-activation-environment --systemd $systemd_variables"
 
 # Other system services can respond to the underlying wayland-session or graphical-session.target.
 systemctl --user start river-session.target
@@ -32,6 +34,12 @@ systemctl --user start river-session.target
 #-------------------------------------------------------------------------------
 
 way-displays > "/tmp/way-displays.${XDG_VTNR}.${USER}.log" 2>&1 &
+
+# Wallpaper
+#-------------------------------------------------------------------------------
+
+# shellcheck disable=SC1091
+source "$config_dir/river/wallpaper.sh"
 
 # Input configuration
 #-------------------------------------------------------------------------------
@@ -52,7 +60,7 @@ riverctl hide-cursor timeout 3000
 #-------------------------------------------------------------------------------
 
 # shellcheck disable=SC1091
-source "$XDG_OPT_HOME/theme/theme.sh"
+source "$opt_dir/theme/theme.sh"
 
 riverctl background-color "$(color_zerox "$system_bg")"
 riverctl border-color-focused "$(color_zerox "$primary_6")"
@@ -79,7 +87,7 @@ riverctl map normal Alt T spawn "wezterm"
 riverctl map normal Alt O spawn "wofi --no-actions --show drun"
 
 # Browser
-riverctl map normal Alt B spawn "$XDG_SCRIPTS_HOME/open-qutebrowser-session.sh"
+riverctl map normal Alt B spawn "$scripts_dir/open-qutebrowser-session.sh"
 
 # Dismiss notifications
 riverctl map normal Alt D spawn "makoctl dismiss -a"
@@ -91,7 +99,7 @@ riverctl map normal Alt Q close
 riverctl map normal Alt+Shift Q exit
 
 # Lock system
-riverctl map normal Alt+Shift Z spawn "$XDG_SCRIPTS_HOME/lock-screen.sh"
+riverctl map normal Alt+Shift Z spawn "$scripts_dir/lock-screen.sh"
 
 # Focus the next/previous view in the layout stack
 riverctl map normal Alt J focus-view next
@@ -107,11 +115,11 @@ riverctl map normal Alt L focus-output right
 
 # Send the focused view to the left/right output
 # TODO: Save active tag on source output, restore it on destination output.
-riverctl map normal Alt+Shift H spawn "$XDG_CONFIG_HOME/river/send-and-focus-output.sh left"
-riverctl map normal Alt+Shift L spawn "$XDG_CONFIG_HOME/river/send-and-focus-output.sh right"
+riverctl map normal Alt+Shift H spawn "$config_dir/river/send-and-focus-output.sh left"
+riverctl map normal Alt+Shift L spawn "$config_dir/river/send-and-focus-output.sh right"
 
 # Send the focused view to a specific output
-riverctl map normal Alt S spawn "$XDG_CONFIG_HOME/river/send-to-output.sh"
+riverctl map normal Alt S spawn "$config_dir/river/send-to-output.sh"
 
 # Cycle focused tags
 # see: https://gitlab.com/akumar-xyz/river-shifttags/-/tree/master
@@ -151,8 +159,8 @@ riverctl map normal Alt Page_Down send-layout-cmd rivercarro "main-ratio +0.05"
 riverctl map normal Alt Page_Up send-layout-cmd rivercarro "main-ratio -0.05"
 
 # Take a screenshot of a selected rectangle
-riverctl map normal Alt P spawn "$XDG_SCRIPTS_HOME/screenshot-rectangle.sh"
-riverctl map normal Alt+Shift P spawn "$XDG_SCRIPTS_HOME/screenshot-rectangle.sh --upload"
+riverctl map normal Alt P spawn "$scripts_dir/screenshot-rectangle.sh"
+riverctl map normal Alt+Shift P spawn "$scripts_dir/screenshot-rectangle.sh --upload"
 
 # Toggle window float
 riverctl map normal Alt Space toggle-float
@@ -168,16 +176,18 @@ riverctl map-pointer normal Shift BTN_RIGHT resize-view
 
 # Assign and launch rivercarro (layout generator).
 riverctl default-layout rivercarro
-riverctl spawn "rivercarro -inner-gaps 4 -outer-gaps 0 -main-ratio 0.60 -main-location right"
+riverctl spawn "rivercarro -inner-gaps 8 -outer-gaps 4 -main-ratio 0.60 -main-location right"
 
 # Systemd integration
 #-------------------------------------------------------------------------------
+
+systemd-cat --identifier=river echo "River initialized."
 
 # Clean up the shared environment when river is interrupted or terminated.
 session_cleanup () {
     systemd-cat --identifier=river echo "Cleaning River."
 
-    systemctl --user unset-environment "$VARIABLES"
+    systemctl --user unset-environment "$systemd_variables"
 
     exit
 }

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # TODO: This should be part of the river/systemd integration.
 # Tells libseat what login daemon we're using so it doesn't have to cry about it.
