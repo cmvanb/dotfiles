@@ -20,11 +20,10 @@ source "$bash_dir/environment.sh"
 
 systemd-cat --identifier=river echo "Initializing River from $source_dir ..."
 
-VARIABLES="XDG_CURRENT_DESKTOP XDG_SESSION_TYPE WAYLAND_DISPLAY"
-
 # Share part of river environment with systemd.
-dbus-update-activation-environment --systemd "$VARIABLES"
-systemctl --user import-environment "$VARIABLES"
+# NOTE: `spawn` is necessary, or this won't work.
+VARIABLES="XDG_CURRENT_DESKTOP XDG_SESSION_TYPE WAYLAND_DISPLAY"
+riverctl spawn "dbus-update-activation-environment --systemd $VARIABLES"
 
 # Other system services can respond to the underlying wayland-session or graphical-session.target.
 systemctl --user start river-session.target
@@ -177,8 +176,6 @@ riverctl spawn "rivercarro -inner-gaps 4 -outer-gaps 0 -main-ratio 0.60 -main-lo
 # Clean up the shared environment when river is interrupted or terminated.
 session_cleanup () {
     systemd-cat --identifier=river echo "Cleaning River."
-
-    # VARIABLES="XDG_SESSION_TYPE WAYLAND_DISPLAY"
 
     systemctl --user unset-environment "$VARIABLES"
 
