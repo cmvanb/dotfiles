@@ -35,7 +35,7 @@ if [[ $host == "supertubes" ]]; then
     esh "$source_dir/.config/yambar/config.yml~desktop" > "$config_dir/yambar/config.yml"
     mkdir -p "$config_dir/way-displays"
     force_link "$source_dir/.config/way-displays/cfg.yaml~home-triple" "$config_dir/way-displays/cfg.yaml"
-    # TODO: Add wallpaper config for Supertubes.
+    force_link "$source_dir/.config/river/wallpaper.sh~home-triple" "$config_dir/river/wallpaper.sh"
 
 # Dojo
 elif [[ $host == "dojo" ]]; then
@@ -60,7 +60,7 @@ elif [[ $host == "cyxwel" ]]; then
     esh "$source_dir/.config/yambar/config.yml~desktop" > "$config_dir/yambar/config.yml"
     mkdir -p "$config_dir/way-displays"
     force_link "$source_dir/.config/way-displays/cfg.yaml~home-triple" "$config_dir/way-displays/cfg.yaml"
-    # TODO: Add wallpaper config for Cyxwel.
+    force_link "$source_dir/.config/river/wallpaper.sh~home-triple" "$config_dir/river/wallpaper.sh"
 
 # ...
 else
