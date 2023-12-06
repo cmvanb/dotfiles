@@ -5,11 +5,20 @@
 
 set -euo pipefail
 
-terminal_supports_256_colors=false
+declare terminal_supports_256_colors
 
-if [[ $TERM = "xterm-256color" ]]; then
-    terminal_supports_256_colors=true
-fi
+case "$TERM" in
+    alacritty)
+        ;&
+    xterm-kitty)
+        ;&
+    xterm-256color)
+        terminal_supports_256_colors=true
+        ;;
+    *)
+        terminal_supports_256_colors=false
+        ;;
+esac
 
 # Print a string with foreground color.
 #-------------------------------------------------------------------------------
