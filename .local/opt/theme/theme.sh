@@ -7,8 +7,8 @@
 # convenience.
 #-------------------------------------------------------------------------------
 
-config_dir="$XDG_CONFIG_HOME/theme"
-lib_dir="$XDG_OPT_HOME/theme"
+declare theme_config_dir="$XDG_CONFIG_HOME/theme"
+declare theme_lib_dir="$XDG_OPT_HOME/theme"
 
 # API
 #-------------------------------------------------------------------------------
@@ -29,25 +29,25 @@ color_zerox () {
 
 # Usage: `$(color_ansi $colorfg $colorbg)`
 color_ansi () {
-    "$lib_dir/color-hex-to-ansi.sh" --fg="${1:1}" --bg="${2:1}"
+    "$theme_lib_dir/color-hex-to-ansi.sh" --fg="${1:1}" --bg="${2:1}"
 }
 
 # Usage: `$(color_ansi_fg $colorfg)`
 color_ansi_fg () {
-    "$lib_dir/color-hex-to-ansi.sh" --fg="${1:1}"
+    "$theme_lib_dir/color-hex-to-ansi.sh" --fg="${1:1}"
 }
 
 # Usage: `$(color_ansi_reset)`
 color_ansi_reset () {
-    "$lib_dir/color-hex-to-ansi.sh" --reset
+    "$theme_lib_dir/color-hex-to-ansi.sh" --reset
 }
 
 color_256 () {
-    "$lib_dir/color-lookup-256-index.sh" "$1"
+    "$theme_lib_dir/color-lookup-256-index.sh" "$1"
 }
 
 # Import the system theme variables.
 #-------------------------------------------------------------------------------
 
-source "$config_dir/colors"
-source "$config_dir/fonts"
+source "$theme_config_dir/colors"
+source "$theme_config_dir/fonts"

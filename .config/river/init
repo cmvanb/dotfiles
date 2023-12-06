@@ -6,9 +6,9 @@
 # documentation.
 #-------------------------------------------------------------------------------
 
-config_dir=${XDG_CONFIG_HOME:-$HOME/.config}
-opt_dir=${XDG_OPT_HOME:-$HOME/.local/opt}
-scripts_dir=${XDG_SCRIPTS_HOME:-$HOME/.local/scripts}
+declare config_dir=${XDG_CONFIG_HOME:-$HOME/.config}
+declare opt_dir=${XDG_OPT_HOME:-$HOME/.local/opt}
+declare scripts_dir=${XDG_SCRIPTS_HOME:-$HOME/.local/scripts}
 
 # Environment
 #-------------------------------------------------------------------------------

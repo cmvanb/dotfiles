@@ -2,18 +2,18 @@
 # System theme Fish API
 #-------------------------------------------------------------------------------
 
-set config_dir $XDG_CONFIG_HOME/theme
-set lib_dir $XDG_OPT_HOME/theme
+set -l config_dir $XDG_CONFIG_HOME/theme
+set -l lib_dir $XDG_OPT_HOME/theme
 
 # Parsing and lookup functions
 #-------------------------------------------------------------------------------
 
 function dict_get --argument-names key
-    eval echo -n \$'__var_'$key
+    eval echo -n \$'__theme_var_'$key
 end
 
 function dict_set --argument-names key value
-    set -g '__var_'$key $value
+    set -g '__theme_var_'$key $value
 end
 
 function parse_vars --argument-names filePath
