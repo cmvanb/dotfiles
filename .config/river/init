@@ -63,7 +63,7 @@ riverctl hide-cursor timeout 3000
 source "$opt_dir/theme/theme.sh"
 
 riverctl background-color "$(color_zerox "$system_bg")"
-riverctl border-color-focused "$(color_zerox "$primary_6")"
+riverctl border-color-focused "$(color_zerox "$primary_12")"
 riverctl border-color-unfocused "$(color_zerox "$primary_2")"
 riverctl border-color-urgent "$(color_zerox "$red_4")"
 
@@ -175,8 +175,9 @@ riverctl map-pointer normal Shift BTN_RIGHT resize-view
 #-------------------------------------------------------------------------------
 
 # Assign and launch rivercarro (layout generator).
+# NOTE: 10px looks better without Yambar, 9px with.
 riverctl default-layout rivercarro
-riverctl spawn "rivercarro -inner-gaps 8 -outer-gaps 4 -main-ratio 0.60 -main-location right"
+riverctl spawn "rivercarro -inner-gaps 9 -outer-gaps 9 -main-ratio 0.60 -main-location right"
 
 # Systemd integration
 #-------------------------------------------------------------------------------
