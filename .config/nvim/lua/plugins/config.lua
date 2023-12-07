@@ -95,6 +95,7 @@ return {
         end
     },
     { 'nvim-treesitter/playground' },
+    { 'luckasRanarison/tree-sitter-hypr' },
 
     -- Snippet engine.
     {
