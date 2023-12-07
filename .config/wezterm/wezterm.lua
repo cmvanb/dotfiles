@@ -55,7 +55,7 @@ return {
         family = theme.font('font_mono'),
         weight = 'Regular',
     }),
-    font_size = 14.0,
+    font_size = 16.0,
 
     -- Window
     adjust_window_size_when_changing_font_size = false,
