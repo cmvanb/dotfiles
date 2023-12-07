@@ -280,6 +280,7 @@ c.colors.webpage.bg = theme.color_hash('secondary_0')
 c.colors.webpage.preferred_color_scheme = 'dark'
 
 # Dark mode
+# see: https://github.com/qutebrowser/qutebrowser/discussions/5733
 c.colors.webpage.darkmode.enabled = True
 
 # Key bindings
