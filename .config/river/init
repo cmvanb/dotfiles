@@ -177,7 +177,7 @@ riverctl map-pointer normal Shift BTN_RIGHT resize-view
 # Assign and launch rivercarro (layout generator).
 # NOTE: 10px looks better without Yambar, 9px with.
 riverctl default-layout rivercarro
-riverctl spawn "rivercarro -inner-gaps 9 -outer-gaps 9 -main-ratio 0.60 -main-location right"
+riverctl spawn "rivercarro -inner-gaps 0 -outer-gaps 0 -main-ratio 0.60 -main-location right"
 
 # Systemd integration
 #-------------------------------------------------------------------------------
