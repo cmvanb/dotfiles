@@ -52,13 +52,13 @@ cmd('syntax reset')
 -- NVIM UI highlights
 --------------------------------------------------------------------------------
 
--- group                   | guifg              | guibg         | guiprops | termfg           | termbg           | termprops
+-- group                   | guifg              | guibg          | guiprops | termfg           | termbg           | termprops
 hi('Normal',               'editor_text_normal', 'editor_bg',    'NONE',    'ansi_cyan',       'ansi_black',      'NONE')
 hi('NonText',              'text_8',             'NONE',         'NONE',    'ansi_brwhite',    'NONE',            'NONE')
 hi('EndOfBuffer',          'primary_4',          'NONE',         'NONE',    'NONE',            'NONE',            'NONE')
-hi('Cursor',               'text_0',             'text_15',      'NONE',    'ansi_black',      'ansi_brwhite',    'bold')
-hi('CursorLine',           'NONE',               'primary_1',    'NONE',    'NONE',            'ansi_blue',       'NONE')
-hi('CursorLineNr',         'primary_10',         'primary_1',    'NONE',    'ansi_brblue',     'ansi_blue',       'bold')
+hi('Cursor',               'text_0',             'primary_15',   'NONE',    'ansi_black',      'ansi_brwhite',    'bold')
+hi('CursorLine',           'NONE',               'primary_2',    'NONE',    'NONE',            'ansi_blue',       'NONE')
+hi('CursorLineNr',         'primary_12',         'primary_2',    'NONE',    'ansi_brblue',     'ansi_blue',       'bold')
 hi('LineNr',               'primary_6',          'NONE',         'NONE',    'ansi_blue',       'NONE',            'NONE')
 hi('SignColumn',           'primary_15',         'primary_0',    'NONE',    'ansi_brblue',     'ansi_black',      'NONE')
 
@@ -80,7 +80,7 @@ hi('Search',               'gray_0',             'magenta_5',    'bold',    'ans
 hi('Title',                'text_15',            'NONE',         'bold',    'ansi_brwhite',    'NONE',            'bold')
 hi('PMenu',                'text_8',             'primary_0',    'NONE',    'ansi_white',      'ansi_black',      'NONE')
 hi('PMenuSel',             'yellow_6',           'primary_5',    'bold',    'ansi_white',      'ansi_black',      'bold')
-hi('WinSeparator',         'primary_2',          'NONE',         'NONE',    'ansi_brblack',    'NONE',            'NONE')
+hi('WinSeparator',         'primary_4',          'NONE',         'NONE',    'ansi_brblack',    'NONE',            'NONE')
 hi('MatchParen',           'text_8',             'NONE',         'bold',    'ansi_brwhite',    'NONE',            'bold,underline')
 hi('DiffAdd',              'green_4',            'NONE',         'bold',    'ansi_green',      'NONE',            'NONE')
 hi('DiffChange',           'orange_6',           'NONE',         'bold',    'ansi_yellow',     'NONE',            'NONE')
