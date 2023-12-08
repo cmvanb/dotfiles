@@ -19,9 +19,17 @@ MODE:
       HEIGHT: 1440
       HZ: 240
 
-SCALING: false
+SCALING: true
 
-AUTO_SCALE: true
+AUTO_SCALE: false
+
+SCALE:
+    - NAME_DESC: 'HDMI-A-6'
+      SCALE: 0.8888888888
+    - NAME_DESC: 'DP-3'
+      SCALE: 1
+    - NAME_DESC: 'DP-4'
+      SCALE: 0.8888888888
 
 TRANSFORM:
     - NAME_DESC: 'HDMI-A-6'
