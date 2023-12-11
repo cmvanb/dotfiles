@@ -37,6 +37,9 @@ c.content.user_stylesheets = [ 'stylesheet.css' ]
 # Font settings
 #-------------------------------------------------------------------------------
 
+# Zoom
+c.zoom.default = '125%'
+
 # Defaults
 c.fonts.default_family = [ f"{theme.font('font_mono')}" ]
 c.fonts.default_size = '14pt'
