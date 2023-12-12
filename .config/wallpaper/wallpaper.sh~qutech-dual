@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+#-------------------------------------------------------------------------------
+# Wayland/wlroots wallpaper configuration
+#-------------------------------------------------------------------------------
+
+# Imports
+#-------------------------------------------------------------------------------
+
+# shellcheck disable=SC1091
+source "$XDG_OPT_HOME/shell-utils/debug.sh"
+source "$XDG_OPT_HOME/wayland-utils/set-output-wallpaper.sh"
+
+# Wallpaper configuration
+#-------------------------------------------------------------------------------
+
+pkill -x swaybg
+
+declare wallpaper="$XDG_PICTURES_DIR/wallpapers/hdd-tiltshift.jpg"
+
+set_output_wallpaper eDP-1 "$wallpaper"
+set_output_wallpaper DP-2 "$wallpaper"
+set_output_wallpaper HDMI-A-1 "$wallpaper"

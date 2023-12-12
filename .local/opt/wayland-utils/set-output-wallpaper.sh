@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #-------------------------------------------------------------------------------
-# River wallpaper configuration
+# Set the wallpaper for a specified wayland output
 #-------------------------------------------------------------------------------
 
 # Imports
@@ -8,26 +8,19 @@
 
 # shellcheck disable=SC1091
 source "$XDG_OPT_HOME/shell-utils/debug.sh"
+# shellcheck disable=SC1091
+source "$XDG_OPT_HOME/wayland-utils/output.sh"
 
 # Validation
 #-------------------------------------------------------------------------------
 
 assert_dependency swaybg
-assert_dependency wl-output-exists.sh
 
-# Wallpaper configuration
+# Functions
 #-------------------------------------------------------------------------------
 
-pkill -x swaybg
-
-declare wallpaper="vertical/psychedelic-jupiter.jpg"
-
 set_output_wallpaper () {
-    if wl-output-exists.sh "$1"; then
-        swaybg --output "$1" --mode fill --image "$XDG_PICTURES_DIR/wallpapers/$wallpaper" > /dev/null 2>&1 &
+    if wl_output_exists "$1"; then
+        swaybg --output "$1" --mode fill --image "$2" > /dev/null 2>&1 &
     fi
 }
-
-set_output_wallpaper HDMI-A-6
-set_output_wallpaper DP-3
-set_output_wallpaper DP-4

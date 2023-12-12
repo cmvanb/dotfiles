@@ -39,7 +39,7 @@ way-displays > "/tmp/way-displays.${XDG_VTNR}.${USER}.log" 2>&1 &
 #-------------------------------------------------------------------------------
 
 # shellcheck disable=SC1091
-source "$config_dir/river/wallpaper.sh"
+source "$config_dir/wallpaper/wallpaper.sh"
 
 # Input configuration
 #-------------------------------------------------------------------------------

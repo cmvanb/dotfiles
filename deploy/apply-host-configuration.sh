@@ -33,9 +33,12 @@ if [[ $host == "supertubes" ]]; then
 
     mkdir -p "$config_dir/yambar"
     esh "$source_dir/.config/yambar/config.yml~desktop" > "$config_dir/yambar/config.yml"
+
+    mkdir -p "$config_dir/wallpaper"
+    force_link "$source_dir/.config/wallpaper/wallpaper.sh~home-triple" "$config_dir/wallpaper/wallpaper.sh"
+
     mkdir -p "$config_dir/way-displays"
     force_link "$source_dir/.config/way-displays/cfg.yaml~home-triple" "$config_dir/way-displays/cfg.yaml"
-    force_link "$source_dir/.config/river/wallpaper.sh~home-triple" "$config_dir/river/wallpaper.sh"
 
 # Dojo
 elif [[ $host == "dojo" ]]; then
@@ -49,18 +52,24 @@ elif [[ $host == "qutedell" ]]; then
 
     mkdir -p "$config_dir/yambar"
     esh "$source_dir/.config/yambar/config.yml~laptop" > "$config_dir/yambar/config.yml"
+
+    mkdir -p "$config_dir/wallpaper"
+    force_link "$source_dir/.config/wallpaper/wallpaper.sh~qutech-dual" "$config_dir/wallpaper/wallpaper.sh"
+
     mkdir -p "$config_dir/way-displays"
     force_link "$source_dir/.config/way-displays/cfg.yaml~qutech-dual" "$config_dir/way-displays/cfg.yaml"
-    force_link "$source_dir/.config/river/wallpaper.sh~qutech-dual" "$config_dir/river/wallpaper.sh"
 
 # Cyxwel
 elif [[ $host == "cyxwel" ]]; then
 
     mkdir -p "$config_dir/yambar"
     esh "$source_dir/.config/yambar/config.yml~desktop" > "$config_dir/yambar/config.yml"
+
+    mkdir -p "$config_dir/wallpaper"
+    force_link "$source_dir/.config/wallpaper/wallpaper.sh~home-triple" "$config_dir/wallpaper/wallpaper.sh"
+
     mkdir -p "$config_dir/way-displays"
     force_link "$source_dir/.config/way-displays/cfg.yaml~home-triple" "$config_dir/way-displays/cfg.yaml"
-    force_link "$source_dir/.config/river/wallpaper.sh~home-triple" "$config_dir/river/wallpaper.sh"
 
 # ...
 else
