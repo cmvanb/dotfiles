@@ -30,7 +30,7 @@ wl_output_exists () {
 
     if [[ -z $output ]]; then
         echo "ERROR: output named \`$1\` not found"
-        exit 1
+        return 1
     fi
 }
 
@@ -40,7 +40,7 @@ wl_get_output_transform () {
 
     if [[ -z $output ]]; then
         echo "ERROR: output named \`$1\` not found"
-        exit 1
+        return 1
     fi
 
     # Find the line number on which the display info begins.
