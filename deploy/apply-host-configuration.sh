@@ -23,6 +23,7 @@ assert_dependency esh
 #-------------------------------------------------------------------------------
 
 config_dir=${XDG_CONFIG_HOME:-$HOME/.config}
+bin_dir=${XDG_BIN_HOME:-$HOME/.local/bin}
 
 host=$HOSTNAME
 
@@ -40,12 +41,16 @@ if [[ $host == "supertubes" ]]; then
     mkdir -p "$config_dir/way-displays"
     force_link "$source_dir/.config/way-displays/cfg.yaml~home-triple" "$config_dir/way-displays/cfg.yaml"
 
+    force_link "$source_dir/.local/bin/init~basic" "$bin_dir/init"
+
 # Dojo
 elif [[ $host == "dojo" ]]; then
 
     mkdir -p "$config_dir/yambar"
     esh "$source_dir/.config/yambar/config.yml~desktop" > "$config_dir/yambar/config.yml"
     # TODO: Add wallpaper config for Dojo.
+
+    force_link "$source_dir/.local/bin/init~basic" "$bin_dir/init"
 
 # Qutedell
 elif [[ $host == "qutedell" ]]; then
@@ -59,6 +64,8 @@ elif [[ $host == "qutedell" ]]; then
     mkdir -p "$config_dir/way-displays"
     force_link "$source_dir/.config/way-displays/cfg.yaml~qutech-dual" "$config_dir/way-displays/cfg.yaml"
 
+    force_link "$source_dir/.local/bin/init~basic" "$bin_dir/init"
+
 # Cyxwel
 elif [[ $host == "cyxwel" ]]; then
 
@@ -70,6 +77,8 @@ elif [[ $host == "cyxwel" ]]; then
 
     mkdir -p "$config_dir/way-displays"
     force_link "$source_dir/.config/way-displays/cfg.yaml~home-triple" "$config_dir/way-displays/cfg.yaml"
+
+    force_link "$source_dir/.local/bin/init~basic" "$bin_dir/init"
 
 # ...
 else
