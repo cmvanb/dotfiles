@@ -87,7 +87,10 @@ riverctl map normal Alt T spawn "wezterm"
 riverctl map normal Alt O spawn "wofi --no-actions --show drun"
 
 # Browser
-riverctl map normal Alt B spawn "$scripts_dir/open-qutebrowser-session.sh"
+riverctl map normal Alt B spawn "qutebrowser"
+
+# Browser session
+riverctl map normal Alt+Shift B spawn "$scripts_dir/open-qutebrowser-session.sh"
 
 # Dismiss notifications
 riverctl map normal Alt D spawn "makoctl dismiss -a"
