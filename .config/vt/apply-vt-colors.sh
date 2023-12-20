@@ -10,11 +10,11 @@ if ! command -v esh &> /dev/null; then
     exit
 fi
 
-base_dir="$(realpath "$(dirname "$(realpath "$0")")/..")"
+base_dir=$(realpath "$(dirname "$(realpath "$0")")/../..")
 
-echo "Applying virtual terminal colors from \`$base_dir/vt/colors~esh\`."
+echo "Applying virtual terminal colors from \`$base_dir/.config/vt/colors~esh\`."
 
 # Generate the colors template and pass it to setvtrgb.
-esh "$base_dir/vt/colors~esh" > /tmp/vtcolors
+esh "$base_dir/.config/vt/colors~esh" > /tmp/vtcolors
 setvtrgb /tmp/vtcolors
 rm /tmp/vtcolors
