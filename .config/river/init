@@ -63,7 +63,7 @@ riverctl hide-cursor timeout 3000
 source "$opt_dir/theme/theme.sh"
 
 riverctl background-color "$(color_zerox "$system_bg")"
-riverctl border-color-focused "$(color_zerox "$primary_12")"
+riverctl border-color-focused "$(color_zerox "$primary_6")"
 riverctl border-color-unfocused "$(color_zerox "$primary_2")"
 riverctl border-color-urgent "$(color_zerox "$red_4")"
 
