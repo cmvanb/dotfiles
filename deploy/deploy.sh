@@ -1,39 +1,35 @@
 #!/usr/bin/env bash
 #-------------------------------------------------------------------------------
-# Deploy the dotfiles
+# Deploy the home configuration
 #-------------------------------------------------------------------------------
 
 set -euo pipefail
 
-declare bash_dir
-bash_dir=$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)
-
-declare source_dir
-source_dir=$(realpath "$bash_dir/..")
+base_dir="$(realpath "$(dirname "$(realpath "$0")")/..")"
 
 # Imports
 #-------------------------------------------------------------------------------
 
-source "$source_dir/.local/opt/shell-utils/linux.sh"
+source "$base_dir/.local/opt/shell-utils/linux.sh"
 
 # Necessary environment vars
 #-------------------------------------------------------------------------------
 
 export XDG_CONFIG_HOME="$HOME/.config"
 
-# Deploy dotfiles
+# Deploy home configuration
 #-------------------------------------------------------------------------------
 
-echo "Deploying dotfiles from \`$source_dir\` to \`$HOME\`..."
+echo "Deploying dotfiles from \`$base_dir\` to \`$HOME\`..."
 
 # NOTE: Order matters.
-source "$bash_dir/link-dotfiles.sh"
-source "$bash_dir/apply-distro-configuration.sh"
-source "$bash_dir/configure-theme.sh"
-source "$bash_dir/generate-dotfiles-templates.sh"
-source "$bash_dir/apply-host-configuration.sh"
-source "$bash_dir/configure-syncthing.sh"
-source "$bash_dir/enable-systemd-services.sh"
-source "$bash_dir/install-user-packages.sh"
+source "$base_dir/deploy/link-dotfiles.sh"
+source "$base_dir/deploy/apply-distro-configuration.sh"
+source "$base_dir/deploy/configure-theme.sh"
+source "$base_dir/deploy/generate-dotfiles-templates.sh"
+source "$base_dir/deploy/apply-host-configuration.sh"
+source "$base_dir/deploy/configure-syncthing.sh"
+source "$base_dir/deploy/enable-systemd-services.sh"
+source "$base_dir/deploy/install-user-packages.sh"
 
 echo "...deployment complete."

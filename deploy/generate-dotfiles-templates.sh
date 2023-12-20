@@ -5,13 +5,12 @@
 
 set -euo pipefail
 
-bash_dir=$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)
-source_dir=$(realpath "$bash_dir/..")
+base_dir="$(realpath "$(dirname "$(realpath "$0")")/..")"
 
 # Imports
 #-------------------------------------------------------------------------------
 
-source "$source_dir/.local/opt/shell-utils/debug.sh"
+source "$base_dir/.local/opt/shell-utils/debug.sh"
 
 # Validation
 #-------------------------------------------------------------------------------
@@ -25,25 +24,25 @@ assert_dependency bat
 bin_dir=${XDG_BIN_HOME:-$HOME/.local/bin}
 config_dir=${XDG_CONFIG_HOME:-$HOME/.config}
 
-echo "Generating dotfiles templates from \`$source_dir\` to \`$HOME\`."
+echo "Generating dotfiles templates from \`$base_dir\` to \`$HOME\`."
 
 mkdir -p "$bin_dir"
-esh "$source_dir/.local/bin/rg~esh" > "$bin_dir/rg"
+esh "$base_dir/.local/bin/rg~esh" > "$bin_dir/rg"
 chmod +x "$bin_dir/rg"
 
 mkdir -p "$config_dir/alacritty"
-esh "$source_dir/.config/alacritty/alacritty.yml~esh" > "$config_dir/alacritty/alacritty.yml"
+esh "$base_dir/.config/alacritty/alacritty.yml~esh" > "$config_dir/alacritty/alacritty.yml"
 
 mkdir -p "$config_dir/mako"
-esh "$source_dir/.config/mako/config~esh" > "$config_dir/mako/config"
+esh "$base_dir/.config/mako/config~esh" > "$config_dir/mako/config"
 
 mkdir -p "$config_dir/wofi"
-esh "$source_dir/.config/wofi/style.css~esh" > "$config_dir/wofi/style.css"
+esh "$base_dir/.config/wofi/style.css~esh" > "$config_dir/wofi/style.css"
 
 mkdir -p "$config_dir/systemd/user"
-esh "$source_dir/.config/systemd/user/mako.service~esh" > "$config_dir/systemd/user/mako.service"
-esh "$source_dir/.config/systemd/user/ssh-agent.service~esh" > "$config_dir/systemd/user/ssh-agent.service"
-esh "$source_dir/.config/systemd/user/udiskie.service~esh" > "$config_dir/systemd/user/udiskie.service"
+esh "$base_dir/.config/systemd/user/mako.service~esh" > "$config_dir/systemd/user/mako.service"
+esh "$base_dir/.config/systemd/user/ssh-agent.service~esh" > "$config_dir/systemd/user/ssh-agent.service"
+esh "$base_dir/.config/systemd/user/udiskie.service~esh" > "$config_dir/systemd/user/udiskie.service"
 
 mkdir -p "$config_dir/zathura"
-esh "$source_dir/.config/zathura/zathurarc~esh" > "$config_dir/zathura/zathurarc"
+esh "$base_dir/.config/zathura/zathurarc~esh" > "$config_dir/zathura/zathurarc"

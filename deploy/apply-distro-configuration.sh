@@ -5,14 +5,13 @@
 
 set -euo pipefail
 
-bash_dir=$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)
-source_dir=$(realpath "$bash_dir/..")
+base_dir="$(realpath "$(dirname "$(realpath "$0")")/..")"
 
 # Imports
 #-------------------------------------------------------------------------------
 
-source "$source_dir/.local/opt/shell-utils/fs.sh"
-source "$source_dir/.local/opt/shell-utils/linux.sh"
+source "$base_dir/.local/opt/shell-utils/fs.sh"
+source "$base_dir/.local/opt/shell-utils/linux.sh"
 
 # Host-specific configuration
 #-------------------------------------------------------------------------------
@@ -30,16 +29,16 @@ if [[ $distro_id == "arch" ]]; then
 
     export SYSTEM_BINARY_PATH=/usr/bin
 
-    force_link "$source_dir/.config/fish/interactive-arch.fish" "$config_dir/fish/interactive-distro.fish"
-    force_link "$source_dir/.config/bash/interactive-arch.sh" "$config_dir/bash/interactive-distro.sh"
+    force_link "$base_dir/.config/fish/interactive-arch.fish" "$config_dir/fish/interactive-distro.fish"
+    force_link "$base_dir/.config/bash/interactive-arch.sh" "$config_dir/bash/interactive-distro.sh"
 
 elif [[ $distro_id == "nixos" ]]; then
     echo "Applying NixOS configuration to \`$HOME\`."
 
     export SYSTEM_BINARY_PATH=/run/current-system/sw/bin
 
-    force_link "$source_dir/.config/fish/interactive-nixos.fish" "$config_dir/fish/interactive-distro.fish"
-    force_link "$source_dir/.config/bash/interactive-nixos.sh" "$config_dir/bash/interactive-distro.sh"
+    force_link "$base_dir/.config/fish/interactive-nixos.fish" "$config_dir/fish/interactive-distro.fish"
+    force_link "$base_dir/.config/bash/interactive-nixos.sh" "$config_dir/bash/interactive-distro.sh"
 
 else
     echo "[$(basename "$0")] ERROR: Unknown distribution \`$distro_id\`, unable to deploy."

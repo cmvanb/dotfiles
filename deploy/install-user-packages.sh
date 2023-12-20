@@ -5,13 +5,12 @@
 
 set -euo pipefail
 
-bash_dir=$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)
-source_dir=$(realpath "$bash_dir/..")
+base_dir="$(realpath "$(dirname "$(realpath "$0")")/..")"
 
 # Imports
 #-------------------------------------------------------------------------------
 
-source "$source_dir/.local/opt/shell-utils/debug.sh"
+source "$base_dir/.local/opt/shell-utils/debug.sh"
 
 # Validation
 #-------------------------------------------------------------------------------

@@ -5,14 +5,13 @@
 
 set -euo pipefail
 
-bash_dir=$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)
-source_dir=$(realpath "$bash_dir/..")
+base_dir="$(realpath "$(dirname "$(realpath "$0")")/..")"
 
 # Imports
 #-------------------------------------------------------------------------------
 
-source "$source_dir/.local/opt/shell-utils/debug.sh"
-source "$source_dir/.local/opt/shell-utils/fs.sh"
+source "$base_dir/.local/opt/shell-utils/debug.sh"
+source "$base_dir/.local/opt/shell-utils/fs.sh"
 
 # Validation
 #-------------------------------------------------------------------------------
@@ -33,52 +32,52 @@ echo "Applying \`$host\` configuration to \`$HOME\`."
 if [[ $host == "supertubes" ]]; then
 
     mkdir -p "$config_dir/yambar"
-    esh "$source_dir/.config/yambar/config.yml~desktop" > "$config_dir/yambar/config.yml"
+    esh "$base_dir/.config/yambar/config.yml~desktop" > "$config_dir/yambar/config.yml"
 
     mkdir -p "$config_dir/wallpaper"
-    force_link "$source_dir/.config/wallpaper/wallpaper.sh~home-triple" "$config_dir/wallpaper/wallpaper.sh"
+    force_link "$base_dir/.config/wallpaper/wallpaper.sh~home-triple" "$config_dir/wallpaper/wallpaper.sh"
 
     mkdir -p "$config_dir/way-displays"
-    force_link "$source_dir/.config/way-displays/cfg.yaml~home-triple" "$config_dir/way-displays/cfg.yaml"
+    force_link "$base_dir/.config/way-displays/cfg.yaml~home-triple" "$config_dir/way-displays/cfg.yaml"
 
-    force_link "$source_dir/.local/bin/init~basic" "$bin_dir/init"
+    force_link "$base_dir/.local/bin/init~basic" "$bin_dir/init"
 
 # Dojo
 elif [[ $host == "dojo" ]]; then
 
     mkdir -p "$config_dir/yambar"
-    esh "$source_dir/.config/yambar/config.yml~desktop" > "$config_dir/yambar/config.yml"
+    esh "$base_dir/.config/yambar/config.yml~desktop" > "$config_dir/yambar/config.yml"
     # TODO: Add wallpaper config for Dojo.
 
-    force_link "$source_dir/.local/bin/init~basic" "$bin_dir/init"
+    force_link "$base_dir/.local/bin/init~basic" "$bin_dir/init"
 
 # Qutedell
 elif [[ $host == "qutedell" ]]; then
 
     mkdir -p "$config_dir/yambar"
-    esh "$source_dir/.config/yambar/config.yml~laptop" > "$config_dir/yambar/config.yml"
+    esh "$base_dir/.config/yambar/config.yml~laptop" > "$config_dir/yambar/config.yml"
 
     mkdir -p "$config_dir/wallpaper"
-    force_link "$source_dir/.config/wallpaper/wallpaper.sh~qutech-dual" "$config_dir/wallpaper/wallpaper.sh"
+    force_link "$base_dir/.config/wallpaper/wallpaper.sh~qutech-dual" "$config_dir/wallpaper/wallpaper.sh"
 
     mkdir -p "$config_dir/way-displays"
-    force_link "$source_dir/.config/way-displays/cfg.yaml~qutech-dual" "$config_dir/way-displays/cfg.yaml"
+    force_link "$base_dir/.config/way-displays/cfg.yaml~qutech-dual" "$config_dir/way-displays/cfg.yaml"
 
-    force_link "$source_dir/.local/bin/init~basic" "$bin_dir/init"
+    force_link "$base_dir/.local/bin/init~basic" "$bin_dir/init"
 
 # Cyxwel
 elif [[ $host == "cyxwel" ]]; then
 
     mkdir -p "$config_dir/yambar"
-    esh "$source_dir/.config/yambar/config.yml~desktop" > "$config_dir/yambar/config.yml"
+    esh "$base_dir/.config/yambar/config.yml~desktop" > "$config_dir/yambar/config.yml"
 
     mkdir -p "$config_dir/wallpaper"
-    force_link "$source_dir/.config/wallpaper/wallpaper.sh~home-triple" "$config_dir/wallpaper/wallpaper.sh"
+    force_link "$base_dir/.config/wallpaper/wallpaper.sh~home-triple" "$config_dir/wallpaper/wallpaper.sh"
 
     mkdir -p "$config_dir/way-displays"
-    force_link "$source_dir/.config/way-displays/cfg.yaml~home-triple" "$config_dir/way-displays/cfg.yaml"
+    force_link "$base_dir/.config/way-displays/cfg.yaml~home-triple" "$config_dir/way-displays/cfg.yaml"
 
-    force_link "$source_dir/.local/bin/init~basic" "$bin_dir/init"
+    force_link "$base_dir/.local/bin/init~basic" "$bin_dir/init"
 
 # ...
 else
