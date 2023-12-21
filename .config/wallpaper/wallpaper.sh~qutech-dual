@@ -15,7 +15,7 @@ source "$XDG_OPT_HOME/wayland-utils/set-output-wallpaper.sh"
 
 pkill -x swaybg
 
-declare wallpaper="$XDG_PICTURES_DIR/wallpapers/hdd-tiltshift.jpg"
+declare wallpaper="$XDG_PICTURES_DIR/wallpapers/abstract-blue-sine-waves.jpg"
 
 set_output_wallpaper eDP-1 "$wallpaper"
 set_output_wallpaper DP-2 "$wallpaper"

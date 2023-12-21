@@ -8,5 +8,9 @@ font_mono='Iosevka NFM'
 # font_mono='JetBrains Mono'
 # font_mono='Fira Code'
 
-font_sans='Liberation Sans'
+font_sans='Cantarell'
 font_serif='Liberation Serif'
+
+font_size_small=12
+font_size_medium=14
+font_size_large=16

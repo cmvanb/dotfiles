@@ -76,7 +76,7 @@ return {
     },
 
     -- Transparency
-    window_background_opacity = 0.90,
+    window_background_opacity = 1.00,
 
 --------------------------------------------------------------------------------
 -- Key bindings

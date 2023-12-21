@@ -51,3 +51,4 @@ color_256 () {
 
 source "$theme_config_dir/colors"
 source "$theme_config_dir/fonts"
+source "$theme_config_dir/cursor"

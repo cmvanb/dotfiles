@@ -10,11 +10,11 @@ declare config_dir=${XDG_CONFIG_HOME:-$HOME/.config}
 declare opt_dir=${XDG_OPT_HOME:-$HOME/.local/opt}
 declare scripts_dir=${XDG_SCRIPTS_HOME:-$HOME/.local/scripts}
 
-# Environment
+# Imports
 #-------------------------------------------------------------------------------
 
 # shellcheck disable=SC1091
-source "$config_dir/river/environment.sh"
+source "$opt_dir/theme/theme.sh"
 
 # Systemd integration
 # TODO: This should be part of the river/systemd integration.
@@ -59,17 +59,21 @@ riverctl hide-cursor timeout 3000
 # Styling
 #-------------------------------------------------------------------------------
 
-# shellcheck disable=SC1091
-source "$opt_dir/theme/theme.sh"
-
 riverctl background-color "$(color_zerox "$system_bg")"
 riverctl border-color-focused "$(color_zerox "$primary_6")"
 riverctl border-color-unfocused "$(color_zerox "$primary_2")"
 riverctl border-color-urgent "$(color_zerox "$red_4")"
 
-riverctl border-width 2
+riverctl border-width 3
 
-riverctl xcursor-theme Simp1e 24
+riverctl xcursor-theme "$cursor_theme" "$cursor_size"
+
+# Layout generator
+#-------------------------------------------------------------------------------
+
+# Assign and launch rivercarro (layout generator).
+riverctl default-layout rivercarro
+riverctl spawn "rivercarro -inner-gaps 6 -outer-gaps 0 -main-ratio 0.60 -main-location right"
 
 # App configuration
 #-------------------------------------------------------------------------------
@@ -173,14 +177,6 @@ riverctl map-pointer normal Shift BTN_LEFT move-view
 
 # Resize views with mouse
 riverctl map-pointer normal Shift BTN_RIGHT resize-view
-
-# Layout generator
-#-------------------------------------------------------------------------------
-
-# Assign and launch rivercarro (layout generator).
-# NOTE: 10px looks better without Yambar, 9px with.
-riverctl default-layout rivercarro
-riverctl spawn "rivercarro -inner-gaps 0 -outer-gaps 0 -main-ratio 0.60 -main-location right"
 
 # Systemd integration
 #-------------------------------------------------------------------------------
