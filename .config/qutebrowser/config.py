@@ -49,7 +49,7 @@ c.fonts.web.family.fixed = f"{theme.font('font_mono')}"
 c.fonts.web.family.sans_serif = f"{theme.font('font_sans')}"
 c.fonts.web.family.serif = f"{theme.font('font_serif')}"
 c.fonts.web.family.standard = f"{theme.font('font_sans')}"
-c.fonts.web.size.minimum = 6
+c.fonts.web.size.minimum = 8
 c.fonts.web.size.default = 18
 c.fonts.web.size.default_fixed = 20
 

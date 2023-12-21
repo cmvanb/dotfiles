@@ -8,5 +8,5 @@ font_mono='Iosevka NFM'
 # font_mono='JetBrains Mono'
 # font_mono='Fira Code'
 
-font_sans='Noto Sans'
-font_serif='Noto Serif'
+font_sans='Liberation Sans'
+font_serif='Liberation Serif'
