@@ -50,8 +50,8 @@ riverctl focus-follows-cursor normal
 riverctl set-repeat 50 300
 
 # Mouse configuration
-riverctl input 1133:49295:Logitech_G403_HERO_Gaming_Mouse_Keyboard accel-profile adaptive
-riverctl input 1133:49295:Logitech_G403_HERO_Gaming_Mouse_Keyboard pointer-accel 1.0
+riverctl input pointer-1133-49309-Logitech_G203_LIGHTSYNC_Gaming_Mouse accel-profile flat
+riverctl input pointer-1133-49309-Logitech_G203_LIGHTSYNC_Gaming_Mouse pointer-accel 1.0
 
 # Hide inactive cursor
 riverctl hide-cursor timeout 3000
