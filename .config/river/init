@@ -79,6 +79,7 @@ riverctl spawn "rivercarro -inner-gaps 6 -outer-gaps 0 -main-ratio 0.60 -main-lo
 #-------------------------------------------------------------------------------
 
 riverctl float-filter-add app-id yad
+riverctl float-filter-add app-id xdg-desktop-portal-gtk
 
 # Key bindings
 #-------------------------------------------------------------------------------
