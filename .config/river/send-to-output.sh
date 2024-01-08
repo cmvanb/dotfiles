@@ -8,6 +8,8 @@
 
 # shellcheck disable=SC1091
 source "$XDG_OPT_HOME/shell-utils/debug.sh"
+# shellcheck disable=SC1091
+source "$XDG_OPT_HOME/wayland-utils/output.sh"
 
 # Validation
 #-------------------------------------------------------------------------------
@@ -18,7 +20,7 @@ assert_dependency riverctl
 # Choose output
 #-------------------------------------------------------------------------------
 
-outputs="$("$XDG_SCRIPTS_HOME/wl-get-outputs.sh")"
+outputs="$(wl_get_outputs)"
 target=$(echo "$outputs" | wofi --prompt "Send to output" --show dmenu 2> /dev/null)
 
 if [[ -z $target ]]; then

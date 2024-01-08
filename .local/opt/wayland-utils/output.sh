@@ -59,7 +59,7 @@ wl_rotate_display () {
     local output="$1"
 
     local transform
-    transform=$(wl-get-output-transform "$output")
+    transform=$(wl_get_output_transform "$output")
 
     local new_transform
     if [ "$transform" = "normal" ]; then
