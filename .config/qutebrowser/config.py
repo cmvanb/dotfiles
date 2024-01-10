@@ -34,6 +34,14 @@ c.content.javascript.enabled = False
 c.content.notifications.enabled = False
 c.content.user_stylesheets = [ 'stylesheet.css' ]
 
+# File selector settings
+#-------------------------------------------------------------------------------
+
+c.fileselect.handler = 'external'
+c.fileselect.single_file.command = [ 'yad', '--file', '--width', '1280', '--height', '800' ]
+c.fileselect.multiple_files.command = [ 'yad', '--file', '--width', '1280', '--height', '800'  ]
+c.fileselect.folder.command = [ 'yad', '--file', '--directory', '--width', '1280', '--height', '800'  ]
+
 # Font settings
 #-------------------------------------------------------------------------------
 
