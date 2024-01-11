@@ -12,7 +12,13 @@ opt_dir=${XDG_OPT_HOME:-$HOME/.local/opt}
 # Imports
 #-------------------------------------------------------------------------------
 
+source "$base_dir/.local/opt/shell-utils/debug.sh"
 source "$base_dir/.local/opt/shell-utils/fs.sh"
+
+# Validation
+#-------------------------------------------------------------------------------
+
+assert_dependency bat
 
 # Install system theme scripts
 #-------------------------------------------------------------------------------
@@ -53,7 +59,7 @@ esh "$base_dir/.config/theme/eza-colors~esh" > "$config_dir/theme/eza-colors"
 
 echo "Re-building bat cache."
 
-/usr/bin/bat cache --build
+bat cache --build
 
 # Re-build 256-index cache
 #-------------------------------------------------------------------------------

@@ -15,7 +15,9 @@ source "$base_dir/.local/opt/shell-utils/linux.sh"
 # Necessary environment vars
 #-------------------------------------------------------------------------------
 
+# TODO: Are these necessary? Can they be bootstrapped another way?
 export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_OPT_HOME="$HOME/.local/opt"
 
 # Deploy home configuration
 #-------------------------------------------------------------------------------

@@ -16,7 +16,6 @@ source "$base_dir/.local/opt/shell-utils/debug.sh"
 #-------------------------------------------------------------------------------
 
 assert_dependency esh
-assert_dependency bat
 
 # Generate dotfiles templates
 #-------------------------------------------------------------------------------
