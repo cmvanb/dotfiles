@@ -16,6 +16,7 @@ export LIBSEAT_BACKEND=logind
 #-------------------------------------------------------------------------------
 
 export QT_QPA_PLATFORM=wayland
+export QT_SCALE_FACTOR_ROUNDING_POLICY=round
 
 # XDG desktop portal integration.
 #-------------------------------------------------------------------------------

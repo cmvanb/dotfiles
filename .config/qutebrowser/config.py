@@ -23,6 +23,11 @@ c.scrolling.smooth = True
 c.scrolling.bar = 'always'
 c.session.default_name = 'default'
 
+# Wayland settings
+#-------------------------------------------------------------------------------
+
+c.qt.force_platform = 'wayland'
+
 # Content settings
 #-------------------------------------------------------------------------------
 
