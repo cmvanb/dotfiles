@@ -37,4 +37,8 @@ TRANSFORM:
     - NAME_DESC: 'DP-4'
       TRANSFORM: 90
 
+VRR_OFF:
+    - 'DP-4'
+    - 'HDMI-A-6'
+
 LOG_THRESHOLD: INFO
