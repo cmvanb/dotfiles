@@ -30,17 +30,6 @@ riverctl spawn "dbus-update-activation-environment --systemd $systemd_variables"
 # Other system services can respond to the underlying wayland-session or graphical-session.target.
 systemctl --user start river-session.target
 
-# Display management
-#-------------------------------------------------------------------------------
-
-way-displays > "/tmp/way-displays.${XDG_VTNR}.${USER}.log" 2>&1 &
-
-# Wallpaper
-#-------------------------------------------------------------------------------
-
-# shellcheck disable=SC1091
-source "$config_dir/wallpaper/wallpaper.sh"
-
 # Input configuration
 #-------------------------------------------------------------------------------
 
@@ -178,6 +167,20 @@ riverctl map-pointer normal Shift BTN_LEFT move-view
 
 # Resize views with mouse
 riverctl map-pointer normal Shift BTN_RIGHT resize-view
+
+# Display management
+#-------------------------------------------------------------------------------
+
+way-displays > "/tmp/way-displays.${XDG_VTNR}.${USER}.log" 2>&1 &
+
+# NOTE: Way-displays needs a sec.
+sleep 0.7
+
+# Wallpaper
+#-------------------------------------------------------------------------------
+
+# shellcheck disable=SC1091
+source "$config_dir/wallpaper/wallpaper.sh"
 
 # Systemd integration
 #-------------------------------------------------------------------------------
