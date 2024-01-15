@@ -79,8 +79,8 @@ c.fonts.messages.error      = f"bold 12pt  {theme.font('font_mono')}"
 c.fonts.messages.info       = f"10pt {theme.font('font_mono')}"
 c.fonts.messages.warning    = f"bold 12pt  {theme.font('font_mono')}"
 c.fonts.statusbar           = f"default_size {theme.font('font_mono')}"
-c.fonts.tabs.selected       = f"bold 12pt {theme.font('font_mono')}"
-c.fonts.tabs.unselected     = f"12pt {theme.font('font_mono')}"
+c.fonts.tabs.selected       = f"12pt {theme.font('font_sans')}"
+c.fonts.tabs.unselected     = f"12pt {theme.font('font_sans')}"
 
 # Input settings
 #-------------------------------------------------------------------------------
@@ -256,7 +256,7 @@ c.tabs.tooltips = False
 c.tabs.favicons.show = 'never'
 c.tabs.indicator.width = 0
 c.tabs.max_width = 240
-c.tabs.padding = { 'top': 7, 'bottom': 5, 'left': 12, 'right': 8 }
+c.tabs.padding = { 'top': 6, 'bottom': 6, 'left': 8, 'right': 8 }
 c.tabs.position = 'top'
 c.tabs.title.alignment = 'left'
 c.tabs.title.format = '{audio}[{index}] {current_title}'

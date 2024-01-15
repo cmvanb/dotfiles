@@ -1,5 +1,5 @@
 #window {
-    font-family: '<% source $XDG_OPT_HOME/theme/theme.sh %><%= $font_mono %>';
+    font-family: '<% source $XDG_OPT_HOME/theme/theme.sh %><%= $font_sans %>';
     font-size: 16pt;
 
     background-color: rgba(0, 0, 0, 0);
