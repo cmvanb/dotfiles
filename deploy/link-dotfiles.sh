@@ -93,6 +93,7 @@ mkdir -p "$data_dir/applications"
 force_link "$base_dir/.local/share/applications/bitwarden.desktop" "$data_dir/applications/bitwarden.desktop"
 force_link "$base_dir/.local/share/applications/chromium.desktop" "$data_dir/applications/chromium.desktop"
 force_link "$base_dir/.local/share/applications/org.qutebrowser.qutebrowser.desktop" "$data_dir/applications/org.qutebrowser.qutebrowser.desktop"
+force_link "$base_dir/.local/share/applications/org.pwmt.zathura.desktop" "$data_dir/applications/org.pwmt.zathura.desktop"
 
 # Application data
 mkdir -p "$data_dir/qutebrowser/userscripts"

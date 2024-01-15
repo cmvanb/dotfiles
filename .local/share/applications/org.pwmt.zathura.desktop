@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=Zathura
+GenericName=PDF Viewer
+Exec=zathura %U
+Terminal=false
+Icon=org.pwmt.zathura
+Type=Application
+Categories=Office;Viewer;
+MimeType=application/pdf;
