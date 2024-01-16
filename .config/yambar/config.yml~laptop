@@ -1,5 +1,5 @@
 <% source $XDG_OPT_HOME/theme/theme.sh %>bar:
-  height: 20
+  height: 28
   location: top
 
   left-margin: 0
@@ -7,7 +7,7 @@
 
   foreground: <% color_named $system_text %>ff
   background: <% color_named $system_bg %>ff
-  font: <%= $font_mono %>:pixelsize=14:style=bold
+  font: <%= $font_sans %>:pixelsize=14:style=bold
   left:
     - river:
         anchors:
