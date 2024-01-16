@@ -1,15 +1,17 @@
-<% source $XDG_OPT_HOME/theme/theme.sh %>
-[main]
-font=<%= $font_sans %>:size=10
+[main]<% source $XDG_OPT_HOME/theme/theme.sh %>
+dpi-aware=yes
+font=<%= $font_sans %>:size=16
 width=36
 icons-enabled=no
 horizontal-pad=0
-vertical-pad=8
-prompt=""
+vertical-pad=2
+inner-pad=0
+prompt=" 󰍉  "
 lines=20
+line-height=24
 
 [colors]
-background=<% color_named $primary_2 %>ff
+background=<% color_named $primary_1 %>ff
 selection=<% color_named $primary_6 %>ff
 border=<% color_named $primary_6 %>ff
 text=<% color_named $text_12 %>ff

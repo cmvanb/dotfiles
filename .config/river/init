@@ -78,7 +78,8 @@ riverctl float-filter-add app-id xdg-desktop-portal-gtk
 riverctl map normal Alt T spawn "wezterm"
 
 # Command menu
-riverctl map normal Alt O spawn "wofi --no-actions --show drun"
+# riverctl map normal Alt O spawn "wofi --no-actions --show drun"
+riverctl map normal Alt O spawn "fuzzel"
 
 # Browser
 riverctl map normal Alt B spawn "qutebrowser"
