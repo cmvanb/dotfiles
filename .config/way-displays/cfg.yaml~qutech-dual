@@ -9,21 +9,25 @@ ARRANGE: ROW
 ALIGN: TOP
 
 ORDER:
-  - 'eDP-1'
-  - 'DP-2'
-  - 'HDMI-A-1'
+    - 'eDP-1'
+    - 'DP-2'
+    - 'HDMI-A-1'
 
 SCALING: false
 
 AUTO_SCALE: true
 
 SCALE:
-  - NAME_DESC: 'eDP-1'
-    SCALE: 1.25
+    - NAME_DESC: 'eDP-1'
+      SCALE: 1.25
 
 TRANSFORM:
-  - NAME_DESC: 'DP-2'
-    TRANSFORM: 270
+    - NAME_DESC: 'DP-2'
+      TRANSFORM: 270
+
+VRR_OFF:
+    - 'eDP-1'
+    - 'DP-2'
+    - 'HDMI-A-1'
 
 LOG_THRESHOLD: INFO
-
