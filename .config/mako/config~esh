@@ -25,7 +25,7 @@ width=500
 height=250
 margin=16,14
 # top,right,bottom,left
-padding=8,8
+padding=10,8
 
 font=<%= $font_sans %> 12
 
@@ -35,4 +35,3 @@ text-color=<% color_hash $text_15 %>ff
 border-size=2
 border-color=<% color_hash $primary_6 %>ff
 border-radius=0
-
