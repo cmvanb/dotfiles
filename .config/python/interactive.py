@@ -4,6 +4,9 @@
 # What a nightmare hack... PYTHON! GET YOUR SHIT TOGETHER!
 #   see: https://github.com/python/cpython/issues/88405
 #
+# This should be fixed in a future release.
+#   see: https://github.com/python/cpython/issues/73965
+#
 # Based on gist by alichtman:
 #   see: https://gist.github.com/viliampucik/8713b09ff7e4d984b29bfcd7804dc1f4?permalink_comment_id=4582040#gistcomment-4582040
 #-------------------------------------------------------------------------------
