@@ -36,6 +36,9 @@ export PYENV_ROOT="$XDG_OPT_HOME/pyenv"
 # Docker config.
 export DOCKER_CONFIG="$XDG_STATE_HOME/docker"
 
+# GNUPG config.
+export GNUPG_HOME="$XDG_STATE_HOME/gnupg"
+
 # Python config.
 export PYTHONPYCACHEPREFIX="$XDG_CACHE_HOME/python"
 export PIP_REQUIRE_VIRTUALENV=true

@@ -35,6 +35,9 @@ set -x PYENV_ROOT $XDG_OPT_HOME/pyenv
 # Docker config.
 set -x DOCKER_CONFIG $XDG_STATE_HOME/docker
 
+# GNUPG config.
+set -x GNUPG_HOME $XDG_STATE_HOME/gnupg
+
 # Python config.
 set -x PYTHONPYCACHEPREFIX $XDG_CACHE_HOME/python
 set -x PIP_REQUIRE_VIRTUALENV true
