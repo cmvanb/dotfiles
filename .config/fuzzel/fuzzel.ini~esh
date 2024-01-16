@@ -1,0 +1,22 @@
+<% source $XDG_OPT_HOME/theme/theme.sh %>
+[main]
+font=<%= $font_sans %>:size=10
+width=36
+icons-enabled=no
+horizontal-pad=0
+vertical-pad=8
+prompt=""
+lines=20
+
+[colors]
+background=<% color_named $primary_2 %>ff
+selection=<% color_named $primary_6 %>ff
+border=<% color_named $primary_6 %>ff
+text=<% color_named $text_12 %>ff
+match=<% color_named $yellow_6 %>ff
+selection-text=<% color_named $text_15 %>ff
+selection-match=<% color_named $yellow_6 %>ff
+
+[border]
+width=3
+radius=0
