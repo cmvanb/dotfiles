@@ -38,14 +38,14 @@ encoding=$(file_encoding "$1")
 extension=$(file_extension "$1")
 
 if [[ $mimetype == "image"* ]]; then
-    chafa "$1" -f sixel -s "$(($2-2))x$3" | sed 's/#/\n#/g'
+    chafa -f sixel -s "$2x$3" --polite on "$1"
 
 elif [[ $mimetype == "video"* || $mimetype == "audio"* ]]; then
     mediainfo "$1"
 
 elif [[ $mimetype == *"pdf" ]]; then
     gs -q -dNOPAUSE -dBATCH -sDEVICE=jpeg -r240 -sOutputFile=- -dLastPage=1 "$1" \
-        | chafa -f sixel -s "$(($2-2))x$3" | sed 's/#/\n#/g'
+        | chafa -f sixel -s "$2x$3" --polite on
 
 elif [[ $mimetype == "application/zip" ]]; then
     zipinfo -1 "$1" | tree --fromfile . | head -n -2
