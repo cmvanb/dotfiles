@@ -39,6 +39,10 @@ export DOCKER_CONFIG="$XDG_STATE_HOME/docker"
 # GNUPG config.
 export GNUPG_HOME="$XDG_STATE_HOME/gnupg"
 
+# Kubernetes config.
+export KUBECONFIG="$XDG_CONFIG_HOME/kube"
+export KUBECACHEDIR="$XDG_CACHE_HOME/kube"
+
 # Python config.
 export PYTHONPYCACHEPREFIX="$XDG_CACHE_HOME/python"
 export PIP_REQUIRE_VIRTUALENV=true

@@ -38,6 +38,10 @@ set -x DOCKER_CONFIG $XDG_STATE_HOME/docker
 # GNUPG config.
 set -x GNUPG_HOME $XDG_STATE_HOME/gnupg
 
+# Kubernetes config.
+set -x KUBECONFIG $XDG_CONFIG_HOME/kube
+set -x KUBECACHEDIR $XDG_CACHE_HOME/kube
+
 # Python config.
 set -x PYTHONPYCACHEPREFIX $XDG_CACHE_HOME/python
 set -x PIP_REQUIRE_VIRTUALENV true
