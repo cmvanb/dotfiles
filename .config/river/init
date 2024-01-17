@@ -183,6 +183,12 @@ sleep 0.7
 # shellcheck disable=SC1091
 source "$config_dir/wallpaper/wallpaper.sh"
 
+# Workspace
+#-------------------------------------------------------------------------------
+
+# shellcheck disable=SC1091
+source "$config_dir/river/workspace.sh"
+
 # Systemd integration
 #-------------------------------------------------------------------------------
 
