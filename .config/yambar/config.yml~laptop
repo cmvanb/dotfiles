@@ -65,7 +65,7 @@
           discharging: &discharging
             list:
               items:
-                - string: {text: "", left-margin: 10}
+                - string: {text: "", left-margin: 10, right-margin: 8}
                 - ramp:
                     tag: capacity
                     items:
@@ -89,7 +89,7 @@
               state == charging:
                 list:
                   items:
-                    - string: {text: "", left-margin: 10}
+                    - string: {text: "", left-margin: 10, right-margin: 8}
                     - ramp:
                         tag: capacity
                         items:
