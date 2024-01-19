@@ -16,6 +16,18 @@ declare scripts_dir=${XDG_SCRIPTS_HOME:-$HOME/.local/scripts}
 # shellcheck disable=SC1091
 source "$opt_dir/theme/theme.sh"
 
+# shellcheck disable=SC1091
+source "$opt_dir/shell-utils/debug.sh"
+
+# Validation
+#-------------------------------------------------------------------------------
+
+assert_dependency fuzzel
+assert_dependency qutebrowser
+assert_dependency makoctl
+assert_dependency wezterm
+assert_dependency way-displays
+
 # Systemd integration
 # TODO: This should be part of the river/systemd integration.
 #-------------------------------------------------------------------------------
@@ -78,7 +90,6 @@ riverctl float-filter-add app-id xdg-desktop-portal-gtk
 riverctl map normal Alt T spawn "wezterm"
 
 # Command menu
-# riverctl map normal Alt O spawn "wofi --no-actions --show drun"
 riverctl map normal Alt O spawn "fuzzel"
 
 # Browser
