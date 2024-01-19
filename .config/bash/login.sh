@@ -37,7 +37,7 @@ export PYENV_ROOT="$XDG_OPT_HOME/pyenv"
 export DOCKER_CONFIG="$XDG_STATE_HOME/docker"
 
 # GNUPG config.
-export GNUPG_HOME="$XDG_STATE_HOME/gnupg"
+export GNUPGHOME="$XDG_STATE_HOME/gnupg"
 
 # Kubernetes config.
 export KUBECONFIG="$XDG_CONFIG_HOME/kube"

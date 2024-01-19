@@ -36,7 +36,7 @@ set -x PYENV_ROOT $XDG_OPT_HOME/pyenv
 set -x DOCKER_CONFIG $XDG_STATE_HOME/docker
 
 # GNUPG config.
-set -x GNUPG_HOME $XDG_STATE_HOME/gnupg
+set -x GNUPGHOME $XDG_STATE_HOME/gnupg
 
 # Kubernetes config.
 set -x KUBECONFIG $XDG_CONFIG_HOME/kube
