@@ -259,7 +259,7 @@ c.tabs.max_width = 240
 c.tabs.padding = { 'top': 5, 'bottom': 7, 'left': 8, 'right': 8 }
 c.tabs.position = 'top'
 c.tabs.title.alignment = 'left'
-c.tabs.title.format = '{audio}[{index}] {current_title}'
+c.tabs.title.format = '{audio}{index} ⋅ {current_title}'
 
 c.colors.tabs.bar.bg = theme.color_hash('gray_0')
 c.colors.tabs.odd.bg = theme.color_hash('gray_0')
