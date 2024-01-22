@@ -38,8 +38,9 @@ set -x DOCKER_CONFIG $XDG_STATE_HOME/docker
 # GNUPG config.
 set -x GNUPGHOME $XDG_STATE_HOME/gnupg
 
+# NOTE: Incompatible with QuTech local stack.
 # Kubernetes config.
-set -x KUBECONFIG $XDG_CONFIG_HOME/kube
+# set -x KUBECONFIG $XDG_CONFIG_HOME/kube/config
 set -x KUBECACHEDIR $XDG_CACHE_HOME/kube
 
 # Python config.
