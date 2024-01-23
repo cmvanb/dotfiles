@@ -13,13 +13,17 @@ ORDER:
     - 'DP-2'
     - 'HDMI-A-1'
 
-SCALING: false
+SCALING: true
 
-AUTO_SCALE: true
+AUTO_SCALE: false
 
 SCALE:
     - NAME_DESC: 'eDP-1'
       SCALE: 1.25
+    - NAME_DESC: 'DP-2'
+      SCALE: 1.0
+    - NAME_DESC: 'HDMI-A-1'
+      SCALE: 1.0
 
 TRANSFORM:
     - NAME_DESC: 'DP-2'
