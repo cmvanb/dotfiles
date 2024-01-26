@@ -100,6 +100,7 @@ force_link "$base_dir/.local/share/applications/avahi-discover.desktop" "$data_d
 force_link "$base_dir/.local/share/applications/bssh.desktop" "$data_dir/applications/bssh.desktop"
 force_link "$base_dir/.local/share/applications/bvnc.desktop" "$data_dir/applications/bvnc.desktop"
 force_link "$base_dir/.local/share/applications/cmake-gui.desktop" "$data_dir/applications/cmake-gui.desktop"
+force_link "$base_dir/.local/share/applications/draw.io.desktop" "$data_dir/applications/draw.io.desktop"
 force_link "$base_dir/.local/share/applications/electron24.desktop" "$data_dir/applications/electron24.desktop"
 force_link "$base_dir/.local/share/applications/lstopo.desktop" "$data_dir/applications/lstopo.desktop"
 force_link "$base_dir/.local/share/applications/qv4l2.desktop" "$data_dir/applications/qv4l2.desktop"
