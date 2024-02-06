@@ -7,7 +7,7 @@ primary="DP-3"
 for o in ${outputs}; do
 	riverctl focus-output ${o}
 	yambar &
-	sleep 0.2
+	sleep 0.25
 done
 
 if [ "$total" -gt "1" ]; then
