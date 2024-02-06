@@ -46,7 +46,6 @@ export KUBECACHEDIR="$XDG_CACHE_HOME/kube"
 
 # Python config.
 export PYTHONPYCACHEPREFIX="$XDG_CACHE_HOME/python"
-export PIP_REQUIRE_VIRTUALENV=true
 
 # Rust config.
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
