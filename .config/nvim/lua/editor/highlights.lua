@@ -91,7 +91,8 @@ hi('DiagnosticSignInfo',   'text_12',            'NONE',         'bold',    'ans
 hi('DiagnosticSignHint',   'purple_7',           'NONE',         'bold',    'ansi_magenta',    'NONE',            'NONE')
 hi('SpecialKey',           'debug',              'NONE',         'NONE',    'ansi_brmagenta',  'NONE',            'NONE')
 hi('Directory',            'primary_8',          'NONE',         'NONE',    'ansi_cyan',       'ansi_black',      'NONE')
-hi('Folded',               'purple_8',           'purple_5',     'NONE',    'ansi_cyan',       'ansi_black',      'bold')
+hi('Folded',               'NONE',               'primary_1',    'NONE',    'NONE',            'ansi_brblack',    'NONE')
+hi('FoldColumn',           'primary_6',          'NONE',         'NONE',    'ansi_cyan',       'NONE',            'NONE')
 
 hi('SpellBad',             'red_5',              'NONE',         'NONE',    'ansi_red',        'NONE',            'NONE')
 

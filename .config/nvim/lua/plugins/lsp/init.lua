@@ -15,10 +15,10 @@ local sign = function(opts)
     })
 end
 
-sign({ name = 'DiagnosticSignError', text = '✘' })
-sign({ name = 'DiagnosticSignWarn', text = '' })
-sign({ name = 'DiagnosticSignHint', text = '󰌵' })
-sign({ name = 'DiagnosticSignInfo', text = 'ℹ' })
+sign({ name = 'DiagnosticSignError', text = ' ✘' })
+sign({ name = 'DiagnosticSignWarn', text = ' ' })
+sign({ name = 'DiagnosticSignHint', text = ' 󰌵' })
+sign({ name = 'DiagnosticSignInfo', text = ' ℹ' })
 
 vim.diagnostic.config({
     virtual_text = false,
@@ -102,7 +102,15 @@ mason_lspconfig.setup({
 })
 
 local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
-lsp_capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+-- Enable snippets with LuaSnip.
+lsp_capabilities.textDocument.completion.completionItem.snippsetSupport = true
+
+-- Enable folding with UFO.
+lsp_capabilities.textDocument.foldingRange = {
+    dynamicRegistration = false,
+    lineFoldingOnly = true
+}
 
 mason_lspconfig.setup_handlers({
     -- The first entry (without a key) will be the default handler and will be

@@ -97,6 +97,15 @@ return {
     { 'nvim-treesitter/playground' },
     { 'luckasRanarison/tree-sitter-hypr' },
 
+    -- Folding.
+    {
+        'kevinhwang91/nvim-ufo',
+        requires = { 'kevinhwang91/promise-async' },
+        config = function()
+            require('ufo').setup()
+        end,
+    },
+
     -- Snippet engine.
     {
         'L3MON4D3/LuaSnip',

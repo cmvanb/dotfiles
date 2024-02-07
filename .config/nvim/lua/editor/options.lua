@@ -28,7 +28,7 @@ opt.listchars = { tab = '-->', eol = '', trail = '' }
 opt.list = false
 
 -- End-of-buffer visualization
-opt.fillchars = { eob = '.' }
+opt.fillchars = { eob = '.', foldopen = "", foldclose = "󰅂" }
 
 -- Tabs should be 4 spaces
 opt.tabstop = 4
@@ -64,7 +64,10 @@ opt.mouse = 'a'
 
 -- Folding
 opt.foldmethod = 'syntax'
-opt.foldenable = false
+opt.foldcolumn = '0'
+opt.foldlevel = 99 -- NOTE: UFO provider needs a large value, feel free to decrease
+opt.foldlevelstart = 99
+opt.foldenable = true
 
 -- Current mode is already visible in status line (lualine)
 opt.showmode = false
