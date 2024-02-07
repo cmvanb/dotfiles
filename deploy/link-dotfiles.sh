@@ -42,7 +42,6 @@ force_link "$base_dir/.local/bin/reboot" "$bin_dir/reboot"
 force_link "$base_dir/.local/bin/river-run" "$bin_dir/river-run"
 force_link "$base_dir/.local/bin/shutdown" "$bin_dir/shutdown"
 force_link "$base_dir/.local/bin/view" "$bin_dir/view"
-force_link "$base_dir/.local/bin/xdg-open" "$bin_dir/xdg-open"
 
 # Scripts
 mkdir -p "$scripts_dir"
@@ -57,7 +56,6 @@ force_link "$base_dir/.local/scripts/lock-screen.sh" "$scripts_dir/lock-screen.s
 force_link "$base_dir/.local/scripts/markdown-to-html-on-changed.sh" "$scripts_dir/markdown-to-html-on-changed.sh"
 force_link "$base_dir/.local/scripts/markdown-to-html.sh" "$scripts_dir/markdown-to-html.sh"
 force_link "$base_dir/.local/scripts/matrix.sh" "$scripts_dir/matrix.sh"
-force_link "$base_dir/.local/scripts/mimi.sh" "$scripts_dir/mimi.sh"
 force_link "$base_dir/.local/scripts/open-qutebrowser-session.sh" "$scripts_dir/open-qutebrowser-session.sh"
 force_link "$base_dir/.local/scripts/print-environment.py" "$scripts_dir/print-environment.py"
 force_link "$base_dir/.local/scripts/print-terminal-colors.sh" "$scripts_dir/print-terminal-colors.sh"
