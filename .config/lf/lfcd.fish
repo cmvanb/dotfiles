@@ -14,6 +14,7 @@
 function lfcd
     set tmp (mktemp)
 
+    # NOTE: This environment variable makes it possible to override the CD-on-quit behavior.
     set -x LF_REMEMBER_CWD (pwd)
 
     # NOTE: `command` is needed in case `lfcd` is aliased to `lf`

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=lf
+GenericName=Filesystem Browser
+Exec=lf
+Terminal=true
+Icon=utilities-terminal
+Type=Application
+Categories=ConsoleOnly;System;FileTools;FileManager
+MimeType=inode/directory;

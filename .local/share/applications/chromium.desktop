@@ -1,5 +1,4 @@
 [Desktop Entry]
-Version=1.0
 Name=Chromium
 GenericName=Web Browser
 Exec=/usr/bin/chromium --ozone-platform=wayland --gtk-version=4 %U
