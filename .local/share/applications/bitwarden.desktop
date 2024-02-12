@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Bitwarden
 GenericName=Password Manager
-Exec=bitwarden-desktop --ozone-platform=wayland
+Exec=bitwarden-desktop
 Terminal=false
 Type=Application
 Icon=bitwarden
