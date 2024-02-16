@@ -70,6 +70,7 @@ force_link "$base_dir/.local/scripts/vlc-webcam-test.sh" "$scripts_dir/vlc-webca
 
 # Shell libraries
 mkdir -p "$opt_dir/shell-utils"
+force_link "$base_dir/.local/opt/shell-utils/count-lines.sh" "$opt_dir/shell-utils/count-lines.sh"
 force_link "$base_dir/.local/opt/shell-utils/debug.sh" "$opt_dir/shell-utils/debug.sh"
 force_link "$base_dir/.local/opt/shell-utils/fs.sh" "$opt_dir/shell-utils/fs.sh"
 force_link "$base_dir/.local/opt/shell-utils/linux.sh" "$opt_dir/shell-utils/linux.sh"

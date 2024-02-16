@@ -9,7 +9,7 @@ set -euo pipefail
 input=$(cat -)
 
 # Count the lines in the input.
-lines=$(echo "$input" | wc -l)
+lines=$(echo "$input" | "$XDG_OPT_HOME/shell-utils/count-lines.sh")
 
 # Get terminal height in lines.
 terminal_height=$(( $(tput lines)-2 ))
@@ -18,4 +18,4 @@ terminal_height=$(( $(tput lines)-2 ))
 [[ $lines -ge $terminal_height ]] && bat --paging=never --style=plain --wrap=never <(echo "$input") | less -c -R -S
 
 # After paging (if it took place), print the whole input to the terminal.
-bat --force-colorization --paging=never --style=plain --wrap=never <(echo "$input")
+bat --force-colorization --paging=never --style=plain <(echo "$input")
