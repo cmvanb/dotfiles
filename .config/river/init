@@ -74,7 +74,7 @@ riverctl xcursor-theme "$cursor_theme" "$cursor_size"
 
 # Assign and launch rivercarro (layout generator).
 riverctl default-layout rivercarro
-riverctl spawn "rivercarro -inner-gaps 6 -outer-gaps 6 -no-smart-gaps -main-ratio 0.60 -main-location right"
+riverctl spawn "rivercarro -inner-gaps 6 -outer-gaps 6 -no-smart-gaps -main-ratio 0.65 -main-location right"
 
 # App configuration
 #-------------------------------------------------------------------------------
