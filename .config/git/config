@@ -9,3 +9,8 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[log]
+	abbrevCommit = true
+	date = format:%Y-%m-%d %H:%M
+[pretty]
+	history = %C(yellow)[%h]%C(reset) %<(16,trunc)%ad %C(cyan)%an%C(reset) %C(green)%s%C(reset)
