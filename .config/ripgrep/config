@@ -1,8 +1,6 @@
---no-ignore
 --hidden
 --follow
 --colors
 match:fg:yellow
 --colors
 path:fg:cyan
-
