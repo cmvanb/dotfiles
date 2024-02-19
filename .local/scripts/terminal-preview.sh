@@ -64,7 +64,7 @@ elif [[ $mimetype == *"7z"* ]]; then
 
 elif [[ $mimetype == "application/json" ]] || [[ $mimetype == "text/plain" && $extension == "json" ]]; then
     declare parsed
-    if parsed=$(jq -C . "$1"); then
+    if parsed=$(jq --indent 4 --color-output . "$1"); then
         echo "$parsed" | bat --force-colorization --paging=never --style=numbers --wrap never
     else
         bat --force-colorization --paging=never --style=numbers --wrap never -f "$1"

@@ -28,7 +28,7 @@ MAX_SIZE_PRETTIFY=10485760  # 10 MB
 STYLE=${1:-github-dark}
 
 TEMP_FILE="$(mktemp --suffix .html)"
-jq . "$QUTE_TEXT" >"$TEMP_FILE"
+jq --indent 4 . "$QUTE_TEXT" >"$TEMP_FILE"
 
 # try GNU stat first and then OSX stat if the former fails
 FILE_SIZE=$(
