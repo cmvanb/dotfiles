@@ -437,6 +437,9 @@ config.bind('<Ctrl-r>', 'spawn --userscript readability')
 #-- Format JSON
 config.bind('<Ctrl-;>', 'spawn --userscript format_json.sh')
 
+#-- Video playback
+config.bind(';v', 'hint links spawn --verbose --detach mpv {hint-url} --input-ipc-server=/tmp/mpvsocket')
+
 #-- Devtools
 config.bind('<F11>', 'view-source')
 config.bind('<F12>', 'devtools')
