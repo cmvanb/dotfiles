@@ -18,6 +18,7 @@ gsettings set org.gnome.desktop.interface font-name "$font_sans $font_size_mediu
 gsettings set org.gnome.desktop.interface document-font-name "$font_sans $font_size_medium"
 gsettings set org.gnome.desktop.interface monospace-font-name "$font_mono $font_size_large"
 gsettings set org.gnome.desktop.interface cursor-theme "$cursor_theme"
+gsettings set org.gnome.desktop.interface cursor-size "$cursor_size"
 
 # Show hidden files in file dialog.
 gsettings set org.gtk.Settings.FileChooser show-hidden true

@@ -42,6 +42,14 @@ echo "Linking selected theme colors."
 
 force_link "$config_dir/theme/carbon-dark" "$config_dir/theme/colors"
 
+# Link theme variables
+#-------------------------------------------------------------------------------
+
+echo "Link theme variables."
+
+force_link "$base_dir/.config/theme/fonts" "$config_dir/theme/fonts"
+force_link "$base_dir/.config/theme/cursor" "$config_dir/theme/cursor"
+
 # Generate theme templates
 #-------------------------------------------------------------------------------
 
