@@ -55,16 +55,16 @@ c.zoom.default = '125%'
 
 # Defaults
 c.fonts.default_family = [ f"{theme.font('font_mono')}" ]
-c.fonts.default_size = '14pt'
+c.fonts.default_size = f"{theme.font('font_size_medium')}pt"
 
 # Webpages
 c.fonts.web.family.fixed = f"{theme.font('font_mono')}"
 c.fonts.web.family.sans_serif = f"{theme.font('font_sans')}"
 c.fonts.web.family.serif = f"{theme.font('font_serif')}"
 c.fonts.web.family.standard = f"{theme.font('font_sans')}"
-c.fonts.web.size.minimum = 8
-c.fonts.web.size.default = 18
-c.fonts.web.size.default_fixed = 20
+c.fonts.web.size.minimum = int(theme.font('font_size_tiny'))
+c.fonts.web.size.default = int(theme.font('font_size_xlarge'))
+c.fonts.web.size.default_fixed = int(theme.font('font_size_xxlarge'))
 
 # Interface
 c.fonts.contextmenu         = f"default_size {theme.font('font_sans')}"
@@ -74,13 +74,13 @@ c.fonts.keyhint             = f"default_size {theme.font('font_mono')}"
 c.fonts.prompts             = f"default_size {theme.font('font_sans')}"
 c.fonts.completion.category = f"bold default_size {theme.font('font_mono')}"
 c.fonts.completion.entry    = f"default_size {theme.font('font_mono')}"
-c.fonts.hints               = f"bold 12pt {theme.font('font_mono')}"
-c.fonts.messages.error      = f"bold 12pt  {theme.font('font_mono')}"
-c.fonts.messages.info       = f"10pt {theme.font('font_mono')}"
-c.fonts.messages.warning    = f"bold 12pt  {theme.font('font_mono')}"
+c.fonts.hints               = f"bold {theme.font('font_size_small')}pt {theme.font('font_mono')}"
+c.fonts.messages.error      = f"bold {theme.font('font_size_small')}pt  {theme.font('font_mono')}"
+c.fonts.messages.info       = f"{theme.font('font_size_small')}pt {theme.font('font_mono')}"
+c.fonts.messages.warning    = f"bold {theme.font('font_size_small')}pt  {theme.font('font_mono')}"
 c.fonts.statusbar           = f"default_size {theme.font('font_mono')}"
-c.fonts.tabs.selected       = f"12pt {theme.font('font_sans')}"
-c.fonts.tabs.unselected     = f"12pt {theme.font('font_sans')}"
+c.fonts.tabs.selected       = f"{theme.font('font_size_small')}pt {theme.font('font_sans')}"
+c.fonts.tabs.unselected     = f"{theme.font('font_size_small')}pt {theme.font('font_sans')}"
 
 # Input settings
 #-------------------------------------------------------------------------------

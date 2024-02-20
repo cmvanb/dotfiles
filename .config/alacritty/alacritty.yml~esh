@@ -46,7 +46,7 @@ font:
     normal:
         family: "<%= $font_mono %>"
 
-    size: 12.0
+    size: <%= $font_size_medium %>
 
 window:
     opacity: 1.0

@@ -7,7 +7,7 @@
 
   foreground: <% color_named $system_text %>ff
   background: <% color_named $system_bg %>ff
-  font: <%= $font_sans %>:pixelsize=14:style=bold
+  font: <%= $font_sans %>:pixelsize=<%= $font_size_medium %>:style=bold
   left:
     - river:
         anchors:

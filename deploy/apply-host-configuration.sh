@@ -47,7 +47,10 @@ elif [[ $host == "dojo" ]]; then
 
     mkdir -p "$config_dir/yambar"
     esh "$base_dir/.config/yambar/config.yml~desktop" > "$config_dir/yambar/config.yml"
+
     # TODO: Add wallpaper config for Dojo.
+
+    # TODO: Add display config for Dojo.
 
     force_link "$base_dir/.local/bin/init~basic" "$bin_dir/init"
 

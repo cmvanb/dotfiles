@@ -12,7 +12,7 @@ base_dir="$(realpath "$(dirname "$(realpath "$0")")/..")"
 
 source "$base_dir/.local/opt/shell-utils/linux.sh"
 
-# Necessary environment vars
+# Required environment vars
 #-------------------------------------------------------------------------------
 
 # TODO: Are these necessary? Can they be bootstrapped another way?

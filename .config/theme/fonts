@@ -4,6 +4,10 @@ font_mono='IosevkaTerm NFM'
 font_sans='Cantarell'
 font_serif='Liberation Serif'
 
+font_size_tiny=8
+font_size_xsmall=10
 font_size_small=12
 font_size_medium=14
 font_size_large=16
+font_size_xlarge=18
+font_size_xxlarge=20

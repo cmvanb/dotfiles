@@ -1,6 +1,6 @@
 [main]<% source $XDG_OPT_HOME/theme/theme.sh %>
 dpi-aware=yes
-font=<%= $font_sans %>:size=16
+font=<%= $font_sans %>:size=<%= $font_size_medium %>
 width=36
 icons-enabled=no
 horizontal-pad=0
