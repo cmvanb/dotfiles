@@ -54,6 +54,14 @@ mkdir -p "$config_dir/theme"
 esh "$base_dir/.config/theme/dircolors~esh" > "$config_dir/theme/dircolors"
 esh "$base_dir/.config/theme/eza-colors~esh" > "$config_dir/theme/eza-colors"
 
+# Link theme variables
+#-------------------------------------------------------------------------------
+
+echo "Link theme variables."
+
+force_link "$base_dir/.config/theme/fonts" "$config_dir/theme/fonts"
+force_link "$base_dir/.config/theme/cursor" "$config_dir/theme/cursor"
+
 # Re-build bat cache
 #-------------------------------------------------------------------------------
 

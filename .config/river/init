@@ -186,7 +186,7 @@ riverctl map-pointer normal Shift BTN_RIGHT resize-view
 way-displays > "/tmp/way-displays.${XDG_VTNR}.${USER}.log" 2>&1 &
 
 # NOTE: Way-displays needs a sec.
-sleep 0.7
+sleep 0.85
 
 # Wallpaper
 #-------------------------------------------------------------------------------
@@ -207,6 +207,9 @@ systemd-cat --identifier=river echo "River initialized."
 
 # Clean up the shared environment when river is interrupted or terminated.
 session_cleanup () {
+    pkill -x way-displays
+    pkill -x yambar
+
     systemd-cat --identifier=river echo "Cleaning River."
 
     systemctl --user unset-environment "$systemd_variables"

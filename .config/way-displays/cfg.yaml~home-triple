@@ -25,11 +25,11 @@ AUTO_SCALE: false
 
 SCALE:
     - NAME_DESC: 'HDMI-A-6'
-      SCALE: 0.8888888888
+      SCALE: 1.0
     - NAME_DESC: 'DP-3'
-      SCALE: 1
+      SCALE: 1.125
     - NAME_DESC: 'DP-4'
-      SCALE: 0.8888888888
+      SCALE: 1.0
 
 TRANSFORM:
     - NAME_DESC: 'HDMI-A-6'
