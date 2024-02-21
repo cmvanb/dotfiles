@@ -1,0 +1,93 @@
+* {
+    /* `otf-font-awesome` is required to be installed for icons */
+    font-family: '<% source $XDG_OPT_HOME/theme/theme.sh %><%= $font_sans %>';
+    font-size: <%= $font_size_medium %>px;
+    font-weight: bold;
+}
+
+window#waybar {
+    background-color: <% color_hash $system_bg %>;
+    color: <% color_hash $system_text %>;
+    padding-top: 10px;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+button {
+    /* Use box-shadow instead of border so the text isn't offset */
+    box-shadow: inset 0 -3px transparent;
+    /* Avoid rounded borders under each button name */
+    border: none;
+    border-radius: 0;
+}
+
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+button:hover {
+    background: inherit;
+    box-shadow: inset 0 -3px <% color_hash $system_text %>;
+}
+
+/* River tags */
+#tags button {
+    padding: 2px 5px;
+    /* NOTE: Necessary to override a default transition effect. */
+    background-color: transparent;
+    color: <% color_hash $system_text %>;
+}
+
+#tags button.occupied {
+    background-color: <% color_hash $primary_2 %>;
+}
+
+#tags button.focused {
+    background-color: <% color_hash $primary_6 %>;
+}
+
+#tags button.urgent {
+    background-color: <% color_hash $red_4 %>;
+}
+
+/* Clock */
+#clock {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+/* Battery */
+#battery {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#battery.charging, #battery.plugged {
+    color: <% color_hash $system_text %>;
+    background-color: <% color_hash $green_5 %>;
+}
+
+@keyframes blink {
+    to {
+        background-color: <% color_hash $system_text %>;
+        color: <% color_hash $system_bg %>;
+    }
+}
+
+#battery.critical:not(.charging) {
+    background-color: <% color_hash $red_4 %>;
+    color: <% color_hash $system_text %>;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    /* NOTE: Using steps() instead of linear as a timing function to limit cpu usage */
+    animation-timing-function: steps(12);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+/* Audio */
+#wireplumber {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#wireplumber.muted {
+    color: <% color_hash $text_10 %>;
+}

@@ -31,9 +31,6 @@ echo "Applying \`$host\` configuration to \`$HOME\`."
 case $host in
 
 qutedell)
-    mkdir -p "$config_dir/yambar"
-    esh "$base_dir/.config/yambar/config.yml~laptop" > "$config_dir/yambar/config.yml"
-
     mkdir -p "$config_dir/wallpaper"
     force_link "$base_dir/.config/wallpaper/wallpaper.sh~qutech-dual" "$config_dir/wallpaper/wallpaper.sh"
 
@@ -46,9 +43,6 @@ qutedell)
 supertubes)
     ;&
 cyxwel)
-    mkdir -p "$config_dir/yambar"
-    esh "$base_dir/.config/yambar/config.yml~desktop" > "$config_dir/yambar/config.yml"
-
     mkdir -p "$config_dir/wallpaper"
     force_link "$base_dir/.config/wallpaper/wallpaper.sh~home-triple" "$config_dir/wallpaper/wallpaper.sh"
 

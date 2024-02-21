@@ -197,8 +197,8 @@ source "$config_dir/wallpaper/wallpaper.sh"
 # Status bar
 #-------------------------------------------------------------------------------
 
-# shellcheck disable=SC1091
-source "$config_dir/river/workspace.sh"
+pkill -x waybar
+riverctl spawn waybar
 
 # Systemd integration
 #-------------------------------------------------------------------------------
@@ -207,6 +207,7 @@ systemd-cat --identifier=river echo "River initialized."
 
 # Clean up the shared environment when river is interrupted or terminated.
 session_cleanup () {
+    pkill -x waybar
     pkill -x way-displays
 
     systemd-cat --identifier=river echo "Cleaning River."

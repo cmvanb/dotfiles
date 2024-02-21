@@ -38,6 +38,9 @@ esh "$base_dir/.config/fuzzel/fuzzel.ini~esh" > "$config_dir/fuzzel/fuzzel.ini"
 mkdir -p "$config_dir/mako"
 esh "$base_dir/.config/mako/config~esh" > "$config_dir/mako/config"
 
+mkdir -p "$config_dir/waybar"
+esh "$base_dir/.config/waybar/style.css~esh" > "$config_dir/waybar/style.css"
+
 mkdir -p "$config_dir/wofi"
 esh "$base_dir/.config/wofi/style.css~esh" > "$config_dir/wofi/style.css"
 
