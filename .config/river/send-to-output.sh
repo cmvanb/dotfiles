@@ -14,14 +14,14 @@ source "$XDG_OPT_HOME/wayland-utils/output.sh"
 # Validation
 #-------------------------------------------------------------------------------
 
-assert_dependency fuzzel
+assert_dependency wofi
 assert_dependency riverctl
 
 # Choose output
 #-------------------------------------------------------------------------------
 
 outputs="$(wl_get_outputs)"
-target=$(echo "$outputs" | fuzzel --dmenu 2> /dev/null)
+target=$(echo "$outputs" | wofi --dmenu 2> /dev/null)
 
 if [[ -z $target ]]; then
     exit 1
