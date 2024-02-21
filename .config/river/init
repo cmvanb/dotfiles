@@ -22,7 +22,7 @@ source "$opt_dir/shell-utils/debug.sh"
 # Validation
 #-------------------------------------------------------------------------------
 
-assert_dependency fuzzel
+assert_dependency wofi
 assert_dependency qutebrowser
 assert_dependency makoctl
 assert_dependency wezterm
@@ -90,7 +90,7 @@ riverctl float-filter-add app-id xdg-desktop-portal-gtk
 riverctl map normal Alt T spawn "wezterm"
 
 # Command menu
-riverctl map normal Alt O spawn "fuzzel"
+riverctl map normal Alt O spawn "wofi --show drun"
 
 # Browser
 riverctl map normal Alt B spawn "qutebrowser"
