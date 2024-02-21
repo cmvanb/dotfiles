@@ -13,10 +13,10 @@
         "format-icons": ["", "", ""]
     },
     "battery": {
-        "format": "{capacity}% {icon}",
+        "format": "{icon}    {capacity}%",
         "format-icons": ["", "", "", "", ""]
     },
     "clock": {
-        "format": "󰸘   {:%Y-%m-%d         %H:%M}"
+        "format": "󰸘   {:%Y-%m-%d          %H:%M}"
     }
 }

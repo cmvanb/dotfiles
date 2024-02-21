@@ -8,7 +8,6 @@
 window#waybar {
     background-color: <% color_hash $system_bg %>;
     color: <% color_hash $system_text %>;
-    padding-top: 10px;
     transition-property: background-color;
     transition-duration: .5s;
 }
@@ -27,7 +26,23 @@ button:hover {
     box-shadow: inset 0 -3px <% color_hash $system_text %>;
 }
 
-/* River tags */
+/* All modules
+*-----------------------------------------------------------------------------*/
+box > * > * {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.modules-left > widget:first-child > #tags {
+    padding-left: 6px;
+}
+
+.modules-right > widget:last-child > #clock {
+    padding-right: 6px;
+}
+
+/* River tags
+*-----------------------------------------------------------------------------*/
 #tags button {
     padding: 2px 5px;
     /* NOTE: Necessary to override a default transition effect. */
@@ -47,18 +62,8 @@ button:hover {
     background-color: <% color_hash $red_4 %>;
 }
 
-/* Clock */
-#clock {
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
-/* Battery */
-#battery {
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
+/* Battery
+*-----------------------------------------------------------------------------*/
 #battery.charging, #battery.plugged {
     color: <% color_hash $system_text %>;
     background-color: <% color_hash $green_5 %>;
@@ -82,12 +87,8 @@ button:hover {
     animation-direction: alternate;
 }
 
-/* Audio */
-#wireplumber {
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
+/* Audio
+*-----------------------------------------------------------------------------*/
 #wireplumber.muted {
     color: <% color_hash $text_10 %>;
 }
