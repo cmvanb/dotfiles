@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=drawio
 GenericName=Diagram Tool
-Exec=/usr/bin/draw.io %U --force-device-scale-factor=1.5
+Exec=/usr/bin/draw.io %U --force-device-scale-factor=1.25
 Terminal=false
 Type=Application
 Icon=draw.io
