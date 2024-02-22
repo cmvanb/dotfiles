@@ -74,12 +74,12 @@ box > * > * {
 
 @keyframes blink {
     to {
-        color: <% color_hash $red_7 %>;
+        color: <% color_hash $red_2 %>;
     }
 }
 
 #battery.critical:not(.charging) {
-    color: <% color_hash $red_4 %>;
+    color: <% color_hash $red_6 %>;
     animation-name: blink;
     animation-duration: 0.5s;
     /* NOTE: Using steps() instead of linear as a timing function to limit cpu usage */
