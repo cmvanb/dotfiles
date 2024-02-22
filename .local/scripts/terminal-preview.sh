@@ -37,6 +37,9 @@ mimetype=$(file_mime_type "$1")
 encoding=$(file_encoding "$1")
 extension=$(file_extension "$1")
 
+lines=$(stty -F /dev/tty size | cut -d' ' -f1)
+max_lines=$(( lines - 2 ))
+
 if [[ $mimetype == "image"* ]]; then
     chafa -f sixel -s "$2x$3" --polite on "$1"
 
@@ -65,13 +68,13 @@ elif [[ $mimetype == *"7z"* ]]; then
 elif [[ $mimetype == "application/json" ]] || [[ $mimetype == "text/plain" && $extension == "json" ]]; then
     declare parsed
     if parsed=$(jq --indent 4 --color-output . "$1"); then
-        echo "$parsed" | bat --force-colorization --paging=never --style=numbers --wrap never
+        echo "$parsed" | bat --style=numbers --force-colorization --paging=never --wrap=never --line-range=":$max_lines"
     else
-        bat --force-colorization --paging=never --style=numbers --wrap never -f "$1"
+        bat --style=numbers --force-colorization --paging=never --wrap=never --line-range=":$max_lines" "$1"
     fi
 
 elif [[ $mimetype == "text"* || $encoding == *"ascii" || $encoding == "utf-8" ]]; then
-    bat --force-colorization --paging=never --style=numbers --wrap never -f "$1"
+    bat --style=numbers --force-colorization --paging=never --wrap=never --line-range=":$max_lines" "$1"
 
 elif file_is_binary "$1"; then
     file -b --mime "$1" && echo "" && hexdump "$1"
