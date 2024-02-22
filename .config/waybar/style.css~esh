@@ -65,20 +65,21 @@ box > * > * {
 /* Battery
 *-----------------------------------------------------------------------------*/
 #battery.charging, #battery.plugged {
-    color: <% color_hash $system_text %>;
-    background-color: <% color_hash $green_5 %>;
+    color: <% color_hash $green_5 %>;
+}
+
+#battery.warning:not(.charging) {
+    color: <% color_hash $orange_6 %>;
 }
 
 @keyframes blink {
     to {
-        background-color: <% color_hash $system_text %>;
-        color: <% color_hash $system_bg %>;
+        color: <% color_hash $red_7 %>;
     }
 }
 
 #battery.critical:not(.charging) {
-    background-color: <% color_hash $red_4 %>;
-    color: <% color_hash $system_text %>;
+    color: <% color_hash $red_4 %>;
     animation-name: blink;
     animation-duration: 0.5s;
     /* NOTE: Using steps() instead of linear as a timing function to limit cpu usage */
