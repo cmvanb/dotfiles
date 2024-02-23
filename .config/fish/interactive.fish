@@ -75,14 +75,11 @@ bind \ce 'edit; commandline -f repaint'
 # Clear screen
 bind \cl 'clear; commandline -f repaint'
 
-# List files
+# List all files
 bind \cy 'clear; commandline -f repaint; eza -al'
 
-# List files in tree format
-bind \e\[1\;2P 'clear; commandline -f repaint; eza -T --git-ignore | view-stdin.sh'
-
 # List all files in tree format (NOTE: output is often long)
-bind \co 'clear; commandline -f repaint; eza -aT | view-stdin.sh'
+bind \e\[1\;2P 'clear; commandline -f repaint; eza -aT --git-ignore | view-stdin.sh'
 
 # Clear command line
 # NOTE: Ctrl+C is bound to `Copy` by Wezterm, Ctrl+X is bound to emulate
