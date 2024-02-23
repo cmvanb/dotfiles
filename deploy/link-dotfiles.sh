@@ -6,13 +6,6 @@
 set -euo pipefail
 
 base_dir="$(realpath "$(dirname "$(realpath "$0")")/..")"
-home_dir=$HOME
-bin_dir=${XDG_BIN_HOME:-$HOME/.local/bin}
-config_dir=${XDG_CONFIG_HOME:-$HOME/.config}
-data_dir=${XDG_DATA_HOME:-$HOME/.local/share}
-opt_dir=${XDG_OPT_HOME:-$HOME/.local/opt}
-scripts_dir=${XDG_SCRIPTS_HOME:-$HOME/.local/scripts}
-templates_dir=${XDG_TEMPLATES_DIR:-$data_dir/templates}
 
 # Imports
 #-------------------------------------------------------------------------------
@@ -21,6 +14,14 @@ source "$base_dir/.local/opt/shell-utils/fs.sh"
 
 # Link dotfiles
 #-------------------------------------------------------------------------------
+
+home_dir=$HOME
+bin_dir=${XDG_BIN_HOME:-$HOME/.local/bin}
+config_dir=${XDG_CONFIG_HOME:-$HOME/.config}
+data_dir=${XDG_DATA_HOME:-$HOME/.local/share}
+opt_dir=${XDG_OPT_HOME:-$HOME/.local/opt}
+scripts_dir=${XDG_SCRIPTS_HOME:-$HOME/.local/scripts}
+templates_dir=${XDG_TEMPLATES_DIR:-$data_dir/templates}
 
 echo "Linking dotfiles from \`$base_dir\` to \`$home_dir\`."
 
@@ -99,7 +100,6 @@ force_link "$base_dir/.local/share/applications/avahi-discover.desktop" "$data_d
 force_link "$base_dir/.local/share/applications/bssh.desktop" "$data_dir/applications/bssh.desktop"
 force_link "$base_dir/.local/share/applications/bvnc.desktop" "$data_dir/applications/bvnc.desktop"
 force_link "$base_dir/.local/share/applications/cmake-gui.desktop" "$data_dir/applications/cmake-gui.desktop"
-force_link "$base_dir/.local/share/applications/draw.io.desktop" "$data_dir/applications/draw.io.desktop"
 force_link "$base_dir/.local/share/applications/electron24.desktop" "$data_dir/applications/electron24.desktop"
 force_link "$base_dir/.local/share/applications/lstopo.desktop" "$data_dir/applications/lstopo.desktop"
 force_link "$base_dir/.local/share/applications/qv4l2.desktop" "$data_dir/applications/qv4l2.desktop"

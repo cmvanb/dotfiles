@@ -22,6 +22,7 @@ assert_dependency esh
 
 bin_dir=${XDG_BIN_HOME:-$HOME/.local/bin}
 config_dir=${XDG_CONFIG_HOME:-$HOME/.config}
+data_dir=${XDG_DATA_HOME:-$HOME/.local/share}
 
 echo "Generating dotfiles templates from \`$base_dir\` to \`$HOME\`."
 
@@ -51,3 +52,6 @@ esh "$base_dir/.config/systemd/user/udiskie.service~esh" > "$config_dir/systemd/
 
 mkdir -p "$config_dir/zathura"
 esh "$base_dir/.config/zathura/zathurarc~esh" > "$config_dir/zathura/zathurarc"
+
+mkdir -p "$data_dir/applications"
+esh "$base_dir/.local/share/applications/draw.io.desktop~esh" > "$data_dir/applications/draw.io.desktop"

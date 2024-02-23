@@ -51,7 +51,7 @@ c.fileselect.folder.command = [ 'yad', '--file', '--directory', '--width', '1280
 #-------------------------------------------------------------------------------
 
 # Zoom
-c.zoom.default = '125%'
+c.zoom.default = f"{int(float(theme.font('zoom_level')) * 100)}%"
 
 # Defaults
 c.fonts.default_family = [ f"{theme.font('font_mono')}" ]
