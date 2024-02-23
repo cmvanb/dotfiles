@@ -7,22 +7,29 @@ local theme = {}
 -- Parsing
 --------------------------------------------------------------------------------
 
+local function parse_error(line, column, message)
+    error('theme.lua -> Unable to continue parsing at line ' .. line.. ', column ' .. column .. ': ' .. message)
+end
+
 local function parse_vars(filePath)
     local file = io.open(filePath, 'r')
     if file == nil then
-        error('Could not open file: ' .. filePath)
+        error('them.lua -> Could not open file: ' .. filePath)
     end
 
-    local lines = io.lines(filePath) 
+    local lines = io.lines(filePath)
     io.close(file)
 
     local vars = {}
+    local line_count = 0
 
     for line in lines do
         local key = nil
         local value = nil
         local assignment = false
         local lookup = false
+
+        line_count = line_count + 1
 
         for i = 1, #line do
             local char = line:byte(i)
@@ -55,7 +62,7 @@ local function parse_vars(filePath)
                 if assignment == true then
                     goto continue
                 else
-                    error('Unable to continue parsing, expected character [' .. c .. '] only after assignment.')
+                    parse_error(line_count, i, 'Expected character [' .. char .. '] only after assignment.')
                 end
 
             -- Dollar, indicates variable lookup, only allowed after assignment
@@ -64,7 +71,7 @@ local function parse_vars(filePath)
                     lookup = true
                     goto continue
                 else
-                    error('Unable to continue parsing, expected character [' .. c .. '] only after assignment.')
+                    parse_error(line_count, i, 'Expected character [' .. char .. '] only after assignment.')
                 end
 
             -- Alphanumeric or underscore, append to either key or value
@@ -81,6 +88,18 @@ local function parse_vars(filePath)
                     value = value .. string.char(char)
                 end
 
+            -- Decimal point, append to value, only allowed after assignment
+            elseif char == string.byte('.') then
+                if assignment == true then
+                    if value == nil then
+                        value = ''
+                    end
+                    value = value .. string.char(char)
+                    goto continue
+                else
+                    parse_error(line_count, i, 'Expected character [' .. char .. '] only after assignment.')
+                end
+
             -- Assignment operator reached, keep reading for value
             elseif char == string.byte('=') then
                 if assignment == false then
@@ -88,7 +107,7 @@ local function parse_vars(filePath)
                     goto continue
                 end
             else
-                error('Unable to continue parsing, unexpected character [' .. c .. '].')
+                parse_error(line_count, i, 'Unknown character [' .. char .. '].')
             end
 
             -- Lua doesn't have the typical continue operator, so we use `goto`.

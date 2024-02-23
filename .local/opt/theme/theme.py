@@ -8,6 +8,9 @@ import re
 # Parsing
 #-------------------------------------------------------------------------------
 
+def parse_error(line, column, message):
+    raise Exception(f'theme.py -> Unable to continue parsing at line {line}, {column}: {message}')
+
 def parse_vars(filePath):
 
     file = open(filePath, 'r')
@@ -15,6 +18,7 @@ def parse_vars(filePath):
     file.close()
 
     vars = {}
+    line_count = 0
 
     for line in lines:
         key = None
@@ -22,7 +26,11 @@ def parse_vars(filePath):
         assignment_op = False
         lookup = False
 
-        for char in line:
+        line_count = line_count + 1
+
+        # NOTE: Using 1-indexing both because it's more natural and to match
+        # the lua implementation.
+        for char_count, char in enumerate(line, start=1):
             # Space after assignment, append to value.
             # Space before assignment, keep reading.
             if char == ' ':
@@ -48,7 +56,7 @@ def parse_vars(filePath):
                 if assignment_op == True:
                     continue
                 else:
-                    raise Exception('Unable to continue parsing, expected character [{}] only after assignment.'.format(char))
+                    parse_error(line_count, char_count, f'Expected character [{char}] only after assignment.')
 
             # Dollar, indicates variable lookup, only allowed after assignment
             elif char == '$':
@@ -56,7 +64,7 @@ def parse_vars(filePath):
                     lookup = True
                     continue
                 else:
-                    raise Exception('Unable to continue parsing, expected character [{}] only after assignment.'.format(char))
+                    parse_error(line_count, char_count, f'Expected character [{char}] only after assignment.')
 
             # Alphanumeric or underscore, append to either key or value
             elif re.search('[0-9a-zA-Z_]', char) is not None:
@@ -69,6 +77,16 @@ def parse_vars(filePath):
                         value = ''
                     value = value + char
 
+            # Decimal point, append to value, only allowed after assignment
+            elif char == '.':
+                if assignment_op == True:
+                    if value == None:
+                        value = ''
+                    value = value + char
+                    continue
+                else:
+                    parse_error(line_count, char_count, f'Expected character [{char}] only after assignment.')
+
             # Assignment operator reached, keep reading for value
             elif char == '=':
                 if assignment_op == False:
@@ -80,7 +98,7 @@ def parse_vars(filePath):
                 break
 
             else:
-                raise Exception('Unable to continue parsing, unexpected character [{}].'.format(char))
+                parse_error(line_count, char_count, f'Unknown character [{char}].')
 
         if key != None and value != None:
             if lookup == True:

@@ -16,8 +16,14 @@ function dict_set --argument-names key value
     set -g '__theme_var_'$key $value
 end
 
+function parse_error --argument-names line, column, message
+    echo "theme.fish -> Unable to continue parsing at line {$line}, {$column}: {$message}"
+end
+
 function parse_vars --argument-names filePath
     test -z $filePath && set filePath $XDG_CONFIG_HOME"/theme/colors"
+
+    set -l line_count 0
 
     while read line
         set -l key ''
@@ -29,7 +35,12 @@ function parse_vars --argument-names filePath
             continue
         end
 
+        set line_count (math $line_count + 1)
+        set -l char_count 0
+
         for char in (string split '' $line)
+            set char_count (math $char_count + 1)
+
             # Space after assignment, append to value.
             # Space before assignment, keep reading.
             if test $char = ' '
@@ -55,7 +66,7 @@ function parse_vars --argument-names filePath
                 if test $assignment_op = 'true'
                     continue
                 else
-                    echo "Unable to continue parsing, expected character [$char] only after assignment."
+                    parse_error $line_count $char_count "Expected character [$char] only after assignment."
                     return 2
                 end
 
@@ -65,7 +76,7 @@ function parse_vars --argument-names filePath
                     set lookup 'true'
                     continue
                 else
-                    echo "Unable to continue parsing, expected character [$char] only after assignment."
+                    parse_error $line_count $char_count "Expected character [$char] only after assignment."
                     return 3
                 end
 
@@ -77,6 +88,16 @@ function parse_vars --argument-names filePath
                     set value "$value$char"
                 end
 
+            # Decimal point, append to value, only allowed after assignment
+            else if test $char = '.'
+                if test $assignment_op = 'true'
+                    set value "$value$char"
+                    continue
+                else
+                    parse_error $line_count $char_count "Expected character [$char] only after assignment."
+                    return 2
+                end
+
             # Assignment operator reached, keep reading for value
             else if test $char = '='
                 if test $assignment_op = 'false'
@@ -84,7 +105,7 @@ function parse_vars --argument-names filePath
                 end
 
             else
-                echo "Unable to continue parsing, unexpected character [$char]."
+                parse_error $line_count $char_count "Unknown character [$char]."
                 return 4
             end
         end
