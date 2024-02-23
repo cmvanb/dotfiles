@@ -7,9 +7,10 @@
 
 set -euo pipefail
 
-input=$(cat -)
+# NOTE: Filter out terminal escapes to avoid counting them towards line length.
+input=$(cat - | sed 's/[^[:print:]]\[[^a-zA-Z]*[a-zA-Z]//g')
 
-columns=$(tput cols)
+columns=$(stty -F /dev/tty size | cut -d' ' -f2)
 lines_count=$(echo "$input" | wc -l)
 long_lines_count=$(echo "$input" | grep -c ".\{$columns\}" || true)
 count=$(( lines_count + long_lines_count ))
