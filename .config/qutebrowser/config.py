@@ -440,6 +440,9 @@ config.bind('<Ctrl-;>', 'spawn --userscript format_json.sh')
 #-- Video playback
 config.bind(';v', 'hint links spawn --verbose --detach mpv {hint-url} --input-ipc-server=/tmp/mpvsocket')
 
+#-- Mute tab audio
+config.bind('<Ctrl-m>', 'tab-mute')
+
 #-- Devtools
 config.bind('<F11>', 'view-source')
 config.bind('<F12>', 'devtools')
