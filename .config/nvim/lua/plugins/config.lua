@@ -169,6 +169,14 @@ return {
         'nvim-telescope/telescope-symbols.nvim',
     },
 
+    -- Github Copilot
+    {
+        'github/copilot.vim',
+        config = function()
+            vim.g.copilot_assume_mapped = true
+        end
+    },
+
     -- Jump movement.
     {
         'ggandor/leap.nvim',
