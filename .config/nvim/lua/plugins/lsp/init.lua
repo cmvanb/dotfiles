@@ -130,6 +130,19 @@ mason_lspconfig.setup_handlers({
             capabilities = lsp_capabilities,
         })
     end,
+    ['lua_ls'] = function()
+        lspconfig.lua_ls.setup({
+            on_attach = lsp_attach,
+            capabilities = lsp_capabilities,
+            settings = {
+                Lua = {
+                    diagnostics = {
+                        globals = { 'vim' }
+                    }
+                }
+            }
+        })
+    end,
     ['pyright'] = function()
         lspconfig.pyright.setup({
             on_attach = lsp_attach,
