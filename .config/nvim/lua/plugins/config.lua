@@ -172,9 +172,6 @@ return {
     -- Github Copilot
     {
         'github/copilot.vim',
-        config = function()
-            vim.g.copilot_assume_mapped = true
-        end
     },
 
     -- Jump movement.

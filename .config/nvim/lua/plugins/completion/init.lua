@@ -2,13 +2,6 @@
 -- Completion config
 --------------------------------------------------------------------------------
 
-local function has_words_before()
-    -- NOTE: Lua 5.4 deprecates `unpack`, is now `table.unpack`. However, NVIM 
-    -- is still using Lua 5.1.
-    local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-    return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match('%s') == nil
-end
-
 local cmp = require('cmp')
 local luasnip = require('luasnip')
 
@@ -19,38 +12,34 @@ cmp.setup({
         ['<C-j>'] = cmp.mapping.select_next_item(),
         ['<C-k>'] = cmp.mapping.select_prev_item(),
 
-        ['<Tab>'] = cmp.mapping(function(fallback)
+        ['<Right>'] = cmp.mapping(function(fallback)
+            -- NOTE: Try this for copilot:
+            -- vim.api.nvim_feedkeys(vim.fn['copilot#Accept'](vim.api.nvim_replace_termcodes('<Tab>', true, true, true)), 'n', true)
+
             if cmp.visible() then
                 -- NOTE: `select = false` prevents inferring a selection when
                 -- no item is highlighted.
                 cmp.confirm({ select = false })
             elseif luasnip.expand_or_jumpable() then
                 luasnip.expand_or_jump()
-            elseif has_words_before() then
-                cmp.complete()
             else
                 fallback()
             end
         end, { 'i', 's' }),
 
         ['<CR>'] = cmp.mapping(function(fallback)
-            -- local entry = cmp.get_selected_entry()
-            -- dump_table(entry)
             if cmp.visible() then
-                cmp.confirm({ select = false })
-                -- TODO: Figure out how to exit insert mode without leaving
-                -- garbage chars.
+                cmp.confirm({ select = true })
             else
                 fallback()
             end
         end, { 'i', 's' }),
 
-        ['<Right>'] = cmp.mapping.confirm({ select = false }),
-
         ['<Esc>'] = cmp.mapping(function(fallback)
+            vim.cmd.stopinsert()
+
             if cmp.visible() then
                 cmp.abort()
-                vim.cmd.stopinsert()
             else
                 fallback()
             end
