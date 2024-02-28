@@ -2,9 +2,9 @@
 -- Completion config
 --------------------------------------------------------------------------------
 
-local TableUtils = reload('utils.table')
-
 local function has_words_before()
+    -- NOTE: Lua 5.4 deprecates `unpack`, is now `table.unpack`. However, NVIM 
+    -- is still using Lua 5.1.
     local line, col = unpack(vim.api.nvim_win_get_cursor(0))
     return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match('%s') == nil
 end
@@ -21,13 +21,9 @@ cmp.setup({
 
         ['<Tab>'] = cmp.mapping(function(fallback)
             if cmp.visible() then
+                -- NOTE: `select = false` prevents inferring a selection when
+                -- no item is highlighted.
                 cmp.confirm({ select = false })
-                -- local count = TableUtils.count(cmp.get_entries())
-                -- if count == 1 then
-                --     cmp.confirm({ select = false })
-                -- else
-                --     cmp.select_next_item()
-                -- end
             elseif luasnip.expand_or_jumpable() then
                 luasnip.expand_or_jump()
             elseif has_words_before() then
