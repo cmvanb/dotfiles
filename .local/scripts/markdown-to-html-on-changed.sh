@@ -18,4 +18,4 @@ if [ "$extension" != "md" ]; then
     exit 1
 fi
 
-echo "$1" | entr -r "$XDG_SCRIPTS_HOME/markdown-to-html.sh" "$1"
+nohup echo "$1" | entr -r "$XDG_SCRIPTS_HOME/markdown-to-html.sh" "$1" >/dev/null 2>&1 &
