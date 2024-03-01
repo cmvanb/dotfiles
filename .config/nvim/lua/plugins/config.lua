@@ -23,10 +23,10 @@ return {
 
     -- Session management
     {
-        'natecraddock/sessions.nvim',
+        'rmagatti/auto-session',
         config = function()
-            do_load('plugins/session')
-        end,
+            require('auto-session').setup()
+        end
     },
 
     -- Git blame
