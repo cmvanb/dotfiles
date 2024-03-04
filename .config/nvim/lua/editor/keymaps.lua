@@ -245,12 +245,6 @@ nnoremap('<C-q>', ':Bdelete<cr>', true)
 -- Close NVIM without saving
 noremap('<leader>q', ':qa!<cr>')
 
--- Sessions
---------------------------------------------------------------------------------
-
-noremap('<leader>s', '<cmd>SessionsSave<cr>:echo "Session saved."<cr>')
-noremap('<leader>o', '<cmd>SessionsLoad<cr>:echo "Session loaded."<cr>')
-
 -- Git
 --------------------------------------------------------------------------------
 
