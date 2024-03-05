@@ -2,7 +2,7 @@
 # Fish prompt configuration
 #-------------------------------------------------------------------------------
 
-function fish_prompt --description 'Write out the prompt'
+function fish_prompt --description 'Print the prompt'
     # Preserve pipestatus
     set -l last_pipestatus $pipestatus
 
