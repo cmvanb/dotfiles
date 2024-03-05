@@ -17,4 +17,4 @@ terminal_height=$(( $(tput lines)-2 ))
 [[ $lines -ge $terminal_height ]] && bat --force-colorization --paging=never --style=numbers --wrap=never "$1" | less -c -R -S
 
 # After paging (if it took place), print the whole file to the terminal.
-bat --force-colorization --paging=never --style=numbers "$1"
+bat --force-colorization --paging=never --style=numbers --wrap=never "$1"
