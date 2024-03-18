@@ -40,6 +40,9 @@ return {
     enable_tab_bar = false,
     use_fancy_tab_bar = false,
 
+    -- Bigger scrollback buffer
+    scrollback_lines = 10000,
+
 -- Appearance
 --------------------------------------------------------------------------------
 
