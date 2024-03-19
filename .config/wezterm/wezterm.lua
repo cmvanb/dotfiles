@@ -174,10 +174,28 @@ return {
                 wezterm.action.ScrollByLine(-1)
             ),
         },
+        -- Increase font size
+        {
+            key = 'j',
+            mods = 'CTRL|SHIFT',
+            action = wezterm.action.IncreaseFontSize,
+        },
+        -- Decrease font size
+        {
+            key = 'k',
+            mods = 'CTRL|SHIFT',
+            action = wezterm.action.DecreaseFontSize,
+        },
+        -- Reset font size
+        {
+            key = 'l',
+            mods = 'CTRL|SHIFT',
+            action = wezterm.action.ResetFontSize,
+        },
         -- Key passthrough
         -- It's not possible for NVIM to distinguish <C-i> from <Tab>, or
         -- <C-m> from <CR>, or <C-BS> from <C-H>. Best we can do is pass escape  
-        -- codes for unused function keys. Use `showkeys -a` to find codes for 
+        -- codes for unused function keys. Use `showkey -a` to find codes for 
         -- specific keys.
         --  see: https://www.reddit.com/r/neovim/comments/mbj8m5/how_to_setup_ctrlshiftkey_mappings_in_neovim_and/
         --  see: https://en.wikipedia.org/wiki/List_of_Unicode_characters#Basic_Latin
