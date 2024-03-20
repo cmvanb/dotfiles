@@ -80,9 +80,7 @@ function fish_prompt --description 'Print the prompt'
     end
 
     # Last command status
-    set -l brace_sep_color (set_color red)
-    set -l status_color (set_color brred)
-    set -l last_command_status (__fish_print_pipestatus "[" "] " "|" $brace_sep_color $status_color $last_pipestatus)
+    set -l last_command_status (__fish_print_pipestatus "[" "] " "|" (set_color red) (set_color brred) $last_pipestatus)
 
     # Prompt
     set -l prompt ">"

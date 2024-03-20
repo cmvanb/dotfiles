@@ -73,7 +73,7 @@ bind \cf 'lfcd; commandline -f repaint'
 bind \ce 'edit; commandline -f repaint'
 
 # Clear screen
-bind \cl 'clear; commandline -f repaint'
+bind \cl 'tput reset; commandline -f repaint'
 
 # List all files
 bind \cy 'clear; commandline -f repaint; eza -al'
