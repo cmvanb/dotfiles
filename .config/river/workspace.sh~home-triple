@@ -1,21 +1,27 @@
 #!/usr/bin/env bash
 #-------------------------------------------------------------------------------
-# Wayland/wlroots wallpaper configuration
+# River workspace layout
 #-------------------------------------------------------------------------------
 
 # Imports
 #-------------------------------------------------------------------------------
 
 # shellcheck disable=SC1091
-source "$XDG_OPT_HOME/wayland-utils/set-output-wallpaper.sh"
+source "$XDG_OPT_HOME/wayland-utils/output.sh"
 
-# Wallpaper configuration
+# Layout
 #-------------------------------------------------------------------------------
 
-pkill -x swaybg
+left="DP-4"
+primary="DP-3"
+right="HDMI-A-6"
 
-declare wallpaper="$XDG_PICTURES_DIR/wallpapers/vertical/psychedelic-jupiter.jpg"
+riverctl focus-output $left
+riverctl send-layout-cmd rivercarro "main-location top"
+sleep 0.25
 
-set_output_wallpaper HDMI-A-6 "$wallpaper"
-set_output_wallpaper DP-3 "$wallpaper"
-set_output_wallpaper DP-4 "$wallpaper"
+riverctl focus-output $right
+riverctl send-layout-cmd rivercarro "main-location top"
+
+sleep 0.25
+riverctl focus-output $primary

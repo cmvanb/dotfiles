@@ -155,7 +155,6 @@ force_link "$base_dir/.config/river/environment.sh" "$config_dir/river/environme
 force_link "$base_dir/.config/river/init" "$config_dir/river/init"
 force_link "$base_dir/.config/river/send-and-focus-output.sh" "$config_dir/river/send-and-focus-output.sh"
 force_link "$base_dir/.config/river/send-to-output.sh" "$config_dir/river/send-to-output.sh"
-force_link "$base_dir/.config/river/workspace.sh" "$config_dir/river/workspace.sh"
 force_link "$base_dir/.config/shell" "$config_dir/shell"
 mkdir -p "$config_dir/syncthing"
 force_link "$base_dir/.config/syncthing/config.xml" "$config_dir/syncthing/config.xml"

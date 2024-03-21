@@ -31,6 +31,9 @@ echo "Applying \`$host\` configuration to \`$HOME\`."
 case $host in
 
 qutedell)
+    mkdir -p "$config_dir/river"
+    force_link "$base_dir/.config/river/workspace.sh~qutech-dual" "$config_dir/river/workspace.sh"
+
     mkdir -p "$config_dir/wallpaper"
     force_link "$base_dir/.config/wallpaper/wallpaper.sh~qutech-dual" "$config_dir/wallpaper/wallpaper.sh"
 
@@ -43,6 +46,9 @@ qutedell)
 supertubes)
     ;&
 cyxwel)
+    mkdir -p "$config_dir/river"
+    force_link "$base_dir/.config/river/workspace.sh~home-triple" "$config_dir/river/workspace.sh"
+
     mkdir -p "$config_dir/wallpaper"
     force_link "$base_dir/.config/wallpaper/wallpaper.sh~home-triple" "$config_dir/wallpaper/wallpaper.sh"
 
