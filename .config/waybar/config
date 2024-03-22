@@ -2,11 +2,11 @@
     "layer": "top",
     "modules-left": ["river/tags"],
     "modules-center": ["river/window"],
-    "modules-right": ["wireplumber", "battery", "clock"],
+    "modules-right": ["pulseaudio", "battery", "clock"],
     "river/window": {
         "max-length": 80
     },
-    "wireplumber": {
+    "pulseaudio": {
         "format": "{icon}    {volume}%",
         "format-muted": "󰝟    {volume}%",
         "on-click": "pavucontrol",
