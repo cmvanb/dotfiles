@@ -69,6 +69,7 @@ alias ip="ip -c"
 alias vv="generate-venv.sh"
 alias va="source venv/bin/activate"
 alias vd="deactivate"
+alias uu="sudo pacman -Syyu"
 
 # Bindings
 #-------------------------------------------------------------------------------
