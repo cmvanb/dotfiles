@@ -70,6 +70,7 @@ alias vv="generate-venv.sh"
 alias va="source venv/bin/activate"
 alias vd="deactivate"
 alias uu="sudo pacman -Syyu"
+alias rga="rg --hidden --no-ignore"
 
 # Bindings
 #-------------------------------------------------------------------------------

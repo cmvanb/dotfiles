@@ -59,6 +59,7 @@ abbr -a vv generate-venv.sh
 abbr -a va source venv/bin/activate.fish
 abbr -a vd deactivate
 abbr -a uu sudo pacman -Syyu
+abbr -a rga rg --hidden --no-ignore
 
 # Bindings
 #-------------------------------------------------------------------------------
