@@ -85,7 +85,7 @@ bind '"\C-f":"lfcd\C-m"'
 bind '"\C-y":"clear\C-m eza -al \C-m"'
 
 # List all files in tree format (NOTE: output is often long)
-bind '"\e\[1\;2P":"clear\C-m eza -aT --git-ignore | view-stdin.sh\C-m"'
+bind '"\e\[1\;2P":"clear\C-m eza -aT --git-ignore | view.sh\C-m"'
 
 # LF CD integration
 #-------------------------------------------------------------------------------

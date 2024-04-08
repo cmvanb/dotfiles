@@ -65,7 +65,6 @@ force_link "$base_dir/.local/scripts/screenshot-rectangle.sh" "$scripts_dir/scre
 force_link "$base_dir/.local/scripts/select-bookmark.sh" "$scripts_dir/select-bookmark.sh"
 force_link "$base_dir/.local/scripts/set-terminal-title.sh" "$scripts_dir/set-terminal-title.sh"
 force_link "$base_dir/.local/scripts/terminal-preview.sh" "$scripts_dir/terminal-preview.sh"
-force_link "$base_dir/.local/scripts/view-stdin.sh" "$scripts_dir/view-stdin.sh"
 force_link "$base_dir/.local/scripts/view.sh" "$scripts_dir/view.sh"
 force_link "$base_dir/.local/scripts/vlc-webcam-test.sh" "$scripts_dir/vlc-webcam-test.sh"
 

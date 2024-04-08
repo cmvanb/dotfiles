@@ -3,7 +3,7 @@
 	name = Casper
 [core]
 	editor = nvim
-	pager = ~/.local/scripts/view-stdin.sh
+	pager = ~/.local/scripts/view.sh
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
