@@ -67,6 +67,7 @@ abbr -a rga rg --hidden --no-ignore
 # Unbindings
 bind \cb ''
 bind \ch ''
+bind \cp ''
 
 # Open file browser
 bind \cf 'lfcd; commandline -f repaint'
@@ -78,7 +79,7 @@ bind \ce 'edit; commandline -f repaint'
 bind \cl 'tput reset; commandline -f repaint'
 
 # List all files
-bind \cy 'clear; commandline -f repaint; eza -al'
+bind \cy 'clear; commandline -f repaint; eza -al | view.sh'
 
 # List all files in tree format (NOTE: output is often long)
 bind \e\[1\;2P 'clear; commandline -f repaint; eza -aT --git-ignore | view.sh'

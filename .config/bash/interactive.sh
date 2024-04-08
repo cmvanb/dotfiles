@@ -75,6 +75,11 @@ alias rga="rg --hidden --no-ignore"
 # Bindings
 #-------------------------------------------------------------------------------
 
+# Unbindings
+bind -r '\C-b'
+bind -r '\C-h'
+bind -r '\C-p'
+
 # Open editor
 bind '"\C-e":"edit\C-m"'
 
@@ -82,7 +87,7 @@ bind '"\C-e":"edit\C-m"'
 bind '"\C-f":"lfcd\C-m"'
 
 # List all files
-bind '"\C-y":"clear\C-m eza -al \C-m"'
+bind '"\C-y":"clear\C-m eza -al | view.sh \C-m"'
 
 # List all files in tree format (NOTE: output is often long)
 bind '"\e\[1\;2P":"clear\C-m eza -aT --git-ignore | view.sh\C-m"'
