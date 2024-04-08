@@ -62,8 +62,11 @@ opt.scrolloff = 4
 -- Enable mouse in all modes
 opt.mouse = 'a'
 
+-- Sessions
+opt.sessionoptions = 'buffers,curdir,folds,help,tabpages,winsize,resize,winpos,terminal'
+
 -- Folding
-opt.foldmethod = 'syntax'
+opt.foldmethod = 'manual'
 opt.foldcolumn = '0'
 opt.foldlevel = 99 -- NOTE: UFO provider needs a large value, feel free to decrease
 opt.foldlevelstart = 99

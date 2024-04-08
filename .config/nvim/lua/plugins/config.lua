@@ -105,6 +105,12 @@ return {
             require('ufo').setup()
         end,
     },
+    {
+        'chrisgrieser/nvim-origami',
+        config = function()
+            require('origami').setup({})
+        end,
+    },
 
     -- Snippet engine.
     {

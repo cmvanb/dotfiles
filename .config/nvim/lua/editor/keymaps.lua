@@ -187,6 +187,12 @@ noremap('<leader>;', 'gg=G')
 -- Toggle linebreaks
 noremap('<C-g>w', '<cmd>set wrap!<cr>:set linebreak!<cr>')
 
+-- Folding
+--------------------------------------------------------------------------------
+
+noremap('zR', require('ufo').openAllFolds)
+noremap('zM', require('ufo').closeAllFolds)
+
 -- Search
 --------------------------------------------------------------------------------
 
