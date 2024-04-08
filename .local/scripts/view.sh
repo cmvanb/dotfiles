@@ -17,7 +17,7 @@ else
     stdin="$(cat)"
 
     input="$stdin"
-    input_width="$(echo "$stdin" | wc -L)"
+    input_width="$(echo "$stdin" | "$XDG_OPT_HOME/shell-utils/strip-ansi.sh" | wc -L)"
 fi
 
 input_lines=$(echo "$input" | "$XDG_OPT_HOME/shell-utils/count-lines.sh")
