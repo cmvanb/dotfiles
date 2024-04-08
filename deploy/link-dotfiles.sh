@@ -70,17 +70,8 @@ force_link "$base_dir/.local/scripts/vlc-webcam-test.sh" "$scripts_dir/vlc-webca
 
 # Shell libraries
 mkdir -p "$opt_dir/shell-utils"
-force_link "$base_dir/.local/opt/shell-utils/count-lines.sh" "$opt_dir/shell-utils/count-lines.sh"
-force_link "$base_dir/.local/opt/shell-utils/debug.sh" "$opt_dir/shell-utils/debug.sh"
-force_link "$base_dir/.local/opt/shell-utils/fs.sh" "$opt_dir/shell-utils/fs.sh"
-force_link "$base_dir/.local/opt/shell-utils/linux.sh" "$opt_dir/shell-utils/linux.sh"
-force_link "$base_dir/.local/opt/shell-utils/name-formatting.sh" "$opt_dir/shell-utils/name-formatting.sh"
-force_link "$base_dir/.local/opt/shell-utils/parse-conf.sh" "$opt_dir/shell-utils/parse-conf.sh"
-force_link "$base_dir/.local/opt/shell-utils/path.sh" "$opt_dir/shell-utils/path.sh"
-force_link "$base_dir/.local/opt/shell-utils/string.sh" "$opt_dir/shell-utils/string.sh"
-mkdir -p "$opt_dir/wayland-utils"
-force_link "$base_dir/.local/opt/wayland-utils/output.sh" "$opt_dir/wayland-utils/output.sh"
-force_link "$base_dir/.local/opt/wayland-utils/set-output-wallpaper.sh" "$opt_dir/wayland-utils/set-output-wallpaper.sh"
+force_link "$base_dir/.local/opt/shell-utils" "$opt_dir/shell-utils"
+force_link "$base_dir/.local/opt/shell-utils" "$opt_dir/wayland-utils"
 
 # Templates
 mkdir -p "$templates_dir"

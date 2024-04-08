@@ -24,16 +24,7 @@ assert_dependency bat
 #-------------------------------------------------------------------------------
 
 mkdir -p "$opt_dir/theme"
-force_link "$base_dir/.local/opt/theme/color-hex-to-ansi.sh" "$opt_dir/theme/color-hex-to-ansi.sh"
-force_link "$base_dir/.local/opt/theme/color-index-to-ansi.sh" "$opt_dir/theme/color-index-to-ansi.sh"
-force_link "$base_dir/.local/opt/theme/color-lookup-256-index.sh" "$opt_dir/theme/color-lookup-256-index.sh"
-force_link "$base_dir/.local/opt/theme/configure-dircolors.fish" "$opt_dir/theme/configure-dircolors.fish"
-force_link "$base_dir/.local/opt/theme/configure-dircolors.sh" "$opt_dir/theme/configure-dircolors.sh"
-force_link "$base_dir/.local/opt/theme/configure-gtk.sh" "$opt_dir/theme/configure-gtk.sh"
-force_link "$base_dir/.local/opt/theme/theme.fish" "$opt_dir/theme/theme.fish"
-force_link "$base_dir/.local/opt/theme/theme.lua" "$opt_dir/theme/theme.lua"
-force_link "$base_dir/.local/opt/theme/theme.py" "$opt_dir/theme/theme.py"
-force_link "$base_dir/.local/opt/theme/theme.sh" "$opt_dir/theme/theme.sh"
+force_link "$base_dir/.local/opt/theme" "$opt_dir/theme"
 
 # Select system theme
 #-------------------------------------------------------------------------------
