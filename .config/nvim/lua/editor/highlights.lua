@@ -2,101 +2,74 @@
 -- Neovim highlights
 --------------------------------------------------------------------------------
 
--- Retrieve system colors
-local theme = reload('system/theme')
-
--- Helpers
+-- Imports
 --------------------------------------------------------------------------------
 
-local cmd = vim.cmd
-local opt = vim.opt
+local HighlightsUtils = reload('utils.highlights')
 
--- TODO: Extract utility.
-local function hi(group, guifg, guibg, guiprops, termfg, termbg, termprops)
-    if guifg ~= 'NONE' then
-        guifg = theme.color_hash(guifg)
-    end
-    if guibg ~= 'NONE' then
-        guibg = theme.color_hash(guibg)
-    end
-    if termfg ~= 'NONE' then
-        termfg = theme.color_name_to_ansi_index(termfg)
-    end
-    if termbg ~= 'NONE' then
-        termbg = theme.color_name_to_ansi_index(termbg)
-    end
+-- Shortcuts
+--------------------------------------------------------------------------------
 
-    cmd('hi! ' .. group ..
-        ' guifg=' .. guifg ..
-        ' guibg=' .. guibg ..
-        ' gui=' .. guiprops ..
-        ' ctermfg=' .. termfg ..
-        ' ctermbg=' .. termbg ..
-        ' cterm=' .. termprops)
-end
+local hi = HighlightsUtils.highlight
+local ln = HighlightsUtils.link
 
--- TODO: Extract utility.
-local function ln(group, target)
-    cmd('hi! link ' .. group .. ' ' .. target)
-end
-
--- Settings
+-- Basic configuration
 --------------------------------------------------------------------------------
 
 -- Use 24bit color if we are not in the linux terminal.
-opt.termguicolors = not is_linux_terminal()
+vim.opt.termguicolors = not is_linux_terminal()
 
 -- Reset any pre-existing syntax highlighting
-cmd('syntax reset')
+vim.cmd('syntax reset')
 
 -- NVIM UI highlights
 --------------------------------------------------------------------------------
 
--- group                   | guifg              | guibg          | guiprops   | termfg           | termbg           | termprops
-hi('Normal',               'editor_text_normal', 'editor_bg',    'NONE',      'ansi_cyan',       'ansi_black',      'NONE')
-hi('NonText',              'text_8',             'NONE',         'NONE',      'ansi_brwhite',    'NONE',            'NONE')
-hi('EndOfBuffer',          'primary_4',          'NONE',         'NONE',      'NONE',            'NONE',            'NONE')
-hi('Cursor',               'text_0',             'primary_15',   'NONE',      'ansi_black',      'ansi_brwhite',    'bold')
-hi('CursorLine',           'NONE',               'primary_2',    'NONE',      'NONE',            'ansi_blue',       'NONE')
-hi('CursorLineNr',         'primary_12',         'primary_2',    'NONE',      'ansi_brblue',     'ansi_blue',       'bold')
-hi('LineNr',               'primary_6',          'NONE',         'NONE',      'ansi_blue',       'NONE',            'NONE')
-hi('SignColumn',           'primary_15',         'primary_0',    'NONE',      'ansi_brblue',     'ansi_black',      'NONE')
+-- Highlights
+hi('Normal',               { fg = 'editor_text_normal', bg = 'editor_bg' },          { fg = 'ansi_cyan', bg = 'ansi_black' })
+hi('NonText',              { fg = 'text_8' },                                        { fg = 'ansi_brwhite' })
+hi('EndOfBuffer',          { fg = 'primary_4' },                                     { })
+hi('Cursor',               { fg = 'text_0', bg = 'primary_15' },                     { fg = 'ansi_black', bg = 'ansi_brwhite', attrs = 'bold' })
+hi('CursorLine',           { bg = 'primary_2' },                                     { bg = 'ansi_blue' })
+hi('CursorLineNr',         { fg = 'primary_12', bg = 'primary_2' },                  { fg = 'ansi_brblue', bg = 'ansi_blue', attrs = 'bold' })
+hi('LineNr',               { fg = 'primary_6' },                                     { fg = 'ansi_blue' })
+hi('SignColumn',           { fg = 'primary_15', bg = 'primary_0' },                  { fg = 'ansi_brblue', bg = 'ansi_black' })
 
-hi('StatusLine',           'text_12',            'primary_6',    'bold',      'ansi_white',      'ansi_blue',       'bold')
-hi('StatusLineNC',         'text_8',             'primary_1',    'NONE',      'ansi_brblack',    'ansi_black',      'NONE')
-hi('TabLine',              'primary_5',          'primary_1',    'bold',      'ansi_white',      'ansi_blue',       'NONE')
-hi('TabLineSel',           'primary_11',         'primary_3',    'bold',      'ansi_white',      'ansi_blue',       'bold')
-hi('TabLineFill',          'NONE',               'primary_1',    'bold',      'ansi_white',      'ansi_blue',       'bold')
+hi('StatusLine',           { fg = 'text_12', bg = 'primary_6', attrs = 'bold' },     { fg = 'ansi_white', bg = 'ansi_blue', attrs = 'bold' })
+hi('StatusLineNC',         { fg = 'text_8', bg = 'primary_1' },                      { fg = 'ansi_brblack', bg = 'ansi_black' })
+hi('TabLine',              { fg = 'primary_5', bg = 'primary_1', attrs = 'bold' },   { fg = 'ansi_white', bg = 'ansi_blue' })
+hi('TabLineSel',           { fg = 'primary_11', bg = 'primary_3', attrs = 'bold' },  { fg = 'ansi_white', bg = 'ansi_blue', attrs = 'bold' })
+hi('TabLineFill',          { bg = 'primary_1', attrs = 'bold' },                     { fg = 'ansi_white', bg = 'ansi_blue', attrs = 'bold' })
 
-hi('MsgArea',              'text_12',            'primary_0',    'NONE',      'ansi_white',      'ansi_black',      'NONE')
-hi('ErrorMsg',             'red_6',              'red_1',        'bold',      'ansi_brred',      'ansi_red',        'NONE')
-hi('WarningMsg',           'yellow_6',           'orange_3',     'bold',      'ansi_bryellow',   'ansi_yellow',     'NONE')
-hi('MoreMsg',              'gray_15',            'gray_5',       'bold',      'ansi_white',      'ansi_brblack',    'NONE')
+hi('MsgArea',              { fg = 'text_12', bg = 'primary_0' },                     { fg = 'ansi_white', bg = 'ansi_black' })
+hi('ErrorMsg',             { fg = 'red_6', bg = 'red_1', attrs = 'bold' },           { fg = 'ansi_brred', bg = 'ansi_red' })
+hi('WarningMsg',           { fg = 'yellow_6', bg = 'orange_3', attrs = 'bold' },     { fg = 'ansi_bryellow', bg = 'ansi_yellow' })
+hi('MoreMsg',              { fg = 'gray_15', bg = 'gray_5', attrs = 'bold' },        { fg = 'ansi_white', bg = 'ansi_brblack' })
 
-hi('Visual',               'gray_0',             'primary_15',   'NONE',      'ansi_white',      'ansi_blue',       'NONE')
-hi('IncSearch',            'gray_0',             'green_4',      'bold',      'ansi_black',      'ansi_green',      'NONE')
-hi('Search',               'gray_0',             'magenta_5',    'bold',      'ansi_black',      'ansi_magenta',    'NONE')
+hi('Visual',               { fg = 'gray_0', bg = 'primary_15' },                     { fg = 'ansi_white', bg = 'ansi_blue' })
+hi('IncSearch',            { fg = 'gray_0', bg = 'green_4', attrs = 'bold' },        { fg = 'ansi_black', bg = 'ansi_green' })
+hi('Search',               { fg = 'gray_0', bg = 'magenta_5', attrs = 'bold' },      { fg = 'ansi_black', bg = 'ansi_magenta' })
 
-hi('Title',                'text_15',            'NONE',         'bold',      'ansi_brwhite',    'NONE',            'bold')
-hi('PMenu',                'text_8',             'primary_0',    'NONE',      'ansi_white',      'ansi_black',      'NONE')
-hi('PMenuSel',             'yellow_6',           'primary_5',    'bold',      'ansi_white',      'ansi_black',      'bold')
-hi('WinSeparator',         'primary_4',          'NONE',         'NONE',      'ansi_brblack',    'NONE',            'NONE')
-hi('MatchParen',           'text_8',             'NONE',         'bold',      'ansi_brwhite',    'NONE',            'bold,underline')
-hi('DiffAdd',              'green_4',            'NONE',         'bold',      'ansi_green',      'NONE',            'NONE')
-hi('DiffChange',           'orange_6',           'NONE',         'bold',      'ansi_yellow',     'NONE',            'NONE')
-hi('DiffDelete',           'red_5',              'NONE',         'bold',      'ansi_red',        'NONE',            'NONE')
-hi('DiagnosticSignError',  'red_5',              'NONE',         'bold',      'ansi_red',        'NONE',            'NONE')
-hi('DiagnosticSignWarn',   'yellow_5',           'NONE',         'bold',      'ansi_yellow',     'NONE',            'NONE')
-hi('DiagnosticSignInfo',   'text_12',            'NONE',         'bold',      'ansi_white',      'NONE',            'NONE')
-hi('DiagnosticSignHint',   'purple_7',           'NONE',         'bold',      'ansi_magenta',    'NONE',            'NONE')
-hi('SpecialKey',           'debug',              'NONE',         'NONE',      'ansi_brmagenta',  'NONE',            'NONE')
-hi('Directory',            'primary_8',          'NONE',         'NONE',      'ansi_cyan',       'ansi_black',      'NONE')
-hi('Folded',               'NONE',               'primary_1',    'NONE',      'NONE',            'ansi_brblack',    'NONE')
-hi('FoldColumn',           'primary_6',          'NONE',         'NONE',      'ansi_cyan',       'NONE',            'NONE')
+hi('Title',                { fg = 'text_15', attrs = 'bold' },                       { fg = 'ansi_brwhite', attrs = 'bold' })
+hi('PMenu',                { fg = 'text_8', bg = 'primary_0' },                      { fg = 'ansi_white', bg = 'ansi_black' })
+hi('PMenuSel',             { fg = 'yellow_6', bg = 'primary_5', attrs = 'bold' },    { fg = 'ansi_white', bg = 'ansi_black', attrs = 'bold' })
+hi('WinSeparator',         { fg = 'primary_4' },                                     { fg = 'ansi_brblack' })
+hi('MatchParen',           { fg = 'text_8', attrs = 'bold' },                        { fg = 'ansi_brwhite', attrs = 'bold,underline' })
+hi('DiffAdd',              { fg = 'green_4', attrs = 'bold' },                       { fg = 'ansi_green' })
+hi('DiffChange',           { fg = 'orange_6', attrs = 'bold' },                      { fg = 'ansi_yellow' })
+hi('DiffDelete',           { fg = 'red_5', attrs = 'bold' },                         { fg = 'ansi_red' })
+hi('DiagnosticSignError',  { fg = 'red_5', attrs = 'bold' },                         { fg = 'ansi_red' })
+hi('DiagnosticSignWarn',   { fg = 'yellow_5', attrs = 'bold' },                      { fg = 'ansi_yellow' })
+hi('DiagnosticSignInfo',   { fg = 'text_12', attrs = 'bold' },                       { fg = 'ansi_white' })
+hi('DiagnosticSignHint',   { fg = 'purple_7', attrs = 'bold' },                      { fg = 'ansi_magenta' })
+hi('SpecialKey',           { fg = 'debug' },                                         { fg = 'ansi_brmagenta' })
+hi('Directory',            { fg = 'primary_8' },                                     { fg = 'ansi_cyan', bg = 'ansi_black' })
+hi('Folded',               { bg = 'primary_1' },                                     { bg = 'ansi_brblack' })
+hi('FoldColumn',           { fg = 'primary_6' },                                     { fg = 'ansi_cyan' })
 
-hi('SpellBad',             'red_5',              'NONE',         'undercurl', 'ansi_red',        'NONE',            'underline')
+hi('SpellBad',             { fg = 'red_5', attrs = 'undercurl' },                    { fg = 'ansi_red', attrs = 'underline' })
 
--- group             | target
+-- Links
 ln('CursorColumn',   'CursorLine')
 ln('Question',       'MoreMsg')
 ln('ModeMsg',        'MoreMsg')
@@ -108,42 +81,42 @@ ln('Whitespace',     'NonText')
 -- Custom UI highlights
 --------------------------------------------------------------------------------
 
--- group                  | guifg        | guibg       | guiprops | termfg          | termbg       | termprops
-hi('CMenuNormal',         'debug',       'primary_1',  'NONE',    'ansi_cyan',      'ansi_black',   'NONE')
-hi('CMenuSelection',      'text_15',     'primary_8',  'bold',    'ansi_brwhite',   'ansi_black',  'bold')
-hi('CMenuItem',           'text_12',     'NONE',       'NONE',    'ansi_brblue',    'NONE',        'NONE')
+-- Highlights
+hi('CMenuNormal',         { fg = 'debug', bg = 'primary_1' },                    { fg = 'ansi_cyan', bg = 'ansi_black' })
+hi('CMenuSelection',      { fg = 'text_15', bg = 'primary_8', attrs = 'bold' },  { fg = 'ansi_brwhite', bg = 'ansi_black', attrs = 'bold' })
+hi('CMenuItem',           { fg = 'text_12' },                                    { fg = 'ansi_brblue' })
 
-hi('CMenuItemMatch',      'yellow_6',    'NONE',       'bold',    'ansi_bryellow',  'NONE',        'NONE')
-hi('FloatMenuNormal',     'text_12',     'primary_0',  'NONE',    'ansi_cyan',      'ansi_black',   'NONE')
-hi('FloatMenuSelection',  'text_15',     'primary_7',  'bold',    'ansi_brwhite',   'ansi_black',  'bold')
-hi('FloatMenuItemMatch',  'yellow_6',    'NONE',       'bold',    'ansi_cyan',      'ansi_blue',   'NONE')
+hi('CMenuItemMatch',      { fg = 'yellow_6', attrs = 'bold' },                   { fg = 'ansi_bryellow' })
+hi('FloatMenuNormal',     { fg = 'text_12', bg = 'primary_0' },                  { fg = 'ansi_cyan', bg = 'ansi_black' })
+hi('FloatMenuSelection',  { fg = 'text_15', bg = 'primary_7', attrs = 'bold' },  { fg = 'ansi_brwhite', bg = 'ansi_black', attrs = 'bold' })
+hi('FloatMenuItemMatch',  { fg = 'yellow_6', attrs = 'bold' },                   { fg = 'ansi_cyan', bg = 'ansi_blue' })
 
--- group            | target
+-- Links
 ln('QuickFixLine',  'FloatMenuSelection')
 
 -- Plugin highlights
 --------------------------------------------------------------------------------
 
--- group                     | guifg         | guibg        | guiprops         | termfg           | termbg       | termprops
-hi('LeapMatch',              'debug',        'NONE',        'bold',            'ansi_magenta',    'NONE',        'NONE')
-hi('LeapLabelPrimary',       'gray_0',       'primary_15',  'bold',            'ansi_magenta',    'NONE',        'NONE')
-hi('LeapLabelSecondary',     'primary_2',    'primary_11',  'bold',            'ansi_brmagenta',  'NONE',        'bold')
-hi('LeapLabelSelected',      'debug',        'NONE',        'bold',            'ansi_brmagenta',  'NONE',        'bold')
-hi('MiniCursorword',         'NONE',         'NONE',        'bold,underline',  'NONE',            'NONE',        'bold,underline')
-hi('MiniIndentscopeSymbol',  'primary_3',    'NONE',        'NONE',            'ansi_brblack',    'NONE',        'NONE')
-hi('LualineDiffAdd',         'green_4',      'primary_4',   'bold',            'ansi_green',      'NONE',        'NONE')
-hi('LualineDiffChange',      'orange_6',     'primary_4',   'bold',            'ansi_yellow',     'NONE',        'NONE')
-hi('LualineDiffDelete',      'red_5',        'primary_4',   'bold',            'ansi_red',        'NONE',        'NONE')
-hi('LualineDiagError',       'red_5',        'primary_4',   'bold',            'ansi_red',        'NONE',        'NONE')
-hi('LualineDiagWarn',        'yellow_5',     'primary_4',   'bold',            'ansi_yellow',     'NONE',        'NONE')
-hi('LualineDiagInfo',        'primary_15',   'primary_4',   'bold',            'ansi_white',      'NONE',        'NONE')
-hi('LualineDiagHint',        'purple_7',     'primary_4',   'bold',            'ansi_magenta',    'NONE',        'NONE')
-hi('packerSuccess',          'green_4',      'NONE',        'NONE',            'ansi_green',      'NONE',        'NONE')
-hi('packerWarning',          'yellow_6',     'NONE',        'NONE',            'ansi_bryellow',   'NONE',        'NONE')
-hi('packerWorking',          'primary_8',    'NONE',        'NONE',            'ansi_brblue',     'NONE',        'NONE')
-hi('packerFail',             'red_6',        'NONE',        'NONE',            'ansi_brred',      'NONE',        'NONE')
+-- Highlights
+hi('LeapMatch',              { fg = 'debug', attrs = 'bold' },                         { fg = 'ansi_magenta' })
+hi('LeapLabelPrimary',       { fg = 'gray_0', bg = 'primary_15', attrs = 'bold' },     { fg = 'ansi_magenta' })
+hi('LeapLabelSecondary',     { fg = 'primary_2', bg = 'primary_11', attrs = 'bold' },  { fg = 'ansi_brmagenta', attrs = 'bold' })
+hi('LeapLabelSelected',      { fg = 'debug', attrs = 'bold' },                         { fg = 'ansi_brmagenta', attrs = 'bold' })
+hi('MiniCursorword',         { attrs = 'bold,underline' },                             { attrs = 'bold,underline' })
+hi('MiniIndentscopeSymbol',  { fg = 'primary_3' },                                     { fg = 'ansi_brblack' })
+hi('LualineDiffAdd',         { fg = 'green_4', bg = 'primary_4', attrs = 'bold' },     { fg = 'ansi_green' })
+hi('LualineDiffChange',      { fg = 'orange_6', bg = 'primary_4', attrs = 'bold' },    { fg = 'ansi_yellow' })
+hi('LualineDiffDelete',      { fg = 'red_5', bg = 'primary_4', attrs = 'bold' },       { fg = 'ansi_red' })
+hi('LualineDiagError',       { fg = 'red_5', bg = 'primary_4', attrs = 'bold' },       { fg = 'ansi_red' })
+hi('LualineDiagWarn',        { fg = 'yellow_5', bg = 'primary_4', attrs = 'bold' },    { fg = 'ansi_yellow' })
+hi('LualineDiagInfo',        { fg = 'primary_15', bg = 'primary_4', attrs = 'bold' },  { fg = 'ansi_white' })
+hi('LualineDiagHint',        { fg = 'purple_7', bg = 'primary_4', attrs = 'bold' },    { fg = 'ansi_magenta' })
+hi('packerSuccess',          { fg = 'green_4' },                                       { fg = 'ansi_green' })
+hi('packerWarning',          { fg = 'yellow_6' },                                      { fg = 'ansi_bryellow' })
+hi('packerWorking',          { fg = 'primary_8' },                                     { fg = 'ansi_brblue' })
+hi('packerFail',             { fg = 'red_6' },                                         { fg = 'ansi_brred' })
 
--- group                      | target
+-- Links
 ln('CmpMenuBackground',       'CMenuNormal')
 ln('CmpMenuSelect',           'CMenuSelection')
 ln('CmpItemAbbr',             'CMenuItem')
@@ -161,24 +134,24 @@ ln('TelescopePreviewNormal',  'Normal')
 -- Syntax highlights
 --------------------------------------------------------------------------------
 
--- group                | guifg         | guibg        | guiprops         | termfg           | termbg     | termprops
-hi('Identifier',        'secondary_9',  'NONE',        'NONE',            'ansi_cyan',       'NONE',      'NONE')
-hi('Statement',         'green_4',      'NONE',        'bold',            'ansi_brgreen',    'NONE',      'bold')
-hi('Comment',           'text_8',       'NONE',        'italic',          'ansi_brblack',    'NONE',      'NONE')
-hi('Type',              'secondary_12', 'NONE',        'NONE',            'ansi_brcyan',     'NONE',      'bold')
-hi('Constant',          'magenta_5',    'NONE',        'NONE',            'ansi_brmagenta',  'NONE',      'NONE')
-hi('Special',           'yellow_5',     'NONE',        'bold',            'ansi_yellow',     'NONE',      'NONE')
-hi('Underlined',        'primary_15',   'NONE',        'underline',       'ansi_blue',       'NONE',      'underline')
-hi('Delimiter',         'green_4',      'NONE',        'NONE',            'ansi_green',      'NONE',      'NONE')
-hi('String',            'orange_6',     'NONE',        'NONE',            'ansi_yellow',     'NONE',      'NONE')
-hi('Keyword',           'green_4',      'NONE',        'bold',            'ansi_brgreen',    'NONE',      'bold')
-hi('Function',          'secondary_15', 'NONE',        'bold',            'ansi_brcyan',     'NONE',      'bold')
-hi('Number',            'red_6',        'NONE',        'NONE',            'ansi_brred',      'NONE',      'NONE')
-hi('Boolean',           'red_5',        'NONE',        'NONE',            'ansi_red',        'NONE',      'NONE')
-hi('Ignore',            'text_4',       'NONE',        'bold',            'ansi_brblack',    'NONE',      'NONE')
-hi('Todo',              'secondary_15', 'secondary_5', 'bold,nocombine',  'ansi_brcyan',     'ansi_cyan', 'bold')
+-- Highlights
+hi('Identifier',  { fg = 'secondary_9' },                                                 { fg = 'ansi_cyan' })
+hi('Statement',   { fg = 'green_4', attrs = 'bold' },                                     { fg = 'ansi_brgreen', attrs = 'bold' })
+hi('Comment',     { fg = 'text_8', attrs = 'italic' },                                    { fg = 'ansi_brblack' })
+hi('Type',        { fg = 'secondary_12' },                                                { fg = 'ansi_brcyan', attrs = 'bold' })
+hi('Constant',    { fg = 'magenta_5' },                                                   { fg = 'ansi_brmagenta' })
+hi('Special',     { fg = 'yellow_5', attrs = 'bold' },                                    { fg = 'ansi_yellow' })
+hi('Underlined',  { fg = 'primary_15', attrs = 'underline' },                             { fg = 'ansi_blue', attrs = 'underline' })
+hi('Delimiter',   { fg = 'green_4' },                                                     { fg = 'ansi_green' })
+hi('String',      { fg = 'orange_6' },                                                    { fg = 'ansi_yellow' })
+hi('Keyword',     { fg = 'green_4', attrs = 'bold' },                                     { fg = 'ansi_brgreen', attrs = 'bold' })
+hi('Function',    { fg = 'secondary_15', attrs = 'bold' },                                { fg = 'ansi_brcyan', attrs = 'bold' })
+hi('Number',      { fg = 'red_6' },                                                       { fg = 'ansi_brred' })
+hi('Boolean',     { fg = 'red_5' },                                                       { fg = 'ansi_red' })
+hi('Ignore',      { fg = 'text_4', attrs = 'bold' },                                      { fg = 'ansi_brblack' })
+hi('Todo',        { fg = 'secondary_15', bg = 'secondary_5', attrs = 'bold,nocombine' },  { fg = 'ansi_brcyan', bg = 'ansi_cyan', attrs = 'bold' })
 
--- group                       | target
+-- Links
 ln('vimCommentTitle',          'Comment')
 ln('vimOption',                'Identifier')
 ln('Operator',                 'Keyword')
