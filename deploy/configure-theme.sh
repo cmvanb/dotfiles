@@ -38,8 +38,33 @@ force_link "$config_dir/theme/carbon-dark" "$config_dir/theme/colors"
 
 echo "Link theme variables."
 
-force_link "$base_dir/.config/theme/fonts" "$config_dir/theme/fonts"
 force_link "$base_dir/.config/theme/cursor" "$config_dir/theme/cursor"
+
+# Link host-specific theme variables
+#-------------------------------------------------------------------------------
+
+host=$(uname -n)
+
+echo "Link \`$host\` specific theme variables."
+
+case $host in
+
+qutedell)
+    force_link "$base_dir/.config/theme/fonts~qutech" "$config_dir/theme/fonts"
+    ;;
+
+supertubes)
+    ;&
+cyxwel)
+    force_link "$base_dir/.config/theme/fonts~home" "$config_dir/theme/fonts"
+    ;;
+
+*)
+    echo "[$(basename "$0")] ERROR: Did not recognize host: $host"
+    exit 1
+    ;;
+
+esac
 
 # Generate theme templates
 #-------------------------------------------------------------------------------
