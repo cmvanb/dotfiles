@@ -4,6 +4,9 @@
 
 local TableUtils = {}
 
+-- Test whether table contains value
+--------------------------------------------------------------------------------
+
 function TableUtils.contains(table, value)
     for _, v in pairs(table) do
         if v == value then
@@ -13,6 +16,9 @@ function TableUtils.contains(table, value)
 
     return false
 end
+
+-- Count table length
+--------------------------------------------------------------------------------
 
 function TableUtils.count(table)
     local count = 0
@@ -24,7 +30,10 @@ function TableUtils.count(table)
     return count
 end
 
-function TableUtils.destructive_merge(base_table, overlay_table)
+-- Perform a destructive merge of two tables
+--------------------------------------------------------------------------------
+
+function TableUtils.merge(base_table, overlay_table)
     for k,v in pairs(overlay_table) do base_table[k] = v end
     return base_table
 end

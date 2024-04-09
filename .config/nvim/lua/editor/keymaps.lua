@@ -2,79 +2,31 @@
 -- Editor key mappings
 --------------------------------------------------------------------------------
 
--- TODO: Extract map functions to utility.
--- TODO: Better options parameter for map functions.
 -- TODO: Clear existing key mappings when reloading.
 
--- Helpers
+-- Imports
 --------------------------------------------------------------------------------
 
-local function _map(mode, shortcut, command, silent)
-    silent = silent or false
-    vim.keymap.set(mode, shortcut, command, { noremap = false, silent = silent })
-end
+local KeyMapUtils = reload('utils.keymaps')
 
-local function _noremap(mode, shortcut, command, silent)
-    silent = silent or false
-    vim.keymap.set(mode, shortcut, command, { noremap = true, silent = silent })
-end
+-- Shortcuts
+--------------------------------------------------------------------------------
 
-local function map(shortcut, command, silent)
-    silent = silent or false
-    _map('', shortcut, command, silent)
-end
+local map, nmap, xmap, imap =
+    KeyMapUtils.map,
+    KeyMapUtils.nmap,
+    KeyMapUtils.xmap,
+    KeyMapUtils.imap
 
-local function nmap(shortcut, command, silent)
-    silent = silent or false
-    _map('n', shortcut, command, silent)
-end
+local noremap, nnoremap, vnoremap, xnoremap, inoremap, onoremap =
+    KeyMapUtils.noremap,
+    KeyMapUtils.nnoremap,
+    KeyMapUtils.vnoremap,
+    KeyMapUtils.xnoremap,
+    KeyMapUtils.inoremap,
+    KeyMapUtils.onoremap
 
-local function vmap(shortcut, command, silent)
-    silent = silent or false
-    _map('v', shortcut, command, silent)
-end
-
-local function xmap(shortcut, command, silent)
-    silent = silent or false
-    _map('x', shortcut, command, silent)
-end
-
-local function imap(shortcut, command, silent)
-    silent = silent or false
-    _map('i', shortcut, command, silent)
-end
-
-local function noremap(shortcut, command, silent)
-    silent = silent or false
-    _noremap('', shortcut, command, silent)
-end
-
-local function nnoremap(shortcut, command, silent)
-    silent = silent or false
-    _noremap('n', shortcut, command, silent)
-end
-
-local function vnoremap(shortcut, command, silent)
-    silent = silent or false
-    _noremap('v', shortcut, command, silent)
-end
-
-local function xnoremap(shortcut, command, silent)
-    silent = silent or false
-    _noremap('x', shortcut, command, silent)
-end
-
-local function inoremap(shortcut, command, silent)
-    silent = silent or false
-    _noremap('i', shortcut, command, silent)
-end
-
-local function onoremap(shortcut, command, silent)
-    silent = silent or false
-    _noremap('o', shortcut, command, silent)
-end
-
--- Disable default mappings
+-- Remove some default mappings
 --------------------------------------------------------------------------------
 
 map('q', '<nop>')
@@ -116,23 +68,28 @@ nnoremap(' ', '')
 xnoremap(' ', '')
 vim.g.mapleader = ' '
 
--- Convenience
+-- Windows-like key bindings
 --------------------------------------------------------------------------------
 
--- System clipboard
--- NOTE: This is only working in TUI because Wezterm is configured for it.
+-- Copy, paste
+-- NOTE: These are only working because the terminal (Wezterm) is configured for it.
 if not is_linux_terminal() then
     vnoremap('<C-c>', '"+y')
     noremap('<C-v>', '"+p')
 end
+
+-- Cut
 noremap('<C-x>', 'x')
 
--- Windows style binds
+-- Select all
 noremap('<C-a>', 'gg0vG$')
+
+-- Undo
 noremap('<C-z>', 'u')
 
 -- Selection
 --------------------------------------------------------------------------------
+
 nmap('+', '<nop>')
 xmap('+', '<nop>')
 nmap('-', '<nop>')
@@ -174,8 +131,8 @@ noremap('<C-g>m', require('mini.map').toggle)
 --------------------------------------------------------------------------------
 
 -- Swap lines
-nnoremap('J', '<esc>:m .+1<cr>==', true)
-nnoremap('K', '<esc>:m .-2<cr>==', true)
+nnoremap('J', '<esc>:m .+1<cr>==', { silent = true })
+nnoremap('K', '<esc>:m .-2<cr>==', { silent = true })
 
 -- Formatting
 noremap(';', '=')
@@ -187,7 +144,7 @@ noremap('<leader>;', 'gg=G')
 -- Toggle linebreaks
 noremap('<C-g>w', '<cmd>set wrap!<cr>:set linebreak!<cr>')
 
--- Folding
+-- Folds
 --------------------------------------------------------------------------------
 
 local ufo = require('ufo')
@@ -198,6 +155,9 @@ noremap('zM', ufo.closeAllFolds)
 -- Search
 --------------------------------------------------------------------------------
 
+-- Clear search highlight, clear command line and clear search pattern.
+noremap('<leader>l', ':noh<cr>:let @/=""<cr>:echo ""<cr>')
+
 local telescope_builtin = require('telescope.builtin')
 
 -- Fuzzy finder
@@ -207,19 +167,15 @@ noremap('<leader>b', telescope_builtin.buffers)
 noremap('<leader>g', telescope_builtin.live_grep)
 noremap('<leader>i', telescope_builtin.symbols)
 
--- Clear search highlight, clear command line and clear search pattern.
-noremap('<leader>l', ':noh<cr>:let @/=""<cr>:echo ""<cr>')
-
 -- TODO: Move these mappings to lsp_attach() in `lua/plugins/lsp/init.lua`.
 -- LSP
---------------------------------------------------------------------------------
 noremap('gd', telescope_builtin.lsp_definitions)
 noremap('ge', function() telescope_builtin.diagnostics({ bufnr = 0 }) end)
 noremap('gi', telescope_builtin.lsp_implementations)
 noremap('gt', telescope_builtin.lsp_type_definitions)
 noremap('gr', telescope_builtin.lsp_references)
 
--- Windows
+-- Window management
 --------------------------------------------------------------------------------
 
 -- Change window focus
@@ -230,19 +186,19 @@ noremap('<C-l>', '<C-w>l')
 noremap('<C-z>', '<C-w>r')
 
 -- Split windows
-nnoremap('<C-n>', '<esc>:belowright vnew<cr>', true)
-nnoremap('<C-p>', '<esc>:belowright new<cr>', true)
+nnoremap('<C-n>', '<esc>:belowright vnew<cr>', { silent = true })
+nnoremap('<C-p>', '<esc>:belowright new<cr>', { silent = true })
 
 -- Close window
-noremap('<C-w>', ':close<cr>', true)
+noremap('<C-w>', ':close<cr>', { silent = true })
 
--- Buffers
+-- Buffer management
 --------------------------------------------------------------------------------
 
 -- Change buffer
 -- NOTE: Wezterm translates <C-BS> to <F15> to get around NVIM's limitation.
-noremap('<F15>', ':bprev<cr>', true)
-noremap('<C-Tab>', ':bnext<cr>', true)
+noremap('<F15>', ':bprev<cr>', { silent = true })
+noremap('<C-Tab>', ':bnext<cr>', { silent = true })
 
 -- Save all buffers
 nnoremap('<C-s>', ':wa!<cr>')
@@ -250,7 +206,7 @@ xnoremap('<C-s>', '<esc>:wa!<cr>')
 inoremap('<C-s>', '<esc>:wa!<cr>')
 
 -- Close buffer
-nnoremap('<C-q>', ':Bdelete<cr>', true)
+nnoremap('<C-q>', ':Bdelete<cr>', { silent = true })
 
 -- Close NVIM without saving
 noremap('<leader>q', ':qa!<cr>')
@@ -264,4 +220,4 @@ noremap('<C-g>b', '<cmd>GitBlameToggle<cr>')
 --------------------------------------------------------------------------------
 
 -- Reload config and plugins.
-noremap('<leader>r', _G.reload_config, true)
+noremap('<leader>r', _G.reload_config, { silent = true })

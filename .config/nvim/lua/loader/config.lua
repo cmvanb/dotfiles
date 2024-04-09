@@ -21,7 +21,7 @@ local packer_config = {
 }
 
 if is_linux_terminal() then
-    packer_config = TableUtils.destructive_merge(
+    packer_config = TableUtils.merge(
         packer_config,
         {
             display = {
