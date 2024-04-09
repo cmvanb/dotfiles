@@ -167,13 +167,17 @@ noremap('<leader>b', telescope_builtin.buffers)
 noremap('<leader>g', telescope_builtin.live_grep)
 noremap('<leader>i', telescope_builtin.symbols)
 
--- TODO: Move these mappings to lsp_attach() in `lua/plugins/lsp/init.lua`.
--- LSP
+-- LSP & diagnostics
+--------------------------------------------------------------------------------
+
 noremap('gd', telescope_builtin.lsp_definitions)
 noremap('ge', function() telescope_builtin.diagnostics({ bufnr = 0 }) end)
 noremap('gi', telescope_builtin.lsp_implementations)
 noremap('gt', telescope_builtin.lsp_type_definitions)
 noremap('gr', telescope_builtin.lsp_references)
+nnoremap('gp', vim.diagnostic.open_float)
+nnoremap('gj', vim.diagnostic.goto_next)
+nnoremap('gk', vim.diagnostic.goto_prev)
 
 -- Window management
 --------------------------------------------------------------------------------
