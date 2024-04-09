@@ -168,7 +168,7 @@ noremap('<C-j>', '<C-e>')
 noremap('<C-k>', '<C-y>')
 
 -- Toggle mini map
-noremap('<C-g>m', function() require('mini.map').toggle() end)
+noremap('<C-g>m', require('mini.map').toggle)
 
 -- Editing
 --------------------------------------------------------------------------------
@@ -190,18 +190,22 @@ noremap('<C-g>w', '<cmd>set wrap!<cr>:set linebreak!<cr>')
 -- Folding
 --------------------------------------------------------------------------------
 
-noremap('zR', require('ufo').openAllFolds)
-noremap('zM', require('ufo').closeAllFolds)
+local ufo = require('ufo')
+
+noremap('zR', ufo.openAllFolds)
+noremap('zM', ufo.closeAllFolds)
 
 -- Search
 --------------------------------------------------------------------------------
 
+local telescope_builtin = require('telescope.builtin')
+
 -- Fuzzy finder
-noremap('<leader>a', function() require('telescope.builtin').find_files({ hidden = true, no_ignore = true }) end)
-noremap('<leader>f', function() require('plugins.telescope.project_files')() end)
-noremap('<leader>b', function() require('telescope.builtin').buffers({}) end)
-noremap('<leader>g', function() require('telescope.builtin').live_grep({}) end)
-noremap('<leader>i', function() require('telescope.builtin').symbols({}) end)
+noremap('<leader>a', function() telescope_builtin.find_files({ hidden = true, no_ignore = true }) end)
+noremap('<leader>f', require('plugins.telescope.project_files'))
+noremap('<leader>b', telescope_builtin.buffers)
+noremap('<leader>g', telescope_builtin.live_grep)
+noremap('<leader>i', telescope_builtin.symbols)
 
 -- Clear search highlight, clear command line and clear search pattern.
 noremap('<leader>l', ':noh<cr>:let @/=""<cr>:echo ""<cr>')
@@ -209,11 +213,11 @@ noremap('<leader>l', ':noh<cr>:let @/=""<cr>:echo ""<cr>')
 -- TODO: Move these mappings to lsp_attach() in `lua/plugins/lsp/init.lua`.
 -- LSP
 --------------------------------------------------------------------------------
-noremap('gd', function() require('telescope.builtin').lsp_definitions({}) end)
-noremap('ge', function() require('telescope.builtin').diagnostics({ bufnr = 0 }) end)
-noremap('gi', function() require('telescope.builtin').lsp_implementations({}) end)
-noremap('gt', function() require('telescope.builtin').lsp_type_definitions({}) end)
-noremap('gr', function() require('telescope.builtin').lsp_references({}) end)
+noremap('gd', telescope_builtin.lsp_definitions)
+noremap('ge', function() telescope_builtin.diagnostics({ bufnr = 0 }) end)
+noremap('gi', telescope_builtin.lsp_implementations)
+noremap('gt', telescope_builtin.lsp_type_definitions)
+noremap('gr', telescope_builtin.lsp_references)
 
 -- Windows
 --------------------------------------------------------------------------------
@@ -261,4 +265,3 @@ noremap('<C-g>b', '<cmd>GitBlameToggle<cr>')
 
 -- Reload config and plugins.
 noremap('<leader>r', _G.reload_config, true)
-
