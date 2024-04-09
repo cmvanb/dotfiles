@@ -12,7 +12,7 @@ base_dir="$(realpath "$(dirname "$(realpath "$0")")/..")"
 
 source "$base_dir/.local/opt/shell-utils/fs.sh"
 
-# Link dotfiles
+# Constants
 #-------------------------------------------------------------------------------
 
 home_dir=$HOME
@@ -22,6 +22,9 @@ data_dir=${XDG_DATA_HOME:-$HOME/.local/share}
 opt_dir=${XDG_OPT_HOME:-$HOME/.local/opt}
 scripts_dir=${XDG_SCRIPTS_HOME:-$HOME/.local/scripts}
 templates_dir=${XDG_TEMPLATES_DIR:-$data_dir/templates}
+
+# Link dotfiles
+#-------------------------------------------------------------------------------
 
 echo "Linking dotfiles from \`$base_dir\` to \`$home_dir\`."
 
@@ -146,8 +149,6 @@ force_link "$base_dir/.config/river/init" "$config_dir/river/init"
 force_link "$base_dir/.config/river/send-and-focus-output.sh" "$config_dir/river/send-and-focus-output.sh"
 force_link "$base_dir/.config/river/send-to-output.sh" "$config_dir/river/send-to-output.sh"
 force_link "$base_dir/.config/shell" "$config_dir/shell"
-mkdir -p "$config_dir/syncthing"
-force_link "$base_dir/.config/syncthing/config.xml" "$config_dir/syncthing/config.xml"
 mkdir -p "$config_dir/systemd/user"
 force_link "$base_dir/.config/systemd/user/river-session.target" "$config_dir/systemd/user/river-session.target"
 force_link "$base_dir/.config/systemd/user/wayland-session.target" "$config_dir/systemd/user/wayland-session.target"
