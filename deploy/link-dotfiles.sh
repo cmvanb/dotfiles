@@ -72,7 +72,6 @@ force_link "$base_dir/.local/scripts/view.sh" "$scripts_dir/view.sh"
 force_link "$base_dir/.local/scripts/vlc-webcam-test.sh" "$scripts_dir/vlc-webcam-test.sh"
 
 # Shell libraries
-mkdir -p "$opt_dir/shell-utils"
 force_link "$base_dir/.local/opt/shell-utils" "$opt_dir/shell-utils"
 force_link "$base_dir/.local/opt/wayland-utils" "$opt_dir/wayland-utils"
 

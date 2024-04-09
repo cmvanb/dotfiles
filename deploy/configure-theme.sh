@@ -23,7 +23,6 @@ assert_dependency bat
 # Install system theme scripts
 #-------------------------------------------------------------------------------
 
-mkdir -p "$opt_dir/theme"
 force_link "$base_dir/.local/opt/theme" "$opt_dir/theme"
 
 # Select system theme
