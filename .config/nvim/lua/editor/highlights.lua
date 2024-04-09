@@ -212,4 +212,3 @@ vim.api.nvim_create_autocmd({ 'BufEnter', 'FileType' }, {
         vim.fn.matchadd('Todo', 'TODO:\\|NOTE:\\|see:')
     end,
 })
-

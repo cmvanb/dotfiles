@@ -225,4 +225,3 @@ return {
     -- Zig syntax highlighting.
     { 'ziglang/zig.vim' },
 }
-

@@ -6,35 +6,37 @@ local TableUtils = require('utils.table')
 
 local PathUtils = {}
 
-PathUtils.path_separator =
-    (function ()
-        -- TODO: Make platform agnostic.
-        return '/'
-    end)()
+-- Private functions
+--------------------------------------------------------------------------------
 
-function PathUtils.get_package_paths()
+local function _get_package_paths()
     return vim.split(package.path, ';')
 end
 
+-- Append a path to package.path
+--------------------------------------------------------------------------------
+
 function PathUtils.append_to_package_path(path)
-    local paths = PathUtils.get_package_paths()
+    local paths = _get_package_paths()
 
     if TableUtils.contains(paths, path) then
         return
     end
 
-    package.path = package.path .. path
+    package.path = package.path .. ';'.. path
 end
 
+-- Prepend a path to package.path
+--------------------------------------------------------------------------------
+
 function PathUtils.prepend_to_package_path(path)
-    local paths = PathUtils.get_package_paths()
+    local paths = _get_package_paths()
 
     if TableUtils.contains(paths, path) then
         return
     end
 
-    package.path = path .. package.path
+    package.path = path .. ';' .. package.path
 end
 
 return PathUtils
-
