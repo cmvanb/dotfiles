@@ -74,7 +74,7 @@ force_link "$base_dir/.local/scripts/vlc-webcam-test.sh" "$scripts_dir/vlc-webca
 # Shell libraries
 mkdir -p "$opt_dir/shell-utils"
 force_link "$base_dir/.local/opt/shell-utils" "$opt_dir/shell-utils"
-force_link "$base_dir/.local/opt/shell-utils" "$opt_dir/wayland-utils"
+force_link "$base_dir/.local/opt/wayland-utils" "$opt_dir/wayland-utils"
 
 # Templates
 mkdir -p "$templates_dir"
