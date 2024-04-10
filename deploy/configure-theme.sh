@@ -73,6 +73,10 @@ echo "Generating theme templates."
 mkdir -p "$config_dir/bat/themes"
 esh "$base_dir/.config/theme/carbon-dark.tmTheme~esh" > "$config_dir/bat/themes/carbon-dark.tmTheme"
 
+mkdir -p "$config_dir/glow"
+# TODO: Actually template this.
+esh "$base_dir/.config/theme/carbon-dark-glamour.json~esh" > "$config_dir/glow/carbon-dark.json"
+
 mkdir -p "$config_dir/theme"
 esh "$base_dir/.config/theme/dircolors~esh" > "$config_dir/theme/dircolors"
 esh "$base_dir/.config/theme/eza-colors~esh" > "$config_dir/theme/eza-colors"
