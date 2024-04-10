@@ -30,7 +30,6 @@ source "$base_dir/deploy/apply-distro-configuration.sh"
 source "$base_dir/deploy/configure-theme.sh"
 source "$base_dir/deploy/generate-dotfiles-templates.sh"
 source "$base_dir/deploy/apply-host-configuration.sh"
-source "$base_dir/deploy/configure-syncthing.sh"
 source "$base_dir/deploy/enable-systemd-services.sh"
 source "$base_dir/deploy/install-user-packages.sh"
 
