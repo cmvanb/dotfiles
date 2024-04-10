@@ -50,6 +50,7 @@ force_link "$base_dir/.local/bin/view" "$bin_dir/view"
 # Scripts
 mkdir -p "$scripts_dir"
 force_link "$base_dir/.local/scripts/add-bookmark.sh" "$scripts_dir/add-bookmark.sh"
+force_link "$base_dir/.local/scripts/clean-home.sh" "$scripts_dir/clean-home.sh"
 force_link "$base_dir/.local/scripts/estimate-disk-space-usage.sh" "$scripts_dir/estimate-disk-space-usage.sh"
 force_link "$base_dir/.local/scripts/fetch-password.sh" "$scripts_dir/fetch-password.sh"
 force_link "$base_dir/.local/scripts/format-text.sh" "$scripts_dir/format-text.sh"
