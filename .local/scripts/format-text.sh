@@ -36,5 +36,4 @@ if [[ $mimetype == "application/json" ]] || [[ $mimetype == "text/plain" && $ext
 
 else
     bat --force-colorization --style=plain --paging=never --wrap=never "$1"
-
 fi
