@@ -14,26 +14,46 @@ declare theme_lib_dir="$XDG_OPT_HOME/theme"
 #-------------------------------------------------------------------------------
 
 color_named () {
+    if [[ -z ${1+x} ]]; then
+        return 1
+    fi
+
     echo -n "${1:1}"
 }
 
 # Usage: `$(color_hash $colorname)`
 color_hash () {
+    if [[ -z ${1+x} ]]; then
+        return 1
+    fi
+
     echo -n "#${1:1}"
 }
 
 # Usage: `$(color_zerox $colorname)`
 color_zerox () {
+    if [[ -z ${1+x} ]]; then
+        return 1
+    fi
+
     echo -n "0x${1:1}"
 }
 
 # Usage: `$(color_ansi $colorfg $colorbg)`
 color_ansi () {
+    if [[ -z ${1+x} ]] || [[ -z ${2:x} ]]; then
+        return 1
+    fi
+
     "$theme_lib_dir/color-hex-to-ansi.sh" --fg="${1:1}" --bg="${2:1}"
 }
 
 # Usage: `$(color_ansi_fg $colorfg)`
 color_ansi_fg () {
+    if [[ -z ${1+x} ]]; then
+        return 1
+    fi
+
     "$theme_lib_dir/color-hex-to-ansi.sh" --fg="${1:1}"
 }
 
@@ -43,6 +63,10 @@ color_ansi_reset () {
 }
 
 color_256 () {
+    if [[ -z ${1+x} ]]; then
+        return 1
+    fi
+
     "$theme_lib_dir/color-lookup-256-index.sh" "$1"
 }
 
