@@ -9,6 +9,7 @@ declare -a dirs=(
     ".cache"
     ".cert"
     ".kube"
+    ".java"
     ".pki"
     ".qne"
     ".terraform.d"
