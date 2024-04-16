@@ -48,6 +48,7 @@ set -x PYTHONPYCACHEPREFIX $XDG_CACHE_HOME/python
 
 # Rust config.
 set -x CARGO_HOME $XDG_DATA_HOME/cargo
+set -x RUSTUP_HOME $XDG_DATA_HOME/rustup
 
 # Silence direnv.
 set -x DIRENV_LOG_FORMAT ""

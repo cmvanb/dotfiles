@@ -49,6 +49,7 @@ export PYTHONPYCACHEPREFIX="$XDG_CACHE_HOME/python"
 
 # Rust config.
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
+export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 
 # Silence direnv.
 export DIRENV_LOG_FORMAT=""
