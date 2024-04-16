@@ -8,6 +8,7 @@ set -euo pipefail
 declare -a dirs=(
     ".cache"
     ".cert"
+    ".k3d"
     ".kube"
     ".java"
     ".pki"
