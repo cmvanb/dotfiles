@@ -104,9 +104,8 @@ riverctl spawn waybar
 # App configuration
 #-------------------------------------------------------------------------------
 
-# NOTE: This will be deprecated in a future version of river.
-riverctl float-filter-add app-id yad
-riverctl float-filter-add app-id xdg-desktop-portal-gtk
+riverctl rule-add -app-id yad float
+riverctl rule-add -app-id xdg-desktop-portal-gtk float
 
 # Key mappings
 #-------------------------------------------------------------------------------
