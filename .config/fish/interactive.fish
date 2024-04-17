@@ -87,7 +87,7 @@ bind \cy 'clear; commandline -f repaint; eza -al | view.sh'
 bind \e\[1\;2P 'clear; commandline -f repaint; eza -aT --git-ignore | view.sh'
 
 # Clear command line
-# NOTE: Ctrl+C is bound to `Copy` by Wezterm, Ctrl+X is bound to emulate
+# NOTE: Ctrl+C is bound to `Copy` by Alacritty, Ctrl+X is bound to emulate
 # Ctrl+C, which is what fish picks up here.
 bind \cc 'commandline -r ""'
 

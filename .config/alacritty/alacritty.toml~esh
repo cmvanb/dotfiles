@@ -11,55 +11,80 @@ key = 'T'
 mods = 'Control'
 
 [[keyboard.bindings]]
-action = 'Copy'
+mode = '~Alt'
 key = 'C'
-mode = '~Alt'
 mods = 'Control'
+action = 'Copy'
 
 [[keyboard.bindings]]
-action = 'Paste'
+mode = '~Alt'
 key = 'V'
-mode = '~Alt'
 mods = 'Control'
+action = 'Paste'
 
 [[keyboard.bindings]]
-action = 'ScrollHalfPageDown'
+mode = '~Alt'
 key = 'D'
-mode = '~Alt'
 mods = 'Control'
+action = 'ScrollHalfPageDown'
 
 [[keyboard.bindings]]
-action = 'ScrollHalfPageUp'
+mode = '~Alt'
 key = 'U'
-mode = '~Alt'
 mods = 'Control'
+action = 'ScrollHalfPageUp'
 
 [[keyboard.bindings]]
-action = 'ScrollLineDown'
+mode = '~Alt'
 key = 'J'
-mode = '~Alt'
 mods = 'Control'
+action = 'ScrollLineDown'
 
 [[keyboard.bindings]]
-action = 'ScrollLineUp'
-key = 'K'
 mode = '~Alt'
+key = 'K'
 mods = 'Control'
+action = 'ScrollLineUp'
 
-# NOTE: Passthroughs not working...
-#   see: https://www.reddit.com/r/neovim/comments/mbj8m5/how_to_setup_ctrlshiftkey_mappings_in_neovim_and/
-#   see: https://github.com/alacritty/alacritty/issues/6378
-#   see: https://stackoverflow.com/questions/72857879/correct-keybindings-configuration-for-zsh-in-alacritty
+# STTY interrupt passthrough
+[[keyboard.bindings]]
+key = 'X'
+mods = 'Control'
+chars = "\u0003"
 
-# STTY passthroughs
-# - { key: X, mods: Control, chars: '\x1b[67;4u' }
-# - { key: Period, mods: Control, chars: '\x1b[86;4u' }
+# STTY EOF passthrough
+[[keyboard.bindings]]
+key = 'Period'
+mods = 'Control'
+chars = "\u0004"
 
-# Key passthroughs
-# - { key: I, mods: Control, chars: '\x1b[1;2P' }
-# - { key: M, mods: Control, chars: '\x1b[1;2Q' }
-# - { key: Back, mods: Control, chars: '\x1b[1;2R' }
-# - { key: Tab, mods: Control, chars: '\x1b[9;1u' }
+# Ctrl+I -> F13 passthrough
+[[keyboard.bindings]]
+mode = 'Alt'
+key = 'I'
+mods = 'Control'
+chars = "\u001b\u005b\u0031\u003b\u0032\u0050"
+
+# Ctrl+M -> F14 passthrough
+[[keyboard.bindings]]
+mode = 'Alt'
+key = 'M'
+mods = 'Control'
+chars = "\u001b\u005b\u0031\u003b\u0032\u0051"
+
+# Ctrl+Backspace -> F15 passthrough
+[[keyboard.bindings]]
+mode = 'Alt'
+key = 'Backspace'
+mods = 'Control'
+chars = "\u001b\u005b\u0031\u003b\u0032\u0052"
+
+# Ctrl+Tab passthrough (NVIM can correctly interpret this, no function key hack)
+[[keyboard.bindings]]
+mode = 'Alt'
+key = 'Tab'
+mods = 'Control'
+chars = "\u001b\u005b\u0039\u003b\u0035\u0075"
 
 # Appearance
 #-------------------------------------------------------------------------------

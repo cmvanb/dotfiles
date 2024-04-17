@@ -16,9 +16,9 @@ source "$opt_dir/shell-utils/debug.sh"
 # Validation
 #-------------------------------------------------------------------------------
 
+assert_dependency alacritty
 assert_dependency makoctl
 assert_dependency qutebrowser
-assert_dependency wezterm
 assert_dependency wofi
 
 # Key mappings
@@ -26,7 +26,7 @@ assert_dependency wofi
 # See all valid mappings here: `/usr/include/xkbcommon/xkbcommon-keysyms.h`
 
 # New terminal
-riverctl map normal Alt T spawn "wezterm"
+riverctl map normal Alt T spawn "alacritty"
 
 # Command menu
 riverctl map normal Alt O spawn "wofi --show drun"

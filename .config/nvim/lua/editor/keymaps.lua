@@ -72,7 +72,7 @@ vim.g.mapleader = ' '
 --------------------------------------------------------------------------------
 
 -- Copy, paste
--- NOTE: These are only working because the terminal (Wezterm) is configured for it.
+-- NOTE: These are only working because the terminal (Alacritty) is configured for it.
 if not is_linux_terminal() then
     vnoremap('<C-c>', '"+y')
     noremap('<C-v>', '"+p')
@@ -200,7 +200,7 @@ noremap('<C-w>', ':close<cr>', { silent = true })
 --------------------------------------------------------------------------------
 
 -- Change buffer
--- NOTE: Wezterm translates <C-BS> to <F15> to get around NVIM's limitation.
+-- NOTE: Alacritty translates <C-BS> to <F15> to get around NVIM's limitation.
 noremap('<F15>', ':bprev<cr>', { silent = true })
 noremap('<C-Tab>', ':bnext<cr>', { silent = true })
 

@@ -25,9 +25,9 @@ stty erase "^?"
 stty kill ^W
 
 # Interrupt signal
-# NOTE: This binding is passed through by Wezterm.
+# NOTE: This binding is passed through by Alacritty.
 stty intr ^C
 
 # EOF signal
-# NOTE: This binding is passed through by Wezterm.
+# NOTE: This binding is passed through by Alacritty.
 stty eof ^D
