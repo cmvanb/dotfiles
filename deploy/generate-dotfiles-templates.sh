@@ -31,7 +31,7 @@ esh "$base_dir/.local/bin/rg~esh" > "$bin_dir/rg"
 chmod +x "$bin_dir/rg"
 
 mkdir -p "$config_dir/alacritty"
-esh "$base_dir/.config/alacritty/alacritty.yml~esh" > "$config_dir/alacritty/alacritty.yml"
+esh "$base_dir/.config/alacritty/alacritty.toml~esh" > "$config_dir/alacritty/alacritty.toml"
 
 mkdir -p "$config_dir/foot"
 esh "$base_dir/.config/foot/foot.ini~esh" > "$config_dir/foot/foot.ini"

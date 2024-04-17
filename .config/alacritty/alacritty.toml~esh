@@ -1,0 +1,697 @@
+#-------------------------------------------------------------------------------
+# Alacritty configuration file
+#-------------------------------------------------------------------------------
+<% source $XDG_OPT_HOME/theme/theme.sh %>
+# Key bindings
+#-------------------------------------------------------------------------------
+
+[[keyboard.bindings]]
+action = 'SpawnNewInstance'
+key = 'T'
+mods = 'Control'
+
+[[keyboard.bindings]]
+action = 'Copy'
+key = 'C'
+mode = '~Alt'
+mods = 'Control'
+
+[[keyboard.bindings]]
+action = 'Paste'
+key = 'V'
+mode = '~Alt'
+mods = 'Control'
+
+[[keyboard.bindings]]
+action = 'ScrollHalfPageDown'
+key = 'D'
+mode = '~Alt'
+mods = 'Control'
+
+[[keyboard.bindings]]
+action = 'ScrollHalfPageUp'
+key = 'U'
+mode = '~Alt'
+mods = 'Control'
+
+[[keyboard.bindings]]
+action = 'ScrollLineDown'
+key = 'J'
+mode = '~Alt'
+mods = 'Control'
+
+[[keyboard.bindings]]
+action = 'ScrollLineUp'
+key = 'K'
+mode = '~Alt'
+mods = 'Control'
+
+# NOTE: Passthroughs not working...
+#   see: https://www.reddit.com/r/neovim/comments/mbj8m5/how_to_setup_ctrlshiftkey_mappings_in_neovim_and/
+#   see: https://github.com/alacritty/alacritty/issues/6378
+#   see: https://stackoverflow.com/questions/72857879/correct-keybindings-configuration-for-zsh-in-alacritty
+
+# STTY passthroughs
+# - { key: X, mods: Control, chars: '\x1b[67;4u' }
+# - { key: Period, mods: Control, chars: '\x1b[86;4u' }
+
+# Key passthroughs
+# - { key: I, mods: Control, chars: '\x1b[1;2P' }
+# - { key: M, mods: Control, chars: '\x1b[1;2Q' }
+# - { key: Back, mods: Control, chars: '\x1b[1;2R' }
+# - { key: Tab, mods: Control, chars: '\x1b[9;1u' }
+
+# Appearance
+#-------------------------------------------------------------------------------
+
+[bell]
+animation = 'Linear'
+color = '<% color_hash $primary_1 %>'
+duration = 200
+
+[cursor.style]
+blinking = 'Off'
+shape = 'Block'
+
+[font]
+size = <%= $font_size_medium %>
+
+[font.normal]
+family = '<%= $font_mono %>'
+
+[window]
+opacity = 1.0
+
+[window.padding]
+x = 0
+y = 0
+
+# Colors
+#-------------------------------------------------------------------------------
+
+[colors]
+draw_bold_text_with_bright_colors = false
+
+[colors.primary]
+background = '<% color_zerox $terminal_bg %>'
+foreground = '<% color_zerox $terminal_text %>'
+
+[colors.cursor]
+cursor = '<% color_zerox $terminal_text %>'
+text = '<% color_zerox $terminal_bg %>'
+
+[colors.normal]
+black = '<% color_zerox $ansi_black %>'
+red = '<% color_zerox $ansi_red %>'
+green = '<% color_zerox $ansi_green %>'
+yellow = '<% color_zerox $ansi_yellow %>'
+blue = '<% color_zerox $ansi_blue %>'
+magenta = '<% color_zerox $ansi_magenta %>'
+cyan = '<% color_zerox $ansi_cyan %>'
+white = '<% color_zerox $ansi_white %>'
+
+[colors.bright]
+black = '<% color_zerox $ansi_brblack %>'
+red = '<% color_zerox $ansi_brred %>'
+green = '<% color_zerox $ansi_brgreen %>'
+yellow = '<% color_zerox $ansi_bryellow %>'
+blue = '<% color_zerox $ansi_brblue %>'
+magenta = '<% color_zerox $ansi_brmagenta %>'
+cyan = '<% color_zerox $ansi_brcyan %>'
+white = '<% color_zerox $ansi_brwhite %>'
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $primary_0 %>'
+index = 16
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $primary_1 %>'
+index = 17
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $primary_2 %>'
+index = 18
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $primary_3 %>'
+index = 19
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $primary_4 %>'
+index = 20
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $primary_5 %>'
+index = 21
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $primary_6 %>'
+index = 22
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $primary_7 %>'
+index = 23
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $primary_8 %>'
+index = 24
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $primary_9 %>'
+index = 25
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $primary_10 %>'
+index = 26
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $primary_11 %>'
+index = 27
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $primary_12 %>'
+index = 28
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $primary_13 %>'
+index = 29
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $primary_14 %>'
+index = 30
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $primary_15 %>'
+index = 31
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $secondary_0 %>'
+index = 32
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $secondary_1 %>'
+index = 33
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $secondary_2 %>'
+index = 34
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $secondary_3 %>'
+index = 35
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $secondary_4 %>'
+index = 36
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $secondary_5 %>'
+index = 37
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $secondary_6 %>'
+index = 38
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $secondary_7 %>'
+index = 39
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $secondary_8 %>'
+index = 40
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $secondary_9 %>'
+index = 41
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $secondary_10 %>'
+index = 42
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $secondary_11 %>'
+index = 43
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $secondary_12 %>'
+index = 44
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $secondary_13 %>'
+index = 45
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $secondary_14 %>'
+index = 46
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $secondary_15 %>'
+index = 47
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $text_0 %>'
+index = 48
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $text_1 %>'
+index = 49
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $text_2 %>'
+index = 50
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $text_3 %>'
+index = 51
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $text_4 %>'
+index = 52
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $text_5 %>'
+index = 53
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $text_6 %>'
+index = 54
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $text_7 %>'
+index = 55
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $text_8 %>'
+index = 56
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $text_9 %>'
+index = 57
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $text_10 %>'
+index = 58
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $text_11 %>'
+index = 59
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $text_12 %>'
+index = 60
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $text_13 %>'
+index = 61
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $text_14 %>'
+index = 62
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $text_15 %>'
+index = 63
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $gray_0 %>'
+index = 64
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $gray_1 %>'
+index = 65
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $gray_2 %>'
+index = 66
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $gray_3 %>'
+index = 67
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $gray_4 %>'
+index = 68
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $gray_5 %>'
+index = 69
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $gray_6 %>'
+index = 70
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $gray_7 %>'
+index = 71
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $gray_8 %>'
+index = 72
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $gray_9 %>'
+index = 73
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $gray_10 %>'
+index = 74
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $gray_11 %>'
+index = 75
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $gray_12 %>'
+index = 76
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $gray_13 %>'
+index = 77
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $gray_14 %>'
+index = 78
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $gray_15 %>'
+index = 79
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $red_0 %>'
+index = 80
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $red_1 %>'
+index = 81
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $red_2 %>'
+index = 82
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $red_3 %>'
+index = 83
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $red_4 %>'
+index = 84
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $red_5 %>'
+index = 85
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $red_6 %>'
+index = 86
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $red_7 %>'
+index = 87
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $red_8 %>'
+index = 88
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $red_9 %>'
+index = 89
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $orange_0 %>'
+index = 90
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $orange_1 %>'
+index = 91
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $orange_2 %>'
+index = 92
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $orange_3 %>'
+index = 93
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $orange_4 %>'
+index = 94
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $orange_5 %>'
+index = 95
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $orange_6 %>'
+index = 96
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $orange_7 %>'
+index = 97
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $orange_8 %>'
+index = 98
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $orange_9 %>'
+index = 99
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $yellow_0 %>'
+index = 100
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $yellow_1 %>'
+index = 101
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $yellow_2 %>'
+index = 102
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $yellow_3 %>'
+index = 103
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $yellow_4 %>'
+index = 104
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $yellow_5 %>'
+index = 105
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $yellow_6 %>'
+index = 106
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $yellow_7 %>'
+index = 107
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $yellow_8 %>'
+index = 108
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $yellow_9 %>'
+index = 109
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $green_0 %>'
+index = 110
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $green_1 %>'
+index = 111
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $green_2 %>'
+index = 112
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $green_3 %>'
+index = 113
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $green_4 %>'
+index = 114
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $green_5 %>'
+index = 115
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $green_6 %>'
+index = 116
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $green_7 %>'
+index = 117
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $green_8 %>'
+index = 118
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $green_9 %>'
+index = 119
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $cyan_0 %>'
+index = 120
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $cyan_1 %>'
+index = 121
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $cyan_2 %>'
+index = 122
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $cyan_3 %>'
+index = 123
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $cyan_4 %>'
+index = 124
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $cyan_5 %>'
+index = 125
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $cyan_6 %>'
+index = 126
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $cyan_7 %>'
+index = 127
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $cyan_8 %>'
+index = 128
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $cyan_9 %>'
+index = 129
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $blue_0 %>'
+index = 130
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $blue_1 %>'
+index = 131
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $blue_2 %>'
+index = 132
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $blue_3 %>'
+index = 133
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $blue_4 %>'
+index = 134
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $blue_5 %>'
+index = 135
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $blue_6 %>'
+index = 136
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $blue_7 %>'
+index = 137
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $blue_8 %>'
+index = 138
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $blue_9 %>'
+index = 139
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $purple_0 %>'
+index = 140
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $purple_1 %>'
+index = 141
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $purple_2 %>'
+index = 142
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $purple_3 %>'
+index = 143
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $purple_4 %>'
+index = 144
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $purple_5 %>'
+index = 145
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $purple_6 %>'
+index = 146
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $purple_7 %>'
+index = 147
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $purple_8 %>'
+index = 148
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $purple_9 %>'
+index = 149
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $magenta_0 %>'
+index = 150
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $magenta_1 %>'
+index = 151
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $magenta_2 %>'
+index = 152
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $magenta_3 %>'
+index = 153
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $magenta_4 %>'
+index = 154
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $magenta_5 %>'
+index = 155
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $magenta_6 %>'
+index = 156
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $magenta_7 %>'
+index = 157
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $magenta_8 %>'
+index = 158
+
+[[colors.indexed_colors]]
+color = '<% color_zerox $magenta_9 %>'
+index = 159
