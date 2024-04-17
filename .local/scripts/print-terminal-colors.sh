@@ -10,6 +10,8 @@ declare terminal_supports_256_colors
 case "$TERM" in
     alacritty)
         ;&
+    foot)
+        ;&
     xterm-kitty)
         ;&
     xterm-256color)
