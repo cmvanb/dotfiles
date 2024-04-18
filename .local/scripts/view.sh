@@ -28,7 +28,7 @@ terminal_width=$(( $(stty -F /dev/tty size | cut -d' ' -f2)-1 ))
 # If the text is too wide or too tall, page it.
 if [[ $input_lines -gt $terminal_height || $input_width -gt $terminal_width ]]; then
     bat --force-colorization --style=plain --paging=never --wrap=never <(echo "$input") \
-        | less -c -R -S
+        | less --chop-long-lines
 
 # Otherwise, display the text in the terminal.
 else

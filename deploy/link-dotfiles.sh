@@ -108,6 +108,7 @@ force_link "$base_dir/.local/share/pandoc" "$data_dir/pandoc"
 
 # Configuration
 mkdir -p "$config_dir"
+force_link "$base_dir/.config/lesskey" "$config_dir/lesskey"
 force_link "$base_dir/.config/mimeapps.list" "$config_dir/mimeapps.list"
 mkdir -p "$config_dir/bash"
 force_link "$base_dir/.config/bash/bash_profile" "$config_dir/bash/bash_profile"

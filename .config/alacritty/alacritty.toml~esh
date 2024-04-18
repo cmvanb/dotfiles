@@ -21,6 +21,7 @@ mods = 'Control'
 key = 'T'
 action = 'SpawnNewInstance'
 
+# NOTE: Not working in less pager :(
 [[keyboard.bindings]]
 mode = '~Alt'
 mods = 'Control'

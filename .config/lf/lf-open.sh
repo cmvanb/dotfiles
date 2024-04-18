@@ -31,7 +31,7 @@ if [[ $mimetype == "text"* || $mimetype == "application/javascript" || $encoding
     formatted=$("$XDG_SCRIPTS_HOME/format-text.sh" "$1")
 
     bat --force-colorization --style=numbers --paging=never --wrap=never <(echo "$formatted") \
-        | less -c -R --chop-long-lines --lesskey-file="$XDG_CONFIG_HOME/lf/lf-less.lesskey"
+        | less --chop-long-lines
 
     "$XDG_SCRIPTS_HOME/set-terminal-title.sh" "${PWD/$HOME/\~}"
 

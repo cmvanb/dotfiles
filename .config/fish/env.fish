@@ -15,7 +15,7 @@ set -x EDITOR "nvim"
 set -x VISUAL "$EDITOR"
 
 # Configure less pager.
-set -x LESS "-c -R"
+set -x LESS "--clear-screen --RAW-CONTROL-CHARS"
 
 # Enable direnv.
 direnv hook fish | source

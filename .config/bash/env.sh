@@ -16,7 +16,7 @@ export EDITOR="nvim"
 export VISUAL="$EDITOR"
 
 # Configure less pager.
-export LESS="-c -R"
+export LESS="--clear-screen --RAW-CONTROL-CHARS"
 
 # Enable direnv.
 eval "$(direnv hook bash)"
