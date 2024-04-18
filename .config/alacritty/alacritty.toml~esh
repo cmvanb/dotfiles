@@ -72,7 +72,6 @@ chars = "\u0004"
 
 # Ctrl+I -> F13 passthrough
 [[keyboard.bindings]]
-mode = 'Alt'
 mods = 'Control'
 key = 'I'
 chars = "\u001b\u005b\u0031\u003b\u0032\u0050"
