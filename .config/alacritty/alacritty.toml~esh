@@ -3,87 +3,98 @@
 #-------------------------------------------------------------------------------
 <% source $XDG_OPT_HOME/theme/theme.sh %>
 # Key bindings
+#
+# Example breakdown of CSIu (Ctrl+Shift+C):
+#   \u001b\u005b\u0063\u003b\u0035\u0075
+#
+#   - Control sequence introducer (CSI) is \u001b\u005b
+#   - Character c is \u0063
+#   - Separator ; is \u003b
+#   - Modifiers bitflag* for Ctrl+Shift (5) is \u0035
+#   - Unicode u is \u0075
+#
+# *Modifiers bitflag: 1 is shift, 2 is alt, 4 is ctrl
 #-------------------------------------------------------------------------------
 
 [[keyboard.bindings]]
-action = 'SpawnNewInstance'
-key = 'T'
 mods = 'Control'
+key = 'T'
+action = 'SpawnNewInstance'
 
 [[keyboard.bindings]]
 mode = '~Alt'
-key = 'C'
 mods = 'Control'
+key = 'C'
 action = 'Copy'
 
 [[keyboard.bindings]]
 mode = '~Alt'
-key = 'V'
 mods = 'Control'
+key = 'V'
 action = 'Paste'
 
 [[keyboard.bindings]]
 mode = '~Alt'
-key = 'D'
 mods = 'Control'
+key = 'D'
 action = 'ScrollHalfPageDown'
 
 [[keyboard.bindings]]
 mode = '~Alt'
-key = 'U'
 mods = 'Control'
+key = 'U'
 action = 'ScrollHalfPageUp'
 
 [[keyboard.bindings]]
 mode = '~Alt'
-key = 'J'
 mods = 'Control'
+key = 'J'
 action = 'ScrollLineDown'
 
 [[keyboard.bindings]]
 mode = '~Alt'
-key = 'K'
 mods = 'Control'
+key = 'K'
 action = 'ScrollLineUp'
 
 # STTY interrupt passthrough
 [[keyboard.bindings]]
-key = 'X'
 mods = 'Control'
+key = 'X'
 chars = "\u0003"
 
 # STTY EOF passthrough
 [[keyboard.bindings]]
-key = 'Period'
 mods = 'Control'
+key = 'Period'
 chars = "\u0004"
 
 # Ctrl+I -> F13 passthrough
 [[keyboard.bindings]]
 mode = 'Alt'
-key = 'I'
 mods = 'Control'
+key = 'I'
 chars = "\u001b\u005b\u0031\u003b\u0032\u0050"
 
 # Ctrl+M -> F14 passthrough
 [[keyboard.bindings]]
 mode = 'Alt'
-key = 'M'
 mods = 'Control'
+key = 'M'
 chars = "\u001b\u005b\u0031\u003b\u0032\u0051"
 
 # Ctrl+Backspace -> F15 passthrough
 [[keyboard.bindings]]
 mode = 'Alt'
-key = 'Backspace'
 mods = 'Control'
+key = 'Backspace'
 chars = "\u001b\u005b\u0031\u003b\u0032\u0052"
 
 # Ctrl+Tab passthrough (NVIM can correctly interpret this, no function key hack)
 [[keyboard.bindings]]
 mode = 'Alt'
-key = 'Tab'
 mods = 'Control'
+key = 'Tab'
 chars = "\u001b\u005b\u0039\u003b\u0035\u0075"
 
 # Appearance
