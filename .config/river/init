@@ -116,6 +116,8 @@ riverctl rule-add -app-id pavucontrol ssd
 riverctl rule-add -app-id transmission ssd
 riverctl rule-add -app-id yad ssd
 riverctl rule-add -app-id yad-settings ssd
+# NOTE: Seems to have no effect.
+riverctl rule-add -app-id zathura ssd
 
 # Key mappings
 #-------------------------------------------------------------------------------
