@@ -7,7 +7,7 @@ local theme = reload('plugins.lualine.theme')
 -- TODO: `reload` is not working here, further investigation needed.
 local gitblame = require('gitblame')
 
-require('lualine').setup({
+local lualine_config = {
     options = {
         theme = theme,
         component_separators = ' ',
@@ -65,7 +65,12 @@ require('lualine').setup({
                 icons_enabled = false,
             },
         },
-        lualine_z = { 'location' }
+        lualine_z = {
+            {
+                'location',
+                padding = { left = 1, right = 1 },
+            },
+        }
     },
     inactive_sections = {
         lualine_a = {},
@@ -79,39 +84,55 @@ require('lualine').setup({
     tabline = {
         lualine_a = {
             {
-                'buffers',
-
-                icons_enabled = false,
-                padding = { left = 2, right = 2 },
-                -- separator = { left = '', right = '' },
+                'filename',
+                color = 'lualine_z_normal',
+                path = 3,
+                shorting_target = 0,
+                -- separator = { left = '', right = '' },
+                -- separator = { left = '', right = '' },
                 separator = { left = '', right = '' },
-
-                show_filename_only = true,
-                hide_filename_extension = false,
-                show_modified_status = true,
-
-                mode = 0,
-
-                -- Don't limit length.
-                max_length = 0,
-
-                filetype_names = {
-                    TelescopePrompt = 'Telescope',
-                    packer = 'Packer',
-                    mason = 'Mason',
-                },
-
-                buffers_color = {
-                    active = 'lualine_z_normal',
-                    inactive = 'lualine_y_normal',
-                },
-
+                padding = { left = 1, right = 1 },
                 symbols = {
-                    modified = ' ●',
-                    alternate_file = '',
-                    directory =  '',
-                },
+                    modified = '●',
+                    readonly = '󰌾',
+                    unnamed = '[No Name]',
+                    newfile = '',
+                }
             },
+            -- {
+            --     'buffers',
+            --
+            --     icons_enabled = true,
+            --     padding = { left = 1, right = 1 },
+            --     -- separator = { left = '', right = '' },
+            --     separator = { left = '', right = '' },
+            --
+            --     show_filename_only = true,
+            --     hide_filename_extension = false,
+            --     show_modified_status = true,
+            --
+            --     mode = 0,
+            --
+            --     -- Don't limit length.
+            --     max_length = vim.o.columns / 16,
+            --
+            --     filetype_names = {
+            --         TelescopePrompt = 'Telescope',
+            --         packer = 'Packer',
+            --         mason = 'Mason',
+            --     },
+            --
+            --     buffers_color = {
+            --         active = 'lualine_z_normal',
+            --         inactive = 'lualine_y_normal',
+            --     },
+            --
+            --     symbols = {
+            --         modified = ' ●',
+            --         alternate_file = '',
+            --         directory =  '',
+            --     },
+            -- },
         },
         lualine_b = {
         },
@@ -123,24 +144,15 @@ require('lualine').setup({
         },
         lualine_z = {
             {
-                'filename',
-                path = 3,
-                shorting_target = 0,
-                -- separator = { left = '', right = '' },
-                separator = { left = '', right = '' },
-                padding = { left = 2, right = 2 },
-                symbols = {
-                    modified = '',
-                    readonly = '',
-                    unnamed = '',
-                    newfile = '',
-                }
-            },
-            {
                 'tabs',
+                mode = 1,
+                fmt = function(_, context)
+                    return '󱔗 ' .. context.tabnr .. ''
+                end,
+                show_modified_status = false,
                 -- separator = { left = '', right = '' },
                 separator = { left = '', right = '' },
-                padding = { left = 2, right = 2 },
+                padding = { left = 1, right = 1 },
                 tabs_color = {
                     active = 'lualine_z_normal',
                     inactive = 'lualine_y_normal',
@@ -148,5 +160,6 @@ require('lualine').setup({
             },
         }
     },
-})
+}
 
+require('lualine').setup(lualine_config)
