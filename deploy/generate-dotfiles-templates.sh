@@ -33,12 +33,6 @@ chmod +x "$bin_dir/rg"
 mkdir -p "$config_dir/alacritty"
 esh "$base_dir/.config/alacritty/alacritty.toml~esh" > "$config_dir/alacritty/alacritty.toml"
 
-mkdir -p "$config_dir/foot"
-esh "$base_dir/.config/foot/foot.ini~esh" > "$config_dir/foot/foot.ini"
-
-mkdir -p "$config_dir/fuzzel"
-esh "$base_dir/.config/fuzzel/fuzzel.ini~esh" > "$config_dir/fuzzel/fuzzel.ini"
-
 mkdir -p "$config_dir/mako"
 esh "$base_dir/.config/mako/config~esh" > "$config_dir/mako/config"
 
