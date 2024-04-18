@@ -7,6 +7,10 @@ local actions = require('telescope.actions')
 
 telescope.setup({
     defaults = {
+        layout_strategy = 'horizontal',
+        layout_config = {
+            preview_width = 0.5,
+        },
         prompt_prefix = '❱ ',
         selection_caret = ' ',
         vimgrep_arguments = {
