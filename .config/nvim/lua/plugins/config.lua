@@ -39,6 +39,14 @@ return {
         end,
     },
 
+    -- Git messenger
+    {
+        'rhysd/git-messenger.vim',
+        config = function()
+            vim.g.git_messenger_no_default_mappings = true
+        end,
+    },
+
     -- Better buffer deletion
     { 'famiu/bufdelete.nvim' },
 
@@ -95,7 +103,6 @@ return {
         end
     },
     { 'nvim-treesitter/playground' },
-    { 'luckasRanarison/tree-sitter-hypr' },
 
     -- Folding.
     {
