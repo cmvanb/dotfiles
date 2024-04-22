@@ -116,7 +116,7 @@ size = <%= $font_size_medium %>
 family = '<%= $font_mono %>'
 
 [window]
-opacity = 1.0
+opacity = 0.9
 
 [window.padding]
 x = 0
