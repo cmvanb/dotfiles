@@ -22,10 +22,10 @@ local sign =
         })
     end
 
-sign({ name = 'DiagnosticSignError', text = ' ✘' })
-sign({ name = 'DiagnosticSignWarn',  text = ' ' })
-sign({ name = 'DiagnosticSignHint',  text = ' 󰌵' })
-sign({ name = 'DiagnosticSignInfo',  text = ' ℹ' })
+sign({ name = 'DiagnosticSignError', text = '✘ ' })
+sign({ name = 'DiagnosticSignWarn',  text = ' ' })
+sign({ name = 'DiagnosticSignHint',  text = '󰌵 ' })
+sign({ name = 'DiagnosticSignInfo',  text = 'ℹ ' })
 
 vim.diagnostic.config({
     virtual_text = false,
