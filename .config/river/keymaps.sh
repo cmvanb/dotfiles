@@ -62,7 +62,6 @@ riverctl map normal Alt H focus-output left
 riverctl map normal Alt L focus-output right
 
 # Send the focused view to the left/right output
-# TODO: Save active tag on source output, restore it on destination output.
 riverctl map normal Alt+Shift H spawn "$config_dir/river/send-and-focus-output.sh left"
 riverctl map normal Alt+Shift L spawn "$config_dir/river/send-and-focus-output.sh right"
 
