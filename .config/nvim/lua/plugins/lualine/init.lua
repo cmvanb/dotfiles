@@ -4,9 +4,6 @@
 
 local theme = reload('plugins.lualine.theme')
 
--- TODO: `reload` is not working here, further investigation needed.
-local gitblame = require('gitblame')
-
 local lualine_config = {
     options = {
         theme = theme,
@@ -36,10 +33,6 @@ local lualine_config = {
         },
         lualine_c =
         {
-            {
-                gitblame.get_current_blame_text,
-                cond = gitblame.is_blame_text_available,
-            }
         },
         lualine_x = {
         },
