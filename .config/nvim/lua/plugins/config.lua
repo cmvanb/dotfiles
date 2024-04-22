@@ -37,6 +37,14 @@ return {
         end,
     },
 
+    -- Git signs
+    {
+        'lewis6991/gitsigns.nvim',
+        config = function()
+            require('gitsigns').setup()
+        end
+    },
+
     -- Better buffer deletion
     { 'famiu/bufdelete.nvim' },
 

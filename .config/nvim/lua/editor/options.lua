@@ -17,7 +17,7 @@ opt.ruler = true
 opt.number = true
 
 -- Show signs in number column.
-opt.signcolumn = 'number'
+opt.signcolumn = 'yes'
 
 -- Highlight current line
 opt.cursorline = true
