@@ -39,4 +39,3 @@ function _G.do_load(module_name)
 
     return dofile(load_path)
 end
-

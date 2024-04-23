@@ -39,4 +39,3 @@ function TableUtils.merge(base_table, overlay_table)
 end
 
 return TableUtils
-

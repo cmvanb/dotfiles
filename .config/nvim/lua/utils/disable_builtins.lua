@@ -29,4 +29,3 @@ for plugin, enabled in pairs(builtin_plugins) do
         vim.g['loaded_' .. plugin] = 1
     end
 end
-

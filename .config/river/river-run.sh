@@ -1,12 +1,20 @@
 #!/usr/bin/env bash
+#-------------------------------------------------------------------------------
+# Run river with custom environment and logging.
+#
+# TODO: This should be part of the river/systemd integration.
+#-------------------------------------------------------------------------------
 
 set -euo pipefail
 
-# TODO: This should be part of the river/systemd integration.
-
 # Load river environment.
+#-------------------------------------------------------------------------------
+
 # shellcheck disable=SC1091
 source "$XDG_CONFIG_HOME/river/environment.sh"
+
+# Run river with logging.
+#-------------------------------------------------------------------------------
 
 # Ensure state directory exists.
 if [[ ! -d "$XDG_STATE_HOME/river" ]]; then

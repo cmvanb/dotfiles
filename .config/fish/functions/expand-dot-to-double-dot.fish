@@ -1,3 +1,7 @@
+#-------------------------------------------------------------------------------
+# Expand dot to two dots in the command line
+#-------------------------------------------------------------------------------
+
 function expand-dot-to-double-dot -d 'expand ... to ../..'
 
     # Get command line, up to cursor
@@ -23,4 +27,3 @@ function expand-dot-to-double-dot -d 'expand ... to ../..'
             commandline --insert '.'
     end
 end
-

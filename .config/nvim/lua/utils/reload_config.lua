@@ -22,4 +22,3 @@ function _G.reload_config()
         vim.notify('Configuration reloaded.')
     end)
 end
-

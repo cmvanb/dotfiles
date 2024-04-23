@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+#-------------------------------------------------------------------------------
+# Clean up packer artifacts (packer_compiled.lua and packer data directory)
+#-------------------------------------------------------------------------------
 
 packer_compiled=$XDG_DATA_HOME/nvim/plugin/packer_compiled.lua
 packer_data_dir=$XDG_DATA_HOME/nvim/site/pack/packer
@@ -18,4 +21,3 @@ else
 fi
 
 echo 'clean.sh complete.'
-
