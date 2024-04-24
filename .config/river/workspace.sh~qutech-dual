@@ -12,12 +12,24 @@ source "$XDG_OPT_HOME/wayland-utils/output.sh"
 # Layout
 #-------------------------------------------------------------------------------
 
-# laptop="eDP-1"
+laptop="eDP-1"
 vertical="DP-2"
 primary="HDMI-A-1"
 
-riverctl focus-output $vertical
-riverctl send-layout-cmd rivercarro "main-location top"
-sleep 0.25
+if wl_output_exists $laptop; then
+    riverctl focus-output $laptop
+    riverctl spawn "alacritty"
+    sleep 0.25
+fi
 
-riverctl focus-output $primary
+if wl_output_exists $vertical; then
+    riverctl focus-output $vertical
+    riverctl send-layout-cmd rivercarro "main-location top"
+    riverctl spawn "alacritty"
+    sleep 0.25
+fi
+
+if wl_output_exists $primary; then
+    riverctl focus-output $primary
+    riverctl spawn "alacritty"
+fi

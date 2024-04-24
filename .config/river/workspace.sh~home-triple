@@ -16,12 +16,21 @@ left="DP-4"
 primary="DP-3"
 right="HDMI-A-6"
 
-riverctl focus-output $left
-riverctl send-layout-cmd rivercarro "main-location top"
-sleep 0.25
+if wl_output_exists $left; then
+    riverctl focus-output $left
+    riverctl send-layout-cmd rivercarro "main-location top"
+    riverctl spawn "alacritty"
+    sleep 0.25
+fi
 
-riverctl focus-output $right
-riverctl send-layout-cmd rivercarro "main-location top"
+if wl_output_exists $right; then
+    riverctl focus-output $right
+    riverctl send-layout-cmd rivercarro "main-location top"
+    riverctl spawn "alacritty"
+fi
 
-sleep 0.25
-riverctl focus-output $primary
+if wl_output_exists $primary; then
+    sleep 0.25
+    riverctl focus-output $primary
+    riverctl spawn "alacritty"
+fi
