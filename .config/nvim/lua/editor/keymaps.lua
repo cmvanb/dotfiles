@@ -74,7 +74,7 @@ vim.g.mapleader = ' '
 -- Copy, paste
 -- NOTE: These are only working because the terminal (Alacritty) is configured for it.
 if not is_linux_terminal() then
-    vnoremap('<C-c>', '"+y')
+    noremap('<C-c>', '"+y')
     noremap('<C-v>', '"+p')
 end
 
