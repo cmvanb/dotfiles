@@ -60,8 +60,8 @@ hi('DiffChange',                { fg = 'orange_6', attrs = 'bold' },            
 hi('DiffDelete',                { fg = 'red_5', attrs = 'bold' },                         { fg = 'ansi_red' })
 hi('SpecialKey',                { fg = 'debug' },                                         { fg = 'ansi_brmagenta' })
 hi('Directory',                 { fg = 'primary_8' },                                     { fg = 'ansi_cyan', bg = 'ansi_black' })
-hi('Folded',                    { bg = 'primary_1' },                                     { bg = 'ansi_brblack' })
-hi('FoldColumn',                { fg = 'primary_6' },                                     { fg = 'ansi_cyan' })
+hi('Folded',                    { bg = 'secondary_0' },                                   { bg = 'ansi_brblack' })
+hi('FoldColumn',                { fg = 'text_9' },                                        { fg = 'ansi_white' })
 
 hi('DiagnosticSignError',       { fg = 'red_5', attrs = 'bold' },                         { fg = 'ansi_red' })
 hi('DiagnosticSignWarn',        { fg = 'yellow_5', attrs = 'bold' },                      { fg = 'ansi_yellow' })

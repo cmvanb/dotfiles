@@ -23,12 +23,17 @@ opt.signcolumn = 'yes'
 opt.cursorline = true
 opt.cursorcolumn = false
 
--- Whitespace visualization
+-- Whitespace visuals
 opt.listchars = { tab = '-->', eol = '', trail = '' }
 opt.list = false
 
--- End-of-buffer visualization
-opt.fillchars = { eob = '.', foldopen = "", foldclose = "󰅂" }
+-- End-of-buffer and folds visuals
+opt.fillchars = {
+    eob = '.',
+    foldopen = '',
+    foldclose = '',
+    fold = ' ',
+}
 
 -- Tabs should be 4 spaces
 opt.tabstop = 4
@@ -65,7 +70,7 @@ opt.mouse = 'a'
 -- Sessions
 opt.sessionoptions = 'buffers,curdir,folds,help,tabpages,winsize,resize,winpos,terminal'
 
--- Folding
+-- Folds
 opt.foldmethod = 'manual'
 opt.foldcolumn = '0'
 opt.foldlevel = 99 -- NOTE: UFO provider needs a large value, feel free to decrease
