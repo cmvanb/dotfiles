@@ -16,4 +16,3 @@ if vim.g.neovide ~= nil then
     vim.api.nvim_set_keymap('', '<C-Backspace>', ':bprev<cr>', { noremap = true, silent = true })
     vim.api.nvim_set_keymap('i', '<C-v>', '<C-r>+', { noremap = true, silent = true })
 end
-

@@ -31,4 +31,3 @@ indentscope.setup({
 
     symbol = get_scope_symbol(),
 })
-

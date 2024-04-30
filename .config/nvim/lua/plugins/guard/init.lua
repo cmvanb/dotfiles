@@ -6,4 +6,3 @@ local ft = require('guard.filetype')
 
 ft('css'):fmt('prettier')
 ft('js'):fmt('prettier')
-

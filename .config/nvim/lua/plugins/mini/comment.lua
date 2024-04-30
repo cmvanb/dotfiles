@@ -12,4 +12,3 @@ require('mini.comment').setup({
         textobject = 'gc',
     },
 })
-

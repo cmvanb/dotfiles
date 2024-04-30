@@ -14,4 +14,3 @@ return function()
         require('telescope.builtin').find_files(opts)
     end
 end
-

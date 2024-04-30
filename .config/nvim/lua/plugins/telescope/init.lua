@@ -36,4 +36,3 @@ telescope.setup({
         },
     },
 })
-

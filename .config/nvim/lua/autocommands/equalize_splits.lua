@@ -17,4 +17,3 @@ vim.api.nvim_create_autocmd('BufWipeout', {
         vim.cmd('wincmd =')
     end,
 })
-

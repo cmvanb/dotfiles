@@ -17,4 +17,3 @@ vim.api.nvim_create_autocmd('CmdlineLeave', {
         vim.cmd('set cmdheight=0')
     end,
 })
-
