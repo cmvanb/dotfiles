@@ -116,10 +116,6 @@ xnoremap('L', '$')
 onoremap('H', '0')
 onoremap('L', '$')
 
--- Line up/down
-noremap('<C-j>', '<C-e>')
-noremap('<C-k>', '<C-y>')
-
 -- Toggle mini map
 noremap('<C-g>m', require('mini.map').toggle)
 
@@ -166,6 +162,7 @@ noremap('<leader>f', require('plugins.telescope.project_files'))
 noremap('<leader>b', telescope_builtin.buffers)
 noremap('<leader>g', telescope_builtin.live_grep)
 noremap('<leader>i', telescope_builtin.symbols)
+noremap('<leader>h', telescope_builtin.help_tags)
 
 -- LSP & diagnostics
 --------------------------------------------------------------------------------
@@ -184,6 +181,8 @@ nnoremap('gk', vim.diagnostic.goto_prev)
 
 -- Change window focus
 noremap('<C-h>', '<C-w>h')
+noremap('<C-j>', '<C-w>j')
+noremap('<C-k>', '<C-w>k')
 noremap('<C-l>', '<C-w>l')
 
 -- Cycle windows
