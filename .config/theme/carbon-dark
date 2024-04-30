@@ -219,5 +219,5 @@ system_text=$text_15
 terminal_bg=$gray_0
 terminal_text=$text_15
 
-editor_bg=$primary_0
+editor_bg=$gray_0
 editor_text_normal=$secondary_9
