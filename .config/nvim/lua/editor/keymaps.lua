@@ -73,7 +73,7 @@ vim.g.mapleader = ' '
 
 -- Copy, paste
 -- NOTE: These are only working because the terminal (Alacritty) is configured for it.
-if not is_linux_terminal() then
+if not is_linux_virtual_terminal() then
     noremap('<C-c>', '"+y')
     noremap('<C-v>', '"+p')
 end
@@ -116,16 +116,16 @@ xnoremap('L', '$')
 onoremap('H', '0')
 onoremap('L', '$')
 
--- Leap
-noremap('<leader>j', function() require('leap').leap({}) end)
-noremap('<leader>k', function() require('leap').leap({ backward = true }) end)
-
 -- Line up/down
 noremap('<C-j>', '<C-e>')
 noremap('<C-k>', '<C-y>')
 
 -- Toggle mini map
 noremap('<C-g>m', require('mini.map').toggle)
+
+-- Leap
+noremap('<leader>j', function() require('leap').leap({}) end)
+noremap('<leader>k', function() require('leap').leap({ backward = true }) end)
 
 -- Editing
 --------------------------------------------------------------------------------

@@ -20,7 +20,7 @@ local packer_config = {
     },
 }
 
-if is_linux_terminal() then
+if is_linux_virtual_terminal() then
     packer_config = TableUtils.merge(
         packer_config,
         {

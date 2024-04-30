@@ -17,7 +17,7 @@ local ln = HighlightsUtils.link
 --------------------------------------------------------------------------------
 
 -- Use 24bit color if we are not in the linux terminal.
-vim.opt.termguicolors = not is_linux_terminal()
+vim.opt.termguicolors = not is_linux_virtual_terminal()
 
 -- Reset any pre-existing syntax highlighting
 vim.cmd('syntax reset')
