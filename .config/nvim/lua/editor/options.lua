@@ -68,7 +68,7 @@ opt.scrolloff = 4
 opt.mouse = 'a'
 
 -- Sessions
-opt.sessionoptions = 'buffers,curdir,folds,help,tabpages,winsize,resize,winpos,terminal'
+opt.sessionoptions = 'buffers,curdir,folds,help,tabpages,winsize,winpos,terminal'
 
 -- Folds
 opt.foldmethod = 'manual'
