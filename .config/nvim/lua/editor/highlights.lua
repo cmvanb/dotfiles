@@ -33,7 +33,7 @@ hi('Cursor',                    { fg = 'text_0', bg = 'primary_15' },           
 hi('CursorLine',                { bg = 'primary_2' },                                     { bg = 'ansi_blue' })
 hi('CursorLineNr',              { fg = 'primary_12', bg = 'primary_2' },                  { fg = 'ansi_brblue', bg = 'ansi_blue', attrs = 'bold' })
 hi('LineNr',                    { fg = 'primary_6' },                                     { fg = 'ansi_blue' })
-hi('SignColumn',                { fg = 'primary_15', bg = 'primary_0' },                  { fg = 'ansi_brblue', bg = 'ansi_black' })
+hi('SignColumn',                { fg = 'primary_15', bg = 'editor_bg' },                  { fg = 'ansi_brblue', bg = 'ansi_black' })
 
 hi('StatusLine',                { fg = 'text_12', bg = 'primary_6', attrs = 'bold' },     { fg = 'ansi_white', bg = 'ansi_blue', attrs = 'bold' })
 hi('StatusLineNC',              { fg = 'text_8', bg = 'primary_1' },                      { fg = 'ansi_brblack', bg = 'ansi_black' })
@@ -41,7 +41,7 @@ hi('TabLine',                   { fg = 'primary_5', bg = 'primary_1', attrs = 'b
 hi('TabLineSel',                { fg = 'primary_11', bg = 'primary_3', attrs = 'bold' },  { fg = 'ansi_white', bg = 'ansi_blue', attrs = 'bold' })
 hi('TabLineFill',               { bg = 'primary_1', attrs = 'bold' },                     { fg = 'ansi_white', bg = 'ansi_blue', attrs = 'bold' })
 
-hi('MsgArea',                   { fg = 'text_12', bg = 'primary_0' },                     { fg = 'ansi_white', bg = 'ansi_black' })
+hi('MsgArea',                   { fg = 'text_12', bg = 'editor_bg' },                     { fg = 'ansi_white', bg = 'ansi_black' })
 hi('ErrorMsg',                  { fg = 'red_6', bg = 'red_1', attrs = 'bold' },           { fg = 'ansi_brred', bg = 'ansi_red' })
 hi('WarningMsg',                { fg = 'yellow_6', bg = 'orange_3', attrs = 'bold' },     { fg = 'ansi_bryellow', bg = 'ansi_yellow' })
 hi('MoreMsg',                   { fg = 'gray_15', bg = 'gray_5', attrs = 'bold' },        { fg = 'ansi_white', bg = 'ansi_brblack' })
@@ -51,7 +51,7 @@ hi('IncSearch',                 { fg = 'gray_0', bg = 'green_4', attrs = 'bold' 
 hi('Search',                    { fg = 'gray_0', bg = 'magenta_5', attrs = 'bold' },      { fg = 'ansi_black', bg = 'ansi_magenta' })
 
 hi('Title',                     { fg = 'text_15', attrs = 'bold' },                       { fg = 'ansi_brwhite', attrs = 'bold' })
-hi('PMenu',                     { fg = 'text_8', bg = 'primary_0' },                      { fg = 'ansi_white', bg = 'ansi_black' })
+hi('PMenu',                     { fg = 'text_8', bg = 'editor_bg' },                      { fg = 'ansi_white', bg = 'ansi_black' })
 hi('PMenuSel',                  { fg = 'yellow_6', bg = 'primary_5', attrs = 'bold' },    { fg = 'ansi_white', bg = 'ansi_black', attrs = 'bold' })
 hi('WinSeparator',              { fg = 'primary_4' },                                     { fg = 'ansi_brblack' })
 hi('MatchParen',                { fg = 'text_8', attrs = 'bold' },                        { fg = 'ansi_brwhite', attrs = 'bold,underline' })
@@ -89,9 +89,9 @@ ln('Whitespace',     'NonText')
 hi('CMenuNormal',         { fg = 'debug', bg = 'primary_1' },                    { fg = 'ansi_cyan', bg = 'ansi_black' })
 hi('CMenuSelection',      { fg = 'text_15', bg = 'primary_8', attrs = 'bold' },  { fg = 'ansi_brwhite', bg = 'ansi_black', attrs = 'bold' })
 hi('CMenuItem',           { fg = 'text_12' },                                    { fg = 'ansi_brblue' })
-
 hi('CMenuItemMatch',      { fg = 'yellow_6', attrs = 'bold' },                   { fg = 'ansi_bryellow' })
-hi('FloatMenuNormal',     { fg = 'text_12', bg = 'primary_0' },                  { fg = 'ansi_cyan', bg = 'ansi_black' })
+
+hi('FloatMenuNormal',     { fg = 'text_12', bg = 'editor_bg' },                  { fg = 'ansi_cyan', bg = 'ansi_black' })
 hi('FloatMenuSelection',  { fg = 'text_15', bg = 'primary_7', attrs = 'bold' },  { fg = 'ansi_brwhite', bg = 'ansi_black', attrs = 'bold' })
 hi('FloatMenuItemMatch',  { fg = 'yellow_6', attrs = 'bold' },                   { fg = 'ansi_cyan', bg = 'ansi_blue' })
 
