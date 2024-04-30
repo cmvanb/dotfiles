@@ -29,7 +29,6 @@ key = 'C'
 action = 'Copy'
 
 [[keyboard.bindings]]
-mode = '~Alt'
 mods = 'Control'
 key = 'V'
 action = 'Paste'
