@@ -3,6 +3,9 @@
 --------------------------------------------------------------------------------
 
 return {
+    -- General
+    ----------------------------------------------------------------------------
+
     -- Packer can manage itself.
     { 'wbthomason/packer.nvim' },
 
@@ -22,12 +25,26 @@ return {
     },
 
     -- Session management
+    ----------------------------------------------------------------------------
+
     {
         'rmagatti/auto-session',
         config = function()
             require('auto-session').setup()
         end
     },
+
+    -- Buffer management
+    ----------------------------------------------------------------------------
+
+    -- Better buffer deletion
+    { 'famiu/bufdelete.nvim' },
+
+    -- Redirect output to scratch buffer.
+    { 'sbulav/nredir.nvim' },
+
+    -- Git integration
+    ----------------------------------------------------------------------------
 
     -- Git messenger
     {
@@ -37,27 +54,8 @@ return {
         end,
     },
 
-    -- Git signs
-    {
-        'lewis6991/gitsigns.nvim',
-        config = function()
-            require('gitsigns').setup()
-        end
-    },
-
-    -- Better buffer deletion
-    { 'famiu/bufdelete.nvim' },
-
-    -- Redirect output to scratch buffer.
-    { 'sbulav/nredir.nvim' },
-
-    -- Auto formatting.
-    {
-        'nvimdev/guard.nvim',
-        config = function()
-            do_load('plugins/guard')
-        end
-    },
+    -- LSP
+    ----------------------------------------------------------------------------
 
     -- Mason is a package manager for LSP tooling such as language servers,
     -- debug servers, linters and formatters.
@@ -78,7 +76,7 @@ return {
         },
     },
 
-    -- LSP configuration. Includes configuration for mason-lspconfig.
+    -- LSP configuration. Also configure mason-lspconfig.
     {
         'neovim/nvim-lspconfig',
         after = {
@@ -89,32 +87,12 @@ return {
         end,
     },
 
-    -- Treesitter (syntax highlighting).
-    {
-        'nvim-treesitter/nvim-treesitter',
-        run = function()
-            local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
-            ts_update()
-        end,
-        config = function()
-            do_load('plugins/treesitter')
-        end
-    },
-    { 'nvim-treesitter/playground' },
+    -- Completion
+    ----------------------------------------------------------------------------
 
-    -- Folding.
+    -- Github Copilot
     {
-        'kevinhwang91/nvim-ufo',
-        requires = { 'kevinhwang91/promise-async' },
-        config = function()
-            do_load('plugins/ufo')
-        end,
-    },
-    {
-        'chrisgrieser/nvim-origami',
-        config = function()
-            require('origami').setup({})
-        end,
+        'github/copilot.vim',
     },
 
     -- Snippet engine.
@@ -137,7 +115,7 @@ return {
         end,
     },
 
-    -- Completion.
+    -- Completion tooling.
     {
         'hrsh7th/nvim-cmp',
         requires = { 'L3MON4D3/LuaSnip' },
@@ -146,7 +124,7 @@ return {
         end
     },
 
-    -- various completions
+    -- Completion sources.
     { 'hrsh7th/cmp-buffer' },
     { 'hrsh7th/cmp-nvim-lua' },
     { 'hrsh7th/cmp-nvim-lsp' },
@@ -154,7 +132,49 @@ return {
     { 'saadparwaiz1/cmp_luasnip' },
     { 'f3fora/cmp-spell' },
 
-    -- Fuzzy finder.
+    -- Syntax highlighting
+    ----------------------------------------------------------------------------
+
+    -- Treesitter.
+    {
+        'nvim-treesitter/nvim-treesitter',
+        run = function()
+            local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+            ts_update()
+        end,
+        config = function()
+            do_load('plugins/treesitter')
+        end
+    },
+    { 'nvim-treesitter/playground' },
+
+    -- Syntax rules.
+    { 'khaveesh/vim-fish-syntax' },
+    { 'camnw/lf-vim' },
+    { 'LnL7/vim-nix' },
+    { 'ziglang/zig.vim' },
+
+    -- Folding
+    ----------------------------------------------------------------------------
+
+    {
+        'kevinhwang91/nvim-ufo',
+        requires = { 'kevinhwang91/promise-async' },
+        config = function()
+            do_load('plugins/ufo')
+        end,
+    },
+    {
+        'chrisgrieser/nvim-origami',
+        config = function()
+            require('origami').setup({})
+        end,
+    },
+
+    -- Search
+    ----------------------------------------------------------------------------
+
+    -- Telescope
     {
         'nvim-telescope/telescope.nvim',
         requires = { 'nvim-lua/plenary.nvim' },
@@ -162,28 +182,23 @@ return {
             do_load('plugins/telescope')
         end
     },
-
-    -- Status line.
-    {
-        'nvim-lualine/lualine.nvim',
-        requires = {
-            'kyazdani42/nvim-web-devicons',
-            'nvimdev/guard-collection',
-        },
-        config = function()
-            do_load('plugins/lualine')
-        end,
-    },
-
-    -- Symbols. 🔥
     {
         'nvim-telescope/telescope-symbols.nvim',
     },
 
-    -- Github Copilot
+    -- Viewing
+    ----------------------------------------------------------------------------
+
+    -- See color values in editor.
     {
-        'github/copilot.vim',
+        'NvChad/nvim-colorizer.lua',
+        config = function()
+            do_load('plugins/colorizer')
+        end
     },
+
+    -- Navigation
+    ----------------------------------------------------------------------------
 
     -- Jump movement.
     {
@@ -192,6 +207,9 @@ return {
             do_load('plugins/leap')
         end
     },
+
+    -- Editing
+    ----------------------------------------------------------------------------
 
     -- Surround.
     -- sa: add, sd: delete, sr: replace
@@ -210,23 +228,37 @@ return {
         end,
     },
 
-    -- View colors in editor.
+    -- Formatting
+    ----------------------------------------------------------------------------
+
     {
-        'NvChad/nvim-colorizer.lua',
+        'nvimdev/guard.nvim',
         config = function()
-            do_load('plugins/colorizer')
+            do_load('plugins/guard')
         end
     },
 
-    -- Fish syntax highlighting.
-    { 'khaveesh/vim-fish-syntax' },
+    -- Sign column
+    ----------------------------------------------------------------------------
 
-    -- lf syntax highlighting.
-    { 'camnw/lf-vim' },
+    {
+        'lewis6991/gitsigns.nvim',
+        config = function()
+            require('gitsigns').setup()
+        end
+    },
 
-    -- Nix syntax highlighting.
-    { 'LnL7/vim-nix' },
+    -- Status line
+    ----------------------------------------------------------------------------
 
-    -- Zig syntax highlighting.
-    { 'ziglang/zig.vim' },
+    {
+        'nvim-lualine/lualine.nvim',
+        requires = {
+            'kyazdani42/nvim-web-devicons',
+            'nvimdev/guard-collection',
+        },
+        config = function()
+            do_load('plugins/lualine')
+        end,
+    },
 }
