@@ -3,4 +3,4 @@
 # Show webcam video using ffplay
 #-------------------------------------------------------------------------------
 
-ffplay -fflags nobuffer /dev/video0
+ffplay -fflags nobuffer /dev/video0 > /dev/null 2>&1 &
