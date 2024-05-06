@@ -84,3 +84,5 @@ opt.showmode = false
 opt.spell = false
 opt.spelllang = { 'en_us' }
 
+-- Always navigate to the first non-whitespace character (e.g. C-u, C-d)
+opt.startofline = true
