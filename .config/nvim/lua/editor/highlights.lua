@@ -50,18 +50,20 @@ hi('Visual',                    { fg = 'gray_0', bg = 'primary_15' },           
 hi('IncSearch',                 { fg = 'gray_0', bg = 'green_4', attrs = 'bold' },        { fg = 'ansi_black', bg = 'ansi_green' })
 hi('Search',                    { fg = 'gray_0', bg = 'magenta_5', attrs = 'bold' },      { fg = 'ansi_black', bg = 'ansi_magenta' })
 
+hi('Folded',                    { bg = 'secondary_1' },                                   { bg = 'ansi_brblack' })
+hi('FoldColumn',                { fg = 'text_9' },                                        { fg = 'ansi_white' })
+
 hi('Title',                     { fg = 'text_15', attrs = 'bold' },                       { fg = 'ansi_brwhite', attrs = 'bold' })
 hi('PMenu',                     { fg = 'text_8', bg = 'editor_bg' },                      { fg = 'ansi_white', bg = 'ansi_black' })
 hi('PMenuSel',                  { fg = 'yellow_6', bg = 'primary_5', attrs = 'bold' },    { fg = 'ansi_white', bg = 'ansi_black', attrs = 'bold' })
 hi('WinSeparator',              { fg = 'primary_4' },                                     { fg = 'ansi_brblack' })
 hi('MatchParen',                { fg = 'text_8', attrs = 'bold' },                        { fg = 'ansi_brwhite', attrs = 'bold,underline' })
+
 hi('DiffAdd',                   { fg = 'green_4', attrs = 'bold' },                       { fg = 'ansi_green' })
 hi('DiffChange',                { fg = 'orange_6', attrs = 'bold' },                      { fg = 'ansi_yellow' })
 hi('DiffDelete',                { fg = 'red_5', attrs = 'bold' },                         { fg = 'ansi_red' })
-hi('SpecialKey',                { fg = 'debug' },                                         { fg = 'ansi_brmagenta' })
 hi('Directory',                 { fg = 'primary_8' },                                     { fg = 'ansi_cyan', bg = 'ansi_black' })
-hi('Folded',                    { bg = 'secondary_0' },                                   { bg = 'ansi_brblack' })
-hi('FoldColumn',                { fg = 'text_9' },                                        { fg = 'ansi_white' })
+hi('SpecialKey',                { fg = 'debug' },                                         { fg = 'ansi_brmagenta' })
 
 hi('DiagnosticSignError',       { fg = 'red_5', attrs = 'bold' },                         { fg = 'ansi_red' })
 hi('DiagnosticSignWarn',        { fg = 'yellow_5', attrs = 'bold' },                      { fg = 'ansi_yellow' })
