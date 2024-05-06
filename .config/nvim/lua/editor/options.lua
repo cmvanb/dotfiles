@@ -83,6 +83,7 @@ opt.showmode = false
 -- Enable spell checking
 opt.spell = false
 opt.spelllang = { 'en_us' }
+opt.spellsuggest = 'best,10'
 
 -- Always navigate to the first non-whitespace character (e.g. C-u, C-d)
 opt.startofline = true
