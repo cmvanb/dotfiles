@@ -106,7 +106,7 @@ hi('LeapMatch',              { fg = 'debug', attrs = 'bold' },                  
 hi('LeapLabelPrimary',       { fg = 'gray_0', bg = 'primary_15', attrs = 'bold' },     { fg = 'ansi_magenta' })
 hi('LeapLabelSecondary',     { fg = 'primary_2', bg = 'primary_11', attrs = 'bold' },  { fg = 'ansi_brmagenta', attrs = 'bold' })
 hi('LeapLabelSelected',      { fg = 'debug', attrs = 'bold' },                         { fg = 'ansi_brmagenta', attrs = 'bold' })
-hi('MiniCursorword',         { sp = 'primary_15', attrs = 'italic,underline' },        { attrs = 'bold,underline' })
+hi('MiniCursorword',         { sp = 'text_15', attrs = 'italic,underline' },           { attrs = 'bold,underline' })
 hi('MiniIndentscopeSymbol',  { fg = 'primary_3' },                                     { fg = 'ansi_brblack' })
 hi('LualineDiffAdd',         { fg = 'green_4', bg = 'primary_4', attrs = 'bold' },     { fg = 'ansi_green' })
 hi('LualineDiffChange',      { fg = 'orange_6', bg = 'primary_4', attrs = 'bold' },    { fg = 'ansi_yellow' })
