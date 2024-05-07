@@ -91,10 +91,7 @@ cmp.setup({
     },
 
     window = {
-        completion = {
-            border = 'none',
-            winhighlight = 'Normal:CmpMenuBackground,CursorLine:CmpMenuSelect',
-        },
+        completion = cmp.config.window.bordered(),
         documentation = vim.tbl_deep_extend(
             'force',
             cmp.config.window.bordered(),
