@@ -21,6 +21,7 @@ set -x XDG_SCRIPTS_HOME $HOME/.local/scripts
 set -x XDG_SECRETS_HOME $HOME/.local/secrets
 
 # XDG user directories.
+set -x XDG_CODE_DIR $HOME/Code
 set -x XDG_DOCUMENTS_DIR $HOME/Documents
 set -x XDG_DOWNLOAD_DIR $HOME/Downloads
 set -x XDG_MUSIC_DIR $HOME/Media/Music

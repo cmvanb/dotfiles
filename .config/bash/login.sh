@@ -22,6 +22,7 @@ export XDG_SCRIPTS_HOME="$HOME/.local/scripts"
 export XDG_SECRETS_HOME="$HOME/.local/secrets"
 
 # XDG user directories.
+export XDG_CODE_DIR="$HOME/Code"
 export XDG_DOCUMENTS_DIR="$HOME/Documents"
 export XDG_DOWNLOAD_DIR="$HOME/Downloads"
 export XDG_MUSIC_DIR="$HOME/Media/Music"
