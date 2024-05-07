@@ -49,7 +49,7 @@ class Color():
         return '\x1b[0m'
 
     def terminal_output(self):
-        return f'{self.escape_bg()}{self.escape_fg()}#{self.r:02x}{self.g:02x}{self.b:02x}{self.escape_reset()}'
+        return f'{self.escape_bg()}        {self.escape_fg()}#{self.r:02x}{self.g:02x}{self.b:02x}{self.escape_reset()}'
 
     @staticmethod
     def parse(argument):
