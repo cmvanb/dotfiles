@@ -28,6 +28,9 @@ assert_dependency wofi
 # New terminal
 riverctl map normal Alt T spawn "alacritty"
 
+# Process manager
+riverctl map normal Alt M spawn "alacritty --command htop"
+
 # Command menu
 riverctl map normal Alt O spawn "wofi --show drun"
 
