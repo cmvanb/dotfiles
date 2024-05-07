@@ -27,7 +27,7 @@ vim.cmd('syntax reset')
 
 -- Highlights
 hi('Normal',                    { fg = 'editor_text_normal', bg = 'editor_bg' },          { fg = 'ansi_cyan', bg = 'ansi_black' })
-hi('NonText',                   { fg = 'text_8' },                                        { fg = 'ansi_brwhite' })
+hi('NonText',                   { fg = 'text_6' },                                        { fg = 'ansi_brwhite' })
 hi('EndOfBuffer',               { fg = 'primary_4' },                                     { })
 hi('Cursor',                    { fg = 'text_0', bg = 'primary_15' },                     { fg = 'ansi_black', bg = 'ansi_brwhite', attrs = 'bold' })
 hi('CursorLine',                { bg = 'primary_2' },                                     { bg = 'ansi_blue' })
@@ -35,13 +35,13 @@ hi('CursorLineNr',              { fg = 'primary_12', bg = 'primary_2' },        
 hi('LineNr',                    { fg = 'primary_6' },                                     { fg = 'ansi_blue' })
 hi('SignColumn',                { fg = 'primary_15', bg = 'editor_bg' },                  { fg = 'ansi_brblue', bg = 'ansi_black' })
 
-hi('StatusLine',                { fg = 'text_12', bg = 'primary_6', attrs = 'bold' },     { fg = 'ansi_white', bg = 'ansi_blue', attrs = 'bold' })
-hi('StatusLineNC',              { fg = 'text_8', bg = 'primary_1' },                      { fg = 'ansi_brblack', bg = 'ansi_black' })
+hi('StatusLine',                { fg = 'text_10', bg = 'primary_6', attrs = 'bold' },     { fg = 'ansi_white', bg = 'ansi_blue', attrs = 'bold' })
+hi('StatusLineNC',              { fg = 'text_6', bg = 'primary_1' },                      { fg = 'ansi_brblack', bg = 'ansi_black' })
 hi('TabLine',                   { fg = 'primary_5', bg = 'primary_1', attrs = 'bold' },   { fg = 'ansi_white', bg = 'ansi_blue' })
 hi('TabLineSel',                { fg = 'primary_11', bg = 'primary_3', attrs = 'bold' },  { fg = 'ansi_white', bg = 'ansi_blue', attrs = 'bold' })
 hi('TabLineFill',               { bg = 'primary_1', attrs = 'bold' },                     { fg = 'ansi_white', bg = 'ansi_blue', attrs = 'bold' })
 
-hi('MsgArea',                   { fg = 'text_12', bg = 'editor_bg' },                     { fg = 'ansi_white', bg = 'ansi_black' })
+hi('MsgArea',                   { fg = 'text_10', bg = 'editor_bg' },                     { fg = 'ansi_white', bg = 'ansi_black' })
 hi('ErrorMsg',                  { fg = 'red_6', bg = 'red_1', attrs = 'bold' },           { fg = 'ansi_brred', bg = 'ansi_red' })
 hi('WarningMsg',                { fg = 'yellow_6', bg = 'orange_3', attrs = 'bold' },     { fg = 'ansi_bryellow', bg = 'ansi_yellow' })
 hi('MoreMsg',                   { fg = 'gray_15', bg = 'gray_5', attrs = 'bold' },        { fg = 'ansi_white', bg = 'ansi_brblack' })
@@ -51,7 +51,7 @@ hi('IncSearch',                 { fg = 'gray_0', bg = 'green_4', attrs = 'bold' 
 hi('Search',                    { fg = 'gray_0', bg = 'magenta_5', attrs = 'bold' },      { fg = 'ansi_black', bg = 'ansi_magenta' })
 
 hi('Folded',                    { bg = 'secondary_1' },                                   { bg = 'ansi_brblack' })
-hi('FoldColumn',                { fg = 'text_9' },                                        { fg = 'ansi_white' })
+hi('FoldColumn',                { fg = 'text_10' },                                       { fg = 'ansi_white' })
 
 hi('Title',                     { fg = 'text_15', attrs = 'bold' },                       { fg = 'ansi_brwhite', attrs = 'bold' })
 hi('PMenu',                     { fg = 'text_8', bg = 'editor_bg' },                      { fg = 'ansi_white', bg = 'ansi_black' })
@@ -67,11 +67,11 @@ hi('SpecialKey',                { fg = 'debug' },                               
 
 hi('DiagnosticSignError',       { fg = 'red_5', attrs = 'bold' },                         { fg = 'ansi_red' })
 hi('DiagnosticSignWarn',        { fg = 'yellow_5', attrs = 'bold' },                      { fg = 'ansi_yellow' })
-hi('DiagnosticSignInfo',        { fg = 'text_12', attrs = 'bold' },                       { fg = 'ansi_white' })
+hi('DiagnosticSignInfo',        { fg = 'text_10', attrs = 'bold' },                       { fg = 'ansi_white' })
 hi('DiagnosticSignHint',        { fg = 'purple_7', attrs = 'bold' },                      { fg = 'ansi_magenta' })
 hi('DiagnosticUnderlineError',  { sp = 'red_5', attrs = 'undercurl' },                    { fg = 'ansi_red' })
 hi('DiagnosticUnderlineWarn',   { sp = 'yellow_5', attrs = 'undercurl' },                 { fg = 'ansi_yellow' })
-hi('DiagnosticUnderlineInfo',   { sp = 'text_12', attrs = 'undercurl' },                  { fg = 'ansi_white' })
+hi('DiagnosticUnderlineInfo',   { sp = 'text_10', attrs = 'undercurl' },                  { fg = 'ansi_white' })
 hi('DiagnosticUnderlineHint',   { sp = 'purple_7', attrs = 'undercurl' },                 { fg = 'ansi_magenta' })
 hi('SpellBad',                  { sp = 'red_5', attrs = 'undercurl' },                    { fg = 'ansi_red', attrs = 'underline' })
 
@@ -90,10 +90,10 @@ ln('Whitespace',     'NonText')
 -- Highlights
 hi('CMenuNormal',         { fg = 'debug', bg = 'primary_1' },                    { fg = 'ansi_cyan', bg = 'ansi_black' })
 hi('CMenuSelection',      { fg = 'text_15', bg = 'primary_8', attrs = 'bold' },  { fg = 'ansi_brwhite', bg = 'ansi_black', attrs = 'bold' })
-hi('CMenuItem',           { fg = 'text_12' },                                    { fg = 'ansi_brblue' })
+hi('CMenuItem',           { fg = 'text_10' },                                    { fg = 'ansi_brblue' })
 hi('CMenuItemMatch',      { fg = 'yellow_6', attrs = 'bold' },                   { fg = 'ansi_bryellow' })
 
-hi('FloatMenuNormal',     { fg = 'text_12', bg = 'editor_bg' },                  { fg = 'ansi_cyan', bg = 'ansi_black' })
+hi('FloatMenuNormal',     { fg = 'text_10', bg = 'editor_bg' },                  { fg = 'ansi_cyan', bg = 'ansi_black' })
 hi('FloatMenuSelection',  { fg = 'text_15', bg = 'primary_7', attrs = 'bold' },  { fg = 'ansi_brwhite', bg = 'ansi_black', attrs = 'bold' })
 hi('FloatMenuItemMatch',  { fg = 'yellow_6', attrs = 'bold' },                   { fg = 'ansi_cyan', bg = 'ansi_blue' })
 
@@ -143,7 +143,7 @@ ln('TelescopePreviewNormal',  'Normal')
 -- Highlights
 hi('Identifier',  { fg = 'secondary_9' },                                                 { fg = 'ansi_cyan' })
 hi('Statement',   { fg = 'green_4', attrs = 'bold' },                                     { fg = 'ansi_brgreen', attrs = 'bold' })
-hi('Comment',     { fg = 'text_8', attrs = 'italic' },                                    { fg = 'ansi_brblack' })
+hi('Comment',     { fg = 'text_6', attrs = 'italic' },                                    { fg = 'ansi_brblack' })
 hi('Type',        { fg = 'secondary_12' },                                                { fg = 'ansi_brcyan', attrs = 'bold' })
 hi('Constant',    { fg = 'magenta_5' },                                                   { fg = 'ansi_brmagenta' })
 hi('Special',     { fg = 'yellow_5', attrs = 'bold' },                                    { fg = 'ansi_yellow' })
@@ -154,7 +154,7 @@ hi('Keyword',     { fg = 'green_4', attrs = 'bold' },                           
 hi('Function',    { fg = 'secondary_15', attrs = 'bold' },                                { fg = 'ansi_brcyan', attrs = 'bold' })
 hi('Number',      { fg = 'red_6' },                                                       { fg = 'ansi_brred' })
 hi('Boolean',     { fg = 'red_5' },                                                       { fg = 'ansi_red' })
-hi('Ignore',      { fg = 'text_4', attrs = 'bold' },                                      { fg = 'ansi_brblack' })
+hi('Ignore',      { fg = 'text_3', attrs = 'bold' },                                      { fg = 'ansi_brblack' })
 hi('Todo',        { fg = 'secondary_15', bg = 'secondary_5', attrs = 'bold,nocombine' },  { fg = 'ansi_brcyan', bg = 'ansi_cyan', attrs = 'bold' })
 
 -- Links
