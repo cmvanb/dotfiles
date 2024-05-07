@@ -12,6 +12,7 @@ source "$XDG_OPT_HOME/wayland-utils/output.sh"
 # Layout
 #-------------------------------------------------------------------------------
 
+# NOTE: In physical order.
 laptop="eDP-1"
 vertical="DP-2"
 primary="HDMI-A-1"
@@ -25,11 +26,18 @@ fi
 if wl_output_exists $vertical; then
     riverctl focus-output $vertical
     riverctl send-layout-cmd rivercarro "main-location top"
-    riverctl spawn "alacritty"
+    riverctl spawn "alacritty --working-directory ~/Code/dotfiles"
     sleep 0.25
 fi
 
 if wl_output_exists $primary; then
     riverctl focus-output $primary
-    riverctl spawn "alacritty"
+    riverctl spawn "alacritty --working-directory ~/Code"
+    sleep 0.25
+
+    riverctl set-focused-tags "$(tagmask 9)"
+    riverctl spawn "qutebrowser -r qutech-comms"
+    sleep 1.35 # MAGIC 🪄
+
+    riverctl set-focused-tags "$(tagmask 1)"
 fi

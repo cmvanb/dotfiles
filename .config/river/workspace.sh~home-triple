@@ -8,10 +8,12 @@
 
 # shellcheck disable=SC1091
 source "$XDG_OPT_HOME/wayland-utils/output.sh"
+source "$XDG_CONFIG_HOME/river/utils.sh"
 
 # Layout
 #-------------------------------------------------------------------------------
 
+# NOTE: In physical order.
 left="DP-4"
 primary="DP-3"
 right="HDMI-A-6"
@@ -19,7 +21,7 @@ right="HDMI-A-6"
 if wl_output_exists $left; then
     riverctl focus-output $left
     riverctl send-layout-cmd rivercarro "main-location top"
-    riverctl spawn "alacritty"
+    riverctl spawn "alacritty --working-directory ~/Code/dotfiles"
     sleep 0.25
 fi
 
@@ -27,10 +29,17 @@ if wl_output_exists $right; then
     riverctl focus-output $right
     riverctl send-layout-cmd rivercarro "main-location top"
     riverctl spawn "alacritty"
+    sleep 0.25
 fi
 
 if wl_output_exists $primary; then
-    sleep 0.25
     riverctl focus-output $primary
-    riverctl spawn "alacritty"
+    riverctl spawn "alacritty --working-directory ~/Code"
+    sleep 0.25
+
+    riverctl set-focused-tags "$(tagmask 9)"
+    riverctl spawn "qutebrowser -r home"
+    sleep 1.35 # MAGIC 🪄
+
+    riverctl set-focused-tags "$(tagmask 1)"
 fi
