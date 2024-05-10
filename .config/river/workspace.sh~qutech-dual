@@ -41,7 +41,7 @@ if wl_output_exists $vertical; then
 
     riverctl set-focused-tags "$(tagmask 9)"
     riverctl spawn "bitwarden-desktop"
-    sleep 0.50
+    sleep 0.75
 
     riverctl set-focused-tags "$(tagmask 5)"
     riverctl spawn "alacritty --working-directory ~/Wiki/todo --command edit"
@@ -59,11 +59,7 @@ if wl_output_exists $primary; then
     riverctl spawn "qutebrowser -r qutech-comms"
     sleep 1.45 # MAGIC 🪄
 
-    riverctl set-focused-tags "$(tagmask 2)"
-    riverctl spawn "alacritty --working-directory ~/Code/dotfiles"
-    sleep 0.25
-
     riverctl set-focused-tags "$(tagmask 1)"
-    riverctl spawn "alacritty --working-directory ~/Code"
+    riverctl spawn "alacritty --working-directory ~/Code/qnode-backend"
     sleep 0.25
 fi
