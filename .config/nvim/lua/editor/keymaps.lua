@@ -180,20 +180,24 @@ nnoremap('gk', vim.diagnostic.goto_prev)
 --------------------------------------------------------------------------------
 
 -- Change window focus
-noremap('<C-h>', '<C-w>h')
-noremap('<C-j>', '<C-w>j')
-noremap('<C-k>', '<C-w>k')
-noremap('<C-l>', '<C-w>l')
+nnoremap('<C-h>', '<C-w>h')
+nnoremap('<C-j>', '<C-w>j')
+nnoremap('<C-k>', '<C-w>k')
+nnoremap('<C-l>', '<C-w>l')
 
 -- Cycle windows
-noremap('<C-z>', '<C-w>r')
+nnoremap('<C-z>', '<C-w>r')
 
 -- Split windows
 nnoremap('<C-n>', '<esc>:belowright vnew<cr>', { silent = true })
 nnoremap('<C-p>', '<esc>:belowright new<cr>', { silent = true })
 
 -- Close window
-noremap('<C-w>', ':close<cr>', { silent = true })
+nnoremap('<C-w>', ':close<cr>', { silent = true })
+
+-- Change window size
+nnoremap('<C-PageUp>', ':wincmd ><cr>', { silent = true })
+nnoremap('<C-PageDown>', ':wincmd <<cr>', { silent = true })
 
 -- Buffer management
 --------------------------------------------------------------------------------
