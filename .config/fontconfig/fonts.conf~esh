@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
+<% source $XDG_OPT_HOME/theme/theme.sh %>
+<fontconfig>
+  <alias>
+   <family>sans-serif</family>
+   <prefer>
+     <family><%= $font_sans %></family>
+     <family>Noto Color Emoji</family>
+   </prefer>
+  </alias>
+
+  <alias>
+   <family>serif</family>
+   <prefer>
+     <family><%= $font_serif %></family>
+     <family>Noto Color Emoji</family>
+   </prefer>
+  </alias>
+
+  <alias>
+    <family>monospace</family>
+    <prefer>
+      <family><%= $font_mono %></family>
+      <family>Noto Color Emoji</family>
+    </prefer>
+  </alias>
+</fontconfig>
