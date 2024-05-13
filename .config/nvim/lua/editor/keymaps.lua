@@ -85,7 +85,7 @@ noremap('<C-x>', 'x')
 noremap('<C-a>', 'gg0vG$')
 
 -- Undo
-noremap('<C-z>', 'u')
+nnoremap('<C-z>', 'u')
 
 -- Selection
 --------------------------------------------------------------------------------
@@ -117,7 +117,7 @@ onoremap('H', '0')
 onoremap('L', '$')
 
 -- Toggle mini map
-noremap('<C-g>m', require('mini.map').toggle)
+nnoremap('<C-g>m', require('mini.map').toggle)
 
 -- Leap
 noremap('<leader>j', function() require('leap').leap({}) end)
@@ -131,47 +131,47 @@ nnoremap('J', '<esc>:m .+1<cr>==', { silent = true })
 nnoremap('K', '<esc>:m .-2<cr>==', { silent = true })
 
 -- Formatting
-noremap(';', '=')
-noremap('<leader>;', 'gg=G')
+nnoremap(';', '=')
+nnoremap('<leader>;', 'gg=G')
 
 -- Reading
 --------------------------------------------------------------------------------
 
 -- Toggle linebreaks
-noremap('<C-g>w', '<cmd>set wrap!<cr>:set linebreak!<cr>')
+nnoremap('<C-g>w', '<cmd>set wrap!<cr>:set linebreak!<cr>')
 
 -- Folds
 --------------------------------------------------------------------------------
 
 local ufo = require('ufo')
 
-noremap('zR', ufo.openAllFolds)
-noremap('zM', ufo.closeAllFolds)
+nnoremap('zR', ufo.openAllFolds)
+nnoremap('zM', ufo.closeAllFolds)
 
 -- Search
 --------------------------------------------------------------------------------
 
 -- Clear search highlight, clear command line and clear search pattern.
-noremap('<leader>l', ':noh<cr>:let @/=""<cr>:echo ""<cr>')
+nnoremap('<leader>l', ':noh<cr>:let @/=""<cr>:echo ""<cr>')
 
 local telescope_builtin = require('telescope.builtin')
 
 -- Fuzzy finder
-noremap('<leader>a', function() telescope_builtin.find_files({ hidden = true, no_ignore = true }) end)
-noremap('<leader>f', require('plugins.telescope.project_files'))
-noremap('<leader>b', telescope_builtin.buffers)
-noremap('<leader>g', telescope_builtin.live_grep)
-noremap('<leader>i', telescope_builtin.symbols)
-noremap('<leader>h', telescope_builtin.help_tags)
+nnoremap('<leader>a', function() telescope_builtin.find_files({ hidden = true, no_ignore = true }) end)
+nnoremap('<leader>f', require('plugins.telescope.project_files'))
+nnoremap('<leader>b', telescope_builtin.buffers)
+nnoremap('<leader>g', telescope_builtin.live_grep)
+nnoremap('<leader>i', telescope_builtin.symbols)
+nnoremap('<leader>h', telescope_builtin.help_tags)
 
 -- LSP & diagnostics
 --------------------------------------------------------------------------------
 
-noremap('gd', telescope_builtin.lsp_definitions)
-noremap('ge', function() telescope_builtin.diagnostics({ bufnr = 0 }) end)
-noremap('gi', telescope_builtin.lsp_implementations)
-noremap('gt', telescope_builtin.lsp_type_definitions)
-noremap('gr', telescope_builtin.lsp_references)
+nnoremap('gd', telescope_builtin.lsp_definitions)
+nnoremap('ge', function() telescope_builtin.diagnostics({ bufnr = 0 }) end)
+nnoremap('gi', telescope_builtin.lsp_implementations)
+nnoremap('gt', telescope_builtin.lsp_type_definitions)
+nnoremap('gr', telescope_builtin.lsp_references)
 nnoremap('gp', vim.diagnostic.open_float)
 nnoremap('gj', vim.diagnostic.goto_next)
 nnoremap('gk', vim.diagnostic.goto_prev)
@@ -204,8 +204,8 @@ nnoremap('<C-PageDown>', ':wincmd <<cr>', { silent = true })
 
 -- Change buffer
 -- NOTE: Alacritty translates <C-BS> to <F15> to get around NVIM's limitation.
-noremap('<F15>', ':bprev<cr>', { silent = true })
-noremap('<C-Tab>', ':bnext<cr>', { silent = true })
+nnoremap('<F15>', ':bprev<cr>', { silent = true })
+nnoremap('<C-Tab>', ':bnext<cr>', { silent = true })
 
 -- Save all buffers
 nnoremap('<C-s>', ':wa!<cr>')
@@ -221,11 +221,11 @@ noremap('<leader>q', ':qa!<cr>')
 -- Git
 --------------------------------------------------------------------------------
 
-noremap('<C-g>b', '<cmd>GitBlameToggle<cr>')
-noremap('gm', '<cmd>GitMessenger<cr>')
+nnoremap('<C-g>b', '<cmd>GitBlameToggle<cr>')
+nnoremap('gm', '<cmd>GitMessenger<cr>')
 
 -- Plugin management
 --------------------------------------------------------------------------------
 
 -- Reload config and plugins.
-noremap('<leader>r', _G.reload_config, { silent = true })
+nnoremap('<leader>r', _G.reload_config, { silent = true })
