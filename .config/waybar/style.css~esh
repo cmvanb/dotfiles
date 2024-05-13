@@ -1,6 +1,6 @@
 * {
     /* `otf-font-awesome` is required to be installed for icons */
-    font-family: '<% source $XDG_OPT_HOME/theme/theme.sh %><%= $font_sans %>';
+    font-family: '<% source $XDG_OPT_HOME/theme/theme.sh %>sans-serif';
     font-size: <%= $font_size_medium %>px;
     font-weight: bold;
 }
