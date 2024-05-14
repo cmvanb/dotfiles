@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-font_mono='IosevkaTerm NFM'
+font_mono='IosevkaTerm'
 font_sans='Cantarell'
 font_serif='Liberation Serif'
 
