@@ -20,20 +20,20 @@
 # fi      -       # FILE
 
 # file types (with matching order)
-ln             # LINK 
-or      ?       # ORPHAN
-tw      t       # STICKY_OTHER_WRITABLE
+ln             # LINK
+or             # ORPHAN
+tw      󱈸       # STICKY_OTHER_WRITABLE
 ow      o       # OTHER_WRITABLE
 st      t       # STICKY
-di      📂      # DIR 󰉋
-pi      p       # FIFO
-so      s       # SOCK
-bd      b       # BLK
+di      󰉋       # DIR
+pi      󰟥       # FIFO
+so      󰟧       # SOCK
+bd      󰋊       # BLK
 cd      c       # CHR
 su      u       # SETUID
 sg      g       # SETGID
-ex      󰐊       # EXEC
-fi      󰈙       # FILE 🖹 🗋
+ex      󱓞       # EXEC
+fi      󰈔       # FILE
 
 # # file extensions (vim-devicons)
 # *.styl          
