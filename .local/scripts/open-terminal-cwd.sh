@@ -35,4 +35,4 @@ target=$(printf "%s\n" "${!directories[@]}" | wofi --dmenu 2> /dev/null)
 # Spawn a new terminal
 #-------------------------------------------------------------------------------
 
-riverctl spawn "alacritty --working-directory=${directories[$target]}"
+riverctl spawn "alacritty --command $SHELL -c 'cd ${directories[$target]} && $SHELL'"
