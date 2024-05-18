@@ -16,8 +16,22 @@ declare -a dirs=(
     ".terraform.d"
 )
 
+declare -a files=(
+    ".lesshst"
+    ".viminfo"
+    ".yarnrc"
+)
+
+# Remove directories.
 for dir in "${dirs[@]}"; do
-    if [[ -d ~/"$dir" ]]; then
+    if [[ -d "$HOME/$dir" ]]; then
         rm -rf "${HOME:?}/$dir"
+    fi
+done
+
+# Remove files.
+for file in "${files[@]}"; do
+    if [[ -f "$HOME/$file" ]]; then
+        rm -f "${HOME:?}/$file"
     fi
 done
