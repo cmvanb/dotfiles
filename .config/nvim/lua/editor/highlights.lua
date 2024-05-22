@@ -177,6 +177,7 @@ ln('@tag.delimiter',           'Delimiter')
 ln('@text.literal',            'String')
 ln('@type.builtin',            'Special')
 ln('@type.qualifier',          'Keyword')
+ln('@variable',                'Identifier')
 ln('@variable.builtin',        'Identifier')
 ln('@lsp.mod.defaultLibrary',  'Special')
 
