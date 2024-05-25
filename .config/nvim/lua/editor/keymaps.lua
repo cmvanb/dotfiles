@@ -134,6 +134,9 @@ nnoremap(';', '=')
 xnoremap(';', '=')
 nnoremap('<leader>;', 'gg=G')
 
+-- Insert line break
+nnoremap('<Enter>', 'i<CR><esc>')
+
 -- Reading
 --------------------------------------------------------------------------------
 
