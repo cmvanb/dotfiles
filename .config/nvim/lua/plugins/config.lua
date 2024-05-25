@@ -241,16 +241,6 @@ return {
         end
     },
 
-    -- Sign column
-    ----------------------------------------------------------------------------
-
-    {
-        'lewis6991/gitsigns.nvim',
-        config = function()
-            require('gitsigns').setup()
-        end
-    },
-
     -- Status column
     ----------------------------------------------------------------------------
 
@@ -258,6 +248,16 @@ return {
         'luukvbaal/statuscol.nvim',
         config = function()
             do_load('plugins/statuscol')
+        end
+    },
+
+    -- Sign column
+    ----------------------------------------------------------------------------
+
+    {
+        'lewis6991/gitsigns.nvim',
+        config = function()
+            require('gitsigns').setup()
         end
     },
 
