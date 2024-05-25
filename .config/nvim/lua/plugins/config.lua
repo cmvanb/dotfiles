@@ -40,7 +40,7 @@ return {
     -- Better buffer deletion
     { 'famiu/bufdelete.nvim' },
 
-    -- Redirect output to scratch buffer.
+    -- Redirect command output to new buffer.
     { 'sbulav/nredir.nvim' },
 
     -- Git integration
@@ -57,8 +57,8 @@ return {
     -- LSP
     ----------------------------------------------------------------------------
 
-    -- Mason is a package manager for LSP tooling such as language servers,
-    -- debug servers, linters and formatters.
+    -- Package management for LSP tooling such as language servers, debuggers,
+    -- linters and formatters.
     {
         'williamboman/mason.nvim',
         config = function()
@@ -248,6 +248,16 @@ return {
         'lewis6991/gitsigns.nvim',
         config = function()
             require('gitsigns').setup()
+        end
+    },
+
+    -- Status column
+    ----------------------------------------------------------------------------
+
+    {
+        'luukvbaal/statuscol.nvim',
+        config = function()
+            do_load('plugins/statuscol')
         end
     },
 

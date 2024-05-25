@@ -52,7 +52,7 @@ hi('Search',                    { fg = 'gray_0', bg = 'magenta_5', attrs = 'bold
 hi('CurSearch',                 { fg = 'gray_0', bg = 'green_4', attrs = 'bold' },        { fg = 'ansi_black', bg = 'ansi_green' })
 
 hi('Folded',                    { bg = 'secondary_1' },                                   { bg = 'ansi_brblack' })
-hi('FoldColumn',                { fg = 'text_10' },                                       { fg = 'ansi_white' })
+hi('FoldColumn',                { fg = 'text_3' },                                       { fg = 'ansi_white' })
 
 hi('Title',                     { fg = 'text_15', attrs = 'bold' },                       { fg = 'ansi_brwhite', attrs = 'bold' })
 hi('PMenu',                     { fg = 'text_8', bg = 'editor_bg' },                      { fg = 'ansi_white', bg = 'ansi_black' })

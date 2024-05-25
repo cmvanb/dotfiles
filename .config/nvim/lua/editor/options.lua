@@ -30,8 +30,8 @@ opt.list = false
 -- End-of-buffer and folds visuals
 opt.fillchars = {
     eob = '.',
-    foldopen = '',
-    foldclose = '',
+    foldopen = '󰅀',
+    foldclose = '󰅂',
     fold = ' ',
 }
 
@@ -72,7 +72,7 @@ opt.sessionoptions = 'buffers,curdir,folds,help,tabpages,winsize,winpos,terminal
 
 -- Folds
 opt.foldmethod = 'manual'
-opt.foldcolumn = '0'
+opt.foldcolumn = '1'
 opt.foldlevel = 99 -- NOTE: UFO provider needs a large value, feel free to decrease
 opt.foldlevelstart = 99
 opt.foldenable = true
