@@ -109,10 +109,10 @@ noremap('<leader>v', '<C-v>')
 
 -- Start/end of line
 nnoremap('H', '0')
-nnoremap('L', '$')
 xnoremap('H', '0')
-xnoremap('L', '$')
 onoremap('H', '0')
+nnoremap('L', '$')
+xnoremap('L', '$')
 onoremap('L', '$')
 
 -- Toggle mini map
@@ -131,6 +131,7 @@ nnoremap('K', '<esc>:m .-2<cr>==', { silent = true })
 
 -- Formatting
 nnoremap(';', '=')
+xnoremap(';', '=')
 nnoremap('<leader>;', 'gg=G')
 
 -- Reading
