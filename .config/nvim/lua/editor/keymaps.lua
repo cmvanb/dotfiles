@@ -18,10 +18,9 @@ local map, nmap, xmap, imap =
     KeyMapUtils.xmap,
     KeyMapUtils.imap
 
-local noremap, nnoremap, vnoremap, xnoremap, inoremap, onoremap =
+local noremap, nnoremap, xnoremap, inoremap, onoremap =
     KeyMapUtils.noremap,
     KeyMapUtils.nnoremap,
-    KeyMapUtils.vnoremap,
     KeyMapUtils.xnoremap,
     KeyMapUtils.inoremap,
     KeyMapUtils.onoremap
