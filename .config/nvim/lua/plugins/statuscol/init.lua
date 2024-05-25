@@ -32,8 +32,8 @@ require('statuscol').setup({
             click = 'v:lua.ScFa',
         },
         {
-            text = { '%s' },
-            click = 'v:lua.ScSa'
+            text = { ' %s ' },
+            click = 'v:lua.ScSa',
         },
         {
             text = { builtin.lnumfunc, ' ' },

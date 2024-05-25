@@ -32,8 +32,10 @@ hi('EndOfBuffer',               { fg = 'primary_4' },                           
 hi('Cursor',                    { fg = 'text_0', bg = 'primary_15' },                     { fg = 'ansi_black', bg = 'ansi_brwhite', attrs = 'bold' })
 hi('CursorLine',                { bg = 'primary_2' },                                     { bg = 'ansi_blue' })
 hi('CursorLineNr',              { fg = 'primary_12', bg = 'primary_2' },                  { fg = 'ansi_brblue', bg = 'ansi_blue', attrs = 'bold' })
+hi('CursorLineFold',            { bg = 'primary_2' },                                     { bg = 'ansi_blue', attrs = 'bold' })
+hi('CursorLineSign',            { bg = 'primary_2' },                                     { bg = 'ansi_blue', attrs = 'bold' })
 hi('LineNr',                    { fg = 'primary_6' },                                     { fg = 'ansi_blue' })
-hi('SignColumn',                { fg = 'primary_15', bg = 'editor_bg' },                  { fg = 'ansi_brblue', bg = 'ansi_black' })
+hi('SignColumn',                { fg = 'primary_15' },                                    { fg = 'ansi_brblue' })
 
 hi('StatusLine',                { fg = 'text_10', bg = 'primary_6', attrs = 'bold' },     { fg = 'ansi_white', bg = 'ansi_blue', attrs = 'bold' })
 hi('StatusLineNC',              { fg = 'text_6', bg = 'primary_1' },                      { fg = 'ansi_brblack', bg = 'ansi_black' })
@@ -63,6 +65,10 @@ hi('MatchParen',                { fg = 'text_8', attrs = 'bold' },              
 hi('DiffAdd',                   { fg = 'green_4', attrs = 'bold' },                       { fg = 'ansi_green' })
 hi('DiffChange',                { fg = 'orange_6', attrs = 'bold' },                      { fg = 'ansi_yellow' })
 hi('DiffDelete',                { fg = 'red_5', attrs = 'bold' },                         { fg = 'ansi_red' })
+hi('Added',                     { fg = 'green_3', attrs = 'bold' },                       { fg = 'ansi_green' })
+hi('Changed',                   { fg = 'orange_3', attrs = 'bold' },                      { fg = 'ansi_yellow' })
+hi('Removed',                   { fg = 'red_3', attrs = 'bold' },                         { fg = 'ansi_red' })
+
 hi('Directory',                 { fg = 'primary_8' },                                     { fg = 'ansi_cyan', bg = 'ansi_black' })
 hi('SpecialKey',                { fg = 'debug' },                                         { fg = 'ansi_brmagenta' })
 
