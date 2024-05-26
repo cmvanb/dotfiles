@@ -24,16 +24,30 @@ opt.cursorline = true
 opt.cursorcolumn = false
 
 -- Whitespace visuals
-opt.listchars = { tab = '-->', eol = '', trail = '⋅' }
+if not is_linux_virtual_terminal() then
+    opt.listchars = { tab = '-->', eol = '', trail = '⋅' }
+else
+    opt.listchars = { tab = '-->', eol = '↓', trail = '.' }
+end
+
 opt.list = false
 
 -- End-of-buffer and folds visuals
-opt.fillchars = {
-    eob = '.',
-    foldopen = '󰅀',
-    foldclose = '󰅂',
-    fold = ' ',
-}
+if not is_linux_virtual_terminal() then
+    opt.fillchars = {
+        eob = '.',
+        foldopen = '󰅀',
+        foldclose = '󰅂',
+        fold = ' ',
+    }
+else
+    opt.fillchars = {
+        eob = '~',
+        foldopen = '▼',
+        foldclose = '▶',
+        fold = ' ',
+    }
+end
 
 -- Tabs should be 4 spaces
 opt.tabstop = 4

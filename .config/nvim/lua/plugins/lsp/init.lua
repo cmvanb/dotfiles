@@ -22,10 +22,17 @@ local sign =
         })
     end
 
-sign({ name = 'DiagnosticSignError', text = '󰅜 ' })
-sign({ name = 'DiagnosticSignWarn',  text = ' ' })
-sign({ name = 'DiagnosticSignHint',  text = '󰌵 ' })
-sign({ name = 'DiagnosticSignInfo',  text = 'ℹ ' })
+if not is_linux_virtual_terminal() then
+    sign({ name = 'DiagnosticSignError', text = '󰅜 ' })
+    sign({ name = 'DiagnosticSignWarn',  text = ' ' })
+    sign({ name = 'DiagnosticSignHint',  text = '󰌵 ' })
+    sign({ name = 'DiagnosticSignInfo',  text = 'ℹ ' })
+else
+    sign({ name = 'DiagnosticSignError', text = 'x ' })
+    sign({ name = 'DiagnosticSignWarn',  text = '! ' })
+    sign({ name = 'DiagnosticSignHint',  text = '? ' })
+    sign({ name = 'DiagnosticSignInfo',  text = 'i ' })
+end
 
 vim.diagnostic.config({
     virtual_text = false,
