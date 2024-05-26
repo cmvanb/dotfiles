@@ -18,7 +18,6 @@ return {
         'echasnovski/mini.nvim',
         config = function()
             do_load('plugins/mini/comment')
-            do_load('plugins/mini/indentscope')
             do_load('plugins/mini/map')
             do_load('plugins/mini/pairs')
         end
@@ -200,6 +199,21 @@ return {
         end
     },
 
+    -- Indentation
+    {
+        'lukas-reineke/indent-blankline.nvim',
+        config = function()
+            require('ibl').setup({
+                indent = {
+                    char = '▏',
+                },
+                scope = {
+                    enabled = true,
+                }
+            })
+        end
+    },
+
     -- Navigation
     ----------------------------------------------------------------------------
 
@@ -257,7 +271,16 @@ return {
     {
         'lewis6991/gitsigns.nvim',
         config = function()
-            require('gitsigns').setup()
+            require('gitsigns').setup({
+                signs = {
+                    add          = { text = '┃' },
+                    change       = { text = '┃' },
+                    delete       = { text = '_' },
+                    topdelete    = { text = '‾' },
+                    changedelete = { text = '~' },
+                    untracked    = { text = '┆' },
+                },
+            })
         end
     },
 

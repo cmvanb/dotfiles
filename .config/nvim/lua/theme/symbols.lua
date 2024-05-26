@@ -1,5 +1,7 @@
 --------------------------------------------------------------------------------
 -- Symbols lookup
+
+-- TODO: Consider adding a shortcut to toggle the EOL character.
 --------------------------------------------------------------------------------
 
 local symbols =
@@ -17,9 +19,10 @@ local symbols =
             fold = ' ',
         },
         listchars = {
-            tab = '-->',
-            eol = '',
-            trail = '⋅'
+            lead = '⋅',
+            tab = '―',
+            -- eol = '',
+            trail = '⋅',
         },
     } or {
         diagnostic_signs = {
@@ -35,9 +38,10 @@ local symbols =
             fold = ' ',
         },
         listchars = {
-            tab = '-->',
-            eol = '↓',
-            trail = '.'
+            lead = '.',
+            tab = '>-',
+            -- eol = '↓',
+            trail = '.',
         },
     }
 

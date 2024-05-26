@@ -27,7 +27,7 @@ opt.cursorcolumn = false
 
 -- Whitespace visuals
 opt.listchars = Symbols.listchars
-opt.list = false
+opt.list = true
 
 -- End-of-buffer and folds visuals
 opt.fillchars = Symbols.fillchars
