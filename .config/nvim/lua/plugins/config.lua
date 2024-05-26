@@ -221,7 +221,9 @@ return {
     {
         'ggandor/leap.nvim',
         config = function()
-            do_load('plugins/leap')
+            require('leap').setup({
+                case_sensitive = true,
+            })
         end
     },
 
