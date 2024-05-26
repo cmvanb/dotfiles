@@ -203,9 +203,11 @@ return {
     {
         'lukas-reineke/indent-blankline.nvim',
         config = function()
+            local Symbols = require('theme.symbols')
+
             require('ibl').setup({
                 indent = {
-                    char = '▏',
+                    char = Symbols.indent_char,
                 },
                 scope = {
                     enabled = true,

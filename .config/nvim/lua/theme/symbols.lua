@@ -4,7 +4,7 @@
 -- TODO: Consider adding a shortcut to toggle the EOL character.
 --------------------------------------------------------------------------------
 
-local symbols =
+local Symbols =
     not is_linux_virtual_terminal() and {
         diagnostic_signs = {
             error = '󰅜 ',
@@ -25,6 +25,7 @@ local symbols =
             trail = '⋅',
         },
         prompt_char = '❱',
+        indent_char = '▏',
     } or {
         diagnostic_signs = {
             error = 'x ',
@@ -45,6 +46,7 @@ local symbols =
             trail = '.',
         },
         prompt_char = '>',
+        indent_char = '│',
     }
 
-return symbols
+return Symbols
