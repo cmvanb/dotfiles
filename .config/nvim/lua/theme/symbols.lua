@@ -24,6 +24,7 @@ local symbols =
             -- eol = '',
             trail = '⋅',
         },
+        prompt_char = '❱',
     } or {
         diagnostic_signs = {
             error = 'x ',
@@ -43,6 +44,7 @@ local symbols =
             -- eol = '↓',
             trail = '.',
         },
+        prompt_char = '>',
     }
 
 return symbols

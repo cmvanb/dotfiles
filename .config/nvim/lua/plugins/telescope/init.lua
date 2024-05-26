@@ -5,13 +5,15 @@
 local telescope = require('telescope')
 local actions = require('telescope.actions')
 
+local Symbols = require('theme.symbols')
+
 telescope.setup({
     defaults = {
         layout_strategy = 'horizontal',
         layout_config = {
             preview_width = 0.5,
         },
-        prompt_prefix = '❱ ',
+        prompt_prefix = Symbols.prompt_char .. ' ',
         selection_caret = ' ',
         vimgrep_arguments = {
             'rg',
