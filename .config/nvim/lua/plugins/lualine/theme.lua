@@ -2,7 +2,7 @@
 -- Lualine theme
 --------------------------------------------------------------------------------
 
-local theme = require('system.theme')
+local theme = require('theme.system')
 
 local colors = {
     theme_1_bg  = theme.color_hash('primary_6'),

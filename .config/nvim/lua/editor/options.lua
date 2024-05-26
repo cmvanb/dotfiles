@@ -2,6 +2,8 @@
 -- Editor options
 --------------------------------------------------------------------------------
 
+local Symbols = reload('theme.symbols')
+
 local opt = vim.opt
 
 -- Use terminal title
@@ -24,30 +26,11 @@ opt.cursorline = true
 opt.cursorcolumn = false
 
 -- Whitespace visuals
-if not is_linux_virtual_terminal() then
-    opt.listchars = { tab = '-->', eol = '', trail = '⋅' }
-else
-    opt.listchars = { tab = '-->', eol = '↓', trail = '.' }
-end
-
+opt.listchars = Symbols.listchars
 opt.list = false
 
 -- End-of-buffer and folds visuals
-if not is_linux_virtual_terminal() then
-    opt.fillchars = {
-        eob = '.',
-        foldopen = '󰅀',
-        foldclose = '󰅂',
-        fold = ' ',
-    }
-else
-    opt.fillchars = {
-        eob = '~',
-        foldopen = '▼',
-        foldclose = '▶',
-        fold = ' ',
-    }
-end
+opt.fillchars = Symbols.fillchars
 
 -- Tabs should be 4 spaces
 opt.tabstop = 4

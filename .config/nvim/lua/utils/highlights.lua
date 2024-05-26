@@ -7,7 +7,7 @@ local HighlightsUtils = {}
 -- Imports
 --------------------------------------------------------------------------------
 
-local theme = reload('system.theme')
+local theme = reload('theme.system')
 
 -- Private functions
 --------------------------------------------------------------------------------

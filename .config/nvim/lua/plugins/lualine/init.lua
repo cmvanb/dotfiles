@@ -4,6 +4,8 @@
 
 local theme = reload('plugins.lualine.theme')
 
+local Symbols = reload('theme.symbols')
+
 local lualine_config = {
     options = {
         theme = theme,
@@ -47,10 +49,10 @@ local lualine_config = {
                     hint  = 'LualineDiagHint',
                 },
                 symbols = {
-                    error = '✘ ',
-                    warn = '⚠ ',
-                    hint = '󰌵 ',
-                    info = 'ℹ ',
+                    error = Symbols.diagnostic_signs.error,
+                    warn = Symbols.diagnostic_signs.warn,
+                    hint = Symbols.diagnostic_signs.hint,
+                    info = Symbols.diagnostic_signs.info,
                 },
             },
             {

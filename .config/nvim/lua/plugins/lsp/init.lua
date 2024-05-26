@@ -9,6 +9,7 @@
 
 local KeyMapUtils = reload('utils.keymaps')
 local TableUtils = reload('utils.table')
+local Symbols = reload('theme.symbols')
 
 -- Diagnostics UI
 --------------------------------------------------------------------------------
@@ -22,17 +23,10 @@ local sign =
         })
     end
 
-if not is_linux_virtual_terminal() then
-    sign({ name = 'DiagnosticSignError', text = '󰅜 ' })
-    sign({ name = 'DiagnosticSignWarn',  text = ' ' })
-    sign({ name = 'DiagnosticSignHint',  text = '󰌵 ' })
-    sign({ name = 'DiagnosticSignInfo',  text = 'ℹ ' })
-else
-    sign({ name = 'DiagnosticSignError', text = 'x ' })
-    sign({ name = 'DiagnosticSignWarn',  text = '! ' })
-    sign({ name = 'DiagnosticSignHint',  text = '? ' })
-    sign({ name = 'DiagnosticSignInfo',  text = 'i ' })
-end
+sign({ name = 'DiagnosticSignError', text = Symbols.diagnostic_signs.error })
+sign({ name = 'DiagnosticSignWarn',  text = Symbols.diagnostic_signs.warn })
+sign({ name = 'DiagnosticSignHint',  text = Symbols.diagnostic_signs.hint })
+sign({ name = 'DiagnosticSignInfo',  text = Symbols.diagnostic_signs.info })
 
 vim.diagnostic.config({
     virtual_text = false,

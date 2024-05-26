@@ -3,7 +3,7 @@
 --------------------------------------------------------------------------------
 
 if vim.g.neovide ~= nil then
-    local theme = require('system.theme')
+    local theme = reload('theme.system')
 
     vim.opt.guifont = theme.font('font_mono') .. ':h12.5'
 
