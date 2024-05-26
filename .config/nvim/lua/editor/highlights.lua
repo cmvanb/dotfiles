@@ -32,7 +32,7 @@ hi('EndOfBuffer',               { fg = 'primary_4' },                           
 hi('LineNr',                    { fg = 'primary_6' },                                     { fg = 'ansi_blue' })
 hi('CursorLine',                { bg = 'primary_2' },                                     { bg = 'ansi_blue' })
 hi('CursorLineNr',              { fg = 'primary_12', bg = 'primary_2' },                  { fg = 'ansi_brblue', bg = 'ansi_blue' })
-hi('CursorLineFold',            { fg = 'gray_3', bg = 'primary_2' },                      { bg = 'ansi_blue' })
+hi('CursorLineFold',            { fg = 'gray_3', bg = 'primary_2' },                      { fg = 'ansi_brblue', bg = 'ansi_blue' })
 hi('CursorLineSign',            { bg = 'primary_2' },                                     { bg = 'ansi_blue' })
 hi('SignColumn',                { fg = 'primary_15' },                                    { fg = 'ansi_brblue' })
 
