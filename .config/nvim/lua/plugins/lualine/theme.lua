@@ -79,4 +79,3 @@ return {
         z = { bg = colors.inactive_bg, fg = colors.inactive_fg },
     }
 }
-

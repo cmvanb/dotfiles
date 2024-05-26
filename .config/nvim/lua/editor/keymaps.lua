@@ -86,6 +86,12 @@ noremap('<C-a>', 'gg0vG$')
 -- Undo
 nnoremap('<C-z>', 'u')
 
+-- Viewing
+--------------------------------------------------------------------------------
+
+-- Toggle indent guides & whitespace
+nnoremap('<leader>n', ':IBLToggle<cr>:tabdo windo set list!<cr>')
+
 -- Selection
 --------------------------------------------------------------------------------
 
