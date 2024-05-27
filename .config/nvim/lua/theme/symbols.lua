@@ -1,6 +1,6 @@
 --------------------------------------------------------------------------------
 -- Symbols lookup
-
+--
 -- TODO: Consider adding a shortcut to toggle the EOL character.
 --------------------------------------------------------------------------------
 
@@ -11,6 +11,14 @@ local Symbols =
             warn  = ' ',
             hint  = '󰌵 ',
             info  = 'ℹ ',
+        },
+        git_signs = {
+            add          = '┃',
+            change       = '┃',
+            delete       = '_',
+            topdelete    = '‾',
+            changedelete = '~',
+            untracked    = '┆',
         },
         fillchars = {
             eob = '.',
@@ -32,6 +40,14 @@ local Symbols =
             warn  = '! ',
             hint  = '? ',
             info  = 'i ',
+        },
+        git_signs = {
+            add          = '+',
+            change       = '~',
+            delete       = '-',
+            topdelete    = '-',
+            changedelete = '~',
+            untracked    = 'u',
         },
         fillchars = {
             eob = '~',

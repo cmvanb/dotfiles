@@ -275,14 +275,16 @@ return {
     {
         'lewis6991/gitsigns.nvim',
         config = function()
+            local Symbols = require('theme.symbols')
+
             require('gitsigns').setup({
                 signs = {
-                    add          = { text = '┃' },
-                    change       = { text = '┃' },
-                    delete       = { text = '_' },
-                    topdelete    = { text = '‾' },
-                    changedelete = { text = '~' },
-                    untracked    = { text = '┆' },
+                    add          = { text = Symbols.git_signs.add },
+                    change       = { text = Symbols.git_signs.change },
+                    delete       = { text = Symbols.git_signs.delete },
+                    topdelete    = { text = Symbols.git_signs.topdelete },
+                    changedelete = { text = Symbols.git_signs.changedelete },
+                    untracked    = { text = Symbols.git_signs.untracked },
                 },
             })
         end
