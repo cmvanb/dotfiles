@@ -90,7 +90,7 @@ nnoremap('<C-z>', 'u')
 --------------------------------------------------------------------------------
 
 -- Toggle indent guides & whitespace
-nnoremap('<leader>n', ':IBLToggle<cr>:tabdo windo set list!<cr>')
+nnoremap('<leader>n', ':IBLToggle<cr>:tabdo windo set list!<cr>', { silent = true })
 
 -- Selection
 --------------------------------------------------------------------------------
