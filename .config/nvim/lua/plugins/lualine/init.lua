@@ -10,9 +10,10 @@ local lualine_config = {
     options = {
         theme = theme,
         component_separators = ' ',
-        section_separators = { left = '', right = '' },
-        -- section_separators = { left = '', right = '' },
-        -- section_separators = { left = '', right = '' },
+        section_separators = {
+            left = Symbols.lualine.section_separator_left,
+            right = Symbols.lualine.section_separator_right,
+        },
     },
     sections = {
         lualine_a = { 'mode' },
@@ -27,9 +28,9 @@ local lualine_config = {
                     removed  = 'LualineDiffDelete',
                 },
                 symbols = {
-                    added = '+',
-                    modified = '~',
-                    removed = '-',
+                    added = Symbols.diff_signs.added,
+                    modified = Symbols.diff_signs.changed,
+                    removed = Symbols.diff_signs.removed,
                 },
             },
         },
@@ -41,8 +42,8 @@ local lualine_config = {
         lualine_y = {
             {
                 'diagnostics',
-                 colored = true,
-                 diagnostics_color = {
+                colored = true,
+                diagnostics_color = {
                     error = 'LualineDiagError',
                     warn  = 'LualineDiagWarn',
                     info  = 'LualineDiagInfo',
@@ -70,11 +71,10 @@ local lualine_config = {
     inactive_sections = {
         lualine_a = {},
         lualine_b = {},
-        lualine_c = {
-        },
+        lualine_c = {},
         lualine_x = {},
         lualine_y = {},
-        lualine_z = {}
+        lualine_z = {},
     },
     tabline = {
         lualine_a = {
@@ -83,13 +83,14 @@ local lualine_config = {
                 color = 'lualine_z_normal',
                 path = 3,
                 shorting_target = 0,
-                -- separator = { left = '', right = '' },
-                -- separator = { left = '', right = '' },
-                separator = { left = '', right = '' },
+                separator = {
+                    left = '',
+                    right = Symbols.lualine.section_separator_left
+                },
                 padding = { left = 1, right = 1 },
                 symbols = {
-                    modified = '●',
-                    readonly = '󰌾',
+                    modified = Symbols.lualine.file_modified,
+                    readonly = Symbols.lualine.file_readonly,
                     unnamed = '[No Name]',
                     newfile = '',
                 }
@@ -142,11 +143,14 @@ local lualine_config = {
                 'tabs',
                 mode = 1,
                 fmt = function(_, context)
+                    -- TODO: Add a symbol for the tab number.
                     return '󱔗 ' .. context.tabnr .. ''
                 end,
                 show_modified_status = false,
-                -- separator = { left = '', right = '' },
-                separator = { left = '', right = '' },
+                separator = {
+                    left = Symbols.lualine.section_separator_right,
+                    right = ''
+                },
                 padding = { left = 1, right = 1 },
                 tabs_color = {
                     active = 'lualine_z_normal',
