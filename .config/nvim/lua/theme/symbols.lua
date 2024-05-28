@@ -69,7 +69,7 @@ local Symbols =
             trail = '·',
         },
         prompt_char = '>',
-        select_char = '○',
+        select_char = '·',
         indent_char = '│',
     }
 
