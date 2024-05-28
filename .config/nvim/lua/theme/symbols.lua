@@ -6,6 +6,9 @@
 
 local Symbols =
     not is_linux_virtual_terminal() and {
+        borderchars = {
+            "─", "│", "─", "│", "╭", "╮", "╯", "╰",
+        },
         diagnostic_signs = {
             error = '󰅜 ',
             warn  = ' ',
@@ -33,8 +36,12 @@ local Symbols =
             trail = '⋅',
         },
         prompt_char = '❱',
+        select_char = '',
         indent_char = '▏',
     } or {
+        borderchars = {
+            '─', '│', '─', '│', '┌', '┐', '┘', '└',
+        },
         diagnostic_signs = {
             error = 'x ',
             warn  = '! ',
@@ -42,12 +49,12 @@ local Symbols =
             info  = 'i ',
         },
         git_signs = {
-            add          = '+',
-            change       = '~',
-            delete       = '-',
-            topdelete    = '-',
+            add          = '│',
+            change       = '│',
+            delete       = '─',
+            topdelete    = '─',
             changedelete = '~',
-            untracked    = 'u',
+            untracked    = '░',
         },
         fillchars = {
             eob = '~',
@@ -56,12 +63,13 @@ local Symbols =
             fold = ' ',
         },
         listchars = {
-            lead = '.',
+            lead = '·',
             tab = '>-',
             -- eol = '↓',
-            trail = '.',
+            trail = '·',
         },
         prompt_char = '>',
+        select_char = '○',
         indent_char = '│',
     }
 

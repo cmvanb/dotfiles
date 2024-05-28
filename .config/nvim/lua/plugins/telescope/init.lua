@@ -9,12 +9,14 @@ local Symbols = require('theme.symbols')
 
 telescope.setup({
     defaults = {
+        border = true,
+        borderchars = Symbols.borderchars,
         layout_strategy = 'horizontal',
         layout_config = {
             preview_width = 0.5,
         },
         prompt_prefix = Symbols.prompt_char .. ' ',
-        selection_caret = ' ',
+        selection_caret = Symbols.select_char .. ' ',
         vimgrep_arguments = {
             'rg',
             '--color=never',
