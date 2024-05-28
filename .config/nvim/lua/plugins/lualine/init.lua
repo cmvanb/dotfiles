@@ -143,8 +143,7 @@ local lualine_config = {
                 'tabs',
                 mode = 1,
                 fmt = function(_, context)
-                    -- TODO: Add a symbol for the tab number.
-                    return '󱔗 ' .. context.tabnr .. ''
+                    return Symbols.lualine.tab .. '  ' .. context.tabnr .. ''
                 end,
                 show_modified_status = false,
                 separator = {

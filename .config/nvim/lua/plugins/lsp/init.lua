@@ -19,7 +19,7 @@ local sign =
         vim.fn.sign_define(opts.name, {
             texthl = opts.name,
             text = opts.text,
-            numhl = ''
+            numhl = '',
         })
     end
 
