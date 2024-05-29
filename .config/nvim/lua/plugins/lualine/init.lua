@@ -6,7 +6,7 @@ local theme = reload('plugins.lualine.theme')
 
 local Symbols = reload('theme.symbols')
 
-local lualine_config = {
+require('lualine').setup({
     options = {
         theme = theme,
         component_separators = ' ',
@@ -18,7 +18,10 @@ local lualine_config = {
     sections = {
         lualine_a = { 'mode' },
         lualine_b = {
-            'branch',
+            {
+                'branch',
+                icon = Symbols.lualine.git_branch,
+            },
             {
                 'diff',
                 colored = true,
@@ -143,7 +146,7 @@ local lualine_config = {
                 'tabs',
                 mode = 1,
                 fmt = function(_, context)
-                    return Symbols.lualine.tab .. '  ' .. context.tabnr .. ''
+                    return Symbols.lualine.tab .. ' ' .. context.tabnr
                 end,
                 show_modified_status = false,
                 separator = {
@@ -158,6 +161,4 @@ local lualine_config = {
             },
         }
     },
-}
-
-require('lualine').setup(lualine_config)
+})
