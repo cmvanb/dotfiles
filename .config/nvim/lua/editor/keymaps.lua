@@ -217,8 +217,8 @@ nnoremap('<C-l>', '<C-w>l')
 nnoremap('<C-z>', '<C-w>r')
 
 -- Split windows
-nnoremap('<C-n>', '<esc>:belowright vnew<cr>', { silent = true })
-nnoremap('<C-p>', '<esc>:belowright new<cr>', { silent = true })
+nnoremap('<C-n>', ':belowright vnew<cr>', { silent = true })
+nnoremap('<C-p>', ':belowright new<cr>', { silent = true })
 
 -- Close window
 nnoremap('<C-w>', ':close<cr>', { silent = true })
@@ -230,7 +230,7 @@ nnoremap('<C-PageDown>', ':wincmd <<cr>', { silent = true })
 -- Buffer management
 --------------------------------------------------------------------------------
 
--- Change buffer
+-- Cycle buffers
 -- NOTE: Alacritty translates <C-BS> to <F15> to get around NVIM's limitation.
 nnoremap('<F15>', ':bprev<cr>', { silent = true })
 nnoremap('<C-Tab>', ':bnext<cr>', { silent = true })
@@ -249,7 +249,7 @@ noremap('<leader>q', ':qa!<cr>')
 -- Git
 --------------------------------------------------------------------------------
 
-nnoremap('gm', '<cmd>GitMessenger<cr>')
+nnoremap('gm', ':GitMessenger<cr>')
 
 -- Plugin management
 --------------------------------------------------------------------------------
