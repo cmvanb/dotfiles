@@ -1,7 +1,5 @@
 --------------------------------------------------------------------------------
 -- Symbols lookup
---
--- TODO: Consider adding a shortcut to toggle the EOL character.
 --------------------------------------------------------------------------------
 
 local Symbols =
@@ -46,7 +44,7 @@ local Symbols =
             git_branch = '',
             section_separator_left = '',
             section_separator_right = '',
-            tab = ' ',
+            tab_page = '  ',
         },
         prompt_char = '❱',
         select_char = '●',
@@ -92,7 +90,7 @@ local Symbols =
             git_branch = '├',
             section_separator_left = '>',
             section_separator_right = '<',
-            tab = '@',
+            tab_page = '@',
         },
         prompt_char = '>',
         select_char = '·',

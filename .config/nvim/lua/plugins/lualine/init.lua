@@ -146,7 +146,7 @@ require('lualine').setup({
                 'tabs',
                 mode = 1,
                 fmt = function(_, context)
-                    return Symbols.lualine.tab .. ' ' .. context.tabnr
+                    return Symbols.lualine.tab_page .. context.tabnr
                 end,
                 show_modified_status = false,
                 separator = {
