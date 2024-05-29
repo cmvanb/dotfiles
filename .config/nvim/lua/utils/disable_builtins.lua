@@ -17,9 +17,8 @@ local builtin_plugins = {
     ['2html_plugin']      = false,
     ['logiPat']           = false,
     ['rrhelper']          = false,
-    -- `netrw` & `netrwPlugin` enables link following with `gx`
-    ['netrw']             = true,
-    ['netrwPlugin']       = true,
+    ['netrw']             = false,
+    ['netrwPlugin']       = false,
     ['netrwSettings']     = false,
     ['netrwFileHandlers'] = false,
 }
