@@ -230,7 +230,6 @@ noremap('<leader>q', ':qa!<cr>')
 -- Git
 --------------------------------------------------------------------------------
 
-nnoremap('<C-g>b', '<cmd>GitBlameToggle<cr>')
 nnoremap('gm', '<cmd>GitMessenger<cr>')
 
 -- Plugin management
