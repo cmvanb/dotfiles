@@ -32,7 +32,7 @@ hi('EndOfBuffer',               { fg = 'primary_4' },                           
 hi('LineNr',                    { fg = 'primary_6' },                                     { fg = 'ansi_blue' })
 hi('CursorLine',                { bg = 'primary_2' },                                     { bg = 'ansi_blue' })
 hi('CursorLineNr',              { fg = 'primary_12', bg = 'primary_2' },                  { fg = 'ansi_brblue', bg = 'ansi_blue' })
-hi('CursorLineFold',            { fg = 'gray_3', bg = 'primary_2' },                      { fg = 'ansi_brblue', bg = 'ansi_blue' })
+hi('CursorLineFold',            { fg = 'gray_4', bg = 'primary_2' },                      { fg = 'ansi_brblue', bg = 'ansi_blue' })
 hi('CursorLineSign',            { bg = 'primary_2' },                                     { bg = 'ansi_blue' })
 hi('SignColumn',                { fg = 'primary_15' },                                    { fg = 'ansi_brblue' })
 
@@ -53,7 +53,7 @@ hi('Search',                    { fg = 'gray_0', bg = 'magenta_5', attrs = 'bold
 hi('CurSearch',                 { fg = 'gray_0', bg = 'green_4', attrs = 'bold' },        { fg = 'ansi_black', bg = 'ansi_green' })
 
 hi('Folded',                    { bg = 'primary_1' },                                     { bg = 'ansi_blue' })
-hi('FoldColumn',                { fg = 'gray_3' },                                        { fg = 'ansi_blue' })
+hi('FoldColumn',                { fg = 'gray_4', attrs = 'bold' },                                        { fg = 'ansi_blue' })
 
 hi('Title',                     { fg = 'text_15', attrs = 'bold' },                       { fg = 'ansi_brwhite' })
 hi('PMenu',                     { fg = 'text_8', bg = 'editor_bg' },                      { fg = 'ansi_white', bg = 'ansi_black' })
@@ -116,7 +116,7 @@ hi('LeapLabelSecondary',     { fg = 'primary_2', bg = 'primary_11', attrs = 'bol
 hi('LeapLabelSelected',      { fg = 'debug', attrs = 'bold' },                         { fg = 'ansi_brmagenta' })
 hi('IblIndent',              { fg = 'gray_1' },                                        { fg = 'ansi_brblack' })
 hi('IblWhitespace',          { fg = 'gray_1' },                                        { fg = 'ansi_brblack' })
-hi('IblScope',               { fg = 'gray_3' },                                        { fg = 'ansi_brblack' })
+hi('IblScope',               { fg = 'gray_4' },                                        { fg = 'ansi_brblack' })
 hi('IlluminatedWordRead',    { bg = 'primary_3' },                                     { fg = 'ansi_white', bg = 'ansi_blue' })
 hi('IlluminatedWordText',    { bg = 'primary_3' },                                     { fg = 'ansi_white', bg = 'ansi_blue' })
 hi('IlluminatedWordWrite',   { bg = 'primary_3' },                                     { fg = 'ansi_white', bg = 'ansi_blue' })
