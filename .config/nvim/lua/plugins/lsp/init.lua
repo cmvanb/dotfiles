@@ -134,17 +134,6 @@ local default_config = {
     capabilities = capabilities,
 }
 
-local lua_ls_config =
-    TableUtils.merge(default_config, {
-        settings = {
-            Lua = {
-                diagnostics = {
-                    globals = { 'vim' }
-                }
-            }
-        }
-    })
-
 local lspconfig = require('lspconfig')
 
 -- Configure LSP handlers for each installed server. The first entry (without a
@@ -157,6 +146,17 @@ mason_lspconfig.setup_handlers({
     end,
 
     lua_ls = function()
-        lspconfig.lua_ls.setup(lua_ls_config)
+        local config =
+            TableUtils.merge(default_config, {
+                settings = {
+                    Lua = {
+                        diagnostics = {
+                            globals = { 'vim' }
+                        }
+                    }
+                }
+            })
+
+        lspconfig.lua_ls.setup(config)
     end,
 })
