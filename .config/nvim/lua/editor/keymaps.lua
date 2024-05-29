@@ -90,7 +90,32 @@ nnoremap('<C-z>', 'u')
 --------------------------------------------------------------------------------
 
 -- Toggle indent guides & whitespace
-nnoremap('<leader>n', ':IBLToggle<cr>:tabdo windo set list!<cr>', { silent = true })
+-- TODO: Consider cycling through an option to toggle the EOL character.
+nnoremap('<leader>n',
+    function()
+        Symbols = require('theme.symbols')
+
+        if vim.wo.list then
+            vim.cmd('IBLDisable')
+            vim.cmd('tabdo windo set nolist')
+        else
+            vim.cmd('IBLEnable')
+            vim.cmd('tabdo windo set list')
+        end
+    end,
+    { silent = true })
+
+-- Toggle linebreaks
+nnoremap('<leader>w',
+    function()
+        if vim.wo.linebreak then
+            vim.cmd('tabdo windo set nowrap')
+            vim.cmd('tabdo windo set nolinebreak')
+        else
+            vim.cmd('tabdo windo set wrap')
+            vim.cmd('tabdo windo set linebreak')
+        end
+    end)
 
 -- Selection
 --------------------------------------------------------------------------------
@@ -142,12 +167,6 @@ nnoremap('<leader>;', 'gg=G')
 
 -- Insert line break
 nnoremap('<Enter>', 'i<CR><esc>')
-
--- Reading
---------------------------------------------------------------------------------
-
--- Toggle linebreaks
-nnoremap('<C-g>w', '<cmd>set wrap!<cr>:set linebreak!<cr>')
 
 -- Folds
 --------------------------------------------------------------------------------
