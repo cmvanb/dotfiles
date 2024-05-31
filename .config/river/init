@@ -58,9 +58,9 @@ riverctl hide-cursor timeout 3000
 # shellcheck disable=SC2154
 riverctl background-color "$(color_zerox "$system_bg")"
 # shellcheck disable=SC2154
-riverctl border-color-focused "$(color_zerox "$primary_6")"
+riverctl border-color-focused "$(color_zerox "$primary_8")"
 # shellcheck disable=SC2154
-riverctl border-color-unfocused "$(color_zerox "$primary_2")"
+riverctl border-color-unfocused "$(color_zerox "$primary_3")"
 # shellcheck disable=SC2154
 riverctl border-color-urgent "$(color_zerox "$red_4")"
 

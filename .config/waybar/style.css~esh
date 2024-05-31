@@ -51,11 +51,11 @@ box > * > * {
 }
 
 #tags button.occupied {
-    background-color: <% color_hash $primary_2 %>;
+    background-color: <% color_hash $primary_3 %>;
 }
 
 #tags button.focused {
-    background-color: <% color_hash $primary_6 %>;
+    background-color: <% color_hash $primary_8 %>;
 }
 
 #tags button.urgent {
