@@ -4,7 +4,7 @@
     "modules-center": ["river/window"],
     "modules-right": ["bluetooth", "pulseaudio", "battery", "clock"],
     "river/window": {
-        "max-length": 80,
+        "max-length": 160,
         "tooltip": false
     },
     "bluetooth": {
