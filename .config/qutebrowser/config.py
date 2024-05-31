@@ -130,6 +130,9 @@ c.colors.completion.match.fg = theme.color_hash('yellow_6')
 c.colors.completion.scrollbar.fg = theme.color_hash('gray_2')
 c.colors.completion.scrollbar.bg = theme.color_hash('primary_1')
 
+# Behavior
+c.completion.web_history.exclude = [ '*.duckduckgo.com', 'www.google.com/search*', 'rdx.overdevs.com/*' ]
+
 # Downloads component
 #-------------------------------------------------------------------------------
 
