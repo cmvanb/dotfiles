@@ -101,7 +101,7 @@ chars = "\u001b\u005b\u0039\u003b\u0035\u0075"
 
 [bell]
 animation = 'Linear'
-color = '<% color_hash $primary_1 %>'
+color = '<% color_hash $gray_0 %>'
 duration = 200
 
 [cursor.style]
