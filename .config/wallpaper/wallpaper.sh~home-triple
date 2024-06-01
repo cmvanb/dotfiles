@@ -14,8 +14,9 @@ source "$XDG_OPT_HOME/wayland-utils/set-output-wallpaper.sh"
 
 pkill -x swaybg
 
-declare wallpaper="$XDG_PICTURES_DIR/wallpapers/vertical/psychedelic-jupiter.jpg"
+declare horizontal_wallpaper="$XDG_PICTURES_DIR/wallpapers/vertical/abstract-blue-orange-pink.jpg"
+declare vertical_wallpaper="$XDG_PICTURES_DIR/wallpapers/vertical/abstract-blue-orange-pink.jpg"
 
-set_output_wallpaper HDMI-A-6 "$wallpaper"
-set_output_wallpaper DP-3 "$wallpaper"
-set_output_wallpaper DP-4 "$wallpaper"
+set_output_wallpaper HDMI-A-6 "$vertical_wallpaper"
+set_output_wallpaper DP-3 "$horizontal_wallpaper"
+set_output_wallpaper DP-4 "$vertical_wallpaper"
