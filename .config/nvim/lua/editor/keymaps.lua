@@ -146,9 +146,6 @@ nnoremap('L', '$')
 xnoremap('L', '$')
 onoremap('L', '$')
 
--- Toggle mini map
-nnoremap('<C-g>m', require('mini.map').toggle)
-
 -- Leap
 noremap('<leader>j', function() require('leap').leap({}) end)
 noremap('<leader>k', function() require('leap').leap({ backward = true }) end)

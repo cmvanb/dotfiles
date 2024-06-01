@@ -18,7 +18,6 @@ return {
         'echasnovski/mini.nvim',
         config = function()
             do_load('plugins/mini/comment')
-            do_load('plugins/mini/map')
             do_load('plugins/mini/pairs')
         end
     },
