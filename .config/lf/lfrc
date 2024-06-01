@@ -16,7 +16,7 @@ set scrolloff 3
 # Configure the prompt.
 # TODO: Use system theme.
 # TODO: Use fallback symbols for virtual terminal.
-set promptfmt "\033[92;22m%u\033[0m⋅%h \033[34;1m%d\033[0m%f"
+set promptfmt "\033[92;22m%u\033[0m·%h \033[34;1m%d\033[0m%f"
 
 # Use icons.
 set icons

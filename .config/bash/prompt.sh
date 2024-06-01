@@ -22,7 +22,7 @@ construct_prompt() {
         user="\[$(color_ansi_fg "${ansi_brgreen:?}")\]\u\[$(color_ansi_reset)\]"
     fi
 
-    local separator="@" && [[ "$TERM" != "linux" ]] && separator="⋅"
+    local separator="·" && [[ "$TERM" != "linux" ]] && separator="⋅"
 
     local hostname="\h"
 

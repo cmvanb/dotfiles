@@ -20,7 +20,7 @@ function fish_prompt --description 'Print the prompt'
         set user (set_color brgreen)$user$normal
     end
 
-    set -l separator "@"
+    set -l separator "·"
     if test "$TERM" != "linux"
         set separator "⋅"
     end
