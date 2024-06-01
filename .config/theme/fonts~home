@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 font_mono='IosevkaTerm'
-font_sans='Open Sans'
+font_sans='Liberation Sans'
 font_serif='Liberation Serif'
 
 font_size_tiny=8
