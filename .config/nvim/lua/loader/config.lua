@@ -2,41 +2,23 @@
 -- Packer configuration
 --------------------------------------------------------------------------------
 
-local TableUtils = reload('utils.table')
+local ThemeConfig = reload('theme.config')
+local ThemeSymbols = reload('theme.symbols')
 
 local packer_config = {
     compile_path = vim.fn.stdpath('data') .. '/plugin/packer_compiled.lua',
     display = {
-        prompt_border = 'rounded',
+        prompt_border = ThemeConfig.border,
         open_fn = function()
-            return require('packer.util').float({ border = 'rounded' })
+            return require('packer.util').float({ border = ThemeConfig.border })
         end,
-        working_sym = '',
-        error_sym = '⨯',
-        done_sym = '',
-        removed_sym = '-',
-        moved_sym = '󰁔',
-        header_sym = '─',
+        working_sym = ThemeSymbols.packer.working,
+        error_sym = ThemeSymbols.packer.error,
+        done_sym = ThemeSymbols.packer.done,
+        removed_sym = ThemeSymbols.packer.removed,
+        moved_sym = ThemeSymbols.packer.moved,
+        header_sym = ThemeSymbols.packer.header,
     },
 }
-
-if is_linux_virtual_terminal() then
-    packer_config = TableUtils.merge(
-        packer_config,
-        {
-            display = {
-                prompt_border = 'single',
-                open_fn = function()
-                    return require('packer.util').float({ border = 'single' })
-                end,
-                working_sym = '?',
-                error_sym = 'x',
-                done_sym = 'O',
-                removed_sym = '-',
-                moved_sym = '→',
-                header_sym = '─',
-            }
-        })
-end
 
 return packer_config

@@ -2,7 +2,7 @@
 -- Editor options
 --------------------------------------------------------------------------------
 
-local Symbols = reload('theme.symbols')
+local ThemeSymbols = reload('theme.symbols')
 
 local opt = vim.opt
 
@@ -26,11 +26,11 @@ opt.cursorline = true
 opt.cursorcolumn = false
 
 -- Whitespace visuals
-opt.listchars = Symbols.listchars
+opt.listchars = ThemeSymbols.listchars
 opt.list = true
 
 -- End-of-buffer and folds visuals
-opt.fillchars = Symbols.fillchars
+opt.fillchars = ThemeSymbols.fillchars
 
 -- Tabs should be 4 spaces
 opt.tabstop = 4

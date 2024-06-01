@@ -27,6 +27,7 @@ vim.cmd('syntax reset')
 
 -- Highlights
 hi('Normal',                    { fg = 'editor_text_normal', bg = 'editor_bg' },          { fg = 'ansi_cyan', bg = 'ansi_black' })
+hi('NormalFloat',               { fg = 'editor_text_normal', bg = 'editor_bg' },          { fg = 'ansi_cyan', bg = 'ansi_black' })
 hi('NonText',                   { fg = 'gray_2' },                                        { fg = 'ansi_brwhite' })
 hi('EndOfBuffer',               { fg = 'primary_4' },                                     { })
 hi('LineNr',                    { fg = 'primary_6' },                                     { fg = 'ansi_blue' })
@@ -71,10 +72,10 @@ hi('Removed',                   { fg = 'red_3', attrs = 'bold' },               
 hi('Directory',                 { fg = 'primary_8' },                                     { fg = 'ansi_cyan', bg = 'ansi_black' })
 hi('SpecialKey',                { fg = 'debug' },                                         { fg = 'ansi_brmagenta' })
 
-hi('DiagnosticSignError',       { fg = 'red_6', attrs = 'bold' },                         { fg = 'ansi_red' })
-hi('DiagnosticSignWarn',        { fg = 'yellow_5', attrs = 'bold' },                      { fg = 'ansi_yellow' })
-hi('DiagnosticSignInfo',        { fg = 'text_10', attrs = 'bold' },                       { fg = 'ansi_white' })
-hi('DiagnosticSignHint',        { fg = 'orange_7', attrs = 'bold' },                      { fg = 'ansi_magenta' })
+hi('DiagnosticError',           { fg = 'red_6', attrs = 'bold' },                         { fg = 'ansi_red' })
+hi('DiagnosticWarn',            { fg = 'yellow_5', attrs = 'bold' },                      { fg = 'ansi_bryellow' })
+hi('DiagnosticInfo',            { fg = 'text_10', attrs = 'bold' },                       { fg = 'ansi_white' })
+hi('DiagnosticHint',            { fg = 'orange_7', attrs = 'bold' },                      { fg = 'ansi_yellow' })
 hi('DiagnosticUnderlineError',  { sp = 'red_6', attrs = 'undercurl' },                    { fg = 'ansi_red' })
 hi('DiagnosticUnderlineWarn',   { sp = 'yellow_5', attrs = 'undercurl' },                 { fg = 'ansi_yellow' })
 hi('DiagnosticUnderlineInfo',   { sp = 'text_10', attrs = 'undercurl' },                  { fg = 'ansi_white' })
@@ -82,13 +83,18 @@ hi('DiagnosticUnderlineHint',   { sp = 'orange_7', attrs = 'undercurl' },       
 hi('SpellBad',                  { sp = 'red_5', attrs = 'undercurl' },                    { fg = 'ansi_red', attrs = 'underline' })
 
 -- Links
-ln('CursorColumn',   'CursorLine')
-ln('Question',       'MoreMsg')
-ln('ModeMsg',        'MoreMsg')
-ln('Error',          'ErrorMsg')
-ln('healthSuccess',  'MoreMsg')
-ln('VertSplit',      'WinSeparator')
-ln('Whitespace',     'NonText')
+ln('CursorColumn',         'CursorLine')
+ln('FloatBorder',          'WinSeparator')
+ln('Question',             'MoreMsg')
+ln('ModeMsg',              'MoreMsg')
+ln('Error',                'ErrorMsg')
+ln('healthSuccess',        'MoreMsg')
+ln('VertSplit',            'WinSeparator')
+ln('Whitespace',           'NonText')
+ln('DiagnosticSignError',  'DiagnosticError')
+ln('DiagnosticSignWarn',   'DiagnosticWarn')
+ln('DiagnosticSignInfo',   'DiagnosticInfo')
+ln('DiagnosticSignHint',   'DiagnosticHint')
 
 -- Custom UI highlights
 --------------------------------------------------------------------------------
@@ -110,6 +116,7 @@ ln('QuickFixLine',  'FloatMenuSelection')
 --------------------------------------------------------------------------------
 
 -- Highlights
+hi('CopilotSuggestion',      { fg = 'text_6' },                                        { fg = 'ansi_brblack' })
 hi('IblIndent',              { fg = 'gray_1' },                                        { fg = 'ansi_brblack' })
 hi('IblWhitespace',          { fg = 'gray_1' },                                        { fg = 'ansi_brblack' })
 hi('IblScope',               { fg = 'gray_4' },                                        { fg = 'ansi_brblack' })

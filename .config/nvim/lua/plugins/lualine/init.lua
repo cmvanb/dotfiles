@@ -4,15 +4,15 @@
 
 local theme = reload('plugins.lualine.theme')
 
-local Symbols = reload('theme.symbols')
+local ThemeSymbols = reload('theme.symbols')
 
 require('lualine').setup({
     options = {
         theme = theme,
         component_separators = ' ',
         section_separators = {
-            left = Symbols.lualine.section_separator_left,
-            right = Symbols.lualine.section_separator_right,
+            left = ThemeSymbols.lualine.section_separator_left,
+            right = ThemeSymbols.lualine.section_separator_right,
         },
     },
     sections = {
@@ -20,7 +20,7 @@ require('lualine').setup({
         lualine_b = {
             {
                 'branch',
-                icon = Symbols.lualine.git_branch,
+                icon = ThemeSymbols.lualine.git_branch,
             },
             {
                 'diff',
@@ -31,14 +31,13 @@ require('lualine').setup({
                     removed  = 'LualineDiffDelete',
                 },
                 symbols = {
-                    added = Symbols.diff_signs.added,
-                    modified = Symbols.diff_signs.changed,
-                    removed = Symbols.diff_signs.removed,
+                    added = ThemeSymbols.diff_signs.added,
+                    modified = ThemeSymbols.diff_signs.changed,
+                    removed = ThemeSymbols.diff_signs.removed,
                 },
             },
         },
-        lualine_c =
-        {
+        lualine_c = {
         },
         lualine_x = {
         },
@@ -53,10 +52,10 @@ require('lualine').setup({
                     hint  = 'LualineDiagHint',
                 },
                 symbols = {
-                    error = Symbols.diagnostic_signs.error,
-                    warn = Symbols.diagnostic_signs.warn,
-                    hint = Symbols.diagnostic_signs.hint,
-                    info = Symbols.diagnostic_signs.info,
+                    error = ThemeSymbols.diagnostic_signs.error,
+                    warn = ThemeSymbols.diagnostic_signs.warn,
+                    hint = ThemeSymbols.diagnostic_signs.hint,
+                    info = ThemeSymbols.diagnostic_signs.info,
                 },
             },
             {
@@ -88,50 +87,16 @@ require('lualine').setup({
                 shorting_target = 0,
                 separator = {
                     left = '',
-                    right = Symbols.lualine.section_separator_left
+                    right = ThemeSymbols.lualine.section_separator_left
                 },
                 padding = { left = 1, right = 1 },
                 symbols = {
-                    modified = Symbols.lualine.file_modified,
-                    readonly = Symbols.lualine.file_readonly,
+                    modified = ThemeSymbols.lualine.file_modified,
+                    readonly = ThemeSymbols.lualine.file_readonly,
                     unnamed = '[No Name]',
                     newfile = '',
                 }
             },
-            -- {
-            --     'buffers',
-            --
-            --     icons_enabled = true,
-            --     padding = { left = 1, right = 1 },
-            --     -- separator = { left = '', right = '' },
-            --     separator = { left = '', right = '' },
-            --
-            --     show_filename_only = true,
-            --     hide_filename_extension = false,
-            --     show_modified_status = true,
-            --
-            --     mode = 0,
-            --
-            --     -- Don't limit length.
-            --     max_length = vim.o.columns / 16,
-            --
-            --     filetype_names = {
-            --         TelescopePrompt = 'Telescope',
-            --         packer = 'Packer',
-            --         mason = 'Mason',
-            --     },
-            --
-            --     buffers_color = {
-            --         active = 'lualine_z_normal',
-            --         inactive = 'lualine_y_normal',
-            --     },
-            --
-            --     symbols = {
-            --         modified = ' ●',
-            --         alternate_file = '',
-            --         directory =  '',
-            --     },
-            -- },
         },
         lualine_b = {
         },
@@ -146,11 +111,11 @@ require('lualine').setup({
                 'tabs',
                 mode = 1,
                 fmt = function(_, context)
-                    return Symbols.lualine.tab_page .. context.tabnr
+                    return ThemeSymbols.lualine.tab_page .. context.tabnr
                 end,
                 show_modified_status = false,
                 separator = {
-                    left = Symbols.lualine.section_separator_right,
+                    left = ThemeSymbols.lualine.section_separator_right,
                     right = ''
                 },
                 padding = { left = 1, right = 1 },

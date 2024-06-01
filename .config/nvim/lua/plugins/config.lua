@@ -61,9 +61,11 @@ return {
     {
         'williamboman/mason.nvim',
         config = function()
+            local ThemeConfig = require('theme.config')
+
             require('mason').setup({
                 ui = {
-                    border = 'rounded',
+                    border = ThemeConfig.border,
                 },
             })
         end,
@@ -203,11 +205,11 @@ return {
     {
         'lukas-reineke/indent-blankline.nvim',
         config = function()
-            local Symbols = require('theme.symbols')
+            local ThemeSymbols = require('theme.symbols')
 
             require('ibl').setup({
                 indent = {
-                    char = Symbols.indent_char,
+                    char = ThemeSymbols.indent_char,
                 },
                 scope = {
                     enabled = true,
@@ -275,16 +277,16 @@ return {
     {
         'lewis6991/gitsigns.nvim',
         config = function()
-            local Symbols = require('theme.symbols')
+            local ThemeSymbols = require('theme.symbols')
 
             require('gitsigns').setup({
                 signs = {
-                    add          = { text = Symbols.git_signs.add },
-                    change       = { text = Symbols.git_signs.change },
-                    delete       = { text = Symbols.git_signs.delete },
-                    topdelete    = { text = Symbols.git_signs.topdelete },
-                    changedelete = { text = Symbols.git_signs.changedelete },
-                    untracked    = { text = Symbols.git_signs.untracked },
+                    add          = { text = ThemeSymbols.git_signs.add },
+                    change       = { text = ThemeSymbols.git_signs.change },
+                    delete       = { text = ThemeSymbols.git_signs.delete },
+                    topdelete    = { text = ThemeSymbols.git_signs.topdelete },
+                    changedelete = { text = ThemeSymbols.git_signs.changedelete },
+                    untracked    = { text = ThemeSymbols.git_signs.untracked },
                 },
             })
         end

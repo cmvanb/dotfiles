@@ -9,7 +9,8 @@
 
 local KeyMapUtils = reload('utils.keymaps')
 local TableUtils = reload('utils.table')
-local Symbols = reload('theme.symbols')
+local ThemeConfig = reload('theme.config')
+local ThemeSymbols = reload('theme.symbols')
 
 -- Diagnostics UI
 --------------------------------------------------------------------------------
@@ -23,10 +24,10 @@ local sign =
         })
     end
 
-sign({ name = 'DiagnosticSignError', text = Symbols.diagnostic_signs.error })
-sign({ name = 'DiagnosticSignWarn',  text = Symbols.diagnostic_signs.warn })
-sign({ name = 'DiagnosticSignHint',  text = Symbols.diagnostic_signs.hint })
-sign({ name = 'DiagnosticSignInfo',  text = Symbols.diagnostic_signs.info })
+sign({ name = 'DiagnosticSignError', text = ThemeSymbols.diagnostic_signs.error })
+sign({ name = 'DiagnosticSignWarn',  text = ThemeSymbols.diagnostic_signs.warn })
+sign({ name = 'DiagnosticSignHint',  text = ThemeSymbols.diagnostic_signs.hint })
+sign({ name = 'DiagnosticSignInfo',  text = ThemeSymbols.diagnostic_signs.info })
 
 vim.diagnostic.config({
     virtual_text = false,
@@ -37,45 +38,24 @@ vim.diagnostic.config({
     float = {
         focusable = false,
         style = 'minimal',
-        border = 'rounded',
+        border = ThemeConfig.border,
         source = 'always',
         header = '',
         prefix = '',
     },
 })
 
--- LSP UI
---------------------------------------------------------------------------------
-
-vim.lsp.handlers['textDocument/hover'] =
-    vim.lsp.with(
-        vim.lsp.handlers.hover,
-        {
-            border = 'rounded',
-        })
-
-vim.lsp.handlers['textDocument/signatureHelp'] =
-    vim.lsp.with(
-        vim.lsp.handlers.signature_help,
-        {
-            border = 'rounded',
-        })
-
 -- LSP functions
 --------------------------------------------------------------------------------
 
 local function lsp_keymaps(bufnr)
-    local nnoremap, xnoremap =
-        KeyMapUtils.nnoremap,
-        KeyMapUtils.xnoremap
-
     local opts = { silent = true, buffer = bufnr }
 
     -- LSP actions
-    nnoremap('gh', vim.lsp.buf.hover, opts)
-    nnoremap('gs', vim.lsp.buf.signature_help, opts)
-    nnoremap('gc', vim.lsp.buf.rename, opts)
-    nnoremap('ga', vim.lsp.buf.code_action, opts)
+    KeyMapUtils.noremap('gh', vim.lsp.buf.hover, opts)
+    KeyMapUtils.noremap('gs', vim.lsp.buf.signature_help, opts)
+    KeyMapUtils.noremap('gc', vim.lsp.buf.rename, opts)
+    KeyMapUtils.noremap('ga', vim.lsp.buf.code_action, opts)
 end
 
 local function lsp_attach(_, bufnr)
