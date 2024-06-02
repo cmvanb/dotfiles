@@ -93,8 +93,6 @@ nnoremap('<C-z>', 'u')
 -- TODO: Consider cycling through an option to toggle the EOL character.
 nnoremap('<leader>n',
     function()
-        Symbols = require('theme.symbols')
-
         if vim.wo.list then
             vim.cmd('IBLDisable')
             vim.cmd('tabdo windo set nolist')
