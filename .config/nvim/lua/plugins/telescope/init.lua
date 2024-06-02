@@ -11,9 +11,10 @@ telescope.setup({
     defaults = {
         border = true,
         borderchars = ThemeSymbols.borderchars,
-        layout_strategy = 'horizontal',
+        dynamic_preview_title = true,
+        layout_strategy = 'flex',
         layout_config = {
-            preview_width = 0.5,
+            flip_columns = 133,
         },
         prompt_prefix = ThemeSymbols.telescope.prompt_char .. ' ',
         selection_caret = ThemeSymbols.telescope.select_char .. ' ',
