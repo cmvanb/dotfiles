@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 #-------------------------------------------------------------------------------
 # Bash prompt configuration
+#
+# NOTE: The ${var:?} syntax fails if var is unassigned. Use this to appease shellcheck SC2154.
 #-------------------------------------------------------------------------------
 
 # shellcheck disable=SC1091
@@ -9,8 +11,6 @@ source "$XDG_OPT_HOME/shell-utils/string.sh"
 # Parse system theme and provide API.
 # shellcheck disable=SC1091
 source "$XDG_OPT_HOME/theme/theme.sh"
-
-# NOTE: The ${var:?} syntax fails if var is unassigned. Use this to appease shellcheck SC2154.
 
 construct_prompt() {
     # Login
