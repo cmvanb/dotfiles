@@ -34,7 +34,8 @@ systemd-cat --identifier=river echo "Initializing River..."
 systemd_variables="XDG_CURRENT_DESKTOP XDG_SESSION_TYPE WAYLAND_DISPLAY"
 riverctl spawn "dbus-update-activation-environment --systemd $systemd_variables"
 
-# Other system services can respond to the underlying wayland-session or graphical-session.target.
+# Other system services can interact with the underlying wayland-session or
+# graphical-session.target.
 systemctl --user start river-session.target
 
 # Input configuration
@@ -52,23 +53,6 @@ riverctl input pointer-1133-49309-Logitech_G203_LIGHTSYNC_Gaming_Mouse pointer-a
 # Hide inactive cursor
 riverctl hide-cursor timeout 3000
 
-# Styling
-#-------------------------------------------------------------------------------
-
-# shellcheck disable=SC2154
-riverctl background-color "$(color_zerox "$system_bg")"
-# shellcheck disable=SC2154
-riverctl border-color-focused "$(color_zerox "$primary_8")"
-# shellcheck disable=SC2154
-riverctl border-color-unfocused "$(color_zerox "$primary_3")"
-# shellcheck disable=SC2154
-riverctl border-color-urgent "$(color_zerox "$red_4")"
-
-riverctl border-width 3
-
-# shellcheck disable=SC2154
-riverctl xcursor-theme "$cursor_theme" "$cursor_size"
-
 # Layout generator
 #-------------------------------------------------------------------------------
 
@@ -83,22 +67,17 @@ way-displays > "/tmp/way-displays.${XDG_VTNR}.${USER}.log" 2>&1 &
 # NOTE: Way-displays needs a moment.
 sleep 0.25
 
-# Wallpaper
+# Theme
 #-------------------------------------------------------------------------------
 
 # shellcheck disable=SC1091
-source "$config_dir/wallpaper/wallpaper.sh"
+source "$config_dir/river/theme.sh"
 
 # Workspace
 #-------------------------------------------------------------------------------
 
 # shellcheck disable=SC1091
 source "$config_dir/river/workspace.sh"
-
-# Status bar
-#-------------------------------------------------------------------------------
-
-riverctl spawn waybar
 
 # App configuration
 #-------------------------------------------------------------------------------
@@ -132,9 +111,6 @@ systemd-cat --identifier=river echo "River initialized."
 
 # Clean up the shared environment when river is interrupted or terminated.
 session_cleanup () {
-    pkill -x waybar
-    pkill -x way-displays
-
     systemd-cat --identifier=river echo "Cleaning River."
 
     systemctl --user unset-environment "$systemd_variables"
@@ -147,5 +123,5 @@ trap session_cleanup INT TERM
 # NOTE: The assumption is: if WAYLAND_DISPLAY is in use, river is running.
 while [ -n "$WAYLAND_DISPLAY" ]
 do
-    sleep 0.10
+    sleep 1.00
 done
