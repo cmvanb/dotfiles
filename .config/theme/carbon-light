@@ -9,58 +9,58 @@
 debug='#ff00ff'
 
 # Primary: 16-31
- primary_0='#034b96'
- primary_1='#0356a3'
- primary_2='#0362b0'
- primary_3='#036ebd'
- primary_4='#0379ca'
- primary_5='#0385d7'
- primary_6='#0391e4'
- primary_7='#039df1'
- primary_8='#17b0fe'
- primary_9='#29b6fe'
-primary_10='#3cbcfe'
-primary_11='#4ec2fe'
-primary_12='#61c8fe'
-primary_13='#73cefe'
-primary_14='#86d4fe'
-primary_15='#99dbfe'
+ primary_0='#99dbfe'
+ primary_1='#8fd1f7'
+ primary_2='#85c7f0'
+ primary_3='#7bbee9'
+ primary_4='#71b4e2'
+ primary_5='#67abdb'
+ primary_6='#5da1d4'
+ primary_7='#5397cd'
+ primary_8='#498ec6'
+ primary_9='#3f84bf'
+primary_10='#357bb8'
+primary_11='#2b71b1'
+primary_12='#2167aa'
+primary_13='#175ea3'
+primary_14='#0d549c'
+primary_15='#034b96'
 
 # Secondary: 32-47
- secondary_0='#0d5d74'
- secondary_1='#0c6a81'
- secondary_2='#0b778e'
- secondary_3='#0a849b'
- secondary_4='#0991a8'
- secondary_5='#089eb6'
- secondary_6='#07abc3'
- secondary_7='#06b8d0'
- secondary_8='#16c9e1'
- secondary_9='#26cde3'
-secondary_10='#37d1e5'
-secondary_11='#47d5e7'
-secondary_12='#58d8e9'
-secondary_13='#68dceb'
-secondary_14='#79e0ed'
-secondary_15='#8ae4f0'
+ secondary_0='#8ae4f0'
+ secondary_1='#81dbe7'
+ secondary_2='#79d2df'
+ secondary_3='#71c9d7'
+ secondary_4='#68c0ce'
+ secondary_5='#60b7c6'
+ secondary_6='#58aebe'
+ secondary_7='#4fa5b6'
+ secondary_8='#479cad'
+ secondary_9='#3f93a5'
+secondary_10='#368a9d'
+secondary_11='#2e8195'
+secondary_12='#26788c'
+secondary_13='#1d6f84'
+secondary_14='#15667c'
+secondary_15='#0d5d74'
 
 # Text: 48-63
- text_0='#001030'
- text_1='#0a1a38'
- text_2='#152540'
- text_3='#203048'
- text_4='#2a3a50'
- text_5='#354558'
- text_6='#405060'
- text_7='#516171'
- text_8='#637383'
- text_9='#748595'
-text_10='#8696a6'
-text_11='#98a8b8'
-text_12='#aabaca'
-text_13='#bbcbdb'
-text_14='#cddded'
-text_15='#dfefff'
+ text_0=#dfefff'
+ text_1=#cedeee'
+ text_2=#bdcddd'
+ text_3=#adbdcd'
+ text_4=#9cacbc'
+ text_5=#8b9bab'
+ text_6=#7b8b9b'
+ text_7=#6a7a8a'
+ text_8=#4e5e70'
+ text_9=#435367'
+text_10=#38485e'
+text_11=#2c3c54'
+text_12=#21314b'
+text_13=#162642'
+text_14=#0b1b39'
+text_15=#001030'
 
 # Gray: 64-79
  gray_0='#0b0b0e'
@@ -213,12 +213,12 @@ ansi_brcyan=$i14
 ansi_brwhite=$i15
 
 # Themed
-system_bg=$text_14
-system_text=$text_0
+system_bg=$text_0
+system_text=$text_15
 
-terminal_bg=$text_15
-terminal_text=$text_0
+terminal_bg=$text_0
+terminal_text=$text_15
 
-editor_bg=$text_15
-editor_text_normal=$secondary_2
+editor_bg=$text_0
+editor_text_normal=$secondary_9
 
