@@ -40,11 +40,6 @@ export DOCKER_CONFIG="$XDG_STATE_HOME/docker"
 # GNUPG config.
 export GNUPGHOME="$XDG_STATE_HOME/gnupg"
 
-# NOTE: Incompatible with QuTech local stack.
-# Kubernetes config.
-# export KUBECONFIG="$XDG_CONFIG_HOME/kube/config"
-export KUBECACHEDIR="$XDG_CACHE_HOME/kube"
-
 # Python config.
 export PYTHONPYCACHEPREFIX="$XDG_CACHE_HOME/python"
 
