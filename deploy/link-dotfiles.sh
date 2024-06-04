@@ -91,6 +91,7 @@ force_link "$base_dir/.local/share/applications/chromium.desktop" "$data_dir/app
 force_link "$base_dir/.local/share/applications/lf.desktop" "$data_dir/applications/lf.desktop"
 force_link "$base_dir/.local/share/applications/org.qutebrowser.qutebrowser.desktop" "$data_dir/applications/org.qutebrowser.qutebrowser.desktop"
 force_link "$base_dir/.local/share/applications/org.pwmt.zathura.desktop" "$data_dir/applications/org.pwmt.zathura.desktop"
+force_link "$base_dir/.local/share/applications/vscodium-wayland.desktop" "$data_dir/applications/vscodium-wayland.desktop"
 
 # Disabled XDG .desktop files
 force_link "$base_dir/.local/share/applications/avahi-discover.desktop" "$data_dir/applications/avahi-discover.desktop"
@@ -101,6 +102,7 @@ force_link "$base_dir/.local/share/applications/electron24.desktop" "$data_dir/a
 force_link "$base_dir/.local/share/applications/lstopo.desktop" "$data_dir/applications/lstopo.desktop"
 force_link "$base_dir/.local/share/applications/qv4l2.desktop" "$data_dir/applications/qv4l2.desktop"
 force_link "$base_dir/.local/share/applications/qvidcap.desktop" "$data_dir/applications/qvidcap.desktop"
+force_link "$base_dir/.local/share/applications/vscodium.desktop" "$data_dir/applications/vscodium.desktop"
 
 # Application data
 mkdir -p "$data_dir/qutebrowser/userscripts"
