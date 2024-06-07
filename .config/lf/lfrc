@@ -109,6 +109,13 @@ cmd open ${{
     $XDG_CONFIG_HOME/lf/lf-open.sh $f
 }}
 
+# Copy/paste.
+map y copy
+map p paste
+
+# Delete.
+map d delete
+
 # TODO: Add file extraction shortcuts.
 # TODO: Add file move/copy/delete shortcuts.
 
