@@ -11,9 +11,11 @@ declare -a dirs=(
     ".k3d"
     ".kube"
     ".java"
+    ".npm"
     ".pki"
     ".qne"
     ".terraform.d"
+    ".yarn"
 )
 
 declare -a files=(
