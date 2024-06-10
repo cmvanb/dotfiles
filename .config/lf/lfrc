@@ -116,6 +116,9 @@ map p paste
 # Delete.
 map d delete
 
+# Rename.
+map c rename
+
 # TODO: Add file extraction shortcuts.
 # TODO: Add file move/copy/delete shortcuts.
 
