@@ -6,7 +6,7 @@
 }
 
 window#waybar {
-    background-color: <% color_css_rgba $system_bg 0.75 %>;
+    background-color: <% color_css_rgba $system_bg 0.85 %>;
     color: <% color_hash $system_text %>;
     transition-property: background-color;
     transition-duration: .5s;
@@ -51,7 +51,7 @@ box > * > * {
 }
 
 #tags button.occupied {
-    background-color: <% color_css_rgba $primary_3 0.75 %>;
+    background-color: <% color_css_rgba $primary_3 0.85 %>;
 }
 
 #tags button.focused {

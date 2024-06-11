@@ -2,6 +2,31 @@
 # Alacritty configuration file
 #-------------------------------------------------------------------------------
 <% source $XDG_OPT_HOME/theme/theme.sh %>
+# Appearance
+#-------------------------------------------------------------------------------
+
+[bell]
+animation = 'Linear'
+color = '<% color_hash $gray_0 %>'
+duration = 200
+
+[cursor.style]
+blinking = 'Off'
+shape = 'Block'
+
+[font]
+size = <%= $font_size_medium %>
+
+[font.normal]
+family = 'monospace'
+
+[window]
+opacity = 0.9
+
+[window.padding]
+x = 0
+y = 0
+
 # Key bindings
 #
 # Example breakdown of CSIu (Ctrl+Shift+C):
@@ -95,31 +120,6 @@ mode = 'Alt'
 mods = 'Control'
 key = 'Tab'
 chars = "\u001b\u005b\u0039\u003b\u0035\u0075"
-
-# Appearance
-#-------------------------------------------------------------------------------
-
-[bell]
-animation = 'Linear'
-color = '<% color_hash $gray_0 %>'
-duration = 200
-
-[cursor.style]
-blinking = 'Off'
-shape = 'Block'
-
-[font]
-size = <%= $font_size_medium %>
-
-[font.normal]
-family = 'monospace'
-
-[window]
-opacity = 0.8
-
-[window.padding]
-x = 0
-y = 0
 
 # Colors
 #-------------------------------------------------------------------------------
