@@ -13,7 +13,7 @@ declare theme_lib_dir="$XDG_OPT_HOME/theme"
 # API
 #-------------------------------------------------------------------------------
 
-color_named () {
+color_named() {
     if [[ -z ${1+x} ]]; then
         return 1
     fi
@@ -22,7 +22,7 @@ color_named () {
 }
 
 # Usage: `$(color_hash $colorname)`
-color_hash () {
+color_hash() {
     if [[ -z ${1+x} ]]; then
         return 1
     fi
@@ -31,7 +31,7 @@ color_hash () {
 }
 
 # Usage: `$(color_zerox $colorname)`
-color_zerox () {
+color_zerox() {
     if [[ -z ${1+x} ]]; then
         return 1
     fi
@@ -40,16 +40,16 @@ color_zerox () {
 }
 
 # Usage: `$(color_css_rgba $colorname $alpha)`
-color_css_rgba () {
+color_css_rgba() {
     if [[ -z ${1+x} ]]; then
         return 1
     fi
 
-    "$theme_lib_dir/color-hex-to-css-rgba.py" --color="$(color_named "$1")" --alpha="$2"
+    echo -n "$("$theme_lib_dir/color-hex-to-css-rgba.py" --color="$(color_named "$1")" --alpha="$2")"
 }
 
 # Usage: `$(color_ansi $colorfg $colorbg)`
-color_ansi () {
+color_ansi() {
     if [[ -z ${1+x} ]] || [[ -z ${2:x} ]]; then
         return 1
     fi
@@ -58,7 +58,7 @@ color_ansi () {
 }
 
 # Usage: `$(color_ansi_fg $colorfg)`
-color_ansi_fg () {
+color_ansi_fg() {
     if [[ -z ${1+x} ]]; then
         return 1
     fi
@@ -67,11 +67,11 @@ color_ansi_fg () {
 }
 
 # Usage: `$(color_ansi_reset)`
-color_ansi_reset () {
+color_ansi_reset() {
     "$theme_lib_dir/color-hex-to-ansi.sh" --reset
 }
 
-color_256 () {
+color_256() {
     if [[ -z ${1+x} ]]; then
         return 1
     fi
@@ -82,6 +82,9 @@ color_256 () {
 # Import the system theme variables.
 #-------------------------------------------------------------------------------
 
+# shellcheck disable=SC1091
 source "$theme_config_dir/colors"
+# shellcheck disable=SC1091
 source "$theme_config_dir/fonts"
+# shellcheck disable=SC1091
 source "$theme_config_dir/cursor"
