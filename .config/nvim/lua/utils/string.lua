@@ -16,12 +16,12 @@ end
 
 function StringUtils.split(string, separator)
     if separator == nil then
-        separator = "%s"
+        separator = '%s'
     end
 
     local result = {}
 
-    for s in string.gmatch(string, "([^" .. separator .. "]+)") do
+    for s in string.gmatch(string, '([^' .. separator .. ']+)') do
         table.insert(result, s)
     end
 

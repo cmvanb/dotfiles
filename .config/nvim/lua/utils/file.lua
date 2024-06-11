@@ -10,7 +10,7 @@ local FileUtils = {}
 function FileUtils.is_file(path)
     local stat = vim.loop.fs_stat(path)
 
-    return stat and stat.type == "file" or false
+    return stat and stat.type == 'file' or false
 end
 
 -- Test whether path is a directory
@@ -19,7 +19,7 @@ end
 function FileUtils.is_directory(path)
     local stat = vim.loop.fs_stat(path)
 
-    return stat and stat.type == "directory" or false
+    return stat and stat.type == 'directory' or false
 end
 
 return FileUtils

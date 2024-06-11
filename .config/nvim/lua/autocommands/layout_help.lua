@@ -2,7 +2,7 @@
 -- Layout help windows dynamically (based on the terminal size).
 --------------------------------------------------------------------------------
 
-local augroup = vim.api.nvim_create_augroup("OpenHelpVertically", { clear = true })
+local augroup = vim.api.nvim_create_augroup('OpenHelpVertically', { clear = true })
 
 vim.api.nvim_create_autocmd({ 'BufEnter' }, {
     group = augroup,
@@ -15,9 +15,9 @@ vim.api.nvim_create_autocmd({ 'BufEnter' }, {
         local lines = vim.api.nvim_get_option_value('lines', {})
 
         if columns >= lines * 3 then
-            vim.cmd("wincmd L")
+            vim.cmd('wincmd L')
         else
-            vim.cmd("wincmd K")
+            vim.cmd('wincmd K')
         end
     end,
 })
