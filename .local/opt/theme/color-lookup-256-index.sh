@@ -7,7 +7,7 @@
 #-------------------------------------------------------------------------------
 
 # Create the color lookup table and save to disk.
-cache_lookup_table () {
+cache_lookup_table() {
     local -A offset_lookup=(
         ["primary"]=16
         ["secondary"]=32
@@ -60,7 +60,7 @@ cache_lookup_table () {
 }
 
 # Look up a color's 256-index by theme name.
-color_256 () {
+color_256() {
     if [[ ! -f "$XDG_CACHE_HOME/theme/color-256-lookup" ]]; then
         cache_lookup_table
     fi

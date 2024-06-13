@@ -18,7 +18,7 @@ assert_dependency swaybg
 # Functions
 #-------------------------------------------------------------------------------
 
-set_output_wallpaper () {
+set_output_wallpaper() {
     if wl_output_exists "$1"; then
         swaybg --output "$1" --mode fill --image "$2" > /dev/null 2>&1 &
     fi

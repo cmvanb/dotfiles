@@ -9,8 +9,7 @@ set -o pipefail
 # Functions
 #-------------------------------------------------------------------------------
 
-bw_abort ()
-{
+bw_abort() {
     # Always lock and logout.
     bw_finalize
 
@@ -18,14 +17,12 @@ bw_abort ()
     exit $1
 }
 
-bw_finalize ()
-{
+bw_finalize() {
     bw lock
     bw logout
 }
 
-newline ()
-{
+newline() {
     printf "\n"
 }
 

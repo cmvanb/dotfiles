@@ -72,7 +72,7 @@ function print_color_block() {
 # Print a band of $2 color blocks starting from index $1.
 #-------------------------------------------------------------------------------
 
-function print_band {
+function print_band() {
     local start="$1"
     local count="$2"
     local width="${3:-4}"

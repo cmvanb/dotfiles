@@ -16,15 +16,15 @@ assert_dependency wlr-randr
 # Functions
 #-------------------------------------------------------------------------------
 
-wl_get_output () {
+wl_get_output() {
     wlr-randr | grep -m1 -n -w "$1"
 }
 
-wl_get_outputs () {
+wl_get_outputs() {
     wlr-randr | grep -v '^ ' | awk '{print $1}'
 }
 
-wl_output_exists () {
+wl_output_exists() {
     local output
     output=$(wl_get_output "$1")
 
@@ -34,7 +34,7 @@ wl_output_exists () {
     fi
 }
 
-wl_get_output_transform () {
+wl_get_output_transform() {
     local output
     output=$(wl_get_output "$1")
 
@@ -55,7 +55,7 @@ wl_get_output_transform () {
     echo "${transform[1]}"
 }
 
-wl_rotate_display () {
+wl_rotate_display() {
     local output="$1"
 
     local transform
