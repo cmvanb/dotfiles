@@ -12,6 +12,7 @@ source "$XDG_OPT_HOME/shell-utils/debug.sh"
 #-------------------------------------------------------------------------------
 
 assert_dependency wlr-randr
+assert_dependency swaybg
 
 # Functions
 #-------------------------------------------------------------------------------
@@ -76,4 +77,10 @@ wl_rotate_display() {
     fi
 
     wlr-randr --output "$output" --transform "$new_transform"
+}
+
+wl_set_output_wallpaper() {
+    if wl_output_exists "$1"; then
+        swaybg --output "$1" --mode fill --image "$2" > /dev/null 2>&1 &
+    fi
 }

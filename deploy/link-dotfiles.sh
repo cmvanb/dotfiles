@@ -69,6 +69,7 @@ force_link "$base_dir/.local/scripts/print-terminal-colors.sh" "$scripts_dir/pri
 force_link "$base_dir/.local/scripts/rename-kebabcase.sh" "$scripts_dir/rename-kebabcase.sh"
 force_link "$base_dir/.local/scripts/screenshot-rectangle.sh" "$scripts_dir/screenshot-rectangle.sh"
 force_link "$base_dir/.local/scripts/select-bookmark.sh" "$scripts_dir/select-bookmark.sh"
+force_link "$base_dir/.local/scripts/set-output-wallpaper.sh" "$scripts_dir/set-output-wallpaper.sh"
 force_link "$base_dir/.local/scripts/set-terminal-title.sh" "$scripts_dir/set-terminal-title.sh"
 force_link "$base_dir/.local/scripts/show-path.sh" "$scripts_dir/show-path.sh"
 force_link "$base_dir/.local/scripts/show-webcam.sh" "$scripts_dir/show-webcam.sh"

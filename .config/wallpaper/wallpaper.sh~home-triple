@@ -7,7 +7,7 @@
 #-------------------------------------------------------------------------------
 
 # shellcheck disable=SC1091
-source "$XDG_OPT_HOME/wayland-utils/set-output-wallpaper.sh"
+source "$XDG_OPT_HOME/wayland-utils/output.sh"
 
 # Wallpaper configuration
 #-------------------------------------------------------------------------------
@@ -17,6 +17,6 @@ pkill -x swaybg
 declare horizontal_wallpaper="$XDG_PICTURES_DIR/wallpapers/vertical/abstract-blue-orange-pink.jpg"
 declare vertical_wallpaper="$XDG_PICTURES_DIR/wallpapers/vertical/abstract-blue-orange-pink.jpg"
 
-set_output_wallpaper HDMI-A-6 "$vertical_wallpaper"
-set_output_wallpaper DP-3 "$horizontal_wallpaper"
-set_output_wallpaper DP-4 "$vertical_wallpaper"
+wl_set_output_wallpaper HDMI-A-6 "$vertical_wallpaper"
+wl_set_output_wallpaper DP-3 "$horizontal_wallpaper"
+wl_set_output_wallpaper DP-4 "$vertical_wallpaper"
