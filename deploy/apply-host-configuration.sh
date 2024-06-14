@@ -40,7 +40,7 @@ qutedell)
     mkdir -p "$config_dir/way-displays"
     force_link "$base_dir/.config/way-displays/cfg.yaml~qutech-dual" "$config_dir/way-displays/cfg.yaml"
 
-    force_link "$base_dir/.local/bin/init~basic" "$bin_dir/init"
+    force_link "$base_dir/.local/bin/init~river" "$bin_dir/init"
     ;;
 
 supertubes)
@@ -55,7 +55,7 @@ cyxwel)
     mkdir -p "$config_dir/way-displays"
     force_link "$base_dir/.config/way-displays/cfg.yaml~home-triple" "$config_dir/way-displays/cfg.yaml"
 
-    force_link "$base_dir/.local/bin/init~basic" "$bin_dir/init"
+    force_link "$base_dir/.local/bin/init~river" "$bin_dir/init"
     ;;
 
 *)
