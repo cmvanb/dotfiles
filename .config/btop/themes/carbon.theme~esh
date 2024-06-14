@@ -1,0 +1,92 @@
+#-------------------------------------------------------------------------------
+# btop Carbon theme
+#
+# Colors should be in 6 or 2 character hexadecimal or single spaced rgb decimal:
+# "#RRGGBB", "#BW" or "0-255 0-255 0-255"
+#
+# For example, for white: "#FFFFFF", "#ff" or "255 255 255".
+#
+# All graphs and meters can be gradients
+# For single color graphs leave "mid" and "end" variable empty.
+# Use "start" and "end" variables for two color gradient
+# Use "start", "mid" and "end" for three color gradient
+#-------------------------------------------------------------------------------
+<% source $XDG_OPT_HOME/theme/theme.sh %>
+# Main background, empty for terminal default, need to be empty if you want transparent background
+theme[main_bg]=""
+
+# Main text color
+theme[main_fg]="<% color_hash $terminal_text %>"
+
+# Title color for boxes
+theme[title]="<% color_hash $text_15 %>"
+
+# Higlight color for keyboard shortcuts
+theme[hi_fg]="<% color_hash $primary_15 %>"
+
+# Background color of selected item in processes box
+theme[selected_bg]="<% color_hash $primary_7 %>"
+
+# Foreground color of selected item in processes box
+theme[selected_fg]="<% color_hash $text_15 %>"
+
+# Color of inactive/disabled text
+theme[inactive_fg]="<% color_hash $text_8 %>"
+
+# Misc colors for processes box including mini cpu graphs, details memory graph and details status text
+theme[proc_misc]="<% color_hash $magenta_6 %>"
+
+# Cpu box outline color
+theme[cpu_box]="<% color_hash $primary_4 %>"
+
+# Memory/disks box outline color
+theme[mem_box]="<% color_hash $primary_4 %>"
+
+# Net up/down box outline color
+theme[net_box]="<% color_hash $primary_4 %>"
+
+# Processes box outline color
+theme[proc_box]="<% color_hash $primary_4 %>"
+
+# Box divider line and small boxes line color
+theme[div_line]="<% color_hash $primary_4 %>"
+
+# Temperature graph colors
+theme[temp_start]="<% color_hash $green_6 %>"
+theme[temp_mid]="<% color_hash $yellow_5 %>"
+theme[temp_end]="<% color_hash $red_5 %>"
+
+# CPU graph colors
+theme[cpu_start]="<% color_hash $green_6 %>"
+theme[cpu_mid]="<% color_hash $yellow_5 %>"
+theme[cpu_end]="<% color_hash $red_5 %>"
+
+# Mem/Disk free meter
+theme[free_start]="<% color_hash $primary_15 %>"
+theme[free_mid]="<% color_hash $primary_10 %>"
+theme[free_end]="<% color_hash $primary_5 %>"
+
+# Mem/Disk cached meter
+theme[cached_start]="<% color_hash $cyan_6 %>"
+theme[cached_mid]="<% color_hash $cyan_3 %>"
+theme[cached_end]="<% color_hash $cyan_0 %>"
+
+# Mem/Disk available meter
+theme[available_start]="<% color_hash $orange_6 %>"
+theme[available_mid]="<% color_hash $orange_3 %>"
+theme[available_end]="<% color_hash $orange_0 %>"
+
+# Mem/Disk used meter
+theme[used_start]="<% color_hash $magenta_6 %>"
+theme[used_mid]="<% color_hash $magenta_3 %>"
+theme[used_end]="<% color_hash $magenta_0 %>"
+
+# Download graph colors
+theme[download_start]="<% color_hash $purple_6 %>"
+theme[download_mid]="<% color_hash $purple_3 %>"
+theme[download_end]="<% color_hash $purple_0 %>"
+
+# Upload graph colors
+theme[upload_start]="<% color_hash $purple_9 %>"
+theme[upload_mid]="<% color_hash $purple_6 %>"
+theme[upload_end]="<% color_hash $purple_3 %>"

@@ -53,7 +53,7 @@ riverctl map normal Alt B spawn "qutebrowser"
 riverctl map normal Alt+Shift B spawn "$scripts_dir/open-qutebrowser-session.sh"
 
 # Process manager
-riverctl map normal Alt M spawn "alacritty --command htop"
+riverctl map normal Alt M spawn "alacritty --command btop"
 
 # View mappings
 #-------------------------------------------------------------------------------

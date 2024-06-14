@@ -33,6 +33,9 @@ chmod +x "$bin_dir/rg"
 mkdir -p "$config_dir/alacritty"
 esh "$base_dir/.config/alacritty/alacritty.toml~esh" > "$config_dir/alacritty/alacritty.toml"
 
+mkdir -p "$config_dir/btop/themes"
+esh "$base_dir/.config/btop/themes/carbon.theme~esh" > "$config_dir/btop/themes/carbon.theme"
+
 mkdir -p "$config_dir/fontconfig"
 esh "$base_dir/.config/fontconfig/fonts.conf~esh" > "$config_dir/fontconfig/fonts.conf"
 
