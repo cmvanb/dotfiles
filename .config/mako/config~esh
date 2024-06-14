@@ -11,7 +11,7 @@ max-visible=15
 
 sort=+time
 
-default-timeout=15000
+default-timeout=10000
 
 # Appearance
 #-------------------------------------------------------------------------------
@@ -23,7 +23,8 @@ icon-location=left
 
 width=500
 height=250
-margin=16,14
+margin=16,16
+outer-margin=16,0
 # top,right,bottom,left
 padding=10,8
 
