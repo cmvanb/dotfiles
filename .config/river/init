@@ -85,18 +85,19 @@ source "$config_dir/river/workspace.sh"
 # Floating windows
 riverctl rule-add -app-id yad float
 riverctl rule-add -app-id xdg-desktop-portal-gtk float
+riverctl rule-add -app-id Alacritty float
 
 # Override client-side decorations
 riverctl rule-add -app-id marker ssd
 riverctl rule-add -app-id nm-connection-editor ssd
 riverctl rule-add -app-id nwg-look ssd
 riverctl rule-add -app-id gtk-pipe-viewer ssd
-riverctl rule-add -app-id pavucontrol ssd
-riverctl rule-add -app-id transmission ssd
+riverctl rule-add -app-id org.pulseaudio.pavucontrol ssd
+riverctl rule-add -title Transmission ssd
 riverctl rule-add -app-id yad ssd
 riverctl rule-add -app-id yad-settings ssd
 # NOTE: Seems to have no effect.
-riverctl rule-add -app-id zathura ssd
+riverctl rule-add -app-id org.pwmt.zathura ssd
 
 # Key mappings
 #-------------------------------------------------------------------------------
