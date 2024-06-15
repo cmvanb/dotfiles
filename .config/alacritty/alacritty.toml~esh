@@ -8,7 +8,7 @@
 [bell]
 animation = 'Linear'
 color = '<% color_hash $gray_0 %>'
-duration = 200
+duration = 100
 
 [cursor.style]
 blinking = 'Off'
