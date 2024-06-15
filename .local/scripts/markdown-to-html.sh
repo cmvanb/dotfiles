@@ -12,16 +12,18 @@ if [ "$#" -ne 1 ]; then
     exit 1
 fi
 
-filename=$(basename -- "$1")
-extension="${filename##*.}"
+file_name=$(basename -- "$1")
+file_name="${file_name%.*}"
+file_extension="${1##*.}"
 
-if [ "$extension" != "md" ]; then
-    echo "Expected markdown file with \`md\` extension. Received file with \`$extension\` extension."
+if [ "$file_extension" != "md" ]; then
+    echo "Expected markdown file with \`md\` extension. Received file with \`$file_extension\` extension."
     exit 1
 fi
 
-outname="${filename%.*}.html"
+tmp_dir="/tmp/md"
+mkdir -p "$tmp_dir"
 
 pandoc -s -f markdown -t html --toc \
     --css "$XDG_DATA_HOME/pandoc/templates/github-pandoc.css" \
-    "$filename" > "$outname"
+    "$1" > "$tmp_dir/$file_name.html"
