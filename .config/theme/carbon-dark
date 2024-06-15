@@ -214,10 +214,10 @@ ansi_brwhite=$i15
 
 # Themed
 system_bg=$gray_0
-system_text=$text_15
+system_text=$text_13
 
 terminal_bg=$gray_0
-terminal_text=$text_15
+terminal_text=$text_13
 
 editor_bg=$gray_0
 editor_text_normal=$secondary_9
