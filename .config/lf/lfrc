@@ -34,7 +34,7 @@ set sixel
 set previewer ~/.local/scripts/terminal-preview.sh
 
 # Column ratios.
-set ratios 1:1:3
+set ratios 1:1:4
 
 # Key mappings
 #-------------------------------------------------------------------------------
