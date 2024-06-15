@@ -43,6 +43,9 @@ riverctl map normal Alt O spawn "wofi --show drun"
 # New terminal
 riverctl map normal Alt T spawn "alacritty"
 
+# New floating terminal
+riverctl map normal Alt G spawn "alacritty --class floating"
+
 # New terminal in a directory
 riverctl map normal Alt+Shift T spawn "$scripts_dir/open-terminal-cwd.sh"
 
@@ -87,7 +90,7 @@ riverctl map normal Alt+Shift H spawn "$config_dir/river/send-and-focus-output.s
 riverctl map normal Alt+Shift L spawn "$config_dir/river/send-and-focus-output.sh right"
 
 # Send the focused view to a specific output
-riverctl map normal Alt S spawn "$config_dir/river/send-to-output.sh"
+riverctl map normal Alt X spawn "$config_dir/river/send-to-output.sh"
 
 # Move views with mouse
 riverctl map-pointer normal Shift BTN_LEFT move-view
