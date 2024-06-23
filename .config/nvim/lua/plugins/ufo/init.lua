@@ -8,7 +8,7 @@ ufo.setup({
     fold_virt_text_handler =
         function(virtText, lnum, endLnum, width, truncate)
             local newVirtText = {}
-            local suffix = ('   (%d) '):format(endLnum - lnum)
+            local suffix = (' … (%d) '):format(endLnum - lnum)
             local sufWidth = vim.fn.strdisplaywidth(suffix)
             local targetWidth = width - sufWidth
             local curWidth = 0
@@ -23,9 +23,9 @@ ufo.setup({
                     table.insert(newVirtText, {chunkText, hlGroup})
                     chunkWidth = vim.fn.strdisplaywidth(chunkText)
                     -- str width returned from truncate() may less than 2nd argument, need padding
-                    -- TODO: Doesn't appear to render the padding chars, only spaces.
+                    -- NOTE: Doesn't appear to render the padding chars, only spaces.
                     if curWidth + chunkWidth < targetWidth then
-                        suffix = suffix .. (''):rep(targetWidth - curWidth - chunkWidth)
+                        suffix = suffix .. ('…'):rep(targetWidth - curWidth - chunkWidth)
                     end
                     break
                 end
