@@ -3,11 +3,7 @@
 # Open file with default text editor
 #-------------------------------------------------------------------------------
 
-set -euo pipefail
-
-if [[ -n $VISUAL ]]; then
-    $VISUAL "$@"
-elif [[ -n $EDITOR ]]; then
+if [[ -n $EDITOR ]]; then
     $EDITOR "$@"
 else
     echo "Neither \$VISUAL nor \$EDITOR environment variables are set."
