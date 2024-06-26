@@ -12,7 +12,6 @@ umask 0022
 # configuration in `.config/mimeapps.list` and `.local/share/applications/`.
 set -x BROWSER "qutebrowser"
 set -x EDITOR "nvim"
-set -x VISUAL "$EDITOR"
 
 # Configure less pager.
 set -x LESS "--clear-screen --RAW-CONTROL-CHARS"
