@@ -13,8 +13,25 @@ sort=+time
 
 default-timeout=10000
 
+# Enable pango formatted notification.
+markup=1
+
+# Applications may request an action.
+actions=1
+
+# Bindings
+#-------------------------------------------------------------------------------
+
+on-button-left=invoke-default-action
+on-button-middle=dismiss-group
+on-button-right=dismiss
+on-touch=invoke-default-action
+
 # Appearance
 #-------------------------------------------------------------------------------
+
+# Render on top of full-screen windows.
+layer=overlay
 
 anchor=bottom-right
 
