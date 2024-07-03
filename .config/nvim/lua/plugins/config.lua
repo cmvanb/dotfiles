@@ -26,9 +26,10 @@ return {
     ----------------------------------------------------------------------------
 
     {
-        'rmagatti/auto-session',
+        'Shatur/neovim-session-manager',
+        requires = { 'nvim-lua/plenary.nvim' },
         config = function()
-            require('auto-session').setup()
+            do_load('plugins/session')
         end
     },
 
