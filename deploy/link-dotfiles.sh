@@ -59,7 +59,6 @@ force_link "$base_dir/.local/scripts/generate-color-gradient-palette.py" "$scrip
 force_link "$base_dir/.local/scripts/generate-venv.sh" "$scripts_dir/generate-venv.sh"
 force_link "$base_dir/.local/scripts/kebabify.sh" "$scripts_dir/kebabify.sh"
 force_link "$base_dir/.local/scripts/lock-screen.sh" "$scripts_dir/lock-screen.sh"
-force_link "$base_dir/.local/scripts/markdown-to-html-on-changed.sh" "$scripts_dir/markdown-to-html-on-changed.sh"
 force_link "$base_dir/.local/scripts/markdown-to-html.sh" "$scripts_dir/markdown-to-html.sh"
 force_link "$base_dir/.local/scripts/matrix.sh" "$scripts_dir/matrix.sh"
 force_link "$base_dir/.local/scripts/open-qutebrowser-session.sh" "$scripts_dir/open-qutebrowser-session.sh"
