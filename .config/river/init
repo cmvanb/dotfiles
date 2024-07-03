@@ -38,6 +38,11 @@ riverctl spawn "dbus-update-activation-environment --systemd $systemd_variables"
 # graphical-session.target.
 systemctl --user start river-session.target
 
+# Adjust screen brightness
+#-------------------------------------------------------------------------------
+
+riverctl spawn "gammastep -l 52.155472:5.389358"
+
 # Input configuration
 #-------------------------------------------------------------------------------
 
