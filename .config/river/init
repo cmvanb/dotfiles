@@ -41,7 +41,9 @@ systemctl --user start river-session.target
 # Adjust screen brightness
 #-------------------------------------------------------------------------------
 
-riverctl spawn "gammastep -l 52.155472:5.389358"
+# NOTE: Experiment with both.
+# riverctl spawn "gammastep -l 52.155472:5.389358"
+riverctl spawn "wlsunset -l 52.155472 -L 5.389358"
 
 # Input configuration
 #-------------------------------------------------------------------------------
