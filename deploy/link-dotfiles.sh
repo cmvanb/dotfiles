@@ -64,6 +64,7 @@ force_link "$base_dir/.local/scripts/markdown-to-html.sh" "$scripts_dir/markdown
 force_link "$base_dir/.local/scripts/matrix.sh" "$scripts_dir/matrix.sh"
 force_link "$base_dir/.local/scripts/open-qutebrowser-session.sh" "$scripts_dir/open-qutebrowser-session.sh"
 force_link "$base_dir/.local/scripts/open-terminal-cwd.sh" "$scripts_dir/open-terminal-cwd.sh"
+force_link "$base_dir/.local/scripts/preview-markdown.sh" "$scripts_dir/preview-markdown.sh"
 force_link "$base_dir/.local/scripts/print-environment.py" "$scripts_dir/print-environment.py"
 force_link "$base_dir/.local/scripts/print-terminal-colors.sh" "$scripts_dir/print-terminal-colors.sh"
 force_link "$base_dir/.local/scripts/rename-kebabcase.sh" "$scripts_dir/rename-kebabcase.sh"
