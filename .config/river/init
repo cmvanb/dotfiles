@@ -38,13 +38,6 @@ riverctl spawn "dbus-update-activation-environment --systemd $systemd_variables"
 # graphical-session.target.
 systemctl --user start river-session.target
 
-# Adjust screen brightness
-#-------------------------------------------------------------------------------
-
-# NOTE: Experiment with both.
-# riverctl spawn "gammastep -l 52.155472:5.389358"
-riverctl spawn "wlsunset -l 52.155472 -L 5.389358"
-
 # Input configuration
 #-------------------------------------------------------------------------------
 
@@ -65,6 +58,13 @@ riverctl hide-cursor timeout 3000
 
 riverctl default-layout rivercarro
 riverctl spawn "rivercarro -inner-gaps 6 -outer-gaps 0 -main-ratio 0.65 -main-location right"
+
+# Adjust screen brightness
+#-------------------------------------------------------------------------------
+
+# NOTE: Experiment with both.
+# riverctl spawn "gammastep -l 52.155472:5.389358"
+riverctl spawn "wlsunset -l 52.155472 -L 5.389358"
 
 # Display management
 #-------------------------------------------------------------------------------
