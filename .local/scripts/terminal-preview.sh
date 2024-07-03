@@ -30,6 +30,11 @@ if [[ -z "$1" ]]; then
     exit 1
 fi
 
+if [[ ! -r "$1" ]]; then
+    echo "[$(basename "$0")] ERROR: File is not readable."
+    exit 1
+fi
+
 # Choose a file preview method based on file mime type and extension.
 #-------------------------------------------------------------------------------
 
