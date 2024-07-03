@@ -21,12 +21,12 @@ require('editor.options')
 require('editor.gui')
 require('editor.highlights')
 
--- Load autocommands.
-require('autocommands')
-
 -- Load plugins. Will bootstrap Packer if necessary.
 require('loader')
 Loader.init()
+
+-- Load autocommands.
+require('autocommands')
 
 -- Load key mappings last; some key mappings may depend on plugins.
 require('editor.keymaps')
