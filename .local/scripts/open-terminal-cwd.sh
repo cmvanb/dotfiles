@@ -1,5 +1,6 @@
 #-------------------------------------------------------------------------------
-# Open a new terminal and change the working directory.
+# Open a new terminal and change the working directory, choosing from zoxide
+# history.
 #-------------------------------------------------------------------------------
 
 set -euo pipefail
@@ -15,24 +16,15 @@ source "$XDG_OPT_HOME/shell-utils/debug.sh"
 
 assert_dependency riverctl
 assert_dependency wofi
+assert_dependency zoxide
 
 # Choose the working directory
 #-------------------------------------------------------------------------------
 
-declare -A directories=(
-    ["dotfiles"]="$HOME/Code/dotfiles"
-    ["Code"]="$HOME/Code"
-    ["Documents"]="$HOME/Documents"
-    ["Downloads"]="$HOME/Downloads"
-    ["Media"]="$HOME/Media"
-    ["Projects"]="$HOME/Projects"
-    ["Wiki"]="$HOME/Wiki"
-)
-
 declare target
-target=$(printf "%s\n" "${!directories[@]}" | wofi --dmenu 2> /dev/null)
+target=$(printf "%s\n" "$(zoxide query --list)" | wofi -p "Open terminal at..." --dmenu 2> /dev/null)
 
 # Spawn a new terminal
 #-------------------------------------------------------------------------------
 
-riverctl spawn "alacritty --command $SHELL -c 'cd ${directories[$target]} && $SHELL'"
+riverctl spawn "alacritty --command $SHELL -c 'cd $target && $SHELL'"
