@@ -23,7 +23,7 @@ assert_dependency wofi
 #-------------------------------------------------------------------------------
 
 outputs="$(wl_get_outputs)"
-target=$(echo "$outputs" | wofi --dmenu 2> /dev/null)
+target=$(echo "$outputs" | wofi -p "Send to output..." --dmenu 2> /dev/null)
 
 if [[ -z $target ]]; then
     exit 1

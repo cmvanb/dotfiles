@@ -38,7 +38,7 @@ riverctl map normal Alt+Shift Q exit
 #-------------------------------------------------------------------------------
 
 # Run menu
-riverctl map normal Alt O spawn "wofi --show drun"
+riverctl map normal Alt O spawn "wofi -p '...' --show drun"
 
 # New terminal
 riverctl map normal Alt T spawn "alacritty"

@@ -23,7 +23,7 @@ assert_dependency qutebrowser
 data_dir="${XDG_DATA_HOME:-$HOME/.local/share}"
 session_dir="$data_dir/qutebrowser/sessions"
 session_files=$(fd ".yml" "$session_dir" -x basename | sed -e 's/\.yml//' | sort)
-session=$(echo "$session_files" | wofi --dmenu 2> /dev/null)
+session=$(echo "$session_files" | wofi -p "Open browser session..." --dmenu 2> /dev/null)
 
 if [[ -z $session ]]; then
     exit 1
