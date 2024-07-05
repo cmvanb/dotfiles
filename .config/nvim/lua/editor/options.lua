@@ -71,7 +71,7 @@ opt.sessionoptions = 'buffers,curdir,folds,help,tabpages,winsize,winpos,terminal
 opt.foldmethod = 'manual'
 opt.foldcolumn = '1'
 opt.foldlevel = 99 -- NOTE: UFO provider needs a large value, feel free to decrease
-opt.foldlevelstart = 99
+opt.foldlevelstart = 99 -- Folds open by default
 opt.foldenable = true
 
 -- Current mode is already visible in status line (lualine)
