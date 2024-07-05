@@ -10,7 +10,7 @@ umask 0022
 #-------------------------------------------------------------------------------
 
 # Tell Bash how to configure its environment (for *non-interactive* shells).
-export BASH_ENV="~/.config/bash/env"
+export BASH_ENV="$HOME/.config/bash/env"
 
 # Some programs respect these defaults, others are supported by XDG with
 # configuration in `.config/mimeapps.list` and `.local/share/applications/`.
