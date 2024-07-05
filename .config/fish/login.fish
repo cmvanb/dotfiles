@@ -49,9 +49,6 @@ set -x RUSTUP_HOME $XDG_DATA_HOME/rustup
 # VSCode config.
 set -x VSCODE_PORTABLE $XDG_DATA_HOME/vscode
 
-# Silence direnv.
-set -x DIRENV_LOG_FORMAT ""
-
 # User directories
 #-------------------------------------------------------------------------------
 

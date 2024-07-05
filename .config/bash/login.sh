@@ -50,9 +50,6 @@ export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 # VSCode config.
 export VSCODE_PORTABLE="$XDG_DATA_HOME/vscode"
 
-# Silence direnv.
-export DIRENV_LOG_FORMAT=""
-
 # User directories
 #-------------------------------------------------------------------------------
 
