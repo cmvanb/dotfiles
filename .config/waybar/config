@@ -8,10 +8,14 @@
         "tooltip": false
     },
     "network": {
-        "format-ethernet": "󰈀  {ifname}",
-        "format-wifi": "󰖩  {ifname}"
+        "format-ethernet": "󰲝   {ifname}",
+        "format-wifi": "󰖩   {ifname}",
+        "format-disconnected": "󰲜   no network",
+        "tooltip": true,
+        "tooltip-format": "{gwaddr} · {bandwidthUpBytes} up · {bandwidthDownBytes} down"
     },
     "bluetooth": {
+        "format": "  {status}",
         "tooltip": true,
         "tooltip-format": "{device_address} · {device_alias}"
     },
