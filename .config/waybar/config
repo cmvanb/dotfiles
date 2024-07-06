@@ -2,12 +2,18 @@
     "layer": "top",
     "modules-left": ["river/tags"],
     "modules-center": ["river/window"],
-    "modules-right": ["bluetooth", "pulseaudio", "battery", "clock"],
+    "modules-right": ["network", "bluetooth", "pulseaudio", "battery", "clock"],
     "river/window": {
         "max-length": 160,
         "tooltip": false
     },
+    "network": {
+        "format-ethernet": "󰈀  {ifname}",
+        "format-wifi": "󰖩  {ifname}"
+    },
     "bluetooth": {
+        "tooltip": true,
+        "tooltip-format": "{device_address} · {device_alias}"
     },
     "pulseaudio": {
         "format": "{icon}    {volume}%",
