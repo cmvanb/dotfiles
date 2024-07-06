@@ -35,6 +35,6 @@
         }
     },
     "clock": {
-        "format": "󰸘   {:%Y-%m-%d          %H:%M}"
+        "format": "󰸘   {:%Y-%m-%d        %H:%M}"
     }
 }
