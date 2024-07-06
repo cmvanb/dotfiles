@@ -87,9 +87,3 @@ box > * > * {
     animation-iteration-count: infinite;
     animation-direction: alternate;
 }
-
-/* Audio
-*-----------------------------------------------------------------------------*/
-#wireplumber.muted {
-    color: <% color_hash $text_10 %>;
-}

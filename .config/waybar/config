@@ -2,7 +2,7 @@
     "layer": "top",
     "modules-left": ["river/tags"],
     "modules-center": ["river/window"],
-    "modules-right": ["network", "bluetooth", "pulseaudio", "battery", "clock"],
+    "modules-right": ["network", "bluetooth", "wireplumber", "battery", "clock"],
     "river/window": {
         "max-length": 160,
         "tooltip": false
@@ -17,13 +17,16 @@
     "bluetooth": {
         "format": "  {status}",
         "tooltip": true,
-        "tooltip-format": "{device_address} · {device_alias}"
+        "tooltip-format": "{device_address} · {device_alias}",
+        "tooltip-format-disabled": "controller disabled",
+        "tooltip-format-off": "controller off"
     },
-    "pulseaudio": {
-        "format": "{icon}    {volume}%",
-        "format-muted": "󰝟    {volume}%",
+    "wireplumber": {
+        "format": "{icon}   {volume}%",
+        "format-muted": "󰝟   {volume}%",
+        "format-icons": ["󰕿", "󰖀", "󰕾"],
         "on-click": "pavucontrol",
-        "format-icons": ["", "", ""]
+        "on-click-right": "wpctl set-mute 167 toggle"
     },
     "battery": {
         "format": "{icon}    {capacity}%",
