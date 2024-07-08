@@ -171,7 +171,9 @@ return {
     {
         'chrisgrieser/nvim-origami',
         config = function()
-            require('origami').setup({})
+            require('origami').setup({
+                setupFoldKeymaps = false,
+            })
         end,
     },
 
