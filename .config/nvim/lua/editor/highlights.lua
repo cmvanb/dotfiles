@@ -37,7 +37,7 @@ hi('CursorLineFold',            { fg = 'gray_4', bg = 'primary_2' },            
 hi('CursorLineSign',            { bg = 'primary_2' },                                     { bg = 'ansi_blue' })
 hi('SignColumn',                { fg = 'primary_15' },                                    { fg = 'ansi_brblue' })
 
-hi('StatusLine',                { fg = 'text_10', bg = 'primary_6', attrs = 'bold' },     { fg = 'ansi_white', bg = 'ansi_blue', attrs = 'bold' })
+hi('StatusLine',                { fg = 'text_10', bg = 'primary_1', attrs = 'bold' },     { fg = 'ansi_white', bg = 'ansi_blue', attrs = 'bold' })
 hi('StatusLineNC',              { fg = 'text_6', bg = 'primary_1' },                      { fg = 'ansi_brblack', bg = 'ansi_black' })
 hi('TabLine',                   { fg = 'primary_5', bg = 'primary_1', attrs = 'bold' },   { fg = 'ansi_white', bg = 'ansi_blue' })
 hi('TabLineSel',                { fg = 'primary_11', bg = 'primary_3', attrs = 'bold' },  { fg = 'ansi_white', bg = 'ansi_blue', attrs = 'bold' })
