@@ -115,6 +115,7 @@ map p paste
 
 # Delete.
 map d delete
+map <delete> delete
 
 # Rename.
 map c rename
