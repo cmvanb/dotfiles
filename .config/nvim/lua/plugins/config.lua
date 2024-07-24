@@ -282,6 +282,9 @@ return {
             local ThemeSymbols = require('theme.symbols')
 
             require('gitsigns').setup({
+                -- Enable cursor line highlights (fixes missing background color
+                -- in sign column)
+                culhl = true,
                 signs = {
                     add          = { text = ThemeSymbols.git_signs.add },
                     change       = { text = ThemeSymbols.git_signs.change },
