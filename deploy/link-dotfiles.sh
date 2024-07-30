@@ -45,6 +45,7 @@ force_link "$base_dir/.local/bin/printenv" "$bin_dir/printenv"
 force_link "$base_dir/.local/bin/reboot" "$bin_dir/reboot"
 force_link "$base_dir/.local/bin/river-run" "$bin_dir/river-run"
 force_link "$base_dir/.local/bin/shutdown" "$bin_dir/shutdown"
+force_link "$base_dir/.local/bin/suspend" "$bin_dir/suspend"
 force_link "$base_dir/.local/bin/view" "$bin_dir/view"
 
 # Scripts

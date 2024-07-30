@@ -62,6 +62,9 @@ abbr -a va source venv/bin/activate.fish
 abbr -a vd deactivate
 abbr -a uu sudo pacman -Syu
 abbr -a rga rg --hidden --no-ignore
+abbr -a rb reboot
+abbr -a sus suspend
+abbr -a sdn shutdown
 
 # Bindings
 #-------------------------------------------------------------------------------

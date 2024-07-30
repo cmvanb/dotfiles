@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-systemctl reboot
+systemctl suspend

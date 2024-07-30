@@ -30,6 +30,14 @@ export INPUTRC="$XDG_CONFIG_HOME/readline/config"
 # Python interactive configuration.
 export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/interactive.py"
 
+# Functions
+#-------------------------------------------------------------------------------
+
+function suspend () {
+    # NOTE: We are expecting a drop-in replacement for `suspend` in `.local/bin`.
+    "$XDG_BIN_HOME/suspend"
+}
+
 # Aliases
 #-------------------------------------------------------------------------------
 
@@ -73,6 +81,9 @@ alias va="source venv/bin/activate"
 alias vd="deactivate"
 alias uu="sudo pacman -Syu"
 alias rga="rg --hidden --no-ignore"
+alias rb="reboot"
+alias sus="suspend"
+alias sdn="shutdown"
 
 # Bindings
 #-------------------------------------------------------------------------------
