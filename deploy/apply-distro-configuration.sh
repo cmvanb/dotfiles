@@ -38,8 +38,8 @@ elif [[ $distro_id == "nixos" ]]; then
     force_link "$base_dir/.config/fish/interactive-nixos.fish" "$config_dir/fish/interactive-distro.fish"
     force_link "$base_dir/.config/bash/interactive-nixos.sh" "$config_dir/bash/interactive-distro.sh"
 
-elif [[ $distro_id == "debian" ]]; then
-    echo "Applying Debian configuration to \`$HOME\`."
+elif [[ $distro_id == "debian" ]] || [[ $distro_id == "ubuntu" ]]; then
+    echo "Applying Debian/Ubuntu configuration to \`$HOME\`."
 
     export SYSTEM_BINARY_PATH=/usr/bin
     export ESH_SHELL=$SYSTEM_BINARY_PATH/bash
