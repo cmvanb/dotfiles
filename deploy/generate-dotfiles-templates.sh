@@ -3,8 +3,6 @@
 # Generate configuration files from templates
 #-------------------------------------------------------------------------------
 
-set -euo pipefail
-
 base_dir="$(realpath "$(dirname "$(realpath "$0")")/..")"
 
 # Imports

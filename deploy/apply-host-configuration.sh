@@ -3,8 +3,6 @@
 # Apply host-specific configuration templates and links
 #-------------------------------------------------------------------------------
 
-set -euo pipefail
-
 base_dir="$(realpath "$(dirname "$(realpath "$0")")/..")"
 
 # Imports
@@ -56,6 +54,10 @@ cyxwel)
     force_link "$base_dir/.config/way-displays/cfg.yaml~home-triple" "$config_dir/way-displays/cfg.yaml"
 
     force_link "$base_dir/.local/bin/init~river" "$bin_dir/init"
+    ;;
+
+nlleq0413002159)
+    # No configuration currently.
     ;;
 
 *)

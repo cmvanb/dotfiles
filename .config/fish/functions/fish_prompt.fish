@@ -42,17 +42,17 @@ function fish_prompt --description 'Print the prompt'
 
     set -l git_color (set_color green)
 
-    set -l git_status $(git status 2>/dev/null | grep "Your branch is ahead" 2>/dev/null)
+    set -l git_status (git status 2>/dev/null | grep "Your branch is ahead" 2>/dev/null)
     if test "$git_status" != ""
         set git_color (set_color yellow)
     end
 
-    set -l git_status $(git status --porcelain 2>/dev/null)
+    set -l git_status (git status --porcelain 2>/dev/null)
     if test "$git_status" != ""
         set git_color (set_color yellow)
     end
 
-    set -l git_branch $(git branch --show-current 2>/dev/null)
+    set -l git_branch (git branch --show-current 2>/dev/null)
     if test "$git_branch" != ""
         set vcs "$git_color$git_symbol$git_branch$normal "
     end

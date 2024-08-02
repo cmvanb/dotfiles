@@ -3,8 +3,6 @@
 # Linux specific utilities
 #-------------------------------------------------------------------------------
 
-set -euo pipefail
-
 # Get the currently running linux distribution ID.
 #-------------------------------------------------------------------------------
 

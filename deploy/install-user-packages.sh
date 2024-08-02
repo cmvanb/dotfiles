@@ -3,8 +3,6 @@
 # Install user-specific software packages
 #-------------------------------------------------------------------------------
 
-set -euo pipefail
-
 base_dir="$(realpath "$(dirname "$(realpath "$0")")/..")"
 
 # Imports
@@ -24,7 +22,6 @@ home_dir=$HOME
 
 echo "Installing user packages to \`$home_dir\`."
 
-# Python version management
 if [[ ! -d $PYENV_ROOT ]]; then
     curl https://pyenv.run | bash
 else

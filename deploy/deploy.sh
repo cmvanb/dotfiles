@@ -3,8 +3,6 @@
 # Deploy the home configuration
 #-------------------------------------------------------------------------------
 
-set -euo pipefail
-
 base_dir="$(realpath "$(dirname "$(realpath "$0")")/..")"
 
 # Imports

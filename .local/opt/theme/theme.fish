@@ -113,7 +113,7 @@ function parse_vars --argument-names filePath
         # Assign value
         if test -n $key && test -n $value
             if test $lookup = 'true'
-                dict_set $key $(dict_get $value)
+                dict_set $key (dict_get $value)
             else
                 dict_set $key $value
             end

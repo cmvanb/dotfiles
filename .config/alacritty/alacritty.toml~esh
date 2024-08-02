@@ -18,7 +18,8 @@ shape = 'Block'
 size = <%= $font_size_medium %>
 
 [font.normal]
-family = 'monospace'
+family = '<%= $font_mono %>'
+style = 'Regular'
 
 [window]
 opacity = 0.9

@@ -3,8 +3,6 @@
 # Deploy the theme configuration
 #-------------------------------------------------------------------------------
 
-set -euo pipefail
-
 base_dir="$(realpath "$(dirname "$(realpath "$0")")/..")"
 config_dir=${XDG_CONFIG_HOME:-$HOME/.config}
 opt_dir=${XDG_OPT_HOME:-$HOME/.local/opt}
@@ -56,6 +54,10 @@ supertubes)
     ;&
 cyxwel)
     force_link "$base_dir/.config/theme/fonts~home" "$config_dir/theme/fonts"
+    ;;
+
+nlleq0413002159)
+    force_link "$base_dir/.config/theme/fonts~windows" "$config_dir/theme/fonts"
     ;;
 
 *)

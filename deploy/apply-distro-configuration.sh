@@ -3,8 +3,6 @@
 # Apply distro-specific configuration templates and links
 #-------------------------------------------------------------------------------
 
-set -euo pipefail
-
 base_dir="$(realpath "$(dirname "$(realpath "$0")")/..")"
 config_dir=${XDG_CONFIG_HOME:-$HOME/.config}
 

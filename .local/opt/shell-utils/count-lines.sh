@@ -5,8 +5,6 @@
 #   NOTE: Does not account for lines more than twice the terminal's width.
 #-------------------------------------------------------------------------------
 
-set -euo pipefail
-
 # NOTE: Filter out terminal escapes to avoid counting them towards line length.
 input=$(cat - | sed 's/[^[:print:]]\[[^a-zA-Z]*[a-zA-Z]//g')
 

@@ -3,8 +3,6 @@
 # Link the dotfiles to the home directory
 #-------------------------------------------------------------------------------
 
-set -euo pipefail
-
 base_dir="$(realpath "$(dirname "$(realpath "$0")")/..")"
 
 # Imports
@@ -78,6 +76,7 @@ force_link "$base_dir/.local/scripts/terminal-preview.sh" "$scripts_dir/terminal
 force_link "$base_dir/.local/scripts/view.sh" "$scripts_dir/view.sh"
 
 # Shell libraries
+mkdir -p "$opt_dir"
 force_link "$base_dir/.local/opt/shell-utils" "$opt_dir/shell-utils"
 force_link "$base_dir/.local/opt/wayland-utils" "$opt_dir/wayland-utils"
 

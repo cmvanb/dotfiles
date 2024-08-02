@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+font_mono='Iosevka NF'
+font_sans='Calibri'
+font_serif='Georgia'
+
+font_size_tiny=10
+font_size_xsmall=12
+font_size_small=14
+font_size_medium=16
+font_size_large=18
+font_size_xlarge=20
+font_size_xxlarge=22
+
+zoom_level=1.10

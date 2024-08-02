@@ -21,7 +21,7 @@ source "$XDG_CONFIG_HOME/bash/interactive-distro.sh"
 #-------------------------------------------------------------------------------
 
 # Save history in an XDG compliant directory.
-[[ ! -d "$DATA_DIR" ]] && mkdir -p "$DATA_DIR"
+[[ ! -d "$XDG_DATA_HOME/bash" ]] && mkdir -p "$XDG_DATA_HOME/bash"
 export HISTFILE="$XDG_DATA_HOME/bash/bash_history"
 
 # GNU readline configuration.

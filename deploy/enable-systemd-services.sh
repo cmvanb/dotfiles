@@ -3,8 +3,6 @@
 # Enable systemd user services
 #-------------------------------------------------------------------------------
 
-set -euo pipefail
-
 base_dir="$(realpath "$(dirname "$(realpath "$0")")/..")"
 
 # Imports
@@ -32,8 +30,17 @@ if [[ $distro_id == "arch" ]]; then
 elif [[ $distro_id == "nixos" ]]; then
     echo "Enabling NixOS services."
 
+    # Nothing currently.
+
 elif [[ $distro_id == "debian" ]]; then
     echo "Enabling Debian services."
+
+    # Nothing currently.
+
+elif [[ $distro_id == "ubuntu" ]]; then
+    echo "Enabling Ubuntu services."
+
+    # Nothing currently.
 
 else
     echo "[$(basename "$0")] ERROR: Unknown distribution \`$distro_id\`, unable to deploy."
