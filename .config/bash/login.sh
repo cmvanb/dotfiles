@@ -83,3 +83,9 @@ path_prepend "$XDG_DATA_HOME/cargo/bin" PATH
 if command -v pyenv &> /dev/null; then
     eval "$(pyenv init -)"
 fi
+
+# Virtual terminal theme
+#-------------------------------------------------------------------------------
+
+# shellcheck disable=SC1091
+source "$XDG_CONFIG_HOME/vt/apply-vt-colors.sh" 1> /dev/null

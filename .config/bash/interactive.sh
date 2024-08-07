@@ -33,8 +33,15 @@ export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/interactive.py"
 # Functions
 #-------------------------------------------------------------------------------
 
+# Logout of the current session.
+# NOTE: We don't use the shell's builtin logout command.
+function logout () {
+    "$XDG_BIN_HOME/logout"
+}
+
+# Suspend the system.
+# NOTE: We don't use the shell's builtin suspend command.
 function suspend () {
-    # NOTE: We are expecting a drop-in replacement for `suspend` in `.local/bin`.
     "$XDG_BIN_HOME/suspend"
 }
 

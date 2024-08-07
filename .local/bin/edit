@@ -5,7 +5,9 @@
 
 if [[ -n $EDITOR ]]; then
     $EDITOR "$@"
+elif [[ -n $VISUAL ]]; then
+    $VISUAL "$@"
 else
-    echo "Neither \$VISUAL nor \$EDITOR environment variables are set."
+    echo "Neither \$EDITOR nor \$VISUAL environment variables are set."
     exit 1
 fi
