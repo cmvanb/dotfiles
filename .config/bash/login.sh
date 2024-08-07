@@ -88,4 +88,4 @@ fi
 #-------------------------------------------------------------------------------
 
 # shellcheck disable=SC1091
-source "$XDG_CONFIG_HOME/vt/apply-vt-colors.sh" 1> /dev/null
+source "$XDG_CONFIG_HOME/vt/apply-vt-colors.sh" | systemd-cat -t bash-login

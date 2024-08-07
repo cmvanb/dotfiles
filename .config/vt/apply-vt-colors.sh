@@ -3,14 +3,13 @@
 # Apply the virtual terminal colors from a configuration file
 #-------------------------------------------------------------------------------
 
-set -euo pipefail
-
 if ! command -v esh &> /dev/null; then
     echo "ERROR: $(basename "$0") missing dependency: esh"
     exit
 fi
 
-base_dir=$(realpath "$(dirname "$(realpath "$0")")/../..")
+script_dir=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)
+base_dir=$(realpath "$script_dir/../..")
 
 echo "Applying virtual terminal colors from \`$base_dir/.config/vt/colors~esh\`."
 
