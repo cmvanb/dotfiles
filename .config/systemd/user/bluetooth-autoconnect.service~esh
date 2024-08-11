@@ -1,0 +1,11 @@
+[Unit]
+Description=Bluetooth autoconnect service
+
+[Service]
+Type=simple
+ExecStart=<%= $SYSTEM_BINARY_PATH %>/bluetooth-autoconnect -d
+Restart=always
+RuntimeMaxSec=1m
+
+[Install]
+WantedBy=basic.target

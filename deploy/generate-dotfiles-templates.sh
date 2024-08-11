@@ -47,6 +47,7 @@ mkdir -p "$config_dir/wofi"
 esh "$base_dir/.config/wofi/style.css~esh" > "$config_dir/wofi/style.css"
 
 mkdir -p "$config_dir/systemd/user"
+esh "$base_dir/.config/systemd/user/bluetooth-autoconnect.service~esh" > "$config_dir/systemd/user/bluetooth-autoconnect.service"
 esh "$base_dir/.config/systemd/user/mako.service~esh" > "$config_dir/systemd/user/mako.service"
 esh "$base_dir/.config/systemd/user/ssh-agent.service~esh" > "$config_dir/systemd/user/ssh-agent.service"
 esh "$base_dir/.config/systemd/user/udiskie.service~esh" > "$config_dir/systemd/user/udiskie.service"

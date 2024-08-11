@@ -21,6 +21,7 @@ distro_id=$(get_distro_id)
 if [[ $distro_id == "arch" ]]; then
     echo "Enabling Arch Linux services."
 
+    systemctl --user enable bluetooth-autoconnect
     systemctl --user enable mako
     systemctl --user enable ssh-agent
     systemctl --user enable udiskie
