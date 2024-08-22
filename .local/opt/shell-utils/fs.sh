@@ -2,6 +2,11 @@
 # Bash file system utilities
 #-------------------------------------------------------------------------------
 
+# Get the directory of the script that is calling this function.
+get_script_dir () {
+    cd -- "$( dirname -- "${BASH_SOURCE[1]}" )" &> /dev/null && pwd
+}
+
 force_link () {
     if [[ -z "$1" ]]; then
         echo "[$(basename "$0")] ERROR: Missing argument: target"
