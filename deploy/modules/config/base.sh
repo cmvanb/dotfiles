@@ -18,13 +18,12 @@ mkdir -p "$config_dir"
 force_link "$base_dir/.config/lesskey" "$config_dir/lesskey"
 
 # Bash
-# TODO: Profile specific configuration of bash.
 mkdir -p "$config_dir/bash"
 force_link "$base_dir/.config/bash/bash_profile" "$config_dir/bash/bash_profile"
 force_link "$base_dir/.config/bash/bashrc" "$config_dir/bash/bashrc"
-force_link "$base_dir/.config/bash/env.sh" "$config_dir/bash/env.sh"
-force_link "$base_dir/.config/bash/interactive.sh" "$config_dir/bash/interactive.sh"
-force_link "$base_dir/.config/bash/login.sh" "$config_dir/bash/login.sh"
+esh "$base_dir/.config/bash/env.sh~esh" > "$config_dir/bash/env.sh"
+esh "$base_dir/.config/bash/interactive.sh~esh" > "$config_dir/bash/interactive.sh"
+esh "$base_dir/.config/bash/login.sh~esh" > "$config_dir/bash/login.sh"
 force_link "$base_dir/.config/bash/logout.sh" "$config_dir/bash/logout.sh"
 force_link "$base_dir/.config/bash/prompt.sh" "$config_dir/bash/prompt.sh"
 

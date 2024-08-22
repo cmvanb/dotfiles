@@ -23,9 +23,12 @@ export HISTFILE="$XDG_DATA_HOME/bash/bash_history"
 # GNU readline configuration.
 export INPUTRC="$XDG_CONFIG_HOME/readline/config"
 
+<% if [[ $SYSTEM_PROFILE == "desktop" ]]; then -%>
 # Python interactive configuration.
 export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/interactive.py"
 
+<% fi -%>
+<% if [[ $SYSTEM_PROFILE == "desktop" ]]; then -%>
 # Functions
 #-------------------------------------------------------------------------------
 
@@ -41,6 +44,7 @@ function suspend () {
     "$XDG_BIN_HOME/suspend"
 }
 
+<% fi -%>
 # Aliases
 #-------------------------------------------------------------------------------
 
@@ -82,11 +86,14 @@ alias ip="ip -c"
 alias vv="generate-venv.sh"
 alias va="source venv/bin/activate"
 alias vd="deactivate"
+# TODO: Arch only.
 alias uu="sudo pacman -Syu"
 alias rga="rg --hidden --no-ignore"
+<% if [[ $SYSTEM_PROFILE == "desktop" ]]; then -%>
 alias rb="reboot"
 alias sus="suspend"
 alias sdn="shutdown"
+<% fi -%>
 
 # Bindings
 #-------------------------------------------------------------------------------

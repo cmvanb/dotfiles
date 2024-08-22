@@ -14,6 +14,7 @@ source "$XDG_OPT_HOME/theme/theme.sh"
 
 construct_prompt() {
     # Login
+    #---------------------------------------------------------------------------
     local user
     user=$(whoami)
     if [[ "$user" == "root" ]]; then
@@ -29,10 +30,12 @@ construct_prompt() {
     local login="$user$separator$hostname "
 
     # CWD
+    #---------------------------------------------------------------------------
     local cwd
     cwd="\[$(color_ansi_fg "${ansi_blue:?}")\]\w\[$(color_ansi_reset)\] "
 
     # Git status
+    #---------------------------------------------------------------------------
     local vcs=""
 
     local git_symbol="" && [[ "$TERM" != "linux" ]] && git_symbol=" "
@@ -58,6 +61,7 @@ construct_prompt() {
     fi
 
     # Python virtual environment
+    #---------------------------------------------------------------------------
     local venv=""
 
     local venv_symbol="" && [[ "$TERM" != "linux" ]] && venv_symbol="󰌠 "
@@ -77,7 +81,8 @@ construct_prompt() {
     fi
 
     # Prompt
-    PS1="$login$cwd$vcs$venv\[$(color_ansi_fg "${text_15:?}")\]\$\[$(color_ansi_reset)\] "
+    #---------------------------------------------------------------------------
+    PS1="$login$cwd$vcs$venv\[$(color_ansi_fg "${ansi_brwhite:?}")\]\$\[$(color_ansi_reset)\] "
 }
 
 PROMPT_COMMAND='construct_prompt'

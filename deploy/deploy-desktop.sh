@@ -14,6 +14,9 @@ base_dir=$(realpath "$script_dir/..")
 source "$base_dir/.local/opt/shell-utils/fs.sh"
 source "$base_dir/.local/opt/shell-utils/linux.sh"
 
+# Profile variable, for use with esh templates.
+export SYSTEM_PROFILE="desktop"
+
 # Environment variables needed by deployment modules
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.local/cache"
