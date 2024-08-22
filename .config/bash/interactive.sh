@@ -13,10 +13,6 @@
 # shellcheck disable=SC1091
 source "$XDG_CONFIG_HOME/shell/interactive"
 
-# Linux distribution specific shell configuration.
-# shellcheck disable=SC1091
-source "$XDG_CONFIG_HOME/bash/interactive-distro.sh"
-
 # General configuration
 #-------------------------------------------------------------------------------
 
