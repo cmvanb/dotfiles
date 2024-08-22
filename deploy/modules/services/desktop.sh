@@ -1,26 +1,23 @@
 #!/usr/bin/env bash
 #-------------------------------------------------------------------------------
-# Enable systemd user services
+# Deploy desktop user services
 #-------------------------------------------------------------------------------
 
-base_dir="$(realpath "$(dirname "$(realpath "$0")")/..")"
+echo "Deploying desktop user services..."
 
-# Imports
+# Setup
 #-------------------------------------------------------------------------------
 
 source "$base_dir/.local/opt/shell-utils/linux.sh"
 
-echo "Enabling systemd user services."
-
-# Enable system services
+# Enable user services
 #-------------------------------------------------------------------------------
 
 declare distro_id
 distro_id=$(get_distro_id)
 
 if [[ $distro_id == "arch" ]]; then
-    echo "Enabling Arch Linux services."
-
+    echo "└ Enabling Arch Linux user services."
     systemctl --user enable bluetooth-autoconnect
     systemctl --user enable mako
     systemctl --user enable ssh-agent
@@ -29,19 +26,13 @@ if [[ $distro_id == "arch" ]]; then
     systemctl --user enable syncthing
 
 elif [[ $distro_id == "nixos" ]]; then
-    echo "Enabling NixOS services."
-
-    # Nothing currently.
+    : # Nothing currently.
 
 elif [[ $distro_id == "debian" ]]; then
-    echo "Enabling Debian services."
-
-    # Nothing currently.
+    : # Nothing currently.
 
 elif [[ $distro_id == "ubuntu" ]]; then
-    echo "Enabling Ubuntu services."
-
-    # Nothing currently.
+    : # Nothing currently.
 
 else
     echo "[$(basename "$0")] ERROR: Unknown distribution \`$distro_id\`, unable to deploy."
