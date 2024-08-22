@@ -11,9 +11,11 @@ source $XDG_CONFIG_HOME/shell/interactive
 # General configuration
 #-------------------------------------------------------------------------------
 
+<% if [[ $SYSTEM_PROFILE == "desktop" ]]; then -%>
 # Python interactive configuration.
 set -x PYTHONSTARTUP $XDG_CONFIG_HOME/python/interactive.py
 
+<% fi -%>
 # Aliases & Abbreviations
 #-------------------------------------------------------------------------------
 
@@ -56,11 +58,14 @@ abbr -a ip ip -c
 abbr -a vv generate-venv.sh
 abbr -a va source venv/bin/activate.fish
 abbr -a vd deactivate
+# TODO: Arch only.
 abbr -a uu sudo pacman -Syu
 abbr -a rga rg --hidden --no-ignore
+<% if [[ $SYSTEM_PROFILE == "desktop" ]]; then -%>
 abbr -a rb reboot
 abbr -a sus suspend
 abbr -a sdn shutdown
+<% fi -%>
 
 # Bindings
 #-------------------------------------------------------------------------------

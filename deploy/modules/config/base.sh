@@ -33,12 +33,11 @@ force_link "$base_dir/.config/bat/config" "$config_dir/bat/config"
 force_link "$base_dir/.config/bat/syntaxes" "$config_dir/bat/syntaxes"
 
 # Fish
-# TODO: Profile specific configuration of fish.
 mkdir -p "$config_dir/fish"
 force_link "$base_dir/.config/fish/config.fish" "$config_dir/fish/config.fish"
-force_link "$base_dir/.config/fish/env.fish" "$config_dir/fish/env.fish"
-force_link "$base_dir/.config/fish/interactive.fish" "$config_dir/fish/interactive.fish"
-force_link "$base_dir/.config/fish/login.fish" "$config_dir/fish/login.fish"
+esh "$base_dir/.config/fish/env.fish~esh" > "$config_dir/fish/env.fish"
+esh "$base_dir/.config/fish/interactive.fish~esh" > "$config_dir/fish/interactive.fish"
+esh "$base_dir/.config/fish/login.fish~esh" > "$config_dir/fish/login.fish"
 force_link "$base_dir/.config/fish/logout.fish" "$config_dir/fish/logout.fish"
 force_link "$base_dir/.config/fish/functions" "$config_dir/fish/functions"
 
