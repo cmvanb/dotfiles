@@ -18,7 +18,6 @@ require('utils.terminal')
 
 -- Load editor config.
 require('editor.options')
-require('editor.gui')
 require('editor.highlights')
 
 -- Load plugins. Will bootstrap Packer if necessary.
