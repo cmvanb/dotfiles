@@ -4,6 +4,19 @@
 
 local theme = {}
 
+-- File system
+--------------------------------------------------------------------------------
+
+function file_exists(name)
+    local f = io.open(name, 'r')
+    if f ~= nil then
+        io.close(f)
+        return true
+    else
+        return false
+    end
+end
+
 -- Parsing
 --------------------------------------------------------------------------------
 
@@ -14,7 +27,7 @@ end
 local function parse_vars(filePath)
     local file = io.open(filePath, 'r')
     if file == nil then
-        error('them.lua -> Could not open file: ' .. filePath)
+        error('theme.lua -> Could not open file: ' .. filePath)
     end
 
     local lines = io.lines(filePath)
@@ -131,9 +144,18 @@ end
 --------------------------------------------------------------------------------
 
 local colors = parse_vars(os.getenv('XDG_CONFIG_HOME') .. '/theme/colors')
-local fonts = parse_vars(os.getenv('XDG_CONFIG_HOME') .. '/theme/fonts')
--- TODO: Add cursor vars.
--- TODO: Handle lack of font/cursor configuration on server profile.
+
+local fonts_path = os.getenv('XDG_CONFIG_HOME') .. '/theme/fonts'
+local fonts = {}
+if file_exists(fonts_path) then
+    fonts = parse_vars(fonts_path)
+end
+
+local cursor_path = os.getenv('XDG_CONFIG_HOME') .. '/theme/cursor'
+local cursor = {}
+if file_exists(cursor_path) then
+    cursor = parse_vars(cursor_path)
+end
 
 -- Lookup
 --------------------------------------------------------------------------------
@@ -216,6 +238,10 @@ end
 
 function theme.font(name)
     return fonts[name]
+end
+
+function theme.cursor(name)
+    return cursor[name]
 end
 
 -- Debugging
