@@ -152,3 +152,4 @@ end
 
 parse_vars $config_dir/colors
 parse_vars $config_dir/fonts
+parse_vars $config_dir/cursor

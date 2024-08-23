@@ -20,9 +20,6 @@ source "$XDG_CONFIG_HOME/shell/interactive"
 [[ ! -d "$XDG_DATA_HOME/bash" ]] && mkdir -p "$XDG_DATA_HOME/bash"
 export HISTFILE="$XDG_DATA_HOME/bash/bash_history"
 
-# GNU readline configuration.
-export INPUTRC="$XDG_CONFIG_HOME/readline/config"
-
 <% if [[ $SYSTEM_PROFILE == "desktop" ]]; then -%>
 # Python interactive configuration.
 export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/interactive.py"

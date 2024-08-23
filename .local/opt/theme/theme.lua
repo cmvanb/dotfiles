@@ -132,6 +132,8 @@ end
 
 local colors = parse_vars(os.getenv('XDG_CONFIG_HOME') .. '/theme/colors')
 local fonts = parse_vars(os.getenv('XDG_CONFIG_HOME') .. '/theme/fonts')
+-- TODO: Add cursor vars.
+-- TODO: Handle lack of font/cursor configuration on server profile.
 
 -- Lookup
 --------------------------------------------------------------------------------

@@ -85,6 +85,6 @@ color_256() {
 # shellcheck disable=SC1091
 source "$theme_config_dir/colors"
 # shellcheck disable=SC1091
-source "$theme_config_dir/fonts"
+[[ -f "$theme_config_dir/fonts" ]] && source "$theme_config_dir/fonts"
 # shellcheck disable=SC1091
-source "$theme_config_dir/cursor"
+[[ -f "$theme_config_dir/cursor" ]] && source "$theme_config_dir/cursor"
