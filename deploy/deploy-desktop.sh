@@ -14,10 +14,9 @@ base_dir=$(realpath "$script_dir/..")
 source "$base_dir/.local/opt/shell-utils/fs.sh"
 source "$base_dir/.local/opt/shell-utils/linux.sh"
 
-# Profile variable, for use with esh templates.
-export SYSTEM_PROFILE="desktop"
-
 # Environment variables needed by deployment modules
+export SYSTEM_PROFILE="desktop"
+export SYSTEM_DISTRO="$(get_distro_id)"
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.local/cache"
 export XDG_DATA_HOME="$HOME/.local/share"
@@ -26,17 +25,14 @@ export XDG_OPT_HOME="$HOME/.local/opt"
 export XDG_SCRIPTS_HOME="$HOME/.local/scripts"
 
 # Determine system binary path
-declare distro_id
-distro_id=$(get_distro_id)
-
-if [[ $distro_id == "arch" ]] || [[ $distro_id == "debian" ]] || [[ $distro_id == "ubuntu" ]]; then
+if [[ $SYSTEM_DISTRO == "arch" ]] || [[ $SYSTEM_DISTRO == "debian" ]] || [[ $SYSTEM_DISTRO == "ubuntu" ]]; then
     export SYSTEM_BINARY_PATH=/usr/bin
 
-elif [[ $distro_id == "nixos" ]]; then
+elif [[ $SYSTEM_DISTRO == "nixos" ]]; then
     export SYSTEM_BINARY_PATH=/run/current-system/sw/bin
 
 else
-    echo "[$(basename "$0")] ERROR: Unknown distribution \`$distro_id\`, unable to deploy."
+    echo "[$(basename "$0")] ERROR: Unknown distribution \`$SYSTEM_DISTRO\`, unable to deploy."
     exit 1
 fi
 

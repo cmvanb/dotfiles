@@ -138,9 +138,10 @@ mkdir -p "$config_dir/xdg-desktop-portal"
 force_link "$base_dir/.config/xdg-desktop-portal/river-portals.conf" "$config_dir/xdg-desktop-portal/river-portals.conf"
 
 # Yay
-# TODO: Make distro specific.
-mkdir -p "$config_dir/yay"
-force_link "$base_dir/.config/yay/config.json" "$config_dir/yay/config.json"
+if [[ $SYSTEM_DISTRO == "arch" ]]; then
+    mkdir -p "$config_dir/yay"
+    force_link "$base_dir/.config/yay/config.json" "$config_dir/yay/config.json"
+fi
 
 # Zathura
 mkdir -p "$config_dir/zathura"
@@ -165,16 +166,17 @@ force_link "$base_dir/.local/share/applications/vscodium-wayland.desktop" "$data
 esh "$base_dir/.local/share/applications/draw.io.desktop~esh" > "$data_dir/applications/draw.io.desktop"
 
 # Disabled XDG .desktop files
-# TODO: Make distro specific.
-force_link "$base_dir/.local/share/applications/avahi-discover.desktop" "$data_dir/applications/avahi-discover.desktop"
-force_link "$base_dir/.local/share/applications/bssh.desktop" "$data_dir/applications/bssh.desktop"
-force_link "$base_dir/.local/share/applications/bvnc.desktop" "$data_dir/applications/bvnc.desktop"
-force_link "$base_dir/.local/share/applications/cmake-gui.desktop" "$data_dir/applications/cmake-gui.desktop"
-force_link "$base_dir/.local/share/applications/electron24.desktop" "$data_dir/applications/electron24.desktop"
-force_link "$base_dir/.local/share/applications/lstopo.desktop" "$data_dir/applications/lstopo.desktop"
-force_link "$base_dir/.local/share/applications/qv4l2.desktop" "$data_dir/applications/qv4l2.desktop"
-force_link "$base_dir/.local/share/applications/qvidcap.desktop" "$data_dir/applications/qvidcap.desktop"
-force_link "$base_dir/.local/share/applications/vscodium.desktop" "$data_dir/applications/vscodium.desktop"
+if [[ $SYSTEM_DISTRO == "arch" ]]; then
+    force_link "$base_dir/.local/share/applications/avahi-discover.desktop" "$data_dir/applications/avahi-discover.desktop"
+    force_link "$base_dir/.local/share/applications/bssh.desktop" "$data_dir/applications/bssh.desktop"
+    force_link "$base_dir/.local/share/applications/bvnc.desktop" "$data_dir/applications/bvnc.desktop"
+    force_link "$base_dir/.local/share/applications/cmake-gui.desktop" "$data_dir/applications/cmake-gui.desktop"
+    force_link "$base_dir/.local/share/applications/electron24.desktop" "$data_dir/applications/electron24.desktop"
+    force_link "$base_dir/.local/share/applications/lstopo.desktop" "$data_dir/applications/lstopo.desktop"
+    force_link "$base_dir/.local/share/applications/qv4l2.desktop" "$data_dir/applications/qv4l2.desktop"
+    force_link "$base_dir/.local/share/applications/qvidcap.desktop" "$data_dir/applications/qvidcap.desktop"
+    force_link "$base_dir/.local/share/applications/vscodium.desktop" "$data_dir/applications/vscodium.desktop"
+fi
 
 # Application data
 mkdir -p "$data_dir/qutebrowser/userscripts"

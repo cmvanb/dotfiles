@@ -86,8 +86,9 @@ alias ip="ip -c"
 alias vv="generate-venv.sh"
 alias va="source venv/bin/activate"
 alias vd="deactivate"
-# TODO: Arch only.
+<% if [[ $SYSTEM_DISTRO == "arch" ]]; then -%>
 alias uu="sudo pacman -Syu"
+<% fi -%>
 alias rga="rg --hidden --no-ignore"
 <% if [[ $SYSTEM_PROFILE == "desktop" ]]; then -%>
 alias rb="reboot"
