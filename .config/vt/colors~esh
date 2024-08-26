@@ -1,4 +1,5 @@
-<% source $XDG_OPT_HOME/theme/theme.sh %><% color_hash $ansi_black %>
+<% source $XDG_OPT_HOME/theme/theme.sh -%>
+<% color_hash $ansi_black %>
 <% color_hash $ansi_red %>
 <% color_hash $ansi_green %>
 <% color_hash $ansi_yellow %>

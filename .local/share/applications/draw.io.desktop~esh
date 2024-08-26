@@ -1,4 +1,5 @@
-<% source $XDG_OPT_HOME/theme/theme.sh %>[Desktop Entry]
+<% source $XDG_OPT_HOME/theme/theme.sh -%>
+[Desktop Entry]
 Name=drawio
 GenericName=Diagram Tool
 Exec=/usr/bin/draw.io %U --force-device-scale-factor=<%= $zoom_level %>

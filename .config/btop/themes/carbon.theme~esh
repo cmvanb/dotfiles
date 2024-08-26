@@ -1,3 +1,4 @@
+<% source $XDG_OPT_HOME/theme/theme.sh -%>
 #-------------------------------------------------------------------------------
 # btop Carbon theme
 #
@@ -11,7 +12,7 @@
 # Use "start" and "end" variables for two color gradient
 # Use "start", "mid" and "end" for three color gradient
 #-------------------------------------------------------------------------------
-<% source $XDG_OPT_HOME/theme/theme.sh %>
+
 # Main background, empty for terminal default, need to be empty if you want transparent background
 theme[main_bg]=""
 

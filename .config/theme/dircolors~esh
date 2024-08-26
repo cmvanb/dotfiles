@@ -1,3 +1,4 @@
+<% source $XDG_OPT_HOME/theme/theme.sh -%>
 #-------------------------------------------------------------------------------
 # Directory color configuration (for dircolors, ls, eza)
 #
@@ -11,7 +12,7 @@
 # slackware version of dircolors) are recognized but ignored.
 # Global config options can be specified before TERM or COLORTERM entries
 #-------------------------------------------------------------------------------
-<% source $XDG_OPT_HOME/theme/theme.sh %>
+
 # Truecolor or 256 color terminals
 #-------------------------------------------------------------------------------
 COLORTERM ?*

@@ -1,4 +1,5 @@
-<% source $XDG_OPT_HOME/theme/theme.sh %>reset:
+<% source $XDG_OPT_HOME/theme/theme.sh -%>
+reset:
 da=38;5;<% color_256 ansi_white %>:
 sn=38;5;<% color_256 ansi_brblack %>:
 sb=38;5;<% color_256 ansi_brblack %>:

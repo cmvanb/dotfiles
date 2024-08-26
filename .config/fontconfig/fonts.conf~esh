@@ -1,6 +1,7 @@
+<% source $XDG_OPT_HOME/theme/theme.sh -%>
 <?xml version="1.0"?>
 <!DOCTYPE fontconfig SYSTEM "fonts.dtd">
-<% source $XDG_OPT_HOME/theme/theme.sh %>
+
 <fontconfig>
   <alias>
    <family>sans-serif</family>

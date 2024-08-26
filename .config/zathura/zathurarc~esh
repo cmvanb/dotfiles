@@ -1,7 +1,8 @@
+<% source $XDG_OPT_HOME/theme/theme.sh -%>
 #-------------------------------------------------------------------------------
 # Zathura PDF viewer configuration
 #-------------------------------------------------------------------------------
-<% source $XDG_OPT_HOME/theme/theme.sh %>
+
 # Enable clipboard.
 set selection-clipboard clipboard
 
