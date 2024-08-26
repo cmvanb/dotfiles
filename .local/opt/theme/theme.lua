@@ -4,7 +4,7 @@
 
 local theme = {}
 
--- File system
+-- Utilities
 --------------------------------------------------------------------------------
 
 function file_exists(name)
@@ -17,17 +17,21 @@ function file_exists(name)
     end
 end
 
+function raise_error(message)
+    error('[theme.lua] ERROR: ' .. message)
+end
+
 -- Parsing
 --------------------------------------------------------------------------------
 
 local function parse_error(line, column, message)
-    error('theme.lua -> Unable to continue parsing at line ' .. line.. ', column ' .. column .. ': ' .. message)
+    raise_error('Unable to continue parsing at line ' .. line.. ', column ' .. column .. ': ' .. message)
 end
 
 local function parse_vars(filePath)
     local file = io.open(filePath, 'r')
     if file == nil then
-        error('theme.lua -> Could not open file: ' .. filePath)
+        raise_error('Could not open file: ' .. filePath)
     end
 
     local lines = io.lines(filePath)
@@ -143,7 +147,13 @@ end
 -- Entry point
 --------------------------------------------------------------------------------
 
-local colors = parse_vars(os.getenv('XDG_CONFIG_HOME') .. '/theme/colors')
+local colors_path = os.getenv('XDG_CONFIG_HOME') .. '/theme/colors'
+local colors = {}
+if file_exists(colors_path) then
+    colors = parse_vars(colors_path)
+else
+    raise_error('Theme color file is not readable.')
+end
 
 local fonts_path = os.getenv('XDG_CONFIG_HOME') .. '/theme/fonts'
 local fonts = {}

@@ -16,13 +16,15 @@ function dict_set --argument-names key value
     set -g '__theme_var_'$key $value
 end
 
+function raise_error --argument-names message
+    echo "[theme.fish] ERROR: $message"
+end
+
 function parse_error --argument-names line, column, message
-    echo "theme.fish -> Unable to continue parsing at line {$line}, {$column}: {$message}"
+    raise_error "Unable to continue parsing at line {$line}, {$column}: {$message}"
 end
 
 function parse_vars --argument-names filePath
-    test -z $filePath && set filePath $XDG_CONFIG_HOME"/theme/colors"
-
     set -l line_count 0
 
     while read line
@@ -150,6 +152,16 @@ end
 # Parse the system theme variables.
 #-------------------------------------------------------------------------------
 
-parse_vars $config_dir/colors
-parse_vars $config_dir/fonts
-parse_vars $config_dir/cursor
+if test -r $config_dir/colors
+    parse_vars $config_dir/colors
+else
+    raise_error "Theme color file is not readable."
+end
+
+if test -r $config_dir/fonts
+    parse_vars $config_dir/fonts
+end
+
+if test -r $config_dir/cursor
+    parse_vars $config_dir/cursor
+end

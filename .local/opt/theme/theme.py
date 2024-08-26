@@ -5,11 +5,20 @@
 import os
 import re
 
+# Utilities
+#-------------------------------------------------------------------------------
+
+def raise_error(message):
+    raise Exception(f'[theme.py] ERROR: {message}')
+
+def is_readable_file(path):
+    return os.path.isfile(path) and os.access(path, os.R_OK)
+
 # Parsing
 #-------------------------------------------------------------------------------
 
 def parse_error(line, column, message):
-    raise Exception(f'theme.py -> Unable to continue parsing at line {line}, {column}: {message}')
+    raise_error(f'Unable to continue parsing at line {line}, {column}: {message}')
 
 def parse_vars(filePath):
 
@@ -111,8 +120,19 @@ def parse_vars(filePath):
 # Entry point
 #-------------------------------------------------------------------------------
 
-colors = parse_vars(os.path.expandvars('$XDG_CONFIG_HOME/theme/colors'))
-fonts = parse_vars(os.path.expandvars('$XDG_CONFIG_HOME/theme/fonts'))
+colors_path = os.path.expandvars('$XDG_CONFIG_HOME/theme/colors')
+if is_readable_file(colors_path):
+    colors = parse_vars(colors_path)
+else:
+    raise_error('Theme color file is not readable.')
+
+fonts_path = os.path.expandvars('$XDG_CONFIG_HOME/theme/fonts')
+if is_readable_file(fonts_path):
+    fonts = parse_vars(fonts_path)
+
+cursor_path = os.path.expandvars('$XDG_CONFIG_HOME/theme/cursor')
+if is_readable_file(cursor_path):
+    cursor = parse_vars(cursor_path)
 
 # Lookup
 #-------------------------------------------------------------------------------
@@ -128,13 +148,3 @@ def color_zerox(name):
 
 def font(name):
     return fonts[name]
-
-# Debugging
-#-------------------------------------------------------------------------------
-
-# TODO: Use terminal escape codes to colorize output
-def print_colors():
-    global colors
-
-    for k, v in colors.items():
-        print(f'{k} -> {v}')
