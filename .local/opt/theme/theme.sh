@@ -82,9 +82,20 @@ color_256() {
 # Import the system theme variables.
 #-------------------------------------------------------------------------------
 
-# shellcheck disable=SC1091
-source "$theme_config_dir/colors"
-# shellcheck disable=SC1091
-[[ -f "$theme_config_dir/fonts" ]] && source "$theme_config_dir/fonts"
-# shellcheck disable=SC1091
-[[ -f "$theme_config_dir/cursor" ]] && source "$theme_config_dir/cursor"
+if [[ -r "$theme_config_dir/colors" ]]; then
+    # shellcheck disable=SC1091
+    source "$theme_config_dir/colors"
+else
+    echo "[$(basename "$0")] ERROR: Theme color file is not readable."
+    exit 1
+fi
+
+if [[ -r "$theme_config_dir/fonts" ]]; then
+    # shellcheck disable=SC1091
+    source "$theme_config_dir/fonts"
+fi
+
+if [[ -r "$theme_config_dir/cursor" ]]; then
+    # shellcheck disable=SC1091
+    source "$theme_config_dir/cursor"
+fi
