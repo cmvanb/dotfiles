@@ -14,7 +14,7 @@ else
 fi
 
 if [[ -d "$packer_data_dir" ]]; then
-    rm -rf "$packer_data_dir"
+    rm -r "$packer_data_dir"
     echo "Removed $packer_data_dir."
 else
     echo "$packer_data_dir doesn't exist."

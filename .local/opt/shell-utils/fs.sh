@@ -23,7 +23,7 @@ force_link () {
 
     # Delete pre-existing directory if we are trying to link it.
     if [[ -d "$2" ]]; then
-        rm -rf "$2"
+        rm -r "$2"
     fi
 
     ln -sfT "$1" "$2"

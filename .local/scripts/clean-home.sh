@@ -27,13 +27,13 @@ declare -a files=(
 # Remove directories.
 for dir in "${dirs[@]}"; do
     if [[ -d "$HOME/$dir" ]]; then
-        rm -rf "${HOME:?}/$dir"
+        rm -r "${HOME:?}/$dir"
     fi
 done
 
 # Remove files.
 for file in "${files[@]}"; do
     if [[ -f "$HOME/$file" ]]; then
-        rm -f "${HOME:?}/$file"
+        rm "${HOME:?}/$file"
     fi
 done
