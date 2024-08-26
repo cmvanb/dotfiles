@@ -16,6 +16,7 @@
 # Truecolor or 256 color terminals
 #-------------------------------------------------------------------------------
 COLORTERM ?*
+TERM alacritty
 TERM xterm-256color
 
 RESET 0 # reset to "normal" color
@@ -42,6 +43,8 @@ EXEC 38;5;<% color_256 ansi_brgreen %> # files with execute permission
 # 8 or 16 color terminals
 #-------------------------------------------------------------------------------
 TERM linux
+TERM screen*
+TERM xterm*
 
 RESET 0 # reset to "normal" color
 NORMAL 38;5;<% color_256 ansi_white %> # default
