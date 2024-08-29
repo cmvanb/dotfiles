@@ -51,6 +51,9 @@ export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 export VSCODE_PORTABLE="$XDG_DATA_HOME/vscode"
 
 <% fi -%>
+# NPM config.
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
+
 # Wget config.
 export WGETRC="$XDG_CONFIG_HOME/wget/wgetrc"
 

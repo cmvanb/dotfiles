@@ -50,6 +50,9 @@ force_link "$base_dir/.config/lf" "$config_dir/lf"
 # Neovim
 force_link "$base_dir/.config/nvim" "$config_dir/nvim"
 
+# NPM
+force_link "$base_dir/.config/npm" "$config_dir/npm"
+
 # Ripgrep
 force_link "$base_dir/.config/ripgrep" "$config_dir/ripgrep"
 
