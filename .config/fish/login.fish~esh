@@ -69,8 +69,8 @@ mkdir -p $XDG_DOCUMENTS_DIR $XDG_DOWNLOAD_DIR $XDG_MUSIC_DIR $XDG_PICTURES_DIR $
 # Add user executables to path.
 fish_add_path -pP $XDG_BIN_HOME
 fish_add_path -pP $XDG_SCRIPTS_HOME
-<% if [[ $SYSTEM_PROFILE == "desktop" ]]; then -%>
 
+<% if [[ $SYSTEM_PROFILE == "desktop" ]]; then -%>
 # Add pyenv python shims to path.
 fish_add_path -pP $PYENV_ROOT/bin
 
@@ -85,4 +85,9 @@ fish_add_path -pP $XDG_DATA_HOME/cargo/bin
 if command -v pyenv &> /dev/null
     pyenv init - | source
 end
+
 <% fi -%>
+# Clean home directory
+#-------------------------------------------------------------------------------
+
+$XDG_SCRIPTS_HOME/clean-home.sh

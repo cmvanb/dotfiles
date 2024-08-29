@@ -67,15 +67,14 @@ mkdir -p $XDG_DOCUMENTS_DIR $XDG_DOWNLOAD_DIR $XDG_MUSIC_DIR $XDG_PICTURES_DIR $
 # Path
 #-------------------------------------------------------------------------------
 
-# Import path utility functions.
-# shellcheck disable=SC1091
+# Import path utils.
 source "$XDG_OPT_HOME/shell-utils/path.sh"
 
 # Add user binaries to path
 path_prepend "$XDG_BIN_HOME" PATH
 path_prepend "$XDG_SCRIPTS_HOME" PATH
-<% if [[ $SYSTEM_PROFILE == "desktop" ]]; then -%>
 
+<% if [[ $SYSTEM_PROFILE == "desktop" ]]; then -%>
 # Add pyenv python shims to path
 path_prepend "$PYENV_ROOT/bin" PATH
 
@@ -96,6 +95,10 @@ fi
 # Virtual terminal theme
 #-------------------------------------------------------------------------------
 
-# shellcheck disable=SC1091
 source "$XDG_CONFIG_HOME/vt/apply-vt-colors.sh" | systemd-cat -t bash-login
+
 <% fi -%>
+# Clean home directory
+#-------------------------------------------------------------------------------
+
+"$XDG_SCRIPTS_HOME/clean-home.sh"

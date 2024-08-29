@@ -10,11 +10,6 @@
 source "$XDG_OPT_HOME/wayland-utils/output.sh"
 source "$XDG_CONFIG_HOME/river/utils.sh"
 
-# Clean home
-#-------------------------------------------------------------------------------
-
-"$XDG_SCRIPTS_HOME/clean-home.sh"
-
 # Workspace
 #-------------------------------------------------------------------------------
 

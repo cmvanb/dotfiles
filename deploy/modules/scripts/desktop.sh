@@ -9,7 +9,6 @@ scripts_dir=${XDG_SCRIPTS_HOME:-$HOME/.local/scripts}
 
 mkdir -p "$scripts_dir"
 force_link "$base_dir/.local/scripts/add-bookmark.sh" "$scripts_dir/add-bookmark.sh"
-force_link "$base_dir/.local/scripts/clean-home.sh" "$scripts_dir/clean-home.sh"
 force_link "$base_dir/.local/scripts/count-command-usage.sh" "$scripts_dir/count-command-usage.sh"
 force_link "$base_dir/.local/scripts/fetch-password.sh" "$scripts_dir/fetch-password.sh"
 force_link "$base_dir/.local/scripts/generate-color-gradient-palette.py" "$scripts_dir/generate-color-gradient-palette.py"

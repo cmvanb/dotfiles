@@ -8,6 +8,7 @@ echo "Deploying base shell scripts..."
 scripts_dir=${XDG_SCRIPTS_HOME:-$HOME/.local/scripts}
 
 mkdir -p "$scripts_dir"
+force_link "$base_dir/.local/scripts/clean-home.sh" "$scripts_dir/clean-home.sh"
 force_link "$base_dir/.local/scripts/estimate-disk-space-usage.sh" "$scripts_dir/estimate-disk-space-usage.sh"
 force_link "$base_dir/.local/scripts/format-text.sh" "$scripts_dir/format-text.sh"
 force_link "$base_dir/.local/scripts/generate-venv.sh" "$scripts_dir/generate-venv.sh"
