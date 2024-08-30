@@ -86,14 +86,17 @@ fish_add_path -pP $PYENV_ROOT/bin
 # Add user rust binaries to path.
 fish_add_path -pP $XDG_DATA_HOME/cargo/bin
 
-<% fi -%>
-<% if [[ $SYSTEM_PROFILE == "desktop" ]]; then -%>
 # Pyenv integration
 #-------------------------------------------------------------------------------
 
 if command -v pyenv &> /dev/null
     pyenv init - | source
 end
+
+# Virtual terminal theme
+#-------------------------------------------------------------------------------
+
+$XDG_CONFIG_HOME/vt/apply-vt-colors.sh | systemd-cat -t bash-login
 
 <% fi -%>
 # Clean home directory
