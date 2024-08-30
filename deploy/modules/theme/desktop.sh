@@ -16,11 +16,11 @@ source "$base_dir/.local/opt/shell-utils/fs.sh"
 # Link theme cursor and font settings
 #-------------------------------------------------------------------------------
 
-echo "└ Link theme cursor settings."
+echo "└> Link theme cursor settings."
 force_link "$base_dir/.config/theme/cursor" "$config_dir/theme/cursor"
 
 host=$(uname -n)
-echo "└ Link theme font settings for \`$host\`."
+echo "└> Link theme font settings for \`$host\`."
 case $host in
     qutedell)
         force_link "$base_dir/.config/theme/fonts~qutech" "$config_dir/theme/fonts"
@@ -45,5 +45,5 @@ esac
 # Configure GTK
 #-------------------------------------------------------------------------------
 
-echo "└ Configuring theme GTK settings."
+echo "└> Configuring theme GTK settings."
 source "$opt_dir/theme/configure-gtk.sh"

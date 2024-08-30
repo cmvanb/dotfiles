@@ -7,7 +7,7 @@ echo "Deploying base binary shortcuts..."
 
 bin_dir=${XDG_BIN_HOME:-$HOME/.local/bin}
 
-echo "└ Linking binary shortcuts."
+echo "└> Linking binary shortcuts."
 mkdir -p "$bin_dir"
 force_link "$base_dir/.local/bin/edit" "$bin_dir/edit"
 force_link "$base_dir/.local/bin/kebab" "$bin_dir/kebab"
@@ -15,6 +15,6 @@ force_link "$base_dir/.local/bin/kebabify" "$bin_dir/kebabify"
 force_link "$base_dir/.local/bin/printenv" "$bin_dir/printenv"
 force_link "$base_dir/.local/bin/view" "$bin_dir/view"
 
-echo "└ Generating templated binary shortcuts."
+echo "└> Generating templated binary shortcuts."
 esh "$base_dir/.local/bin/rg~esh" > "$bin_dir/rg"
 chmod +x "$bin_dir/rg"

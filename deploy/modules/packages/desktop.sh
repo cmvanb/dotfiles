@@ -16,10 +16,10 @@ assert_dependency curl
 #-------------------------------------------------------------------------------
 
 if [[ ! -d $PYENV_ROOT ]]; then
-    echo "└ Installing pyenv to \`$PYENV_ROOT\`."
+    echo "└> Installing pyenv to \`$PYENV_ROOT\`."
     curl https://pyenv.run | bash
 
 else
-    echo "└ Not installing pyenv to \`$PYENV_ROOT\`; directory already exists."
+    echo "└> Not installing pyenv to \`$PYENV_ROOT\`; directory already exists."
 
 fi
