@@ -57,6 +57,14 @@ export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 # Wget config.
 export WGETRC="$XDG_CONFIG_HOME/wget/wgetrc"
 
+# Terminal support
+#-------------------------------------------------------------------------------
+
+if [[ $TERM == "alacritty" ]] \
+|| [[ $TERM == "xterm-256color" ]]
+    export COLORTERM truecolor
+end
+
 <% if [[ $SYSTEM_PROFILE == "desktop" ]]; then -%>
 # Ensure user directories exist
 #-------------------------------------------------------------------------------

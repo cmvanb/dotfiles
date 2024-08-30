@@ -56,8 +56,17 @@ set -x NPM_CONFIG_USERCONFIG $XDG_CONFIG_HOME/npm/npmrc
 # Wget config.
 set -x WGETRC $XDG_CONFIG_HOME/wget/wgetrc
 
+# Terminal support
+#-------------------------------------------------------------------------------
+
+if test "$TERM" = "alacritty"
+or test "$TERM" = "xterm-256color"
+    set -x COLORTERM truecolor
+end
+
 <% if [[ $SYSTEM_PROFILE == "desktop" ]]; then -%>
-# User directories
+
+# Ensure user directories exist
 #-------------------------------------------------------------------------------
 
 mkdir -p $XDG_DOCUMENTS_DIR $XDG_DOWNLOAD_DIR $XDG_MUSIC_DIR $XDG_PICTURES_DIR $XDG_VIDEOS_DIR
