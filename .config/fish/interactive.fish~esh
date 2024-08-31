@@ -167,3 +167,11 @@ set -U fish_color_escape (color_named 'debug')
 set -U fish_color_cancel (color_named 'debug') # -r
 set -U fish_color_history_current (color_named 'debug') # --bold
 set -U fish_color_selection (color_named 'debug') # --bold --background=brblack
+
+# Terminal support
+#-------------------------------------------------------------------------------
+
+if test "$TERM" = "alacritty"
+or test "$TERM" = "xterm-256color"
+    set -g fish_term24bit 1
+end
