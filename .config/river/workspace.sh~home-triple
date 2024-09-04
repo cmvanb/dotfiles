@@ -41,11 +41,11 @@ if wl_output_exists $right; then
 
     riverctl set-focused-tags "$(tagmask 9)"
     riverctl spawn "pavucontrol"
-    sleep 0.35
+    sleep 0.45
 
     riverctl set-focused-tags "$(tagmask 1)"
     riverctl spawn "alacritty"
-    sleep 0.25
+    sleep 0.35
 fi
 
 if wl_output_exists $primary; then
