@@ -90,7 +90,7 @@ riverctl map normal Alt+Shift H spawn "$config_dir/river/send-and-focus-output.s
 riverctl map normal Alt+Shift L spawn "$config_dir/river/send-and-focus-output.sh right"
 
 # Send the focused view to a specific output
-riverctl map normal Alt X spawn "$config_dir/river/send-to-output.sh"
+riverctl map normal Alt semicolon spawn "$config_dir/river/send-to-output.sh"
 
 # Move views with mouse
 riverctl map-pointer normal Shift BTN_LEFT move-view
