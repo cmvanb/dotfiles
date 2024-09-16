@@ -7,6 +7,7 @@
 #-------------------------------------------------------------------------------
 
 declare config_dir=${XDG_CONFIG_HOME:-$HOME/.config}
+declare scripts_dir=${XDG_SCRIPTS_HOME:-$HOME/.local/scripts}
 declare opt_dir=${XDG_OPT_HOME:-$HOME/.local/opt}
 
 # Imports
@@ -110,6 +111,11 @@ riverctl rule-add -app-id org.pwmt.zathura ssd
 
 # shellcheck disable=SC1091
 source "$config_dir/river/keymaps.sh"
+
+# Clean home
+#-------------------------------------------------------------------------------
+
+"$scripts_dir/clean-home.sh"
 
 # Systemd integration
 #-------------------------------------------------------------------------------
