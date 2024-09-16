@@ -50,6 +50,10 @@ riverctl set-repeat 50 300
 # Hide inactive cursor
 riverctl hide-cursor timeout 3000
 
+# Mouse sensitivity
+riverctl input pointer-1189-32769-BenQ_ZOWIE_BenQ_ZOWIE_Gaming_Mouse accel-profile flat
+riverctl input pointer-1189-32769-BenQ_ZOWIE_BenQ_ZOWIE_Gaming_Mouse accel-speed -0.7
+
 # Layout generator
 #-------------------------------------------------------------------------------
 
