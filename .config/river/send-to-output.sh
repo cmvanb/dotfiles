@@ -22,8 +22,14 @@ assert_dependency wofi
 # Choose output
 #-------------------------------------------------------------------------------
 
-outputs="$(wl_get_outputs)"
-target=$(echo "$outputs" | wofi -p "Send to output..." --dmenu 2> /dev/null)
+# TODO: Do something about these hardcoded values.
+declare -A output_mapping
+output_mapping[Left]="DP-4"
+output_mapping[Primary]="DP-3"
+output_mapping[Right]="HDMI-A-6"
+
+relative_target=$(printf "Left\nPrimary\nRight" | wofi -p "Send to output..." --dmenu 2> /dev/null)
+target=${output_mapping[$relative_target]}
 
 if [[ -z $target ]]; then
     exit 1
