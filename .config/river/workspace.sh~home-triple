@@ -28,11 +28,11 @@ if wl_output_exists $left; then
 
     riverctl set-focused-tags "$(tagmask 5)"
     riverctl spawn "alacritty --working-directory ~/Wiki/todo --command edit"
-    sleep 0.25
+    sleep 0.35
 
     riverctl set-focused-tags "$(tagmask 1)"
     riverctl spawn "alacritty"
-    sleep 0.25
+    sleep 0.35
 fi
 
 if wl_output_exists $right; then
@@ -57,5 +57,4 @@ if wl_output_exists $primary; then
 
     riverctl set-focused-tags "$(tagmask 1)"
     riverctl spawn "alacritty"
-    sleep 0.25
 fi
