@@ -82,8 +82,8 @@ riverctl map normal Alt+Shift J swap next
 riverctl map normal Alt+Shift K swap previous
 
 # Focus the left/right output
-riverctl map normal Alt H focus-output left
-riverctl map normal Alt L focus-output right
+riverctl map normal Alt H focus-output next
+riverctl map normal Alt L focus-output previous
 
 # Send the focused view to the left/right output
 riverctl map normal Alt+Shift H spawn "$config_dir/river/send-and-focus-output.sh left"
