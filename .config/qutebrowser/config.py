@@ -195,7 +195,8 @@ c.colors.keyhint.suffix.fg = theme.color_hash('yellow_6')
 # Error Test: `session-load` a non-existent session.
 
 # Behavior
-c.messages.timeout = 5000
+# NOTE: Syncs with 4000ms on mako. Abracadabra!
+c.messages.timeout = 3980
 
 # Appearance
 c.colors.messages.info.border = theme.color_hash('gray_0')

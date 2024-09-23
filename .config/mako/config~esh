@@ -12,7 +12,7 @@ max-visible=15
 
 sort=+time
 
-default-timeout=10000
+default-timeout=4000
 
 # Enable pango formatted notification.
 markup=1
