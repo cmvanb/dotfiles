@@ -5,7 +5,6 @@
 function _G.reload_config()
     -- Load editor config.
     reload('editor.options')
-    reload('editor.gui')
     reload('editor.highlights')
 
     -- Load autocommands.
