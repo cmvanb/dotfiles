@@ -180,7 +180,7 @@ nnoremap('<leader>l', ':noh<cr>:let @/=""<cr>:echo ""<cr>')
 local telescope_builtin = require('telescope.builtin')
 
 -- Fuzzy finder
-nnoremap('<leader>a', function() telescope_builtin.find_files({ hidden = true, no_ignore = true }) end)
+nnoremap('<leader>a', function() telescope_builtin.find_files({ hidden = true, no_ignore = false }) end)
 nnoremap('<leader>f', require('plugins.telescope.project_files'))
 nnoremap('<leader>b', telescope_builtin.buffers)
 nnoremap('<leader>g', telescope_builtin.live_grep)
