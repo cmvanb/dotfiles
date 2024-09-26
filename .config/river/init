@@ -54,6 +54,10 @@ riverctl hide-cursor timeout 3000
 riverctl input pointer-1189-32769-BenQ_ZOWIE_BenQ_ZOWIE_Gaming_Mouse accel-profile flat
 riverctl input pointer-1189-32769-BenQ_ZOWIE_BenQ_ZOWIE_Gaming_Mouse pointer-accel -0.65
 
+# Trackpad sensitivity
+riverctl input pointer-43256-6199-Bastard_Keyboards_Dilemma_Max_Mouse accel-profile flat
+riverctl input pointer-43256-6199-Bastard_Keyboards_Dilemma_Max_Mouse pointer-accel -0.15
+
 # Layout generator
 #-------------------------------------------------------------------------------
 
