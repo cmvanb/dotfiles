@@ -4,6 +4,7 @@
 
 import os
 import re
+from color_utils import Color
 
 # Utilities
 #-------------------------------------------------------------------------------
@@ -145,6 +146,9 @@ def color_hash(name):
 
 def color_zerox(name):
     return f'0x{colors[name]}'
+
+def color_rgba(name, alpha):
+    return Color(colors[name]).to_css_rgba(alpha)
 
 def font(name):
     return fonts[name]

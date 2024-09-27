@@ -168,8 +168,8 @@ c.hints.radius = 4
 
 # TODO: Provide a color formatter for RGBA.
 # TODO: Configure a color gradient.
-# c.colors.hints.bg = 'qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 rgba(255, 247, 133, 0.8), stop:1 rgba(255, 197, 66, 0.8))'
-c.colors.hints.bg = theme.color_hash('purple_3')
+c.colors.hints.bg = f'qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 {theme.color_rgba('purple_3', 1.0)}, stop:1 {theme.color_rgba('purple_0', 1.0)})'
+# c.colors.hints.bg = theme.color_hash('purple_3')
 c.colors.hints.fg = theme.color_hash('purple_9')
 c.colors.hints.match.fg = theme.color_hash('magenta_6')
 
