@@ -116,11 +116,14 @@ bind '"\e\[1\;2P":"clear\C-m eza -aT --git-ignore | view.sh\C-m"'
 # LF CD integration
 #-------------------------------------------------------------------------------
 
-LFCD="$XDG_CONFIG_HOME/lf/lfcd.sh"
-if [[ -f "$LFCD" ]]; then
-    # shellcheck disable=SC1090
-    source "$LFCD"
-fi
+# shellcheck disable=SC1090
+source "$XDG_CONFIG_HOME/lf/lfcd.sh"
+
+# Broot CD integration
+#-------------------------------------------------------------------------------
+
+# shellcheck disable=SC1090
+source "$XDG_CONFIG_HOME/broot/brcd.sh"
 
 # Theme
 #-------------------------------------------------------------------------------

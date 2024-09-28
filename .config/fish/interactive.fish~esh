@@ -127,6 +127,11 @@ bind . 'expand-dot-to-double-dot'
 
 source $XDG_CONFIG_HOME/lf/lfcd.fish
 
+# Broot CD integration
+#-------------------------------------------------------------------------------
+
+source $XDG_CONFIG_HOME/broot/brcd.fish
+
 # Theme
 # see: https://fishshell.com/docs/current/interactive.html#color
 #-------------------------------------------------------------------------------

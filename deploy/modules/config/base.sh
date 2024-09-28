@@ -32,6 +32,11 @@ mkdir -p "$config_dir/bat"
 force_link "$base_dir/.config/bat/config" "$config_dir/bat/config"
 force_link "$base_dir/.config/bat/syntaxes" "$config_dir/bat/syntaxes"
 
+# Broot
+mkdir -p "$config_dir/broot"
+force_link "$base_dir/.config/broot/brcd.sh" "$config_dir/broot/brcd.sh"
+force_link "$base_dir/.config/broot/brcd.fish" "$config_dir/broot/brcd.fish"
+
 # Fish
 mkdir -p "$config_dir/fish"
 force_link "$base_dir/.config/fish/config.fish" "$config_dir/fish/config.fish"
