@@ -209,7 +209,7 @@ nnoremap('<C-k>', '<C-w>k')
 nnoremap('<C-l>', '<C-w>l')
 
 -- Cycle windows
-nnoremap('<C-z>', '<C-w>r')
+nnoremap('<C-z>', '<C-w>R')
 
 -- Split windows
 nnoremap('<C-n>', ':belowright vnew<cr>', { silent = true })
