@@ -50,9 +50,13 @@ riverctl set-repeat 50 300
 # Hide inactive cursor
 riverctl hide-cursor timeout 3000
 
-# Mouse sensitivity
+# Zowie EC2 sensitivity
 riverctl input pointer-1189-32769-BenQ_ZOWIE_BenQ_ZOWIE_Gaming_Mouse accel-profile flat
 riverctl input pointer-1189-32769-BenQ_ZOWIE_BenQ_ZOWIE_Gaming_Mouse pointer-accel -0.65
+
+# Logitech G Pro X Superlight sensitivity
+riverctl input pointer-1133-50503-Logitech_USB_Receiver accel-profile flat
+riverctl input pointer-1133-50503-Logitech_USB_Receiver pointer-accel 0.05
 
 # Trackpad sensitivity
 riverctl input pointer-43256-6199-Bastard_Keyboards_Dilemma_Max_Mouse accel-profile flat
