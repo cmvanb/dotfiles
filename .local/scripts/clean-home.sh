@@ -22,6 +22,7 @@ declare -a files=(
     ".lesshst"
     ".viminfo"
     ".yarnrc"
+    "explicit_filter.restore"
 )
 
 # Remove directories.
