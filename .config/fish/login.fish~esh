@@ -53,6 +53,9 @@ set -x VSCODE_PORTABLE $XDG_DATA_HOME/vscode
 # NPM config.
 set -x NPM_CONFIG_USERCONFIG $XDG_CONFIG_HOME/npm/npmrc
 
+# Readline config.
+set -x INPUTRC $XDG_CONFIG_HOME/readline/inputrc
+
 # Wget config.
 set -x WGETRC $XDG_CONFIG_HOME/wget/wgetrc
 

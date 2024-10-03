@@ -54,6 +54,9 @@ export VSCODE_PORTABLE="$XDG_DATA_HOME/vscode"
 # NPM config.
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 
+# Readline config.
+export INPUTRC="$XDG_CONFIG_HOME/readline/inputrc"
+
 # Wget config.
 export WGETRC="$XDG_CONFIG_HOME/wget/wgetrc"
 

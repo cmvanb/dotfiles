@@ -60,6 +60,9 @@ force_link "$base_dir/.config/nvim" "$config_dir/nvim"
 # NPM
 force_link "$base_dir/.config/npm" "$config_dir/npm"
 
+# Readline
+force_link "$base_dir/.config/readline" "$config_dir/readline"
+
 # Ripgrep
 force_link "$base_dir/.config/ripgrep" "$config_dir/ripgrep"
 
