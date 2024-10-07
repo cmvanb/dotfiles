@@ -90,10 +90,13 @@ mason_lspconfig.setup({
     },
 })
 
-local cmp_nvim_lsp = require('cmp_nvim_lsp')
+local base_capabilities =
+    require('cmp_nvim_lsp').default_capabilities(
+        vim.lsp.protocol.make_client_capabilities()
+    )
 
-local capabilities =
-    TableUtils.merge(cmp_nvim_lsp.default_capabilities(), {
+local lsp_capabilities =
+    TableUtils.merge(base_capabilities, {
         textDocument = {
             -- Enable snippets with LuaSnip.
             completion = {
@@ -109,9 +112,9 @@ local capabilities =
         },
     })
 
-local default_config = {
+local lsp_config = {
     on_attach = lsp_attach,
-    capabilities = capabilities,
+    capabilities = lsp_capabilities,
 }
 
 local lspconfig = require('lspconfig')
@@ -122,12 +125,12 @@ local lspconfig = require('lspconfig')
 --  see: https://github.com/williamboman/mason.nvim/discussions/92
 mason_lspconfig.setup_handlers({
     function(server_name)
-        lspconfig[server_name].setup(default_config)
+        lspconfig[server_name].setup(lsp_config)
     end,
 
     lua_ls = function()
         local config =
-            TableUtils.merge(default_config, {
+            TableUtils.merge(lsp_config, {
                 settings = {
                     Lua = {
                         diagnostics = {
