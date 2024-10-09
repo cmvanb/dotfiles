@@ -85,7 +85,7 @@ mason_lspconfig.setup({
         'lua_ls',
         'pyright',
         'terraformls',
-        'tsserver',
+        'ts_ls',
         'yamlls',
     },
 })
