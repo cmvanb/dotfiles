@@ -7,9 +7,6 @@ return {
     -- General
     ----------------------------------------------------------------------------
 
-    -- Packer can manage itself.
-    { 'wbthomason/packer.nvim' },
-
     -- Sugar for UNIX shell commands.
     { 'tpope/vim-eunuch' },
 
@@ -27,7 +24,7 @@ return {
 
     {
         'Shatur/neovim-session-manager',
-        requires = { 'nvim-lua/plenary.nvim' },
+        dependencies = { 'nvim-lua/plenary.nvim' },
         config = function()
             do_load('plugins/session')
         end
@@ -72,7 +69,7 @@ return {
     },
     {
         'williamboman/mason-lspconfig.nvim',
-        after = {
+        dependencies = {
             'mason.nvim',
         },
     },
@@ -80,7 +77,7 @@ return {
     -- LSP configuration. Also configure mason-lspconfig.
     {
         'neovim/nvim-lspconfig',
-        after = {
+        dependencies = {
             'mason-lspconfig.nvim',
         },
         config = function()
@@ -110,7 +107,7 @@ return {
     -- Various snippets.
     {
         'rafamadriz/friendly-snippets',
-        requires = { 'L3MON4D3/LuaSnip' },
+        dependencies = { 'L3MON4D3/LuaSnip' },
         config = function()
             require('luasnip.loaders.from_vscode').lazy_load()
         end,
@@ -119,7 +116,7 @@ return {
     -- Completion tooling.
     {
         'hrsh7th/nvim-cmp',
-        requires = { 'L3MON4D3/LuaSnip' },
+        dependencies = { 'L3MON4D3/LuaSnip' },
         config = function()
             do_load('plugins/completion')
         end
@@ -139,7 +136,7 @@ return {
     -- Treesitter.
     {
         'nvim-treesitter/nvim-treesitter',
-        run = function()
+        build = function()
             local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
             ts_update()
         end,
@@ -163,7 +160,7 @@ return {
 
     {
         'kevinhwang91/nvim-ufo',
-        requires = { 'kevinhwang91/promise-async' },
+        dependencies = { 'kevinhwang91/promise-async' },
         config = function()
             do_load('plugins/ufo')
         end,
@@ -183,7 +180,7 @@ return {
     -- Telescope
     {
         'nvim-telescope/telescope.nvim',
-        requires = { 'nvim-lua/plenary.nvim' },
+        dependencies = { 'nvim-lua/plenary.nvim' },
         config = function()
             do_load('plugins/telescope')
         end
@@ -302,7 +299,7 @@ return {
 
     {
         'nvim-lualine/lualine.nvim',
-        requires = {
+        dependencies = {
             'kyazdani42/nvim-web-devicons',
             'nvimdev/guard-collection',
         },

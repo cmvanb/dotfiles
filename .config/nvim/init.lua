@@ -20,9 +20,8 @@ require('utils.terminal')
 require('editor.options')
 require('editor.highlights')
 
--- Load plugins. Will bootstrap Packer if necessary.
-require('loader')
-Loader.init()
+-- Load plugins. Will bootstrap Lazy.nvim if necessary.
+require('plugins.manager')
 
 -- Load autocommands.
 require('autocommands')

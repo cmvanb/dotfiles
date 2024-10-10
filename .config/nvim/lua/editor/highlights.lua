@@ -136,10 +136,6 @@ hi('LualineDiagError',         { fg = 'red_6', bg = 'primary_4', attrs = 'bold' 
 hi('LualineDiagWarn',          { fg = 'yellow_5', bg = 'primary_4', attrs = 'bold' },    { fg = 'ansi_yellow' })
 hi('LualineDiagInfo',          { fg = 'text_10', bg = 'primary_4', attrs = 'bold' },     { fg = 'ansi_white' })
 hi('LualineDiagHint',          { fg = 'orange_7', bg = 'primary_4', attrs = 'bold' },    { fg = 'ansi_magenta' })
-hi('packerSuccess',            { fg = 'green_4' },                                       { fg = 'ansi_green' })
-hi('packerWarning',            { fg = 'yellow_6' },                                      { fg = 'ansi_bryellow' })
-hi('packerWorking',            { fg = 'primary_8' },                                     { fg = 'ansi_brblue' })
-hi('packerFail',               { fg = 'red_6' },                                         { fg = 'ansi_brred' })
 
 -- Links
 ln('CmpMenuBackground',       'CMenuNormal')

@@ -249,7 +249,7 @@ nnoremap('gm', ':GitMessenger<cr>')
 -- Package management
 --------------------------------------------------------------------------------
 
-nnoremap('<leader>p', ':PackerStatus<cr>')
+nnoremap('<leader>p', ':Lazy<cr>')
 nnoremap('<leader>m', ':Mason<cr>')
 
 -- Plugin management
