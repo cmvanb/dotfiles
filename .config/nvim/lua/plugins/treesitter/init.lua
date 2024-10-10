@@ -2,9 +2,31 @@
 -- Treesitter configuration
 --------------------------------------------------------------------------------
 
-local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
-
 require('nvim-treesitter.configs').setup({
+    ensure_installed = {
+        'bash',
+        'c',
+        'c_sharp',
+        'cpp',
+        'css',
+        'dockerfile',
+        'fish',
+        'go',
+        'html',
+        'javascript',
+        'json',
+        'lua',
+        'make',
+        'markdown',
+        'nix',
+        'python',
+        'rust',
+        'toml',
+        'typescript',
+        'vim',
+        'yaml',
+        'zig',
+    },
     auto_install = true,
     highlight = {
         enable = true,
