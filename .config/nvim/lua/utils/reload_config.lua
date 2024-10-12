@@ -13,11 +13,8 @@ function _G.reload_config()
     -- Clear search highlight.
     vim.cmd('noh')
 
-    -- Reload plugins.
-    Loader.reload_plugins(function()
-        -- Load key mappings last; some key mappings may depend on plugins.
-        reload('editor.keymaps')
+    -- Load key mappings last.
+    reload('editor.keymaps')
 
-        vim.notify('Configuration reloaded.')
-    end)
+    -- TODO: Restore reload plugins functionality.
 end
