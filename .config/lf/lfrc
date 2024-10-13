@@ -93,7 +93,7 @@ map <esc> quit
 map q %{{
     lf -remote "send $id :cd $LF_REMEMBER_CWD; quit"
 }}
-map Q quit
+map <c-q> quit
 
 # Toggle hidden files.
 map . set hidden!

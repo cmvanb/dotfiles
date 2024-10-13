@@ -15,7 +15,17 @@ telescope.setup({
         layout_strategy = 'flex',
         layout_config = {
             flip_columns = 133,
+            prompt_position = 'top',
+            horizontal = {
+                mirror = false,
+                preview_width = 0.5,
+            },
+            vertical = {
+                mirror = true,
+                preview_height = 0.5,
+            },
         },
+        sorting_strategy = 'ascending',
         prompt_prefix = ThemeSymbols.telescope.prompt_char .. ' ',
         selection_caret = ThemeSymbols.telescope.select_char .. ' ',
         vimgrep_arguments = {
@@ -34,8 +44,6 @@ telescope.setup({
                 ['<C-q>'] = actions.delete_buffer,
                 ['<C-n>'] = actions.select_vertical,
                 ['<C-p>'] = actions.select_horizontal,
-                ['<C-j>'] = actions.move_selection_next,
-                ['<C-k>'] = actions.move_selection_previous,
                 ['<Esc>'] = actions.close,
             },
         },

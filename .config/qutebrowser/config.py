@@ -306,6 +306,10 @@ c.colors.webpage.darkmode.enabled = True
 
 # Unwanted default bindings
 # TODO: Most of the default bindings should be unbound
+config.unbind('H')
+config.unbind('J')
+config.unbind('K')
+config.unbind('L')
 config.unbind('<Ctrl-Shift-t>')
 config.unbind('<Ctrl-Shift-w>')
 config.unbind('<Ctrl-Alt-p>')
@@ -387,25 +391,24 @@ config.unbind('ZQ')
 config.unbind('@')
 config.unbind('.')
 
-# General
-#-- Window management
+# Window management
 config.bind('<Space>q', 'close')
 
-#-- Config management
+# Config management
 config.bind('<Space>r', 'config-source ;; spawn notify-send \"Qutebrowser configuration reloaded.\"')
 
-#-- Session management
+# Session management
 config.bind('<Space>o', 'cmd-set-text -s :session-load')
 config.bind('<Space>s', 'cmd-set-text -s :session-save -o')
 
-#-- Tab management
+# Tab management
 config.bind('<Ctrl-q>', 'tab-close')
 config.bind('<Ctrl-Tab>', 'tab-next')
-config.bind('<Ctrl-Backspace>', 'tab-prev')
-config.bind('H', 'tab-prev')
-config.bind('L', 'tab-next')
+config.bind('<Ctrl-Shift-Tab>', 'tab-prev')
+config.bind('<Ctrl-h>', 'tab-prev')
+config.bind('<Ctrl-l>', 'tab-next')
 config.bind('<Ctrl-Shift-h>', 'tab-move -')
-config.bind('<Ctrl+Shift-l>', 'tab-move +')
+config.bind('<Ctrl-Shift-l>', 'tab-move +')
 config.bind('<Ctrl-g>', 'cmd-set-text -s :tab-give')
 config.bind('<Ctrl-1>', 'tab-focus 1')
 config.bind('<Ctrl-2>', 'tab-focus 2')
@@ -417,44 +420,50 @@ config.bind('<Ctrl-7>', 'tab-focus 7')
 config.bind('<Ctrl-8>', 'tab-focus 8')
 config.bind('<Ctrl-9>', 'tab-focus 9')
 
-#-- Bookmark management
-config.bind('<Ctrl-b>', 'spawn add-bookmark.sh {title} {url}')
-config.bind('<Ctrl-Shift-b>', 'spawn select-bookmark.sh {title} {url}')
+# Bookmark management
+config.bind('<Ctrl-b>', 'spawn -d add-bookmark.sh {title} {url}')
+config.bind('<Ctrl-Shift-b>', 'spawn -d select-bookmark.sh {title} {url}')
 
-#-- Downloads
+# Downloads
 config.bind('<Space>l', 'download-clear ;; clear-messages ;; search')
 
-#-- History navigation
-config.bind('J', 'forward')
-config.bind('K', 'back')
+# History navigation
+config.bind('<Alt-Left>', 'back')
+config.bind('<Alt-Right>', 'forward')
 
-#-- Page navigation
+# Page navigation
 config.bind('j', 'scroll down')
 config.bind('k', 'scroll up')
-config.bind('<Ctrl+a>', 'mode-enter caret ;; selection-toggle ;; move-to-end-of-document')
+config.bind('<Ctrl-j>', 'scroll-page 0 0.5')
+config.bind('<Ctrl-k>', 'scroll-page 0 -0.5')
+config.bind('<Ctrl-Shift-j>', 'scroll-page 0 1')
+config.bind('<Ctrl-Shift-k>', 'scroll-page 0 -1')
 
-#-- Reader mode
+# Selection
+config.bind('<Ctrl-a>', 'mode-enter caret ;; selection-toggle ;; move-to-end-of-document')
+
+# Reader mode
 config.bind('<Ctrl-r>', 'spawn --userscript readability')
 
-#-- Format JSON
+# Format JSON
 config.bind('<Ctrl-;>', 'spawn --userscript format_json.sh')
 
-#-- Video playback
+# Video playback
 config.bind(';v', 'hint links spawn --verbose --detach mpv {hint-url} --input-ipc-server=/tmp/mpvsocket')
 
-#-- Mute tab audio
+# Mute tab audio
 config.bind('<Ctrl-m>', 'tab-mute')
 
-#-- Devtools
+# Devtools
 config.bind('<F11>', 'view-source')
 config.bind('<F12>', 'devtools')
 
-#-- Javascript
+# Javascript
 # TODO: Improve the message output by converting these commands to userscripts.
 config.bind('tj', 'config-cycle -p -t -u *://*.{url:host}/* content.javascript.enabled ;; reload ;; spawn notify-send \"Toggled javascript for: {url:host}\"')
 config.bind('tJ', 'config-cycle -p -u *://*.{url:host}/* content.javascript.enabled ;; reload ;; spawn notify-send \"Toggled javascript for: {url:host}\"')
 
-#-- Printing
+# Printing
 config.bind('<Space>p', 'print')
 
 # 'Blur' the page when exiting insert mode, removes the blinking cursor
@@ -469,4 +478,3 @@ config.bind('<Escape>', 'mode-leave ;; jseval -q document.activeElement.blur()',
 config.bind('<Ctrl-j>', 'completion-item-focus --history next', mode='command')
 config.bind('<Ctrl-k>', 'completion-item-focus --history prev', mode='command')
 config.bind('<Ctrl-d>', 'completion-item-del', mode='command')
-

@@ -86,6 +86,14 @@ noremap('<C-a>', 'gg0vG$')
 -- Undo
 nnoremap('<C-z>', 'u')
 
+-- Find
+nnoremap('<C-f>', '/')
+
+-- Save all buffers
+nnoremap('<C-s>', ':wa!<cr>')
+xnoremap('<C-s>', '<esc>:wa!<cr>')
+inoremap('<C-s>', '<esc>:wa!<cr>')
+
 -- Viewing
 --------------------------------------------------------------------------------
 
@@ -118,38 +126,41 @@ nnoremap('<leader>w',
 -- Selection
 --------------------------------------------------------------------------------
 
-nmap('+', '<nop>')
-xmap('+', '<nop>')
-nmap('-', '<nop>')
-xmap('-', '<nop>')
-
 -- Visual selection expansion powered by nvim-treesitter.
--- NOTE: These mappings don't work nicely.
--- nnoremap('+', '<cmd>lua require"nvim-treesitter.incremental_selection".init_selection()<cr>')
--- xnoremap('+', '<cmd>lua require"nvim-treesitter.incremental_selection".node_incremental()<cr>')
--- nnoremap('-', '<cmd>lua require"nvim-treesitter.incremental_selection".node_decremental()<cr>')
--- xnoremap('-', '<cmd>lua require"nvim-treesitter.incremental_selection".node_decremental()<cr>')
+-- TODO: Fix these mappings; they don't work nicely.
+-- nnoremap('+', function() require('nvim-treesitter.incremental_selection').init_selection() end)
+-- nnoremap('+', function() require('nvim-treesitter.incremental_selection').node_incremental() end)
+-- nnoremap('-', function() require('nvim-treesitter.incremental_selection').node_decremental() end)
+-- nnoremap('-', function() require('nvim-treesitter.incremental_selection').node_decremental() end)
 
 -- Visual block select
-noremap('<leader>v', '<C-v>')
+noremap('<A-v>', '<C-v>')
 
 -- Navigation
 --------------------------------------------------------------------------------
 
+-- Half page up/down
+nnoremap('<C-j>', '<C-d>')
+nnoremap('<C-k>', '<C-u>')
+
+-- Windows-like word navigation
+nnoremap('<C-Left>', 'b')
+nnoremap('<C-Right>', 'e')
+
 -- Start/end of line
-nnoremap('H', '0')
-xnoremap('H', '0')
-onoremap('H', '0')
-nnoremap('L', '$')
-xnoremap('L', '$')
-onoremap('L', '$')
+-- nnoremap('H', '0')
+-- xnoremap('H', '0')
+-- onoremap('H', '0')
+-- nnoremap('L', '$')
+-- xnoremap('L', '$')
+-- onoremap('L', '$')
 
 -- Leap
 noremap('<leader>j', function() require('leap').leap({}) end)
 noremap('<leader>k', function() require('leap').leap({ backward = true }) end)
 
 -- Editing
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 -- Swap lines
 nnoremap('J', '<esc>:m .+1<cr>==', { silent = true })
@@ -161,7 +172,7 @@ xnoremap(';', '=')
 nnoremap('<leader>;', 'gg=G')
 
 -- Insert line break
-nnoremap('<Enter>', 'i<CR><esc>')
+nnoremap('<Enter>', 'i<CR><esc>`^')
 
 -- Folds
 --------------------------------------------------------------------------------
@@ -203,37 +214,32 @@ nnoremap('gk', vim.diagnostic.goto_prev)
 --------------------------------------------------------------------------------
 
 -- Change window focus
-nnoremap('<C-h>', '<C-w>h')
-nnoremap('<C-j>', '<C-w>j')
-nnoremap('<C-k>', '<C-w>k')
-nnoremap('<C-l>', '<C-w>l')
+nnoremap('<C-A-h>', '<C-w>h')
+nnoremap('<C-A-j>', '<C-w>j')
+nnoremap('<C-A-k>', '<C-w>k')
+nnoremap('<C-A-l>', '<C-w>l')
 
 -- Cycle windows
-nnoremap('<C-z>', '<C-w>R')
+nnoremap('<C-A-w>', '<C-w>R')
 
 -- Split windows
-nnoremap('<C-n>', ':belowright vnew<cr>', { silent = true })
-nnoremap('<C-p>', ':belowright new<cr>', { silent = true })
+nnoremap('<C-A-n>', ':belowright vnew<cr>', { silent = true })
+nnoremap('<C-A-p>', ':belowright new<cr>', { silent = true })
 
 -- Close window
-nnoremap('<C-w>', ':close<cr>', { silent = true })
+nnoremap('<C-A-q>', ':close<cr>', { silent = true })
 
 -- Change window size
-nnoremap('<C-PageUp>', ':wincmd ><cr>', { silent = true })
-nnoremap('<C-PageDown>', ':wincmd <<cr>', { silent = true })
+nnoremap('<C-A-PageUp>', ':wincmd ><cr>', { silent = true })
+nnoremap('<C-A-PageDown>', ':wincmd <<cr>', { silent = true })
 
 -- Buffer management
 --------------------------------------------------------------------------------
 
 -- Cycle buffers
 -- NOTE: Alacritty translates <C-BS> to <F15> to get around NVIM's limitation.
-nnoremap('<F15>', ':bprev<cr>', { silent = true })
+nnoremap('<C-S-Tab>', ':bprev<cr>', { silent = true })
 nnoremap('<C-Tab>', ':bnext<cr>', { silent = true })
-
--- Save all buffers
-nnoremap('<C-s>', ':wa!<cr>')
-xnoremap('<C-s>', '<esc>:wa!<cr>')
-inoremap('<C-s>', '<esc>:wa!<cr>')
 
 -- Close buffer
 nnoremap('<C-q>', ':Bdelete<cr>', { silent = true })
