@@ -21,7 +21,7 @@ export XCURSOR_SIZE=${cursor_size:?}
 #-------------------------------------------------------------------------------
 
 riverctl background-color "$(color_zerox "${system_bg:?}")"
-riverctl border-color-focused "$(color_zerox "${primary_8:?}")"
+riverctl border-color-focused "$(color_zerox "${primary_6:?}")"
 riverctl border-color-unfocused "$(color_zerox "${primary_3:?}")"
 riverctl border-color-urgent "$(color_zerox "${red_4:?}")"
 

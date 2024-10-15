@@ -27,7 +27,7 @@ telescope.setup({
         },
         sorting_strategy = 'ascending',
         prompt_prefix = ThemeSymbols.telescope.prompt_char .. ' ',
-        selection_caret = ThemeSymbols.telescope.select_char .. ' ',
+        selection_caret = '  ',
         vimgrep_arguments = {
             'rg',
             '--color=never',

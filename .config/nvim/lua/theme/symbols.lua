@@ -55,7 +55,7 @@ local default_terminal_symbols = {
     },
     telescope = {
         prompt_char = '❱',
-        select_char = '●',
+        select_char = '·',
     },
     indent_char = '▏',
 }
