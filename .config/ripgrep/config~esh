@@ -1,0 +1,10 @@
+<% source $XDG_OPT_HOME/theme/theme.sh -%>
+--follow
+--colors
+match:fg:<% color_rgb_int $ansi_magenta %>
+--colors
+path:fg:<% color_rgb_int $ansi_blue %>
+--colors
+line:fg:<% color_rgb_int $ansi_yellow %>
+--colors
+column:fg:<% color_rgb_int $ansi_green %>

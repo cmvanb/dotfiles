@@ -38,3 +38,6 @@ class Color():
 
     def to_css_rgba(self, alpha):
         return f'rgba({self.r}, {self.g}, {self.b}, {alpha})'
+
+    def to_rgb_int(self):
+        return f'{self.r},{self.g},{self.b}'

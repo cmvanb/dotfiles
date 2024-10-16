@@ -64,7 +64,8 @@ force_link "$base_dir/.config/npm" "$config_dir/npm"
 force_link "$base_dir/.config/readline" "$config_dir/readline"
 
 # Ripgrep
-force_link "$base_dir/.config/ripgrep" "$config_dir/ripgrep"
+mkdir -p "$config_dir/ripgrep"
+esh "$base_dir/.config/ripgrep/config~esh" > "$config_dir/ripgrep/config"
 
 # Shell
 force_link "$base_dir/.config/shell" "$config_dir/shell"

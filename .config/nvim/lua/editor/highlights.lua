@@ -106,7 +106,7 @@ hi('CMenuItemMatch',      { fg = 'yellow_6', attrs = 'bold' },                  
 
 hi('FloatMenuNormal',     { fg = 'text_10', bg = 'editor_bg' },                  { fg = 'ansi_cyan', bg = 'ansi_black' })
 hi('FloatMenuSelection',  { fg = 'text_15', bg = 'primary_7', attrs = 'bold' },  { fg = 'ansi_brwhite', bg = 'ansi_black', attrs = 'bold' })
-hi('FloatMenuItemMatch',  { fg = 'yellow_6', attrs = 'bold' },                   { fg = 'ansi_cyan', bg = 'ansi_blue' })
+hi('FloatMenuItemMatch',  { fg = 'magenta_5', attrs = 'bold' },                   { fg = 'ansi_cyan', bg = 'ansi_blue' })
 
 -- Links
 ln('QuickFixLine',  'FloatMenuSelection')

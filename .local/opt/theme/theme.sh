@@ -39,6 +39,14 @@ color_zerox() {
     echo -n "0x${1:1}"
 }
 
+color_rgb_int() {
+    if [[ -z ${1+x} ]]; then
+        return 1
+    fi
+
+    echo -n "$("$theme_lib_dir/color-hex-to-rgb-int.py" --color="$(color_named "$1")")"
+}
+
 # Usage: `$(color_css_rgba $colorname $alpha)`
 color_css_rgba() {
     if [[ -z ${1+x} ]]; then
