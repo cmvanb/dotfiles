@@ -1,0 +1,117 @@
+<% source $XDG_OPT_HOME/theme/theme.sh -%>
+###############################################################
+# A skin for a terminal with a dark background
+#
+# To create your own skin, copy this file, change the entries
+# and import your skin file from the main conf file (look
+# for "imports")
+#
+# Doc at https://dystroy.org/broot/skins/
+###############################################################
+
+###############################################################
+# Skin
+# If you want to change the colors of broot,
+# uncomment the following block and start messing
+# with the various values.
+# A skin entry value is made of two parts separated with a '/':
+# The first one is the skin for the active panel.
+# The second one, optional, is the skin for non active panels.
+# You may find explanations and other skins on
+#  https://dystroy.org/broot/skins
+###############################################################
+skin: {
+    default: "<% color_hash $ansi_white %> none / <% color_hash $ansi_brblack %> none"
+    tree: "<% color_hash $ansi_brblack %> none / <% color_hash $text_6 %> none"
+    parent: "<% color_hash $ansi_blue %> none bold / <% color_hash $ansi_brblack %> none"
+    file: "<% color_hash $ansi_brblue %> none / <% color_hash $ansi_brblack %> none"
+    directory: "<% color_hash $ansi_blue %> none bold / <% color_hash $ansi_brblack %> none"
+    exe: "<% color_hash $ansi_brgreen %> none / <% color_hash $ansi_brblack %> none"
+    link: "<% color_hash $ansi_brcyan %> none / <% color_hash $ansi_brblack %> none"
+    selected_line: "<% color_hash $gray_0 %> <% color_hash $primary_6 %> bold / none <% color_hash $ansi_brblack %>"
+    input: "<% color_hash $text_15 %> none bold / <% color_hash $text_10 %> none"
+    char_match: "<% color_hash $ansi_magenta %> none"
+    content_match: "<% color_hash $ansi_bryellow %> none"
+    status_error: "<% color_hash $ansi_bryellow %> none / <% color_hash $ansi_brblack %> none"
+    status_job: "<% color_hash $ansi_bryellow %> none"
+    status_normal: "<% color_hash $text_6 %> none / <% color_hash $ansi_brblack %> none"
+    status_italic: "<% color_hash $text_10 %> none italic / <% color_hash $ansi_brblack %> none italic"
+    status_bold: "<% color_hash $text_10 %> none bold / <% color_hash $ansi_brblack %> none bold"
+    status_code: "<% color_hash $ansi_cyan %> none bold / <% color_hash $ansi_brblack %> none bold"
+    status_ellipsis: gray(19) gray(1)  / gray(2) gray(2)
+    count: "<% color_hash $ansi_brmagenta %> none"
+    pruning: "<% color_hash $text_6 %> none italic"
+    help_paragraph: "<% color_hash $ansi_white %> none"
+    help_bold: "<% color_hash $ansi_white %> none bold"
+    help_italic: "<% color_hash $ansi_white %> none italic"
+    help_code: "<% color_hash $ansi_cyan %> none"
+    help_headers: "<% color_hash $ansi_brwhite %> none"
+    help_table_border: "<% color_hash $ansi_brblack %> none"
+    perm__: gray(5) None
+    perm_r: ansi(94) None
+    perm_w: ansi(132) None
+    perm_x: ansi(65) None
+    owner: ansi(138) None
+    group: ansi(131) None
+    dates: ansi(66) None
+    sparse: ansi(214) None
+    content_extract: ansi(29) None
+    device_id_major: ansi(138) None
+    device_id_sep: ansi(102) None
+    device_id_minor: ansi(138) None
+    git_branch: ansi(178) None
+    git_insertions: ansi(28) None
+    git_deletions: ansi(160) None
+    git_status_current: gray(5) None
+    git_status_modified: ansi(28) None
+    git_status_new: ansi(94) None bold
+    git_status_ignored: gray(17) None
+    git_status_conflicted: ansi(88) None
+    git_status_other: ansi(88) None
+    file_error: Red None
+    flag_label: gray(15) gray(2)
+    flag_value: ansi(178) gray(2) bold
+    purpose_normal: gray(20) gray(2)
+    purpose_italic: ansi(178) gray(2)
+    purpose_bold: ansi(178) gray(2) bold
+    purpose_ellipsis: gray(20) gray(2)
+    scrollbar_track: gray(7) None  / gray(4) None
+    scrollbar_thumb: gray(22) None  / gray(14) None
+    preview: gray(20) gray(1)  / gray(18) gray(2)
+    preview_title: gray(23) gray(2)  / gray(21) gray(2)
+    preview_line_number: gray(12) gray(3)
+    preview_separator: gray(5) None
+    preview_match: None ansi(29)
+    hex_null: gray(8) None
+    hex_ascii_graphic: gray(18) None
+    hex_ascii_whitespace: ansi(143) None
+    hex_ascii_other: ansi(215) None
+    hex_non_ascii: ansi(167) None
+    staging_area_title: gray(22) gray(2)  / gray(20) gray(3)
+    mode_command_mark: gray(5) ansi(204) bold
+    good_to_bad_0: ansi(28)
+    good_to_bad_1: ansi(29)
+    good_to_bad_2: ansi(29)
+    good_to_bad_3: ansi(29)
+    good_to_bad_4: ansi(29)
+    good_to_bad_5: ansi(100)
+    good_to_bad_6: ansi(136)
+    good_to_bad_7: ansi(172)
+    good_to_bad_8: ansi(166)
+    good_to_bad_9: ansi(196)
+}
+
+###############################################################
+# Syntax Theme
+#
+# If you want to choose the theme used for preview, uncomment
+# one of the following lines:
+#
+syntax_theme: GitHub
+# syntax_theme: SolarizedDark
+# syntax_theme: SolarizedLight
+# syntax_theme: MochaDark
+# syntax_theme: MochaDark
+# syntax_theme: OceanDark
+# syntax_theme: OceanLight
+
