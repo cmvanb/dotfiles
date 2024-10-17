@@ -33,7 +33,7 @@ riverctl xcursor-theme "${cursor_theme:?}" "${cursor_size:?}"
 #-------------------------------------------------------------------------------
 
 # shellcheck disable=SC1091
-source "$config_dir/wallpaper/wallpaper.sh"
+# source "$config_dir/wallpaper/wallpaper.sh"
 
 # Status bar
 #-------------------------------------------------------------------------------
