@@ -429,8 +429,8 @@ config.bind('<Ctrl-Shift-b>', 'spawn -d select-bookmark.sh {title} {url}')
 config.bind('<Space>l', 'download-clear ;; clear-messages ;; search')
 
 # History navigation
-config.bind('<Alt-Left>', 'back')
-config.bind('<Alt-Right>', 'forward')
+config.bind('<Alt-h>', 'back')
+config.bind('<Alt-l>', 'forward')
 
 # Page navigation
 config.bind('j', 'scroll down')

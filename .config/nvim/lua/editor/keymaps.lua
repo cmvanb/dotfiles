@@ -36,12 +36,12 @@ map('J', '<nop>')
 map('K', '<nop>')
 map('L', '<nop>')
 
-map('<C-o>', '<nop>')
-
 map('<C-h>', '<nop>')
 map('<C-j>', '<nop>')
 map('<C-k>', '<nop>')
 map('<C-l>', '<nop>')
+
+map('<C-o>', '<nop>')
 
 map('<C-n>', '<nop>')
 map('<C-p>', '<nop>')
@@ -126,13 +126,6 @@ nnoremap('<leader>w',
 -- Selection
 --------------------------------------------------------------------------------
 
--- Visual selection expansion powered by nvim-treesitter.
--- TODO: Fix these mappings; they don't work nicely.
--- nnoremap('+', function() require('nvim-treesitter.incremental_selection').init_selection() end)
--- nnoremap('+', function() require('nvim-treesitter.incremental_selection').node_incremental() end)
--- nnoremap('-', function() require('nvim-treesitter.incremental_selection').node_decremental() end)
--- nnoremap('-', function() require('nvim-treesitter.incremental_selection').node_decremental() end)
-
 -- Visual block select
 noremap('<A-v>', '<C-v>')
 
@@ -140,12 +133,8 @@ noremap('<A-v>', '<C-v>')
 --------------------------------------------------------------------------------
 
 -- Half page up/down
-nnoremap('<C-j>', '<C-d>')
-nnoremap('<C-k>', '<C-u>')
-
--- Windows-like word navigation
-nnoremap('<C-Left>', 'b')
-nnoremap('<C-Right>', 'e')
+noremap('<C-j>', '<C-d>')
+noremap('<C-k>', '<C-u>')
 
 -- Start/end of line
 -- nnoremap('H', '0')
@@ -165,6 +154,10 @@ noremap('<leader>k', function() require('leap').leap({ backward = true }) end)
 -- Swap lines
 nnoremap('J', '<esc>:m .+1<cr>==', { silent = true })
 nnoremap('K', '<esc>:m .-2<cr>==', { silent = true })
+
+-- Indentation
+nnoremap('H', '<<')
+nnoremap('L', '>>')
 
 -- Formatting
 nnoremap(';', '=')
@@ -220,7 +213,8 @@ nnoremap('<C-A-k>', '<C-w>k')
 nnoremap('<C-A-l>', '<C-w>l')
 
 -- Cycle windows
-nnoremap('<C-A-w>', '<C-w>R')
+nnoremap('<C-A-s>', '<C-w>R')
+nnoremap('<C-A-g>', '<C-w>r')
 
 -- Split windows
 nnoremap('<C-A-n>', ':belowright vnew<cr>', { silent = true })
@@ -240,6 +234,8 @@ nnoremap('<C-A-PageDown>', ':wincmd <<cr>', { silent = true })
 -- NOTE: Alacritty translates <C-BS> to <F15> to get around NVIM's limitation.
 nnoremap('<C-S-Tab>', ':bprev<cr>', { silent = true })
 nnoremap('<C-Tab>', ':bnext<cr>', { silent = true })
+nnoremap('<C-h>', ':bprev<cr>', { silent = true })
+nnoremap('<C-l>', ':bnext<cr>', { silent = true })
 
 -- Close buffer
 nnoremap('<C-q>', ':Bdelete<cr>', { silent = true })
