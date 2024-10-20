@@ -3,5 +3,5 @@
 --------------------------------------------------------------------------------
 
 if vim.g.neovide then
-    vim.o.guifont = 'Iosevka Term:h14'
+    vim.o.guifont = 'IosevkaTerm NFM:h14'
 end
