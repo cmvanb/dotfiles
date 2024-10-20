@@ -3,18 +3,19 @@
 --------------------------------------------------------------------------------
 
 function _G.reload_config()
+    -- Clear search highlight.
+    vim.cmd('noh')
+
     -- Load editor config.
+    reload('editor.gui')
     reload('editor.options')
     reload('editor.highlights')
+
+    -- TODO: Restore reload plugins functionality.
 
     -- Load autocommands.
     reload('autocommands')
 
-    -- Clear search highlight.
-    vim.cmd('noh')
-
     -- Load key mappings last.
     reload('editor.keymaps')
-
-    -- TODO: Restore reload plugins functionality.
 end
