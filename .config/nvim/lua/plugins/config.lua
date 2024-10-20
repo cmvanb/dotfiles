@@ -58,9 +58,9 @@ return {
     {
         'williamboman/mason.nvim',
         config = function()
-            local ThemeConfig = require('theme.config')
+            local ThemeConfig = reload('theme.config')
 
-            require('mason').setup({
+            reload('mason').setup({
                 ui = {
                     border = ThemeConfig.border,
                 },
@@ -97,7 +97,7 @@ return {
     {
         'L3MON4D3/LuaSnip',
         config = function()
-            require('luasnip').setup({
+            reload('luasnip').setup({
                 history = true,
                 update_events = 'TextChanged,TextChangedI',
             })
@@ -109,7 +109,7 @@ return {
         'rafamadriz/friendly-snippets',
         dependencies = { 'L3MON4D3/LuaSnip' },
         config = function()
-            require('luasnip.loaders.from_vscode').lazy_load()
+            reload('luasnip.loaders.from_vscode').lazy_load()
         end,
     },
 
@@ -137,7 +137,7 @@ return {
     {
         'nvim-treesitter/nvim-treesitter',
         build = function()
-            local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+            local ts_update = reload('nvim-treesitter.install').update({ with_sync = true })
             ts_update()
         end,
         config = function()
@@ -168,7 +168,7 @@ return {
     {
         'chrisgrieser/nvim-origami',
         config = function()
-            require('origami').setup({
+            reload('origami').setup({
                 setupFoldKeymaps = false,
             })
         end,
@@ -204,9 +204,9 @@ return {
     {
         'lukas-reineke/indent-blankline.nvim',
         config = function()
-            local ThemeSymbols = require('theme.symbols')
+            local ThemeSymbols = reload('theme.symbols')
 
-            require('ibl').setup({
+            reload('ibl').setup({
                 indent = {
                     char = ThemeSymbols.indent_char,
                 },
@@ -224,7 +224,7 @@ return {
     {
         'ggandor/leap.nvim',
         config = function()
-            require('leap').setup({
+            reload('leap').setup({
                 case_sensitive = true,
             })
         end
@@ -276,9 +276,9 @@ return {
     {
         'lewis6991/gitsigns.nvim',
         config = function()
-            local ThemeSymbols = require('theme.symbols')
+            local ThemeSymbols = reload('theme.symbols')
 
-            require('gitsigns').setup({
+            reload('gitsigns').setup({
                 -- Enable cursor line highlights (fixes missing background color
                 -- in sign column)
                 culhl = true,

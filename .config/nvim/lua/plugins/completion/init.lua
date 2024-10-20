@@ -2,8 +2,8 @@
 -- Completion config
 --------------------------------------------------------------------------------
 
-local cmp = require('cmp')
-local luasnip = require('luasnip')
+local cmp = reload('cmp')
+local luasnip = reload('luasnip')
 
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
 
@@ -69,7 +69,7 @@ cmp.setup({
     },
     snippet = {
         expand = function(args)
-            require('luasnip').lsp_expand(args.body)
+            reload('luasnip').lsp_expand(args.body)
         end,
     },
 

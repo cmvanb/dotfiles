@@ -6,7 +6,7 @@ local theme = reload('plugins.lualine.theme')
 
 local ThemeSymbols = reload('theme.symbols')
 
-require('lualine').setup({
+reload('lualine').setup({
     options = {
         theme = theme,
         component_separators = ' ',

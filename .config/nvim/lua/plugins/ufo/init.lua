@@ -2,7 +2,7 @@
 -- Colorizer configuration
 --------------------------------------------------------------------------------
 
-local ufo = require('ufo')
+local ufo = reload('ufo')
 
 ufo.setup({
     fold_virt_text_handler =

@@ -2,7 +2,7 @@
 -- Mini pairs plugin
 --------------------------------------------------------------------------------
 
-require('mini.pairs').setup({
+reload('mini.pairs').setup({
     modes = { insert = true, command = false, terminal = false },
 
     mappings = {

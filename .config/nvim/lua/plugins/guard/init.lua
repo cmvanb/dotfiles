@@ -2,7 +2,7 @@
 -- Guard configuration
 --------------------------------------------------------------------------------
 
-local ft = require('guard.filetype')
+local ft = reload('guard.filetype')
 
 ft('css'):fmt('prettier')
 ft('js'):fmt('prettier')

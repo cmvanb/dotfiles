@@ -2,10 +2,10 @@
 -- Telescope configuration
 --------------------------------------------------------------------------------
 
-local telescope = require('telescope')
-local actions = require('telescope.actions')
+local telescope = reload('telescope')
+local actions = reload('telescope.actions')
 
-local ThemeSymbols = require('theme.symbols')
+local ThemeSymbols = reload('theme.symbols')
 
 telescope.setup({
     defaults = {

@@ -2,7 +2,7 @@
 -- Mini comment plugin
 --------------------------------------------------------------------------------
 
-require('mini.comment').setup({
+reload('mini.comment').setup({
     mappings = {
         -- Toggle comment on current line (NORMAL)
         comment_line = '<C-/>',

@@ -2,9 +2,9 @@
 -- Session manager configuration
 --------------------------------------------------------------------------------
 
-local session_manager = require('session_manager')
+local session_manager = reload('session_manager')
 
-local Path = require('plenary.path')
+local Path = reload('plenary.path')
 local config = require('session_manager.config')
 
 session_manager.setup({

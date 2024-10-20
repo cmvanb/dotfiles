@@ -27,5 +27,5 @@ require('plugins.manager')
 -- Load autocommands.
 require('autocommands')
 
--- Load key mappings last; some key mappings may depend on plugins.
+-- Load key mappings last.
 require('editor.keymaps')

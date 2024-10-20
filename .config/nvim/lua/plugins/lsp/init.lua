@@ -71,7 +71,7 @@ end
 -- Mason/LSP integration
 --------------------------------------------------------------------------------
 
-local mason_lspconfig = require('mason-lspconfig')
+local mason_lspconfig = reload('mason-lspconfig')
 
 mason_lspconfig.setup({
     -- A list of servers to automatically install if they're not already installed.
@@ -91,7 +91,7 @@ mason_lspconfig.setup({
 })
 
 local base_capabilities =
-    require('cmp_nvim_lsp').default_capabilities(
+    reload('cmp_nvim_lsp').default_capabilities(
         vim.lsp.protocol.make_client_capabilities()
     )
 
@@ -117,7 +117,7 @@ local lsp_config = {
     capabilities = lsp_capabilities,
 }
 
-local lspconfig = require('lspconfig')
+local lspconfig = reload('lspconfig')
 
 -- Configure LSP handlers for each installed server. The first entry (without a
 -- key) will be the default handler and will be called for each installed server

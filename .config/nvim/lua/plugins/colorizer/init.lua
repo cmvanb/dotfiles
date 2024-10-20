@@ -2,7 +2,7 @@
 -- Colorizer configuration
 --------------------------------------------------------------------------------
 
-local colorizer = require('colorizer')
+local colorizer = reload('colorizer')
 
 colorizer.setup({
     filetypes = {

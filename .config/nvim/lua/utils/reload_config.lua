@@ -11,7 +11,9 @@ function _G.reload_config()
     reload('editor.options')
     reload('editor.highlights')
 
-    -- TODO: Restore reload plugins functionality.
+    -- TODO: Restore plugin reloading; requires a different plugin manager.
+    -- Load plugins. Will bootstrap Lazy.nvim if necessary.
+    -- reload('plugins.manager')
 
     -- Load autocommands.
     reload('autocommands')
