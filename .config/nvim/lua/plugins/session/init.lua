@@ -4,7 +4,7 @@
 
 local session_manager = reload('session_manager')
 
-local Path = reload('plenary.path')
+local Path = require('plenary.path')
 local config = require('session_manager.config')
 
 session_manager.setup({

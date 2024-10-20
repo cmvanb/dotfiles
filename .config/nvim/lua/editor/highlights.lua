@@ -31,6 +31,7 @@ hi('NormalFloat',               { fg = 'editor_text_normal', bg = 'editor_bg' },
 hi('NonText',                   { fg = 'gray_2' },                                        { fg = 'ansi_brwhite' })
 hi('EndOfBuffer',               { fg = 'primary_4' },                                     { })
 hi('LineNr',                    { fg = 'primary_6' },                                     { fg = 'ansi_blue' })
+hi('Cursor',                    { fg = 'gray_0', bg = 'text_15' },                        { fg = 'ansi_black', bg = 'ansi_brwhite' })
 hi('CursorLine',                { bg = 'primary_2' },                                     { bg = 'ansi_blue' })
 hi('CursorLineNr',              { fg = 'primary_12', bg = 'primary_2' },                  { fg = 'ansi_brblue', bg = 'ansi_blue' })
 hi('CursorLineFold',            { fg = 'gray_4', bg = 'primary_2' },                      { fg = 'ansi_brblue', bg = 'ansi_blue' })
@@ -53,7 +54,7 @@ hi('Search',                    { fg = 'gray_0', bg = 'magenta_5', attrs = 'bold
 hi('CurSearch',                 { fg = 'gray_0', bg = 'green_4', attrs = 'bold' },        { fg = 'ansi_black', bg = 'ansi_green' })
 
 hi('Folded',                    { bg = 'primary_1' },                                     { bg = 'ansi_blue' })
-hi('FoldColumn',                { fg = 'gray_4', attrs = 'bold' },                                        { fg = 'ansi_blue' })
+hi('FoldColumn',                { fg = 'gray_4', attrs = 'bold' },                        { fg = 'ansi_blue' })
 
 hi('Title',                     { fg = 'text_15', attrs = 'bold' },                       { fg = 'ansi_brwhite' })
 hi('PMenu',                     { fg = 'text_8', bg = 'editor_bg' },                      { fg = 'ansi_white', bg = 'ansi_black' })

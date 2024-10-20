@@ -20,4 +20,8 @@ function _G.reload_config()
 
     -- Load key mappings last.
     reload('editor.keymaps')
+
+    vim.api.nvim_echo({
+        { 'Neovim configuration reloaded.' },
+    }, true, {})
 end

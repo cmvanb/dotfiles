@@ -4,4 +4,5 @@
 
 if vim.g.neovide then
     vim.o.guifont = 'IosevkaTerm NFM:h14'
+    vim.o.guicursor = ''
 end

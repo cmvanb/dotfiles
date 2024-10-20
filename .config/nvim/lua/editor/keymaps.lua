@@ -18,12 +18,13 @@ local map, nmap, xmap, imap =
     KeyMapUtils.xmap,
     KeyMapUtils.imap
 
-local noremap, nnoremap, xnoremap, inoremap, onoremap =
+local noremap, nnoremap, xnoremap, inoremap, onoremap, vnoremap =
     KeyMapUtils.noremap,
     KeyMapUtils.nnoremap,
     KeyMapUtils.xnoremap,
     KeyMapUtils.inoremap,
-    KeyMapUtils.onoremap
+    KeyMapUtils.onoremap,
+    KeyMapUtils.vnoremap
 
 -- Remove some default mappings
 --------------------------------------------------------------------------------
@@ -70,32 +71,13 @@ vim.g.mapleader = ' '
 -- Windows-like key bindings
 --------------------------------------------------------------------------------
 
--- Copy, paste
--- NOTE: These are only working because the terminal (Alacritty) is configured for it.
-if not is_linux_virtual_terminal() then
-    noremap('<C-c>', '"+y')
-    noremap('<C-v>', '"+p')
-end
-
--- Cut
-noremap('<C-x>', 'x')
-
--- Select all
-noremap('<C-a>', 'gg0vG$')
-
--- Undo
-nnoremap('<C-z>', 'u')
-
--- Find
-nnoremap('<C-f>', '/')
-
--- Save all buffers
-nnoremap('<C-s>', ':wa!<cr>')
-xnoremap('<C-s>', '<esc>:wa!<cr>')
-inoremap('<C-s>', '<esc>:wa!<cr>')
-
 -- Viewing
 --------------------------------------------------------------------------------
+
+-- Folds
+local ufo = require('ufo')
+nnoremap('zR', ufo.openAllFolds)
+nnoremap('zM', ufo.closeAllFolds)
 
 -- Toggle indent guides & whitespace
 -- TODO: Consider cycling through an option to toggle the EOL character.
@@ -123,12 +105,6 @@ nnoremap('<leader>w',
         end
     end)
 
--- Selection
---------------------------------------------------------------------------------
-
--- Visual block select
-noremap('<A-v>', '<C-v>')
-
 -- Navigation
 --------------------------------------------------------------------------------
 
@@ -148,8 +124,30 @@ noremap('<C-k>', '<C-u>')
 noremap('<leader>j', function() require('leap').leap({}) end)
 noremap('<leader>k', function() require('leap').leap({ backward = true }) end)
 
+-- Selection
+--------------------------------------------------------------------------------
+
+-- Select all
+noremap('<C-a>', 'gg0vG$')
+
+-- Visual block select
+noremap('<A-v>', '<C-v>')
+
 -- Editing
 -------------------------------------------------------------------------------
+
+-- Copy, paste
+-- NOTE: These are only working because the terminal (Alacritty) is configured for it.
+if not is_linux_virtual_terminal() then
+    noremap('<C-c>', '"+y')
+    noremap('<C-v>', '"+p')
+end
+
+-- Cut
+noremap('<C-x>', 'x')
+
+-- Undo
+nnoremap('<C-z>', 'u')
 
 -- Swap lines
 nnoremap('J', '<esc>:m .+1<cr>==', { silent = true })
@@ -158,6 +156,8 @@ nnoremap('K', '<esc>:m .-2<cr>==', { silent = true })
 -- Indentation
 nnoremap('H', '<<')
 nnoremap('L', '>>')
+vnoremap('H', '<gv')
+vnoremap('L', '>gv')
 
 -- Formatting
 nnoremap(';', '=')
@@ -167,23 +167,14 @@ nnoremap('<leader>;', 'gg=G')
 -- Insert line break
 nnoremap('<Enter>', 'i<CR><esc>`^')
 
--- Folds
---------------------------------------------------------------------------------
-
-local ufo = require('ufo')
-
-nnoremap('zR', ufo.openAllFolds)
-nnoremap('zM', ufo.closeAllFolds)
-
 -- Search
 --------------------------------------------------------------------------------
 
 -- Clear search highlight, clear command line and clear search pattern.
 nnoremap('<leader>l', ':noh<cr>:let @/=""<cr>:echo ""<cr>')
 
-local telescope_builtin = require('telescope.builtin')
-
 -- Fuzzy finder
+local telescope_builtin = require('telescope.builtin')
 nnoremap('<leader>a', function() telescope_builtin.find_files({ hidden = true, no_ignore = false }) end)
 nnoremap('<leader>f', require('plugins.telescope.project_files'))
 nnoremap('<leader>b', telescope_builtin.buffers)
@@ -202,6 +193,27 @@ nnoremap('gr', telescope_builtin.lsp_references)
 nnoremap('gp', vim.diagnostic.open_float)
 nnoremap('gj', vim.diagnostic.goto_next)
 nnoremap('gk', vim.diagnostic.goto_prev)
+
+-- Buffer management
+--------------------------------------------------------------------------------
+
+-- Save all buffers
+nnoremap('<C-s>', ':wa!<cr>')
+xnoremap('<C-s>', '<esc>:wa!<cr>')
+inoremap('<C-s>', '<esc>:wa!<cr>')
+
+-- Cycle buffers
+-- NOTE: Alacritty translates <C-BS> to <F15> to get around NVIM's limitation.
+nnoremap('<C-S-Tab>', ':bprev<cr>', { silent = true })
+nnoremap('<C-Tab>', ':bnext<cr>', { silent = true })
+nnoremap('<C-h>', ':bprev<cr>', { silent = true })
+nnoremap('<C-l>', ':bnext<cr>', { silent = true })
+
+-- Close buffer
+nnoremap('<C-q>', ':Bdelete<cr>', { silent = true })
+
+-- Close NVIM without saving
+noremap('<leader>q', ':qa!<cr>')
 
 -- Window management
 --------------------------------------------------------------------------------
@@ -226,22 +238,6 @@ nnoremap('<C-A-q>', ':close<cr>', { silent = true })
 -- Change window size
 nnoremap('<C-A-PageUp>', ':wincmd ><cr>', { silent = true })
 nnoremap('<C-A-PageDown>', ':wincmd <<cr>', { silent = true })
-
--- Buffer management
---------------------------------------------------------------------------------
-
--- Cycle buffers
--- NOTE: Alacritty translates <C-BS> to <F15> to get around NVIM's limitation.
-nnoremap('<C-S-Tab>', ':bprev<cr>', { silent = true })
-nnoremap('<C-Tab>', ':bnext<cr>', { silent = true })
-nnoremap('<C-h>', ':bprev<cr>', { silent = true })
-nnoremap('<C-l>', ':bnext<cr>', { silent = true })
-
--- Close buffer
-nnoremap('<C-q>', ':Bdelete<cr>', { silent = true })
-
--- Close NVIM without saving
-noremap('<leader>q', ':qa!<cr>')
 
 -- Git
 --------------------------------------------------------------------------------
