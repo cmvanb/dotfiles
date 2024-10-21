@@ -78,52 +78,52 @@ reload('lualine').setup({
         lualine_y = {},
         lualine_z = {},
     },
-    tabline = {
-        lualine_a = {
-            {
-                'filename',
-                color = 'lualine_z_normal',
-                path = 3,
-                shorting_target = 0,
-                separator = {
-                    left = '',
-                    right = ThemeSymbols.lualine.section_separator_left
-                },
-                padding = { left = 1, right = 1 },
-                symbols = {
-                    modified = ThemeSymbols.lualine.file_modified,
-                    readonly = ThemeSymbols.lualine.file_readonly,
-                    unnamed = '[No Name]',
-                    newfile = '',
-                }
-            },
-        },
-        lualine_b = {
-        },
-        lualine_c = {
-        },
-        lualine_x = {
-        },
-        lualine_y = {
-        },
-        lualine_z = {
-            {
-                'tabs',
-                mode = 1,
-                fmt = function(_, context)
-                    return ThemeSymbols.lualine.tab_page .. context.tabnr
-                end,
-                show_modified_status = false,
-                separator = {
-                    left = ThemeSymbols.lualine.section_separator_right,
-                    right = ''
-                },
-                padding = { left = 1, right = 1 },
-                tabs_color = {
-                    active = 'lualine_z_normal',
-                    inactive = 'lualine_y_normal',
-                },
-            },
-        }
-    },
+    -- tabline = {
+    --     lualine_a = {
+    --         {
+    --             'filename',
+    --             color = 'lualine_z_normal',
+    --             path = 3,
+    --             shorting_target = 0,
+    --             separator = {
+    --                 left = '',
+    --                 right = ThemeSymbols.lualine.section_separator_left
+    --             },
+    --             padding = { left = 1, right = 1 },
+    --             symbols = {
+    --                 modified = ThemeSymbols.lualine.file_modified,
+    --                 readonly = ThemeSymbols.lualine.file_readonly,
+    --                 unnamed = '[No Name]',
+    --                 newfile = '',
+    --             }
+    --         },
+    --     },
+    --     lualine_b = {
+    --     },
+    --     lualine_c = {
+    --     },
+    --     lualine_x = {
+    --     },
+    --     lualine_y = {
+    --     },
+    --     lualine_z = {
+    --         {
+    --             'tabs',
+    --             mode = 1,
+    --             fmt = function(_, context)
+    --                 return ThemeSymbols.lualine.tab_page .. context.tabnr
+    --             end,
+    --             show_modified_status = false,
+    --             separator = {
+    --                 left = ThemeSymbols.lualine.section_separator_right,
+    --                 right = ''
+    --             },
+    --             padding = { left = 1, right = 1 },
+    --             tabs_color = {
+    --                 active = 'lualine_z_normal',
+    --                 inactive = 'lualine_y_normal',
+    --             },
+    --         },
+    --     }
+    -- },
 })
