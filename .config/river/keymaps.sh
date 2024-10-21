@@ -100,11 +100,11 @@ riverctl map-pointer normal Shift BTN_RIGHT resize-view
 
 # Cycle focused tags
 # see: https://gitlab.com/akumar-xyz/river-shifttags/-/tree/master
-riverctl map normal Super Tab spawn "river-shifttags"
-riverctl map normal Super+Shift Tab spawn "river-shifttags --shift -1"
+riverctl map normal Super+Control L spawn "river-shifttags"
+riverctl map normal Super+Control H spawn "river-shifttags --shift -1"
 
 for i in $(seq 1 9); do
-    # NOTE: Unconventional formatting here is to avoid a bug in tree-sitter-bash when parsing `<<`.
+    # NOTE: There is a bug in tree-sitter-bash when parsing `<<`.
     # see: https://github.com/tree-sitter/tree-sitter-bash
     declare tags=$(( 1 << (i - 1) ))
 
