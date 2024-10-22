@@ -109,8 +109,21 @@ cmd open ${{
     $XDG_CONFIG_HOME/lf/lf-open.sh $f
 }}
 
+# Copy file basename to clipboard.
+cmd yank_basename ${{
+    echo -n $(basename $f) | wl-copy
+}}
+
+# Copy file absolute path to clipboard.
+cmd yank_path ${{
+    echo -n $f | wl-copy
+}}
+
+map yn yank_basename
+map yd yank_path
+
 # Copy/paste.
-map y copy
+map yy copy
 map p paste
 
 # Delete.
