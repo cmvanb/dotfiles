@@ -1,0 +1,60 @@
+{
+    "layer": "top",
+    "height": 20,
+    "margin-top": 6,
+
+    "modules-left": ["niri/workspaces"],
+    "modules-center": ["niri/window"],
+    "modules-right": ["network", "bluetooth", "wireplumber", "battery", "clock"],
+
+    "niri/window": {
+        "format": "{}"
+    },
+
+    "niri/workspaces": {
+        "format": "{icon}",
+        "format-icons": {
+            // Icons by state
+            "active": "",
+            "default": ""
+        }
+    },
+
+    "network": {
+        "format-ethernet": "󰲝   {ifname}",
+        "format-wifi": "󰖩   {ifname}",
+        "format-disconnected": "󰲜   no network",
+        "tooltip": true,
+        "tooltip-format": "{gwaddr} · {bandwidthUpBytes} up · {bandwidthDownBytes} down"
+    },
+
+    "bluetooth": {
+        "format": "  {status}",
+        "tooltip": true,
+        "tooltip-format": "{device_address} · {device_alias}",
+        "tooltip-format-disabled": "controller disabled",
+        "tooltip-format-off": "controller off"
+    },
+
+    "wireplumber": {
+        "format": "{icon}   {volume}%",
+        "format-muted": "󰝟   {volume}%",
+        "format-icons": ["󰕿", "󰖀", "󰕾"],
+        "on-click": "pavucontrol",
+        "on-click-right": "wpctl set-mute 167 toggle"
+    },
+
+    "battery": {
+        "format": "{icon}    {capacity}%",
+        "format-icons": ["", "", "", "", ""],
+        "interval": 5,
+        "states": {
+            "warning": 30,
+            "critical": 15
+        }
+    },
+
+    "clock": {
+        "format": "󰸘   {:%Y-%m-%d        %H:%M}"
+    }
+}

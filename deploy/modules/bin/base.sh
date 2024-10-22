@@ -14,7 +14,4 @@ force_link "$base_dir/.local/bin/kebab" "$bin_dir/kebab"
 force_link "$base_dir/.local/bin/kebabify" "$bin_dir/kebabify"
 force_link "$base_dir/.local/bin/printenv" "$bin_dir/printenv"
 force_link "$base_dir/.local/bin/view" "$bin_dir/view"
-
-echo "└> Generating templated binary shortcuts."
-esh "$base_dir/.local/bin/rg~esh" > "$bin_dir/rg"
-chmod +x "$bin_dir/rg"
+force_link "$base_dir/.local/bin/rg" "$bin_dir/rg"

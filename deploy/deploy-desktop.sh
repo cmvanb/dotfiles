@@ -10,7 +10,7 @@
 script_dir=$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)
 base_dir=$(realpath "$script_dir/..")
 
-# File system utilities
+# Utility functions
 source "$base_dir/.local/opt/shell-utils/fs.sh"
 source "$base_dir/.local/opt/shell-utils/linux.sh"
 
@@ -24,20 +24,8 @@ export XDG_BIN_HOME="$HOME/.local/bin"
 export XDG_OPT_HOME="$HOME/.local/opt"
 export XDG_SCRIPTS_HOME="$HOME/.local/scripts"
 
-# Determine system binary path
-if [[ $SYSTEM_DISTRO == "arch" ]] || [[ $SYSTEM_DISTRO == "debian" ]] || [[ $SYSTEM_DISTRO == "ubuntu" ]]; then
-    export SYSTEM_BINARY_PATH=/usr/bin
-
-elif [[ $SYSTEM_DISTRO == "nixos" ]]; then
-    export SYSTEM_BINARY_PATH=/run/current-system/sw/bin
-
-else
-    echo "[$(basename "$0")] ERROR: Unknown distribution \`$SYSTEM_DISTRO\`, unable to deploy."
-    exit 1
-fi
-
 # Determine which shell esh executes
-export ESH_SHELL=$SYSTEM_BINARY_PATH/bash
+export ESH_SHELL=/usr/bin/bash
 
 # Deploy server profile
 #-------------------------------------------------------------------------------

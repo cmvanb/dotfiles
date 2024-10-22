@@ -4,7 +4,7 @@ Requires=basic.target
 After=basic.target
 
 [Service]
-ExecStart=<%= $SYSTEM_BINARY_PATH %>/udiskie
+ExecStart=/usr/bin/udiskie
 Restart=always
 RestartSec=3
 

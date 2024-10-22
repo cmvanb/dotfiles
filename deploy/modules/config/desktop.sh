@@ -58,6 +58,9 @@ esh "$base_dir/.config/mako/config~esh" > "$config_dir/mako/config"
 # Mpv
 force_link "$base_dir/.config/mpv" "$config_dir/mpv"
 
+# Niri
+force_link "$base_dir/.config/niri" "$config_dir/niri"
+
 # Python
 force_link "$base_dir/.config/python" "$config_dir/python"
 force_link "$base_dir/.config/pip" "$config_dir/pip"
@@ -91,21 +94,21 @@ fi
 
 # Systemd integrations
 mkdir -p "$config_dir/systemd/user"
-force_link "$base_dir/.config/systemd/user/river-session.target" "$config_dir/systemd/user/river-session.target"
-force_link "$base_dir/.config/systemd/user/wayland-session.target" "$config_dir/systemd/user/wayland-session.target"
-force_link "$base_dir/.config/systemd/user/xdg-desktop-portal-gtk.service" "$config_dir/systemd/user/xdg-desktop-portal-gtk.service"
-esh "$base_dir/.config/systemd/user/bluetooth-autoconnect.service~esh" > "$config_dir/systemd/user/bluetooth-autoconnect.service"
-esh "$base_dir/.config/systemd/user/mako.service~esh" > "$config_dir/systemd/user/mako.service"
-esh "$base_dir/.config/systemd/user/ssh-agent.service~esh" > "$config_dir/systemd/user/ssh-agent.service"
-esh "$base_dir/.config/systemd/user/udiskie.service~esh" > "$config_dir/systemd/user/udiskie.service"
+force_link "$base_dir/.config/systemd/user/bluetooth-autoconnect.service" "$config_dir/systemd/user/bluetooth-autoconnect.service"
+force_link "$base_dir/.config/systemd/user/udiskie.service" "$config_dir/systemd/user/udiskie.service"
+
+# Systemd/Niri integration
+mkdir -p "$config_dir/systemd/user/niri.service.wants"
+force_link "/usr/lib/systemd/user/mako.service" "$config_dir/systemd/user/niri.service.wants/mako.service"
+force_link "/usr/lib/systemd/user/waybar.service" "$config_dir/systemd/user/niri.service.wants/waybar.service"
 
 # Linux virtual terminal
 force_link "$base_dir/.config/vt" "$config_dir/vt"
 
 # Waybar
 mkdir -p "$config_dir/waybar"
-force_link "$base_dir/.config/waybar/config" "$config_dir/waybar/config"
-esh "$base_dir/.config/waybar/style.css~esh" > "$config_dir/waybar/style.css"
+force_link "$base_dir/.config/waybar/niri-config" "$config_dir/waybar/config"
+esh "$base_dir/.config/waybar/niri-style.css~esh" > "$config_dir/waybar/style.css"
 
 # Wallpaper
 if [[ $host == "qutedell" ]]; then

@@ -27,7 +27,7 @@ force_link "$base_dir/.local/bin/suspend" "$bin_dir/suspend"
 
 # Link host-specific init script
 if [[ $host == "qutedell" ]] || [[ $host == "supertubes" ]] || [[ $host == "cyxwel" ]]; then
-    force_link "$base_dir/.local/bin/init~river" "$bin_dir/init"
+    force_link "$base_dir/.local/bin/init~niri" "$bin_dir/init"
 
 else
     echo "[$(basename "$0")] ERROR: \`$host\` is not accounted for."
