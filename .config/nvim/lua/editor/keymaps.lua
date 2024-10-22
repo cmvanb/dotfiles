@@ -74,10 +74,10 @@ vim.g.mapleader = ' '
 -- Viewing
 --------------------------------------------------------------------------------
 
--- Folds
-local ufo = require('ufo')
-nnoremap('zR', ufo.openAllFolds)
-nnoremap('zM', ufo.closeAllFolds)
+-- -- Folds
+-- local ufo = require('ufo')
+-- nnoremap('zR', ufo.openAllFolds)
+-- nnoremap('zM', ufo.closeAllFolds)
 
 -- Toggle indent guides & whitespace
 -- TODO: Consider cycling through an option to toggle the EOL character.

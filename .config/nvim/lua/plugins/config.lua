@@ -151,6 +151,7 @@ return {
     { 'camnw/lf-vim' },
     { 'LnL7/vim-nix' },
     { 'ziglang/zig.vim' },
+    { 'imsnif/kdl.vim'},
 
     -- Cursor highlight
     { 'RRethy/vim-illuminate' },
@@ -158,21 +159,21 @@ return {
     -- Folding
     ----------------------------------------------------------------------------
 
-    {
-        'kevinhwang91/nvim-ufo',
-        dependencies = { 'kevinhwang91/promise-async' },
-        config = function()
-            do_load('plugins/ufo')
-        end,
-    },
-    {
-        'chrisgrieser/nvim-origami',
-        config = function()
-            reload('origami').setup({
-                setupFoldKeymaps = false,
-            })
-        end,
-    },
+    -- {
+    --     'kevinhwang91/nvim-ufo',
+    --     dependencies = { 'kevinhwang91/promise-async' },
+    --     config = function()
+    --         do_load('plugins/ufo')
+    --     end,
+    -- },
+    -- {
+    --     'chrisgrieser/nvim-origami',
+    --     config = function()
+    --         reload('origami').setup({
+    --             setupFoldKeymaps = false,
+    --         })
+    --     end,
+    -- },
 
     -- Search
     ----------------------------------------------------------------------------
