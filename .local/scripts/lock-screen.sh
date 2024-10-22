@@ -11,5 +11,5 @@ if ! waylock \
     -input-color "$(color_zerox "$primary_12")" \
     -fail-color "$(color_zerox "$red_4")" \
     ; then
-    notify-send "Failed to lock screen. Please see \`.local/share/river/session_log\` for details."
+    notify-send "Failed to lock screen."
 fi

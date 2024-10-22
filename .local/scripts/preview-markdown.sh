@@ -24,4 +24,4 @@ fi
 nohup echo "$1" | entr -r "$XDG_SCRIPTS_HOME/markdown-to-html.sh" "$1" >/dev/null 2>&1 &
 
 html_path="/tmp/md/$file_name.html"
-riverctl spawn "qutebrowser --target window ':open $html_path'"
+niri msg action spawn -- "sh" "-c" "qutebrowser --target window ':open $html_path'"

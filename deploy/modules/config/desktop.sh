@@ -60,6 +60,9 @@ force_link "$base_dir/.config/mpv" "$config_dir/mpv"
 
 # Niri
 force_link "$base_dir/.config/niri" "$config_dir/niri"
+mkdir -p "$config_dir/systemd/user/niri.service.wants"
+force_link "/usr/lib/systemd/user/mako.service" "$config_dir/systemd/user/niri.service.wants/mako.service"
+force_link "/usr/lib/systemd/user/waybar.service" "$config_dir/systemd/user/niri.service.wants/waybar.service"
 
 # Python
 force_link "$base_dir/.config/python" "$config_dir/python"
@@ -97,12 +100,7 @@ mkdir -p "$config_dir/systemd/user"
 force_link "$base_dir/.config/systemd/user/bluetooth-autoconnect.service" "$config_dir/systemd/user/bluetooth-autoconnect.service"
 force_link "$base_dir/.config/systemd/user/udiskie.service" "$config_dir/systemd/user/udiskie.service"
 
-# Systemd/Niri integration
-mkdir -p "$config_dir/systemd/user/niri.service.wants"
-force_link "/usr/lib/systemd/user/mako.service" "$config_dir/systemd/user/niri.service.wants/mako.service"
-force_link "/usr/lib/systemd/user/waybar.service" "$config_dir/systemd/user/niri.service.wants/waybar.service"
-
-# Linux virtual terminal
+# Virtual terminal
 force_link "$base_dir/.config/vt" "$config_dir/vt"
 
 # Waybar

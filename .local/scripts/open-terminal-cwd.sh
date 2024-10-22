@@ -14,7 +14,7 @@ source "$XDG_OPT_HOME/shell-utils/debug.sh"
 # Validation
 #-------------------------------------------------------------------------------
 
-assert_dependency riverctl
+assert_dependency niri
 assert_dependency wofi
 assert_dependency zoxide
 
@@ -27,4 +27,4 @@ target=$(printf "%s\n" "$(zoxide query --list)" | wofi -p "Open terminal at..." 
 # Spawn a new terminal
 #-------------------------------------------------------------------------------
 
-riverctl spawn "alacritty --command $SHELL -c 'cd $target && $SHELL'"
+niri msg action spawn -- "sh" "-c" "alacritty --command sh -c 'cd $target && $SHELL'"
