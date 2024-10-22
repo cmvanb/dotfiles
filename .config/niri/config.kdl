@@ -108,14 +108,16 @@ layout {
 }
 
 cursor {
-    // TODO: Investigate why this doesn't work.
-    // hide-after-inactive-ms 3000
     xcursor-theme "Simp1e"
     xcursor-size 24
+
+    // TODO: Investigate why this doesn't work.
+    // hide-after-inactive-ms 3000
+    // hide-on-key-press
 }
 
 // NOTE: Running niri as a session supports xdg-desktop-autostart.
-// spawn-at-startup "alacritty" "-e" "fish"
+spawn-at-startup "wlsunset" "-l" "52.155472" "-L" "5.389358"
 
 prefer-no-csd
 
