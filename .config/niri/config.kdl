@@ -111,7 +111,7 @@ cursor {
     xcursor-theme "Simp1e"
     xcursor-size 24
 
-    // TODO: Investigate why this doesn't work.
+    // NOTE: Will work in future release (1.10).
     // hide-after-inactive-ms 3000
     // hide-on-key-press
 }
