@@ -1,42 +1,51 @@
 //------------------------------------------------------------------------------
-// https://github.com/YaLTeR/niri/wiki/Configuration:-Overview
+// Niri configuration file
+//  see: https://github.com/YaLTeR/niri/wiki/Configuration:-Overview
 //------------------------------------------------------------------------------
+
+// General settings
+//------------------------------------------------------------------------------
+
+prefer-no-csd
+
+screenshot-path "~/Media/Images/screenshots/niri--%Y-%m-%d--%H-%M-%S.png"
 
 hotkey-overlay {
     skip-at-startup
 }
 
-// https://github.com/YaLTeR/niri/wiki/Configuration:-Input
+// NOTE: Running niri as a session supports xdg-desktop-autostart.
+spawn-at-startup "wlsunset" "-l" "52.155472" "-L" "5.389358"
+spawn-at-startup "bash" "-c" "$XDG_CONFIG_HOME/wallpaper/wallpaper.sh"
+spawn-at-startup "bash" "-c" "$XDG_CONFIG_HOME/niri/workspace.sh"
+
+// Input
+//  see: https://github.com/YaLTeR/niri/wiki/Configuration:-Input
+//------------------------------------------------------------------------------
+
 input {
     keyboard {
         repeat-delay 300
         repeat-rate 50
-        // see: xkeyboard-config(7).
-        xkb {}
     }
 
     touchpad {
-        // off
         tap
-        // dwt
-        // dwtp
         natural-scroll
         accel-speed -0.92
         accel-profile "flat"
-        // scroll-method "two-finger"
-        // disabled-on-external-mouse
     }
 
     mouse {
-        // off
-        // natural-scroll
         accel-speed 0.15
         accel-profile "flat"
-        // scroll-method "no-scroll"
     }
 }
 
-// https://github.com/YaLTeR/niri/wiki/Configuration:-Outputs
+// Outputs
+//  see: https://github.com/YaLTeR/niri/wiki/Configuration:-Outputs
+//------------------------------------------------------------------------------
+
 output "DP-4" {
     mode "1920x1200@60"
     scale 1
@@ -63,11 +72,13 @@ output "HDMI-A-6" {
     background-color "#0b0b0e"
 }
 
-// https://github.com/YaLTeR/niri/wiki/Configuration:-Layout
+// Layout
+//  see: https://github.com/YaLTeR/niri/wiki/Configuration:-Layout
+//------------------------------------------------------------------------------
+
 layout {
     gaps 6
 
-    // "never", "always" or "on-overflow"
     center-focused-column "always"
 
     preset-column-widths {
@@ -104,6 +115,9 @@ layout {
     }
 }
 
+// Cursor
+//------------------------------------------------------------------------------
+
 cursor {
     xcursor-theme "Simp1e"
     xcursor-size 24
@@ -113,42 +127,54 @@ cursor {
     // hide-on-key-press
 }
 
-// NOTE: Running niri as a session supports xdg-desktop-autostart.
-spawn-at-startup "wlsunset" "-l" "52.155472" "-L" "5.389358"
-spawn-at-startup "bash" "-c" "$XDG_CONFIG_HOME/wallpaper/wallpaper.sh"
-
-prefer-no-csd
-
-screenshot-path "~/Media/Images/screenshots/niri--%Y-%m-%d--%H-%M-%S.png"
-
+// Animations
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Animations
+//------------------------------------------------------------------------------
 animations {
     slowdown 0.85
 }
 
+// Window rules
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Window-Rules
+//------------------------------------------------------------------------------
+
+// All windows
 window-rule {
     geometry-corner-radius 4
     clip-to-geometry true
 }
 
-// NOTE: Work around for WezTerm's initial configure bug
 window-rule {
     match app-id=r#"^org\.wezfurlong\.wezterm$"#
+
+    // NOTE: Work around for WezTerm's initial configure bug
     default-column-width {}
 }
 
-// TODO: Test whether this works.
-// Example: block out two password managers from screen capture.
-// (This example rule is commented out with a "/-" in front.)
-/-window-rule {
-    match app-id=r#"^org\.keepassxc\.KeePassXC$"#
-    match app-id=r#"^org\.gnome\.World\.Secrets$"#
+window-rule {
     match app-id=r#"^Bitwarden$"#
 
+    open-on-output "DP-4"
+    open-maximized true
+    // TODO: Test whether this works.
     block-out-from "screen-capture"
 }
 
+window-rule {
+    match app-id=r#"^org\.qutebrowser\.qutebrowser$"#
+
+    default-column-width { proportion 0.5; }
+}
+
+window-rule {
+    match app-id=r#"^org\.pulseaudio\.pavucontrol$"#
+
+    open-on-output "HDMI-A-6"
+    open-maximized true
+}
+
+// Key bindings
+//------------------------------------------------------------------------------
 binds {
     Super+Shift+Q { quit; }
     // TODO: Investigate waylock error.
@@ -165,7 +191,6 @@ binds {
     XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
     XF86AudioMute        allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
     XF86AudioMicMute     allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
-
 
     Super+Left  { focus-column-left; }
     Super+Down  { focus-window-or-workspace-down; }
@@ -248,9 +273,6 @@ binds {
     Super+Ctrl+8 { move-column-to-workspace 8; }
     Super+Ctrl+9 { move-column-to-workspace 9; }
 
-    // Super+Comma  { consume-window-into-column; }
-    // Super+Period { expel-window-from-column; }
-
     Super+S { consume-or-expel-window-left; }
     Super+G { consume-or-expel-window-right; }
 
@@ -271,8 +293,4 @@ binds {
     // Print { screenshot; }
     // Ctrl+Print { screenshot-screen; }
     // Alt+Print { screenshot-window; }
-
-    // Powers off the monitors. To turn them back on, do any input like
-    // moving the mouse or pressing any other key.
-    // Super+Shift+P { power-off-monitors; }
 }

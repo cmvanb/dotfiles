@@ -59,10 +59,19 @@ esh "$base_dir/.config/mako/config~esh" > "$config_dir/mako/config"
 force_link "$base_dir/.config/mpv" "$config_dir/mpv"
 
 # Niri
-force_link "$base_dir/.config/niri" "$config_dir/niri"
+mkdir -p "$config_dir/niri"
+force_link "$base_dir/.config/niri/config.kdl" "$config_dir/niri/config.kdl"
 mkdir -p "$config_dir/systemd/user/niri.service.wants"
 force_link "/usr/lib/systemd/user/mako.service" "$config_dir/systemd/user/niri.service.wants/mako.service"
 force_link "/usr/lib/systemd/user/waybar.service" "$config_dir/systemd/user/niri.service.wants/waybar.service"
+
+if [[ $host == "supertubes" || $host == "cyxwel" ]]; then
+    force_link "$base_dir/.config/niri/workspace.sh~home-triple" "$config_dir/niri/workspace.sh"
+
+else
+    echo "[$(basename "$0")] ERROR: \`$host\` is not accounted for."
+    exit 1
+fi
 
 # Python
 force_link "$base_dir/.config/python" "$config_dir/python"
@@ -84,10 +93,7 @@ force_link "$base_dir/.config/river/send-view-to-tag.sh" "$config_dir/river/send
 force_link "$base_dir/.config/river/theme.sh" "$config_dir/river/theme.sh"
 force_link "$base_dir/.config/river/utils.sh" "$config_dir/river/utils.sh"
 
-if [[ $host == "qutedell" ]]; then
-    force_link "$base_dir/.config/river/workspace.sh~qutech-dual" "$config_dir/river/workspace.sh"
-
-elif [[ $host == "supertubes" || $host == "cyxwel" ]]; then
+if [[ $host == "supertubes" || $host == "cyxwel" ]]; then
     force_link "$base_dir/.config/river/workspace.sh~home-triple" "$config_dir/river/workspace.sh"
 
 else

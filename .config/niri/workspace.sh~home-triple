@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+#-------------------------------------------------------------------------------
+# Niri workspace
+#-------------------------------------------------------------------------------
+
+# Imports
+#-------------------------------------------------------------------------------
+
+# shellcheck disable=SC1091
+source "$XDG_OPT_HOME/wayland-utils/output.sh"
+source "$XDG_CONFIG_HOME/river/utils.sh"
+
+# Workspace
+#-------------------------------------------------------------------------------
+
+# NOTE: In physical order.
+left="DP-4"
+primary="DP-3"
+right="HDMI-A-6"
+
+if wl_output_exists $left; then
+    niri msg action spawn -- "bitwarden-desktop"
+
+    niri msg action spawn -- "sh" "-c" "alacritty --working-directory ~/Wiki/todo --command edit"
+    sleep 0.15
+    niri msg action move-window-to-monitor-left
+    niri msg action maximize-column
+
+    niri msg action focus-monitor-right
+    niri msg action focus-monitor-right
+fi
+
+if wl_output_exists $right; then
+    niri msg action spawn -- "pavucontrol"
+
+    niri msg action focus-monitor-left
+fi
+
+if wl_output_exists $primary; then
+    niri msg action spawn -- "alacritty"
+
+    niri msg action spawn -- "qutebrowser" "-r" "home"
+    sleep 0.25
+    niri msg action move-window-to-workspace-down
+fi
