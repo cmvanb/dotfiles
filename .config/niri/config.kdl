@@ -88,13 +88,10 @@ layout {
 
     focus-ring {
         off
-        width 3
-        active-color "#055eb5"
-        inactive-color "#505050"
     }
 
     border {
-        width 2
+        width 3
         active-color "#055eb5"
         inactive-color "#023469"
     }
