@@ -115,6 +115,7 @@ cursor {
 
 // NOTE: Running niri as a session supports xdg-desktop-autostart.
 spawn-at-startup "wlsunset" "-l" "52.155472" "-L" "5.389358"
+spawn-at-startup "bash" "-c" "$XDG_CONFIG_HOME/wallpaper/wallpaper.sh"
 
 prefer-no-csd
 
