@@ -12,11 +12,11 @@
     },
 
     "niri/workspaces": {
-        "format": "{icon}",
+        "format": "{icon} {value}",
         "format-icons": {
             // Icons by state
-            "active": "",
-            "default": ""
+            "active": " ",
+            "default": " "
         }
     },
 

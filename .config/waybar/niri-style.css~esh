@@ -19,6 +19,7 @@ button {
     /* Avoid rounded borders under each button name */
     border: none;
     border-radius: 0;
+    padding: 0;
 }
 
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
@@ -34,7 +35,7 @@ box > * > * {
     padding-right: 10px;
 }
 
-.modules-left > widget:first-child > #tags {
+.modules-left > widget:first-child > #workspaces {
     padding-left: 6px;
 }
 

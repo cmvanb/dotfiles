@@ -10,15 +10,6 @@ prefer-no-csd
 
 screenshot-path "~/Media/Images/screenshots/niri--%Y-%m-%d--%H-%M-%S.png"
 
-hotkey-overlay {
-    skip-at-startup
-}
-
-// NOTE: Running niri as a session supports xdg-desktop-autostart.
-spawn-at-startup "wlsunset" "-l" "52.155472" "-L" "5.389358"
-spawn-at-startup "bash" "-c" "$XDG_CONFIG_HOME/wallpaper/wallpaper.sh"
-spawn-at-startup "bash" "-c" "$XDG_CONFIG_HOME/niri/workspace.sh"
-
 // Input
 //  see: https://github.com/YaLTeR/niri/wiki/Configuration:-Input
 //------------------------------------------------------------------------------
@@ -130,8 +121,32 @@ cursor {
 // Animations
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Animations
 //------------------------------------------------------------------------------
+
 animations {
     slowdown 0.85
+}
+
+// Workspaces
+//------------------------------------------------------------------------------
+
+workspace "todo" {
+    open-on-output "DP-4"
+}
+
+workspace "auth" {
+    open-on-output "DP-4"
+}
+
+workspace "audio" {
+    open-on-output "HDMI-A-6"
+}
+
+workspace "home" {
+    open-on-output "DP-3"
+}
+
+workspace "project" {
+    open-on-output "DP-3"
 }
 
 // Window rules
@@ -152,24 +167,31 @@ window-rule {
 }
 
 window-rule {
-    match app-id=r#"^Bitwarden$"#
-
-    open-on-output "DP-4"
-    open-maximized true
-    // TODO: Test whether this works.
-    block-out-from "screen-capture"
-}
-
-window-rule {
     match app-id=r#"^org\.qutebrowser\.qutebrowser$"#
 
     default-column-width { proportion 0.5; }
 }
 
 window-rule {
+    match app-id=r#"^Bitwarden$"#
+
+    open-on-workspace "auth"
+    open-maximized true
+    // TODO: Test whether this works.
+    block-out-from "screen-capture"
+}
+
+window-rule {
     match app-id=r#"^org\.pulseaudio\.pavucontrol$"#
 
-    open-on-output "HDMI-A-6"
+    open-on-workspace "audio"
+    open-maximized true
+}
+
+window-rule {
+    match app-id=r#"^spotify$"#
+
+    open-on-workspace "audio"
     open-maximized true
 }
 
@@ -294,3 +316,14 @@ binds {
     // Ctrl+Print { screenshot-screen; }
     // Alt+Print { screenshot-window; }
 }
+
+// Startup
+//------------------------------------------------------------------------------
+
+hotkey-overlay {
+    skip-at-startup
+}
+
+spawn-at-startup "wlsunset" "-l" "52.155472" "-L" "5.389358"
+spawn-at-startup "bash" "-c" "$XDG_CONFIG_HOME/wallpaper/wallpaper.sh"
+spawn-at-startup "bash" "-c" "$XDG_CONFIG_HOME/niri/workspace.sh"
