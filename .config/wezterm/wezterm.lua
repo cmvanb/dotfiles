@@ -14,7 +14,7 @@ local theme = require('theme')
 --------------------------------------------------------------------------------
 
 -- Create alternate mappings to `alt-screen` applications such as terminal NVIM.
-local function alt_action(window, pane, alt_screen_action, terminal_action)
+local function alt_action(_, _, alt_screen_action, terminal_action)
     return wezterm.action_callback(function(window, pane)
         if pane:is_alt_screen_active() then
             window:perform_action(alt_screen_action, pane)
@@ -78,7 +78,7 @@ return {
     },
 
     -- Transparency
-    window_background_opacity = 1.00,
+    window_background_opacity = 0.90,
 
 -- Key bindings
 --------------------------------------------------------------------------------
@@ -111,7 +111,7 @@ return {
             key = 'c',
             mods = 'CTRL',
             action = alt_action(
-                window, pane,
+                nil, nil,
                 wezterm.action.SendKey { key = 'c', mods = 'CTRL' },
                 wezterm.action { CopyTo = 'ClipboardAndPrimarySelection' }
             ),
@@ -136,42 +136,22 @@ return {
         },
         -- Scroll down half-page
         {
-            key = 'd',
+            key = 'j',
             mods = 'CTRL',
             action = alt_action(
-                window, pane,
+                nil, nil,
                 wezterm.action.SendKey { key = 'd', mods = 'CTRL' },
                 wezterm.action.ScrollByPage(0.5)
             ),
         },
         -- Scroll up half-page
         {
-            key = 'u',
-            mods = 'CTRL',
-            action = alt_action(
-                window, pane,
-                wezterm.action.SendKey { key = 'u', mods = 'CTRL' },
-                wezterm.action.ScrollByPage(-0.5)
-            ),
-        },
-        -- Scroll down one line
-        {
-            key = 'j',
-            mods = 'CTRL',
-            action = alt_action(
-                window, pane,
-                wezterm.action.SendKey { key = 'j', mods = 'CTRL' },
-                wezterm.action.ScrollByLine(1)
-            ),
-        },
-        -- Scroll up one line
-        {
             key = 'k',
             mods = 'CTRL',
             action = alt_action(
-                window, pane,
-                wezterm.action.SendKey { key = 'k', mods = 'CTRL' },
-                wezterm.action.ScrollByLine(-1)
+                nil, nil,
+                wezterm.action.SendKey { key = 'u', mods = 'CTRL' },
+                wezterm.action.ScrollByPage(-0.5)
             ),
         },
         -- Increase font size
@@ -208,7 +188,7 @@ return {
             key = 'm',
             mods = 'CTRL',
             action = alt_action(
-                window, pane,
+                nil, nil,
                 wezterm.action { SendString = '\x1b[1;2Q' },
                 wezterm.action.Nop
             ),
@@ -217,7 +197,7 @@ return {
             key = 'Backspace',
             mods = 'CTRL',
             action = alt_action(
-                window, pane,
+                nil, nil,
                 wezterm.action { SendString = '\x1b[1;2R' },
                 wezterm.action.Nop
             ),
@@ -226,17 +206,8 @@ return {
             key = 'Tab',
             mods = 'CTRL',
             action = alt_action(
-                window, pane,
+                nil, nil,
                 wezterm.action { SendString = '\x1b[9;5u' },
-                wezterm.action.Nop
-            ),
-        },
-        {
-            key = 'q',
-            mods = 'CTRL|SHIFT',
-            action = alt_action(
-                window, pane,
-                wezterm.action { SendString = '\x1b[81;5u' },
                 wezterm.action.Nop
             ),
         },
@@ -256,9 +227,9 @@ return {
         background = theme.color_hash('terminal_bg'),
         foreground = theme.color_hash('terminal_text'),
 
-        cursor_bg = theme.color_hash('primary_15'),
+        cursor_bg = theme.color_hash('terminal_text'),
         cursor_fg = theme.color_hash('terminal_bg'),
-        cursor_border = theme.color_hash('primary_12'),
+        cursor_border = theme.color_hash('text_12'),
 
         selection_bg = theme.color_hash('primary_15'),
         selection_fg = theme.color_hash('gray_0'),
