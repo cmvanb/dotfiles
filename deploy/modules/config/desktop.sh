@@ -138,6 +138,10 @@ else
     exit 1
 fi
 
+# Wezterm
+mkdir -p "$config_dir/wezterm"
+force_link "$base_dir/.config/wezterm/wezterm.lua" "$config_dir/wezterm/wezterm.lua"
+
 # Wofi
 mkdir -p "$config_dir/wofi"
 force_link "$base_dir/.config/wofi/config" "$config_dir/wofi/config"
