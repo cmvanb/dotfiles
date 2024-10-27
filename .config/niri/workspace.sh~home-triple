@@ -8,9 +8,9 @@
 
 # Right
 niri msg action spawn -- "spotify" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland";
-sleep 0.35;
+sleep 0.45;
 niri msg action spawn -- "pavucontrol";
-sleep 0.05;
+sleep 0.15;
 niri msg action focus-monitor-right;
 niri msg action consume-or-expel-window-left;
 niri msg action set-window-height "33.3333%";
