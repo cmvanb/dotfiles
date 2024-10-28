@@ -43,6 +43,9 @@ return {
     -- Bigger scrollback buffer
     scrollback_lines = 10000,
 
+    -- Don't prompt when closing window
+    window_close_confirmation = 'NeverPrompt',
+
 -- Appearance
 --------------------------------------------------------------------------------
 
