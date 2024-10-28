@@ -13,7 +13,7 @@ local theme = require('theme')
 -- Helpers
 --------------------------------------------------------------------------------
 
--- Create alternate mappings to `alt-screen` applications such as terminal NVIM.
+-- Create alternate mappings for `alt-screen` applications such as terminal NVIM.
 local function alt_action(_, _, alt_screen_action, terminal_action)
     return wezterm.action_callback(function(window, pane)
         if pane:is_alt_screen_active() then
@@ -60,8 +60,9 @@ return {
         family = theme.font('font_mono'),
         weight = 'Regular',
     }),
-    --font_size = tonumber(theme.font('font_size_medium')),
+    -- NOTE: Wezterm's font size doesn't match other terminals (e.g. Alacritty).
     font_size = 13.0,
+    --font_size = tonumber(theme.font('font_size_medium')),
 
     -- Window
     adjust_window_size_when_changing_font_size = false,
@@ -78,11 +79,12 @@ return {
         fade_in_function = 'Linear',
         fade_in_duration_ms = 0,
         fade_out_function = 'EaseOut',
-        fade_out_duration_ms = 200,
+        fade_out_duration_ms = 150,
     },
 
-    -- Transparency
-    window_background_opacity = 0.90,
+    -- Opacity
+    -- NOTE: Transparency has a noticeable performance impact.
+    window_background_opacity = 1.00,
 
 -- Key bindings
 --------------------------------------------------------------------------------
@@ -238,7 +240,7 @@ return {
         selection_bg = theme.color_hash('primary_15'),
         selection_fg = theme.color_hash('gray_0'),
 
-        visual_bell = theme.color_hash('gray_0'),
+        visual_bell = theme.color_hash('primary_5'),
 
         tab_bar = {
             background = theme.color_hash('gray_0'),
