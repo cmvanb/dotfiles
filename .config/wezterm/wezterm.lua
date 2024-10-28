@@ -57,7 +57,8 @@ return {
         family = theme.font('font_mono'),
         weight = 'Regular',
     }),
-    font_size = tonumber(theme.font('font_size_medium')),
+    --font_size = tonumber(theme.font('font_size_medium')),
+    font_size = 13.0,
 
     -- Window
     adjust_window_size_when_changing_font_size = false,
@@ -234,7 +235,7 @@ return {
         selection_bg = theme.color_hash('primary_15'),
         selection_fg = theme.color_hash('gray_0'),
 
-        visual_bell = theme.color_hash('primary_1'),
+        visual_bell = theme.color_hash('gray_0'),
 
         tab_bar = {
             background = theme.color_hash('gray_0'),
