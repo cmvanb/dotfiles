@@ -63,9 +63,15 @@ export WGETRC="$XDG_CONFIG_HOME/wget/wgetrc"
 # Terminal support
 #-------------------------------------------------------------------------------
 
+# 24bit color support
 if [[ $TERM == "alacritty" ]] \
 || [[ $TERM == "xterm-256color" ]]; then
     export COLORTERM truecolor
+fi
+
+# Virtual terminal theme
+if [[ $TERM == "linux" ]]; then
+    "$XDG_CONFIG_HOME/vt/apply-vt-colors.sh" | systemd-cat -t bash-login
 fi
 
 <% if [[ $SYSTEM_PROFILE == "desktop" ]]; then -%>
@@ -98,11 +104,6 @@ path_prepend "$XDG_DATA_HOME/cargo/bin" PATH
 if command -v pyenv &> /dev/null; then
     eval "$(pyenv init -)"
 fi
-
-# Virtual terminal theme
-#-------------------------------------------------------------------------------
-
-"$XDG_CONFIG_HOME/vt/apply-vt-colors.sh" | systemd-cat -t bash-login
 
 <% fi -%>
 # Clean home directory

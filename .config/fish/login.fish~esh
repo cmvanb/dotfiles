@@ -62,9 +62,15 @@ set -x WGETRC $XDG_CONFIG_HOME/wget/wgetrc
 # Terminal support
 #-------------------------------------------------------------------------------
 
+# 24bit color support
 if test "$TERM" = "alacritty"
 or test "$TERM" = "xterm-256color"
     set -x COLORTERM truecolor
+end
+
+# Virtual terminal theme
+if test "$TERM" = "linux"
+    $XDG_CONFIG_HOME/vt/apply-vt-colors.sh | systemd-cat -t fish-login
 end
 
 <% if [[ $SYSTEM_PROFILE == "desktop" ]]; then -%>
@@ -95,11 +101,6 @@ fish_add_path -pP $XDG_DATA_HOME/cargo/bin
 if command -v pyenv &> /dev/null
     pyenv init - | source
 end
-
-# Virtual terminal theme
-#-------------------------------------------------------------------------------
-
-$XDG_CONFIG_HOME/vt/apply-vt-colors.sh | systemd-cat -t bash-login
 
 <% fi -%>
 # Clean home directory
