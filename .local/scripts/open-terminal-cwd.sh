@@ -27,4 +27,4 @@ target=$(printf "%s\n" "$(zoxide query --list)" | wofi -p "Open terminal at..." 
 # Spawn a new terminal
 #-------------------------------------------------------------------------------
 
-niri msg action spawn -- "sh" "-c" "alacritty --command sh -c 'cd $target && $SHELL'"
+niri msg action spawn -- "sh" "-c" "wezterm start --cwd $target"
