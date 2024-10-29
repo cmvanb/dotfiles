@@ -14,7 +14,7 @@ local theme = require('theme')
 --------------------------------------------------------------------------------
 
 -- Create alternate mappings for `alt-screen` applications such as terminal NVIM.
-local function alt_action(_, _, alt_screen_action, terminal_action)
+local function alt_action(alt_screen_action, terminal_action)
     return wezterm.action_callback(function(window, pane)
         if pane:is_alt_screen_active() then
             window:perform_action(alt_screen_action, pane)
@@ -117,7 +117,6 @@ return {
             key = 'c',
             mods = 'CTRL',
             action = alt_action(
-                nil, nil,
                 wezterm.action.SendKey { key = 'c', mods = 'CTRL' },
                 wezterm.action { CopyTo = 'ClipboardAndPrimarySelection' }
             ),
@@ -145,7 +144,6 @@ return {
             key = 'j',
             mods = 'CTRL',
             action = alt_action(
-                nil, nil,
                 wezterm.action.SendKey { key = 'd', mods = 'CTRL' },
                 wezterm.action.ScrollByPage(0.5)
             ),
@@ -155,7 +153,6 @@ return {
             key = 'k',
             mods = 'CTRL',
             action = alt_action(
-                nil, nil,
                 wezterm.action.SendKey { key = 'u', mods = 'CTRL' },
                 wezterm.action.ScrollByPage(-0.5)
             ),
@@ -194,7 +191,6 @@ return {
             key = 'm',
             mods = 'CTRL',
             action = alt_action(
-                nil, nil,
                 wezterm.action { SendString = '\x1b[1;2Q' },
                 wezterm.action.Nop
             ),
@@ -203,7 +199,6 @@ return {
             key = 'Backspace',
             mods = 'CTRL',
             action = alt_action(
-                nil, nil,
                 wezterm.action { SendString = '\x1b[1;2R' },
                 wezterm.action.Nop
             ),
@@ -212,7 +207,6 @@ return {
             key = 'Tab',
             mods = 'CTRL',
             action = alt_action(
-                nil, nil,
                 wezterm.action { SendString = '\x1b[9;5u' },
                 wezterm.action.Nop
             ),
