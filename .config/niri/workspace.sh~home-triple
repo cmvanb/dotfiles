@@ -19,8 +19,8 @@ niri msg action focus-window-up
 # Left
 niri msg action spawn -- "bitwarden-desktop" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland"
 
-niri msg action spawn -- "sh" "-c" "wezterm start --cwd ~/Wiki/todo -- edit"
-sleep 0.15
+niri msg action spawn -- "sh" "-c" "alacritty --working-directory ~/Wiki/todo --command edit"
+sleep 0.25
 niri msg action move-window-to-workspace "todo"
 niri msg action focus-monitor-left
 niri msg action maximize-column

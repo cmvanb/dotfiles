@@ -203,7 +203,7 @@ binds {
     Super+Shift+Z { spawn "bash" "-c" "$XDG_SCRIPTS_HOME/lock-screen.sh"; }
 
     Super+Q { close-window; }
-    Super+T { spawn "wezterm"; }
+    Super+T { spawn "alacritty"; }
     Super+O { spawn "wofi" "-p" "..." "--show" "drun"; }
     Super+B { spawn "qutebrowser"; }
     Super+Shift+T { spawn "bash" "-c" "$XDG_SCRIPTS_HOME/open-terminal-cwd.sh"; }
