@@ -7,24 +7,27 @@
 #-------------------------------------------------------------------------------
 
 # Right
-niri msg action spawn -- "spotify" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland";
-sleep 0.45;
 niri msg action spawn -- "pavucontrol";
 sleep 0.15;
-niri msg action focus-monitor-right;
+niri msg action spawn -- "spotify" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland";
+sleep 0.65;
+
+id=$(niri msg -j windows | jq '.[] | select(.app_id == "spotify").id');
+niri msg action focus-window --id "$id";
 niri msg action consume-or-expel-window-left;
-niri msg action set-window-height "33.3333%";
-niri msg action focus-window-up
+niri msg action set-window-height "66.6667%";
+niri msg action move-window-up;
 
 # Left
 niri msg action spawn -- "bitwarden-desktop" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland"
 
-niri msg action spawn -- "sh" "-c" "alacritty --working-directory ~/Wiki/todo --command edit"
-sleep 0.25
-niri msg action move-window-to-workspace "todo"
-niri msg action focus-monitor-left
-niri msg action maximize-column
-niri msg action focus-monitor-right
+niri msg action spawn -- "sh" "-c" "alacritty --working-directory ~/Wiki/todo --command edit";
+sleep 0.15;
+
+id=$(niri msg -j windows | jq '.[] | select(.title | test("~\/Wiki\/todo")).id');
+niri msg action focus-window --id "$id";
+niri msg action move-window-to-workspace "todo";
+niri msg action maximize-column;
 
 # Center
 niri msg action spawn -- "qutebrowser" "-r" "home"
