@@ -25,14 +25,16 @@ niri msg action move-window-up
 niri msg action spawn -- "bitwarden-desktop" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland"
 
 niri msg action spawn -- "sh" "-c" "alacritty --working-directory ~/Wiki/todo --command edit"
-sleep 0.15
+sleep 0.65
 
-id=$(niri msg -j windows | jq '.[] | select(.title | test("~\/Wiki\/todo")).id')
+id=$(niri msg -j windows | jq '.[] | select(.app_id == "Alacritty") | select(.title | test("~\/Wiki\/todo")).id')
 niri msg action focus-window --id "$id"
 niri msg action move-window-to-workspace "todo"
 niri msg action maximize-column
 
 # Center
 niri msg action spawn -- "qutebrowser" "-r" "home"
-sleep 1.45
-niri msg action move-window-to-workspace "home"
+sleep 1.75
+
+id=$(niri msg -j windows | jq '.[] | select(.app_id == "org.qutebrowser.qutebrowser").id')
+niri msg action move-window-to-workspace --window-id "$id" "home"
