@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Discord
+StartupWMClass=discord
+GenericName=Internet Messenger
+Exec=/usr/bin/discord --enable-features=UseOzonePlatform --ozone-platform=wayland
+Icon=discord
+Type=Application
+Categories=Network;InstantMessaging;
+Path=/usr/bin
