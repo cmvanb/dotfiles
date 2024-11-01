@@ -3,22 +3,22 @@ unmap J
 unmap K
 unmap L
 
-map H previousTab
-map J goForward
-map K goBack
-map L nextTab
-
-map <c-backspace> previousTab
-
 unmap d
 unmap u
-map <c-d> scrollPageDown
-map <c-u> scrollPageUp
 
 unmap x
-map <c-q> removeTab
 unmap X
-map u restoreTab
 
 unmap <c-e>
 unmap <c-y>
+
+map <c-h> previousTab
+map <c-l> nextTab
+map <c-j> scrollPageDown
+map <c-k> scrollPageUp
+
+map <a-h> goBack
+map <a-l> goForward
+
+map <c-q> removeTab
+map u restoreTab
