@@ -91,7 +91,7 @@ nnoremap('<leader>n',
             vim.cmd('tabdo windo set list')
         end
     end,
-    { silent = true })
+    { silent = true, desc = 'Toggle indentation guides' })
 
 -- Toggle linebreaks
 nnoremap('<leader>w',
@@ -103,14 +103,21 @@ nnoremap('<leader>w',
             vim.cmd('tabdo windo set wrap')
             vim.cmd('tabdo windo set linebreak')
         end
-    end)
+    end,
+    { desc = 'Toggle linebreaks' })
 
 -- Navigation
 --------------------------------------------------------------------------------
 
 -- Half page up/down
-noremap('<C-j>', '<C-d>')
-noremap('<C-k>', '<C-u>')
+noremap(
+    '<C-j>',
+    '<C-d>',
+    { desc = 'Scroll half page down' })
+noremap(
+    '<C-k>',
+    '<C-u>',
+    { desc = 'Scroll half page up' })
 
 -- Start/end of line
 -- nnoremap('H', '0')
@@ -121,17 +128,23 @@ noremap('<C-k>', '<C-u>')
 -- onoremap('L', '$')
 
 -- Leap
-noremap('<leader>j', function() require('leap').leap({}) end)
-noremap('<leader>k', function() require('leap').leap({ backward = true }) end)
+noremap(
+    '<leader>j',
+    function() require('leap').leap({}) end,
+    { desc = 'Leap forward' })
+noremap(
+    '<leader>k',
+    function() require('leap').leap({ backward = true }) end,
+    { desc = 'Leap backward' })
 
 -- Selection
 --------------------------------------------------------------------------------
 
 -- Select all
-noremap('<C-a>', 'gg0vG$')
+noremap('<C-a>', 'gg0vG$', { desc = 'Select all' })
 
 -- Visual block select
-noremap('<A-v>', '<C-v>')
+noremap('<A-v>', '<C-v>', { desc = 'Visual block select' })
 
 -- Editing
 -------------------------------------------------------------------------------
@@ -139,119 +152,157 @@ noremap('<A-v>', '<C-v>')
 -- Copy, paste
 -- NOTE: These are only working because the terminal (Alacritty) is configured for it.
 if not is_linux_virtual_terminal() then
-    noremap('<C-c>', '"+y')
-    noremap('<C-v>', '"+p')
+    noremap('<C-c>', '"+y', { desc = 'Copy' })
+    noremap('<C-v>', '"+p', { desc = 'Paste' })
 end
 
 -- Cut
-noremap('<C-x>', 'x')
+noremap('<C-x>', 'x', { desc = 'Cut' })
 
 -- Undo
-nnoremap('<C-z>', 'u')
+nnoremap('<C-z>', 'u', { desc = 'Undo' })
 
 -- Swap lines
-nnoremap('J', '<esc>:m .+1<cr>==', { silent = true })
-nnoremap('K', '<esc>:m .-2<cr>==', { silent = true })
+nnoremap('J', '<esc>:m .+1<cr>==', { silent = true }, { desc = 'Move line down' })
+nnoremap('K', '<esc>:m .-2<cr>==', { silent = true }, { desc = 'Move line up' })
 
 -- Indentation
-nnoremap('H', '<<')
-nnoremap('L', '>>')
-vnoremap('H', '<gv')
-vnoremap('L', '>gv')
+nnoremap('H', '<<', { desc = 'Indent left' })
+nnoremap('L', '>>', { desc = 'Indent right' })
+vnoremap('H', '<gv', { desc = 'Indent left' })
+vnoremap('L', '>gv', { desc = 'Indent right' })
 
 -- Formatting
-nnoremap(';', '=')
-xnoremap(';', '=')
-nnoremap('<leader>;', 'gg=G')
+nnoremap(';', '=', { desc = 'Format selected' })
+xnoremap(';', '=', { desc = 'Format selected' })
+nnoremap('<leader>;', 'gg=G', { desc = 'Format buffer' })
 
 -- Insert line break
-nnoremap('<Enter>', 'i<CR><esc>`^')
+nnoremap('<Enter>', 'i<CR><esc>`^', { desc = 'Insert line break' })
 
 -- Search
 --------------------------------------------------------------------------------
 
 -- Clear search highlight, clear command line and clear search pattern.
-nnoremap('<leader>l', ':noh<cr>:let @/=""<cr>:echo ""<cr>')
+nnoremap('<leader>l', ':noh<cr>:let @/=""<cr>:echo ""<cr>', { desc = 'Clear search' })
 
 -- Fuzzy finder
 local telescope_builtin = require('telescope.builtin')
-nnoremap('<leader>a', function() telescope_builtin.find_files({ hidden = true, no_ignore = false }) end)
-nnoremap('<leader>f', require('plugins.telescope.project_files'))
-nnoremap('<leader>b', telescope_builtin.buffers)
-nnoremap('<leader>g', telescope_builtin.live_grep)
-nnoremap('<leader>i', telescope_builtin.symbols)
-nnoremap('<leader>h', telescope_builtin.help_tags)
+nnoremap(
+    '<leader>a',
+    function() telescope_builtin.find_files({ hidden = true, no_ignore = false }) end,
+    { desc = 'Search all files' })
+nnoremap(
+    '<leader>f',
+    require('plugins.telescope.project_files'),
+    { desc = 'Search project files' })
+nnoremap(
+    '<leader>b', telescope_builtin.buffers,
+    { desc = 'Search buffers' })
+nnoremap(
+    '<leader>g', telescope_builtin.live_grep,
+    { desc = 'Interactive grep' })
+nnoremap(
+    '<leader>i',
+    telescope_builtin.symbols,
+    { desc = 'Insert symbols' })
+nnoremap(
+    '<leader>h',
+    telescope_builtin.help_tags,
+    { desc = 'Search help' })
 
 -- LSP & diagnostics
 --------------------------------------------------------------------------------
 
-nnoremap('gd', telescope_builtin.lsp_definitions)
-nnoremap('ge', function() telescope_builtin.diagnostics({ bufnr = 0 }) end)
-nnoremap('gi', telescope_builtin.lsp_implementations)
-nnoremap('gt', telescope_builtin.lsp_type_definitions)
-nnoremap('gr', telescope_builtin.lsp_references)
-nnoremap('gp', vim.diagnostic.open_float)
-nnoremap('gj', vim.diagnostic.goto_next)
-nnoremap('gk', vim.diagnostic.goto_prev)
+nnoremap(
+    'gd',
+    telescope_builtin.lsp_definitions,
+    { desc = '(lsp) Go to definition' })
+nnoremap(
+    'ge',
+    function() telescope_builtin.diagnostics({ bufnr = 0 }) end,
+    { desc = '(lsp) Show diagnostics' })
+nnoremap(
+    'gi',
+    telescope_builtin.lsp_implementations,
+    { desc = '(lsp) Go to implementation' })
+nnoremap(
+    'gt',
+    telescope_builtin.lsp_type_definitions,
+    { desc = '(lsp) Go to type definition' })
+nnoremap(
+    'gr',
+    telescope_builtin.lsp_references,
+    { desc = '(lsp) Find references' })
+nnoremap(
+    'gp',
+    vim.diagnostic.open_float,
+    { desc = '(lsp) Show diagnostic' })
+nnoremap(
+    'gj',
+    vim.diagnostic.goto_next,
+    { desc = '(lsp) Next diagnostic' })
+nnoremap(
+    'gk',
+    vim.diagnostic.goto_prev,
+    { desc = '(lsp) Previous diagnostic' })
 
 -- Buffer management
 --------------------------------------------------------------------------------
 
 -- Save all buffers
-nnoremap('<C-s>', ':wa!<cr>')
-xnoremap('<C-s>', '<esc>:wa!<cr>')
-inoremap('<C-s>', '<esc>:wa!<cr>')
+nnoremap('<C-s>', ':wa!<cr>', { desc = 'Save all buffers' })
+xnoremap('<C-s>', '<esc>:wa!<cr>', { desc = 'Save all buffers' })
+inoremap('<C-s>', '<esc>:wa!<cr>', { desc = 'Save all buffers' })
 
 -- Cycle buffers
 -- NOTE: Alacritty translates <C-BS> to <F15> to get around NVIM's limitation.
-nnoremap('<C-S-Tab>', ':bprev<cr>', { silent = true })
-nnoremap('<C-Tab>', ':bnext<cr>', { silent = true })
-nnoremap('<C-h>', ':bprev<cr>', { silent = true })
-nnoremap('<C-l>', ':bnext<cr>', { silent = true })
+nnoremap('<C-h>', ':bprev<cr>', { silent = true, desc = 'Previous buffer' })
+nnoremap('<C-l>', ':bnext<cr>', { silent = true, desc = 'Next buffer' })
 
 -- Close buffer
-nnoremap('<C-q>', ':Bdelete<cr>', { silent = true })
+nnoremap('<C-q>', ':Bdelete<cr>', { silent = true, desc = 'Close buffer' })
 
--- Close NVIM without saving
-noremap('<leader>q', ':qa!<cr>')
+-- Quit NVIM without saving
+noremap('<leader>q', ':qa!<cr>', { desc = 'Quit NVIM without saving' })
 
 -- Window management
 --------------------------------------------------------------------------------
 
 -- Change window focus
-nnoremap('<C-A-h>', '<C-w>h')
-nnoremap('<C-A-j>', '<C-w>j')
-nnoremap('<C-A-k>', '<C-w>k')
-nnoremap('<C-A-l>', '<C-w>l')
+nnoremap('<C-A-h>', '<C-w>h', { desc = 'Focus window left' })
+nnoremap('<C-A-j>', '<C-w>j', { desc = 'Focus window down' })
+nnoremap('<C-A-k>', '<C-w>k', { desc = 'Focus window up' })
+nnoremap('<C-A-l>', '<C-w>l', { desc = 'Focus window right' })
 
 -- Cycle windows
-nnoremap('<C-A-s>', '<C-w>R')
-nnoremap('<C-A-g>', '<C-w>r')
+nnoremap('<C-A-s>', '<C-w>R', { desc = 'Cycle windows left' })
+nnoremap('<C-A-g>', '<C-w>r', { desc = 'Rotate windows right' })
 
 -- Split windows
-nnoremap('<C-A-n>', ':belowright vnew<cr>', { silent = true })
-nnoremap('<C-A-p>', ':belowright new<cr>', { silent = true })
+nnoremap('<C-A-n>', ':belowright vnew<cr>', { silent = true, desc = 'Split window vertically' })
+nnoremap('<C-A-p>', ':belowright new<cr>', { silent = true }, { desc = 'Split window horizontally' })
 
 -- Close window
-nnoremap('<C-A-q>', ':close<cr>', { silent = true })
+nnoremap('<C-A-q>', ':close<cr>', { silent = true }, { desc = 'Close window' })
 
 -- Change window size
-nnoremap('<C-A-PageUp>', ':wincmd ><cr>', { silent = true })
-nnoremap('<C-A-PageDown>', ':wincmd <<cr>', { silent = true })
+nnoremap('<C-A-PageUp>', ':wincmd ><cr>', { silent = true }, { desc = 'Increase window width' })
+nnoremap('<C-A-PageDown>', ':wincmd <<cr>', { silent = true }, { desc = 'Decrease window width' })
 
 -- Git
 --------------------------------------------------------------------------------
 
-nnoremap('gm', ':GitMessenger<cr>')
+nnoremap('gm', ':GitMessenger<cr>', { desc = 'Show git log for line' })
 
 -- Package management
 --------------------------------------------------------------------------------
 
-nnoremap('<leader>p', ':Lazy<cr>')
-nnoremap('<leader>m', ':Mason<cr>')
+nnoremap('<leader>p', ':Lazy<cr>', { desc = 'Plugin manager' })
+nnoremap('<leader>m', ':Mason<cr>', { desc = 'Tooling manager' })
 
 -- Plugin management
 --------------------------------------------------------------------------------
 
 -- Reload config and plugins.
-nnoremap('<leader>r', _G.reload_config, { silent = true })
+nnoremap('<leader>r', _G.reload_config, { silent = true, desc = 'Reload config' })
