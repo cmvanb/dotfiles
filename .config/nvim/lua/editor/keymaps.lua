@@ -249,6 +249,7 @@ nnoremap(
 --------------------------------------------------------------------------------
 
 -- Save all buffers
+nnoremap('<leader>s', ':wa!<cr>', { desc = 'Save all buffers' })
 nnoremap('<C-s>', ':wa!<cr>', { desc = 'Save all buffers' })
 xnoremap('<C-s>', '<esc>:wa!<cr>', { desc = 'Save all buffers' })
 inoremap('<C-s>', '<esc>:wa!<cr>', { desc = 'Save all buffers' })
