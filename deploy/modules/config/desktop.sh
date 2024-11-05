@@ -147,9 +147,10 @@ mkdir -p "$config_dir/wofi"
 force_link "$base_dir/.config/wofi/config" "$config_dir/wofi/config"
 esh "$base_dir/.config/wofi/style.css~esh" > "$config_dir/wofi/style.css"
 
-# River XDG integration
+# XDG integration
 mkdir -p "$config_dir/xdg-desktop-portal"
 force_link "$base_dir/.config/xdg-desktop-portal/river-portals.conf" "$config_dir/xdg-desktop-portal/river-portals.conf"
+force_link "$base_dir/.config/xdg-desktop-portal/niri-portals.conf" "$config_dir/xdg-desktop-portal/niri-portals.conf"
 
 # Yay
 if [[ $SYSTEM_DISTRO == "arch" ]]; then
