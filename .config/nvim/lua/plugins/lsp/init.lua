@@ -25,9 +25,9 @@ local sign =
     end
 
 sign({ name = 'DiagnosticSignError', text = ThemeSymbols.diagnostic_signs.error })
-sign({ name = 'DiagnosticSignWarn',  text = ThemeSymbols.diagnostic_signs.warn })
-sign({ name = 'DiagnosticSignHint',  text = ThemeSymbols.diagnostic_signs.hint })
-sign({ name = 'DiagnosticSignInfo',  text = ThemeSymbols.diagnostic_signs.info })
+sign({ name = 'DiagnosticSignWarn', text = ThemeSymbols.diagnostic_signs.warn })
+sign({ name = 'DiagnosticSignHint', text = ThemeSymbols.diagnostic_signs.hint })
+sign({ name = 'DiagnosticSignInfo', text = ThemeSymbols.diagnostic_signs.info })
 
 vim.diagnostic.config({
     virtual_text = false,
@@ -52,10 +52,22 @@ local function lsp_keymaps(bufnr)
     local opts = { silent = true, buffer = bufnr }
 
     -- LSP actions
-    KeyMapUtils.noremap('gh', vim.lsp.buf.hover, opts)
-    KeyMapUtils.noremap('gs', vim.lsp.buf.signature_help, opts)
-    KeyMapUtils.noremap('gc', vim.lsp.buf.rename, opts)
-    KeyMapUtils.noremap('ga', vim.lsp.buf.code_action, opts)
+    KeyMapUtils.noremap(
+        'gh',
+        vim.lsp.buf.hover,
+        TableUtils.merge(opts, { desc = 'LSP: Show hover' }))
+    KeyMapUtils.noremap(
+        'gs',
+        vim.lsp.buf.signature_help,
+        TableUtils.merge(opts, { desc = 'LSP: Show signature help' }))
+    KeyMapUtils.noremap(
+        'gc',
+        vim.lsp.buf.rename,
+        TableUtils.merge(opts, { desc = 'LSP: Rename' }))
+    KeyMapUtils.noremap(
+        'ga',
+        vim.lsp.buf.code_action,
+        TableUtils.merge(opts, { desc = 'LSP: Code action' }))
 end
 
 local function lsp_attach(_, bufnr)
@@ -74,7 +86,7 @@ end
 local mason_lspconfig = reload('mason-lspconfig')
 
 mason_lspconfig.setup({
-    -- A list of servers to automatically install if they're not already installed.
+    -- A list of tools to automatically install if they're not already installed.
     ensure_installed = {
         'bashls',
         'clangd',
@@ -84,7 +96,6 @@ mason_lspconfig.setup({
         'jsonls',
         'lua_ls',
         'pyright',
-        'terraformls',
         'ts_ls',
         'yamlls',
     },
