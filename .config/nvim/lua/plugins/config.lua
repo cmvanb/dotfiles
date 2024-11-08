@@ -31,6 +31,7 @@ return {
         end
     },
 
+
     -- Session management
     ----------------------------------------------------------------------------
 
@@ -42,6 +43,7 @@ return {
         end
     },
 
+
     -- Buffer management
     ----------------------------------------------------------------------------
 
@@ -50,6 +52,7 @@ return {
 
     -- Redirect command output to new buffer.
     { 'sbulav/nredir.nvim' },
+
 
     -- Git integration
     ----------------------------------------------------------------------------
@@ -61,6 +64,7 @@ return {
             vim.g.git_messenger_no_default_mappings = true
         end,
     },
+
 
     -- LSP
     ----------------------------------------------------------------------------
@@ -96,6 +100,7 @@ return {
             do_load('plugins/lsp')
         end,
     },
+
 
     -- Completion
     ----------------------------------------------------------------------------
@@ -142,6 +147,7 @@ return {
     { 'saadparwaiz1/cmp_luasnip' },
     { 'f3fora/cmp-spell' },
 
+
     -- Syntax highlighting
     ----------------------------------------------------------------------------
 
@@ -163,10 +169,33 @@ return {
     { 'camnw/lf-vim' },
     { 'LnL7/vim-nix' },
     { 'ziglang/zig.vim' },
-    { 'imsnif/kdl.vim'},
+    { 'imsnif/kdl.vim' },
 
     -- Cursor highlight
     { 'RRethy/vim-illuminate' },
+
+    -- Formatting
+    {
+        'stevearc/conform.nvim',
+        config = function()
+            require('conform').setup({
+                formatters_by_ft = {
+                    css = { 'prettierd' },
+                    javascript = { 'prettierd' },
+                    javascriptreact = { 'prettierd' },
+                    -- markdown = { 'prettierd' },
+                    -- python = { 'black' },
+                    -- rust = { 'rustfmt' },
+                    -- yaml = { 'prettierd' },
+                },
+                format_on_save = {
+                    timeout_ms = 500,
+                    lsp_format = 'fallback',
+                },
+            })
+        end,
+    },
+
 
     -- Folding
     ----------------------------------------------------------------------------
@@ -187,6 +216,7 @@ return {
     --     end,
     -- },
 
+
     -- Search
     ----------------------------------------------------------------------------
 
@@ -201,6 +231,7 @@ return {
     {
         'nvim-telescope/telescope-symbols.nvim',
     },
+
 
     -- Viewing
     ----------------------------------------------------------------------------
@@ -230,6 +261,7 @@ return {
         end
     },
 
+
     -- Navigation
     ----------------------------------------------------------------------------
 
@@ -242,6 +274,7 @@ return {
             })
         end
     },
+
 
     -- Editing
     ----------------------------------------------------------------------------
@@ -263,15 +296,6 @@ return {
         end,
     },
 
-    -- Formatting
-    ----------------------------------------------------------------------------
-
-    {
-        'nvimdev/guard.nvim',
-        config = function()
-            do_load('plugins/guard')
-        end
-    },
 
     -- Status column
     ----------------------------------------------------------------------------
@@ -282,6 +306,7 @@ return {
             do_load('plugins/statuscol')
         end
     },
+
 
     -- Sign column
     ----------------------------------------------------------------------------
@@ -306,6 +331,7 @@ return {
             })
         end
     },
+
 
     -- Status line
     ----------------------------------------------------------------------------
