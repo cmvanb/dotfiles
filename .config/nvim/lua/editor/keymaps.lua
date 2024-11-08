@@ -215,35 +215,35 @@ nnoremap(
 nnoremap(
     'gd',
     telescope_builtin.lsp_definitions,
-    { desc = '(lsp) Go to definition' })
+    { desc = 'LSP: Go to definition' })
 nnoremap(
     'ge',
     function() telescope_builtin.diagnostics({ bufnr = 0 }) end,
-    { desc = '(lsp) Show diagnostics' })
+    { desc = 'LSP: Show diagnostics' })
 nnoremap(
     'gi',
     telescope_builtin.lsp_implementations,
-    { desc = '(lsp) Go to implementation' })
+    { desc = 'LSP: Go to implementation' })
 nnoremap(
     'gt',
     telescope_builtin.lsp_type_definitions,
-    { desc = '(lsp) Go to type definition' })
+    { desc = 'LSP: Go to type definition' })
 nnoremap(
     'gr',
     telescope_builtin.lsp_references,
-    { desc = '(lsp) Find references' })
+    { desc = 'LSP: Find references' })
 nnoremap(
     'gp',
     vim.diagnostic.open_float,
-    { desc = '(lsp) Show diagnostic' })
+    { desc = 'LSP: Show diagnostic' })
 nnoremap(
     'gj',
     vim.diagnostic.goto_next,
-    { desc = '(lsp) Next diagnostic' })
+    { desc = 'LSP: Next diagnostic' })
 nnoremap(
     'gk',
     vim.diagnostic.goto_prev,
-    { desc = '(lsp) Previous diagnostic' })
+    { desc = 'LSP: Previous diagnostic' })
 
 -- Buffer management
 --------------------------------------------------------------------------------
@@ -279,15 +279,34 @@ nnoremap('<C-A-s>', '<C-w>R', { desc = 'Cycle windows left' })
 nnoremap('<C-A-g>', '<C-w>r', { desc = 'Rotate windows right' })
 
 -- Split windows
-nnoremap('<C-A-n>', ':belowright vnew<cr>', { silent = true, desc = 'Split window vertically' })
-nnoremap('<C-A-p>', ':belowright new<cr>', { silent = true }, { desc = 'Split window horizontally' })
+nnoremap(
+    '<C-A-n>',
+    ':belowright vnew<cr>',
+    { silent = true, desc = 'Split window vertically' })
+nnoremap(
+    '<C-A-p>',
+    ':belowright new<cr>',
+    { silent = true, desc = 'Split window horizontally' })
 
 -- Close window
-nnoremap('<C-A-q>', ':close<cr>', { silent = true }, { desc = 'Close window' })
+nnoremap('<C-A-q>', ':close<cr>', { silent = true, desc = 'Close window' })
 
 -- Change window size
-nnoremap('<C-A-PageUp>', ':wincmd ><cr>', { silent = true }, { desc = 'Increase window width' })
-nnoremap('<C-A-PageDown>', ':wincmd <<cr>', { silent = true }, { desc = 'Decrease window width' })
+nnoremap(
+    '<C-A-a>',
+    ':wincmd =<cr>',
+    { silent = true, desc = 'Equalize window width' })
+nnoremap(
+    '<C-A-d>',
+    ':100wincmd |<cr>',
+    { silent = true, desc = 'Enlarge window width' })
+nnoremap(
+    '<C-A-f>',
+    ':wincmd |<cr>',
+    { silent = true, desc = 'Maximize window width' })
+
+-- Open new tab with current buffer
+noremap('<C-A-t>', ':tab split<cr>', { silent = true, desc = 'Tab split' })
 
 -- Git
 --------------------------------------------------------------------------------
