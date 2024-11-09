@@ -208,6 +208,7 @@ binds {
     Super+B { spawn "qutebrowser"; }
     Super+Shift+T { spawn "bash" "-c" "$XDG_SCRIPTS_HOME/open-terminal-cwd.sh"; }
     Super+Shift+B { spawn "bash" "-c" "$XDG_SCRIPTS_HOME/open-qutebrowser-session.sh"; }
+    Super+A { spawn "bash" "-c" "$XDG_CONFIG_HOME/niri/focus-window.sh"; }
 
     XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
     XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }

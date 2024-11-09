@@ -61,6 +61,7 @@ force_link "$base_dir/.config/mpv" "$config_dir/mpv"
 # Niri
 mkdir -p "$config_dir/niri"
 force_link "$base_dir/.config/niri/config.kdl" "$config_dir/niri/config.kdl"
+force_link "$base_dir/.config/niri/focus-window.sh" "$config_dir/niri/focus-window.sh"
 mkdir -p "$config_dir/systemd/user/niri.service.wants"
 force_link "/usr/lib/systemd/user/mako.service" "$config_dir/systemd/user/niri.service.wants/mako.service"
 force_link "/usr/lib/systemd/user/waybar.service" "$config_dir/systemd/user/niri.service.wants/waybar.service"
