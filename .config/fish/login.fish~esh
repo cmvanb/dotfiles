@@ -28,7 +28,7 @@ set -x XDG_TEMPLATES_DIR $XDG_DATA_HOME/templates
 set -x XDG_VIDEOS_DIR $HOME/Media/Videos
 
 # SSH agent integration.
-set -x SSH_AUTH_SOCK $XDG_RUNTIME_DIR/ssh-agent.sock
+set -x SSH_AUTH_SOCK $XDG_RUNTIME_DIR/gcr/ssh
 
 # Pyenv installation.
 set -x PYENV_ROOT $XDG_OPT_HOME/pyenv
