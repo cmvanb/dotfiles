@@ -26,7 +26,7 @@ force_link "$base_dir/.local/bin/shutdown" "$bin_dir/shutdown"
 force_link "$base_dir/.local/bin/suspend" "$bin_dir/suspend"
 
 # Link host-specific init script
-if [[ $host == "qutedell" ]] || [[ $host == "supertubes" ]] || [[ $host == "cyxwel" ]]; then
+if [[ $host == "supertubes" ]] || [[ $host == "cyxwel" ]]; then
     force_link "$base_dir/.local/bin/init~niri" "$bin_dir/init"
 
 else

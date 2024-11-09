@@ -115,10 +115,7 @@ force_link "$base_dir/.config/waybar/niri-config" "$config_dir/waybar/config"
 esh "$base_dir/.config/waybar/niri-style.css~esh" > "$config_dir/waybar/style.css"
 
 # Wallpaper
-if [[ $host == "qutedell" ]]; then
-    force_link "$base_dir/.config/wallpaper/wallpaper.sh~qutech-dual" "$config_dir/wallpaper/wallpaper.sh"
-
-elif [[ $host == "supertubes" ]] || [[ $host == "cyxwel" ]]; then
+if [[ $host == "supertubes" ]] || [[ $host == "cyxwel" ]]; then
     force_link "$base_dir/.config/wallpaper/wallpaper.sh~home-triple" "$config_dir/wallpaper/wallpaper.sh"
 
 else
@@ -127,10 +124,7 @@ else
 fi
 
 # Way-displays
-if [[ $host == "qutedell" ]]; then
-    force_link "$base_dir/.config/way-displays/cfg.yaml~qutech-dual" "$config_dir/way-displays/cfg.yaml"
-
-elif [[ $host == "supertubes" ]] || [[ $host == "cyxwel" ]]; then
+if [[ $host == "supertubes" ]] || [[ $host == "cyxwel" ]]; then
     force_link "$base_dir/.config/way-displays/cfg.yaml~home-triple" "$config_dir/way-displays/cfg.yaml"
 
 else
