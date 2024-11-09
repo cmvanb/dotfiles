@@ -22,7 +22,7 @@ blinking = 'Off'
 shape = 'Block'
 
 [font]
-size = <%= $font_size_medium %>
+size = <%= $font_size_msmall %>
 
 [font.normal]
 family = '<%= $font_mono %>'
