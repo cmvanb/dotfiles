@@ -113,6 +113,11 @@ bind '"\C-y":"clear\C-m eza -al | view.sh \C-m"'
 # List all files in tree format (NOTE: output is often long)
 bind '"\e\[1\;2P":"clear\C-m eza -aT --git-ignore | view.sh\C-m"'
 
+copy_line_to_clipboard () {
+    printf %s "$READLINE_LINE" | wl-copy
+}
+bind -x '"\C-b": copy_line_to_clipboard' # binded to ctrl-y
+
 # LF CD integration
 #-------------------------------------------------------------------------------
 
