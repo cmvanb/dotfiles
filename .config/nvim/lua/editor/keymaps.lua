@@ -275,8 +275,8 @@ nnoremap('<C-A-k>', '<C-w>k', { desc = 'Focus window up' })
 nnoremap('<C-A-l>', '<C-w>l', { desc = 'Focus window right' })
 
 -- Cycle windows
-nnoremap('<C-A-s>', '<C-w>R', { desc = 'Cycle windows left' })
-nnoremap('<C-A-g>', '<C-w>r', { desc = 'Rotate windows right' })
+nnoremap('<C-A-s>', '<C-w>R<C-w>l', { desc = 'Cycle windows left' })
+nnoremap('<C-A-g>', '<C-w>r<C-w>h', { desc = 'Rotate windows right' })
 
 -- Split windows
 nnoremap(
