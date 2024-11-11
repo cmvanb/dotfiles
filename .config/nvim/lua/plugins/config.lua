@@ -177,6 +177,16 @@ return {
     -- Formatting
     ----------------------------------------------------------------------------
 
+    {
+        'Wansmer/treesj',
+        dependencies = { 'nvim-treesitter/nvim-treesitter' },
+        config = function()
+            reload('treesj').setup({
+                use_default_keymaps = false,
+            })
+        end,
+    },
+
     -- {
     --     'stevearc/conform.nvim',
     --     config = function()

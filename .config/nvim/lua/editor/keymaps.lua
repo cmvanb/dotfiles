@@ -174,6 +174,7 @@ vnoremap('L', '>gv', { desc = 'Indent right' })
 nnoremap(';', '=', { desc = 'Format selected' })
 xnoremap(';', '=', { desc = 'Format selected' })
 nnoremap('<leader>;', 'gg=G', { desc = 'Format buffer' })
+nnoremap('<leader>m', ':TSJToggle<cr>', { desc = 'Split/join formatting' })
 
 -- Insert line break
 nnoremap('<Enter>', 'i<CR><esc>`^', { desc = 'Insert line break' })
@@ -317,7 +318,7 @@ nnoremap('gm', ':GitMessenger<cr>', { desc = 'Show git log for line' })
 --------------------------------------------------------------------------------
 
 nnoremap('<leader>p', ':Lazy<cr>', { desc = 'Plugin manager' })
-nnoremap('<leader>m', ':Mason<cr>', { desc = 'Tooling manager' })
+nnoremap('<leader>t', ':Mason<cr>', { desc = 'Tooling manager' })
 
 -- Plugin management
 --------------------------------------------------------------------------------
