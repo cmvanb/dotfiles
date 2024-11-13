@@ -145,6 +145,10 @@ workspace "home" {
     open-on-output "DP-3"
 }
 
+workspace "browse" {
+    open-on-output "DP-3"
+}
+
 workspace "project" {
     open-on-output "DP-3"
 }
