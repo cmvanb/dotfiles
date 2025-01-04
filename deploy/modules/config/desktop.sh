@@ -33,15 +33,6 @@ mkdir -p "$config_dir/systemd/user"
 force_link "$base_dir/config/systemd/user/bluetooth-autoconnect.service" "$config_dir/systemd/user/bluetooth-autoconnect.service"
 force_link "$base_dir/config/systemd/user/udiskie.service" "$config_dir/systemd/user/udiskie.service"
 
-# Way-displays
-if [[ $host == "supertubes" ]] || [[ $host == "cyxwel" ]]; then
-    force_link "$base_dir/config/way-displays/cfg.yaml~home-triple" "$config_dir/way-displays/cfg.yaml"
-
-else
-    echo "[$(basename "$0")] ERROR: \`$host\` is not accounted for."
-    exit 1
-fi
-
 # Wezterm
 mkdir -p "$config_dir/wezterm"
 force_link "$base_dir/config/wezterm/wezterm.lua" "$config_dir/wezterm/wezterm.lua"
