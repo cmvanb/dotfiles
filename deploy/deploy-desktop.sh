@@ -47,6 +47,7 @@ source "$base_dir/deploy/modules/way-displays.sh"
 source "$base_dir/deploy/modules/wezterm.sh"
 source "$base_dir/deploy/modules/wofi.sh"
 source "$base_dir/deploy/modules/yay.sh"
+source "$base_dir/deploy/modules/zathura.sh"
 
 # Deploy desktop profile
 #-------------------------------------------------------------------------------
@@ -91,6 +92,7 @@ way-displays::install
 wezterm::install
 wofi::install
 yay::install
+zathura::install
 source "$base_dir/deploy/modules/config/desktop.sh"
 
 # Enable user services
