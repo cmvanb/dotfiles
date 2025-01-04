@@ -28,46 +28,10 @@ force_link "$base_dir/config/mimeapps.list" "$config_dir/mimeapps.list"
 mkdir -p "$config_dir/fontconfig"
 esh "$base_dir/config/fontconfig/fonts.conf~esh" > "$config_dir/fontconfig/fonts.conf"
 
-# River
-mkdir -p "$config_dir/river"
-force_link "$base_dir/config/river/environment.sh" "$config_dir/river/environment.sh"
-force_link "$base_dir/config/river/init" "$config_dir/river/init"
-force_link "$base_dir/config/river/keymaps.sh" "$config_dir/river/keymaps.sh"
-force_link "$base_dir/config/river/send-and-focus-output.sh" "$config_dir/river/send-and-focus-output.sh"
-force_link "$base_dir/config/river/send-to-output.sh" "$config_dir/river/send-to-output.sh"
-force_link "$base_dir/config/river/send-view-to-tag.sh" "$config_dir/river/send-view-to-tag.sh"
-force_link "$base_dir/config/river/theme.sh" "$config_dir/river/theme.sh"
-force_link "$base_dir/config/river/utils.sh" "$config_dir/river/utils.sh"
-
-if [[ $host == "supertubes" || $host == "cyxwel" ]]; then
-    force_link "$base_dir/config/river/workspace.sh~home-triple" "$config_dir/river/workspace.sh"
-
-else
-    echo "[$(basename "$0")] ERROR: \`$host\` is not accounted for."
-    exit 1
-fi
-
 # Systemd integrations
 mkdir -p "$config_dir/systemd/user"
 force_link "$base_dir/config/systemd/user/bluetooth-autoconnect.service" "$config_dir/systemd/user/bluetooth-autoconnect.service"
 force_link "$base_dir/config/systemd/user/udiskie.service" "$config_dir/systemd/user/udiskie.service"
-
-# Virtual terminal
-force_link "$base_dir/config/vt" "$config_dir/vt"
-
-# Waybar
-mkdir -p "$config_dir/waybar"
-force_link "$base_dir/config/waybar/niri-config" "$config_dir/waybar/config"
-esh "$base_dir/config/waybar/niri-style.css~esh" > "$config_dir/waybar/style.css"
-
-# Wallpaper
-if [[ $host == "supertubes" ]] || [[ $host == "cyxwel" ]]; then
-    force_link "$base_dir/config/wallpaper/wallpaper.sh~home-triple" "$config_dir/wallpaper/wallpaper.sh"
-
-else
-    echo "[$(basename "$0")] ERROR: \`$host\` is not accounted for."
-    exit 1
-fi
 
 # Way-displays
 if [[ $host == "supertubes" ]] || [[ $host == "cyxwel" ]]; then

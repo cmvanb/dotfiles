@@ -39,6 +39,10 @@ source "$base_dir/deploy/modules/mpv.sh"
 source "$base_dir/deploy/modules/niri.sh"
 source "$base_dir/deploy/modules/python.sh"
 source "$base_dir/deploy/modules/qutebrowser.sh"
+source "$base_dir/deploy/modules/river.sh"
+source "$base_dir/deploy/modules/vt.sh"
+source "$base_dir/deploy/modules/waybar.sh"
+source "$base_dir/deploy/modules/wallpaper.sh"
 
 # Deploy desktop profile
 #-------------------------------------------------------------------------------
@@ -75,6 +79,10 @@ mpv::install
 niri::install
 python::install
 qutebrowser::install
+river::install
+vt::install
+waybar::install
+wallpaper::install
 source "$base_dir/deploy/modules/config/desktop.sh"
 
 # Enable user services
