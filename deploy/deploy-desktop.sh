@@ -44,6 +44,7 @@ source "$base_dir/deploy/modules/vt.sh"
 source "$base_dir/deploy/modules/waybar.sh"
 source "$base_dir/deploy/modules/wallpaper.sh"
 source "$base_dir/deploy/modules/way-displays.sh"
+source "$base_dir/deploy/modules/wezterm.sh"
 
 # Deploy desktop profile
 #-------------------------------------------------------------------------------
@@ -85,6 +86,7 @@ vt::install
 waybar::install
 wallpaper::install
 way-displays::install
+wezterm::install
 source "$base_dir/deploy/modules/config/desktop.sh"
 
 # Enable user services
