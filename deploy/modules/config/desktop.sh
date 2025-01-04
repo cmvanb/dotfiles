@@ -24,12 +24,6 @@ assert_dependency esh
 mkdir -p "$config_dir"
 force_link "$base_dir/config/mimeapps.list" "$config_dir/mimeapps.list"
 
-# Btop
-mkdir -p "$config_dir/btop"
-force_link "$base_dir/config/btop/btop.conf" "$config_dir/btop/btop.conf"
-mkdir -p "$config_dir/btop/themes"
-esh "$base_dir/config/btop/themes/carbon.theme~esh" > "$config_dir/btop/themes/carbon.theme"
-
 # Direnv
 force_link "$base_dir/config/direnv" "$config_dir/direnv"
 

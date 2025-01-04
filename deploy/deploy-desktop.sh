@@ -30,6 +30,7 @@ export ESH_SHELL=/usr/bin/bash
 # Deployment modules
 source "$base_dir/deploy/modules/alacritty.sh"
 source "$base_dir/deploy/modules/bitwarden.sh"
+source "$base_dir/deploy/modules/btop.sh"
 
 # Deploy desktop profile
 #-------------------------------------------------------------------------------
@@ -57,6 +58,7 @@ source "$base_dir/deploy/modules/config/base.sh"
 
 alacritty::install
 bitwarden::install
+btop::install
 source "$base_dir/deploy/modules/config/desktop.sh"
 
 # Enable user services
