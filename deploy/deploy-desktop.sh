@@ -36,6 +36,7 @@ source "$base_dir/deploy/modules/hyprland.sh"
 source "$base_dir/deploy/modules/imv.sh"
 source "$base_dir/deploy/modules/mako.sh"
 source "$base_dir/deploy/modules/mpv.sh"
+source "$base_dir/deploy/modules/niri.sh"
 
 # Deploy desktop profile
 #-------------------------------------------------------------------------------
@@ -69,6 +70,7 @@ hyprland::install
 imv::install
 mako::install
 mpv::install
+niri::install
 source "$base_dir/deploy/modules/config/desktop.sh"
 
 # Enable user services
