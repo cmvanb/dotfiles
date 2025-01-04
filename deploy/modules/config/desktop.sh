@@ -28,22 +28,6 @@ force_link "$base_dir/config/mimeapps.list" "$config_dir/mimeapps.list"
 mkdir -p "$config_dir/fontconfig"
 esh "$base_dir/config/fontconfig/fonts.conf~esh" > "$config_dir/fontconfig/fonts.conf"
 
-# Niri
-mkdir -p "$config_dir/niri"
-force_link "$base_dir/config/niri/config.kdl" "$config_dir/niri/config.kdl"
-force_link "$base_dir/config/niri/focus-window.sh" "$config_dir/niri/focus-window.sh"
-mkdir -p "$config_dir/systemd/user/niri.service.wants"
-force_link "/usr/lib/systemd/user/mako.service" "$config_dir/systemd/user/niri.service.wants/mako.service"
-force_link "/usr/lib/systemd/user/waybar.service" "$config_dir/systemd/user/niri.service.wants/waybar.service"
-
-if [[ $host == "supertubes" || $host == "cyxwel" ]]; then
-    force_link "$base_dir/config/niri/workspace.sh~home-triple" "$config_dir/niri/workspace.sh"
-
-else
-    echo "[$(basename "$0")] ERROR: \`$host\` is not accounted for."
-    exit 1
-fi
-
 # Python
 force_link "$base_dir/config/python" "$config_dir/python"
 force_link "$base_dir/config/pip" "$config_dir/pip"
