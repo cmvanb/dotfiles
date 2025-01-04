@@ -11,8 +11,8 @@ script_dir=$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)
 base_dir=$(realpath "$script_dir/..")
 
 # Utility functions
-source "$base_dir/.local/opt/shell-utils/fs.sh"
-source "$base_dir/.local/opt/shell-utils/linux.sh"
+source "$base_dir/local/opt/shell-utils/fs.sh"
+source "$base_dir/local/opt/shell-utils/linux.sh"
 
 # Environment variables needed by deployment modules
 export SYSTEM_PROFILE="desktop"

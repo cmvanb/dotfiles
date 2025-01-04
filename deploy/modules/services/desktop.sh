@@ -8,7 +8,7 @@ echo "Deploying desktop user services..."
 # Setup
 #-------------------------------------------------------------------------------
 
-source "$base_dir/.local/opt/shell-utils/linux.sh"
+source "$base_dir/local/opt/shell-utils/linux.sh"
 
 # Enable user services
 #-------------------------------------------------------------------------------

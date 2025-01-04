@@ -8,7 +8,7 @@ echo "Deploying desktop user packages..."
 # Setup
 #-------------------------------------------------------------------------------
 
-source "$base_dir/.local/opt/shell-utils/debug.sh"
+source "$base_dir/local/opt/shell-utils/debug.sh"
 
 assert_dependency curl
 

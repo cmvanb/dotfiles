@@ -11,13 +11,13 @@ opt_dir=${XDG_OPT_HOME:-$HOME/.local/opt}
 # Setup
 #-------------------------------------------------------------------------------
 
-source "$base_dir/.local/opt/shell-utils/fs.sh"
+source "$base_dir/local/opt/shell-utils/fs.sh"
 
 # Link theme cursor and font settings
 #-------------------------------------------------------------------------------
 
 echo "└> Link theme cursor settings."
-force_link "$base_dir/.config/theme/cursor" "$config_dir/theme/cursor"
+force_link "$base_dir/config/theme/cursor" "$config_dir/theme/cursor"
 
 host=$(uname -n)
 echo "└> Link theme font settings for \`$host\`."
@@ -25,11 +25,11 @@ case $host in
     cyxwel)
         ;&
     supertubes)
-        force_link "$base_dir/.config/theme/fonts~home" "$config_dir/theme/fonts"
+        force_link "$base_dir/config/theme/fonts~home" "$config_dir/theme/fonts"
         ;;
 
     nlleq0413002159)
-        force_link "$base_dir/.config/theme/fonts~windows" "$config_dir/theme/fonts"
+        force_link "$base_dir/config/theme/fonts~windows" "$config_dir/theme/fonts"
         ;;
 
     *)
