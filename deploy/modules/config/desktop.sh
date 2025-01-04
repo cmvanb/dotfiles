@@ -28,11 +28,6 @@ force_link "$base_dir/config/mimeapps.list" "$config_dir/mimeapps.list"
 mkdir -p "$config_dir/fontconfig"
 esh "$base_dir/config/fontconfig/fonts.conf~esh" > "$config_dir/fontconfig/fonts.conf"
 
-# Qutebrowser
-mkdir -p "$config_dir/qutebrowser"
-force_link "$base_dir/config/qutebrowser/config.py" "$config_dir/qutebrowser/config.py"
-force_link "$base_dir/config/qutebrowser/stylesheet.css" "$config_dir/qutebrowser/stylesheet.css"
-
 # River
 mkdir -p "$config_dir/river"
 force_link "$base_dir/config/river/environment.sh" "$config_dir/river/environment.sh"
