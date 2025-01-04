@@ -32,6 +32,7 @@ source "$base_dir/deploy/modules/alacritty.sh"
 source "$base_dir/deploy/modules/bitwarden.sh"
 source "$base_dir/deploy/modules/btop.sh"
 source "$base_dir/deploy/modules/direnv.sh"
+source "$base_dir/deploy/modules/hyprland.sh"
 
 # Deploy desktop profile
 #-------------------------------------------------------------------------------
@@ -61,6 +62,7 @@ alacritty::install
 bitwarden::install
 btop::install
 direnv::install
+hyprland::install
 source "$base_dir/deploy/modules/config/desktop.sh"
 
 # Enable user services

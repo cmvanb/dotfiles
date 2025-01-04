@@ -28,9 +28,6 @@ force_link "$base_dir/config/mimeapps.list" "$config_dir/mimeapps.list"
 mkdir -p "$config_dir/fontconfig"
 esh "$base_dir/config/fontconfig/fonts.conf~esh" > "$config_dir/fontconfig/fonts.conf"
 
-# Hyprland
-force_link "$base_dir/config/hypr" "$config_dir/hypr"
-
 # Imv
 force_link "$base_dir/config/imv" "$config_dir/imv"
 
