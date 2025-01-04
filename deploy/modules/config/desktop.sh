@@ -38,12 +38,6 @@ mkdir -p "$config_dir/xdg-desktop-portal"
 force_link "$base_dir/config/xdg-desktop-portal/river-portals.conf" "$config_dir/xdg-desktop-portal/river-portals.conf"
 force_link "$base_dir/config/xdg-desktop-portal/niri-portals.conf" "$config_dir/xdg-desktop-portal/niri-portals.conf"
 
-# Yay
-if [[ $SYSTEM_DISTRO == "arch" ]]; then
-    mkdir -p "$config_dir/yay"
-    force_link "$base_dir/config/yay/config.json" "$config_dir/yay/config.json"
-fi
-
 # Zathura
 mkdir -p "$config_dir/zathura"
 esh "$base_dir/config/zathura/zathurarc~esh" > "$config_dir/zathura/zathurarc"

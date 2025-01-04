@@ -46,6 +46,7 @@ source "$base_dir/deploy/modules/wallpaper.sh"
 source "$base_dir/deploy/modules/way-displays.sh"
 source "$base_dir/deploy/modules/wezterm.sh"
 source "$base_dir/deploy/modules/wofi.sh"
+source "$base_dir/deploy/modules/yay.sh"
 
 # Deploy desktop profile
 #-------------------------------------------------------------------------------
@@ -89,6 +90,7 @@ wallpaper::install
 way-displays::install
 wezterm::install
 wofi::install
+yay::install
 source "$base_dir/deploy/modules/config/desktop.sh"
 
 # Enable user services
