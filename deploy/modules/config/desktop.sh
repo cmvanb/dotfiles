@@ -28,13 +28,6 @@ force_link "$base_dir/config/mimeapps.list" "$config_dir/mimeapps.list"
 mkdir -p "$config_dir/fontconfig"
 esh "$base_dir/config/fontconfig/fonts.conf~esh" > "$config_dir/fontconfig/fonts.conf"
 
-# Imv
-force_link "$base_dir/config/imv" "$config_dir/imv"
-
-# Mako
-mkdir -p "$config_dir/mako"
-esh "$base_dir/config/mako/config~esh" > "$config_dir/mako/config"
-
 # Mpv
 force_link "$base_dir/config/mpv" "$config_dir/mpv"
 
