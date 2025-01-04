@@ -33,6 +33,8 @@ source "$base_dir/deploy/modules/bitwarden.sh"
 source "$base_dir/deploy/modules/btop.sh"
 source "$base_dir/deploy/modules/direnv.sh"
 source "$base_dir/deploy/modules/hyprland.sh"
+source "$base_dir/deploy/modules/imv.sh"
+source "$base_dir/deploy/modules/mako.sh"
 
 # Deploy desktop profile
 #-------------------------------------------------------------------------------
@@ -63,6 +65,8 @@ bitwarden::install
 btop::install
 direnv::install
 hyprland::install
+imv::install
+mako::install
 source "$base_dir/deploy/modules/config/desktop.sh"
 
 # Enable user services
