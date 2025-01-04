@@ -38,6 +38,7 @@ source "$base_dir/deploy/modules/mako.sh"
 source "$base_dir/deploy/modules/mpv.sh"
 source "$base_dir/deploy/modules/niri.sh"
 source "$base_dir/deploy/modules/python.sh"
+source "$base_dir/deploy/modules/qutebrowser.sh"
 
 # Deploy desktop profile
 #-------------------------------------------------------------------------------
@@ -73,6 +74,7 @@ mako::install
 mpv::install
 niri::install
 python::install
+qutebrowser::install
 source "$base_dir/deploy/modules/config/desktop.sh"
 
 # Enable user services
