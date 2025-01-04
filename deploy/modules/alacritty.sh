@@ -12,7 +12,6 @@ alacritty::install () {
     echo "└> Installing alacritty configuration."
 
     mkdir -p "$config_dir/alacritty"
-
     # TODO: Extract templating to a shared function.
     esh "$base_dir/config/alacritty/alacritty.toml~esh" > "$config_dir/alacritty/alacritty.toml"
 }

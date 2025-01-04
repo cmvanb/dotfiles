@@ -12,7 +12,6 @@ bitwarden::install () {
     echo "└> Installing bitwarden configuration."
 
     mkdir -p "$config_dir/Bitwarden"
-
     # NOTE: Don't symlink Bitwarden config because it will be overwritten by the app.
     cp -n "$base_dir/config/Bitwarden/data.json" "$config_dir/Bitwarden/data.json" && true
 }

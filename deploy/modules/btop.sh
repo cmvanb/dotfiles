@@ -23,4 +23,6 @@ btop::install () {
 
 btop::uninstall () {
     echo "└> Uninstalling btop configuration."
+
+    rm -r "$config_dir/btop"
 }
