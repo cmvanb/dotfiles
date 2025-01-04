@@ -24,9 +24,6 @@ assert_dependency esh
 mkdir -p "$config_dir"
 force_link "$base_dir/config/mimeapps.list" "$config_dir/mimeapps.list"
 
-# Direnv
-force_link "$base_dir/config/direnv" "$config_dir/direnv"
-
 # Fontconfig
 mkdir -p "$config_dir/fontconfig"
 esh "$base_dir/config/fontconfig/fonts.conf~esh" > "$config_dir/fontconfig/fonts.conf"
