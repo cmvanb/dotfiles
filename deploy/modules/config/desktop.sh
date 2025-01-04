@@ -33,11 +33,6 @@ mkdir -p "$config_dir/systemd/user"
 force_link "$base_dir/config/systemd/user/bluetooth-autoconnect.service" "$config_dir/systemd/user/bluetooth-autoconnect.service"
 force_link "$base_dir/config/systemd/user/udiskie.service" "$config_dir/systemd/user/udiskie.service"
 
-# Wofi
-mkdir -p "$config_dir/wofi"
-force_link "$base_dir/config/wofi/config" "$config_dir/wofi/config"
-esh "$base_dir/config/wofi/style.css~esh" > "$config_dir/wofi/style.css"
-
 # XDG integration
 mkdir -p "$config_dir/xdg-desktop-portal"
 force_link "$base_dir/config/xdg-desktop-portal/river-portals.conf" "$config_dir/xdg-desktop-portal/river-portals.conf"
