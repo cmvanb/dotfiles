@@ -37,6 +37,7 @@ source "$base_dir/deploy/modules/imv.sh"
 source "$base_dir/deploy/modules/mako.sh"
 source "$base_dir/deploy/modules/mpv.sh"
 source "$base_dir/deploy/modules/niri.sh"
+source "$base_dir/deploy/modules/python.sh"
 
 # Deploy desktop profile
 #-------------------------------------------------------------------------------
@@ -71,6 +72,7 @@ imv::install
 mako::install
 mpv::install
 niri::install
+python::install
 source "$base_dir/deploy/modules/config/desktop.sh"
 
 # Enable user services
