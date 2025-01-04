@@ -11,8 +11,8 @@ echo "Deploying base theme configuration..."
 config_dir=${XDG_CONFIG_HOME:-$HOME/.config}
 opt_dir=${XDG_OPT_HOME:-$HOME/.local/opt}
 
-source "$base_dir/.local/opt/shell-utils/debug.sh"
-source "$base_dir/.local/opt/shell-utils/fs.sh"
+source "$base_dir/local/opt/shell-utils/debug.sh"
+source "$base_dir/local/opt/shell-utils/fs.sh"
 
 assert_dependency bat
 
@@ -21,8 +21,8 @@ assert_dependency bat
 
 echo "└> Installing theme colors."
 mkdir -p "$config_dir/theme"
-force_link "$base_dir/.config/theme/carbon-dark" "$config_dir/theme/carbon-dark"
-force_link "$base_dir/.config/theme/carbon-light" "$config_dir/theme/carbon-light"
+force_link "$base_dir/config/theme/carbon-dark" "$config_dir/theme/carbon-dark"
+force_link "$base_dir/config/theme/carbon-light" "$config_dir/theme/carbon-light"
 
 # Link selected theme colors
 #-------------------------------------------------------------------------------
@@ -35,12 +35,12 @@ force_link "$config_dir/theme/carbon-dark" "$config_dir/theme/colors"
 
 echo "└> Generating bat theme."
 mkdir -p "$config_dir/bat/themes"
-esh "$base_dir/.config/theme/carbon-dark.tmTheme~esh" > "$config_dir/bat/themes/carbon-dark.tmTheme"
+esh "$base_dir/config/theme/carbon-dark.tmTheme~esh" > "$config_dir/bat/themes/carbon-dark.tmTheme"
 
 echo "└> Generating ls/eza theme."
 mkdir -p "$config_dir/theme"
-esh "$base_dir/.config/theme/dircolors~esh" > "$config_dir/theme/dircolors"
-esh "$base_dir/.config/theme/eza-colors~esh" > "$config_dir/theme/eza-colors"
+esh "$base_dir/config/theme/dircolors~esh" > "$config_dir/theme/dircolors"
+esh "$base_dir/config/theme/eza-colors~esh" > "$config_dir/theme/eza-colors"
 
 # Re-build caches
 #-------------------------------------------------------------------------------
