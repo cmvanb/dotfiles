@@ -28,9 +28,6 @@ force_link "$base_dir/config/mimeapps.list" "$config_dir/mimeapps.list"
 mkdir -p "$config_dir/fontconfig"
 esh "$base_dir/config/fontconfig/fonts.conf~esh" > "$config_dir/fontconfig/fonts.conf"
 
-# Mpv
-force_link "$base_dir/config/mpv" "$config_dir/mpv"
-
 # Niri
 mkdir -p "$config_dir/niri"
 force_link "$base_dir/config/niri/config.kdl" "$config_dir/niri/config.kdl"
