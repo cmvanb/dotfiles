@@ -24,10 +24,6 @@ assert_dependency esh
 mkdir -p "$config_dir"
 force_link "$base_dir/config/mimeapps.list" "$config_dir/mimeapps.list"
 
-# Alacritty
-mkdir -p "$config_dir/alacritty"
-esh "$base_dir/config/alacritty/alacritty.toml~esh" > "$config_dir/alacritty/alacritty.toml"
-
 # Bitwarden
 # NOTE: Don't symlink Bitwarden config because it will be overwritten by the app.
 cp -nr "$base_dir/config/Bitwarden" "$config_dir/Bitwarden" && true

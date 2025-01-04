@@ -27,7 +27,10 @@ export XDG_SCRIPTS_HOME="$HOME/.local/scripts"
 # Determine which shell esh executes
 export ESH_SHELL=/usr/bin/bash
 
-# Deploy server profile
+# Deployment modules
+source "$base_dir/deploy/modules/alacritty.sh"
+
+# Deploy desktop profile
 #-------------------------------------------------------------------------------
 
 echo "Deploying desktop profile from \`$base_dir\` to \`$HOME\`..."
@@ -50,6 +53,8 @@ source "$base_dir/deploy/modules/scripts/desktop.sh"
 
 # Configuration files
 source "$base_dir/deploy/modules/config/base.sh"
+
+alacritty::install
 source "$base_dir/deploy/modules/config/desktop.sh"
 
 # Enable user services
