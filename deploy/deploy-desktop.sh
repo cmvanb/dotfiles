@@ -152,6 +152,7 @@ zathura::install
 source "$base_dir/deploy/modules/config/desktop.sh"
 
 # Enable user services
+echo "Deploying desktop user services..."
 bluetooth-autoconnect::enable
 udiskie::enable
 source "$base_dir/deploy/modules/services/desktop.sh"
