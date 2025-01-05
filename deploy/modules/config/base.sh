@@ -13,15 +13,6 @@ config_dir=${XDG_CONFIG_HOME:-$HOME/.config}
 # Link configuration
 #-------------------------------------------------------------------------------
 
-# Fish
-mkdir -p "$config_dir/fish"
-force_link "$base_dir/config/fish/config.fish" "$config_dir/fish/config.fish"
-esh "$base_dir/config/fish/env.fish~esh" > "$config_dir/fish/env.fish"
-esh "$base_dir/config/fish/interactive.fish~esh" > "$config_dir/fish/interactive.fish"
-esh "$base_dir/config/fish/login.fish~esh" > "$config_dir/fish/login.fish"
-force_link "$base_dir/config/fish/logout.fish" "$config_dir/fish/logout.fish"
-force_link "$base_dir/config/fish/functions" "$config_dir/fish/functions"
-
 # Git
 force_link "$base_dir/config/git" "$config_dir/git"
 

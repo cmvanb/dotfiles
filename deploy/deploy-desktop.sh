@@ -31,6 +31,7 @@ export ESH_SHELL=/usr/bin/bash
 source "$base_dir/deploy/modules/bash.sh"
 source "$base_dir/deploy/modules/bat.sh"
 source "$base_dir/deploy/modules/broot.sh"
+source "$base_dir/deploy/modules/fish.sh"
 source "$base_dir/deploy/modules/less.sh"
 source "$base_dir/deploy/modules/lf.sh"
 
@@ -91,6 +92,7 @@ echo "Deploying server modules..."
 bash::install
 bat::install
 broot::install
+fish::install
 less::install
 lf::install
 source "$base_dir/deploy/modules/config/base.sh"
