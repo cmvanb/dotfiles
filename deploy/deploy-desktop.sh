@@ -60,10 +60,13 @@ source "$base_dir/deploy/modules/mako.sh"
 source "$base_dir/deploy/modules/mpv.sh"
 source "$base_dir/deploy/modules/niri.sh"
 source "$base_dir/deploy/modules/pandoc.sh"
+source "$base_dir/deploy/modules/pipewire.sh"
 source "$base_dir/deploy/modules/pyenv.sh"
 source "$base_dir/deploy/modules/python.sh"
 source "$base_dir/deploy/modules/qutebrowser.sh"
 source "$base_dir/deploy/modules/river.sh"
+source "$base_dir/deploy/modules/ssh.sh"
+source "$base_dir/deploy/modules/syncthing.sh"
 source "$base_dir/deploy/modules/spotify.sh"
 source "$base_dir/deploy/modules/udiskie.sh"
 source "$base_dir/deploy/modules/vscodium.sh"
@@ -154,7 +157,9 @@ source "$base_dir/deploy/modules/config/desktop.sh"
 # Enable user services
 echo "Deploying desktop user services..."
 bluetooth-autoconnect::enable
+pipewire::enable
+ssh::enable
+syncthing::enable
 udiskie::enable
-source "$base_dir/deploy/modules/services/desktop.sh"
 
 echo "...deployment complete."
