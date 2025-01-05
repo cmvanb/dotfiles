@@ -45,6 +45,7 @@ source "$base_dir/deploy/modules/wget.sh"
 # Desktop deployment modules
 source "$base_dir/deploy/modules/alacritty.sh"
 source "$base_dir/deploy/modules/bitwarden.sh"
+source "$base_dir/deploy/modules/bluetooth-autoconnect.sh"
 source "$base_dir/deploy/modules/btop.sh"
 source "$base_dir/deploy/modules/chromium.sh"
 source "$base_dir/deploy/modules/direnv.sh"
@@ -64,6 +65,7 @@ source "$base_dir/deploy/modules/python.sh"
 source "$base_dir/deploy/modules/qutebrowser.sh"
 source "$base_dir/deploy/modules/river.sh"
 source "$base_dir/deploy/modules/spotify.sh"
+source "$base_dir/deploy/modules/udiskie.sh"
 source "$base_dir/deploy/modules/vscodium.sh"
 source "$base_dir/deploy/modules/vt.sh"
 source "$base_dir/deploy/modules/waybar.sh"
@@ -116,6 +118,7 @@ wget::install
 echo "Deploying desktop environment modules..."
 alacritty::install
 bitwarden::install
+bluetooth-autoconnect::install
 btop::install
 chromium::install
 direnv::install
@@ -135,6 +138,7 @@ python::install
 qutebrowser::install
 river::install
 spotify::install
+udiskie::install
 vscodium::install
 vt::install
 waybar::install
