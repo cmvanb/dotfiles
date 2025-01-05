@@ -13,15 +13,6 @@ config_dir=${XDG_CONFIG_HOME:-$HOME/.config}
 # Link configuration
 #-------------------------------------------------------------------------------
 
-# Broot
-mkdir -p "$config_dir/broot"
-force_link "$base_dir/config/broot/brcd.sh" "$config_dir/broot/brcd.sh"
-force_link "$base_dir/config/broot/brcd.fish" "$config_dir/broot/brcd.fish"
-force_link "$base_dir/config/broot/conf.hjson" "$config_dir/broot/conf.hjson"
-force_link "$base_dir/config/broot/verbs.hjson" "$config_dir/broot/verbs.hjson"
-mkdir -p "$config_dir/broot/skins"
-esh "$base_dir/config/broot/skins/carbon-dark.hjson~esh" > "$config_dir/broot/skins/carbon-dark.hjson"
-
 # Fish
 mkdir -p "$config_dir/fish"
 force_link "$base_dir/config/fish/config.fish" "$config_dir/fish/config.fish"
