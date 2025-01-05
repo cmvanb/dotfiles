@@ -13,9 +13,6 @@ config_dir=${XDG_CONFIG_HOME:-$HOME/.config}
 # Link configuration
 #-------------------------------------------------------------------------------
 
-# Neovim
-force_link "$base_dir/config/nvim" "$config_dir/nvim"
-
 # NPM
 force_link "$base_dir/config/npm" "$config_dir/npm"
 
