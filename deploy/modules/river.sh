@@ -14,6 +14,14 @@ source "$base_dir/local/opt/shell-utils/fs.sh"
 river::install () {
     echo "└> Installing river configuration."
 
+    if [[ $host == "supertubes" || $host == "cyxwel" ]]; then
+        force_link "$base_dir/config/river/workspace.sh~home-triple" "$config_dir/river/workspace.sh"
+
+    else
+        echo "[$(basename "$0")] ERROR: \`$host\` is not accounted for."
+        exit 1
+    fi
+
     mkdir -p "$config_dir/river"
     force_link "$base_dir/config/river/environment.sh" "$config_dir/river/environment.sh"
     force_link "$base_dir/config/river/init" "$config_dir/river/init"
@@ -24,13 +32,8 @@ river::install () {
     force_link "$base_dir/config/river/theme.sh" "$config_dir/river/theme.sh"
     force_link "$base_dir/config/river/utils.sh" "$config_dir/river/utils.sh"
 
-    if [[ $host == "supertubes" || $host == "cyxwel" ]]; then
-        force_link "$base_dir/config/river/workspace.sh~home-triple" "$config_dir/river/workspace.sh"
-
-    else
-        echo "[$(basename "$0")] ERROR: \`$host\` is not accounted for."
-        exit 1
-    fi
+    mkdir -p "$config_dir/xdg-desktop-portal"
+    force_link "$base_dir/config/river/river-portals.conf" "$config_dir/xdg-desktop-portal/river-portals.conf"
 }
 
 river::uninstall () {

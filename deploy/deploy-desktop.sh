@@ -54,7 +54,7 @@ source "$base_dir/deploy/modules/zathura.sh"
 
 echo "Deploying desktop profile from \`$base_dir\` to \`$HOME\`..."
 
-# Shell libraries
+# Shell modules
 source "$base_dir/deploy/modules/opt/base.sh"
 source "$base_dir/deploy/modules/opt/desktop.sh"
 
