@@ -22,3 +22,15 @@ udiskie::uninstall () {
 
     rm "$config_dir/systemd/user/udiskie.service"
 }
+
+udiskie::enable () {
+    echo "└> Enabling udiskie user service."
+
+    systemctl --user enable udiskie
+}
+
+udiskie::disable () {
+    echo "└> Disabling udiskie user service."
+
+    systemctl --user disable udiskie
+}
