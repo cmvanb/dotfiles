@@ -13,13 +13,11 @@ source "$base_dir/local/opt/shell-utils/fs.sh"
 python::install () {
     echo "└> Installing python configuration."
 
-    force_link "$base_dir/config/python" "$config_dir/python"
     force_link "$base_dir/config/pip" "$config_dir/pip"
 }
 
 python::uninstall () {
     echo "└> Uninstalling python configuration."
 
-    rm "$config_dir/python"
     rm "$config_dir/pip"
 }
