@@ -66,6 +66,9 @@ source "$base_dir/deploy/modules/pipewire.sh"
 source "$base_dir/deploy/modules/pyenv.sh"
 source "$base_dir/deploy/modules/qutebrowser.sh"
 source "$base_dir/deploy/modules/river.sh"
+source "$base_dir/deploy/modules/scripts-desktop.sh"
+source "$base_dir/deploy/modules/scripts-markdown.sh"
+source "$base_dir/deploy/modules/scripts-misc.sh"
 source "$base_dir/deploy/modules/ssh.sh"
 source "$base_dir/deploy/modules/syncthing.sh"
 source "$base_dir/deploy/modules/spotify.sh"
@@ -120,7 +123,7 @@ shell-stty::install
 wget::install
 
 # Desktop environment modules
-echo "Deploying desktop environment modules..."
+echo "Deploying desktop modules..."
 alacritty::install
 bitwarden::install
 bluetooth-autoconnect::install
@@ -141,6 +144,9 @@ pandoc::install
 pyenv::install
 qutebrowser::install
 river::install
+scripts-desktop::install
+scripts-markdown::install
+scripts-misc::install
 spotify::install
 udiskie::install
 vscodium::install
@@ -153,7 +159,6 @@ wofi::install
 xdg-mimetype-associations::install
 yay::install
 zathura::install
-source "$base_dir/deploy/modules/config/desktop.sh"
 
 # Enable user services
 echo "Deploying desktop user services..."
