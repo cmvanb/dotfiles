@@ -14,8 +14,6 @@ config_dir=${XDG_CONFIG_HOME:-$HOME/.config}
 #-------------------------------------------------------------------------------
 
 # Less
-mkdir -p "$config_dir"
-force_link "$base_dir/config/lesskey" "$config_dir/lesskey"
 
 # Bash
 mkdir -p "$config_dir/bash"
