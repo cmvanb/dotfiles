@@ -8,20 +8,12 @@ echo "Deploying desktop configuration files..."
 # Setup
 #-------------------------------------------------------------------------------
 
-config_dir=${XDG_CONFIG_HOME:-$HOME/.config}
 data_dir=${XDG_DATA_HOME:-$HOME/.local/share}
 templates_dir=${XDG_TEMPLATES_DIR:-$data_dir/templates}
 
 source "$base_dir/local/opt/shell-utils/debug.sh"
 
 assert_dependency esh
-
-# Link configuration
-#-------------------------------------------------------------------------------
-
-# XDG MIME configuration
-mkdir -p "$config_dir"
-force_link "$base_dir/config/mimeapps.list" "$config_dir/mimeapps.list"
 
 # Link shared data
 #-------------------------------------------------------------------------------
