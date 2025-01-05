@@ -148,6 +148,7 @@ zathura::install
 source "$base_dir/deploy/modules/config/desktop.sh"
 
 # Enable user services
+bluetooth-autoconnect::enable
 source "$base_dir/deploy/modules/services/desktop.sh"
 
 echo "...deployment complete."
