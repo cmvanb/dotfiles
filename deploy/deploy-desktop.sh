@@ -27,6 +27,11 @@ export XDG_SCRIPTS_HOME="$HOME/.local/scripts"
 # Determine which shell esh executes
 export ESH_SHELL=/usr/bin/bash
 
+# Shell library modules
+source "$base_dir/deploy/modules/lib-shell-utils.sh"
+source "$base_dir/deploy/modules/lib-theme.sh"
+source "$base_dir/deploy/modules/lib-wayland-utils.sh"
+
 # Server deployment modules
 source "$base_dir/deploy/modules/bash.sh"
 source "$base_dir/deploy/modules/bat.sh"
@@ -91,8 +96,9 @@ source "$base_dir/deploy/modules/zathura.sh"
 echo "Deploying desktop profile from \`$base_dir\` to \`$HOME\`..."
 
 # Shell libraries
-source "$base_dir/deploy/modules/opt/base.sh"
-source "$base_dir/deploy/modules/opt/desktop.sh"
+lib-shell-utils::install
+lib-theme::install
+lib-wayland-utils::install
 
 # Theme configuration
 source "$base_dir/deploy/modules/theme/base.sh"
