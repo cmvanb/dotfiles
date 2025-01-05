@@ -31,6 +31,9 @@ export ESH_SHELL=/usr/bin/bash
 source "$base_dir/deploy/modules/lib-shell-utils.sh"
 source "$base_dir/deploy/modules/lib-theme.sh"
 
+# Theme modules
+source "$base_dir/deploy/modules/theme-base.sh"
+
 # Server deployment modules
 source "$base_dir/deploy/modules/bash.sh"
 source "$base_dir/deploy/modules/bat.sh"
@@ -53,12 +56,14 @@ source "$base_dir/deploy/modules/wget.sh"
 
 echo "Deploying server profile from \`$base_dir\` to \`$HOME\`..."
 
-# Shell libraries
+# Libraries
+echo "Deploying library modules..."
 lib-shell-utils::install
 lib-theme::install
 
-# Theme configuration
-source "$base_dir/deploy/modules/theme/base.sh"
+# Theme modules
+echo "Deploying theme modules..."
+theme-base::install
 
 # Configuration files
 echo "Deploying server modules..."

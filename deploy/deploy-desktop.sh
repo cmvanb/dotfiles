@@ -32,6 +32,10 @@ source "$base_dir/deploy/modules/lib-shell-utils.sh"
 source "$base_dir/deploy/modules/lib-theme.sh"
 source "$base_dir/deploy/modules/lib-wayland-utils.sh"
 
+# Theme modules
+source "$base_dir/deploy/modules/theme-base.sh"
+source "$base_dir/deploy/modules/theme-desktop.sh"
+
 # Server deployment modules
 source "$base_dir/deploy/modules/bash.sh"
 source "$base_dir/deploy/modules/bat.sh"
@@ -95,14 +99,16 @@ source "$base_dir/deploy/modules/zathura.sh"
 
 echo "Deploying desktop profile from \`$base_dir\` to \`$HOME\`..."
 
-# Shell libraries
+# Libraries
+echo "Deploying library modules..."
 lib-shell-utils::install
 lib-theme::install
 lib-wayland-utils::install
 
-# Theme configuration
-source "$base_dir/deploy/modules/theme/base.sh"
-source "$base_dir/deploy/modules/theme/desktop.sh"
+# Theme modules
+echo "Deploying theme modules..."
+theme-base::install
+theme-desktop::install
 
 # Shell scripts
 source "$base_dir/deploy/modules/scripts/desktop.sh"
