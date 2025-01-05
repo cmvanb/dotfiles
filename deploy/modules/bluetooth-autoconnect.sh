@@ -22,3 +22,15 @@ bluetooth-autoconnect::uninstall () {
 
     rm "$config_dir/systemd/user/bluetooth-autoconnect.service"
 }
+
+bluetooth-autoconnect::enable () {
+    echo "└> Enabling bluetooth-autoconnect user service."
+
+    systemctl --user enable bluetooth-autoconnect
+}
+
+bluetooth-autoconnect::disable () {
+    echo "└> Disabling bluetooth-autoconnect user service."
+
+    systemctl --user disable bluetooth-autoconnect
+}
