@@ -110,9 +110,6 @@ echo "Deploying theme modules..."
 theme-base::install
 theme-desktop::install
 
-# Shell scripts
-source "$base_dir/deploy/modules/scripts/desktop.sh"
-
 # Server modules
 echo "Deploying server modules..."
 bash::install
