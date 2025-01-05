@@ -33,10 +33,6 @@ mkdir -p "$config_dir/systemd/user"
 force_link "$base_dir/config/systemd/user/bluetooth-autoconnect.service" "$config_dir/systemd/user/bluetooth-autoconnect.service"
 force_link "$base_dir/config/systemd/user/udiskie.service" "$config_dir/systemd/user/udiskie.service"
 
-# XDG integration
-mkdir -p "$config_dir/xdg-desktop-portal"
-force_link "$base_dir/config/xdg-desktop-portal/niri-portals.conf" "$config_dir/xdg-desktop-portal/niri-portals.conf"
-
 # Link shared data
 #-------------------------------------------------------------------------------
 
