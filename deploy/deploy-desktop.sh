@@ -35,6 +35,7 @@ source "$base_dir/deploy/modules/fish.sh"
 source "$base_dir/deploy/modules/git.sh"
 source "$base_dir/deploy/modules/less.sh"
 source "$base_dir/deploy/modules/lf.sh"
+source "$base_dir/deploy/modules/npm.sh"
 source "$base_dir/deploy/modules/nvim.sh"
 
 # Desktop deployment modules
@@ -98,6 +99,7 @@ fish::install
 git::install
 less::install
 lf::install
+npm::install
 nvim::install
 source "$base_dir/deploy/modules/config/base.sh"
 
