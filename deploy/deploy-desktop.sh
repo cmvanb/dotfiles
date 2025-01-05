@@ -38,6 +38,7 @@ source "$base_dir/deploy/modules/lf.sh"
 source "$base_dir/deploy/modules/npm.sh"
 source "$base_dir/deploy/modules/nvim.sh"
 source "$base_dir/deploy/modules/readline.sh"
+source "$base_dir/deploy/modules/ripgrep.sh"
 
 # Desktop deployment modules
 source "$base_dir/deploy/modules/alacritty.sh"
@@ -103,6 +104,7 @@ lf::install
 npm::install
 nvim::install
 readline::install
+ripgrep::install
 source "$base_dir/deploy/modules/config/base.sh"
 
 # Desktop environment modules
