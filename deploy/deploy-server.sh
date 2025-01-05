@@ -37,6 +37,7 @@ source "$base_dir/deploy/modules/less.sh"
 source "$base_dir/deploy/modules/lf.sh"
 source "$base_dir/deploy/modules/npm.sh"
 source "$base_dir/deploy/modules/nvim.sh"
+source "$base_dir/deploy/modules/python.sh"
 source "$base_dir/deploy/modules/readline.sh"
 source "$base_dir/deploy/modules/ripgrep.sh"
 source "$base_dir/deploy/modules/shell-stty.sh"
@@ -70,6 +71,7 @@ less::install
 lf::install
 npm::install
 nvim::install
+python::install
 readline::install
 ripgrep::install
 shell-stty::install

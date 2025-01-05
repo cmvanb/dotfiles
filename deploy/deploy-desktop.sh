@@ -37,6 +37,7 @@ source "$base_dir/deploy/modules/less.sh"
 source "$base_dir/deploy/modules/lf.sh"
 source "$base_dir/deploy/modules/npm.sh"
 source "$base_dir/deploy/modules/nvim.sh"
+source "$base_dir/deploy/modules/python.sh"
 source "$base_dir/deploy/modules/readline.sh"
 source "$base_dir/deploy/modules/ripgrep.sh"
 source "$base_dir/deploy/modules/shell-stty.sh"
@@ -62,7 +63,6 @@ source "$base_dir/deploy/modules/niri.sh"
 source "$base_dir/deploy/modules/pandoc.sh"
 source "$base_dir/deploy/modules/pipewire.sh"
 source "$base_dir/deploy/modules/pyenv.sh"
-source "$base_dir/deploy/modules/python.sh"
 source "$base_dir/deploy/modules/qutebrowser.sh"
 source "$base_dir/deploy/modules/river.sh"
 source "$base_dir/deploy/modules/ssh.sh"
@@ -112,6 +112,7 @@ less::install
 lf::install
 npm::install
 nvim::install
+python::install
 readline::install
 ripgrep::install
 shell-stty::install
@@ -137,7 +138,6 @@ mpv::install
 niri::install
 pandoc::install
 pyenv::install
-python::install
 qutebrowser::install
 river::install
 spotify::install
