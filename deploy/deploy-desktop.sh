@@ -59,6 +59,7 @@ source "$base_dir/deploy/modules/mako.sh"
 source "$base_dir/deploy/modules/mpv.sh"
 source "$base_dir/deploy/modules/niri.sh"
 source "$base_dir/deploy/modules/pandoc.sh"
+source "$base_dir/deploy/modules/pyenv.sh"
 source "$base_dir/deploy/modules/python.sh"
 source "$base_dir/deploy/modules/qutebrowser.sh"
 source "$base_dir/deploy/modules/river.sh"
@@ -129,6 +130,7 @@ mako::install
 mpv::install
 niri::install
 pandoc::install
+pyenv::install
 python::install
 qutebrowser::install
 river::install
@@ -147,8 +149,5 @@ source "$base_dir/deploy/modules/config/desktop.sh"
 
 # Enable user services
 source "$base_dir/deploy/modules/services/desktop.sh"
-
-# Install user packages
-source "$base_dir/deploy/modules/packages/desktop.sh"
 
 echo "...deployment complete."
