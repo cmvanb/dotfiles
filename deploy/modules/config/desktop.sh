@@ -24,10 +24,6 @@ assert_dependency esh
 mkdir -p "$config_dir"
 force_link "$base_dir/config/mimeapps.list" "$config_dir/mimeapps.list"
 
-# Fontconfig
-mkdir -p "$config_dir/fontconfig"
-esh "$base_dir/config/fontconfig/fonts.conf~esh" > "$config_dir/fontconfig/fonts.conf"
-
 # Systemd integrations
 mkdir -p "$config_dir/systemd/user"
 force_link "$base_dir/config/systemd/user/bluetooth-autoconnect.service" "$config_dir/systemd/user/bluetooth-autoconnect.service"

@@ -32,6 +32,7 @@ source "$base_dir/deploy/modules/alacritty.sh"
 source "$base_dir/deploy/modules/bitwarden.sh"
 source "$base_dir/deploy/modules/btop.sh"
 source "$base_dir/deploy/modules/direnv.sh"
+source "$base_dir/deploy/modules/fontconfig.sh"
 source "$base_dir/deploy/modules/hyprland.sh"
 source "$base_dir/deploy/modules/imv.sh"
 source "$base_dir/deploy/modules/mako.sh"
@@ -77,6 +78,7 @@ alacritty::install
 bitwarden::install
 btop::install
 direnv::install
+fontconfig::install
 hyprland::install
 imv::install
 mako::install
