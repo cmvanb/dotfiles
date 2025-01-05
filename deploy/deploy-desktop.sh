@@ -33,6 +33,7 @@ source "$base_dir/deploy/modules/bitwarden.sh"
 source "$base_dir/deploy/modules/btop.sh"
 source "$base_dir/deploy/modules/chromium.sh"
 source "$base_dir/deploy/modules/direnv.sh"
+source "$base_dir/deploy/modules/disable-xdg-desktop-files.sh"
 source "$base_dir/deploy/modules/discord.sh"
 source "$base_dir/deploy/modules/draw.io.sh"
 source "$base_dir/deploy/modules/fontconfig.sh"
@@ -85,6 +86,7 @@ bitwarden::install
 btop::install
 chromium::install
 direnv::install
+disable-xdg-desktop-files::install
 discord::install
 draw.io::install
 fontconfig::install
