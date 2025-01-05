@@ -31,7 +31,10 @@ export ESH_SHELL=/usr/bin/bash
 source "$base_dir/deploy/modules/alacritty.sh"
 source "$base_dir/deploy/modules/bitwarden.sh"
 source "$base_dir/deploy/modules/btop.sh"
+source "$base_dir/deploy/modules/chromium.sh"
 source "$base_dir/deploy/modules/direnv.sh"
+source "$base_dir/deploy/modules/discord.sh"
+source "$base_dir/deploy/modules/draw.io.sh"
 source "$base_dir/deploy/modules/fontconfig.sh"
 source "$base_dir/deploy/modules/hyprland.sh"
 source "$base_dir/deploy/modules/imv.sh"
@@ -41,6 +44,8 @@ source "$base_dir/deploy/modules/niri.sh"
 source "$base_dir/deploy/modules/python.sh"
 source "$base_dir/deploy/modules/qutebrowser.sh"
 source "$base_dir/deploy/modules/river.sh"
+source "$base_dir/deploy/modules/spotify.sh"
+source "$base_dir/deploy/modules/vscodium.sh"
 source "$base_dir/deploy/modules/vt.sh"
 source "$base_dir/deploy/modules/waybar.sh"
 source "$base_dir/deploy/modules/wallpaper.sh"
@@ -77,7 +82,10 @@ source "$base_dir/deploy/modules/config/base.sh"
 alacritty::install
 bitwarden::install
 btop::install
+chromium::install
 direnv::install
+discord::install
+draw.io::install
 fontconfig::install
 hyprland::install
 imv::install
@@ -87,6 +95,8 @@ niri::install
 python::install
 qutebrowser::install
 river::install
+spotify::install
+vscodium::install
 vt::install
 waybar::install
 wallpaper::install
