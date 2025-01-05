@@ -39,6 +39,7 @@ source "$base_dir/deploy/modules/npm.sh"
 source "$base_dir/deploy/modules/nvim.sh"
 source "$base_dir/deploy/modules/readline.sh"
 source "$base_dir/deploy/modules/ripgrep.sh"
+source "$base_dir/deploy/modules/shell-stty.sh"
 source "$base_dir/deploy/modules/wget.sh"
 
 # Desktop deployment modules
@@ -106,8 +107,8 @@ npm::install
 nvim::install
 readline::install
 ripgrep::install
+shell-stty::install
 wget::install
-source "$base_dir/deploy/modules/config/base.sh"
 
 # Desktop environment modules
 echo "Deploying desktop environment modules..."
