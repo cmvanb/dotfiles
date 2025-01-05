@@ -12,8 +12,8 @@ source $XDG_CONFIG_HOME/shell/interactive
 #-------------------------------------------------------------------------------
 
 <% if [[ $SYSTEM_PROFILE == "desktop" ]]; then -%>
-# Python interactive configuration.
-set -x PYTHONSTARTUP $XDG_CONFIG_HOME/python/interactive.py
+# Save python history in an XDG compliant directory.
+set -x PYTHON_HISTORY $XDG_DATA_HOME/python/history
 
 <% fi -%>
 # Aliases & Abbreviations

@@ -17,12 +17,11 @@ source "$XDG_CONFIG_HOME/shell/interactive"
 #-------------------------------------------------------------------------------
 
 # Save history in an XDG compliant directory.
-[[ ! -d "$XDG_DATA_HOME/bash" ]] && mkdir -p "$XDG_DATA_HOME/bash"
-export HISTFILE="$XDG_DATA_HOME/bash/bash_history"
+export HISTFILE="$XDG_DATA_HOME/bash/history"
 
 <% if [[ $SYSTEM_PROFILE == "desktop" ]]; then -%>
-# Python interactive configuration.
-export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/interactive.py"
+# Save python history in an XDG compliant directory.
+export PYTHON_HISTORY="$XDG_DATA_HOME/python/history"
 
 <% fi -%>
 <% if [[ $SYSTEM_PROFILE == "desktop" ]]; then -%>
