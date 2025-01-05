@@ -37,6 +37,7 @@ source "$base_dir/deploy/modules/less.sh"
 source "$base_dir/deploy/modules/lf.sh"
 source "$base_dir/deploy/modules/npm.sh"
 source "$base_dir/deploy/modules/nvim.sh"
+source "$base_dir/deploy/modules/readline.sh"
 
 # Desktop deployment modules
 source "$base_dir/deploy/modules/alacritty.sh"
@@ -101,6 +102,7 @@ less::install
 lf::install
 npm::install
 nvim::install
+readline::install
 source "$base_dir/deploy/modules/config/base.sh"
 
 # Desktop environment modules

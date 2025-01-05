@@ -13,9 +13,6 @@ config_dir=${XDG_CONFIG_HOME:-$HOME/.config}
 # Link configuration
 #-------------------------------------------------------------------------------
 
-# Readline
-force_link "$base_dir/config/readline" "$config_dir/readline"
-
 # Ripgrep
 mkdir -p "$config_dir/ripgrep"
 esh "$base_dir/config/ripgrep/config~esh" > "$config_dir/ripgrep/config"
