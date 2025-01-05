@@ -6,6 +6,7 @@
 script_dir=$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)
 base_dir=$(realpath "$script_dir/../..")
 scripts_dir=${XDG_SCRIPTS_HOME:-$HOME/.local/scripts}
+bin_dir=${XDG_BIN_HOME:-$HOME/.local/bin}
 
 source "$base_dir/local/opt/shell-utils/fs.sh"
 
@@ -26,6 +27,15 @@ scripts-shell-utils::install () {
     force_link "$base_dir/local/scripts/show-path.sh" "$scripts_dir/show-path.sh"
     force_link "$base_dir/local/scripts/terminal-preview.sh" "$scripts_dir/terminal-preview.sh"
     force_link "$base_dir/local/scripts/view.sh" "$scripts_dir/view.sh"
+
+    echo "└> Installing shell utility shortcuts."
+
+    mkdir -p "$bin_dir"
+    force_link "$base_dir/local/bin/edit" "$bin_dir/edit"
+    force_link "$base_dir/local/bin/kebab" "$bin_dir/kebab"
+    force_link "$base_dir/local/bin/kebabify" "$bin_dir/kebabify"
+    force_link "$base_dir/local/bin/printenv" "$bin_dir/printenv"
+    force_link "$base_dir/local/bin/view" "$bin_dir/view"
 }
 
 scripts-shell-utils::uninstall () {
@@ -43,4 +53,12 @@ scripts-shell-utils::uninstall () {
     rm "$scripts_dir/show-path.sh"
     rm "$scripts_dir/terminal-preview.sh"
     rm "$scripts_dir/view.sh"
+
+    echo "└> Uninstalling shell utility shortcuts."
+
+    rm "$bin_dir/edit"
+    rm "$bin_dir/kebab"
+    rm "$bin_dir/kebabify"
+    rm "$bin_dir/printenv"
+    rm "$bin_dir/view"
 }

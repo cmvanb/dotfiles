@@ -55,9 +55,6 @@ source "$base_dir/deploy/modules/opt/base.sh"
 # Theme configuration
 source "$base_dir/deploy/modules/theme/base.sh"
 
-# Binary shortcuts
-source "$base_dir/deploy/modules/bin/base.sh"
-
 # Configuration files
 echo "Deploying server modules..."
 bash::install
