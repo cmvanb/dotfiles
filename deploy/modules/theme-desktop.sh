@@ -16,6 +16,7 @@ source "$base_dir/local/opt/shell-utils/fs.sh"
 theme-desktop::install () {
     echo "└> Installing theme desktop configuration."
 
+    mkdir -p "$config_dir/theme"
     force_link "$base_dir/config/theme/cursor" "$config_dir/theme/cursor"
 
     case $host in
