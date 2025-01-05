@@ -52,6 +52,7 @@ source "$base_dir/deploy/modules/disable-xdg-desktop-files.sh"
 source "$base_dir/deploy/modules/discord.sh"
 source "$base_dir/deploy/modules/draw.io.sh"
 source "$base_dir/deploy/modules/fontconfig.sh"
+source "$base_dir/deploy/modules/ghostty.sh"
 source "$base_dir/deploy/modules/hyprland.sh"
 source "$base_dir/deploy/modules/imv.sh"
 source "$base_dir/deploy/modules/mako.sh"
@@ -121,6 +122,7 @@ disable-xdg-desktop-files::install
 discord::install
 draw.io::install
 fontconfig::install
+ghostty::install
 hyprland::install
 imv::install
 mako::install
