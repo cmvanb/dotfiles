@@ -98,7 +98,6 @@ source "$base_dir/deploy/modules/theme/base.sh"
 source "$base_dir/deploy/modules/theme/desktop.sh"
 
 # Binary shortcuts
-source "$base_dir/deploy/modules/bin/base.sh"
 source "$base_dir/deploy/modules/bin/desktop.sh"
 
 # Shell scripts
