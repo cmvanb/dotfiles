@@ -53,9 +53,6 @@ force_link "$base_dir/config/fish/functions" "$config_dir/fish/functions"
 # Git
 force_link "$base_dir/config/git" "$config_dir/git"
 
-# Lf
-force_link "$base_dir/config/lf" "$config_dir/lf"
-
 # Neovim
 force_link "$base_dir/config/nvim" "$config_dir/nvim"
 
