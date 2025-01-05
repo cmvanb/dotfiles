@@ -27,6 +27,21 @@ export XDG_SCRIPTS_HOME="$HOME/.local/scripts"
 # Determine which shell esh executes
 export ESH_SHELL=/usr/bin/bash
 
+# Server deployment modules
+source "$base_dir/deploy/modules/bash.sh"
+source "$base_dir/deploy/modules/bat.sh"
+source "$base_dir/deploy/modules/broot.sh"
+source "$base_dir/deploy/modules/fish.sh"
+source "$base_dir/deploy/modules/git.sh"
+source "$base_dir/deploy/modules/less.sh"
+source "$base_dir/deploy/modules/lf.sh"
+source "$base_dir/deploy/modules/npm.sh"
+source "$base_dir/deploy/modules/nvim.sh"
+source "$base_dir/deploy/modules/readline.sh"
+source "$base_dir/deploy/modules/ripgrep.sh"
+source "$base_dir/deploy/modules/shell-stty.sh"
+source "$base_dir/deploy/modules/wget.sh"
+
 # Deploy server profile
 #-------------------------------------------------------------------------------
 
@@ -45,6 +60,19 @@ source "$base_dir/deploy/modules/bin/base.sh"
 source "$base_dir/deploy/modules/scripts/base.sh"
 
 # Configuration files
-source "$base_dir/deploy/modules/config/base.sh"
+echo "Deploying server modules..."
+bash::install
+bat::install
+broot::install
+fish::install
+git::install
+less::install
+lf::install
+npm::install
+nvim::install
+readline::install
+ripgrep::install
+shell-stty::install
+wget::install
 
 echo "...deployment complete."
