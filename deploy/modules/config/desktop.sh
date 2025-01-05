@@ -35,7 +35,6 @@ force_link "$base_dir/config/systemd/user/udiskie.service" "$config_dir/systemd/
 
 # XDG integration
 mkdir -p "$config_dir/xdg-desktop-portal"
-force_link "$base_dir/config/xdg-desktop-portal/river-portals.conf" "$config_dir/xdg-desktop-portal/river-portals.conf"
 force_link "$base_dir/config/xdg-desktop-portal/niri-portals.conf" "$config_dir/xdg-desktop-portal/niri-portals.conf"
 
 # Link shared data
