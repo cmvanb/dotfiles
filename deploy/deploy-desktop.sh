@@ -28,6 +28,7 @@ export XDG_SCRIPTS_HOME="$HOME/.local/scripts"
 export ESH_SHELL=/usr/bin/bash
 
 # Server deployment modules
+source "$base_dir/deploy/modules/less.sh"
 source "$base_dir/deploy/modules/lf.sh"
 
 # Desktop deployment modules
@@ -84,6 +85,7 @@ source "$base_dir/deploy/modules/scripts/desktop.sh"
 
 # Server modules
 echo "Deploying server modules..."
+less::install
 lf::install
 source "$base_dir/deploy/modules/config/base.sh"
 
