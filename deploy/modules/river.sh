@@ -6,6 +6,7 @@
 script_dir=$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)
 base_dir=$(realpath "$script_dir/../..")
 config_dir=${XDG_CONFIG_HOME:-$HOME/.config}
+bin_dir=${XDG_BIN_HOME:-$HOME/.local/bin}
 host=$(uname -n)
 
 source "$base_dir/local/opt/shell-utils/fs.sh"
@@ -34,10 +35,22 @@ river::install () {
 
     mkdir -p "$config_dir/xdg-desktop-portal"
     force_link "$base_dir/config/river/river-portals.conf" "$config_dir/xdg-desktop-portal/river-portals.conf"
+
+    echo "└> Installing river shortcuts."
+
+    mkdir -p "$bin_dir"
+    force_link "$base_dir/local/bin/river-run" "$bin_dir/river-run"
+    force_link "$base_dir/local/bin/init~river" "$bin_dir/init"
 }
 
 river::uninstall () {
     echo "└> Uninstalling river configuration."
 
     rm -r "$config_dir/river"
+
+    rm "$config_dir/xdg-desktop-portal/river-portals.conf"
+
+    echo "└> Uninstalling river shortcuts."
+
+    rm "$bin_dir/river-run"
 }

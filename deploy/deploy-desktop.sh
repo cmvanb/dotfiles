@@ -69,6 +69,7 @@ source "$base_dir/deploy/modules/river.sh"
 source "$base_dir/deploy/modules/scripts-desktop.sh"
 source "$base_dir/deploy/modules/scripts-markdown.sh"
 source "$base_dir/deploy/modules/scripts-misc.sh"
+source "$base_dir/deploy/modules/scripts-system-utils.sh"
 source "$base_dir/deploy/modules/ssh.sh"
 source "$base_dir/deploy/modules/syncthing.sh"
 source "$base_dir/deploy/modules/spotify.sh"
@@ -89,16 +90,13 @@ source "$base_dir/deploy/modules/zathura.sh"
 
 echo "Deploying desktop profile from \`$base_dir\` to \`$HOME\`..."
 
-# Shell modules
+# Shell libraries
 source "$base_dir/deploy/modules/opt/base.sh"
 source "$base_dir/deploy/modules/opt/desktop.sh"
 
 # Theme configuration
 source "$base_dir/deploy/modules/theme/base.sh"
 source "$base_dir/deploy/modules/theme/desktop.sh"
-
-# Binary shortcuts
-source "$base_dir/deploy/modules/bin/desktop.sh"
 
 # Shell scripts
 source "$base_dir/deploy/modules/scripts/desktop.sh"
@@ -134,18 +132,16 @@ discord::install
 draw.io::install
 fontconfig::install
 ghostty::install
-hyprland::install
 imv::install
 mako::install
 mpv::install
-niri::install
 pandoc::install
 pyenv::install
 qutebrowser::install
-river::install
 scripts-desktop::install
 scripts-markdown::install
 scripts-misc::install
+scripts-system-utils::install
 spotify::install
 udiskie::install
 vscodium::install
@@ -159,6 +155,13 @@ xdg-mimetype-associations::install
 yay::install
 zathura::install
 
+# Desktop window manager
+echo "Deploying desktop window managers..."
+# NOTE: Last module determines default window manager.
+niri::install
+river::install
+hyprland::install
+
 # Enable user services
 echo "Deploying desktop user services..."
 bluetooth-autoconnect::enable
@@ -166,5 +169,4 @@ pipewire::enable
 ssh::enable
 syncthing::enable
 udiskie::enable
-
 echo "...deployment complete."

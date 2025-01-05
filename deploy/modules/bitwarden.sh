@@ -8,6 +8,7 @@ base_dir=$(realpath "$script_dir/../..")
 config_dir=${XDG_CONFIG_HOME:-$HOME/.config}
 data_dir=${XDG_DATA_HOME:-$HOME/.local/share}
 scripts_dir=${XDG_SCRIPTS_HOME:-$HOME/.local/scripts}
+bin_dir=${XDG_BIN_HOME:-$HOME/.local/bin}
 
 
 bitwarden::install () {
@@ -22,6 +23,11 @@ bitwarden::install () {
 
     mkdir -p "$scripts_dir"
     force_link "$base_dir/local/scripts/fetch-password.sh" "$scripts_dir/fetch-password.sh"
+
+    echo "└> Installing bitwarden shortcuts."
+
+    mkdir -p "$bin_dir"
+    force_link "$base_dir/local/bin/fetchpw" "$bin_dir/fetchpw"
 }
 
 bitwarden::uninstall () {
@@ -30,4 +36,10 @@ bitwarden::uninstall () {
     rm -r "$config_dir/Bitwarden/data.json"
 
     rm "$data_dir/applications/bitwarden.desktop"
+
+    rm "$scripts_dir/fetch-password.sh"
+
+    echo "└> Uninstalling bitwarden shortcuts."
+
+    rm "$bin_dir/fetchpw"
 }

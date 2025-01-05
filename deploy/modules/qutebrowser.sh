@@ -9,6 +9,7 @@ config_dir=${XDG_CONFIG_HOME:-$HOME/.config}
 data_dir=${XDG_DATA_HOME:-$HOME/.local/share}
 scripts_dir=${XDG_SCRIPTS_HOME:-$HOME/.local/scripts}
 templates_dir=${XDG_TEMPLATES_DIR:-$data_dir/templates}
+bin_dir=${XDG_BIN_HOME:-$HOME/.local/bin}
 
 source "$base_dir/local/opt/shell-utils/fs.sh"
 
@@ -34,6 +35,11 @@ qutebrowser::install () {
 
     mkdir -p "$templates_dir"
     force_link "$base_dir/local/share/templates/bookmark.md~esh" "$templates_dir/bookmark.md~esh"
+
+    echo "└> Installing qutebrowser shortcuts."
+
+    mkdir -p "$bin_dir"
+    force_link "$base_dir/local/bin/browse" "$bin_dir/browse"
 }
 
 qutebrowser::uninstall () {
@@ -46,4 +52,10 @@ qutebrowser::uninstall () {
     rm "$scripts_dir/add-bookmark.sh"
     rm "$scripts_dir/select-bookmark.sh"
     rm "$scripts_dir/open-qutebrowser-session.sh"
+
+    rm "$templates_dir/bookmark.md~esh"
+
+    echo "└> Uninstalling qutebrowser shortcuts."
+
+    rm "$bin_dir/browse"
 }

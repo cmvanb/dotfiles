@@ -6,6 +6,7 @@
 script_dir=$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)
 base_dir=$(realpath "$script_dir/../..")
 config_dir=${XDG_CONFIG_HOME:-$HOME/.config}
+bin_dir=${XDG_BIN_HOME:-$HOME/.local/bin}
 host=$(uname -n)
 
 source "$base_dir/local/opt/shell-utils/fs.sh"
@@ -32,6 +33,11 @@ niri::install () {
 
     mkdir -p "$config_dir/xdg-desktop-portal"
     force_link "$base_dir/config/niri/niri-portals.conf" "$config_dir/xdg-desktop-portal/niri-portals.conf"
+
+    echo "└> Installing niri shortcuts."
+
+    mkdir -p "$bin_dir"
+    force_link "$base_dir/local/bin/init~niri" "$bin_dir/init"
 }
 
 niri::uninstall () {
@@ -39,4 +45,10 @@ niri::uninstall () {
 
     rm -r "$config_dir/niri"
     rm -r "$config_dir/systemd/user/niri.service.wants"
+
+    rm "$config_dir/xdg-desktop-portal/niri-portals.conf"
+
+    echo "└> Uninstalling niri shortcuts."
+
+    rm "$bin_dir/init"
 }
