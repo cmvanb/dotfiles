@@ -13,10 +13,6 @@ config_dir=${XDG_CONFIG_HOME:-$HOME/.config}
 # Link configuration
 #-------------------------------------------------------------------------------
 
-# Ripgrep
-mkdir -p "$config_dir/ripgrep"
-esh "$base_dir/config/ripgrep/config~esh" > "$config_dir/ripgrep/config"
-
 # Shell
 force_link "$base_dir/config/shell" "$config_dir/shell"
 
