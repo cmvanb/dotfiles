@@ -20,6 +20,10 @@ qutebrowser::install () {
 
     mkdir -p "$data_dir/applications"
     force_link "$base_dir/local/share/applications/org.qutebrowser.qutebrowser.desktop" "$data_dir/applications/org.qutebrowser.qutebrowser.desktop"
+
+    mkdir -p "$data_dir/qutebrowser/userscripts"
+    force_link "$base_dir/local/share/qutebrowser/userscripts/format_json.sh" "$data_dir/qutebrowser/userscripts/format_json.sh"
+    force_link "$base_dir/local/share/qutebrowser/userscripts/readability.py" "$data_dir/qutebrowser/userscripts/readability.py"
 }
 
 qutebrowser::uninstall () {
