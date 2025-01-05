@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #-------------------------------------------------------------------------------
-# Count command usage in the history file.
+# Count command usage in a history file.
 #
 # Usage:
 #  count-command-usage.sh <file_name>
