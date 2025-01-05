@@ -27,7 +27,10 @@ export XDG_SCRIPTS_HOME="$HOME/.local/scripts"
 # Determine which shell esh executes
 export ESH_SHELL=/usr/bin/bash
 
-# Deployment modules
+# Server deployment modules
+source "$base_dir/deploy/modules/lf.sh"
+
+# Desktop deployment modules
 source "$base_dir/deploy/modules/alacritty.sh"
 source "$base_dir/deploy/modules/bitwarden.sh"
 source "$base_dir/deploy/modules/btop.sh"
@@ -79,9 +82,13 @@ source "$base_dir/deploy/modules/bin/desktop.sh"
 source "$base_dir/deploy/modules/scripts/base.sh"
 source "$base_dir/deploy/modules/scripts/desktop.sh"
 
-# Configuration files
+# Server modules
+echo "Deploying server modules..."
+lf::install
 source "$base_dir/deploy/modules/config/base.sh"
 
+# Desktop environment modules
+echo "Deploying desktop environment modules..."
 alacritty::install
 bitwarden::install
 btop::install
