@@ -13,9 +13,6 @@ config_dir=${XDG_CONFIG_HOME:-$HOME/.config}
 # Link configuration
 #-------------------------------------------------------------------------------
 
-# NPM
-force_link "$base_dir/config/npm" "$config_dir/npm"
-
 # Readline
 force_link "$base_dir/config/readline" "$config_dir/readline"
 
