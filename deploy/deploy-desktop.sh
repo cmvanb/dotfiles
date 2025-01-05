@@ -32,6 +32,7 @@ source "$base_dir/deploy/modules/bash.sh"
 source "$base_dir/deploy/modules/bat.sh"
 source "$base_dir/deploy/modules/broot.sh"
 source "$base_dir/deploy/modules/fish.sh"
+source "$base_dir/deploy/modules/git.sh"
 source "$base_dir/deploy/modules/less.sh"
 source "$base_dir/deploy/modules/lf.sh"
 
@@ -93,6 +94,7 @@ bash::install
 bat::install
 broot::install
 fish::install
+git::install
 less::install
 lf::install
 source "$base_dir/deploy/modules/config/base.sh"
