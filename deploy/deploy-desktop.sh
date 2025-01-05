@@ -41,6 +41,7 @@ source "$base_dir/deploy/modules/imv.sh"
 source "$base_dir/deploy/modules/mako.sh"
 source "$base_dir/deploy/modules/mpv.sh"
 source "$base_dir/deploy/modules/niri.sh"
+source "$base_dir/deploy/modules/pandoc.sh"
 source "$base_dir/deploy/modules/python.sh"
 source "$base_dir/deploy/modules/qutebrowser.sh"
 source "$base_dir/deploy/modules/river.sh"
@@ -92,6 +93,7 @@ imv::install
 mako::install
 mpv::install
 niri::install
+pandoc::install
 python::install
 qutebrowser::install
 river::install

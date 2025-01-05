@@ -53,6 +53,3 @@ if [[ $SYSTEM_DISTRO == "arch" ]]; then
     force_link "$base_dir/local/share/applications/qvidcap.desktop" "$data_dir/applications/qvidcap.desktop"
     force_link "$base_dir/local/share/applications/vscodium.desktop" "$data_dir/applications/vscodium.desktop"
 fi
-
-# Application data
-force_link "$base_dir/local/share/pandoc" "$data_dir/pandoc"
