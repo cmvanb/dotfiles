@@ -13,10 +13,8 @@ source "$base_dir/local/opt/shell-utils/fs.sh"
 yay::install () {
     echo "└> Installing yay configuration."
 
-    if [[ $SYSTEM_DISTRO == "arch" ]]; then
-        mkdir -p "$config_dir/yay"
-        force_link "$base_dir/config/yay/config.json" "$config_dir/yay/config.json"
-    fi
+    mkdir -p "$config_dir/yay"
+    force_link "$base_dir/config/yay/config.json" "$config_dir/yay/config.json"
 }
 
 yay::uninstall () {
