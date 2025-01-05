@@ -40,6 +40,7 @@ source "$base_dir/deploy/modules/nvim.sh"
 source "$base_dir/deploy/modules/python.sh"
 source "$base_dir/deploy/modules/readline.sh"
 source "$base_dir/deploy/modules/ripgrep.sh"
+source "$base_dir/deploy/modules/scripts-shell-utils.sh"
 source "$base_dir/deploy/modules/shell-stty.sh"
 source "$base_dir/deploy/modules/wget.sh"
 
@@ -57,9 +58,6 @@ source "$base_dir/deploy/modules/theme/base.sh"
 # Binary shortcuts
 source "$base_dir/deploy/modules/bin/base.sh"
 
-# Shell scripts
-source "$base_dir/deploy/modules/scripts/base.sh"
-
 # Configuration files
 echo "Deploying server modules..."
 bash::install
@@ -74,6 +72,7 @@ nvim::install
 python::install
 readline::install
 ripgrep::install
+scripts-shell-utils::install
 shell-stty::install
 wget::install
 

@@ -40,6 +40,7 @@ source "$base_dir/deploy/modules/nvim.sh"
 source "$base_dir/deploy/modules/python.sh"
 source "$base_dir/deploy/modules/readline.sh"
 source "$base_dir/deploy/modules/ripgrep.sh"
+source "$base_dir/deploy/modules/scripts-shell-utils.sh"
 source "$base_dir/deploy/modules/shell-stty.sh"
 source "$base_dir/deploy/modules/wget.sh"
 
@@ -98,7 +99,6 @@ source "$base_dir/deploy/modules/bin/base.sh"
 source "$base_dir/deploy/modules/bin/desktop.sh"
 
 # Shell scripts
-source "$base_dir/deploy/modules/scripts/base.sh"
 source "$base_dir/deploy/modules/scripts/desktop.sh"
 
 # Server modules
@@ -115,6 +115,7 @@ nvim::install
 python::install
 readline::install
 ripgrep::install
+scripts-shell-utils::install
 shell-stty::install
 wget::install
 
