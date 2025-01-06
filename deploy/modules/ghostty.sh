@@ -15,6 +15,9 @@ ghostty::install () {
 
     mkdir -p "$config_dir/ghostty"
     force_link "$base_dir/config/ghostty/config" "$config_dir/ghostty/config"
+
+    mkdir -p "$config_dir/ghostty/themes"
+    esh "$base_dir/config/ghostty/themes/custom-theme~esh" > "$config_dir/ghostty/themes/custom-theme"
 }
 
 ghostty::uninstall () {
