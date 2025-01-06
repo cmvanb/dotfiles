@@ -16,7 +16,7 @@ source "$XDG_CONFIG_HOME/shell/interactive"
 # General configuration
 #-------------------------------------------------------------------------------
 
-# Save history in an XDG compliant directory.
+# Save bash history in an XDG compliant directory.
 export HISTFILE="$XDG_DATA_HOME/bash/history"
 
 <% if [[ $SYSTEM_PROFILE == "desktop" ]]; then -%>
