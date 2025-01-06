@@ -1,0 +1,25 @@
+<% source $XDG_OPT_HOME/theme/theme.sh -%>
+background = <% color_hash $terminal_bg %>
+foreground = <% color_hash $terminal_text %>
+
+palette = 0=<% color_hash $ansi_black %>
+palette = 1=<% color_hash $ansi_red %>
+palette = 2=<% color_hash $ansi_green %>
+palette = 3=<% color_hash $ansi_yellow %>
+palette = 4=<% color_hash $ansi_blue %>
+palette = 5=<% color_hash $ansi_magenta %>
+palette = 6=<% color_hash $ansi_cyan %>
+palette = 7=<% color_hash $ansi_white %>
+palette = 8=<% color_hash $ansi_brblack %>
+palette = 9=<% color_hash $ansi_brred %>
+palette = 10=<% color_hash $ansi_brgreen %>
+palette = 11=<% color_hash $ansi_bryellow %>
+palette = 12=<% color_hash $ansi_brblue %>
+palette = 13=<% color_hash $ansi_brmagenta %>
+palette = 14=<% color_hash $ansi_brcyan %>
+palette = 15=<% color_hash $ansi_brwhite %>
+
+cursor-color = <% color_hash $terminal_text %>
+
+selection-background = <% color_hash $primary_15 %>
+selection-foreground = <% color_hash $gray_0 %>
