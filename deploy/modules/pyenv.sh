@@ -17,13 +17,13 @@ pyenv::install () {
         curl https://pyenv.run | bash
 
     else
-        echo "└> Not installing pyenv to \`$PYENV_ROOT\`; directory already exists."
+        echo "└> Skipping pyenv; already installed."
 
     fi
 }
 
 pyenv::uninstall () {
-    echo "└> Uninstalling pyenv configuration."
+    echo "└> Uninstalling pyenv."
 
     rm -r "$PYENV_ROOT"
 }
