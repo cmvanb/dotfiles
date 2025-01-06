@@ -2,13 +2,17 @@
 # GhosTTY configuration file
 #-------------------------------------------------------------------------------
 
-# Appearance
 font-family = "IosevkaTerm"
-font-size = 14
+font-size = 13
 
 cursor-style = "block"
+cursor-style-blink = false
+shell-integration-features = no-cursor
 
 theme = "custom-theme"
 
 window-decoration = false
 window-theme = "ghostty"
+
+keybind = ctrl+j=scroll_page_lines:32
+keybind = ctrl+k=scroll_page_lines:-32
