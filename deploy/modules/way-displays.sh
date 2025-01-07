@@ -7,7 +7,7 @@ script_dir=$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)
 base_dir=$(realpath "$script_dir/../..")
 host=$(uname -n)
 
-source "$base_dir/local/opt/shell-utils/fs.sh"
+source "$base_dir/config/lib-shell-utils/fs.sh"
 
 
 way-displays::install () {
