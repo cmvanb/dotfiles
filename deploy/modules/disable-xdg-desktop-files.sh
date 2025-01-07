@@ -13,14 +13,14 @@ source "$base_dir/config/lib-shell-utils/fs.sh"
 disable-xdg-desktop-files::install () {
     echo "└> Installing disable-xdg-desktop-files configuration."
 
-    force_link "$base_dir/local/share/applications/avahi-discover.desktop" "$XDG_DATA_HOME/applications/avahi-discover.desktop"
-    force_link "$base_dir/local/share/applications/bssh.desktop" "$XDG_DATA_HOME/applications/bssh.desktop"
-    force_link "$base_dir/local/share/applications/bvnc.desktop" "$XDG_DATA_HOME/applications/bvnc.desktop"
-    force_link "$base_dir/local/share/applications/cmake-gui.desktop" "$XDG_DATA_HOME/applications/cmake-gui.desktop"
-    force_link "$base_dir/local/share/applications/electron24.desktop" "$XDG_DATA_HOME/applications/electron24.desktop"
-    force_link "$base_dir/local/share/applications/lstopo.desktop" "$XDG_DATA_HOME/applications/lstopo.desktop"
-    force_link "$base_dir/local/share/applications/qv4l2.desktop" "$XDG_DATA_HOME/applications/qv4l2.desktop"
-    force_link "$base_dir/local/share/applications/qvidcap.desktop" "$XDG_DATA_HOME/applications/qvidcap.desktop"
+    force_link "$base_dir/config/disable-xdg-desktop-files/avahi-discover.desktop" "$XDG_DATA_HOME/applications/avahi-discover.desktop"
+    force_link "$base_dir/config/disable-xdg-desktop-files/bssh.desktop" "$XDG_DATA_HOME/applications/bssh.desktop"
+    force_link "$base_dir/config/disable-xdg-desktop-files/bvnc.desktop" "$XDG_DATA_HOME/applications/bvnc.desktop"
+    force_link "$base_dir/config/disable-xdg-desktop-files/cmake-gui.desktop" "$XDG_DATA_HOME/applications/cmake-gui.desktop"
+    force_link "$base_dir/config/disable-xdg-desktop-files/electron24.desktop" "$XDG_DATA_HOME/applications/electron24.desktop"
+    force_link "$base_dir/config/disable-xdg-desktop-files/lstopo.desktop" "$XDG_DATA_HOME/applications/lstopo.desktop"
+    force_link "$base_dir/config/disable-xdg-desktop-files/qv4l2.desktop" "$XDG_DATA_HOME/applications/qv4l2.desktop"
+    force_link "$base_dir/config/disable-xdg-desktop-files/qvidcap.desktop" "$XDG_DATA_HOME/applications/qvidcap.desktop"
 }
 
 disable-xdg-desktop-files::uninstall () {
