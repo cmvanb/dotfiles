@@ -37,8 +37,8 @@ river::install () {
     echo "└> Installing river shortcuts."
 
     mkdir -p "$XDG_BIN_HOME"
-    force_link "$base_dir/local/bin/river-run" "$XDG_BIN_HOME/river-run"
-    force_link "$base_dir/local/bin/init~river" "$XDG_BIN_HOME/init"
+    force_link "$base_dir/config/river/river-run.sh" "$XDG_BIN_HOME/river-run"
+    force_link "$base_dir/config/river/init~river" "$XDG_BIN_HOME/init"
 }
 
 river::uninstall () {
