@@ -13,7 +13,7 @@ discord::install () {
     echo "└> Installing discord configuration."
 
     mkdir -p "$XDG_DATA_HOME/applications"
-    force_link "$base_dir/local/share/applications/discord.desktop" "$XDG_DATA_HOME/applications/discord.desktop"
+    force_link "$base_dir/config/discord/discord.desktop" "$XDG_DATA_HOME/applications/discord.desktop"
 }
 
 discord::uninstall () {
