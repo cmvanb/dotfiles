@@ -34,7 +34,7 @@ theme-desktop::install () {
     esac
 
     mkdir -p "$XDG_SCRIPTS_HOME"
-    force_link "$base_dir/local/scripts/generate-color-gradient-palette.py" "$XDG_SCRIPTS_HOME/generate-color-gradient-palette.py"
+    force_link "$base_dir/config/theme/generate-color-gradient-palette.py" "$XDG_SCRIPTS_HOME/generate-color-gradient-palette.py"
 
     source "$XDG_OPT_HOME/theme/configure-gtk.sh"
 }
