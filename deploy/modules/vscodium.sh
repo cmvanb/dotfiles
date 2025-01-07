@@ -13,11 +13,13 @@ vscodium::install () {
     echo "└> Installing vscodium configuration."
 
     mkdir -p "$XDG_DATA_HOME/applications"
-    force_link "$base_dir/local/share/applications/vscodium-wayland.desktop" "$XDG_DATA_HOME/applications/vscodium-wayland.desktop"
+    force_link "$base_dir/config/vscodium/vscodium-wayland.desktop" "$XDG_DATA_HOME/applications/vscodium-wayland.desktop"
+    force_link "$base_dir/config/vscodium/vscodium.desktop" "$XDG_DATA_HOME/applications/vscodium.desktop"
 }
 
 vscodium::uninstall () {
     echo "└> Uninstalling vscodium configuration."
 
     rm "$XDG_DATA_HOME/applications/vscodium-wayland.desktop"
+    rm "$XDG_DATA_HOME/applications/vscodium.desktop"
 }
