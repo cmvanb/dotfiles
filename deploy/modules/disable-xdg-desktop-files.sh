@@ -9,6 +9,7 @@ base_dir=$(realpath "$script_dir/../..")
 source "$base_dir/config/lib-shell-utils/fs.sh"
 
 
+    # TODO: Update to electron32.
 disable-xdg-desktop-files::install () {
     echo "└> Installing disable-xdg-desktop-files configuration."
 
@@ -20,7 +21,6 @@ disable-xdg-desktop-files::install () {
     force_link "$base_dir/local/share/applications/lstopo.desktop" "$XDG_DATA_HOME/applications/lstopo.desktop"
     force_link "$base_dir/local/share/applications/qv4l2.desktop" "$XDG_DATA_HOME/applications/qv4l2.desktop"
     force_link "$base_dir/local/share/applications/qvidcap.desktop" "$XDG_DATA_HOME/applications/qvidcap.desktop"
-    force_link "$base_dir/local/share/applications/vscodium.desktop" "$XDG_DATA_HOME/applications/vscodium.desktop"
 }
 
 disable-xdg-desktop-files::uninstall () {
@@ -34,5 +34,4 @@ disable-xdg-desktop-files::uninstall () {
     rm "$XDG_DATA_HOME/applications/lstopo.desktop"
     rm "$XDG_DATA_HOME/applications/qv4l2.desktop"
     rm "$XDG_DATA_HOME/applications/qvidcap.desktop"
-    rm "$XDG_DATA_HOME/applications/vscodium.desktop"
 }
