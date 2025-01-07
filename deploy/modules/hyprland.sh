@@ -28,5 +28,7 @@ hyprland::uninstall () {
 
     echo "└> Uninstalling hyprland shortcuts."
 
-    rm "$XDG_BIN_HOME/init"
+    if same_file "$XDG_BIN_HOME/init" "$base_dir/config/hyprland/init~hyprland"; then
+        rm "$XDG_BIN_HOME/init"
+    fi
 }

@@ -23,6 +23,22 @@ ensure_directory () {
     fi
 }
 
+same_file() {
+    if [[ -z "$1" || -z "$2" ]]; then
+        echo "[$(basename "$0")] ERROR: Missing argument: file1 file2"
+        return 1
+    fi
+
+    if [[ ! -f "$1" || ! -f "$2" ]]; then
+        echo "[$(basename "$0")] ERROR: Arguments must be files"
+        return 1
+    fi
+    if [[ "$1" -ef "$2" ]]; then
+        return 0
+    fi
+    return 1
+}
+
 force_link () {
     if [[ -z "$1" ]]; then
         echo "[$(basename "$0")] ERROR: Missing argument: target"
