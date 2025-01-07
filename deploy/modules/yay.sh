@@ -5,7 +5,6 @@
 
 script_dir=$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)
 base_dir=$(realpath "$script_dir/../..")
-config_dir=${XDG_CONFIG_HOME:-$HOME/.config}
 
 source "$base_dir/local/opt/shell-utils/fs.sh"
 
@@ -13,12 +12,12 @@ source "$base_dir/local/opt/shell-utils/fs.sh"
 yay::install () {
     echo "└> Installing yay configuration."
 
-    mkdir -p "$config_dir/yay"
-    force_link "$base_dir/config/yay/config.json" "$config_dir/yay/config.json"
+    mkdir -p "$XDG_CONFIG_HOME/yay"
+    force_link "$base_dir/config/yay/config.json" "$XDG_CONFIG_HOME/yay/config.json"
 }
 
 yay::uninstall () {
     echo "└> Uninstalling yay configuration."
 
-    rm -r "$config_dir/yay"
+    rm -r "$XDG_CONFIG_HOME/yay"
 }
