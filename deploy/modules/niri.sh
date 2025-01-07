@@ -35,7 +35,7 @@ niri::install () {
     echo "└> Installing niri shortcuts."
 
     mkdir -p "$XDG_BIN_HOME"
-    force_link "$base_dir/local/bin/init~niri" "$XDG_BIN_HOME/init"
+    force_link "$base_dir/config/niri/init~niri" "$XDG_BIN_HOME/init"
 }
 
 niri::uninstall () {
