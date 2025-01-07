@@ -13,7 +13,7 @@ less::install () {
     echo "└> Installing less configuration."
 
     mkdir -p "$XDG_CONFIG_HOME"
-    force_link "$base_dir/config/lesskey" "$XDG_CONFIG_HOME/lesskey"
+    force_link "$base_dir/config/less/lesskey" "$XDG_CONFIG_HOME/lesskey"
 }
 
 less::uninstall () {
