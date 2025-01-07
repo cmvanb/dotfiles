@@ -17,7 +17,7 @@ ripgrep::install () {
 
     echo "└> Installing ripgrep shortcuts."
 
-    force_link "$base_dir/local/bin/rg" "$XDG_BIN_HOME/rg"
+    force_link "$base_dir/config/ripgrep/ripgrep.sh" "$XDG_BIN_HOME/rg"
 }
 
 ripgrep::uninstall () {
