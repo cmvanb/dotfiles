@@ -13,7 +13,7 @@ draw.io::install () {
     echo "└> Installing draw.io configuration."
 
     mkdir -p "$XDG_DATA_HOME/applications"
-    esh "$base_dir/local/share/applications/draw.io.desktop~esh" > "$XDG_DATA_HOME/applications/draw.io.desktop"
+    esh "$base_dir/config/draw.io/draw.io.desktop~esh" > "$XDG_DATA_HOME/applications/draw.io.desktop"
 }
 
 draw.io::uninstall () {
