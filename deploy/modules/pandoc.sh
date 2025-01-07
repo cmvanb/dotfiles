@@ -12,11 +12,12 @@ source "$base_dir/config/lib-shell-utils/fs.sh"
 pandoc::install () {
     echo "└> Installing pandoc configuration."
 
-    force_link "$base_dir/local/share/pandoc" "$XDG_DATA_HOME/pandoc"
+    mkdir -p "$XDG_DATA_HOME/pandoc"
+    force_link "$base_dir/config/pandoc/templates" "$XDG_DATA_HOME/pandoc/templates"
 }
 
 pandoc::uninstall () {
     echo "└> Uninstalling pandoc configuration."
 
-    rm "$XDG_DATA_HOME/pandoc"
+    rm -r "$XDG_DATA_HOME/pandoc"
 }
