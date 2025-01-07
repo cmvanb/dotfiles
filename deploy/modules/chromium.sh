@@ -13,7 +13,7 @@ chromium::install () {
     echo "└> Installing chromium configuration."
 
     mkdir -p "$XDG_DATA_HOME/applications"
-    force_link "$base_dir/local/share/applications/chromium.desktop" "$XDG_DATA_HOME/applications/chromium.desktop"
+    force_link "$base_dir/config/chromium/chromium.desktop" "$XDG_DATA_HOME/applications/chromium.desktop"
 }
 
 chromium::uninstall () {
