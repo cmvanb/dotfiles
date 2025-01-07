@@ -51,4 +51,7 @@ river::uninstall () {
     echo "└> Uninstalling river shortcuts."
 
     rm "$XDG_BIN_HOME/river-run"
+    if same_file "$XDG_BIN_HOME/init" "$base_dir/config/river/init~river"; then
+        rm "$XDG_BIN_HOME/init"
+    fi
 }

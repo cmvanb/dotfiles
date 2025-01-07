@@ -48,5 +48,7 @@ niri::uninstall () {
 
     echo "└> Uninstalling niri shortcuts."
 
-    rm "$XDG_BIN_HOME/init"
+    if same_file "$XDG_BIN_HOME/init" "$base_dir/config/niri/init~niri"; then
+        rm "$XDG_BIN_HOME/init"
+    fi
 }
