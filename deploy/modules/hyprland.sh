@@ -5,8 +5,6 @@
 
 script_dir=$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)
 base_dir=$(realpath "$script_dir/../..")
-config_dir=${XDG_CONFIG_HOME:-$HOME/.config}
-bin_dir=${XDG_BIN_HOME:-$HOME/.local/bin}
 
 source "$base_dir/local/opt/shell-utils/fs.sh"
 
@@ -14,20 +12,20 @@ source "$base_dir/local/opt/shell-utils/fs.sh"
 hyprland::install () {
     echo "└> Installing hyprland configuration."
 
-    force_link "$base_dir/config/hypr" "$config_dir/hypr"
+    force_link "$base_dir/config/hypr" "$XDG_CONFIG_HOME/hypr"
 
     echo "└> Installing hyprland shortcuts."
 
-    mkdir -p "$bin_dir"
-    force_link "$base_dir/local/bin/init~hyprland" "$bin_dir/init"
+    mkdir -p "$XDG_BIN_HOME"
+    force_link "$base_dir/local/bin/init~hyprland" "$XDG_BIN_HOME/init"
 }
 
 hyprland::uninstall () {
     echo "└> Uninstalling hyprland configuration."
 
-    rm "$config_dir/hypr"
+    rm "$XDG_CONFIG_HOME/hypr"
 
     echo "└> Uninstalling hyprland shortcuts."
 
-    rm "$bin_dir/init"
+    rm "$XDG_BIN_HOME/init"
 }
