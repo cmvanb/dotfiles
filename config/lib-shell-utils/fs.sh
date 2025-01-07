@@ -2,9 +2,25 @@
 # Bash file system utilities
 #-------------------------------------------------------------------------------
 
-# Get the directory of the script that is calling this function.
 get_script_dir () {
+    # Get the directory of the script that is calling this function.
     cd -- "$( dirname -- "${BASH_SOURCE[1]}" )" &> /dev/null && pwd
+}
+
+ensure_directory () {
+    if [[ -z "$1" ]]; then
+        echo "[$(basename "$0")] ERROR: Missing argument: directory"
+        return 1
+    fi
+
+    # Delete pre-existing links and files.
+    if [[ -L "$1" ]] || [[ -f "$1" ]]; then
+        rm "$1"
+    fi
+
+    if [[ ! -d "$1" ]]; then
+        mkdir -p "$1"
+    fi
 }
 
 force_link () {
