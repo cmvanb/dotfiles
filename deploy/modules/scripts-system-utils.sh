@@ -11,10 +11,10 @@ scripts-system-utils::install () {
     echo "└> Installing system utility shortcuts."
 
     mkdir -p "$XDG_BIN_HOME"
-    force_link "$base_dir/local/bin/logout" "$XDG_BIN_HOME/logout"
-    force_link "$base_dir/local/bin/reboot" "$XDG_BIN_HOME/reboot"
-    force_link "$base_dir/local/bin/shutdown" "$XDG_BIN_HOME/shutdown"
-    force_link "$base_dir/local/bin/suspend" "$XDG_BIN_HOME/suspend"
+    force_link "$base_dir/config/scripts-system-utils/logout.sh" "$XDG_BIN_HOME/logout"
+    force_link "$base_dir/config/scripts-system-utils/reboot.sh" "$XDG_BIN_HOME/reboot"
+    force_link "$base_dir/config/scripts-system-utils/shutdown.sh" "$XDG_BIN_HOME/shutdown"
+    force_link "$base_dir/config/scripts-system-utils/suspend.sh" "$XDG_BIN_HOME/suspend"
 }
 
 scripts-system-utils::uninstall () {

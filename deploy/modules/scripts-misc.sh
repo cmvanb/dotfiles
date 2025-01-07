@@ -11,9 +11,9 @@ scripts-misc::install () {
     echo "└> Installing miscellaneous scripts."
 
     mkdir -p "$XDG_SCRIPTS_HOME"
-    force_link "$base_dir/local/scripts/count-command-usage.sh" "$XDG_SCRIPTS_HOME/count-command-usage.sh"
-    force_link "$base_dir/local/scripts/matrix.sh" "$XDG_SCRIPTS_HOME/matrix.sh"
-    force_link "$base_dir/local/scripts/show-webcam.sh" "$XDG_SCRIPTS_HOME/show-webcam.sh"
+    force_link "$base_dir/config/scripts-misc/count-command-usage.sh" "$XDG_SCRIPTS_HOME/count-command-usage.sh"
+    force_link "$base_dir/config/scripts-misc/matrix.sh" "$XDG_SCRIPTS_HOME/matrix.sh"
+    force_link "$base_dir/config/scripts-misc/show-webcam.sh" "$XDG_SCRIPTS_HOME/show-webcam.sh"
 }
 
 scripts-misc::uninstall () {
