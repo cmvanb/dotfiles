@@ -12,16 +12,21 @@ source "$base_dir/config/lib-shell-utils/fs.sh"
 lf::install () {
     echo "└> Installing lf configuration."
 
-    force_link "$base_dir/config/lf" "$XDG_CONFIG_HOME/lf"
+    mkdir -p "$XDG_CONFIG_HOME/lf"
+    force_link "$base_dir/config/lf/icons" "$XDG_CONFIG_HOME/lf/icons"
+    force_link "$base_dir/config/lf/lf-open.sh" "$XDG_CONFIG_HOME/lf/lf-open.sh"
+    force_link "$base_dir/config/lf/lfcd.fish" "$XDG_CONFIG_HOME/lf/lfcd.fish"
+    force_link "$base_dir/config/lf/lfcd.sh" "$XDG_CONFIG_HOME/lf/lfcd.sh"
+    force_link "$base_dir/config/lf/lfrc" "$XDG_CONFIG_HOME/lf/lfrc"
 
     mkdir -p "$XDG_DATA_HOME/applications"
-    force_link "$base_dir/local/share/applications/lf.desktop" "$XDG_DATA_HOME/applications/lf.desktop"
+    force_link "$base_dir/config/lf/lf.desktop" "$XDG_DATA_HOME/applications/lf.desktop"
 }
 
 lf::uninstall () {
     echo "└> Uninstalling lf configuration."
 
-    rm "$XDG_CONFIG_HOME/lf"
+    rm -r "$XDG_CONFIG_HOME/lf"
 
     rm "$XDG_DATA_HOME/applications/lf.desktop"
 }
