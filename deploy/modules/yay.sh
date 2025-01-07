@@ -12,7 +12,7 @@ source "$base_dir/config/lib-shell-utils/fs.sh"
 yay::install () {
     echo "└> Installing yay configuration."
 
-    mkdir -p "$XDG_CONFIG_HOME/yay"
+    ensure_directory "$XDG_CONFIG_HOME/yay"
     force_link "$base_dir/config/yay/config.json" "$XDG_CONFIG_HOME/yay/config.json"
 }
 

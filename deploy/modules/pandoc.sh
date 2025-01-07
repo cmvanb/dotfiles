@@ -12,7 +12,7 @@ source "$base_dir/config/lib-shell-utils/fs.sh"
 pandoc::install () {
     echo "└> Installing pandoc configuration."
 
-    mkdir -p "$XDG_DATA_HOME/pandoc"
+    ensure_directory "$XDG_DATA_HOME/pandoc"
     force_link "$base_dir/config/pandoc/templates" "$XDG_DATA_HOME/pandoc/templates"
 }
 

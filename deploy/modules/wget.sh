@@ -12,7 +12,7 @@ source "$base_dir/config/lib-shell-utils/fs.sh"
 wget::install () {
     echo "└> Installing wget configuration."
 
-    mkdir -p "$XDG_CONFIG_HOME/wget"
+    ensure_directory "$XDG_CONFIG_HOME/wget"
     esh "$base_dir/config/wget/wgetrc~esh" > "$XDG_CONFIG_HOME/wget/wgetrc"
 }
 

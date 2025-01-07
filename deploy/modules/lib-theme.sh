@@ -12,7 +12,7 @@ source "$base_dir/config/lib-shell-utils/fs.sh"
 lib-theme::install () {
     echo "└> Installing theme libraries."
 
-    mkdir -p "$XDG_OPT_HOME"
+    ensure_directory "$XDG_OPT_HOME"
     force_link "$base_dir/config/lib-theme" "$XDG_OPT_HOME/theme"
 }
 

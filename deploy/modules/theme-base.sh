@@ -12,13 +12,13 @@ source "$base_dir/config/lib-shell-utils/fs.sh"
 theme-base::install () {
     echo "└> Installing theme base configuration."
 
-    mkdir -p "$XDG_CONFIG_HOME/theme"
+    ensure_directory "$XDG_CONFIG_HOME/theme"
     force_link "$base_dir/config/theme/carbon-dark" "$XDG_CONFIG_HOME/theme/carbon-dark"
     force_link "$base_dir/config/theme/carbon-light" "$XDG_CONFIG_HOME/theme/carbon-light"
 
     force_link "$XDG_CONFIG_HOME/theme/carbon-dark" "$XDG_CONFIG_HOME/theme/colors"
 
-    mkdir -p "$XDG_CONFIG_HOME/theme"
+    ensure_directory "$XDG_CONFIG_HOME/theme"
     esh "$base_dir/config/theme/dircolors~esh" > "$XDG_CONFIG_HOME/theme/dircolors"
     esh "$base_dir/config/theme/eza-colors~esh" > "$XDG_CONFIG_HOME/theme/eza-colors"
 

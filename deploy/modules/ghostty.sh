@@ -12,10 +12,10 @@ source "$base_dir/config/lib-shell-utils/fs.sh"
 ghostty::install () {
     echo "└> Installing ghostty configuration."
 
-    mkdir -p "$XDG_CONFIG_HOME/ghostty"
+    ensure_directory "$XDG_CONFIG_HOME/ghostty"
     force_link "$base_dir/config/ghostty/config" "$XDG_CONFIG_HOME/ghostty/config"
 
-    mkdir -p "$XDG_CONFIG_HOME/ghostty/themes"
+    ensure_directory "$XDG_CONFIG_HOME/ghostty/themes"
     esh "$base_dir/config/ghostty/themes/custom-theme~esh" > "$XDG_CONFIG_HOME/ghostty/themes/custom-theme"
 }
 

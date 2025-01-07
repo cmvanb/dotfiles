@@ -12,7 +12,7 @@ source "$base_dir/config/lib-shell-utils/fs.sh"
 fish::install () {
     echo "└> Installing fish configuration."
 
-    mkdir -p "$XDG_CONFIG_HOME/fish"
+    ensure_directory "$XDG_CONFIG_HOME/fish"
     force_link "$base_dir/config/fish/config.fish" "$XDG_CONFIG_HOME/fish/config.fish"
     esh "$base_dir/config/fish/env.fish~esh" > "$XDG_CONFIG_HOME/fish/env.fish"
     esh "$base_dir/config/fish/interactive.fish~esh" > "$XDG_CONFIG_HOME/fish/interactive.fish"

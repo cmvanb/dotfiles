@@ -10,7 +10,7 @@ base_dir=$(realpath "$script_dir/../..")
 scripts-markdown::install () {
     echo "└> Installing markdown scripts."
 
-    mkdir -p "$XDG_SCRIPTS_HOME"
+    ensure_directory "$XDG_SCRIPTS_HOME"
     force_link "$base_dir/config/scripts-markdown/markdown-to-html.sh" "$XDG_SCRIPTS_HOME/markdown-to-html.sh"
     force_link "$base_dir/config/scripts-markdown/preview-markdown.sh" "$XDG_SCRIPTS_HOME/preview-markdown.sh"
 }

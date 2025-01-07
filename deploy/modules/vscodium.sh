@@ -12,7 +12,7 @@ source "$base_dir/config/lib-shell-utils/fs.sh"
 vscodium::install () {
     echo "└> Installing vscodium configuration."
 
-    mkdir -p "$XDG_DATA_HOME/applications"
+    ensure_directory "$XDG_DATA_HOME/applications"
     force_link "$base_dir/config/vscodium/vscodium-wayland.desktop" "$XDG_DATA_HOME/applications/vscodium-wayland.desktop"
     force_link "$base_dir/config/vscodium/vscodium.desktop" "$XDG_DATA_HOME/applications/vscodium.desktop"
 }

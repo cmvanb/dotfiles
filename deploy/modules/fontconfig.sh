@@ -12,7 +12,7 @@ source "$base_dir/config/lib-shell-utils/fs.sh"
 fontconfig::install () {
     echo "└> Installing fontconfig configuration."
 
-    mkdir -p "$XDG_CONFIG_HOME/fontconfig"
+    ensure_directory "$XDG_CONFIG_HOME/fontconfig"
     esh "$base_dir/config/fontconfig/fonts.conf~esh" > "$XDG_CONFIG_HOME/fontconfig/fonts.conf"
 }
 

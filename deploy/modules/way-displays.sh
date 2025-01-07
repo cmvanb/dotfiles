@@ -13,7 +13,7 @@ source "$base_dir/config/lib-shell-utils/fs.sh"
 way-displays::install () {
     echo "└> Installing way-displays configuration."
 
-    mkdir -p "$XDG_CONFIG_HOME/way-displays"
+    ensure_directory "$XDG_CONFIG_HOME/way-displays"
 
     if [[ $host == "supertubes" ]] || [[ $host == "cyxwel" ]]; then
         force_link "$base_dir/config/way-displays/cfg.yaml~home-triple" "$XDG_CONFIG_HOME/way-displays/cfg.yaml"

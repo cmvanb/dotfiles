@@ -12,10 +12,10 @@ source "$base_dir/config/lib-shell-utils/fs.sh"
 zathura::install () {
     echo "└> Installing zathura configuration."
 
-    mkdir -p "$XDG_CONFIG_HOME/zathura"
+    ensure_directory "$XDG_CONFIG_HOME/zathura"
     esh "$base_dir/config/zathura/zathurarc~esh" > "$XDG_CONFIG_HOME/zathura/zathurarc"
 
-    mkdir -p "$XDG_DATA_HOME/applications"
+    ensure_directory "$XDG_DATA_HOME/applications"
     force_link "$base_dir/config/zathura/org.pwmt.zathura.desktop" "$XDG_DATA_HOME/applications/org.pwmt.zathura.desktop"
 }
 
