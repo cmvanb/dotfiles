@@ -12,7 +12,7 @@ source "$base_dir/config/lib-shell-utils/fs.sh"
 udiskie::install () {
     echo "└> Installing udiskie configuration."
 
-    mkdir -p "$XDG_CONFIG_HOME/systemd/user"
+    ensure_directory "$XDG_CONFIG_HOME/systemd/user"
     force_link "$base_dir/config/systemd/user/udiskie.service" "$XDG_CONFIG_HOME/systemd/user/udiskie.service"
 }
 

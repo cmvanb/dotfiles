@@ -12,10 +12,10 @@ source "$base_dir/config/lib-shell-utils/fs.sh"
 btop::install () {
     echo "└> Installing btop configuration."
 
-    mkdir -p "$XDG_CONFIG_HOME/btop"
+    ensure_directory "$XDG_CONFIG_HOME/btop"
     force_link "$base_dir/config/btop/btop.conf" "$XDG_CONFIG_HOME/btop/btop.conf"
 
-    mkdir -p "$XDG_CONFIG_HOME/btop/themes"
+    ensure_directory "$XDG_CONFIG_HOME/btop/themes"
     # TODO: Extract templating to a shared function.
     esh "$base_dir/config/btop/themes/carbon.theme~esh" > "$XDG_CONFIG_HOME/btop/themes/carbon.theme"
 }

@@ -13,7 +13,7 @@ source "$base_dir/config/lib-shell-utils/fs.sh"
 wallpaper::install () {
     echo "└> Installing wallpaper configuration."
 
-    mkdir -p "$XDG_CONFIG_HOME/wallpaper"
+    ensure_directory "$XDG_CONFIG_HOME/wallpaper"
 
     if [[ $host == "supertubes" ]] || [[ $host == "cyxwel" ]]; then
         force_link "$base_dir/config/wallpaper/wallpaper.sh~home-triple" "$XDG_CONFIG_HOME/wallpaper/wallpaper.sh"

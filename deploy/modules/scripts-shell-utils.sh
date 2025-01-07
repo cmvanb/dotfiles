@@ -12,7 +12,7 @@ source "$base_dir/config/lib-shell-utils/fs.sh"
 scripts-shell-utils::install () {
     echo "└> Installing shell utility scripts."
 
-    mkdir -p "$XDG_SCRIPTS_HOME"
+    ensure_directory "$XDG_SCRIPTS_HOME"
     force_link "$base_dir/config/scripts-shell-utils/clean-home.sh" "$XDG_SCRIPTS_HOME/clean-home.sh"
     force_link "$base_dir/config/scripts-shell-utils/edit.sh" "$XDG_SCRIPTS_HOME/edit.sh"
     force_link "$base_dir/config/scripts-shell-utils/estimate-disk-space-usage.sh" "$XDG_SCRIPTS_HOME/estimate-disk-space-usage.sh"
@@ -29,7 +29,7 @@ scripts-shell-utils::install () {
 
     echo "└> Installing shell utility shortcuts."
 
-    mkdir -p "$XDG_BIN_HOME"
+    ensure_directory "$XDG_BIN_HOME"
     force_link "$base_dir/config/scripts-shell-utils/edit.sh" "$XDG_BIN_HOME/edit"
     force_link "$base_dir/config/scripts-shell-utils/rename-kebabcase.sh" "$XDG_BIN_HOME/kebab"
     force_link "$base_dir/config/scripts-shell-utils/kebabify.sh" "$XDG_BIN_HOME/kebabify"

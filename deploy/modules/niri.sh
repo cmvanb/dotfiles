@@ -21,20 +21,20 @@ niri::install () {
         exit 1
     fi
 
-    mkdir -p "$XDG_CONFIG_HOME/niri"
+    ensure_directory "$XDG_CONFIG_HOME/niri"
     force_link "$base_dir/config/niri/config.kdl" "$XDG_CONFIG_HOME/niri/config.kdl"
     force_link "$base_dir/config/niri/focus-window.sh" "$XDG_CONFIG_HOME/niri/focus-window.sh"
 
-    mkdir -p "$XDG_CONFIG_HOME/systemd/user/niri.service.wants"
+    ensure_directory "$XDG_CONFIG_HOME/systemd/user/niri.service.wants"
     force_link "/usr/lib/systemd/user/mako.service" "$XDG_CONFIG_HOME/systemd/user/niri.service.wants/mako.service"
     force_link "/usr/lib/systemd/user/waybar.service" "$XDG_CONFIG_HOME/systemd/user/niri.service.wants/waybar.service"
 
-    mkdir -p "$XDG_CONFIG_HOME/xdg-desktop-portal"
+    ensure_directory "$XDG_CONFIG_HOME/xdg-desktop-portal"
     force_link "$base_dir/config/niri/niri-portals.conf" "$XDG_CONFIG_HOME/xdg-desktop-portal/niri-portals.conf"
 
     echo "└> Installing niri shortcuts."
 
-    mkdir -p "$XDG_BIN_HOME"
+    ensure_directory "$XDG_BIN_HOME"
     force_link "$base_dir/config/niri/init~niri" "$XDG_BIN_HOME/init"
 }
 

@@ -21,7 +21,7 @@ river::install () {
         exit 1
     fi
 
-    mkdir -p "$XDG_CONFIG_HOME/river"
+    ensure_directory "$XDG_CONFIG_HOME/river"
     force_link "$base_dir/config/river/environment.sh" "$XDG_CONFIG_HOME/river/environment.sh"
     force_link "$base_dir/config/river/init" "$XDG_CONFIG_HOME/river/init"
     force_link "$base_dir/config/river/keymaps.sh" "$XDG_CONFIG_HOME/river/keymaps.sh"
@@ -31,12 +31,12 @@ river::install () {
     force_link "$base_dir/config/river/theme.sh" "$XDG_CONFIG_HOME/river/theme.sh"
     force_link "$base_dir/config/river/utils.sh" "$XDG_CONFIG_HOME/river/utils.sh"
 
-    mkdir -p "$XDG_CONFIG_HOME/xdg-desktop-portal"
+    ensure_directory "$XDG_CONFIG_HOME/xdg-desktop-portal"
     force_link "$base_dir/config/river/river-portals.conf" "$XDG_CONFIG_HOME/xdg-desktop-portal/river-portals.conf"
 
     echo "└> Installing river shortcuts."
 
-    mkdir -p "$XDG_BIN_HOME"
+    ensure_directory "$XDG_BIN_HOME"
     force_link "$base_dir/config/river/river-run.sh" "$XDG_BIN_HOME/river-run"
     force_link "$base_dir/config/river/init~river" "$XDG_BIN_HOME/init"
 }

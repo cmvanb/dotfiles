@@ -12,7 +12,7 @@ source "$base_dir/config/lib-shell-utils/fs.sh"
 lib-shell-utils::install () {
     echo "└> Installing shell utility libraries."
 
-    mkdir -p "$XDG_OPT_HOME"
+    ensure_directory "$XDG_OPT_HOME"
     force_link "$base_dir/config/lib-shell-utils" "$XDG_OPT_HOME/shell-utils"
 }
 

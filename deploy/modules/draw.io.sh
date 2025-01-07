@@ -12,7 +12,7 @@ source "$base_dir/config/lib-shell-utils/fs.sh"
 draw.io::install () {
     echo "└> Installing draw.io configuration."
 
-    mkdir -p "$XDG_DATA_HOME/applications"
+    ensure_directory "$XDG_DATA_HOME/applications"
     esh "$base_dir/config/draw.io/draw.io.desktop~esh" > "$XDG_DATA_HOME/applications/draw.io.desktop"
 }
 

@@ -10,7 +10,7 @@ base_dir=$(realpath "$script_dir/../..")
 scripts-desktop::install () {
     echo "└> Installing desktop scripts."
 
-    mkdir -p "$XDG_SCRIPTS_HOME"
+    ensure_directory "$XDG_SCRIPTS_HOME"
     force_link "$base_dir/config/scripts-desktop/lock-screen.sh" "$XDG_SCRIPTS_HOME/lock-screen.sh"
     force_link "$base_dir/config/scripts-desktop/open-terminal-cwd.sh" "$XDG_SCRIPTS_HOME/open-terminal-cwd.sh"
     force_link "$base_dir/config/scripts-desktop/screenshot-rectangle.sh" "$XDG_SCRIPTS_HOME/screenshot-rectangle.sh"
@@ -19,7 +19,7 @@ scripts-desktop::install () {
 
     echo "└> Installing desktop shortcuts."
 
-    mkdir -p "$XDG_BIN_HOME"
+    ensure_directory "$XDG_BIN_HOME"
     force_link "$base_dir/config/scripts-desktop/upload-to-0x0.sh" "$XDG_BIN_HOME/0x0"
 }
 

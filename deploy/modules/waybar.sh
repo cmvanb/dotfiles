@@ -13,7 +13,7 @@ waybar::install () {
     echo "└> Installing waybar configuration."
 
     # TODO: Extract WM-specific configuration to WM modules.
-    mkdir -p "$XDG_CONFIG_HOME/waybar"
+    ensure_directory "$XDG_CONFIG_HOME/waybar"
     force_link "$base_dir/config/waybar/niri-config" "$XDG_CONFIG_HOME/waybar/config"
     esh "$base_dir/config/waybar/niri-style.css~esh" > "$XDG_CONFIG_HOME/waybar/style.css"
 }

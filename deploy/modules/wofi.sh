@@ -12,7 +12,7 @@ source "$base_dir/config/lib-shell-utils/fs.sh"
 wofi::install () {
     echo "└> Installing wofi configuration."
 
-    mkdir -p "$XDG_CONFIG_HOME/wofi"
+    ensure_directory "$XDG_CONFIG_HOME/wofi"
     force_link "$base_dir/config/wofi/config" "$XDG_CONFIG_HOME/wofi/config"
     esh "$base_dir/config/wofi/style.css~esh" > "$XDG_CONFIG_HOME/wofi/style.css"
 }

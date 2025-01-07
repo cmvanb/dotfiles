@@ -12,7 +12,7 @@ source "$base_dir/config/lib-shell-utils/fs.sh"
 spotify::install () {
     echo "└> Installing spotify configuration."
 
-    mkdir -p "$XDG_DATA_HOME/applications"
+    ensure_directory "$XDG_DATA_HOME/applications"
     force_link "$base_dir/config/spotify/spotify.desktop" "$XDG_DATA_HOME/applications/spotify.desktop"
 }
 

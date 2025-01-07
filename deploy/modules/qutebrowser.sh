@@ -12,29 +12,29 @@ source "$base_dir/config/lib-shell-utils/fs.sh"
 qutebrowser::install () {
     echo "└> Installing qutebrowser configuration."
 
-    mkdir -p "$XDG_CONFIG_HOME/qutebrowser"
+    ensure_directory "$XDG_CONFIG_HOME/qutebrowser"
     force_link "$base_dir/config/qutebrowser/config.py" "$XDG_CONFIG_HOME/qutebrowser/config.py"
     force_link "$base_dir/config/qutebrowser/stylesheet.css" "$XDG_CONFIG_HOME/qutebrowser/stylesheet.css"
 
-    mkdir -p "$XDG_DATA_HOME/applications"
+    ensure_directory "$XDG_DATA_HOME/applications"
     force_link "$base_dir/config/qutebrowser/org.qutebrowser.qutebrowser.desktop" "$XDG_DATA_HOME/applications/org.qutebrowser.qutebrowser.desktop"
 
-    mkdir -p "$XDG_DATA_HOME/qutebrowser/userscripts"
+    ensure_directory "$XDG_DATA_HOME/qutebrowser/userscripts"
     force_link "$base_dir/config/qutebrowser/userscripts/format_json.sh" "$XDG_DATA_HOME/qutebrowser/userscripts/format_json.sh"
     force_link "$base_dir/config/qutebrowser/userscripts/readability.py" "$XDG_DATA_HOME/qutebrowser/userscripts/readability.py"
 
-    mkdir -p "$XDG_SCRIPTS_HOME"
+    ensure_directory "$XDG_SCRIPTS_HOME"
     force_link "$base_dir/config/qutebrowser/add-bookmark.sh" "$XDG_SCRIPTS_HOME/add-bookmark.sh"
     force_link "$base_dir/config/qutebrowser/browse.sh" "$XDG_SCRIPTS_HOME/browse.sh"
     force_link "$base_dir/config/qutebrowser/open-qutebrowser-session.sh" "$XDG_SCRIPTS_HOME/open-qutebrowser-session.sh"
     force_link "$base_dir/config/qutebrowser/select-bookmark.sh" "$XDG_SCRIPTS_HOME/select-bookmark.sh"
 
-    mkdir -p "$XDG_TEMPLATES_DIR"
+    ensure_directory "$XDG_TEMPLATES_DIR"
     force_link "$base_dir/config/qutebrowser/bookmark.md~esh" "$XDG_TEMPLATES_DIR/bookmark.md~esh"
 
     echo "└> Installing qutebrowser shortcuts."
 
-    mkdir -p "$XDG_BIN_HOME"
+    ensure_directory "$XDG_BIN_HOME"
     force_link "$base_dir/config/qutebrowser/browse.sh" "$XDG_BIN_HOME/browse"
 }
 

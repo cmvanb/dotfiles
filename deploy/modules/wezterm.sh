@@ -12,7 +12,7 @@ source "$base_dir/config/lib-shell-utils/fs.sh"
 wezterm::install () {
     echo "└> Installing wezterm configuration."
 
-    mkdir -p "$XDG_CONFIG_HOME/wezterm"
+    ensure_directory "$XDG_CONFIG_HOME/wezterm"
     force_link "$base_dir/config/wezterm/wezterm.lua" "$XDG_CONFIG_HOME/wezterm/wezterm.lua"
 }
 

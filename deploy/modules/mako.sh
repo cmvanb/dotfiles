@@ -12,7 +12,7 @@ source "$base_dir/config/lib-shell-utils/fs.sh"
 mako::install () {
     echo "└> Installing mako configuration."
 
-    mkdir -p "$XDG_CONFIG_HOME/mako"
+    ensure_directory "$XDG_CONFIG_HOME/mako"
     esh "$base_dir/config/mako/config~esh" > "$XDG_CONFIG_HOME/mako/config"
 }
 

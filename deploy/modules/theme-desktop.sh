@@ -13,7 +13,7 @@ source "$base_dir/config/lib-shell-utils/fs.sh"
 theme-desktop::install () {
     echo "└> Installing theme desktop configuration."
 
-    mkdir -p "$XDG_CONFIG_HOME/theme"
+    ensure_directory "$XDG_CONFIG_HOME/theme"
     force_link "$base_dir/config/theme/cursor" "$XDG_CONFIG_HOME/theme/cursor"
 
     case $host in
@@ -33,7 +33,7 @@ theme-desktop::install () {
             ;;
     esac
 
-    mkdir -p "$XDG_SCRIPTS_HOME"
+    ensure_directory "$XDG_SCRIPTS_HOME"
     force_link "$base_dir/config/theme/generate-color-gradient-palette.py" "$XDG_SCRIPTS_HOME/generate-color-gradient-palette.py"
 
     source "$XDG_OPT_HOME/theme/configure-gtk.sh"

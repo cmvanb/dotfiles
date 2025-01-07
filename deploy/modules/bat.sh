@@ -15,11 +15,11 @@ bat::install () {
 
     echo "└> Installing bat configuration."
 
-    mkdir -p "$XDG_CONFIG_HOME/bat"
+    ensure_directory "$XDG_CONFIG_HOME/bat"
     force_link "$base_dir/config/bat/config" "$XDG_CONFIG_HOME/bat/config"
     force_link "$base_dir/config/bat/syntaxes" "$XDG_CONFIG_HOME/bat/syntaxes"
 
-    mkdir -p "$XDG_CONFIG_HOME/bat/themes"
+    ensure_directory "$XDG_CONFIG_HOME/bat/themes"
     esh "$base_dir/config/theme/carbon-dark.tmTheme~esh" > "$XDG_CONFIG_HOME/bat/themes/carbon-dark.tmTheme"
 
     bat cache --build
