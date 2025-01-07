@@ -14,7 +14,7 @@ python::install () {
 
     force_link "$base_dir/config/pip" "$XDG_CONFIG_HOME/pip"
 
-    force_link "$base_dir/local/scripts/generate-venv.sh" "$XDG_SCRIPTS_HOME/generate-venv.sh"
+    force_link "$base_dir/config/python/generate-venv.sh" "$XDG_SCRIPTS_HOME/generate-venv.sh"
 }
 
 python::uninstall () {
