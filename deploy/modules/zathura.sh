@@ -16,7 +16,7 @@ zathura::install () {
     esh "$base_dir/config/zathura/zathurarc~esh" > "$XDG_CONFIG_HOME/zathura/zathurarc"
 
     mkdir -p "$XDG_DATA_HOME/applications"
-    force_link "$base_dir/local/share/applications/org.pwmt.zathura.desktop" "$XDG_DATA_HOME/applications/org.pwmt.zathura.desktop"
+    force_link "$base_dir/config/zathura/org.pwmt.zathura.desktop" "$XDG_DATA_HOME/applications/org.pwmt.zathura.desktop"
 }
 
 zathura::uninstall () {
