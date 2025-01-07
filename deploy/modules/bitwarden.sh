@@ -12,18 +12,18 @@ bitwarden::install () {
 
     mkdir -p "$XDG_CONFIG_HOME/Bitwarden"
     # NOTE: Don't symlink Bitwarden config because it will be overwritten by the app.
-    cp -n "$base_dir/config/Bitwarden/data.json" "$XDG_CONFIG_HOME/Bitwarden/data.json" && true
+    cp -n "$base_dir/config/bitwarden/data.json" "$XDG_CONFIG_HOME/Bitwarden/data.json" && true
 
     mkdir -p "$XDG_DATA_HOME/applications"
-    force_link "$base_dir/local/share/applications/bitwarden.desktop" "$XDG_DATA_HOME/applications/bitwarden.desktop"
+    force_link "$base_dir/config/bitwarden/bitwarden.desktop" "$XDG_DATA_HOME/applications/bitwarden.desktop"
 
     mkdir -p "$XDG_SCRIPTS_HOME"
-    force_link "$base_dir/local/scripts/fetch-password.sh" "$XDG_SCRIPTS_HOME/fetch-password.sh"
+    force_link "$base_dir/config/bitwarden/fetch-password.sh" "$XDG_SCRIPTS_HOME/fetch-password.sh"
 
     echo "└> Installing bitwarden shortcuts."
 
     mkdir -p "$XDG_BIN_HOME"
-    force_link "$base_dir/local/bin/fetchpw" "$XDG_BIN_HOME/fetchpw"
+    force_link "$base_dir/config/bitwarden/fetch-password.sh" "$XDG_BIN_HOME/fetchpw"
 }
 
 bitwarden::uninstall () {
