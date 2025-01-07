@@ -13,7 +13,7 @@ lib-wayland-utils::install () {
     echo "└> Installing wayland utility libraries."
 
     mkdir -p "$XDG_OPT_HOME"
-    force_link "$base_dir/local/opt/wayland-utils" "$XDG_OPT_HOME/wayland-utils"
+    force_link "$base_dir/config/lib-wayland-utils" "$XDG_OPT_HOME/wayland-utils"
 }
 
 lib-wayland-utils::uninstall () {

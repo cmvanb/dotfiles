@@ -13,7 +13,7 @@ lib-theme::install () {
     echo "└> Installing theme libraries."
 
     mkdir -p "$XDG_OPT_HOME"
-    force_link "$base_dir/local/opt/theme" "$XDG_OPT_HOME/theme"
+    force_link "$base_dir/config/lib-theme" "$XDG_OPT_HOME/theme"
 }
 
 lib-theme::uninstall () {
