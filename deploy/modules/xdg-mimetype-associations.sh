@@ -13,7 +13,7 @@ xdg-mimetype-associations::install () {
     echo "└> Installing xdg-mimetype-associations configuration."
 
     mkdir -p "$XDG_CONFIG_HOME"
-    force_link "$base_dir/config/mimeapps.list" "$XDG_CONFIG_HOME/mimeapps.list"
+    force_link "$base_dir/config/xdg-mimetype-associations/mimeapps.list" "$XDG_CONFIG_HOME/mimeapps.list"
 }
 
 xdg-mimetype-associations::uninstall () {
