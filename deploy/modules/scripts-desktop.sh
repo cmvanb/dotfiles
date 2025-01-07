@@ -11,16 +11,16 @@ scripts-desktop::install () {
     echo "└> Installing desktop scripts."
 
     mkdir -p "$XDG_SCRIPTS_HOME"
-    force_link "$base_dir/local/scripts/lock-screen.sh" "$XDG_SCRIPTS_HOME/lock-screen.sh"
-    force_link "$base_dir/local/scripts/open-terminal-cwd.sh" "$XDG_SCRIPTS_HOME/open-terminal-cwd.sh"
-    force_link "$base_dir/local/scripts/set-output-wallpaper.sh" "$XDG_SCRIPTS_HOME/set-output-wallpaper.sh"
-    force_link "$base_dir/local/scripts/screenshot-rectangle.sh" "$XDG_SCRIPTS_HOME/screenshot-rectangle.sh"
+    force_link "$base_dir/config/scripts-desktop/lock-screen.sh" "$XDG_SCRIPTS_HOME/lock-screen.sh"
+    force_link "$base_dir/config/scripts-desktop/open-terminal-cwd.sh" "$XDG_SCRIPTS_HOME/open-terminal-cwd.sh"
+    force_link "$base_dir/config/scripts-desktop/screenshot-rectangle.sh" "$XDG_SCRIPTS_HOME/screenshot-rectangle.sh"
+    force_link "$base_dir/config/scripts-desktop/set-output-wallpaper.sh" "$XDG_SCRIPTS_HOME/set-output-wallpaper.sh"
+    force_link "$base_dir/config/scripts-desktop/upload-to-0x0.sh" "$XDG_SCRIPTS_HOME/upload-to-0x0.sh"
 
     echo "└> Installing desktop shortcuts."
 
-    # TODO: Give this script a better name.
     mkdir -p "$XDG_BIN_HOME"
-    force_link "$base_dir/local/bin/0x0" "$XDG_BIN_HOME/0x0"
+    force_link "$base_dir/config/scripts-desktop/upload-to-0x0.sh" "$XDG_BIN_HOME/0x0"
 }
 
 scripts-desktop::uninstall () {
@@ -28,8 +28,8 @@ scripts-desktop::uninstall () {
 
     rm "$XDG_SCRIPTS_HOME/lock-screen.sh"
     rm "$XDG_SCRIPTS_HOME/open-terminal-cwd.sh"
-    rm "$XDG_SCRIPTS_HOME/set-output-wallpaper.sh"
     rm "$XDG_SCRIPTS_HOME/screenshot-rectangle.sh"
+    rm "$XDG_SCRIPTS_HOME/set-output-wallpaper.sh"
 
     echo "└> Uninstalling desktop shortcuts."
 
