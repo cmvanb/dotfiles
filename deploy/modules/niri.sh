@@ -32,10 +32,12 @@ niri::install () {
     ensure_directory "$XDG_CONFIG_HOME/xdg-desktop-portal"
     force_link "$base_dir/config/niri/niri-portals.conf" "$XDG_CONFIG_HOME/xdg-desktop-portal/niri-portals.conf"
 
-    echo "└> Installing niri shortcuts."
+    if [[ $DEPLOY_WM == "niri" ]]; then
+        echo "└> Installing niri shortcuts."
 
-    ensure_directory "$XDG_BIN_HOME"
-    force_link "$base_dir/config/niri/init~niri" "$XDG_BIN_HOME/init"
+        ensure_directory "$XDG_BIN_HOME"
+        force_link "$base_dir/config/niri/init~niri" "$XDG_BIN_HOME/init"
+    fi
 }
 
 niri::uninstall () {

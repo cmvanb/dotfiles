@@ -19,12 +19,12 @@ source "$XDG_CONFIG_HOME/shell/interactive"
 # Save bash history in an XDG compliant directory.
 export HISTFILE="$XDG_DATA_HOME/bash/history"
 
-<% if [[ $SYSTEM_PROFILE == "desktop" ]]; then -%>
+<% if [[ $DEPLOY_PROFILE == "desktop" ]]; then -%>
 # Save python history in an XDG compliant directory.
 export PYTHON_HISTORY="$XDG_DATA_HOME/python/history"
 
 <% fi -%>
-<% if [[ $SYSTEM_PROFILE == "desktop" ]]; then -%>
+<% if [[ $DEPLOY_PROFILE == "desktop" ]]; then -%>
 # Functions
 #-------------------------------------------------------------------------------
 
@@ -82,11 +82,11 @@ alias ip="ip -c"
 alias vv="generate-venv.sh"
 alias va="source venv/bin/activate"
 alias vd="deactivate"
-<% if [[ $SYSTEM_DISTRO == "arch" ]]; then -%>
+<% if [[ $DEPLOY_DISTRO == "arch" ]]; then -%>
 alias uu="sudo pacman -Syu"
 <% fi -%>
 alias rga="rg --hidden --no-ignore"
-<% if [[ $SYSTEM_PROFILE == "desktop" ]]; then -%>
+<% if [[ $DEPLOY_PROFILE == "desktop" ]]; then -%>
 alias rb="reboot"
 alias sus="suspend"
 alias sdn="shutdown"

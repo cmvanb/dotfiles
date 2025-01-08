@@ -34,11 +34,13 @@ river::install () {
     ensure_directory "$XDG_CONFIG_HOME/xdg-desktop-portal"
     force_link "$base_dir/config/river/river-portals.conf" "$XDG_CONFIG_HOME/xdg-desktop-portal/river-portals.conf"
 
-    echo "└> Installing river shortcuts."
+    if [[ $DEPLOY_WM == "river" ]]; then
+        echo "└> Installing river shortcuts."
 
-    ensure_directory "$XDG_BIN_HOME"
-    force_link "$base_dir/config/river/river-run.sh" "$XDG_BIN_HOME/river-run"
-    force_link "$base_dir/config/river/init~river" "$XDG_BIN_HOME/init"
+        ensure_directory "$XDG_BIN_HOME"
+        force_link "$base_dir/config/river/river-run.sh" "$XDG_BIN_HOME/river-run"
+        force_link "$base_dir/config/river/init~river" "$XDG_BIN_HOME/init"
+    fi
 }
 
 river::uninstall () {

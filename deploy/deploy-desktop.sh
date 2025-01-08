@@ -10,33 +10,34 @@
 script_dir=$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)
 base_dir=$(realpath "$script_dir/..")
 
-# Utility functions
+# Load utility modules
 source "$base_dir/config/lib-shell-utils/fs.sh"
 source "$base_dir/config/lib-shell-utils/linux.sh"
 
 # Environment variables needed by deployment modules
-export SYSTEM_PROFILE="desktop"
-export SYSTEM_DISTRO="$(get_distro_id)"
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.local/cache"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_BIN_HOME="$HOME/.local/bin"
 export XDG_OPT_HOME="$HOME/.local/opt"
 export XDG_SCRIPTS_HOME="$HOME/.local/scripts"
+export DEPLOY_PROFILE="desktop"
+export DEPLOY_DISTRO="$(get_distro_id)"
+export DEPLOY_WM="hyprland"
 
-# Determine which shell esh executes
+# Determine which shell the template engine executes
 export ESH_SHELL=/usr/bin/bash
 
-# Shell library modules
+# Load shell library modules
 source "$base_dir/deploy/modules/lib-shell-utils.sh"
 source "$base_dir/deploy/modules/lib-theme.sh"
 source "$base_dir/deploy/modules/lib-wayland-utils.sh"
 
-# Theme modules
+# Load theme modules
 source "$base_dir/deploy/modules/theme-base.sh"
 source "$base_dir/deploy/modules/theme-desktop.sh"
 
-# Server deployment modules
+# Load server deployment modules
 source "$base_dir/deploy/modules/bash.sh"
 source "$base_dir/deploy/modules/bat.sh"
 source "$base_dir/deploy/modules/broot.sh"
@@ -53,7 +54,7 @@ source "$base_dir/deploy/modules/scripts-shell-utils.sh"
 source "$base_dir/deploy/modules/shell-stty.sh"
 source "$base_dir/deploy/modules/wget.sh"
 
-# Desktop deployment modules
+# Load desktop deployment modules
 source "$base_dir/deploy/modules/alacritty.sh"
 source "$base_dir/deploy/modules/bitwarden.sh"
 source "$base_dir/deploy/modules/bluetooth-autoconnect.sh"
@@ -99,18 +100,15 @@ source "$base_dir/deploy/modules/zathura.sh"
 
 echo "Deploying desktop profile from \`$base_dir\` to \`$HOME\`..."
 
-# Libraries
 echo "Deploying library modules..."
 lib-shell-utils::install
 lib-theme::install
 lib-wayland-utils::install
 
-# Theme modules
 echo "Deploying theme modules..."
 theme-base::install
 theme-desktop::install
 
-# Server modules
 echo "Deploying server modules..."
 bash::install
 bat::install
@@ -128,7 +126,6 @@ scripts-shell-utils::install
 shell-stty::install
 wget::install
 
-# Desktop environment modules
 echo "Deploying desktop modules..."
 alacritty::install
 bitwarden::install
@@ -141,12 +138,15 @@ discord::install
 draw.io::install
 fontconfig::install
 ghostty::install
+hyprland::install
 imv::install
 mako::install
 mpv::install
+niri::install
 pandoc::install
 pyenv::install
 qutebrowser::install
+river::install
 scripts-desktop::install
 scripts-markdown::install
 scripts-misc::install
@@ -164,18 +164,11 @@ xdg-mimetype-associations::install
 yay::install
 zathura::install
 
-# Desktop window manager
-echo "Deploying desktop window managers..."
-# NOTE: Last module determines default window manager.
-niri::install
-river::install
-hyprland::install
-
-# Enable user services
 echo "Deploying desktop user services..."
 bluetooth-autoconnect::enable
 pipewire::enable
 ssh::enable
 syncthing::enable
 udiskie::enable
+
 echo "...deployment complete."

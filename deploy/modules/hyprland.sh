@@ -15,10 +15,12 @@ hyprland::install () {
     ensure_directory "$XDG_CONFIG_HOME/hypr"
     force_link "$base_dir/config/hyprland/hyprland.conf" "$XDG_CONFIG_HOME/hypr/hyprland.conf"
 
-    echo "└> Installing hyprland shortcuts."
+    if [[ $DEPLOY_WM == "hyprland" ]]; then
+        echo "└> Installing hyprland shortcuts."
 
-    ensure_directory "$XDG_BIN_HOME"
-    force_link "$base_dir/config/hyprland/init~hyprland" "$XDG_BIN_HOME/init"
+        ensure_directory "$XDG_BIN_HOME"
+        force_link "$base_dir/config/hyprland/init~hyprland" "$XDG_BIN_HOME/init"
+    fi
 }
 
 hyprland::uninstall () {
