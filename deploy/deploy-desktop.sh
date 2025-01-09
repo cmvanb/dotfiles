@@ -138,15 +138,12 @@ discord::install
 draw.io::install
 fontconfig::install
 ghostty::install
-hyprland::install
 imv::install
 mako::install
 mpv::install
-niri::install
 pandoc::install
 pyenv::install
 qutebrowser::install
-river::install
 scripts-desktop::install
 scripts-markdown::install
 scripts-misc::install
@@ -163,6 +160,11 @@ wofi::install
 xdg-mimetype-associations::install
 yay::install
 zathura::install
+
+echo "Deploying window managers..."
+hyprland::install
+niri::install
+river::install
 
 echo "Deploying desktop user services..."
 bluetooth-autoconnect::enable
