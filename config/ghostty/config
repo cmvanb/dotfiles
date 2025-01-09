@@ -14,5 +14,7 @@ theme = "custom-theme"
 window-decoration = false
 window-theme = "ghostty"
 
+confirm-close-surface = false
+
 keybind = ctrl+j=scroll_page_lines:32
 keybind = ctrl+k=scroll_page_lines:-32
