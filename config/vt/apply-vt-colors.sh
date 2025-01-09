@@ -14,6 +14,6 @@ base_dir=$(realpath "$script_dir/../..")
 echo "Applying virtual terminal colors from \`$base_dir/.config/vt/colors~esh\`."
 
 # Generate the colors template and pass it to setvtrgb.
-esh "$base_dir/.config/vt/colors~esh" > /tmp/vtcolors
+esh "$base_dir/config/vt/colors~esh" > /tmp/vtcolors
 setvtrgb /tmp/vtcolors
 rm /tmp/vtcolors
