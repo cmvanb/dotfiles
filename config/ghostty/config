@@ -13,8 +13,12 @@ theme = "custom-theme"
 
 window-decoration = false
 window-theme = "ghostty"
+window-inherit-working-directory = true
 
 confirm-close-surface = false
 
-keybind = ctrl+j=scroll_page_lines:32
-keybind = ctrl+k=scroll_page_lines:-32
+keybind = unconsumed:ctrl+j=scroll_page_lines:32
+keybind = unconsumed:ctrl+k=scroll_page_lines:-32
+keybind = ctrl+t=new_window
+keybind = unconsumed:ctrl+c=copy_to_clipboard
+keybind = unconsumed:ctrl+v=paste_from_clipboard
