@@ -97,7 +97,7 @@ c.url.start_pages = [ 'about:blank' ]
 c.url.auto_search = 'naive'
 c.url.default_page = 'about:blank'
 c.url.searchengines = {
-    'DEFAULT': 'https://duckduckgo.com/?q={}',
+    'DEFAULT': 'https://google.com/search?q={}',
     'd': 'https://duckduckgo.com/?q={}',
     'g': 'https://google.com/search?q={}',
     'w': 'https://en.wikipedia.org/wiki/?search={}',
@@ -403,7 +403,7 @@ config.bind('<Space>o', 'cmd-set-text -s :session-load')
 config.bind('<Space>s', 'cmd-set-text -s :session-save -o')
 
 # Tab management
-config.bind('<Ctrl-q>', 'tab-close')
+config.bind('<Ctrl-w>', 'tab-close')
 config.bind('<Ctrl-Tab>', 'tab-next')
 config.bind('<Ctrl-Shift-Tab>', 'tab-prev')
 config.bind('<Ctrl-h>', 'tab-prev')
