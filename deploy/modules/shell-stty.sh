@@ -10,14 +10,13 @@ source "$base_dir/config/lib-shell-utils/fs.sh"
 
 
 shell-stty::install () {
-    echo "└> Installing shell-stty configuration."
+    echo "└> Installing shell stty configuration."
 
-    # TODO: Rename.
-    force_link "$base_dir/config/shell" "$XDG_CONFIG_HOME/shell"
+    force_link "$base_dir/config/shell-stty" "$XDG_CONFIG_HOME/shell-stty"
 }
 
 shell-stty::uninstall () {
-    echo "└> Uninstalling shell-stty configuration."
+    echo "└> Uninstalling shell stty configuration."
 
-    rm "$XDG_CONFIG_HOME/shell"
+    rm "$XDG_CONFIG_HOME/shell-stty"
 }

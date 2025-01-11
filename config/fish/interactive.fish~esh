@@ -6,7 +6,7 @@
 #-------------------------------------------------------------------------------
 
 # Generic interactive shell configuration.
-source $XDG_CONFIG_HOME/shell/interactive
+source $XDG_CONFIG_HOME/shell-stty/stty-config
 
 # General configuration
 #-------------------------------------------------------------------------------

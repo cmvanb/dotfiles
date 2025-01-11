@@ -1,18 +1,20 @@
 #-------------------------------------------------------------------------------
-# Generic interactive shell configuration
+# STTY configuration
 #
-# NOTE: This file is sourced by both fish and bash shells, so it's important
-# the commands remain in a format compatible to both.
+# NOTE: This file is sourced by both fish and bash in interactive mode, so it's
+# important the commands remain in a format compatible to both.
 #-------------------------------------------------------------------------------
 
 # Disable unwanted bindings.
 stty start undef
 stty stop undef
-stty susp ^Z
 stty rprnt undef
 stty werase undef
 stty lnext undef
 stty discard undef
+
+# Suspend signal
+stty susp ^Z
 
 # Quit signal
 stty quit ^Q
