@@ -28,8 +28,19 @@ resize-overlay = never
 # Key bindings
 #-------------------------------------------------------------------------------
 
+# Page scroll
 keybind = unconsumed:ctrl+j=scroll_page_lines:32
 keybind = unconsumed:ctrl+k=scroll_page_lines:-32
+
+# New window
 keybind = ctrl+t=new_window
+
+# Clipboard
 keybind = unconsumed:ctrl+c=copy_to_clipboard
 keybind = unconsumed:ctrl+v=paste_from_clipboard
+
+# Rebind Ctrl+C STTY interrupt
+keybind = ctrl+x=text:\x03
+
+# Rebind Ctrl+D STTY end-of-file
+keybind = ctrl+period=text:\x04
