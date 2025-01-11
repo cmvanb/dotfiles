@@ -49,11 +49,13 @@ y = 0
 # *Modifiers bitflag: 1 is shift, 2 is alt, 4 is ctrl
 #-------------------------------------------------------------------------------
 
+#------------------------------ Spawn
 [[keyboard.bindings]]
 mods = 'Control'
 key = 'T'
 action = 'SpawnNewInstance'
 
+#------------------------------ Clipboard
 # NOTE: Not working in less pager :(
 [[keyboard.bindings]]
 mode = '~Alt'
@@ -66,6 +68,7 @@ mods = 'Control'
 key = 'V'
 action = 'Paste'
 
+#------------------------------ Scrolling
 [[keyboard.bindings]]
 mode = '~Alt'
 mods = 'Control'
@@ -78,6 +81,17 @@ mods = 'Control'
 key = 'K'
 action = 'ScrollHalfPageUp'
 
+[[keyboard.bindings]]
+mode = '~Alt'
+key = 'PageDown'
+action = 'ScrollHalfPageDown'
+
+[[keyboard.bindings]]
+mode = '~Alt'
+key = 'PageUp'
+action = 'ScrollHalfPageUp'
+
+#------------------------------ Signals
 # STTY interrupt passthrough
 [[keyboard.bindings]]
 mods = 'Control'
@@ -90,6 +104,7 @@ mods = 'Control'
 key = 'Period'
 chars = "\u0004"
 
+#------------------------------ Passthrough
 # Ctrl+I -> F13 passthrough
 [[keyboard.bindings]]
 mods = 'Control'
