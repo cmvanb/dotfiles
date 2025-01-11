@@ -65,6 +65,9 @@ opt.scrolloff = 4
 -- Enable mouse in all modes
 opt.mouse = 'a'
 
+-- Scroll one line at a time
+opt.mousescroll='ver:1,hor:1'
+
 -- Sessions
 opt.sessionoptions = 'buffers,curdir,folds,help,tabpages,winsize,winpos,terminal'
 
