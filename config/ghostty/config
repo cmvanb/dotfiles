@@ -16,6 +16,7 @@ window-theme = "ghostty"
 window-inherit-working-directory = true
 
 confirm-close-surface = false
+resize-overlay = never
 
 keybind = unconsumed:ctrl+j=scroll_page_lines:32
 keybind = unconsumed:ctrl+k=scroll_page_lines:-32
