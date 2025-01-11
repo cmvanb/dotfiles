@@ -29,8 +29,8 @@ resize-overlay = never
 #-------------------------------------------------------------------------------
 
 # Page scroll
-keybind = unconsumed:ctrl+j=scroll_page_lines:32
-keybind = unconsumed:ctrl+k=scroll_page_lines:-32
+keybind = unconsumed:ctrl+j=scroll_page_lines:28
+keybind = unconsumed:ctrl+k=scroll_page_lines:-28
 
 # New window
 keybind = ctrl+t=new_window
@@ -44,3 +44,6 @@ keybind = ctrl+x=text:\x03
 
 # Rebind Ctrl+D STTY end-of-file
 keybind = ctrl+period=text:\x04
+
+# Rebind Ctrl+I to simulate F13
+keybind = ctrl+i=text:\x1b\[1\;2P
