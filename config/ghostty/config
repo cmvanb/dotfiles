@@ -46,4 +46,4 @@ keybind = ctrl+x=text:\x03
 keybind = ctrl+period=text:\x04
 
 # Rebind Ctrl+I to simulate F13
-keybind = ctrl+i=text:\x1b\[1\;2P
+keybind = ctrl+i=text:\x1b\x5b\x31\x3b\x32\x50
