@@ -2,6 +2,9 @@
 # GhosTTY configuration file
 #-------------------------------------------------------------------------------
 
+# Appearance
+#-------------------------------------------------------------------------------
+
 font-family = "IosevkaTerm"
 font-size = 13
 
@@ -13,10 +16,17 @@ theme = "custom-theme"
 
 window-decoration = false
 window-theme = "ghostty"
+
+# Behavior
+#-------------------------------------------------------------------------------
+
 window-inherit-working-directory = true
 
 confirm-close-surface = false
 resize-overlay = never
+
+# Key bindings
+#-------------------------------------------------------------------------------
 
 keybind = unconsumed:ctrl+j=scroll_page_lines:32
 keybind = unconsumed:ctrl+k=scroll_page_lines:-32
