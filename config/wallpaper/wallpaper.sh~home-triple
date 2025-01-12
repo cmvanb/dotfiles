@@ -14,7 +14,7 @@ source "$XDG_OPT_HOME/wayland-utils/output.sh"
 
 pkill -x swaybg
 
-declare wallpaper="$XDG_PICTURES_DIR/wallpapers/vertical/psychedelic-jupiter.jpg"
+declare wallpaper="$XDG_PICTURES_DIR/wallpapers/square/adwaita-l.jpg"
 
 wl_set_output_wallpaper HDMI-A-6 "$wallpaper"
 wl_set_output_wallpaper DP-3 "$wallpaper"
