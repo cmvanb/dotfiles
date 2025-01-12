@@ -7,6 +7,7 @@ script_dir=$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)
 base_dir=$(realpath "$script_dir/../..")
 
 source "$base_dir/config/lib-shell-utils/fs.sh"
+source "$base_dir/config/lib-shell-utils/template.sh"
 
 
 hyprland::install () {
@@ -14,7 +15,7 @@ hyprland::install () {
 
     ensure_directory "$XDG_CONFIG_HOME/hypr"
     force_link "$base_dir/config/hyprland/hyprland.conf" "$XDG_CONFIG_HOME/hypr/hyprland.conf"
-    force_link "$base_dir/config/hyprland/hyprlock.conf" "$XDG_CONFIG_HOME/hypr/hyprlock.conf"
+    render_esh_template "$base_dir/config/hyprland/hyprlock.conf~esh" "$XDG_CONFIG_HOME/hypr/hyprlock.conf"
 
     if [[ $DEPLOY_WM == "hyprland" ]]; then
         echo "└> Installing hyprland shortcuts."
