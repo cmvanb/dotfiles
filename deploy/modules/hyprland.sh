@@ -14,6 +14,7 @@ hyprland::install () {
 
     ensure_directory "$XDG_CONFIG_HOME/hypr"
     force_link "$base_dir/config/hyprland/hyprland.conf" "$XDG_CONFIG_HOME/hypr/hyprland.conf"
+    force_link "$base_dir/config/hyprland/hyprlock.conf" "$XDG_CONFIG_HOME/hypr/hyprlock.conf"
 
     if [[ $DEPLOY_WM == "hyprland" ]]; then
         echo "└> Installing hyprland shortcuts."
