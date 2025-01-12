@@ -256,15 +256,14 @@ xnoremap('<C-s>', '<esc>:wa!<cr>', { desc = 'Save all buffers' })
 inoremap('<C-s>', '<esc>:wa!<cr>', { desc = 'Save all buffers' })
 
 -- Cycle buffers
--- NOTE: Alacritty translates <C-BS> to <F15> to get around NVIM's limitation.
 nnoremap('<C-h>', ':bprev<cr>', { silent = true, desc = 'Previous buffer' })
 nnoremap('<C-l>', ':bnext<cr>', { silent = true, desc = 'Next buffer' })
 
 -- Close buffer
-nnoremap('<C-q>', ':Bdelete<cr>', { silent = true, desc = 'Close buffer' })
+nnoremap('<C-w>', ':Bdelete<cr>', { silent = true, desc = 'Close buffer' })
 
--- Quit NVIM without saving
-noremap('<leader>q', ':qa!<cr>', { desc = 'Quit NVIM without saving' })
+-- Quit NVIM
+noremap('<leader>w', ':wqa!<cr>', { desc = 'Quit NVIM' })
 
 -- Window management
 --------------------------------------------------------------------------------
@@ -279,19 +278,6 @@ nnoremap('<C-A-l>', '<C-w>l', { desc = 'Focus window right' })
 nnoremap('<C-A-s>', '<C-w>R<C-w>l', { desc = 'Cycle windows left' })
 nnoremap('<C-A-g>', '<C-w>r<C-w>h', { desc = 'Rotate windows right' })
 
--- Split windows
-nnoremap(
-    '<C-A-n>',
-    ':belowright vnew<cr>',
-    { silent = true, desc = 'Split window vertically' })
-nnoremap(
-    '<C-A-p>',
-    ':belowright new<cr>',
-    { silent = true, desc = 'Split window horizontally' })
-
--- Close window
-nnoremap('<C-A-q>', ':close<cr>', { silent = true, desc = 'Close window' })
-
 -- Change window size
 nnoremap(
     '<C-A-a>',
@@ -305,6 +291,19 @@ nnoremap(
     '<C-A-f>',
     ':wincmd |<cr>',
     { silent = true, desc = 'Maximize window width' })
+
+-- Split windows
+nnoremap(
+    '<C-A-n>',
+    ':belowright vnew<cr>',
+    { silent = true, desc = 'Split window vertically' })
+nnoremap(
+    '<C-A-p>',
+    ':belowright new<cr>',
+    { silent = true, desc = 'Split window horizontally' })
+
+-- Close window
+nnoremap('<C-A-w>', ':close<cr>', { silent = true, desc = 'Close window' })
 
 -- Open new tab with current buffer
 noremap('<C-A-t>', ':tab split<cr>', { silent = true, desc = 'Tab split' })
