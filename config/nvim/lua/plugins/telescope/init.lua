@@ -41,7 +41,7 @@ telescope.setup({
         },
         mappings = {
             i = {
-                ['<C-q>'] = actions.delete_buffer,
+                ['<C-w>'] = actions.delete_buffer,
                 ['<C-n>'] = actions.select_vertical,
                 ['<C-p>'] = actions.select_horizontal,
                 ['<Esc>'] = actions.close,
