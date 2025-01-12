@@ -25,6 +25,11 @@ end
 -- Map functions
 --------------------------------------------------------------------------------
 
+function KeyMapUtils.unmap(keys, options)
+    options = options or {}
+    vim.keymap.del('', keys, options)
+end
+
 function KeyMapUtils.map(keys, command, options)
     _map('', keys, command, options)
 end

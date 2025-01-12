@@ -10,11 +10,12 @@ local KeyMapUtils = reload('utils.keymaps')
 -- Shortcuts
 --------------------------------------------------------------------------------
 
-local map, nmap, xmap, imap =
+local map, nmap, xmap, imap, unmap =
     KeyMapUtils.map,
     KeyMapUtils.nmap,
     KeyMapUtils.xmap,
-    KeyMapUtils.imap
+    KeyMapUtils.imap,
+    KeyMapUtils.unmap
 
 local noremap, nnoremap, xnoremap, inoremap, onoremap, vnoremap =
     KeyMapUtils.noremap,
@@ -58,6 +59,9 @@ map('gH', '<nop>')
 map('gi', '<nop>')
 map('go', '<nop>')
 map('gr', '<nop>')
+
+unmap('<C-w>d')
+unmap('<C-w><C-d>')
 
 -- Leader key
 --------------------------------------------------------------------------------
