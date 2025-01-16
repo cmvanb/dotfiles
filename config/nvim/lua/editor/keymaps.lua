@@ -113,11 +113,11 @@ nnoremap('<leader>w',
 
 -- Half page up/down
 noremap(
-    '<C-j>',
+    '<PageDown>',
     '<C-d>',
     { desc = 'Scroll half page down' })
 noremap(
-    '<C-k>',
+    '<PageUp>',
     '<C-u>',
     { desc = 'Scroll half page up' })
 
