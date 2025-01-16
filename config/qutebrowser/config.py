@@ -435,10 +435,10 @@ config.bind('<Alt-l>', 'forward')
 # Page navigation
 config.bind('j', 'scroll down')
 config.bind('k', 'scroll up')
-config.bind('<Ctrl-j>', 'scroll-page 0 0.5')
-config.bind('<Ctrl-k>', 'scroll-page 0 -0.5')
-config.bind('<Ctrl-Shift-j>', 'scroll-page 0 1')
-config.bind('<Ctrl-Shift-k>', 'scroll-page 0 -1')
+config.bind('<PgDown>', 'scroll-page 0 0.5')
+config.bind('<PgUp>', 'scroll-page 0 -0.5')
+config.bind('<Ctrl-PgDown>', 'scroll-page 0 1')
+config.bind('<Ctrl-PgUp>', 'scroll-page 0 -1')
 
 # Selection
 config.bind('<Ctrl-a>', 'mode-enter caret ;; selection-toggle ;; move-to-end-of-document')
