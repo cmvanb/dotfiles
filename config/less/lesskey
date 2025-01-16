@@ -1,3 +1,4 @@
 h quit
-^j forw-scroll
-^k back-scroll
+^w quit
+\kD forw-scroll
+\kU back-scroll
