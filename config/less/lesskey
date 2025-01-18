@@ -1,4 +1,5 @@
 h quit
+w quit
 ^w quit
 \kD forw-scroll
 \kU back-scroll
