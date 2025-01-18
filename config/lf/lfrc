@@ -90,10 +90,10 @@ map N search-prev
 
 # Quit.
 map <esc> quit
-map q %{{
+map w %{{
     lf -remote "send $id :cd $LF_REMEMBER_CWD; quit"
 }}
-map <c-q> quit
+map <c-w> quit
 
 # Toggle hidden files.
 map . set hidden!
