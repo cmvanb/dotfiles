@@ -71,18 +71,6 @@ action = 'Paste'
 #------------------------------ Scrolling
 [[keyboard.bindings]]
 mode = '~Alt'
-mods = 'Control'
-key = 'J'
-action = 'ScrollHalfPageDown'
-
-[[keyboard.bindings]]
-mode = '~Alt'
-mods = 'Control'
-key = 'K'
-action = 'ScrollHalfPageUp'
-
-[[keyboard.bindings]]
-mode = '~Alt'
 key = 'PageDown'
 action = 'ScrollHalfPageDown'
 
