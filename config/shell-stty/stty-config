@@ -12,9 +12,8 @@ stty rprnt undef
 stty werase undef
 stty lnext undef
 stty discard undef
-
-# Suspend signal
-stty susp ^Z
+stty susp undef  # Disable suspend
+stty kill undef  # Clear line
 
 # Quit signal
 stty quit ^Q
@@ -22,14 +21,11 @@ stty quit ^Q
 # Backspace
 stty erase "^?"
 
-# Clear line
-# TODO: Sync with other clear line bindings.
-stty kill ^W
-
 # Interrupt signal
-# NOTE: This binding is passed through by Alacritty.
+# NOTE: The terminal emulator binds Ctrl+C to `Copy` and Ctrl+X to simulate
+# Ctrl+C, which is what the shell picks up here.
 stty intr ^C
 
 # EOF signal
-# NOTE: This binding is passed through by Alacritty.
+# NOTE: The terminal emulator binds Ctrl+C to `Copy` and Ctrl+X to simulate
 stty eof ^D
