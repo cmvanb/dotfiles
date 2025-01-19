@@ -86,12 +86,6 @@ mods = 'Control'
 key = 'X'
 chars = "\u0003"
 
-# STTY EOF passthrough
-[[keyboard.bindings]]
-mods = 'Control'
-key = 'Period'
-chars = "\u0004"
-
 #------------------------------ Passthrough
 # Ctrl+I -> F13 passthrough
 [[keyboard.bindings]]
@@ -112,6 +106,12 @@ mode = 'Alt'
 mods = 'Control'
 key = 'Backspace'
 chars = "\u001b\u005b\u0031\u003b\u0032\u0052"
+
+# Ctrl+Period -> F16 passthrough
+[[keyboard.bindings]]
+mods = 'Control'
+key = 'Period'
+chars = "\u001b\u005b\u0031\u003b\u0032\u0053"
 
 # Ctrl+Tab passthrough (NVIM can correctly interpret this, no function key hack)
 [[keyboard.bindings]]
