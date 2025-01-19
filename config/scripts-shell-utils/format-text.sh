@@ -3,7 +3,7 @@
 # Format a text file for viewing in the terminal.
 #-------------------------------------------------------------------------------
 
-set -euo pipefail
+set -uo pipefail
 
 # Imports
 #-------------------------------------------------------------------------------
@@ -16,13 +16,12 @@ source "$XDG_OPT_HOME/shell-utils/fs.sh"
 
 format_json() {
     declare json
-
-    if json=$(jq --indent 4 --color-output . "$1"); then
-        echo "$json"
-        return 0
+    json=$(jq --indent 4 --color-output . "$1" 2> /dev/null)
+    if [[ $? -ne 0 ]]; then
+        return 1
     fi
 
-    return 1
+    echo "$json"
 }
 
 # Formatting is based on file type and extension.
@@ -33,7 +32,9 @@ extension=$(file_extension "$1")
 
 if [[ $mimetype == "application/json" ]] || [[ $mimetype == "text/plain" && $extension == "json" ]]; then
     format_json "$1"
-
+    if [ $? -ne 0 ]; then
+        bat --force-colorization --style=plain --paging=never --wrap=never "$1"
+    fi
 else
     bat --force-colorization --style=plain --paging=never --wrap=never "$1"
 fi
