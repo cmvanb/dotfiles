@@ -78,7 +78,7 @@ function fish_user_key_bindings
     bind \cc 'commandline -r ""'
 
     # Clear screen
-    bind \cd 'tput reset; commandline -f repaint'
+    bind \cs 'tput reset; commandline -f repaint'
 
     # List all files
     bind \cu 'clear; commandline -f repaint; eza -al | view.sh'

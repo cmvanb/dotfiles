@@ -123,6 +123,9 @@ copy_line_to_clipboard () {
 }
 bind -x '"\C-y": copy_line_to_clipboard'
 
+# Clear screen
+bind -x '"\C-s":"clear"'
+
 # LF CD integration
 #-------------------------------------------------------------------------------
 
