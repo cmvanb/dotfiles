@@ -126,6 +126,10 @@ chars = "\u001b\u005b\u0039\u003b\u0035\u0075"
 [colors]
 draw_bold_text_with_bright_colors = false
 
+[colors.selection]
+text = '<% color_zerox $gray_0 %>'
+background = '<% color_zerox $primary_15 %>'
+
 [colors.primary]
 background = '<% color_zerox $terminal_bg %>'
 foreground = '<% color_zerox $terminal_text %>'
