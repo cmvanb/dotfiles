@@ -98,24 +98,30 @@ alias sdn="shutdown"
 # Unbindings
 bind -r '\C-b'
 bind -r '\C-h'
+bind -r '\C-j'
+bind -r '\C-k'
+bind -r '\C-l'
 bind -r '\C-p'
 
 # Open editor
-bind '"\C-e":"edit\C-m"'
+bind -x '"\C-e":"edit"'
 
 # Open file browser
-bind '"\C-f":"lfcd\C-m"'
+bind -x '"\C-f":"lfcd"'
 
 # List all files
-bind '"\C-y":"clear\C-m eza -al | view.sh \C-m"'
+bind -x '"\C-u":"clear; eza -al | view.sh"'
 
-# List all files in tree format (NOTE: output is often long)
-bind '"\e\[1\;2P":"clear\C-m eza -aT --git-ignore | view.sh\C-m"'
+# List all files in tree format
+# NOTE: Ctrl+I is normally interpreted as Tab, but we want to use it here, so
+# we rebind it to simulate F13 (\e\[1\;2P).
+bind -x '"\e\[1\;2P":"clear; eza -aT --git-ignore | view.sh"'
 
+# Copy the whole line to clipboard
 copy_line_to_clipboard () {
     printf %s "$READLINE_LINE" | wl-copy
 }
-bind -x '"\C-b": copy_line_to_clipboard' # binded to ctrl-y
+bind -x '"\C-y": copy_line_to_clipboard'
 
 # LF CD integration
 #-------------------------------------------------------------------------------
