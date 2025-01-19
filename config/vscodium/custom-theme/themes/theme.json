@@ -300,7 +300,7 @@
                 "meta.function-call.arguments",
             ],
             "settings": {
-                "fontStyle": ",
+                "fontStyle": "",
                 "foreground": "#0999b1"
             }
         },

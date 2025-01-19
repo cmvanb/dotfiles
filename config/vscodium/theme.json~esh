@@ -301,7 +301,7 @@
                 "meta.function-call.arguments",
             ],
             "settings": {
-                "fontStyle": ",
+                "fontStyle": "",
                 "foreground": "<% color_hash $secondary_12 %>"
             }
         },
