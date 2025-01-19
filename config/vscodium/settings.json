@@ -1,0 +1,207 @@
+{
+    /* General settings
+    --------------------------------------------------------------------------*/
+    "window.openFoldersInNewWindow": "on",
+
+    /* UI visibility
+    --------------------------------------------------------------------------*/
+    "window.customTitleBarVisibility": "never",
+    "window.menuBarVisibility": "hidden",
+    "breadcrumbs.enabled": false,
+    "workbench.activityBar.location": "hidden",
+
+    /* Editor
+    --------------------------------------------------------------------------*/
+    "editor.bracketPairColorization.enabled": false,
+    "editor.cursorBlinking": "solid",
+	"editor.fontFamily": "IosevkaTerm NF, Consolas, 'Courier New', monospace",
+	"editor.fontSize": 16,
+    "editor.rulers": [
+        80,
+        100,
+    ],
+
+    /* Color theme
+    --------------------------------------------------------------------------*/
+    "window.autoDetectHighContrast": false,
+    "workbench.colorTheme": "Custom Theme",
+    "workbench.preferredHighContrastColorTheme": "Custom Theme",
+    "workbench.preferredDarkColorTheme": "Custom Theme",
+    "workbench.editor.empty.hint": "hidden",
+
+    /* Files
+    --------------------------------------------------------------------------*/
+    "files.associations": {
+        "*.json": "jsonc"
+    },
+    "files.trimTrailingWhitespace": true,
+
+    /* File explorer
+    --------------------------------------------------------------------------*/
+    "explorer.confirmDelete": false,
+
+    /* Terminal
+    --------------------------------------------------------------------------*/
+    "terminal.external.windowsExec": "wt.exe",
+    "terminal.integrated.defaultProfile.windows": "PowerShell 7",
+    "terminal.integrated.profiles.windows": {
+        "PowerShell 5": {
+            "path": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
+        },
+        "PowerShell 7": {
+            "source": "PowerShell",
+            "icon": "terminal-powershell"
+        },
+    },
+	"terminal.integrated.fontSize": 16,
+
+    /* VSCodeVim
+    --------------------------------------------------------------------------*/
+    "vim.handleKeys": {
+        "<C-v>": false,
+    },
+    "vim.hlsearch": true,
+    "vim.leader": " ",
+    "vim.normalModeKeyBindingsNonRecursive": [
+        /* Navigation */
+        {
+            "before": ["<C-j>"],
+            "after": ["<C-d>"]
+        },
+        {
+            "before": ["<C-k>"],
+            "after": ["<C-u>"]
+        },
+
+        /* Editing */
+        {
+            "before": ["H"],
+            "commands": [
+                "editor.action.outdentLines"
+            ],
+        },
+        {
+            "before": ["L"],
+            "commands": [
+                "editor.action.indentLines"
+            ],
+        },
+        {
+            "before": [ "g", "c" ],
+            "commands": [
+                "editor.action.rename",
+            ],
+        },
+
+        /* VSCode LSP */
+        {
+            "before": ["g", "r"],
+            "commands": [
+                "references-view.findReferences",
+            ],
+        },
+
+        /* VSCode AI chat */
+        {
+            "before": ["<leader>", "c"],
+            "commands": [
+                "workbench.action.chat.openInNewWindow"
+            ],
+        },
+
+        /* VSCode search */
+        {
+            "before": ["<leader>", "g"],
+            "commands": [
+                "workbench.action.findInFiles"
+            ],
+        },
+        {
+            "before": ["<leader>", "f"],
+            "commands": [
+                "workbench.action.quickOpen"
+            ],
+        },
+        {
+            "before": ["<leader>", "l"],
+            "commands": [
+                ":noh",
+                "references-view.clear",
+                "search.action.clearSearchResults",
+                "workbench.view.explorer",
+                "workbench.action.focusActiveEditorGroup",
+            ],
+        },
+
+        /* VSCode sidebar */
+        {
+            "before": ["<leader>", "e"],
+            "commands": [
+                "workbench.files.action.focusFilesExplorer"
+            ],
+        },
+        {
+            "before": ["<leader>", "p"],
+            "commands": [
+                "workbench.extensions.action.focusExtensionsView"
+            ],
+        },
+        {
+            "before": ["<leader>", "d"],
+            "commands": [
+                "workbench.view.debug"
+            ],
+        },
+    ],
+    "vim.visualModeKeyBindingsNonRecursive": [
+        /* Navigation */
+        {
+            "before": ["<C-j>"],
+            "after": ["<C-d>"]
+        },
+        {
+            "before": ["<C-k>"],
+            "after": ["<C-u>"]
+        },
+
+        /* Editing */
+        {
+            "before": ["H"],
+            "commands": [
+                "editor.action.outdentLines"
+            ],
+        },
+        {
+            "before": ["L"],
+            "commands": [
+                "editor.action.indentLines"
+            ],
+        },
+
+        /* VSCode */
+        {
+            "before": ["<C-s>"],
+            "commands": [
+                "workbench.action.files.save",
+                "extension.vim_escape"
+            ],
+        }
+    ],
+    "vim.useSystemClipboard": true,
+
+    /* Other extensions
+    --------------------------------------------------------------------------*/
+    /* Python docstring helper */
+    "autoDocstring.docstringFormat": "pep257",
+
+    /* PowerShell */
+    "powershell.integratedConsole.showOnStartup": false,
+
+    /* Lua */
+    "Lua.diagnostics.globals": [
+        "vim"
+    ],
+    "Lua.runtime.version": "Lua 5.1",
+
+    "redhat.telemetry.enabled": false,
+}

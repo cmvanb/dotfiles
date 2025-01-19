@@ -1,0 +1,24 @@
+{
+    "name": "theme",
+    "displayName": "Custom Theme",
+    "description": "",
+    "version": "1.0.0",
+    "engines": {
+        "vscode": "^1.96.0"
+    },
+    "categories": [
+        "Themes"
+    ],
+    "contributes": {
+        "themes": [
+            {
+                "label": "Custom Theme",
+                "uiTheme": "vs-dark",
+                "path": "./themes/theme.json"
+            }
+        ]
+    },
+    "__metadata": {
+        "size": 16776
+    }
+}
