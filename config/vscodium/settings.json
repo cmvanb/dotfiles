@@ -14,7 +14,7 @@
     --------------------------------------------------------------------------*/
     "editor.bracketPairColorization.enabled": false,
     "editor.cursorBlinking": "solid",
-	"editor.fontFamily": "IosevkaTerm NF, Consolas, 'Courier New', monospace",
+	"editor.fontFamily": "IosevkaTerm NF, IosevkaTerm, monospace",
 	"editor.fontSize": 16,
     "editor.rulers": [
         80,
