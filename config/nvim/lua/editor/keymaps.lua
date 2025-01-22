@@ -70,44 +70,6 @@ nnoremap(' ', '')
 xnoremap(' ', '')
 vim.g.mapleader = ' '
 
--- Windows-like key bindings
---------------------------------------------------------------------------------
-
--- Viewing
---------------------------------------------------------------------------------
-
--- -- Folds
--- local ufo = require('ufo')
--- nnoremap('zR', ufo.openAllFolds)
--- nnoremap('zM', ufo.closeAllFolds)
-
--- Toggle indent guides & whitespace
--- TODO: Consider cycling through an option to toggle the EOL character.
-nnoremap('<leader>n',
-    function()
-        if vim.wo.list then
-            vim.cmd('IBLDisable')
-            vim.cmd('tabdo windo set nolist')
-        else
-            vim.cmd('IBLEnable')
-            vim.cmd('tabdo windo set list')
-        end
-    end,
-    { silent = true, desc = 'Toggle indentation guides' })
-
--- Toggle linebreaks
-nnoremap('<leader>m',
-    function()
-        if vim.wo.linebreak then
-            vim.cmd('tabdo windo set nowrap')
-            vim.cmd('tabdo windo set nolinebreak')
-        else
-            vim.cmd('tabdo windo set wrap')
-            vim.cmd('tabdo windo set linebreak')
-        end
-    end,
-    { desc = 'Toggle linebreaks' })
-
 -- Navigation
 --------------------------------------------------------------------------------
 
@@ -213,6 +175,41 @@ nnoremap(
     '<leader>h',
     telescope_builtin.help_tags,
     { desc = 'Search help' })
+
+-- View
+--------------------------------------------------------------------------------
+
+-- -- Folds
+-- local ufo = require('ufo')
+-- nnoremap('zR', ufo.openAllFolds)
+-- nnoremap('zM', ufo.closeAllFolds)
+
+-- Toggle indent guides & whitespace
+-- TODO: Consider cycling through an option to toggle the EOL character.
+nnoremap('<leader>n',
+    function()
+        if vim.wo.list then
+            vim.cmd('IBLDisable')
+            vim.cmd('tabdo windo set nolist')
+        else
+            vim.cmd('IBLEnable')
+            vim.cmd('tabdo windo set list')
+        end
+    end,
+    { silent = true, desc = 'Toggle indentation guides' })
+
+-- Toggle linebreaks
+nnoremap('<leader>m',
+    function()
+        if vim.wo.linebreak then
+            vim.cmd('tabdo windo set nowrap')
+            vim.cmd('tabdo windo set nolinebreak')
+        else
+            vim.cmd('tabdo windo set wrap')
+            vim.cmd('tabdo windo set linebreak')
+        end
+    end,
+    { desc = 'Toggle linebreaks' })
 
 -- LSP & diagnostics
 --------------------------------------------------------------------------------
