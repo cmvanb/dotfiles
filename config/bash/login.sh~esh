@@ -20,13 +20,16 @@ export XDG_SECRETS_HOME="$HOME/.local/secrets"
 
 <% if [[ $DEPLOY_PROFILE == "desktop" ]]; then -%>
 # XDG user directories.
-export XDG_CODE_DIR="$HOME/Code"
 export XDG_DOCUMENTS_DIR="$HOME/Documents"
 export XDG_DOWNLOAD_DIR="$HOME/Downloads"
 export XDG_MUSIC_DIR="$HOME/Media/Music"
 export XDG_PICTURES_DIR="$HOME/Media/Images"
 export XDG_TEMPLATES_DIR="$XDG_DATA_HOME/templates"
 export XDG_VIDEOS_DIR="$HOME/Media/Videos"
+
+# Custom directories.
+export XDG_CODE_DIR="$HOME/Code"
+export XDG_WIKI_DIR="$HOME/Wiki"
 
 # SSH agent integration.
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/gcr/ssh"
