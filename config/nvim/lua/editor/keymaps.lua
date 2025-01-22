@@ -96,7 +96,7 @@ nnoremap('<leader>n',
     { silent = true, desc = 'Toggle indentation guides' })
 
 -- Toggle linebreaks
-nnoremap('<leader>w',
+nnoremap('<leader>m',
     function()
         if vim.wo.linebreak then
             vim.cmd('tabdo windo set nowrap')
@@ -178,7 +178,7 @@ vnoremap('L', '>gv', { desc = 'Indent right' })
 nnoremap(';', '=', { desc = 'Format selected' })
 xnoremap(';', '=', { desc = 'Format selected' })
 nnoremap('<leader>;', 'gg=G', { desc = 'Format buffer' })
-nnoremap('<leader>m', ':TSJToggle<cr>', { desc = 'Split/join formatting' })
+nnoremap('<leader>.', ':TSJToggle<cr>', { desc = 'Split/join formatting' })
 
 -- Insert line break
 nnoremap('<Enter>', 'i<CR><esc>`^', { desc = 'Insert line break' })
