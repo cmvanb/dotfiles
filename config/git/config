@@ -1,16 +1,30 @@
 [user]
-	email = draakie@proton.me
-	name = Casper
+    email = draakie@proton.me
+    name = Casper
+
 [core]
-	editor = nvim
-	pager = less -R
+    editor = nvim
+    pager = delta
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    dark = true
+    line-numbers = true
+
+[merge]
+    conflictstyle = zdiff3
+
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+
 [log]
-	abbrevCommit = true
-	date = format:%Y-%m-%d %H:%M
+    abbrevCommit = true
+    date = format:%Y-%m-%d %H:%M
+
 [pretty]
-	history = %C(yellow)[%h]%C(reset) %<(16,trunc)%ad %C(cyan)%an%C(reset) %C(green)%s%C(reset)
+    history = %C(yellow)[%h]%C(reset) %<(16,trunc)%ad %C(cyan)%an%C(reset) %C(green)%s%C(reset)
