@@ -21,7 +21,6 @@ scripts-desktop::install () {
 
     ensure_directory "$XDG_BIN_HOME"
     force_link "$base_dir/config/scripts-desktop/upload-to-0x0.sh" "$XDG_BIN_HOME/0x0"
-    force_link "$base_dir/config/scripts-desktop/firefox.sh" "$XDG_BIN_HOME/firefox"
 }
 
 scripts-desktop::uninstall () {
@@ -35,5 +34,4 @@ scripts-desktop::uninstall () {
     echo "└> Uninstalling desktop shortcuts."
 
     rm "$XDG_BIN_HOME/0x0"
-    rm "$XDG_BIN_HOME/firefox"
 }
