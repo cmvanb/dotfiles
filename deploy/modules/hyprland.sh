@@ -14,14 +14,23 @@ hyprland::install () {
     echo "└> Installing hyprland configuration."
 
     ensure_directory "$XDG_CONFIG_HOME/hypr"
-    force_link "$base_dir/config/hyprland/hyprland.conf" "$XDG_CONFIG_HOME/hypr/hyprland.conf"
-    render_esh_template "$base_dir/config/hyprland/hyprlock.conf~esh" "$XDG_CONFIG_HOME/hypr/hyprlock.conf"
+    force_link \
+        "$base_dir/config/hyprland/hyprland.conf" \
+        "$XDG_CONFIG_HOME/hypr/hyprland.conf"
+    render_esh_template \
+        "$base_dir/config/hyprland/hyprlock.conf~esh" \
+        "$XDG_CONFIG_HOME/hypr/hyprlock.conf"
+    force_link \
+        "$base_dir/config/hyprland/close-window-under-cursor.sh" \
+        "$XDG_CONFIG_HOME/hypr/close-window-under-cursor.sh"
 
     if [[ $DEPLOY_WM == "hyprland" ]]; then
         echo "└> Installing hyprland shortcuts."
 
         ensure_directory "$XDG_BIN_HOME"
-        force_link "$base_dir/config/hyprland/init~hyprland" "$XDG_BIN_HOME/init"
+        force_link \
+            "$base_dir/config/hyprland/init~hyprland" \
+            "$XDG_BIN_HOME/init"
     fi
 }
 
