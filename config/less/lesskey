@@ -2,5 +2,7 @@ q noaction
 h quit
 w quit
 ^w quit
+f forw-scroll
+d back-scroll
 \kD forw-scroll
 \kU back-scroll
