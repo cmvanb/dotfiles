@@ -20,6 +20,15 @@ function fish_user_key_bindings
     bind '<' self-insert expand-abbr
     bind ')' self-insert expand-abbr
 
+    # Bracketed paste
+    bind --preset -m paste \e\[200\~ __fish_start_bracketed_paste
+    bind --preset -M paste \e\[201\~ __fish_stop_bracketed_paste
+    bind --preset -M paste '' self-insert
+    bind --preset -M paste \r commandline\ -i\ \\n
+    bind --preset -M paste \' __fish_commandline_insert_escaped\ \\\'\ \$__fish_paste_quoted
+    bind --preset -M paste \\ __fish_commandline_insert_escaped\ \\\\\ \$__fish_paste_quoted
+    bind --preset -M paste ' ' self-insert-notfirst
+
     # Basics
     bind \e\[A up-or-search  # Up
     bind \e\[B down-or-search  # Down
@@ -33,8 +42,8 @@ function fish_user_key_bindings
     bind \e cancel
 
     # Clipboard
-    bind \cy fish_clipboard_copy
-    bind \cp fish_clipboard_paste
+    bind \cc fish_clipboard_copy
+    bind \cv fish_clipboard_paste
 
     # Completion
     bind \t accept-autosuggestion
