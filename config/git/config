@@ -14,9 +14,9 @@
     line-numbers = true
     syntax-theme = carbon-dark
     minus-style = '"#ff291a" "#4d0500"'
-    minus-emph-style = '"#ffb8b3" bold "#b30c00"'
+    minus-emph-style = '"#dfefff" bold "#b30c00"'
     plus-style = 'syntax "#00331f"'
-    plus-emph-style = '"#1affa3" bold "#00995c"'
+    plus-emph-style = '"#dfefff" bold "#00995c"'
 
 [merge]
     conflictstyle = zdiff3
