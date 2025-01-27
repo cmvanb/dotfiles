@@ -10,6 +10,8 @@
     diffFilter = delta --color-only
 
 [delta]
+    paging = always
+    pager = less
     dark = true
     line-numbers = true
     line-numbers-left-format = "{nm:>2}⋮"
