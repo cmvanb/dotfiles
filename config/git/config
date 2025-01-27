@@ -12,11 +12,18 @@
 [delta]
     dark = true
     line-numbers = true
+    line-numbers-left-format = "{nm:>2}⋮"
+    line-numbers-right-format = "{np:>2}│"
+    hunk-header-style = 'omit'
     syntax-theme = carbon-dark
+    file-style = '"#055eb5"'
+    line-numbers-zero-style = '"#023469"'
     minus-style = '"#ff291a" "#4d0500"'
     minus-emph-style = '"#dfefff" bold "#b30c00"'
+    line-numbers-minus-style = '"#b30c00"'
     plus-style = 'syntax "#00331f"'
     plus-emph-style = '"#dfefff" bold "#00995c"'
+    line-numbers-plus-style = '"#00995c"'
 
 [merge]
     conflictstyle = zdiff3
