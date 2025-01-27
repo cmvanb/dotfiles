@@ -361,7 +361,7 @@
                 <key>settings</key>
                 <dict>
                     <key>foreground</key>
-                    <string><% color_hash $debug %></string>
+                    <string><% color_hash $magenta_6 %></string>
                 </dict>
             </dict>
         </array>
