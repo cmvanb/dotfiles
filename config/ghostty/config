@@ -5,6 +5,8 @@
 # Appearance
 #-------------------------------------------------------------------------------
 
+background-opacity = 0.84
+
 font-family = "IosevkaTerm"
 font-size = 13
 
