@@ -28,6 +28,9 @@ resize-overlay = never
 # Key bindings
 #-------------------------------------------------------------------------------
 
+# Reload configuration
+keybind = unconsumed:ctrl+shift+r=reload_config
+
 # Page scroll
 keybind = unconsumed:ctrl+j=scroll_page_lines:28
 keybind = unconsumed:ctrl+k=scroll_page_lines:-28
