@@ -7,11 +7,11 @@ local theme = reload('theme.system')
 local colors = {
     theme_1_bg  = theme.color_hash('primary_6'),
     theme_1_fg  = theme.color_hash('text_15'),
-    theme_2_bg  = theme.color_hash('primary_4'),
+    theme_2_bg  = theme.color_hash('primary_3'),
     theme_2_fg  = theme.color_hash('text_8'),
-    theme_3_bg  = theme.color_hash('primary_2'),
+    theme_3_bg  = theme.color_hash('editor_bg'),
     theme_3_fg  = theme.color_hash('text_6'),
-    inactive_bg = theme.color_hash('primary_1'),
+    inactive_bg = theme.color_hash('editor_bg'),
     inactive_fg = theme.color_hash('text_4'),
 
     normal_bg   = theme.color_hash('primary_6'),
