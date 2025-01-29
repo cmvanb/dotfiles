@@ -117,14 +117,14 @@ bind -x '"\C-u":"clear; eza -al | view.sh"'
 # we rebind it to simulate F13 (\e\[1\;2P).
 bind -x '"\e\[1\;2P":"clear; eza -aT --git-ignore | view.sh"'
 
-# Copy the whole line to clipboard
+# # Copy the whole line to clipboard
 copy_line_to_clipboard () {
     printf %s "$READLINE_LINE" | wl-copy
 }
-bind -x '"\C-y": copy_line_to_clipboard'
+bind -x '"\ec": copy_line_to_clipboard'
 
 # Clear screen
-bind -x '"\C-s":"clear"'
+bind -x '"\C-y":"clear"'
 
 # LF CD integration
 #-------------------------------------------------------------------------------

@@ -41,9 +41,8 @@ function fish_user_key_bindings
     bind \r execute
     bind \e cancel
 
-    # Clipboard
-    bind \cc fish_clipboard_copy
-    bind \cv fish_clipboard_paste
+    # Copy command line to clipboard
+    bind \ec fish_clipboard_copy
 
     # Completion
     bind \t accept-autosuggestion
@@ -82,19 +81,19 @@ function fish_user_key_bindings
     bind \cr 'python; commandline -f repaint'
 
     # Clear command line
-    # NOTE: Ctrl+C is bound to `Copy` by the terminal emulator, so we also remapped
-    # Ctrl+X to send Ctrl+C.
+    # NOTE: Ctrl+C is bound to `Copy`, so the terminal emulator has been
+    # remapped so Ctrl+X to send Ctrl+C.
     bind \cc 'commandline -r ""'
 
     # Clear screen
-    bind \cs 'tput reset; commandline -f repaint'
+    bind \cy 'tput reset; commandline -f repaint'
 
     # List all files
     bind \cu 'clear; commandline -f repaint; eza -al | view.sh'
 
     # List all files in tree format
-    # NOTE: Fish normally cannot interpret Ctrl+I, so we use the terminal emulator
-    # to remap it to F13.
+    # NOTE: Fish normally cannot interpret Ctrl+I. The terminal emulator can,
+    # so we remapped Ctrl+I to send F13.
     bind -k f13 'clear; commandline -f repaint; eza -aT --git-ignore | view.sh'
 
     # Expand ... to ../..
