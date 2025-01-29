@@ -10,7 +10,7 @@ suppress_default_binds = true
 
 [binds]
 # Define some key bindings
-q = quit
+w = quit
 
 # Image navigation
 k = prev
