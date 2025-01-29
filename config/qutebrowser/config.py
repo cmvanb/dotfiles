@@ -321,6 +321,7 @@ config.unbind('<Ctrl-f>')
 config.unbind('<Ctrl-h>')
 config.unbind('<Ctrl-q>')
 config.unbind('<Ctrl-p>')
+config.unbind('<Ctrl-s>')
 config.unbind('<Ctrl-w>')
 config.unbind('<Alt-m>')
 config.unbind('<Back>')
@@ -393,14 +394,14 @@ config.unbind('@')
 config.unbind('.')
 
 # Window management
-config.bind('<Space>q', 'close')
+config.bind('<Ctrl+Shift+w>', 'close')
 
 # Config management
-config.bind('<Space>r', 'config-source ;; spawn notify-send \"Qutebrowser configuration reloaded.\"')
+config.bind('<Ctrl-Shift-r>', 'config-source ;; spawn notify-send \"Qutebrowser configuration reloaded.\"')
 
 # Session management
-config.bind('<Space>o', 'cmd-set-text -s :session-load')
-config.bind('<Space>s', 'cmd-set-text -s :session-save -o')
+config.bind('<Ctrl-o>', 'cmd-set-text -s :session-load')
+config.bind('<Ctrl-s>', 'cmd-set-text -s :session-save -o')
 
 # Tab management
 config.bind('<Ctrl-w>', 'tab-close')
@@ -426,7 +427,7 @@ config.bind('<Ctrl-b>', 'spawn -d add-bookmark.sh {title} {url}')
 config.bind('<Ctrl-Shift-b>', 'spawn -d select-bookmark.sh {title} {url}')
 
 # Downloads
-config.bind('<Space>l', 'download-clear ;; clear-messages ;; search')
+config.bind('<Ctrl-y>', 'download-clear ;; clear-messages ;; search')
 
 # History navigation
 config.bind('<Alt-h>', 'back')
@@ -465,7 +466,7 @@ config.bind('tj', 'config-cycle -p -t -u *://*.{url:host}/* content.javascript.e
 config.bind('tJ', 'config-cycle -p -u *://*.{url:host}/* content.javascript.enabled ;; reload ;; spawn notify-send \"Toggled javascript for: {url:host}\"')
 
 # Printing
-config.bind('<Space>p', 'print')
+config.bind('<Ctrl-p>', 'print')
 
 # 'Blur' the page when exiting insert mode, removes the blinking cursor
 # from the last active text element to prevent confusion.
@@ -476,7 +477,5 @@ config.bind('<Escape>', 'clear-keychain ;; search ;; fullscreen --leave ;; jseva
 config.bind('<Escape>', 'mode-leave ;; jseval -q document.activeElement.blur()', mode='insert')
 
 # Command mode
-config.bind('<Ctrl-j>', 'completion-item-focus --history next', mode='command')
-config.bind('<Ctrl-k>', 'completion-item-focus --history prev', mode='command')
 config.bind('<Ctrl-d>', 'completion-item-del', mode='command')
 config.bind('<Escape>', 'mode-leave', mode='command')
