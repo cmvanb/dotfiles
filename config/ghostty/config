@@ -34,8 +34,8 @@ resize-overlay = never
 keybind = unconsumed:ctrl+shift+r=reload_config
 
 # Page scroll
-keybind = page_down=scroll_page_lines:28
-keybind = page_up=scroll_page_lines:-28
+keybind = unconsumed:page_down=scroll_page_lines:28
+keybind = unconsumed:page_up=scroll_page_lines:-28
 
 # New window
 keybind = ctrl+t=new_window
