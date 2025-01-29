@@ -1,9 +1,7 @@
 #-------------------------------------------------------------------------------
-# Yazi configuration
+# Yazi keymaps
 #-------------------------------------------------------------------------------
 
-[manager]
-show_hidden = true
-ratio = [1, 1, 3]
-sort_by = "natural"
-sort_dir_first = true
+[[manager.prepend_keymap]]
+on   = "w"
+run  = 'quit'
