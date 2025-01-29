@@ -37,7 +37,6 @@ source "$base_dir/deploy/modules/theme-base.sh"
 # Load server deployment modules
 source "$base_dir/deploy/modules/bash.sh"
 source "$base_dir/deploy/modules/bat.sh"
-source "$base_dir/deploy/modules/broot.sh"
 source "$base_dir/deploy/modules/fish.sh"
 source "$base_dir/deploy/modules/git.sh"
 source "$base_dir/deploy/modules/less.sh"
@@ -50,6 +49,7 @@ source "$base_dir/deploy/modules/ripgrep.sh"
 source "$base_dir/deploy/modules/scripts-shell-utils.sh"
 source "$base_dir/deploy/modules/shell-stty.sh"
 source "$base_dir/deploy/modules/wget.sh"
+source "$base_dir/deploy/modules/yazi.sh"
 
 # Deploy server profile
 #-------------------------------------------------------------------------------
@@ -66,7 +66,6 @@ theme-base::install
 echo "Deploying server modules..."
 bash::install
 bat::install
-broot::install
 fish::install
 git::install
 less::install
@@ -79,5 +78,6 @@ ripgrep::install
 scripts-shell-utils::install
 shell-stty::install
 wget::install
+yazi::install
 
 echo "...deployment complete."
