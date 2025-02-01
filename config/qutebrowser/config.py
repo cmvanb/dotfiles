@@ -17,7 +17,7 @@ import theme
 # Loads session configuration changes from autoconfig.yml.
 config.load_autoconfig(True)
 
-c.auto_save.session = False
+c.auto_save.session = True
 c.confirm_quit = [ 'downloads' ]
 c.scrolling.smooth = True
 c.scrolling.bar = 'always'
