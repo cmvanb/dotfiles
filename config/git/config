@@ -27,9 +27,6 @@
     plus-emph-style = '"#dfefff" bold "#00995c"'
     line-numbers-plus-style = '"#00995c"'
 
-[merge]
-    conflictstyle = zdiff3
-
 [filter "lfs"]
     clean = git-lfs clean -- %f
     smudge = git-lfs smudge -- %f
