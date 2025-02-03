@@ -149,7 +149,7 @@ nnoremap('<Enter>', 'i<CR><esc>`^', { desc = 'Insert line break' })
 --------------------------------------------------------------------------------
 
 -- Clear search highlight, clear command line and clear search pattern.
-nnoremap('<leader>l', ':noh<cr>:let @/=""<cr>:echo ""<cr>', { desc = 'Clear search' })
+nnoremap('<C-y>', ':noh<cr>:let @/=""<cr>:echo ""<cr>', { desc = 'Clear search' })
 
 -- Fuzzy finder
 local telescope_builtin = require('telescope.builtin')
