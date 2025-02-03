@@ -23,6 +23,7 @@ function fish_shared_aliases
     abbr -a grb git rebase -i
     abbr -a grc git rm --cached
     abbr -a gs git status
+    abbr -a gsh git show
     abbr -a gsu git status -u
     abbr -a gsw git switch
     abbr -a e edit
