@@ -3,9 +3,8 @@
 #-------------------------------------------------------------------------------
 
 function fish_shared_aliases
-    alias eza "eza -l --color=always --group-directories-first --time-style=long-iso"
-    alias bat "bat --force-colorization --no-paging --style=grid,numbers"
 
+    # Git
     abbr -a ga git add
     abbr -a gaa git add -A
     abbr -a gai git add -i
@@ -26,9 +25,14 @@ function fish_shared_aliases
     abbr -a gsh git show
     abbr -a gsu git status -u
     abbr -a gsw git switch
+
+    # General
+    alias bat "bat --force-colorization --no-paging --style=grid,numbers"
+    abbr -a c clear
     abbr -a e edit
     abbr -a ed edit
     abbr -a edi edit
+    alias eza "eza -l --color=always --group-directories-first --time-style=long-iso"
     abbr -a ez eza
     abbr -a ex eza
     abbr -a exa eza
@@ -40,8 +44,10 @@ function fish_shared_aliases
     abbr -a lst eza -T --git-ignore
     abbr -a lsta eza -aT --git-ignore
     abbr -a ip ip -c
+    abbr -a rga rg --hidden --no-ignore
+
+    # Python
     abbr -a vv generate-venv.sh
     abbr -a va source venv/bin/activate.fish
     abbr -a vd deactivate
-    abbr -a rga rg --hidden --no-ignore
 end

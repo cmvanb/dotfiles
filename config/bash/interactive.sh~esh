@@ -44,9 +44,7 @@ function suspend () {
 # Aliases
 #-------------------------------------------------------------------------------
 
-alias eza="eza -l --color=always --group-directories-first --time-style=long-iso"
-alias bat="bat --force-colorization --no-paging --style=grid,numbers"
-
+# Git
 alias ga="git add"
 alias gaa="git add -A"
 alias gai="git add -i"
@@ -68,9 +66,14 @@ alias gs="git status"
 alias gsh="git show"
 alias gsu="git status -u"
 alias gsw="git switch"
+
+# General
+alias bat="bat --force-colorization --no-paging --style=grid,numbers"
+alias c="clear"
 alias e="edit"
 alias ed="edit"
 alias edi="edit"
+alias eza="eza -l --color=always --group-directories-first --time-style=long-iso"
 alias ez="eza"
 alias lf="lfcd"
 alias ls="eza"
@@ -80,9 +83,13 @@ alias lsi="eza --git-ignore"
 alias lst="eza -T --git-ignore"
 alias lsta="eza -aT --git-ignore"
 alias ip="ip -c"
+
+# Python
 alias vv="generate-venv.sh"
 alias va="source venv/bin/activate"
 alias vd="deactivate"
+
+# Deployment specific
 <% if [[ $DEPLOY_DISTRO == "arch" ]]; then -%>
 alias uu="sudo pacman -Syu"
 <% fi -%>
