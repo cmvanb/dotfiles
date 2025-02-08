@@ -59,7 +59,6 @@ source "$base_dir/deploy/modules/yazi.sh"
 source "$base_dir/deploy/modules/alacritty.sh"
 source "$base_dir/deploy/modules/bitwarden.sh"
 source "$base_dir/deploy/modules/bluetooth-autoconnect.sh"
-source "$base_dir/deploy/modules/btop.sh"
 source "$base_dir/deploy/modules/chromium.sh"
 source "$base_dir/deploy/modules/direnv.sh"
 source "$base_dir/deploy/modules/disable-xdg-desktop-files.sh"
@@ -72,12 +71,10 @@ source "$base_dir/deploy/modules/hyprland.sh"
 source "$base_dir/deploy/modules/imv.sh"
 source "$base_dir/deploy/modules/mako.sh"
 source "$base_dir/deploy/modules/mpv.sh"
-source "$base_dir/deploy/modules/niri.sh"
 source "$base_dir/deploy/modules/pandoc.sh"
 source "$base_dir/deploy/modules/pipewire.sh"
 source "$base_dir/deploy/modules/pyenv.sh"
 source "$base_dir/deploy/modules/qutebrowser.sh"
-source "$base_dir/deploy/modules/river.sh"
 source "$base_dir/deploy/modules/scripts-desktop.sh"
 source "$base_dir/deploy/modules/scripts-markdown.sh"
 source "$base_dir/deploy/modules/scripts-misc.sh"
@@ -89,8 +86,6 @@ source "$base_dir/deploy/modules/udiskie.sh"
 source "$base_dir/deploy/modules/vscodium.sh"
 source "$base_dir/deploy/modules/vt.sh"
 source "$base_dir/deploy/modules/waybar.sh"
-source "$base_dir/deploy/modules/wallpaper.sh"
-source "$base_dir/deploy/modules/way-displays.sh"
 source "$base_dir/deploy/modules/wezterm.sh"
 source "$base_dir/deploy/modules/wofi.sh"
 source "$base_dir/deploy/modules/xdg-mimetype-associations.sh"
@@ -132,7 +127,6 @@ echo "Deploying desktop modules..."
 alacritty::install
 bitwarden::install
 bluetooth-autoconnect::install
-btop::install
 chromium::install
 direnv::install
 disable-xdg-desktop-files::install
@@ -156,8 +150,6 @@ udiskie::install
 vscodium::install
 vt::install
 waybar::install
-wallpaper::install
-way-displays::install
 wezterm::install
 wofi::install
 xdg-mimetype-associations::install
@@ -166,8 +158,6 @@ zathura::install
 
 echo "Deploying window managers..."
 hyprland::install
-niri::install
-river::install
 
 echo "Deploying desktop user services..."
 bluetooth-autoconnect::enable
