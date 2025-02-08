@@ -134,17 +134,17 @@ bind -x '"\ec": copy_line_to_clipboard'
 # Clear screen
 bind -x '"\C-y":"clear"'
 
-# LF CD integration
+# Integrations
 #-------------------------------------------------------------------------------
 
-# shellcheck disable=SC1090
+# Enable direnv.
+eval "$(direnv hook bash)"
+
+# Enable Zoxide.
+eval "$(zoxide init bash)"
+
+# LF CD integration.
 source "$XDG_CONFIG_HOME/lf/lfcd.sh"
-
-# Broot CD integration
-#-------------------------------------------------------------------------------
-
-# shellcheck disable=SC1090
-source "$XDG_CONFIG_HOME/broot/brcd.sh"
 
 # Theme
 #-------------------------------------------------------------------------------
