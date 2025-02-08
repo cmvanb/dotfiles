@@ -16,22 +16,21 @@ theme-desktop::install () {
     ensure_directory "$XDG_CONFIG_HOME/theme"
     force_link "$base_dir/config/theme/cursor" "$XDG_CONFIG_HOME/theme/cursor"
 
-    case $host in
-        cyxwel)
-            ;&
-        supertubes)
-            force_link "$base_dir/config/theme/fonts~home" "$XDG_CONFIG_HOME/theme/fonts"
-            ;;
+    if [[ $host == "cyxwel" ]] \
+        || [[ $host == "supertubes" ]] \
+        || [[ $host == "xray" ]] \
+    ;then
+        force_link "$base_dir/config/theme/fonts~home" "$XDG_CONFIG_HOME/theme/fonts"
 
-        nlleq0413002159)
-            force_link "$base_dir/config/theme/fonts~windows" "$XDG_CONFIG_HOME/theme/fonts"
-            ;;
+    elif [[ $host == "nlleq0413002159" ]]; then
+        force_link "$base_dir/config/theme/fonts~windows" "$XDG_CONFIG_HOME/theme/fonts"
 
-        *)
-            echo "[$(basename "$0")] ERROR: \`$host\` is not accounted for."
-            exit 1
-            ;;
-    esac
+    else
+        # TODO: Consider adding a default configuration.
+        echo "[$(basename "$0")] ERROR: \`$host\` is not accounted for."
+        exit 1
+
+    fi
 
     ensure_directory "$XDG_SCRIPTS_HOME"
     force_link "$base_dir/config/theme/generate-color-gradient-palette.py" "$XDG_SCRIPTS_HOME/generate-color-gradient-palette.py"

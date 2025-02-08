@@ -11,16 +11,17 @@ source "$base_dir/config/lib-shell-utils/fs.sh"
 
 
 wallpaper::install () {
-    echo "└> Installing wallpaper configuration."
+    if [[ $host == "cyxwel" ]] \
+        || [[ $host == "supertubes" ]] \
+    ;then
+        echo "└> Installing wallpaper configuration."
 
-    ensure_directory "$XDG_CONFIG_HOME/wallpaper"
-
-    if [[ $host == "supertubes" ]] || [[ $host == "cyxwel" ]]; then
+        ensure_directory "$XDG_CONFIG_HOME/wallpaper"
         force_link "$base_dir/config/wallpaper/wallpaper.sh~home-triple" "$XDG_CONFIG_HOME/wallpaper/wallpaper.sh"
 
     else
-        echo "[$(basename "$0")] ERROR: \`$host\` is not accounted for."
-        exit 1
+        echo "└> Skipping wallpaper - no configuration for \`$host\`."
+
     fi
 }
 

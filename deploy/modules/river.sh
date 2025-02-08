@@ -13,15 +13,13 @@ source "$base_dir/config/lib-shell-utils/fs.sh"
 river::install () {
     echo "└> Installing river configuration."
 
+    ensure_directory "$XDG_CONFIG_HOME/river"
+
     if [[ $host == "supertubes" || $host == "cyxwel" ]]; then
         force_link "$base_dir/config/river/workspace.sh~home-triple" "$XDG_CONFIG_HOME/river/workspace.sh"
 
-    else
-        echo "[$(basename "$0")] ERROR: \`$host\` is not accounted for."
-        exit 1
     fi
 
-    ensure_directory "$XDG_CONFIG_HOME/river"
     force_link "$base_dir/config/river/environment.sh" "$XDG_CONFIG_HOME/river/environment.sh"
     force_link "$base_dir/config/river/init" "$XDG_CONFIG_HOME/river/init"
     force_link "$base_dir/config/river/keymaps.sh" "$XDG_CONFIG_HOME/river/keymaps.sh"

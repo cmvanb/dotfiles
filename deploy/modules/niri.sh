@@ -13,15 +13,13 @@ source "$base_dir/config/lib-shell-utils/fs.sh"
 niri::install () {
     echo "└> Installing niri configuration."
 
+    ensure_directory "$XDG_CONFIG_HOME/niri"
+
     if [[ $host == "supertubes" || $host == "cyxwel" ]]; then
         force_link "$base_dir/config/niri/workspace.sh~home-triple" "$XDG_CONFIG_HOME/niri/workspace.sh"
 
-    else
-        echo "[$(basename "$0")] ERROR: \`$host\` is not accounted for."
-        exit 1
     fi
 
-    ensure_directory "$XDG_CONFIG_HOME/niri"
     force_link "$base_dir/config/niri/config.kdl" "$XDG_CONFIG_HOME/niri/config.kdl"
     force_link "$base_dir/config/niri/focus-window.sh" "$XDG_CONFIG_HOME/niri/focus-window.sh"
 

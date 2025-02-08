@@ -17,6 +17,7 @@ vscodium::install () {
     force_link "$base_dir/config/vscodium/keybindings.json" "$XDG_DATA_HOME/vscode/user-data/User/keybindings.json"
     force_link "$base_dir/config/vscodium/settings.json" "$XDG_DATA_HOME/vscode/user-data/User/settings.json"
 
+    ensure_directory "$XDG_DATA_HOME/vscode/extensions/custom-theme/themes"
     render_esh_template "$base_dir/config/vscodium/theme.json~esh" "$base_dir/config/vscodium/custom-theme/themes/theme.json"
     force_link "$base_dir/config/vscodium/custom-theme" "$XDG_DATA_HOME/vscode/extensions/custom-theme"
 
