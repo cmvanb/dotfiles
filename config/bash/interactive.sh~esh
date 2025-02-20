@@ -115,7 +115,7 @@ bind -r '\C-p'
 bind -x '"\C-e":"edit"'
 
 # Open file browser
-bind -x '"\C-f":"lfcd"'
+bind -x '"\C-f":"yazi"'
 
 # List all files
 bind -x '"\C-u":"clear; eza -al | view.sh"'

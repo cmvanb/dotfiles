@@ -72,7 +72,7 @@ function fish_user_key_bindings
     bind \eU upcase-word
 
     # Open file browser
-    bind \cf 'lfcd; commandline -f repaint'
+    bind \cf 'yazi; commandline -f repaint'
 
     # Open editor
     bind \ce 'edit; commandline -f repaint'
