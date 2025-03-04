@@ -20,7 +20,7 @@ function raise_error --argument-names message
     echo "[theme.fish] ERROR: $message"
 end
 
-function parse_error --argument-names line, column, message
+function parse_error --argument-names line column message
     raise_error "Unable to continue parsing at line {$line}, {$column}: {$message}"
 end
 
