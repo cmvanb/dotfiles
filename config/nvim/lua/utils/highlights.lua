@@ -95,14 +95,23 @@ function HighlightsUtils.highlight(group, gui_options, terminal_options)
         .. ' ctermbg=' .. terminal_options.ctermbg
         .. ' cterm=' .. terminal_options.cterm
 
-    vim.cmd(command)
+    local ok, result = pcall(vim.cmd, command)
+    if not ok then
+        error('Cannot create highlight group `' .. group .. '` because of the following error: ' .. result)
+    end
 end
 
 -- Link a highlight group
 --------------------------------------------------------------------------------
 
 function HighlightsUtils.link(group, target)
-    vim.cmd('hi! link ' .. group .. ' ' .. target)
+    local ok, result = pcall(
+        vim.cmd,
+        'hi! link ' .. group .. ' ' .. target
+    )
+    if not ok then
+        error('Cannot link highlight group `' .. group .. '` to `' .. target .. '` because of the following error: ' .. result)
+    end
 end
 
 return HighlightsUtils
