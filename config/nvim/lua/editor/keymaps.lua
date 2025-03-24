@@ -152,28 +152,29 @@ nnoremap('<Enter>', 'i<CR><esc>`^', { desc = 'Insert line break' })
 nnoremap('<C-y>', ':noh<cr>:let @/=""<cr>:echo ""<cr>', { desc = 'Clear search' })
 
 -- Fuzzy finder
-local telescope_builtin = require('telescope.builtin')
+local snacks = require('snacks')
 nnoremap(
     '<leader>a',
-    function() telescope_builtin.find_files({ hidden = true, no_ignore = false }) end,
-    { desc = 'Search all files' })
+    function() snacks.picker.files({
+        hidden = true,
+        ignored = true,
+    }) end,
+    { desc = 'Search files' })
 nnoremap(
     '<leader>f',
-    require('plugins.telescope.project_files'),
-    { desc = 'Search project files' })
+    function() snacks.picker.files() end,
+    { desc = 'Search files' })
 nnoremap(
-    '<leader>b', telescope_builtin.buffers,
+    '<leader>b',
+    function() snacks.picker.buffers() end,
     { desc = 'Search buffers' })
 nnoremap(
-    '<leader>g', telescope_builtin.live_grep,
-    { desc = 'Interactive grep' })
-nnoremap(
-    '<leader>i',
-    telescope_builtin.symbols,
-    { desc = 'Insert symbols' })
+    '<leader>g',
+    function() snacks.picker.grep() end,
+    { desc = 'Grep files' })
 nnoremap(
     '<leader>h',
-    telescope_builtin.help_tags,
+    function() snacks.picker.help() end,
     { desc = 'Search help' })
 
 -- View
@@ -216,23 +217,23 @@ nnoremap('<leader>m',
 
 nnoremap(
     'gd',
-    telescope_builtin.lsp_definitions,
-    { desc = 'LSP: Go to definition' })
-nnoremap(
-    'ge',
-    function() telescope_builtin.diagnostics({ bufnr = 0 }) end,
-    { desc = 'LSP: Show diagnostics' })
-nnoremap(
-    'gi',
-    telescope_builtin.lsp_implementations,
-    { desc = 'LSP: Go to implementation' })
-nnoremap(
-    'gt',
-    telescope_builtin.lsp_type_definitions,
+    function() snacks.picker.lsp_definitions() end,
     { desc = 'LSP: Go to type definition' })
 nnoremap(
+    'ge',
+    function() snacks.picker.diagnostics() end,
+    { desc = 'LSP: Show diagnostics' })
+nnoremap(
+    'gt',
+    function() snacks.picker.lsp_type_definitions() end,
+    { desc = 'LSP: Go to type definition' })
+nnoremap(
+    'gi',
+    function() snacks.picker.lsp_implementations() end,
+    { desc = 'LSP: Go to implementation' })
+nnoremap(
     'gr',
-    telescope_builtin.lsp_references,
+    function() snacks.picker.lsp_references() end,
     { desc = 'LSP: Find references' })
 nnoremap(
     'gp',

@@ -232,16 +232,14 @@ return {
     -- Search
     ----------------------------------------------------------------------------
 
-    -- Telescope
+    -- Snacks
     {
-        'nvim-telescope/telescope.nvim',
-        dependencies = { 'nvim-lua/plenary.nvim' },
-        config = function()
-            do_load('plugins/telescope')
-        end
-    },
-    {
-        'nvim-telescope/telescope-symbols.nvim',
+        'folke/snacks.nvim',
+        priority = 1000,
+        lazy = false,
+        opts = {
+            picker = { enabled = true },
+        }
     },
 
 
