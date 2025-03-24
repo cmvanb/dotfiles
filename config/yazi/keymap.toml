@@ -7,5 +7,9 @@ on   = "w"
 run  = 'quit'
 
 [[manager.prepend_keymap]]
+on   = "<C-w>"
+run  = 'quit --no-cwd-file'
+
+[[manager.prepend_keymap]]
 on   = "<Esc>"
 run  = 'quit'

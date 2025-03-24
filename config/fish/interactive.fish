@@ -82,3 +82,6 @@ end
 
 # LF CD integration
 source $XDG_CONFIG_HOME/lf/lfcd.fish
+
+# Yazi CD Integration
+source $XDG_CONFIG_HOME/yazi/yzcd.fish
