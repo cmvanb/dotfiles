@@ -166,7 +166,16 @@ nnoremap(
     { desc = 'Search files' })
 nnoremap(
     '<leader>b',
-    function() snacks.picker.buffers() end,
+    function() snacks.picker.buffers({
+        win = {
+            input = {
+                keys = {
+                    ["<c-w>"] = { "bufdelete", mode = { "n", "i" } },
+                },
+            },
+            list = { keys = { ["dd"] = "bufdelete" } },
+        },
+    }) end,
     { desc = 'Search buffers' })
 nnoremap(
     '<leader>g',
