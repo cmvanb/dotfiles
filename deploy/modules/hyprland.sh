@@ -30,6 +30,9 @@ hyprland::install () {
     force_link \
         "$base_dir/config/hyprland/move-window-hy3.sh" \
         "$XDG_CONFIG_HOME/hypr/move-window-hy3.sh"
+    force_link \
+        "$base_dir/config/hyprland/toggle-waybar.sh" \
+        "$XDG_CONFIG_HOME/hypr/toggle-waybar.sh"
 
     if [[ $DEPLOY_WM == "hyprland" ]]; then
         echo "└> Installing hyprland shortcuts."
