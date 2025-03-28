@@ -186,6 +186,17 @@ nnoremap(
     function() snacks.picker.help() end,
     { desc = 'Search help' })
 
+
+-- File Explorer
+--------------------------------------------------------------------------------
+
+nnoremap(
+    '<leader>e',
+    function() snacks.explorer({
+        replace_netrw = true,
+    }) end,
+    { desc = 'File explorer' })
+
 -- View
 --------------------------------------------------------------------------------
 
