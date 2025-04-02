@@ -76,7 +76,7 @@ hi('SpecialKey',                { fg = 'debug' },                               
 hi('DiagnosticError',           { fg = 'red_5', attrs = 'bold' },                         { fg = 'ansi_red' })
 hi('DiagnosticWarn',            { fg = 'yellow_5', attrs = 'bold' },                      { fg = 'ansi_bryellow' })
 hi('DiagnosticInfo',            { fg = 'text_10', attrs = 'bold' },                       { fg = 'ansi_white' })
-hi('DiagnosticHint',            { fg = 'orange_7', attrs = 'bold' },                      { fg = 'ansi_yellow' })
+hi('DiagnosticHint',            { fg = 'primary_12', attrs = 'bold' },                      { fg = 'ansi_brblue' })
 hi('DiagnosticUnderlineError',  { sp = 'red_5', attrs = 'undercurl' },                    { fg = 'ansi_red' })
 hi('DiagnosticUnderlineWarn',   { sp = 'yellow_5', attrs = 'undercurl' },                 { fg = 'ansi_yellow' })
 hi('DiagnosticUnderlineInfo',   { sp = 'text_10', attrs = 'undercurl' },                  { fg = 'ansi_white' })

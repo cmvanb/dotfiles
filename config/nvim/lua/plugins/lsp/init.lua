@@ -15,23 +15,16 @@ local ThemeSymbols = reload('theme.symbols')
 -- Diagnostics UI
 --------------------------------------------------------------------------------
 
-local sign =
-    function(opts)
-        vim.fn.sign_define(opts.name, {
-            texthl = opts.name,
-            text = opts.text,
-            numhl = '',
-        })
-    end
-
-sign({ name = 'DiagnosticSignError', text = ThemeSymbols.diagnostic_signs.error })
-sign({ name = 'DiagnosticSignWarn', text = ThemeSymbols.diagnostic_signs.warn })
-sign({ name = 'DiagnosticSignHint', text = ThemeSymbols.diagnostic_signs.hint })
-sign({ name = 'DiagnosticSignInfo', text = ThemeSymbols.diagnostic_signs.info })
-
 vim.diagnostic.config({
     virtual_text = false,
-    signs = true,
+    signs = {
+        text = {
+            [vim.diagnostic.severity.ERROR] = ThemeSymbols.diagnostic_signs.error,
+            [vim.diagnostic.severity.WARN] = ThemeSymbols.diagnostic_signs.warn,
+            [vim.diagnostic.severity.INFO] = ThemeSymbols.diagnostic_signs.info,
+            [vim.diagnostic.severity.HINT] = ThemeSymbols.diagnostic_signs.hint,
+        },
+    },
     update_in_insert = false,
     underline = true,
     severity_sort = true,
