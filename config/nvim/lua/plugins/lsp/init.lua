@@ -95,9 +95,7 @@ mason_lspconfig.setup({
 })
 
 local base_capabilities =
-    reload('cmp_nvim_lsp').default_capabilities(
-        vim.lsp.protocol.make_client_capabilities()
-    )
+    reload('blink.cmp').get_lsp_capabilities()
 
 local lsp_capabilities =
     TableUtils.merge(base_capabilities, {
@@ -116,7 +114,7 @@ local lsp_capabilities =
         },
     })
 
-local lsp_config = {
+local default_lsp_config = {
     on_attach = lsp_attach,
     capabilities = lsp_capabilities,
 }
@@ -129,12 +127,12 @@ local lspconfig = reload('lspconfig')
 --  see: https://github.com/williamboman/mason.nvim/discussions/92
 mason_lspconfig.setup_handlers({
     function(server_name)
-        lspconfig[server_name].setup(lsp_config)
+        lspconfig[server_name].setup(default_lsp_config)
     end,
 
     lua_ls = function()
         local config =
-            TableUtils.merge(lsp_config, {
+            TableUtils.merge(default_lsp_config, {
                 settings = {
                     Lua = {
                         diagnostics = {
