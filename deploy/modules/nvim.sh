@@ -12,6 +12,8 @@ source "$base_dir/config/lib-shell-utils/fs.sh"
 nvim::install () {
     echo "└> Installing nvim configuration."
 
+    git submodule update --recursive --remote
+
     force_link "$base_dir/config/nvim" "$XDG_CONFIG_HOME/nvim"
 }
 
