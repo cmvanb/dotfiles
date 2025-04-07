@@ -134,6 +134,19 @@ bind -x '"\ec": copy_line_to_clipboard'
 # Clear screen
 bind -x '"\C-y":"clear"'
 
+# Theme
+#-------------------------------------------------------------------------------
+
+# Configure directory colors (ls, eza, lf).
+# shellcheck disable=SC1091
+source "$XDG_OPT_HOME/theme/configure-dircolors.sh"
+
+# Prompt
+#-------------------------------------------------------------------------------
+
+# shellcheck disable=SC1091
+source "$XDG_CONFIG_HOME/bash/prompt.sh"
+
 # Integrations
 #-------------------------------------------------------------------------------
 
@@ -148,16 +161,3 @@ source "$XDG_CONFIG_HOME/lf/lfcd.sh"
 
 # Yazi integration.
 source "$XDG_CONFIG_HOME/yazi/yzcd.sh"
-
-# Theme
-#-------------------------------------------------------------------------------
-
-# Configure directory colors (ls, eza, lf).
-# shellcheck disable=SC1091
-source "$XDG_OPT_HOME/theme/configure-dircolors.sh"
-
-# Prompt
-#-------------------------------------------------------------------------------
-
-# shellcheck disable=SC1091
-source "$XDG_CONFIG_HOME/bash/prompt.sh"
