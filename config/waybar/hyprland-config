@@ -27,11 +27,19 @@
     /* Hyprland
     --------------------------------------------------------------------------*/
     "hyprland/workspaces": {
-        "format": "{icon} {name}",
+        "format": "{icon} {name}  {windows} ",
+        "format-window-separator": " ",
         "format-icons": {
-            // Icons by state
             "active": " ",
             "default": " "
+        },
+        "window-rewrite-default": " ",
+        "window-rewrite": {
+            "class<org.qutebrowser.qutebrowser>": "󰇧 ",
+            "class<Alacritty>": " ",
+            "class<Bitwarden>": "󰦝 ",
+            "class<spotify>": " ",
+            "class<org.pulseaudio.pavucontrol>": " "
         }
     },
 
