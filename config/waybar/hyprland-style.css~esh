@@ -8,25 +8,36 @@
 
 window#waybar {
     background-color: <% color_css_rgba $system_bg 0.85 %>;
-    color: <% color_hash $system_text %>;
+
+    /* Default text color */
+    color: <% color_hash $text_12 %>;
     transition-property: background-color;
     transition-duration: .5s;
 }
 
-button {
+#workspaces button {
+    color: <% color_hash $text_10 %>;
+
     /* Use box-shadow instead of border so the text isn't offset */
     box-shadow: inset 0 -3px transparent;
+
     /* Avoid rounded borders under each button name */
     border: none;
     border-radius: 0;
     padding: 0;
 }
 
-/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
-button:hover {
-    background: inherit;
-    box-shadow: inset 0 -3px <% color_hash $system_text %>;
+#workspaces button.active {
+    color: <% color_hash $text_15 %>;
 }
+
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+/*
+#workspaces button:hover {
+    background: inherit;
+    box-shadow: inset 0 -3px <% color_hash $text_15 %>;
+}
+*/
 
 /* All modules
 *-----------------------------------------------------------------------------*/
