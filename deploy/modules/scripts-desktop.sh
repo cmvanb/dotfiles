@@ -13,6 +13,7 @@ scripts-desktop::install () {
     ensure_directory "$XDG_SCRIPTS_HOME"
     force_link "$base_dir/config/scripts-desktop/lock-screen.sh" "$XDG_SCRIPTS_HOME/lock-screen.sh"
     force_link "$base_dir/config/scripts-desktop/open-terminal-cwd.sh" "$XDG_SCRIPTS_HOME/open-terminal-cwd.sh"
+    force_link "$base_dir/config/scripts-desktop/restart-waybar.sh" "$XDG_SCRIPTS_HOME/restart-waybar.sh"
     force_link "$base_dir/config/scripts-desktop/screenshot-rectangle.sh" "$XDG_SCRIPTS_HOME/screenshot-rectangle.sh"
     force_link "$base_dir/config/scripts-desktop/set-output-wallpaper.sh" "$XDG_SCRIPTS_HOME/set-output-wallpaper.sh"
     force_link "$base_dir/config/scripts-desktop/upload-to-0x0.sh" "$XDG_SCRIPTS_HOME/upload-to-0x0.sh"
@@ -28,6 +29,7 @@ scripts-desktop::uninstall () {
 
     rm "$XDG_SCRIPTS_HOME/lock-screen.sh"
     rm "$XDG_SCRIPTS_HOME/open-terminal-cwd.sh"
+    rm "$XDG_SCRIPTS_HOME/restart-waybar.sh"
     rm "$XDG_SCRIPTS_HOME/screenshot-rectangle.sh"
     rm "$XDG_SCRIPTS_HOME/set-output-wallpaper.sh"
 
