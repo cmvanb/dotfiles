@@ -3,11 +3,11 @@
 #-------------------------------------------------------------------------------
 
 [[manager.prepend_keymap]]
-on   = "w"
+on   = "<C-w>"
 run  = 'quit'
 
 [[manager.prepend_keymap]]
-on   = "<C-w>"
+on   = "w"
 run  = 'quit --no-cwd-file'
 
 [[manager.prepend_keymap]]
