@@ -35,8 +35,9 @@
         },
         "window-rewrite-default": " ",
         "window-rewrite": {
-            "class<org.qutebrowser.qutebrowser>": "󰇧 ",
-            "class<Alacritty>": " ",
+            "class<org.qutebrowser.qutebrowser>": "󰖟 ",
+            "class<chromium>": "󰖟 ",
+            "class<Alacritty>": " ",
             "class<Bitwarden>": "󰦝 ",
             "class<spotify>": " ",
             "class<org.pulseaudio.pavucontrol>": "󰕾 "
