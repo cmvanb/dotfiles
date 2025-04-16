@@ -37,7 +37,7 @@ y = 0
 
 # Key bindings
 #
-# Example breakdown of CSIu (Ctrl+Shift+C):
+# Example breakdown of CSIu Ctrl+Shift+C:
 #   \u001b\u005b\u0063\u003b\u0035\u0075
 #
 #   - Control sequence introducer (CSI) is \u001b\u005b
@@ -95,14 +95,12 @@ chars = "\u001b\u005b\u0031\u003b\u0032\u0050"
 
 # Ctrl+M -> F14 passthrough
 [[keyboard.bindings]]
-mode = 'Alt'
 mods = 'Control'
 key = 'M'
 chars = "\u001b\u005b\u0031\u003b\u0032\u0051"
 
 # Ctrl+Backspace -> F15 passthrough
 [[keyboard.bindings]]
-mode = 'Alt'
 mods = 'Control'
 key = 'Backspace'
 chars = "\u001b\u005b\u0031\u003b\u0032\u0052"
@@ -115,7 +113,6 @@ chars = "\u001b\u005b\u0031\u003b\u0032\u0053"
 
 # Ctrl+Tab passthrough (NVIM can correctly interpret this, no function key hack)
 [[keyboard.bindings]]
-mode = 'Alt'
 mods = 'Control'
 key = 'Tab'
 chars = "\u001b\u005b\u0039\u003b\u0035\u0075"
