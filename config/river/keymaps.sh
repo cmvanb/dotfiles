@@ -32,7 +32,7 @@ assert_dependency wofi
 riverctl map normal Super+Shift Z spawn "$scripts_dir/lock-screen.sh"
 
 # Exit river
-riverctl map normal Super+Shift Q exit
+riverctl map normal Super+Shift W exit
 
 # Shortcut mappings
 #-------------------------------------------------------------------------------
@@ -68,40 +68,40 @@ riverctl map normal Super Space toggle-float
 riverctl map normal Super F toggle-fullscreen
 
 # Close view
-riverctl map normal Super Q close
+riverctl map normal Super W close
 
 # Focus the next/previous view in the layout stack
 riverctl map normal Super J focus-view next
 riverctl map normal Super K focus-view previous
 
 # Swap the focused view with the next/previous view in the layout stack
-riverctl map normal Super+Shift J swap next
-riverctl map normal Super+Shift K swap previous
+riverctl map normal Super+Control J swap next
+riverctl map normal Super+Control K swap previous
 
 # Focus the left/right output
 riverctl map normal Super H focus-output next
 riverctl map normal Super L focus-output previous
 
 # Send the focused view to the left/right output
-riverctl map normal Super+Shift H spawn "$config_dir/river/send-and-focus-output.sh left"
-riverctl map normal Super+Shift L spawn "$config_dir/river/send-and-focus-output.sh right"
+riverctl map normal Super+Control H spawn "$config_dir/river/send-and-focus-output.sh left"
+riverctl map normal Super+Control L spawn "$config_dir/river/send-and-focus-output.sh right"
 
 # Send the focused view to a specific output
 riverctl map normal Super+Shift semicolon spawn "$config_dir/river/send-to-output.sh"
 
 # Move views with mouse
-riverctl map-pointer normal Shift BTN_LEFT move-view
+riverctl map-pointer normal Super BTN_LEFT move-view
 
 # Resize views with mouse
-riverctl map-pointer normal Shift BTN_RIGHT resize-view
+riverctl map-pointer normal Super BTN_RIGHT resize-view
 
 # Tag mappings
 #-------------------------------------------------------------------------------
 
 # Cycle focused tags
 # see: https://gitlab.com/akumar-xyz/river-shifttags/-/tree/master
-riverctl map normal Super+Control L spawn "river-shifttags"
-riverctl map normal Super+Control H spawn "river-shifttags --shift -1"
+riverctl map normal Super+Shift L spawn "river-shifttags"
+riverctl map normal Super+Shift H spawn "river-shifttags --shift -1"
 
 for i in $(seq 1 9); do
     # NOTE: There is a bug in tree-sitter-bash when parsing `<<`.
