@@ -103,6 +103,7 @@ riverctl rule-add -app-id xdg-desktop-portal-gtk float
 
 # Override client-side decorations
 riverctl rule-add -app-id marker ssd
+riverctl rule-add -app-id org.gnome.Nautilus ssd
 riverctl rule-add -app-id nm-connection-editor ssd
 riverctl rule-add -app-id nwg-look ssd
 riverctl rule-add -app-id gtk-pipe-viewer ssd
