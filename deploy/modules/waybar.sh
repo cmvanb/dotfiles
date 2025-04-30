@@ -30,10 +30,13 @@ waybar::install () {
         echo "[$(basename "$0")] ERROR: \`$DEPLOY_WM\` is not accounted for."
         exit 1
     fi
+
+    force_link "$base_dir/config/waybar/toggle-waybar.sh" "$XDG_SCRIPTS_HOME/toggle-waybar.sh"
 }
 
 waybar::uninstall () {
     echo "└> Uninstalling waybar configuration."
 
     rm "$XDG_CONFIG_HOME/waybar"
+    rm "$XDG_SCRIPTS_HOME/toggle-waybar.sh"
 }
