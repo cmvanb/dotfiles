@@ -18,6 +18,9 @@ yazi::install () {
     force_link "$base_dir/config/yazi/theme.toml" "$XDG_CONFIG_HOME/yazi/theme.toml"
     force_link "$base_dir/config/yazi/yzcd.fish" "$XDG_CONFIG_HOME/yazi/yzcd.fish"
     force_link "$base_dir/config/yazi/yzcd.sh" "$XDG_CONFIG_HOME/yazi/yzcd.sh"
+
+    # Install plugins
+    ya pack -a yazi-rs/plugins:smart-enter
 }
 
 yazi::uninstall () {
