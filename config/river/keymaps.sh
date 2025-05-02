@@ -58,6 +58,9 @@ riverctl map normal Super+Shift B spawn "$scripts_dir/open-qutebrowser-session.s
 # Process manager
 riverctl map normal Super M spawn "alacritty --command btop"
 
+# Toggle waybar
+riverctl map normal Super Y spawn "$scripts_dir/toggle-waybar.sh"
+
 # View mappings
 #-------------------------------------------------------------------------------
 
