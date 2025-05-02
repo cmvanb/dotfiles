@@ -4,4 +4,4 @@
 
 [manager]
 syntect_theme = "~/.config/bat/themes/carbon-dark.tmTheme"
-border_style = { fg = "#055eb5" }
+border_style = { fg = "#1d2d3d" }
