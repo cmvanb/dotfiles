@@ -93,17 +93,22 @@ source "$config_dir/river/theme.sh"
 # shellcheck disable=SC1091
 source "$config_dir/river/workspace.sh"
 
-# App configuration
+# App rules
 #-------------------------------------------------------------------------------
 
-# Floating windows
+# Floating
 riverctl rule-add -app-id floating float
-riverctl rule-add -app-id nwg-look float
 riverctl rule-add -app-id org.gnome.Nautilus float
+riverctl rule-add -app-id nwg-look float
 riverctl rule-add -app-id xdg-desktop-portal-gtk float
 riverctl rule-add -app-id yad float
 
-# Override client-side decorations
+# Size
+riverctl rule-add -app-id org.gnome.Nautilus dimensions 1024 960
+riverctl rule-add -app-id nwg-look dimensions 1024 960
+
+# Render server-side decorations
+riverctl rule-add -app-id gcr-prompter ssd
 riverctl rule-add -app-id marker ssd
 riverctl rule-add -app-id org.gnome.Nautilus ssd
 riverctl rule-add -app-id nm-connection-editor ssd
