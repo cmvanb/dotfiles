@@ -87,6 +87,7 @@ source "$base_dir/deploy/modules/udiskie.sh"
 source "$base_dir/deploy/modules/vscodium.sh"
 source "$base_dir/deploy/modules/vt.sh"
 source "$base_dir/deploy/modules/waybar.sh"
+source "$base_dir/deploy/modules/way-displays.sh"
 source "$base_dir/deploy/modules/wezterm.sh"
 source "$base_dir/deploy/modules/wofi.sh"
 source "$base_dir/deploy/modules/xdg-mimetype-associations.sh"
@@ -151,6 +152,7 @@ udiskie::install
 vscodium::install
 vt::install
 waybar::install
+way-displays::install
 wezterm::install
 wofi::install
 xdg-mimetype-associations::install
