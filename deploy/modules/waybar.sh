@@ -31,6 +31,7 @@ waybar::install () {
         exit 1
     fi
 
+    force_link "$base_dir/config/waybar/restart-waybar.sh" "$XDG_SCRIPTS_HOME/restart-waybar.sh"
     force_link "$base_dir/config/waybar/toggle-waybar.sh" "$XDG_SCRIPTS_HOME/toggle-waybar.sh"
 }
 
@@ -38,5 +39,6 @@ waybar::uninstall () {
     echo "└> Uninstalling waybar configuration."
 
     rm "$XDG_CONFIG_HOME/waybar"
+    rm "$XDG_SCRIPTS_HOME/restart-waybar.sh"
     rm "$XDG_SCRIPTS_HOME/toggle-waybar.sh"
 }
