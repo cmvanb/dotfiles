@@ -24,7 +24,7 @@ export XDG_SCRIPTS_HOME="$HOME/.local/scripts"
 export XDG_TEMPLATES_DIR="$HOME/.local/share/templates"
 export DEPLOY_PROFILE="desktop"
 export DEPLOY_DISTRO="$(get_distro_id)"
-export DEPLOY_WM="hyprland"
+export DEPLOY_WM="river"
 
 # Determine which shell the template engine executes
 export ESH_SHELL=/usr/bin/bash
@@ -75,6 +75,7 @@ source "$base_dir/deploy/modules/pandoc.sh"
 source "$base_dir/deploy/modules/pipewire.sh"
 source "$base_dir/deploy/modules/pyenv.sh"
 source "$base_dir/deploy/modules/qutebrowser.sh"
+source "$base_dir/deploy/modules/river.sh"
 source "$base_dir/deploy/modules/scripts-desktop.sh"
 source "$base_dir/deploy/modules/scripts-markdown.sh"
 source "$base_dir/deploy/modules/scripts-misc.sh"
@@ -157,7 +158,13 @@ yay::install
 zathura::install
 
 echo "Deploying window managers..."
-hyprland::install
+if [[ $DEPLOY_WM == "hyprland" ]]; then
+    hyprland::install
+
+elif [[ $DEPLOY_WM == "river" ]]; then
+    river::install
+
+fi
 
 echo "Deploying desktop user services..."
 bluetooth-autoconnect::enable
