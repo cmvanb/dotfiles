@@ -44,7 +44,7 @@ riverctl map normal Super O spawn "wofi -p '...' --show drun"
 riverctl map normal Super T spawn "alacritty"
 
 # New floating terminal
-riverctl map normal Super G spawn "alacritty --class floating -o window.dimensions.columns=100 -o window.dimensions.lines=8"
+riverctl map normal Super G spawn "alacritty --class floating -o window.dimensions.columns=120 -o window.dimensions.lines=32"
 
 # New terminal in a directory
 riverctl map normal Super+Shift T spawn "$scripts_dir/open-terminal-cwd.sh"
