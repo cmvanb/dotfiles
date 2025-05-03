@@ -39,3 +39,6 @@
 
 [pretty]
     history = %C(yellow)[%h]%C(reset) %<(16,trunc)%ad %C(cyan)%an%C(reset) %C(green)%s%C(reset)
+
+[color]
+    ui = always
