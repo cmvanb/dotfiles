@@ -8,3 +8,4 @@ path:fg:<% color_rgb_int $ansi_blue %>
 line:fg:<% color_rgb_int $ansi_yellow %>
 --colors
 column:fg:<% color_rgb_int $ansi_green %>
+--color=always
