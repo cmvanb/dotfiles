@@ -43,7 +43,7 @@ declare bookmark_file
 bookmark_file="$bookmarks_dir/$bookmark"
 
 declare url
-url=$(rg --only-matching --no-line-number "\(([^}]*)\)" "$bookmark_file")
+url=$(rg --only-matching --no-line-number --color=never "\(([^}]*)\)" "$bookmark_file")
 url=${url:1:-1}
 
 qutebrowser --target window --untrusted-args "$url" 2> /dev/null
