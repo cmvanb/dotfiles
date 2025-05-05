@@ -118,6 +118,7 @@ riverctl rule-add -app-id gtk-pipe-viewer ssd
 riverctl rule-add -app-id org.pulseaudio.pavucontrol ssd
 riverctl rule-add -app-id org.gnome.SimpleScan ssd
 riverctl rule-add -title Transmission ssd
+riverctl rule-add -app-id waypaper ssd
 riverctl rule-add -app-id yad ssd
 riverctl rule-add -app-id yad-settings ssd
 riverctl rule-add -app-id org.pwmt.zathura ssd
