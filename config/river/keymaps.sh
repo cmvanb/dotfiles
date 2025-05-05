@@ -29,7 +29,7 @@ assert_dependency wofi
 #-------------------------------------------------------------------------------
 
 # Lock river
-riverctl map normal Super+Shift Z spawn "$scripts_dir/lock-screen.sh"
+riverctl map normal Super+Shift Z spawn "hyprlock"
 
 # Exit river
 riverctl map normal Super+Shift W exit
