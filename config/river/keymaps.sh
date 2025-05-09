@@ -80,6 +80,7 @@ riverctl map normal Super K focus-view previous
 # Swap the focused view with the next/previous view in the layout stack
 riverctl map normal Super+Control J swap next
 riverctl map normal Super+Control K swap previous
+riverctl map normal Super+Control semicolon zoom
 
 # Focus the left/right output
 riverctl map normal Super H focus-output next
