@@ -47,6 +47,9 @@ y = 0
 #   - Unicode u is \u0075
 #
 # *Modifiers bitflag: 1 is shift, 2 is alt, 4 is ctrl
+#
+# For additional terminal key codes
+#   see: https://aperiodic.net/pip/archives/Geekery/term-function-keys/
 #-------------------------------------------------------------------------------
 
 #------------------------------ Spawn
@@ -116,6 +119,12 @@ chars = "\u001b\u005b\u0031\u003b\u0032\u0053"
 mods = 'Control'
 key = 'Tab'
 chars = "\u001b\u005b\u0039\u003b\u0035\u0075"
+
+# Ctrl+Semicolon -> F17 passthrough
+[[keyboard.bindings]]
+mods = 'Control'
+key = 'Semicolon'
+chars = "\u001b\u005b\u0031\u0035\u003b\u0032\u007e"
 
 # Colors
 #-------------------------------------------------------------------------------
