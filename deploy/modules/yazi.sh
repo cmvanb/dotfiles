@@ -21,6 +21,7 @@ yazi::install () {
 
     # Install plugins
     ya pack -a yazi-rs/plugins:smart-enter
+    ya pack -a ndtoan96/ouch
 }
 
 yazi::uninstall () {
