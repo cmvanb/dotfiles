@@ -24,7 +24,8 @@ function fish_shared_aliases
     abbr -a gs git status
     abbr -a gsh git show
     abbr -a gsu git status -u
-    abbr -a gsw git switch
+    abbr -a gss git switch
+    abbr -a gsc git switch -c
 
     # General
     alias bat "bat --force-colorization --no-paging --style=grid,numbers"
