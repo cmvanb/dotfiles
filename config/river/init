@@ -108,13 +108,14 @@ riverctl rule-add -app-id org.gnome.Nautilus dimensions 1024 960
 riverctl rule-add -app-id nwg-look dimensions 1024 960
 
 # Render server-side decorations
-riverctl rule-add -app-id imv ssd
 riverctl rule-add -app-id gcr-prompter ssd
+riverctl rule-add -app-id com.mitchellh.ghostty ssd
+riverctl rule-add -app-id gtk-pipe-viewer ssd
+riverctl rule-add -app-id imv ssd
 riverctl rule-add -app-id marker ssd
 riverctl rule-add -app-id org.gnome.Nautilus ssd
 riverctl rule-add -app-id nm-connection-editor ssd
 riverctl rule-add -app-id nwg-look ssd
-riverctl rule-add -app-id gtk-pipe-viewer ssd
 riverctl rule-add -app-id org.pulseaudio.pavucontrol ssd
 riverctl rule-add -app-id org.gnome.SimpleScan ssd
 riverctl rule-add -title Transmission ssd
