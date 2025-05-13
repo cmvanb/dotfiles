@@ -21,6 +21,8 @@ function fish_shared_aliases
     abbr -a gr git remote -v
     abbr -a grb git rebase -i
     abbr -a grc git rm --cached
+    abbr -a grs git reset HEAD
+    abbr -a grt git restore
     abbr -a gs git status
     abbr -a gsh git show
     abbr -a gsu git status -u
