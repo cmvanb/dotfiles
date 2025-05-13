@@ -115,12 +115,12 @@ for i in $(seq 1 9); do
     # Focus tag
     riverctl map normal Super "$i" set-focused-tags $tags
 
-    # Tag focused view
+    # Send view to tag
     # riverctl map normal Super+Shift "$i" set-view-tags $tags
-    riverctl map normal Super+Shift "$i" spawn "$config_dir/river/send-view-to-tag.sh $tags"
+    riverctl map normal Super+Control "$i" spawn "$config_dir/river/send-view-to-tag.sh $tags"
 
     # Toggle focus of tag
-    riverctl map normal Super+Control "$i" toggle-focused-tags $tags
+    riverctl map normal Super+Shift "$i" toggle-focused-tags $tags
 done
 
 # Layout mappings
