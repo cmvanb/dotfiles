@@ -35,10 +35,10 @@ MISSING 00 # ... and the files they point to
 SETUID 38;5;<% color_256 ansi_magenta %> # file that is setuid (u+s)
 SETGID 38;5;<% color_256 ansi_magenta %> # file that is setgid (g+s)
 CAPABILITY 00 # file with capability (very expensive to lookup)
-STICKY_OTHER_WRITABLE 38;5;<% color_256 purple_5 %> # dir that is sticky and other-writable (+t,o+w)
-OTHER_WRITABLE 38;5;<% color_256 purple_5 %> # dir that is other-writable (o+w) and not sticky
-STICKY 38;5;<% color_256 purple_5 %> # dir with the sticky bit set (+t) and not other-writable
-EXEC 38;5;<% color_256 ansi_brgreen %> # files with execute permission
+STICKY_OTHER_WRITABLE 38;5;<% color_256 ansi_magenta %> # dir that is sticky and other-writable (+t,o+w)
+OTHER_WRITABLE 38;5;<% color_256 ansi_yellow %> # dir that is other-writable (o+w) and not sticky
+STICKY 38;5;<% color_256 ansi_magenta %> # dir with the sticky bit set (+t) and not other-writable
+EXEC 1;38;5;<% color_256 ansi_green %> # files with execute permission
 
 # 8 or 16 color terminals
 #-------------------------------------------------------------------------------
@@ -62,7 +62,7 @@ MISSING 00 # ... and the files they point to
 SETUID 38;5;<% color_256 ansi_magenta %> # file that is setuid (u+s)
 SETGID 38;5;<% color_256 ansi_magenta %> # file that is setgid (g+s)
 CAPABILITY 00 # file with capability (very expensive to lookup)
-STICKY_OTHER_WRITABLE 38;5;<% color_256 ansi_red %> # dir that is sticky and other-writable (+t,o+w)
-OTHER_WRITABLE 38;5;<% color_256 ansi_red %> # dir that is other-writable (o+w) and not sticky
-STICKY 38;5;<% color_256 ansi_red %> # dir with the sticky bit set (+t) and not other-writable
+STICKY_OTHER_WRITABLE 38;5;<% color_256 ansi_magenta %> # dir that is sticky and other-writable (+t,o+w)
+OTHER_WRITABLE 38;5;<% color_256 ansi_yellow %> # dir that is other-writable (o+w) and not sticky
+STICKY 38;5;<% color_256 ansi_magenta %> # dir with the sticky bit set (+t) and not other-writable
 EXEC 1;38;5;<% color_256 ansi_green %> # files with execute permission
