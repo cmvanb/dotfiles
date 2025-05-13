@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 font_mono='IosevkaTerm'
-font_sans='Liberation Sans'
-font_serif='Liberation Serif'
+font_sans='Noto Sans'
+font_serif='Noto Serif'
 
 font_size_tiny=8
 font_size_xsmall=10
