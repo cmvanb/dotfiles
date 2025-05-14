@@ -3,6 +3,10 @@
     "modules-left": ["river/tags"],
     "modules-center": ["river/window"],
     "modules-right": ["network", "bluetooth", "wireplumber", "battery", "clock"],
+    "river/tags": {
+        "num-tags": 20,
+        "hide-vacant": true
+    },
     "river/window": {
         "max-length": 160,
         "tooltip": false
