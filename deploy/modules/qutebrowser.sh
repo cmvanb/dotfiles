@@ -15,12 +15,15 @@ qutebrowser::install () {
     ensure_directory "$XDG_CONFIG_HOME/qutebrowser"
     force_link "$base_dir/config/qutebrowser/config.py" "$XDG_CONFIG_HOME/qutebrowser/config.py"
     force_link "$base_dir/config/qutebrowser/stylesheet.css" "$XDG_CONFIG_HOME/qutebrowser/stylesheet.css"
+    force_link "$base_dir/config/qutebrowser/stylemap.py" "$XDG_CONFIG_HOME/qutebrowser/stylemap.py"
+    force_link "$base_dir/config/qutebrowser/styles" "$XDG_CONFIG_HOME/qutebrowser/styles"
 
     ensure_directory "$XDG_DATA_HOME/applications"
     force_link "$base_dir/config/qutebrowser/org.qutebrowser.qutebrowser.desktop" "$XDG_DATA_HOME/applications/org.qutebrowser.qutebrowser.desktop"
 
     ensure_directory "$XDG_DATA_HOME/qutebrowser/userscripts"
     force_link "$base_dir/config/qutebrowser/userscripts/format_json.sh" "$XDG_DATA_HOME/qutebrowser/userscripts/format_json.sh"
+    force_link "$base_dir/config/qutebrowser/userscripts/rebuild-grease-styles.py" "$XDG_DATA_HOME/qutebrowser/userscripts/rebuild-grease-styles.py"
     force_link "$base_dir/config/qutebrowser/userscripts/readability.py" "$XDG_DATA_HOME/qutebrowser/userscripts/readability.py"
 
     ensure_directory "$XDG_SCRIPTS_HOME"

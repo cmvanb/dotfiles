@@ -1,0 +1,24 @@
+html {
+  background-color: #0b0b0e;
+}
+
+.title {
+    font-size: 14px;
+}
+
+.comhead {
+    font-size: 12px;
+}
+
+.subtext {
+    font-size: 12px;
+}
+
+.comment {
+    font-size: 14px;
+
+}
+
+#hnmain {
+  max-width: 640px;
+}
