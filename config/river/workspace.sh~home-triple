@@ -22,10 +22,6 @@ if wl_output_exists $left; then
     riverctl focus-output $left
     riverctl send-layout-cmd rivercarro "main-location top"
 
-    riverctl set-focused-tags "$(tagmask 9)"
-    riverctl spawn "bitwarden-desktop"
-    sleep 0.75
-
     riverctl set-focused-tags "$(tagmask 5)"
     riverctl spawn "alacritty --working-directory ~/Wiki/todo --command edit"
     sleep 0.35
