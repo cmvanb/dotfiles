@@ -3,6 +3,9 @@
 #-------------------------------------------------------------------------------
 
 function fish_prompt --description 'Print the prompt'
+    # Disable the default venv prompt component.
+    set -g VIRTUAL_ENV_DISABLE_PROMPT true
+
     # Preserve pipestatus
     set -l last_pipestatus $pipestatus
 
