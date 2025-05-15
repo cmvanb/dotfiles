@@ -1,8 +1,20 @@
 {
+    /* General
+    --------------------------------------------------------------------------*/
     "layer": "top",
+    "position": "top",
+    "height": 32,
+    "margin-top": -2,
+    "mode": "dock",
+
+    /* Module layout
+    --------------------------------------------------------------------------*/
     "modules-left": ["river/tags"],
     "modules-center": ["river/window"],
     "modules-right": ["network", "bluetooth", "wireplumber", "battery", "clock"],
+
+    /* River modules
+    --------------------------------------------------------------------------*/
     "river/tags": {
         "num-tags": 20,
         "hide-vacant": true
@@ -10,6 +22,12 @@
     "river/window": {
         "max-length": 160,
         "tooltip": false
+    },
+
+    /* Common modules
+    --------------------------------------------------------------------------*/
+    "clock": {
+        "format": "󰸘   {:%Y-%m-%d        %H:%M}"
     },
     "network": {
         "format-ethernet": "󰲝   {ifname}",
@@ -32,6 +50,9 @@
         "on-click": "pavucontrol",
         "on-click-right": "wpctl set-mute 167 toggle"
     },
+
+    /* Laptop modules
+    --------------------------------------------------------------------------*/
     "battery": {
         "format": "{icon}    {capacity}%",
         "format-icons": ["", "", "", "", ""],
@@ -40,8 +61,5 @@
             "warning": 30,
             "critical": 15
         }
-    },
-    "clock": {
-        "format": "󰸘   {:%Y-%m-%d        %H:%M}"
     }
 }
