@@ -26,6 +26,10 @@ waybar::install () {
         force_link "$base_dir/config/waybar/river-config" "$XDG_CONFIG_HOME/waybar/config"
         esh "$base_dir/config/waybar/river-style.css~esh" > "$XDG_CONFIG_HOME/waybar/style.css"
 
+    elif [[ -z $DEPLOY_WM ]]; then
+        echo "[$(basename "$0")] ERROR: \$DEPLOY_WM not set."
+        exit 2
+
     else
         echo "[$(basename "$0")] ERROR: \`$DEPLOY_WM\` is not accounted for."
         exit 1
