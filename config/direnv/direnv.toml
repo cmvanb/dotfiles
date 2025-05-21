@@ -1,9 +1,6 @@
 #-------------------------------------------------------------------------------
-# Direnv bash functions
+# Direnv configuration file
 #-------------------------------------------------------------------------------
 
-# Helper function for python venvs.
-activate_venv() {
-    export VIRTUAL_ENV=$1
-    PATH_add "$VIRTUAL_ENV/bin"
-}
+[global]
+log_filter="^$"
