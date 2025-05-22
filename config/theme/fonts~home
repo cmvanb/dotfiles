@@ -4,8 +4,8 @@ font_mono='IosevkaTerm'
 font_sans='Noto Sans'
 font_serif='Noto Serif'
 
-font_size_tiny=8
-font_size_xsmall=10
+font_size_tiny=10
+font_size_xsmall=11
 font_size_small=12
 font_size_msmall=13
 font_size_medium=14
