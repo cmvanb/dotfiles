@@ -451,7 +451,7 @@ config.bind('<Ctrl-r>', 'spawn --userscript readability')
 config.bind('<Ctrl-;>', 'spawn --userscript format_json.sh')
 
 # Video playback
-config.bind(';v', 'hint links spawn --verbose --input-ipc-server=/tmp/mpvsocket --detach mpv {hint-url}')
+config.bind(';v', 'hint links spawn --verbose --detach mpv --input-ipc-server=/tmp/mpvsocket {hint-url}')
 
 # Mute tab audio
 config.bind('<Ctrl-m>', 'tab-mute')
