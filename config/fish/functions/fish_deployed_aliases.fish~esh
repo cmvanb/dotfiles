@@ -3,12 +3,16 @@
 #-------------------------------------------------------------------------------
 
 function fish_deployed_aliases
-<% if [[ $DEPLOY_DISTRO == "arch" ]]; then -%>
+#<% if [[ $DEPLOY_DISTRO == "arch" ]]; then -%>
+
     abbr -a uu sudo pacman -Syu
-<% fi -%>
-<% if [[ $DEPLOY_PROFILE == "desktop" ]]; then -%>
+# <% fi -%>
+
+# <% if [[ $DEPLOY_PROFILE == "desktop" ]]; then -%>
+
     abbr -a rb reboot
     abbr -a sus suspend
     abbr -a sdn shutdown
-<% fi -%>
+# <% fi -%>
+
 end

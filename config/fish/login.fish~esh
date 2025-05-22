@@ -17,7 +17,8 @@ set -x XDG_OPT_HOME $HOME/.local/opt
 set -x XDG_SCRIPTS_HOME $HOME/.local/scripts
 set -x XDG_SECRETS_HOME $HOME/.local/secrets
 
-<% if [[ $DEPLOY_PROFILE == "desktop" ]]; then -%>
+# <% if [[ $DEPLOY_PROFILE == "desktop" ]]; then -%>
+
 # XDG user directories.
 set -x XDG_DOCUMENTS_DIR $HOME/Documents
 set -x XDG_DOWNLOAD_DIR $HOME/Downloads
@@ -49,7 +50,8 @@ set -x RUSTUP_HOME $XDG_DATA_HOME/rustup
 # VSCode config.
 set -x VSCODE_PORTABLE $XDG_DATA_HOME/vscode
 
-<% fi -%>
+# <% fi -%>
+
 # NPM config.
 set -x NPM_CONFIG_USERCONFIG $XDG_CONFIG_HOME/npm/npmrc
 
@@ -76,14 +78,15 @@ if test "$TERM" = "linux"
     $XDG_CONFIG_HOME/vt/apply-vt-colors.sh | systemd-cat -t fish-login
 end
 
-<% if [[ $DEPLOY_PROFILE == "desktop" ]]; then -%>
+# <% if [[ $DEPLOY_PROFILE == "desktop" ]]; then -%>
 
 # Ensure user directories exist
 #-------------------------------------------------------------------------------
 
 mkdir -p $XDG_DOCUMENTS_DIR $XDG_DOWNLOAD_DIR $XDG_MUSIC_DIR $XDG_PICTURES_DIR $XDG_VIDEOS_DIR
 
-<% fi -%>
+# <% fi -%>
+
 # Path
 #-------------------------------------------------------------------------------
 
@@ -91,7 +94,8 @@ mkdir -p $XDG_DOCUMENTS_DIR $XDG_DOWNLOAD_DIR $XDG_MUSIC_DIR $XDG_PICTURES_DIR $
 fish_add_path -pP $XDG_BIN_HOME
 fish_add_path -pP $XDG_SCRIPTS_HOME
 
-<% if [[ $DEPLOY_PROFILE == "desktop" ]]; then -%>
+# <% if [[ $DEPLOY_PROFILE == "desktop" ]]; then -%>
+
 # Add pyenv python shims to path.
 fish_add_path -pP $PYENV_ROOT/bin
 
@@ -105,7 +109,8 @@ if command -v pyenv &> /dev/null
     pyenv init - | source
 end
 
-<% fi -%>
+# <% fi -%>
+
 # Clean home directory
 #-------------------------------------------------------------------------------
 

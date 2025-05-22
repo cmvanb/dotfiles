@@ -19,12 +19,10 @@ source "$XDG_CONFIG_HOME/shell-stty/stty-config"
 # Save bash history in an XDG compliant directory.
 export HISTFILE="$XDG_DATA_HOME/bash/history"
 
-<% if [[ $DEPLOY_PROFILE == "desktop" ]]; then -%>
 # Save python history in an XDG compliant directory.
 export PYTHON_HISTORY="$XDG_DATA_HOME/python/history"
+# <% if [[ $DEPLOY_PROFILE == "desktop" ]]; then -%>
 
-<% fi -%>
-<% if [[ $DEPLOY_PROFILE == "desktop" ]]; then -%>
 # Functions
 #-------------------------------------------------------------------------------
 
@@ -40,7 +38,8 @@ function suspend () {
     "$XDG_BIN_HOME/suspend"
 }
 
-<% fi -%>
+# <% fi -%>
+
 # Aliases
 #-------------------------------------------------------------------------------
 
@@ -86,6 +85,7 @@ alias lsi="eza --git-ignore"
 alias lst="eza -T --git-ignore"
 alias lsta="eza -aT --git-ignore"
 alias ip="ip -c"
+alias rga="rg --hidden --no-ignore"
 
 # Python
 alias vv="generate-venv.sh"
@@ -93,15 +93,18 @@ alias va="source venv/bin/activate"
 alias vd="deactivate"
 
 # Deployment specific
-<% if [[ $DEPLOY_DISTRO == "arch" ]]; then -%>
+# <% if [[ $DEPLOY_DISTRO == "arch" ]]; then -%>
+
 alias uu="sudo pacman -Syu"
-<% fi -%>
-alias rga="rg --hidden --no-ignore"
-<% if [[ $DEPLOY_PROFILE == "desktop" ]]; then -%>
+# <% fi -%>
+
+# <% if [[ $DEPLOY_PROFILE == "desktop" ]]; then -%>
+
 alias rb="reboot"
 alias sus="suspend"
 alias sdn="shutdown"
-<% fi -%>
+# <% fi -%>
+
 
 # Bindings
 #-------------------------------------------------------------------------------
