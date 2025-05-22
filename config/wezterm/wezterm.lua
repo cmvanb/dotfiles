@@ -61,8 +61,7 @@ return {
         weight = 'Regular',
     }),
     -- NOTE: Wezterm's font size doesn't match other terminals (e.g. Alacritty).
-    font_size = 13.0,
-    --font_size = tonumber(theme.font('font_size_medium')),
+    font_size = tonumber(theme.font('font_size_small')),
 
     -- Window
     adjust_window_size_when_changing_font_size = false,
@@ -84,7 +83,7 @@ return {
 
     -- Opacity
     -- NOTE: Transparency has a noticeable performance impact.
-    window_background_opacity = 1.00,
+    window_background_opacity = 0.80,
 
 -- Key bindings
 --------------------------------------------------------------------------------
@@ -94,6 +93,41 @@ return {
     disable_default_key_bindings = true,
 
     keys = {
+        -- Spawn new terminal in current directory
+        {
+            key = 't',
+            mods = 'CTRL',
+            action = wezterm.action.SpawnWindow,
+        },
+        -- Clipboard
+        {
+            key = 'c',
+            mods = 'CTRL',
+            action = alt_action(
+                wezterm.action.SendKey { key = 'c', mods = 'CTRL' },
+                wezterm.action { CopyTo = 'ClipboardAndPrimarySelection' }
+            ),
+        },
+        {
+            key = 'v',
+            mods = 'CTRL',
+            action = wezterm.action { PasteFrom = 'Clipboard' },
+        },
+        -- Scrolling
+        {
+            key = 'PageDown',
+            action = alt_action(
+                wezterm.action.SendKey { key = 'PageDown' },
+                wezterm.action.ScrollByPage(0.5)
+            ),
+        },
+        {
+            key = 'PageUp',
+            action = alt_action(
+                wezterm.action.SendKey { key = 'PageUp' },
+                wezterm.action.ScrollByPage(-0.5)
+            ),
+        },
         -- Reload wezterm config.
         {
             key = 'r',
@@ -106,76 +140,18 @@ return {
             mods = 'CTRL|SHIFT',
             action = wezterm.action.Search { CaseInSensitiveString = ""},
         },
-        -- Spawn new terminal in current directory
-        {
-            key = 't',
-            mods = 'CTRL',
-            action = wezterm.action.SpawnWindow,
-        },
-        -- Copy
-        {
-            key = 'c',
-            mods = 'CTRL',
-            action = alt_action(
-                wezterm.action.SendKey { key = 'c', mods = 'CTRL' },
-                wezterm.action { CopyTo = 'ClipboardAndPrimarySelection' }
-            ),
-        },
-        -- Paste
-        {
-            key = 'v',
-            mods = 'CTRL',
-            action = wezterm.action { PasteFrom = 'Clipboard' },
-        },
-        -- STTY interrupt passthrough
+        -- STTY signals
         {
             key = 'x',
             mods = 'CTRL',
             action = wezterm.action.SendKey { key = 'c', mods = 'CTRL' },
         },
-        -- STTY EOF passthrough
         {
             key = '.',
             mods = 'CTRL',
             action = wezterm.action.SendKey { key = 'd', mods = 'CTRL' },
         },
-        -- Scroll down half-page
-        {
-            key = 'j',
-            mods = 'CTRL',
-            action = alt_action(
-                wezterm.action.SendKey { key = 'd', mods = 'CTRL' },
-                wezterm.action.ScrollByPage(0.5)
-            ),
-        },
-        -- Scroll up half-page
-        {
-            key = 'k',
-            mods = 'CTRL',
-            action = alt_action(
-                wezterm.action.SendKey { key = 'u', mods = 'CTRL' },
-                wezterm.action.ScrollByPage(-0.5)
-            ),
-        },
-        -- Increase font size
-        {
-            key = 'j',
-            mods = 'CTRL|SHIFT',
-            action = wezterm.action.IncreaseFontSize,
-        },
-        -- Decrease font size
-        {
-            key = 'k',
-            mods = 'CTRL|SHIFT',
-            action = wezterm.action.DecreaseFontSize,
-        },
-        -- Reset font size
-        {
-            key = 'l',
-            mods = 'CTRL|SHIFT',
-            action = wezterm.action.ResetFontSize,
-        },
-        -- Key passthrough
+        -- Passthrough
         -- It's not possible for NVIM to distinguish <C-i> from <Tab>, or
         -- <C-m> from <CR>, or <C-BS> from <C-H>. Best we can do is pass escape  
         -- codes for unused function keys. Use `showkey -a` to find codes for 
@@ -190,26 +166,43 @@ return {
         {
             key = 'm',
             mods = 'CTRL',
-            action = alt_action(
-                wezterm.action { SendString = '\x1b[1;2Q' },
-                wezterm.action.Nop
-            ),
+            action = wezterm.action { SendString = '\x1b[1;2Q' },
         },
         {
             key = 'Backspace',
             mods = 'CTRL',
-            action = alt_action(
-                wezterm.action { SendString = '\x1b[1;2R' },
-                wezterm.action.Nop
-            ),
+            action = wezterm.action { SendString = '\x1b[1;2R' },
+        },
+        {
+            key = 'Period',
+            mods = 'CTRL',
+            action = wezterm.action { SendString = '\x1b[1;2S' },
         },
         {
             key = 'Tab',
             mods = 'CTRL',
-            action = alt_action(
-                wezterm.action { SendString = '\x1b[9;5u' },
-                wezterm.action.Nop
-            ),
+            action = wezterm.action { SendString = '\x1b[9;5u' },
+        },
+        {
+            key = 'Semicolon',
+            mods = 'CTRL',
+            action = wezterm.action { SendString = '\x1b[15;2~' },
+        },
+        -- Font size
+        {
+            key = 'j',
+            mods = 'CTRL|SHIFT',
+            action = wezterm.action.IncreaseFontSize,
+        },
+        {
+            key = 'k',
+            mods = 'CTRL|SHIFT',
+            action = wezterm.action.DecreaseFontSize,
+        },
+        {
+            key = 'l',
+            mods = 'CTRL|SHIFT',
+            action = wezterm.action.ResetFontSize,
         },
     },
 
@@ -234,7 +227,7 @@ return {
         selection_bg = theme.color_hash('primary_15'),
         selection_fg = theme.color_hash('gray_0'),
 
-        visual_bell = theme.color_hash('primary_5'),
+        visual_bell = theme.color_hash('gray_0'),
 
         tab_bar = {
             background = theme.color_hash('gray_0'),
