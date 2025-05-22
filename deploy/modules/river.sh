@@ -36,6 +36,7 @@ river::install () {
         echo "└> Installing river shortcuts."
 
         ensure_directory "$XDG_BIN_HOME"
+        force_link "$base_dir/config/river/river-log.sh" "$XDG_BIN_HOME/river-log"
         force_link "$base_dir/config/river/river-run.sh" "$XDG_BIN_HOME/river-run"
         force_link "$base_dir/config/river/init~river" "$XDG_BIN_HOME/init"
     fi
@@ -50,6 +51,7 @@ river::uninstall () {
 
     echo "└> Uninstalling river shortcuts."
 
+    rm "$XDG_BIN_HOME/river-log"
     rm "$XDG_BIN_HOME/river-run"
     if same_file "$XDG_BIN_HOME/init" "$base_dir/config/river/init~river"; then
         rm "$XDG_BIN_HOME/init"
