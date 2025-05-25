@@ -97,6 +97,7 @@ source "$config_dir/river/workspace.sh"
 #-------------------------------------------------------------------------------
 
 # Floating
+riverctl rule-add -app-id blueman-manager float
 riverctl rule-add -app-id floating float
 riverctl rule-add -app-id org.gnome.Nautilus float
 riverctl rule-add -app-id nwg-look float
@@ -105,10 +106,12 @@ riverctl rule-add -app-id yad float
 riverctl rule-add -app-id nm-connection-editor float
 
 # Size
+riverctl rule-add -app-id blueman-manager dimensions 800 600
 riverctl rule-add -app-id org.gnome.Nautilus dimensions 1024 960
 riverctl rule-add -app-id nwg-look dimensions 1024 960
 
 # Render server-side decorations
+riverctl rule-add -app-id blueman-manager ssd
 riverctl rule-add -app-id gcr-prompter ssd
 riverctl rule-add -app-id com.mitchellh.ghostty ssd
 riverctl rule-add -app-id gtk-pipe-viewer ssd
