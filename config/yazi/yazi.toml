@@ -2,7 +2,7 @@
 # Yazi configuration
 #-------------------------------------------------------------------------------
 
-[manager]
+[mgr]
 show_hidden = true
 ratio = [1, 1, 3]
 sort_by = "natural"

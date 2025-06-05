@@ -2,18 +2,18 @@
 # Yazi keymaps
 #-------------------------------------------------------------------------------
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on   = "l"
 run  = 'plugin smart-enter'
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on   = "<C-w>"
 run  = 'quit'
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on   = "w"
 run  = 'quit --no-cwd-file'
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on   = "<Esc>"
 run  = 'quit'
