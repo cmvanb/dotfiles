@@ -49,7 +49,7 @@ if wl_output_exists $primary; then
 
     riverctl set-focused-tags "$(tagmask 9)"
     riverctl spawn "qutebrowser -r home"
-    sleep 1.65 # MAGIC 🪄
+    sleep 1.85 # MAGIC 🪄
 
     riverctl set-focused-tags "$(tagmask 1)"
     riverctl spawn "alacritty"
