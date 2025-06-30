@@ -18,6 +18,7 @@ theme-desktop::install () {
 
     if [[ $host == "cyxwel" ]] \
         || [[ $host == "supertubes" ]] \
+        || [[ $host == "vortex" ]] \
         || [[ $host == "xray" ]] \
     ;then
         force_link "$base_dir/config/theme/fonts~home" "$XDG_CONFIG_HOME/theme/fonts"
