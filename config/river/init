@@ -112,6 +112,7 @@ riverctl rule-add -app-id nwg-look dimensions 1024 960
 
 # Render server-side decorations
 riverctl rule-add -app-id blueman-manager ssd
+riverctl rule-add -app-id gcr-viewer ssd
 riverctl rule-add -app-id gcr-prompter ssd
 riverctl rule-add -app-id com.mitchellh.ghostty ssd
 riverctl rule-add -app-id gtk-pipe-viewer ssd
