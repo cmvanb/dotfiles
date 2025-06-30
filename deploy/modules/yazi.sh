@@ -20,8 +20,8 @@ yazi::install () {
     force_link "$base_dir/config/yazi/yzcd.sh" "$XDG_CONFIG_HOME/yazi/yzcd.sh"
 
     # Install plugins
-    ya pack -a yazi-rs/plugins:smart-enter
-    ya pack -a ndtoan96/ouch
+    ya pkg add yazi-rs/plugins:smart-enter
+    ya pkg add ndtoan96/ouch
 }
 
 yazi::uninstall () {
