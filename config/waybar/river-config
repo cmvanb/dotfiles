@@ -27,25 +27,25 @@
     /* Common modules
     --------------------------------------------------------------------------*/
     "clock": {
-        "format": "󰸘   {:%Y-%m-%d        %H:%M}"
+        "format": "󰸘  {:%Y-%m-%d      %H:%M}"
     },
     "network": {
-        "format-ethernet": "󰲝   {ifname}",
-        "format-wifi": "󰖩   {ifname}",
-        "format-disconnected": "󰲜   no network",
+        "format-ethernet": "󰲝  {ifname}",
+        "format-wifi": "󰖩  {ifname}",
+        "format-disconnected": "󰲜  no network",
         "tooltip": true,
         "tooltip-format": "{gwaddr} · {bandwidthUpBytes} up · {bandwidthDownBytes} down"
     },
     "bluetooth": {
-        "format": "  {status}",
+        "format": " {status}",
         "tooltip": true,
         "tooltip-format": "{device_address} · {device_alias}",
         "tooltip-format-disabled": "controller disabled",
         "tooltip-format-off": "controller off"
     },
     "wireplumber": {
-        "format": "{icon}   {volume}%",
-        "format-muted": "󰝟   {volume}%",
+        "format": "{icon}  {volume}%",
+        "format-muted": "󰝟  {volume}%",
         "format-icons": ["󰕿", "󰖀", "󰕾"],
         "on-click": "pavucontrol",
         "on-click-right": "wpctl set-mute 167 toggle"
@@ -54,7 +54,7 @@
     /* Laptop modules
     --------------------------------------------------------------------------*/
     "battery": {
-        "format": "{icon}    {capacity}%",
+        "format": "{icon}  {capacity}%",
         "format-icons": ["", "", "", "", ""],
         "interval": 5,
         "states": {
