@@ -68,6 +68,7 @@ source "$base_dir/deploy/modules/firefox.sh"
 source "$base_dir/deploy/modules/fontconfig.sh"
 source "$base_dir/deploy/modules/ghostty.sh"
 source "$base_dir/deploy/modules/hyprland.sh"
+source "$base_dir/deploy/modules/hyprlock.sh"
 source "$base_dir/deploy/modules/imv.sh"
 source "$base_dir/deploy/modules/mako.sh"
 source "$base_dir/deploy/modules/mpv.sh"
@@ -162,9 +163,11 @@ zathura::install
 echo "Deploying window managers..."
 if [[ $DEPLOY_WM == "hyprland" ]]; then
     hyprland::install
+    hyprlock::install
 
 elif [[ $DEPLOY_WM == "river" ]]; then
     river::install
+    hyprlock::install
 
 fi
 
