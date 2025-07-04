@@ -99,8 +99,11 @@ source "$config_dir/river/workspace.sh"
 # Floating
 riverctl rule-add -app-id blueman-manager float
 riverctl rule-add -app-id floating float
+riverctl rule-add -app-id gcr-prompter float
 riverctl rule-add -app-id org.gnome.Nautilus float
 riverctl rule-add -app-id nwg-look float
+riverctl rule-add -app-id 'com.transmissionbt.transmission*' float
+riverctl rule-add -app-id transmission-gtk float
 riverctl rule-add -app-id xdg-desktop-portal-gtk float
 riverctl rule-add -app-id yad float
 riverctl rule-add -app-id nm-connection-editor float
@@ -124,6 +127,7 @@ riverctl rule-add -app-id nwg-look ssd
 riverctl rule-add -app-id org.pulseaudio.pavucontrol ssd
 riverctl rule-add -app-id org.gnome.SimpleScan ssd
 riverctl rule-add -app-id 'com.transmissionbt.transmission*' ssd
+riverctl rule-add -app-id transmission-gtk ssd
 riverctl rule-add -app-id waypaper ssd
 riverctl rule-add -app-id yad ssd
 riverctl rule-add -app-id yad-settings ssd
