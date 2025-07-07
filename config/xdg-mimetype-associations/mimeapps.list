@@ -3,6 +3,7 @@ application/pdf=org.pwmt.zathura.desktop
 application/x-terminal-emulator=Alacritty.desktop
 image/bmp=imv.desktop
 image/gif=imv.desktop
+image/heic=imv.desktop
 image/jpeg=imv.desktop
 image/png=imv.desktop
 image/tiff=imv.desktop
