@@ -9,8 +9,8 @@
 
     /* Module layout
     --------------------------------------------------------------------------*/
-    "modules-left": ["river/tags"],
-    "modules-center": ["river/window"],
+    "modules-left": [],
+    "modules-center": ["river/window", "river/tags"],
     "modules-right": ["network", "bluetooth", "wireplumber", "battery", "clock"],
 
     /* River modules
