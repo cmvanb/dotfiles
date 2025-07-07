@@ -14,7 +14,6 @@ background {
 }
 
 label {
-    monitor = DP-3
     text = $USER
     color = <% color_css_rgba $system_text 1.0 %>
     font_size = 16
@@ -26,7 +25,6 @@ label {
 }
 
 input-field {
-    monitor = DP-3
     position = 0, -20
     size = 240, 40
     halign = center
