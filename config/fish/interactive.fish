@@ -66,22 +66,3 @@ or test "$TERM" = "xterm-256color"
 or test "$TERM" = "xterm-ghostty"
     set -g fish_term24bit 1
 end
-
-# Integrations
-#-------------------------------------------------------------------------------
-
-# Enable direnv
-if command -v direnv >/dev/null
-    direnv hook fish | source
-end
-
-# Enable Zoxide
-if command -v zoxide >/dev/null
-    zoxide init fish | source
-end
-
-# LF CD integration
-source $XDG_CONFIG_HOME/lf/lfcd.fish
-
-# Yazi CD Integration
-source $XDG_CONFIG_HOME/yazi/yzcd.fish
