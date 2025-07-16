@@ -16,4 +16,4 @@ run  = 'quit --no-cwd-file'
 
 [[mgr.prepend_keymap]]
 on   = "<Esc>"
-run  = 'quit'
+run  = 'quit --no-cwd-file'
