@@ -134,6 +134,7 @@ riverctl rule-add -app-id org.gnome.SimpleScan ssd
 riverctl rule-add -app-id 'com.transmissionbt.transmission*' ssd
 riverctl rule-add -app-id transmission-gtk ssd
 riverctl rule-add -app-id waypaper ssd
+riverctl rule-add -app-id xdg-desktop-portal-gtk ssd
 riverctl rule-add -app-id yad ssd
 riverctl rule-add -app-id yad-settings ssd
 riverctl rule-add -app-id org.pwmt.zathura ssd
