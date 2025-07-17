@@ -11,7 +11,7 @@
     --------------------------------------------------------------------------*/
     "modules-left": ["river/window"],
     "modules-center": ["river/tags"],
-    "modules-right": ["network", "bluetooth", "wireplumber", "battery", "clock"],
+    "modules-right": ["custom/tailscale", "network", "bluetooth", "wireplumber", "battery", "clock"],
 
     /* River modules
     --------------------------------------------------------------------------*/
@@ -28,6 +28,11 @@
     --------------------------------------------------------------------------*/
     "clock": {
         "format": "󰸘  {:%Y-%m-%d      %H:%M}"
+    },
+    "custom/tailscale": {
+        "exec": "${XDG_CONFIG_HOME}/waybar/tailscale.sh",
+        "format": "{}",
+        "interval": 5
     },
     "network": {
         "format-ethernet": "󰲝  {ifname}",
