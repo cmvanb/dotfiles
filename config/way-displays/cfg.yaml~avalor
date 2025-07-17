@@ -9,8 +9,8 @@ ARRANGE: ROW
 ALIGN: TOP
 
 ORDER:
-    - 'eDP-1'
     - 'DP-3'
+    - 'eDP-1'
 
 MODE:
     - NAME_DESC: 'eDP-1'
