@@ -104,6 +104,18 @@ riverctl map-pointer normal Super BTN_RIGHT resize-view
 # Close view with middle mouse button
 riverctl map-pointer normal Super BTN_MIDDLE close
 
+# Resize (floating) view
+riverctl map normal Super+Shift D resize vertical 200
+riverctl map normal Super+Shift F resize vertical -200
+riverctl map normal Super+Shift G resize horizontal 200
+riverctl map normal Super+Shift S resize horizontal -200
+
+# Move (floating) view
+riverctl map normal Super+Control S move left 200
+riverctl map normal Super+Control G move right 200
+riverctl map normal Super+Control D move up 200
+riverctl map normal Super+Control F move down 200
+
 # Tag mappings
 #-------------------------------------------------------------------------------
 
