@@ -12,6 +12,7 @@ function fish_shared_aliases
     abbr -a gc git commit -m
     abbr -a gca git commit --amend
     abbr -a gco git checkout
+    abbr -a gcp git cherry-pick
     abbr -a gd git diff
     abbr -a gds git diff --staged
     abbr -a gl git log --pretty=history
