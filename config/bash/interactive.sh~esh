@@ -93,6 +93,11 @@ alias vv="generate-venv.sh"
 alias va="source venv/bin/activate"
 alias vd="deactivate"
 
+# Docker
+alias d="docker"
+alias dc="docker compose"
+alias dps="docker ps | view"
+
 # Deployment specific
 # <% if [[ $DEPLOY_DISTRO == "arch" ]]; then -%>
 

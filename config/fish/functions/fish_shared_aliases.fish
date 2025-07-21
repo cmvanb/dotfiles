@@ -54,4 +54,9 @@ function fish_shared_aliases
     abbr -a vv generate-venv.sh
     abbr -a va source venv/bin/activate.fish
     abbr -a vd deactivate
+
+    # Docker
+    abbr -a d docker
+    abbr -a dc "docker compose"
+    abbr -a dps "docker ps | view"
 end
