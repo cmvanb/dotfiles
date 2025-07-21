@@ -105,16 +105,16 @@ riverctl map-pointer normal Super BTN_RIGHT resize-view
 riverctl map-pointer normal Super BTN_MIDDLE close
 
 # Resize (floating) view
-riverctl map normal Super+Shift D resize vertical 200
-riverctl map normal Super+Shift F resize vertical -200
+riverctl map normal Super+Shift D resize vertical 100
+riverctl map normal Super+Shift F resize vertical -100
 riverctl map normal Super+Shift G resize horizontal 200
 riverctl map normal Super+Shift S resize horizontal -200
 
 # Move (floating) view
-riverctl map normal Super+Control S move left 200
+riverctl map normal Super+Control D move up 100
+riverctl map normal Super+Control F move down 100
 riverctl map normal Super+Control G move right 200
-riverctl map normal Super+Control D move up 200
-riverctl map normal Super+Control F move down 200
+riverctl map normal Super+Control S move left 200
 
 # Tag mappings
 #-------------------------------------------------------------------------------
