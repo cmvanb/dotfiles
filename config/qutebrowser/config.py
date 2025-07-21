@@ -126,7 +126,7 @@ c.colors.completion.item.selected.border.top = theme.color_hash('primary_6')
 c.colors.completion.item.selected.bg = theme.color_hash('primary_6')
 c.colors.completion.item.selected.fg = theme.color_hash('text_15')
 c.colors.completion.item.selected.match.fg = theme.color_hash('yellow_5')
-c.colors.completion.match.fg = theme.color_hash('yellow_6')
+c.colors.completion.match.fg = theme.color_hash('magenta_5')
 c.colors.completion.scrollbar.fg = theme.color_hash('gray_2')
 c.colors.completion.scrollbar.bg = theme.color_hash('primary_1')
 
