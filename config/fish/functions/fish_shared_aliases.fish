@@ -20,7 +20,10 @@ function fish_shared_aliases
     abbr -a gpf git push --force
     abbr -a gpu git pull --rebase
     abbr -a gr git remote -v
-    abbr -a grb git rebase -i
+    abbr -a grb git rebase
+    abbr -a grba git rebase --abort
+    abbr -a grbc git rebase --continue
+    abbr -a grbi git rebase -i
     abbr -a grc git rm --cached
     abbr -a grs git reset HEAD
     abbr -a grt git restore
