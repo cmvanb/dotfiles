@@ -5,3 +5,99 @@
 [mgr]
 syntect_theme = "~/.config/bat/themes/carbon-dark.tmTheme"
 border_style = { fg = "#1d2d3d" }
+
+[icon]
+files = [
+    # Dev
+    { name = ".editorconfig", text = "" },
+    { name = ".gitattributes", text = "" },
+    { name = ".gitignore", text = "" },
+    { name = ".gitmodules", text = "" },
+    { name = "Makefile", text = "" },
+    { name = "LICENSE", text = "" },
+    { name = "Cargo.lock", text = "" },
+    { name = "Dockerfile", text = "" },
+
+    # Configuration
+    { name = "config", text = "" }
+]
+dirs = [
+    # Configuration
+    { name = ".config", text = "" },
+    { name = ".local", text = "" },
+    { name = ".ssh", text = "" },
+
+    # Home
+    { name = "Documents", text = "" },
+    { name = "Downloads", text = "" },
+
+    # Dev
+    { name = ".git", text = "" },
+    { name = ".github", text = "" },
+]
+exts = [
+    # Code
+    { name = "rs", text = "" },
+    { name = "py", text = "" },
+    { name = "js", text = "" },
+    { name = "ts", text = "" },
+    { name = "jsx", text = "" },
+    { name = "tsx", text = "" },
+    { name = "c", text = "" },
+    { name = "cpp", text = "" },
+    { name = "h", text = "" },
+    { name = "hpp", text = "" },
+    { name = "lua", text = "" },
+    { name = "css", text = "" },
+
+    # Shell
+    { name = "sh", text = "" },
+    { name = "bash", text = "" },
+    { name = "zsh", text = "" },
+    { name = "fish", text = "" },
+
+    # Configuration
+    { name = "conf", text = "" },
+    { name = "cfg", text = "" },
+    { name = "ini", text = "" },
+
+    # Data
+    { name = "json", text = "" },
+    { name = "csv", text = "" },
+    { name = "toml", text = "" },
+    { name = "yml", text = "" },
+    { name = "yaml", text = "" },
+    { name = "xml", text = "󰗀" },
+    { name = "sqlite3", text = "" },
+
+    # Documents
+    { name = "txt", text = "󰦪" },
+    { name = "pdf", text = "" },
+    { name = "md", text = "" },
+    { name = "html", text = "" },
+
+    # Images
+    { name = "heic", text = "" },
+    { name = "jpg", text = "" },
+    { name = "png", text = "" },
+
+    # Video
+    { name = "mkv", text = "" },
+    { name = "mp4", text = "" },
+    { name = "webm", text = "" },
+
+    # Compressed
+    { name = "tar", text = "" },
+    { name = "zip", text = "" },
+    { name = "gz", text = "" },
+    { name = "bz2", text = "" },
+    { name = "xz", text = "" },
+    { name = "rar", text = "" },
+    { name = "7z", text = "" }
+]
+prepend_conds = [
+    { if = "link", text = "" },
+    { if = "sock", text = "" },
+    { if = "fifo", text = "" },
+    { if = "exec & !dir", text = "" }
+]
