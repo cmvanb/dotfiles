@@ -3,6 +3,9 @@
 # Zathura PDF viewer configuration
 #-------------------------------------------------------------------------------
 
+# Behavior
+#-------------------------------------------------------------------------------
+
 # Enable clipboard.
 set selection-clipboard clipboard
 
@@ -16,6 +19,11 @@ set recolor-keephue "true"
 # mechanism is finicky.
 set selection-notification "true"
 
+# Amount of completion items to display.
+set n-completion-items 10
+
+# Appearance
+#-------------------------------------------------------------------------------
 set font "<%= $font_mono %> 14"
 
 set default-bg "<% color_hash $gray_0 %>"
@@ -27,7 +35,6 @@ set statusbar-fg "<% color_hash $text_15 %>"
 set inputbar-bg "<% color_hash $gray_0 %>"
 set inputbar-fg "<% color_hash $text_12 %>"
 
-set n-completion-items 10
 set completion-bg "<% color_hash $gray_0 %>"
 set completion-fg "<% color_hash $gray_15 %>"
 set completion-group-bg "<% color_hash $primary_1 %>"
@@ -44,5 +51,14 @@ set notification-warning-fg "<% color_hash $yellow_6 %>"
 set notification-bg "<% color_hash $gray_0 %>"
 set notification-fg "<% color_hash $text_8 %>"
 
-set highlight-color "<% color_hash $magenta_5 %>"
-set highlight-active-color "#<% color_hash $green_4 %>"
+set highlight-color "<% color_css_rgba $magenta_5 0.5 %>"
+set highlight-active-color "<% color_css_rgba $green_4 0.5 %>"
+
+# Key mappings
+#-------------------------------------------------------------------------------
+map [normal] <PageUp> scroll full-up
+map [normal] <PageDown> scroll full-down
+map [normal] d scroll half-up
+map [normal] f scroll half-down
+map [normal] w quit
+map [normal] <C-w> quit
