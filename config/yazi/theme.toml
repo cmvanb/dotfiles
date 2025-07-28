@@ -54,7 +54,7 @@ exts = [
     { name = "sh", text = "" },
     { name = "bash", text = "" },
     { name = "zsh", text = "" },
-    { name = "fish", text = "" },
+    { name = "fish", text = "" },
 
     # Configuration
     { name = "conf", text = "" },
