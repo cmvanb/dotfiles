@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-font_mono='IosevkaTermNerdFont'
+font_mono='Iosevka NF'
 font_sans='Noto Sans'
 font_serif='Noto Serif'
 
