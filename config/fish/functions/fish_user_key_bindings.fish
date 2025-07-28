@@ -78,7 +78,7 @@ function fish_user_key_bindings
     bind \ce 'edit; commandline -f repaint'
 
     # Open python interpreter
-    bind \cr 'python; commandline -f repaint'
+    bind \cr 'reset; python; commandline -f repaint'
 
     # Clear command line
     # NOTE: Ctrl+C is bound to `Copy`, so the terminal emulator has been
