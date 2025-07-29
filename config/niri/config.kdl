@@ -203,8 +203,7 @@ window-rule {
 //------------------------------------------------------------------------------
 binds {
     Super+Shift+Q { quit; }
-    // TODO: Investigate waylock error.
-    Super+Shift+Z { spawn "bash" "-c" "$XDG_SCRIPTS_HOME/lock-screen.sh"; }
+    Super+Shift+Z { spawn "hyprlock"; }
 
     Super+Q { close-window; }
     Super+T { spawn "alacritty"; }
