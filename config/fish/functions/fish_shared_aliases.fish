@@ -64,4 +64,5 @@ function fish_shared_aliases
     abbr -a dcu "docker compose up"
     abbr -a dcd "docker compose down"
     abbr -a dps "docker ps | view"
+    abbr -a dv "docker volume"
 end

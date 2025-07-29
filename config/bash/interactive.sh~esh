@@ -102,6 +102,7 @@ alias dc="docker compose"
 alias dcu="docker compose up"
 alias dcd="docker compose down"
 alias dps="docker ps | view"
+alias dv="docker volume"
 
 # Deployment specific
 # <% if [[ $DEPLOY_DISTRO == "arch" ]]; then -%>
