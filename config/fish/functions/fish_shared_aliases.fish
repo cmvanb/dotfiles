@@ -49,6 +49,7 @@ function fish_shared_aliases
     abbr -a lsd eza -a
     abbr -a lsi eza --git-ignore
     abbr -a lst eza -T --git-ignore
+    abbr -a lsat eza -aT --git-ignore
     abbr -a lsta eza -aT --git-ignore
     abbr -a ip ip -c
     abbr -a rga rg --hidden --no-ignore
