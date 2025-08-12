@@ -88,3 +88,27 @@ box > * > * {
     animation-iteration-count: infinite;
     animation-direction: alternate;
 }
+
+/* CPU
+*-----------------------------------------------------------------------------*/
+#cpu.medium {
+    color: <% color_hash $yellow_5 %>;
+}
+#cpu.heavy {
+    color: <% color_hash $orange_6 %>;
+}
+#cpu.critical {
+    color: <% color_hash $red_6 %>;
+}
+
+/* Memory
+*-----------------------------------------------------------------------------*/
+#memory.medium {
+    color: <% color_hash $yellow_5 %>;
+}
+#memory.heavy {
+    color: <% color_hash $orange_6 %>;
+}
+#memory.critical {
+    color: <% color_hash $red_6 %>;
+}

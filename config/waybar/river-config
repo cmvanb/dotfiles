@@ -11,7 +11,7 @@
     --------------------------------------------------------------------------*/
     "modules-left": ["river/window"],
     "modules-center": ["river/tags"],
-    "modules-right": ["custom/tailscale", "network", "bluetooth", "wireplumber", "battery", "clock"],
+    "modules-right": ["custom/tailscale", "network", "bluetooth", "wireplumber", "battery", "cpu", "memory", "clock"],
 
     /* River modules
     --------------------------------------------------------------------------*/
@@ -54,6 +54,23 @@
         "format-icons": ["󰕿", "󰖀", "󰕾"],
         "on-click": "pavucontrol",
         "on-click-right": "wpctl set-mute 167 toggle"
+    },
+    "cpu": {
+        "format": "cpu {usage}%",
+        "states": {
+            "medium": 50,
+            "heavy": 70,
+            "critical": 90
+        }
+    },
+    "memory": {
+        "interval": 30,
+        "format": "mem {percentage}%",
+        "states": {
+            "medium": 50,
+            "heavy": 70,
+            "critical": 90
+        }
     },
 
     /* Laptop modules
