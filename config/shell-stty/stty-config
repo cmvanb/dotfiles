@@ -27,5 +27,6 @@ stty erase "^?"
 stty intr ^C
 
 # EOF signal
-# NOTE: The terminal emulator binds Ctrl+C to `Copy` and Ctrl+X to simulate
+# NOTE: The terminal emulator binds Ctrl+C to `Copy` and Ctrl+. to simulate
+# Ctrl+D, which is what the shell picks up here.
 stty eof ^D
