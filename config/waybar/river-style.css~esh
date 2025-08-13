@@ -65,24 +65,23 @@ box > * > * {
 
 /* Battery
 *-----------------------------------------------------------------------------*/
-#battery.full {
-    color: <% color_hash $primary_15 %>;
-}
-
 #battery.charging, #battery.plugged {
     color: <% color_hash $green_5 %>;
 }
-
+#battery.full {
+    color: <% color_hash $primary_15 %>;
+}
+#battery.normal:not(.charging) {
+    color: <% color_hash $system_text %>;
+}
 #battery.warning:not(.charging) {
     color: <% color_hash $orange_6 %>;
 }
-
 @keyframes blink {
     to {
         color: <% color_hash $red_2 %>;
     }
 }
-
 #battery.critical:not(.charging) {
     color: <% color_hash $red_6 %>;
     animation-name: blink;
