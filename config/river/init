@@ -62,11 +62,31 @@ riverctl input pointer-1133-50503-Logitech_USB_Receiver pointer-accel 0.05
 riverctl input pointer-43256-6199-Bastard_Keyboards_Dilemma_Max_Mouse accel-profile flat
 riverctl input pointer-43256-6199-Bastard_Keyboards_Dilemma_Max_Mouse pointer-accel -0.15
 
-# Layout generator
+# Layout manager
 #-------------------------------------------------------------------------------
 
-riverctl default-layout rivercarro
-riverctl spawn "rivercarro -inner-gaps 6 -outer-gaps 0 -main-ratio 0.65 -main-location right"
+# rivercarro
+# riverctl default-layout rivercarro
+# riverctl spawn "rivercarro -inner-gaps 6 -outer-gaps 0 -main-ratio 0.65 -main-location right"
+
+# wideriver
+riverctl default-layout wideriver
+wideriver \
+    --layout                   wide                               \
+    --stack                    diminish                           \
+    --count                    3                                  \
+    --ratio                    0.50                               \
+    --count-wide-left          0                                  \
+    --smart-gaps                                                  \
+    --inner-gaps               6                                  \
+    --outer-gaps               0                                  \
+    --border-width             3                                  \
+    --border-width-monocle     3                                  \
+    --border-width-smart-gaps  3                                  \
+    --border-color-focused     "$(color_zerox "${primary_8:?}")"  \
+    --border-color-unfocused   "$(color_zerox "${primary_3:?}")"  \
+    --log-threshold            info                               \
+    > "${XDG_STATE_HOME}/river/wideriver.${XDG_VTNR}.log" 2>&1 &
 
 # Adjust screen brightness
 #-------------------------------------------------------------------------------

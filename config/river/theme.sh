@@ -18,9 +18,11 @@ export XCURSOR_THEME=${cursor_theme:?}
 export XCURSOR_SIZE=${cursor_size:?}
 
 # Styling
+# NOTE: wideriver ignores this
 #-------------------------------------------------------------------------------
 
 riverctl background-color "$(color_zerox "${system_bg:?}")"
+
 riverctl border-color-focused "$(color_zerox "${primary_8:?}")"
 riverctl border-color-unfocused "$(color_zerox "${primary_3:?}")"
 riverctl border-color-urgent "$(color_zerox "${red_4:?}")"

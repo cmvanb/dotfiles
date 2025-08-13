@@ -85,8 +85,12 @@ riverctl map normal Super L focus-output previous
 riverctl map normal Super semicolon zoom
 
 # Swap the focused view with the next/previous view in the layout stack
-riverctl map normal Super+Control J swap next
-riverctl map normal Super+Control K swap previous
+# riverctl map normal Super+Control J swap next
+# riverctl map normal Super+Control K swap previous
+# riverctl map normal Super+Control J send-layout-cmd wideriver "--count -1"
+# riverctl map normal Super+Control K send-layout-cmd wideriver "--count +1"
+riverctl map normal Super+Control J spawn "riverctl send-layout-cmd wideriver '--count -1' && riverctl focus-view next"
+riverctl map normal Super+Control K spawn "riverctl send-layout-cmd wideriver '--count +1' && riverctl focus-view previous"
 
 # Send the focused view to the left/right output
 riverctl map normal Super+Control H spawn "$config_dir/river/send-and-focus-output.sh left"
@@ -143,15 +147,19 @@ done
 # Layout mappings
 #-------------------------------------------------------------------------------
 
-# Change layout orientation
-riverctl map normal Super Right send-layout-cmd rivercarro "main-location right"
-riverctl map normal Super Down send-layout-cmd rivercarro "main-location bottom"
-riverctl map normal Super Left send-layout-cmd rivercarro "main-location left"
-riverctl map normal Super Up send-layout-cmd rivercarro "main-location top"
+# rivercarro
+# # Change layout orientation
+# riverctl map normal Super Right send-layout-cmd rivercarro "main-location right"
+# riverctl map normal Super Down send-layout-cmd rivercarro "main-location bottom"
+# riverctl map normal Super Left send-layout-cmd rivercarro "main-location left"
+# riverctl map normal Super Up send-layout-cmd rivercarro "main-location top"
+#
+# # Adjust layout main ratio
+# riverctl map normal Super+Shift equal send-layout-cmd rivercarro "main-ratio +0.05"
+# riverctl map normal Super minus send-layout-cmd rivercarro "main-ratio -0.05"
 
-# Adjust layout main ratio
-riverctl map normal Super+Shift equal send-layout-cmd rivercarro "main-ratio +0.05"
-riverctl map normal Super minus send-layout-cmd rivercarro "main-ratio -0.05"
+# wideriver
+
 
 # Miscellaneous mappings
 #-------------------------------------------------------------------------------
