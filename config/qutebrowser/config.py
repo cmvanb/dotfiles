@@ -36,6 +36,8 @@ c.content.blocking.enabled = True
 c.content.blocking.method = 'both'
 c.content.headers.do_not_track = True
 c.content.javascript.enabled = False
+# Possible values are True/False/'ask'. Some websites hide functionality if this
+# is set to False (e.g. Slack).
 c.content.notifications.enabled = False
 c.content.user_stylesheets = [ 'stylesheet.css' ]
 
