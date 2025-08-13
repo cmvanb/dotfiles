@@ -17,9 +17,6 @@ bitwarden::install () {
     ensure_directory "$XDG_DATA_HOME/applications"
     force_link "$base_dir/config/bitwarden/bitwarden.desktop" "$XDG_DATA_HOME/applications/bitwarden.desktop"
 
-    ensure_directory "$XDG_SCRIPTS_HOME"
-    force_link "$base_dir/config/bitwarden/fetch-password.sh" "$XDG_SCRIPTS_HOME/fetch-password.sh"
-
     echo "└> Installing bitwarden shortcuts."
 
     ensure_directory "$XDG_BIN_HOME"
