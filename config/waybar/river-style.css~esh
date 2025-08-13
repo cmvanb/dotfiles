@@ -65,6 +65,10 @@ box > * > * {
 
 /* Battery
 *-----------------------------------------------------------------------------*/
+#battery.full {
+    color: <% color_hash $primary_15 %>;
+}
+
 #battery.charging, #battery.plugged {
     color: <% color_hash $green_5 %>;
 }

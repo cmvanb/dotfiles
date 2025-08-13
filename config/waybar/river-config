@@ -80,6 +80,7 @@
         "format-icons": ["", "", "", "", ""],
         "interval": 5,
         "states": {
+            "full": 100,
             "warning": 30,
             "critical": 15
         }
