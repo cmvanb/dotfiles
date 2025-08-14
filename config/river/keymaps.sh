@@ -105,8 +105,8 @@ riverctl map-pointer normal Super BTN_RIGHT resize-view
 riverctl map-pointer normal Super BTN_MIDDLE close
 
 # Resize (floating) view
-riverctl map normal Super+Shift D resize vertical 100
-riverctl map normal Super+Shift F resize vertical -100
+riverctl map normal Super+Shift D resize vertical -100
+riverctl map normal Super+Shift F resize vertical 100
 riverctl map normal Super+Shift G resize horizontal 200
 riverctl map normal Super+Shift S resize horizontal -200
 
