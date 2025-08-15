@@ -97,6 +97,7 @@ source "$config_dir/river/workspace.sh"
 #-------------------------------------------------------------------------------
 
 # Floating
+riverctl rule-add -app-id org.gnome.gitlab.somas.Apostrophe float
 riverctl rule-add -app-id blueman-manager float
 riverctl rule-add -app-id floating float
 riverctl rule-add -app-id gcr-prompter float
@@ -117,6 +118,7 @@ riverctl rule-add -app-id nwg-look dimensions 1024 960
 riverctl rule-add -app-id org.qutebrowser.qutebrowser dimensions 1600 1200
 
 # Render server-side decorations
+riverctl rule-add -app-id org.gnome.gitlab.somas.Apostrophe ssd
 riverctl rule-add -app-id blueman-manager ssd
 riverctl rule-add -app-id gcr-viewer ssd
 riverctl rule-add -app-id gcr-prompter ssd
