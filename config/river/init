@@ -107,6 +107,7 @@ riverctl rule-add -app-id org.qutebrowser.qutebrowser float
 riverctl rule-add -app-id org.gnome.seahorse.Application float
 riverctl rule-add -app-id 'com.transmissionbt.transmission*' float
 riverctl rule-add -app-id transmission-gtk float
+riverctl rule-add -app-id waypaper float
 riverctl rule-add -app-id xdg-desktop-portal-gtk float
 riverctl rule-add -app-id yad float
 riverctl rule-add -app-id nm-connection-editor float
