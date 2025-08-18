@@ -1,3 +1,4 @@
 styles = {
-    'hackernews.css': ['*news.ycombinator.com*']
+    'hackernews.css': ['*news.ycombinator.com*'],
+    'github.css': ['*github.com*']
 }

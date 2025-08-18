@@ -39,6 +39,10 @@ qutebrowser::install () {
 
     ensure_directory "$XDG_BIN_HOME"
     force_link "$base_dir/config/qutebrowser/browse.sh" "$XDG_BIN_HOME/browse"
+
+    echo "└> Building qutebrowser custom CSS."
+
+    python "$XDG_DATA_HOME/qutebrowser/userscripts/rebuild-grease-styles.py"
 }
 
 qutebrowser::uninstall () {
