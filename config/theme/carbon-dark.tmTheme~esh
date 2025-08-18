@@ -24,7 +24,7 @@
                     <key>invisibles</key>
                     <string><% color_hash $debug %></string>
                     <key>lineHighlight</key>
-                    <string><% color_hash $primary_6 %></string>
+                    <string><% color_hash $primary_4 %></string>
                     <key>selection</key>
                     <string><% color_hash $primary_15 %></string>
                     <key>gutterForeground</key>
