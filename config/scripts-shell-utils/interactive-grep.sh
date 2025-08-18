@@ -5,12 +5,18 @@
 RELOAD='reload:rg --column --color=always --smart-case {q} || :'
 OPENER='nvim {1} +{2}'
 
-# TODO: Use system theme colors.
+source "$XDG_OPT_HOME/theme/theme.sh"
 
 fzf \
     --disabled \
     --ansi \
-    --color 'border:#01244b,prompt:regular:#c1d1e1,current-bg:#023469,gutter:-1,pointer:#c1d1e1,info:#c1d1e1,spinner:#05aaff,label:#dfefff' \
+    --color "border:$(color_hash "${text_6:?}")" \
+    --color "prompt:regular:$(color_hash "${text_13:?}")" \
+    --color "current-bg:$(color_hash "${primary_4:?}"),gutter:-1" \
+    --color "info:$(color_hash "${text_13:?}")" \
+    --color "spinner:$(color_hash "${text_13:?}")" \
+    --color "label:$(color_hash "${text_15:?}")" \
+    --color "marker:$(color_hash "${debug:?}")" \
     --bind "start:$RELOAD" \
     --bind "change:$RELOAD" \
     --bind "enter:become:$OPENER" \
@@ -28,6 +34,6 @@ fzf \
     --margin 0 \
     --padding 0 \
     --scroll-off 4 \
-    --preview 'bat --terminal-width 88 --wrap auto --style numbers --color always --highlight-line {2} {1}' \
+    --preview 'bat --terminal-width 128 --wrap auto --style numbers --color always --highlight-line {2} {1}' \
     --preview-window 'right,+{2}/2,border-left,<80(down,border-top)' \
     --query "$*"
