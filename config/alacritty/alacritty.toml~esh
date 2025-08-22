@@ -82,6 +82,18 @@ mode = '~Alt'
 key = 'PageUp'
 action = 'ScrollHalfPageUp'
 
+[[keyboard.bindings]]
+mode = '~Alt'
+mods = 'Shift'
+key = 'Down'
+action = 'ScrollLineDown'
+
+[[keyboard.bindings]]
+mode = '~Alt'
+mods = 'Shift'
+key = 'Up'
+action = 'ScrollLineUp'
+
 #------------------------------ Signals
 # STTY interrupt passthrough
 [[keyboard.bindings]]
