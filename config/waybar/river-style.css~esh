@@ -95,7 +95,7 @@ box > * > * {
 /* CPU
 *-----------------------------------------------------------------------------*/
 #cpu.medium {
-    color: <% color_hash $yellow_5 %>;
+    color: <% color_hash $yellow_7 %>;
 }
 #cpu.heavy {
     color: <% color_hash $orange_6 %>;
@@ -107,7 +107,7 @@ box > * > * {
 /* Memory
 *-----------------------------------------------------------------------------*/
 #memory.medium {
-    color: <% color_hash $yellow_5 %>;
+    color: <% color_hash $yellow_7 %>;
 }
 #memory.heavy {
     color: <% color_hash $orange_6 %>;
