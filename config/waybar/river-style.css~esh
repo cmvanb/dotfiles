@@ -63,6 +63,19 @@ box > * > * {
     background-color: <% color_hash $red_4 %>;
 }
 
+/* Network
+*-----------------------------------------------------------------------------*/
+
+#network {
+    color: <% color_hash $system_text %>;
+}
+#network.disabled {
+    color: <% color_hash $text_8 %>;
+}
+#network.disconnected {
+    color: <% color_hash $red_6 %>;
+}
+
 /* Battery
 *-----------------------------------------------------------------------------*/
 #battery.charging, #battery.plugged {
