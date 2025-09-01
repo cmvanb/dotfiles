@@ -36,10 +36,12 @@
     },
     "network": {
         "format-ethernet": "󰲝  {ifname}",
-        "format-wifi": "󰖩  {ifname}",
+        "format-wifi": "󰖩  {essid}",
         "format-disconnected": "󰲜  no network",
         "tooltip": true,
-        "tooltip-format": "{gwaddr} · {bandwidthUpBytes} up · {bandwidthDownBytes} down"
+        "tooltip-format": "󰩟 {gwaddr}  ↑{bandwidthUpBytes}  ↓{bandwidthDownBytes}",
+        "tooltip-format-wifi": "󰤨  {signalStrength}%  ↑{bandwidthUpBytes}  ↓{bandwidthDownBytes}",
+        "tooltip-format-disconnected": "Disconnected"
     },
     "bluetooth": {
         "format": " {status}",
