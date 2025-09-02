@@ -80,8 +80,8 @@
     "battery": {
         "format": "{icon}  {capacity}%",
         "format-icons": ["", "", "", "", ""],
-        "format-charging": "{icon}  {capacity}% ",
-        "format-plugged": "{icon}  {capacity}% ",
+        "format-charging": " {icon}  {capacity}%",
+        "format-plugged": " {icon}  {capacity}%",
         "format-full": "{icon}  {capacity}%",
         "interval": 5,
         "states": {
