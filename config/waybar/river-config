@@ -9,9 +9,22 @@
 
     /* Module layout
     --------------------------------------------------------------------------*/
-    "modules-left": ["river/window"],
-    "modules-center": ["river/tags"],
-    "modules-right": ["custom/tailscale", "network", "bluetooth", "wireplumber", "battery", "cpu", "memory", "clock"],
+    "modules-left": [
+        "river/window"
+    ],
+    "modules-center": [
+        "river/tags"
+    ],
+    "modules-right": [
+        "custom/tailscale",
+        "network",
+        "bluetooth",
+        "wireplumber",
+        "battery",
+        "cpu",
+        "memory",
+        "clock"
+    ],
 
     /* River modules
     --------------------------------------------------------------------------*/
