@@ -121,9 +121,12 @@ riverctl map normal Super+Control S move left 200
 
 # Cycle focused tags
 # see: https://gitlab.com/akumar-xyz/river-shifttags/-/tree/master
-riverctl map normal Super+Shift L spawn "river-shifttags --num-tags 20"
 riverctl map normal Super+Shift H spawn "river-shifttags --num-tags 20 --shift -1"
+riverctl map normal Super+Shift L spawn "river-shifttags --num-tags 20"
 
+# TODO: Move focused view to next/previous tag.
+
+# Assign tags numerically
 for i in $(seq 1 9); do
     # NOTE: There is a bug in tree-sitter-bash when parsing `<<`.
     # see: https://github.com/tree-sitter/tree-sitter-bash
