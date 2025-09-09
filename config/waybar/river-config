@@ -23,6 +23,7 @@
         "battery",
         "cpu",
         "memory",
+        "clock#calendar",
         "clock"
     ],
 
@@ -40,7 +41,32 @@
     /* Common modules
     --------------------------------------------------------------------------*/
     "clock": {
-        "format": "󰸘  {:%Y-%m-%d      %H:%M}"
+        "format": "󰥔  {:%H:%M}",
+        "tooltip": true,
+        "tooltip-format": "{:%A, %B %d, %Y  %H:%M:%S (%Z)}"
+    },
+    "clock#calendar": {
+        "format": "󰸘  {:%Y-%m-%d}",
+        "tooltip-format": "<big><tt>{calendar}</tt></big>",
+        "calendar": {
+            "mode"          : "month",
+            "mode-mon-col"  : 3,
+            "weeks-pos"     : "right",
+            "on-scroll"     : 1,
+            "format": {
+                /* TODO: templating for theme vars */
+                "months":     "<span color='#dfefff'><b>{}</b></span>",
+                "days":       "<span color='#b2c2d2'><b>{}</b></span>",
+                "weeks":      "<span color='#768696'><b>W{}</b></span>",
+                "weekdays":   "<span color='#768696'><b>{}</b></span>",
+                "today":      "<span color='#05aaff'><b>{}</b></span>"
+            }
+        },
+        "actions":  {
+            "on-click-right": "mode",
+            "on-scroll-up": "shift_down",
+            "on-scroll-down": "shift_up"
+        }
     },
     "custom/tailscale": {
         "exec": "${XDG_CONFIG_HOME}/waybar/tailscale.sh",

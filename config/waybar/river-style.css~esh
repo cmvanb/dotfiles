@@ -7,7 +7,7 @@
 }
 
 window#waybar {
-    background-color: <% color_css_rgba $system_bg 0.85 %>;
+    background: <% color_hash $primary_0 %>;
     color: <% color_hash $system_text %>;
     transition-property: background-color;
     transition-duration: .5s;
@@ -27,6 +27,17 @@ button:hover {
     box-shadow: inset 0 9px <% color_css_rgba $primary_12 0.45 %>;
 }
 
+tooltip {
+    font-size: <%= $font_size_msmall %>px;
+    background: <% color_hash $primary_0 %>;
+    border: 1px solid <% color_hash $primary_8 %>;
+}
+
+tooltip label {
+    color: <% color_hash $system_text %>;
+    padding: 0px 2px;
+}
+
 /* All modules
 *-----------------------------------------------------------------------------*/
 box > * > * {
@@ -34,11 +45,11 @@ box > * > * {
     padding-right: 10px;
 }
 
-.modules-left > widget:first-child > #tags {
+.modules-left > widget:first-child {
     padding-left: 6px;
 }
 
-.modules-right > widget:last-child > #clock {
+.modules-right > widget:last-child {
     padding-right: 6px;
 }
 
