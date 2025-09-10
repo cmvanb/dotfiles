@@ -17,7 +17,7 @@ source "$XDG_OPT_HOME/wayland-utils/output.sh"
 assert_dependency jq
 assert_dependency river-bedload
 assert_dependency riverctl
-assert_dependency wofi
+assert_dependency spawn-launcher.sh
 
 # Choose output
 #-------------------------------------------------------------------------------
@@ -28,7 +28,7 @@ output_mapping[Left]="DP-4"
 output_mapping[Primary]="DP-3"
 output_mapping[Right]="HDMI-A-6"
 
-relative_target=$(printf "Left\nPrimary\nRight" | wofi -p "Send to output..." --dmenu 2> /dev/null)
+relative_target=$(printf "Left\nPrimary\nRight" | spawn-launcher.sh --menu --prompt="Send to output..." 2> /dev/null)
 target=${output_mapping[$relative_target]}
 
 if [[ -z $target ]]; then

@@ -14,7 +14,7 @@ source "$XDG_OPT_HOME/shell-utils/debug.sh"
 # Validation
 #-------------------------------------------------------------------------------
 
-assert_dependency wofi
+assert_dependency spawn-launcher.sh
 
 # Select a bookmark
 #-------------------------------------------------------------------------------
@@ -37,7 +37,7 @@ bookmarks=$(fd . "$bookmarks_dir" --max-depth 1 --exec basename)
 # done
 
 declare bookmark
-bookmark=$(echo "$bookmarks" | wofi --dmenu 2> /dev/null)
+bookmark=$(echo "$bookmarks" | spawn-launcher.sh --menu 2> /dev/null)
 
 declare bookmark_file
 bookmark_file="$bookmarks_dir/$bookmark"
