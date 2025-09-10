@@ -48,7 +48,7 @@ padding=10,8
 
 font=<%= $font_sans %> <%= $font_size_medium %>
 
-background-color=<% color_hash $primary_0 %>ff
+background-color=<% color_hash $primary_1 %>ff
 text-color=<% color_hash $system_text %>ff
 
 border-size=3

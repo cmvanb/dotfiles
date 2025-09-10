@@ -7,7 +7,7 @@
 }
 
 #input {
-    border: 3px solid <% color_hash $primary_6 %>;
+    border: 3px solid <% color_hash $primary_8 %>;
     border-radius: 0px;
 
     background-color: <% color_hash $primary_2 %>;
@@ -17,7 +17,7 @@
 }
 
 #scroll {
-    border: 3px solid <% color_hash $primary_6 %>;
+    border: 3px solid <% color_hash $primary_8 %>;
     border-top: 0px;
     border-radius: 0px;
 
@@ -33,5 +33,5 @@
 }
 
 #entry:selected {
-    background-color: <% color_hash $primary_6 %>;
+    background-color: <% color_hash $primary_8 %>;
 }
