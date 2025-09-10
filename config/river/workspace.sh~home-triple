@@ -3,6 +3,8 @@
 # River workspace layout
 #-------------------------------------------------------------------------------
 
+declare scripts_dir=${XDG_SCRIPTS_HOME:-$HOME/.local/scripts}
+
 # Imports
 #-------------------------------------------------------------------------------
 
@@ -23,11 +25,11 @@ if wl_output_exists $left; then
     riverctl send-layout-cmd rivercarro "main-location top"
 
     riverctl set-focused-tags "$(tagmask 5)"
-    riverctl spawn "alacritty --working-directory ~/Wiki/todo --command edit"
+    "$scripts_dir/spawn-terminal.sh" --working-directory ~/Wiki/todo --command edit
     sleep 0.35
 
     riverctl set-focused-tags "$(tagmask 1)"
-    riverctl spawn "alacritty"
+    "$scripts_dir/spawn-terminal.sh"
     sleep 0.35
 fi
 
@@ -40,7 +42,7 @@ if wl_output_exists $right; then
     sleep 0.55
 
     riverctl set-focused-tags "$(tagmask 1)"
-    riverctl spawn "alacritty"
+    "$scripts_dir/spawn-terminal.sh"
     sleep 0.35
 fi
 
@@ -52,5 +54,5 @@ if wl_output_exists $primary; then
     sleep 1.85 # MAGIC 🪄
 
     riverctl set-focused-tags "$(tagmask 1)"
-    riverctl spawn "alacritty"
+    "$scripts_dir/spawn-terminal.sh"
 fi
