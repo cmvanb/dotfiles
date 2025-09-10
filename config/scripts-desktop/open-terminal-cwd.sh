@@ -5,6 +5,8 @@
 
 set -euo pipefail
 
+declare scripts_dir=${XDG_SCRIPTS_HOME:-$HOME/.local/scripts}
+
 # Imports
 #-------------------------------------------------------------------------------
 
@@ -23,26 +25,4 @@ target=$(printf "%s\n" "$(zoxide query --list)" | wofi -p "Open terminal at..." 
 # Spawn a new terminal
 #-------------------------------------------------------------------------------
 
-# TODO: Generalize to run any command.
-if [[ $XDG_CURRENT_DESKTOP == "Hyprland" ]]; then
-    assert_dependency hyprctl
-
-    hyprctl dispatch exec "alacritty --working-directory $target"
-    exit 0
-
-elif [[ $XDG_CURRENT_DESKTOP == "niri" ]]; then
-    assert_dependency niri
-
-    niri msg action spawn -- "sh" "-c" "alacritty --working-directory $target"
-    exit 0
-
-elif [[ $XDG_CURRENT_DESKTOP == "river" ]]; then
-    assert_dependency riverctl
-
-    riverctl spawn "alacritty --working-directory $target"
-    exit 0
-
-else
-    echo "[$(basename "$0")] ERROR: Unsupported desktop environment: $XDG_CURRENT_DESKTOP" >&2
-    exit 1
-fi
+"$scripts_dir/spawn-terminal.sh" --working-directory "$target"
