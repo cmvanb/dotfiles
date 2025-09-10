@@ -100,7 +100,7 @@ source "$config_dir/river/workspace.sh"
 riverctl rule-add -app-id org.gnome.gitlab.somas.Apostrophe float
 riverctl rule-add -app-id blueman-manager float
 riverctl rule-add -app-id chromium float
-riverctl rule-add -app-id floating float
+riverctl rule-add -app-id '*floating' float
 riverctl rule-add -app-id gcr-prompter float
 riverctl rule-add -app-id org.gnome.Nautilus float
 riverctl rule-add -app-id nwg-look float
@@ -125,7 +125,7 @@ riverctl rule-add -app-id blueman-manager ssd
 riverctl rule-add -app-id chromium ssd
 riverctl rule-add -app-id gcr-viewer ssd
 riverctl rule-add -app-id gcr-prompter ssd
-riverctl rule-add -app-id com.mitchellh.ghostty ssd
+riverctl rule-add -app-id 'com.mitchellh.ghostty*' ssd
 riverctl rule-add -app-id gtk-pipe-viewer ssd
 riverctl rule-add -app-id gimp ssd
 riverctl rule-add -app-id imv ssd
@@ -139,6 +139,7 @@ riverctl rule-add -app-id org.gnome.SimpleScan ssd
 riverctl rule-add -app-id 'com.transmissionbt.transmission*' ssd
 riverctl rule-add -app-id transmission-gtk ssd
 riverctl rule-add -app-id waypaper ssd
+riverctl rule-add -app-id 'org.wezfurlong.wezterm*' ssd
 riverctl rule-add -app-id xdg-desktop-portal-gtk ssd
 riverctl rule-add -app-id yad ssd
 riverctl rule-add -app-id yad-settings ssd
