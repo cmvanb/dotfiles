@@ -6,7 +6,6 @@
 #-------------------------------------------------------------------------------
 
 declare config_dir=${XDG_CONFIG_HOME:-$HOME/.config}
-declare scripts_dir=${XDG_SCRIPTS_HOME:-$HOME/.local/scripts}
 declare opt_dir=${XDG_OPT_HOME:-$HOME/.local/opt}
 
 # Imports
@@ -18,11 +17,12 @@ source "$opt_dir/shell-utils/debug.sh"
 # Validation
 #-------------------------------------------------------------------------------
 
+assert_dependency fuzzel
 assert_dependency makoctl
 assert_dependency qutebrowser
 assert_dependency riverctl
 assert_dependency river-shifttags
-assert_dependency wofi
+assert_dependency spawn-terminal.sh
 
 # System mappings
 #-------------------------------------------------------------------------------
@@ -37,28 +37,28 @@ riverctl map normal Super+Shift W exit
 #-------------------------------------------------------------------------------
 
 # Run menu
-riverctl map normal Super O spawn "wofi -p '...' --show drun"
+riverctl map normal Super O spawn "$LAUNCHER"
 
 # New terminal
-riverctl map normal Super T spawn "$scripts_dir/spawn-terminal.sh"
+riverctl map normal Super T spawn "spawn-terminal.sh"
 
 # New floating terminal
-riverctl map normal Super G spawn "$scripts_dir/spawn-terminal.sh --floating"
+riverctl map normal Super G spawn "spawn-terminal.sh --floating"
 
 # New terminal in a directory
-riverctl map normal Super+Shift T spawn "$scripts_dir/open-terminal-cwd.sh"
+riverctl map normal Super+Shift T spawn "open-terminal-cwd.sh"
 
 # Browser
 riverctl map normal Super B spawn "qutebrowser"
 
 # Browser session
-riverctl map normal Super+Shift B spawn "$scripts_dir/open-qutebrowser-session.sh"
+riverctl map normal Super+Shift B spawn "open-qutebrowser-session.sh"
 
 # Process manager
-riverctl map normal Super M spawn "$scripts_dir/spawn-terminal.sh --command btop"
+riverctl map normal Super M spawn "spawn-terminal.sh --command btop"
 
 # Toggle waybar
-riverctl map normal Super Y spawn "$scripts_dir/toggle-waybar.sh"
+riverctl map normal Super Y spawn "toggle-waybar.sh"
 
 # View mappings
 #-------------------------------------------------------------------------------
@@ -159,8 +159,8 @@ riverctl map normal Super minus send-layout-cmd rivercarro "main-ratio -0.05"
 #-------------------------------------------------------------------------------
 
 # Take screenshot of a selected rectangle
-riverctl map normal Super P spawn "$scripts_dir/screenshot-rectangle.sh"
-riverctl map normal Super+Shift P spawn "$scripts_dir/screenshot-rectangle.sh --upload"
+riverctl map normal Super P spawn "screenshot-rectangle.sh"
+riverctl map normal Super+Shift P spawn "screenshot-rectangle.sh --upload"
 
 # Dismiss notifications
 riverctl map normal Super D spawn "makoctl dismiss -a"

@@ -5,19 +5,18 @@
 
 set -euo pipefail
 
-declare scripts_dir=${XDG_SCRIPTS_HOME:-$HOME/.local/scripts}
-
 # Imports
 #-------------------------------------------------------------------------------
 
 # shellcheck disable=SC1091
 source "$XDG_OPT_HOME/shell-utils/debug.sh"
 
-# Choose the working directory
-#-------------------------------------------------------------------------------
-
+assert_dependency spawn-terminal.sh
 assert_dependency wofi
 assert_dependency zoxide
+
+# Choose the working directory
+#-------------------------------------------------------------------------------
 
 declare target
 target=$(printf "%s\n" "$(zoxide query --list)" | wofi -p "Open terminal at..." --dmenu 2> /dev/null)
@@ -25,4 +24,4 @@ target=$(printf "%s\n" "$(zoxide query --list)" | wofi -p "Open terminal at..." 
 # Spawn a new terminal
 #-------------------------------------------------------------------------------
 
-"$scripts_dir/spawn-terminal.sh" --working-directory "$target"
+spawn-terminal.sh --working-directory "$target"
