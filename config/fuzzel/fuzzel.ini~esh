@@ -1,23 +1,24 @@
 <% source $XDG_OPT_HOME/theme/theme.sh -%>
 [main]
-dpi-aware=yes
+dpi-aware=no
 font=<%= $font_sans %>:size=<%= $font_size_medium %>
-width=36
+use-bold=yes
+width=72
 icons-enabled=no
 horizontal-pad=0
 vertical-pad=2
 inner-pad=0
 prompt=" 󰍉  "
-lines=20
+lines=10
 line-height=24
 
 [colors]
 background=<% color_named $primary_1 %>ff
-selection=<% color_named $primary_6 %>ff
-border=<% color_named $primary_6 %>ff
-text=<% color_named $text_12 %>ff
+selection=<% color_named $primary_8 %>ff
+border=<% color_named $primary_8 %>ff
+text=<% color_named $system_text %>ff
 match=<% color_named $yellow_6 %>ff
-selection-text=<% color_named $text_15 %>ff
+selection-text=<% color_named $system_text %>ff
 selection-match=<% color_named $yellow_6 %>ff
 
 [border]
