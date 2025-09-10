@@ -27,7 +27,7 @@ if wl_output_exists $left; then
 
     riverctl set-focused-tags "$(tagmask 5)"
     spawn-terminal.sh --working-directory ~/Wiki/todo --command edit
-    sleep 0.35
+    sleep 0.55
 
     riverctl set-focused-tags "$(tagmask 1)"
     spawn-terminal.sh
