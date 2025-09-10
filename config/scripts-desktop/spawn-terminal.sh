@@ -8,7 +8,7 @@ cwd=""
 floating=false
 
 usage() {
-    echo "Usage: $0 [options]"
+    echo "$(basename "$0") [options]"
     echo "Options:"
     echo "    -c, --command COMMAND                Command to execute in the terminal."
     echo "    -d, --working-directory DIRECTORY    Directory to start the terminal in."
@@ -73,6 +73,7 @@ while [ $# -gt 0 ]; do
             ;;
 
         -*)
+            # TODO: This is broken. Fallback case always triggers.
             while getopts ":c:d:f:h" opt; do
                 case ${opt} in
                     c)
