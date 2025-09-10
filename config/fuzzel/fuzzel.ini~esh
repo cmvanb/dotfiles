@@ -9,7 +9,7 @@ horizontal-pad=0
 vertical-pad=2
 inner-pad=0
 prompt=" 󰍉  "
-lines=10
+lines=20
 line-height=24
 
 [colors]
