@@ -4,12 +4,16 @@
 #-------------------------------------------------------------------------------
 
 command=""
+cwd=""
+floating=false
 
 usage() {
     echo "Usage: $0 [options]"
     echo "Options:"
-    echo "  -c, --command COMMAND    Command to execute in the terminal"
-    echo "  -h, --help               Display this help message"
+    echo "    -c, --command COMMAND                Command to execute in the terminal."
+    echo "    -d, --working-directory DIRECTORY    Directory to start the terminal in."
+    echo "    -f, --floating                       Open terminal in floating mode."
+    echo "    -h, --help                           Display this help message."
     exit 1
 }
 
@@ -18,13 +22,33 @@ parse_long_options() {
         --command=*)
             command="${1#*=}"
             ;;
-
         --command)
             if [ -n "$2" ]; then
                 command="$2"
                 return 2
             else
                 echo "Error: --command requires an argument"
+                usage
+            fi
+            ;;
+
+        --floating=*)
+            echo "Error: --floating does not take arguments"
+            usage
+            ;;
+        --floating)
+            floating=true
+            ;;
+
+        --working-directory=*)
+            cwd="${1#*=}"
+            ;;
+        --working-directory)
+            if [ -n "$2" ]; then
+                cwd="$2"
+                return 2
+            else
+                echo "Error: --working-directory requires an argument"
                 usage
             fi
             ;;
@@ -49,10 +73,16 @@ while [ $# -gt 0 ]; do
             ;;
 
         -*)
-            while getopts ":c:h" opt; do
+            while getopts ":c:d:f:h" opt; do
                 case ${opt} in
                     c)
                         command="$OPTARG"
+                        ;;
+                    d)
+                        cwd="$OPTARG"
+                        ;;
+                    f)
+                        floating=true
                         ;;
                     h)
                         usage
@@ -83,32 +113,47 @@ while [ $# -gt 0 ]; do
     esac
 done
 
+args=()
+
 if [[ $TERMINAL == "alacritty" ]]; then
-    if [ -n "$command" ]; then
-        nohup alacritty -e "$SHELL" -c "$command" > /dev/null &
-
-    else
-        nohup alacritty > /dev/null &
-
+    if [[ "$floating" = true ]]; then
+        args+=("--class=floating -o window.dimensions.columns=120 -o window.dimensions.lines=32")
     fi
+    if [[ -n "$cwd" ]]; then
+        args+=("--working-directory=$cwd")
+    fi
+    if [[ -n "$command" ]]; then
+        args+=("--command=$SHELL -c $command")
+    fi
+
+    nohup alacritty "${args[@]}" > /dev/null 2>&1 &
 
 elif [[ $TERMINAL == "ghostty" ]]; then
-    if [ -n "$command" ]; then
-        nohup ghostty -e "$SHELL" -c "$command" > /dev/null &
-
-    else
-        nohup ghostty > /dev/null &
-
+    if [[ "$floating" = true ]]; then
+        args+=("--class=com.mitchellh.ghostty.floating")
     fi
+    if [[ -n "$cwd" ]]; then
+        args+=("--working-directory=$cwd")
+    fi
+    if [[ -n "$command" ]]; then
+        args+=("--command=$SHELL -c $command")
+    fi
+
+    nohup ghostty "${args[@]}" > /dev/null 2>&1 &
 
 elif [[ $TERMINAL == "wezterm" ]]; then
-    if [ -n "$command" ]; then
-        nohup wezterm start -- "$SHELL" -c "$command" > /dev/null &
-
-    else
-        nohup wezterm > /dev/null &
-
+    if [[ "$floating" = true ]]; then
+        args+=("--class=org.wezfurlong.wezterm.floating")
     fi
+    if [[ -n "$cwd" ]]; then
+        args+=("--cwd=$cwd")
+    fi
+    if [[ -n "$command" ]]; then
+        # NOTE: Not sure why but the -e arguments must be passed as separate strings.
+        args+=("-e" "$SHELL" "-c" "$command")
+    fi
+
+    nohup wezterm start "${args[@]}" > /dev/null 2>&1 &
 
 else
     echo "Unsupported terminal emulator: $TERMINAL"
