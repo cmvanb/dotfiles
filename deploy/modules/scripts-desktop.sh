@@ -14,6 +14,7 @@ scripts-desktop::install () {
     force_link "$base_dir/config/scripts-desktop/open-terminal-cwd.sh" "$XDG_SCRIPTS_HOME/open-terminal-cwd.sh"
     force_link "$base_dir/config/scripts-desktop/screenshot-rectangle.sh" "$XDG_SCRIPTS_HOME/screenshot-rectangle.sh"
     force_link "$base_dir/config/scripts-desktop/set-output-wallpaper.sh" "$XDG_SCRIPTS_HOME/set-output-wallpaper.sh"
+    force_link "$base_dir/config/scripts-desktop/spawn-launcher.sh" "$XDG_SCRIPTS_HOME/spawn-launcher.sh"
     force_link "$base_dir/config/scripts-desktop/spawn-terminal.sh" "$XDG_SCRIPTS_HOME/spawn-terminal.sh"
     force_link "$base_dir/config/scripts-desktop/upload-to-0x0.sh" "$XDG_SCRIPTS_HOME/upload-to-0x0.sh"
 
@@ -29,6 +30,7 @@ scripts-desktop::uninstall () {
     rm "$XDG_SCRIPTS_HOME/open-terminal-cwd.sh"
     rm "$XDG_SCRIPTS_HOME/screenshot-rectangle.sh"
     rm "$XDG_SCRIPTS_HOME/set-output-wallpaper.sh"
+    rm "$XDG_SCRIPTS_HOME/spawn-launcher.sh"
     rm "$XDG_SCRIPTS_HOME/spawn-terminal.sh"
     rm "$XDG_SCRIPTS_HOME/upload-to-0x0.sh"
 
