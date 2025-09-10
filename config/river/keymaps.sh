@@ -18,7 +18,6 @@ source "$opt_dir/shell-utils/debug.sh"
 # Validation
 #-------------------------------------------------------------------------------
 
-assert_dependency alacritty
 assert_dependency makoctl
 assert_dependency qutebrowser
 assert_dependency riverctl
@@ -41,10 +40,10 @@ riverctl map normal Super+Shift W exit
 riverctl map normal Super O spawn "wofi -p '...' --show drun"
 
 # New terminal
-riverctl map normal Super T spawn "alacritty"
+riverctl map normal Super T spawn "$scripts_dir/spawn-terminal.sh"
 
 # New floating terminal
-riverctl map normal Super G spawn "alacritty --class floating -o window.dimensions.columns=120 -o window.dimensions.lines=32"
+riverctl map normal Super G spawn "$scripts_dir/spawn-terminal.sh --floating"
 
 # New terminal in a directory
 riverctl map normal Super+Shift T spawn "$scripts_dir/open-terminal-cwd.sh"
@@ -56,7 +55,7 @@ riverctl map normal Super B spawn "qutebrowser"
 riverctl map normal Super+Shift B spawn "$scripts_dir/open-qutebrowser-session.sh"
 
 # Process manager
-riverctl map normal Super M spawn "alacritty --command btop"
+riverctl map normal Super M spawn "$scripts_dir/spawn-terminal.sh --command btop"
 
 # Toggle waybar
 riverctl map normal Super Y spawn "$scripts_dir/toggle-waybar.sh"
