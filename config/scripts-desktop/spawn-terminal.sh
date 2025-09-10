@@ -23,6 +23,7 @@ parse_long_options() {
             command="${1#*=}"
             ;;
         --command)
+            # TODO: This is broken. Equals sign required for now.
             if [ -n "$2" ]; then
                 command="$2"
                 return 2
@@ -44,6 +45,7 @@ parse_long_options() {
             cwd="${1#*=}"
             ;;
         --working-directory)
+            # TODO: This is broken. Equals sign required for now.
             if [ -n "$2" ]; then
                 cwd="$2"
                 return 2
