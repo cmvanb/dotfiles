@@ -70,6 +70,7 @@ set -x WGETRC $XDG_CONFIG_HOME/wget/wgetrc
 # 24bit color support
 if test "$TERM" = "alacritty"
 or test "$TERM" = "xterm-256color"
+or test "$TERM" = "xterm-ghostty"
     set -x COLORTERM truecolor
 end
 

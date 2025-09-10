@@ -12,9 +12,11 @@ case "$TERM" in
         ;&
     foot)
         ;&
-    xterm-kitty)
-        ;&
     xterm-256color)
+        ;&
+    xterm-ghostty)
+        ;&
+    xterm-kitty)
         terminal_supports_256_colors=true
         ;;
     *)
