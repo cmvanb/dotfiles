@@ -16,11 +16,6 @@ bitwarden::install () {
 
     ensure_directory "$XDG_DATA_HOME/applications"
     force_link "$base_dir/config/bitwarden/bitwarden.desktop" "$XDG_DATA_HOME/applications/bitwarden.desktop"
-
-    echo "└> Installing bitwarden shortcuts."
-
-    ensure_directory "$XDG_BIN_HOME"
-    force_link "$base_dir/config/bitwarden/fetch-password.sh" "$XDG_BIN_HOME/fetchpw"
 }
 
 bitwarden::uninstall () {
@@ -29,10 +24,4 @@ bitwarden::uninstall () {
     rm -r "$XDG_CONFIG_HOME/Bitwarden/data.json"
 
     rm "$XDG_DATA_HOME/applications/bitwarden.desktop"
-
-    rm "$XDG_SCRIPTS_HOME/fetch-password.sh"
-
-    echo "└> Uninstalling bitwarden shortcuts."
-
-    rm "$XDG_BIN_HOME/fetchpw"
 }
