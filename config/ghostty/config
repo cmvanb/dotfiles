@@ -8,6 +8,7 @@
 background-opacity = 0.84
 
 font-family = "IosevkaTerm"
+# TODO: theme template value
 font-size = 13
 
 cursor-style = "block"
