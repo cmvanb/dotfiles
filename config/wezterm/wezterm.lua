@@ -61,7 +61,7 @@ return {
         weight = 'Regular',
     }),
     -- NOTE: Wezterm's font size doesn't match other terminals (e.g. Alacritty).
-    font_size = tonumber(theme.font('font_size_small')),
+    font_size = tonumber(theme.font('font_size_msmall')),
 
     -- Window
     adjust_window_size_when_changing_font_size = false,
