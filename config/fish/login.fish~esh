@@ -80,14 +80,12 @@ if test "$TERM" = "linux"
 end
 
 # <% if [[ $DEPLOY_PROFILE == "desktop" ]]; then -%>
-
 # Ensure user directories exist
 #-------------------------------------------------------------------------------
 
 mkdir -p $XDG_DOCUMENTS_DIR $XDG_DOWNLOAD_DIR $XDG_MUSIC_DIR $XDG_PICTURES_DIR $XDG_VIDEOS_DIR
 
 # <% fi -%>
-
 # Path
 #-------------------------------------------------------------------------------
 
@@ -96,22 +94,10 @@ fish_add_path -pP $XDG_BIN_HOME
 fish_add_path -pP $XDG_SCRIPTS_HOME
 
 # <% if [[ $DEPLOY_PROFILE == "desktop" ]]; then -%>
-
-# Add pyenv python shims to path.
-fish_add_path -pP $PYENV_ROOT/bin
-
 # Add user rust binaries to path.
 fish_add_path -pP $XDG_DATA_HOME/cargo/bin
 
-# Pyenv integration
-#-------------------------------------------------------------------------------
-
-if command -v pyenv &> /dev/null
-    pyenv init - | source
-end
-
 # <% fi -%>
-
 # Clean home directory
 #-------------------------------------------------------------------------------
 

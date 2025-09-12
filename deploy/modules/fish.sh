@@ -32,6 +32,7 @@ fish::install () {
     force_link "$base_dir/config/fish/conf.d/direnv.fish" "$XDG_CONFIG_HOME/fish/conf.d/direnv.fish"
     force_link "$base_dir/config/fish/conf.d/lf.fish" "$XDG_CONFIG_HOME/fish/conf.d/lf.fish"
     force_link "$base_dir/config/fish/conf.d/pnpm.fish" "$XDG_CONFIG_HOME/fish/conf.d/pnpm.fish"
+    force_link "$base_dir/config/fish/conf.d/pyenv.fish" "$XDG_CONFIG_HOME/fish/conf.d/pyenv.fish"
     force_link "$base_dir/config/fish/conf.d/yazi.fish" "$XDG_CONFIG_HOME/fish/conf.d/yazi.fish"
     force_link "$base_dir/config/fish/conf.d/zoxide.fish" "$XDG_CONFIG_HOME/fish/conf.d/zoxide.fish"
 
