@@ -17,9 +17,10 @@ assert_dependency spawn-terminal.sh
 #-------------------------------------------------------------------------------
 
 # NOTE: In physical order.
+# TODO: Consider getting this on the fly, e.g. via way-displays.
 left="HDMI-A-6"
-primary="DP-4"
-right="DP-3"
+primary="DP-3"
+right="DP-4"
 
 if wl_output_exists $left; then
     riverctl focus-output $left
