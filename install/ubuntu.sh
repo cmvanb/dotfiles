@@ -1,93 +1,391 @@
+#!/usr/bin/env bash
 #-------------------------------------------------------------------------------
 # Install user packages on Ubuntu
-#
-#   TODO: Add fzf, fd.
 #-------------------------------------------------------------------------------
 
 set -euo pipefail
 
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+NC='\033[0m' # No Color
 
-# Install prerequisite packages from default repositories.
+log_info() {
+    echo -e "${BLUE}[INFO]${NC} $1"
+}
+
+log_success() {
+    echo -e "${GREEN}[SUCCESS]${NC} $1"
+}
+
+log_warning() {
+    echo -e "${YELLOW}[WARNING]${NC} $1"
+}
+
+log_error() {
+    echo -e "${RED}[ERROR]${NC} $1"
+}
+
+command_exists() {
+    command -v "$1" >/dev/null 2>&1
+}
+
+is_apt_package_installed() {
+    dpkg -l "$1" 2>/dev/null | grep -q "^ii"
+}
+
+is_ppa_added() {
+    grep -h "^deb.*$1" /etc/apt/sources.list.d/* /etc/apt/sources.list 2>/dev/null | grep -q "$1"
+}
+
+get_latest_github_version() {
+    local repo="$1"
+    curl -s "https://api.github.com/repos/$repo/releases/latest" | grep '"tag_name"' | sed -E 's/.*"([^"]+)".*/\1/' | sed 's/^v//'
+}
+
+download_file() {
+    local url="$1"
+    local output="$2"
+    log_info "Downloading $(basename "$output")..."
+    curl -L --progress-bar "$url" -o "$output"
+}
+
+# Install prerequisite packages from default repositories
 #-------------------------------------------------------------------------------
+install_apt_prerequisites() {
+    log_info "Installing prerequisite packages from default repositories..."
 
-sudo apt install -y asciidoctor make unzip zip
+    local packages=(
+        asciidoctor curl make
+        python3 python3-dev python3-pip python3-venv
+        unzip zip
+        wl-clipboard
+    )
 
+    local to_install=()
+    for package in "${packages[@]}"; do
+        if ! is_apt_package_installed "$package"; then
+            to_install+=("$package")
+        else
+            log_success "$package is already installed"
+        fi
+    done
 
-# Install packages from custom repositories.
+    if [ ${#to_install[@]} -gt 0 ]; then
+        log_info "Installing: ${to_install[*]}"
+        DEBIAN_FRONTEND=noninteractive sudo apt install -y "${to_install[@]}"
+        log_success "Prerequisite packages installed"
+    else
+        log_success "All prerequisite packages are already installed"
+    fi
+}
+
+configure_python() {
+    if [[ ! -L /usr/bin/python ]]; then
+        if [[ ! -e /usr/bin/python ]]; then
+            log_info "Creating python -> python3 symlink"
+            sudo ln -s /usr/bin/python3 /usr/bin/python
+            log_success "Python symlink created"
+        else
+            log_warning "/usr/bin/python exists but is not a symlink - skipping"
+        fi
+    else
+        log_success "Python symlink already exists"
+    fi
+}
+
+# Install packages from custom repositories
 #-------------------------------------------------------------------------------
+install_eza() {
+    if command_exists eza; then
+        log_success "eza is already installed"
+        return
+    fi
 
-# Eza
-sudo mkdir -p /etc/apt/keyrings
-wget -qO- https://raw.githubusercontent.com/eza-community/eza/main/deb.asc | sudo gpg --dearmor -o /etc/apt/keyrings/gierens.gpg
-echo "deb [signed-by=/etc/apt/keyrings/gierens.gpg] http://deb.gierens.de stable main" | sudo tee /etc/apt/sources.list.d/gierens.list
-sudo chmod 644 /etc/apt/keyrings/gierens.gpg /etc/apt/sources.list.d/gierens.list
+    log_info "Setting up eza repository..."
+    sudo mkdir -p /etc/apt/keyrings
 
-# Fish
-sudo add-apt-repository ppa:fish-shell/release-4
+    if [[ ! -f /etc/apt/keyrings/gierens.gpg ]]; then
+        wget -qO- https://raw.githubusercontent.com/eza-community/eza/main/deb.asc | sudo gpg --dearmor -o /etc/apt/keyrings/gierens.gpg
+    fi
 
-# Neovim
-sudo add-apt-repository ppa:neovim-ppa/unstable
+    if [[ ! -f /etc/apt/sources.list.d/gierens.list ]]; then
+        echo "deb [signed-by=/etc/apt/keyrings/gierens.gpg] http://deb.gierens.de stable main" | sudo tee /etc/apt/sources.list.d/gierens.list
+        sudo chmod 644 /etc/apt/keyrings/gierens.gpg /etc/apt/sources.list.d/gierens.list
+    fi
+}
 
-sudo apt update
-sudo apt install -y eza fish neovim
+install_fish() {
+    if command_exists fish; then
+        log_success "fish is already installed"
+        return
+    fi
 
+    log_info "Adding fish shell repository..."
+    if ! is_ppa_added "fish-shell/release-4"; then
+        sudo add-apt-repository -y ppa:fish-shell/release-4
+    else
+        log_success "Fish PPA already added"
+    fi
+}
 
-# Install packages manually.
+install_neovim() {
+    if command_exists nvim; then
+        log_success "neovim is already installed"
+        return
+    fi
+
+    log_info "Adding neovim repository..."
+    if ! is_ppa_added "neovim-ppa/unstable"; then
+        sudo add-apt-repository -y ppa:neovim-ppa/unstable
+    else
+        log_success "Neovim PPA already added"
+    fi
+}
+
+install_custom_repo_packages() {
+    log_info "Setting up custom repositories..."
+
+    install_eza
+    install_fish
+    install_neovim
+
+    log_info "Updating package lists..."
+    sudo apt update
+
+    local packages=(eza fish neovim)
+    local to_install=()
+
+    for package in "${packages[@]}"; do
+        if ! is_apt_package_installed "$package"; then
+            to_install+=("$package")
+        fi
+    done
+
+    if [ ${#to_install[@]} -gt 0 ]; then
+        log_info "Installing custom repository packages: ${to_install[*]}"
+        DEBIAN_FRONTEND=noninteractive sudo apt install -y "${to_install[@]}"
+        log_success "Custom repository packages installed"
+    else
+        log_success "All custom repository packages are already installed"
+    fi
+}
+
+# Install packages manually
 #-------------------------------------------------------------------------------
+install_deb_package() {
+    local name="$1"
+    local repo="$2"
+    local deb_pattern="$3"
 
-pushd /tmp
+    if command_exists "$name"; then
+        log_success "$name is already installed"
+        return
+    fi
 
-# Bat
-# TODO: Retrieve the latest version number automatically.
-curl -LO https://github.com/sharkdp/bat/releases/download/v0.25.0/bat_0.25.0_amd64.deb
-sudo dpkg -i bat_0.25.0_amd64.deb
+    log_info "Installing $name..."
+    pushd /tmp >/dev/null
 
-# Delta
-curl -LO https://github.com/dandavison/delta/releases/download/0.18.2/git-delta_0.18.2_amd64.deb
-sudo dpkg -i git-delta_0.18.2_amd64.deb
+    local version
+    version=$(get_latest_github_version "$repo")
+    local deb_file
+    deb_file=$(echo "$deb_pattern" | sed "s/{VERSION}/$version/g")
+    local url="https://github.com/$repo/releases/download/v$version/$deb_file"
 
-# Direnv
-curl -sfL https://direnv.net/install.sh | bash
+    download_file "$url" "$deb_file"
+    sudo DEBIAN_FRONTEND=noninteractive dpkg -i "$deb_file" || {
+        log_warning "dpkg failed, trying to fix dependencies..."
+        sudo apt-get install -f -y
+    }
+    rm -f "$deb_file"
 
-# Esh
-curl -LO https://github.com/jirutka/esh/archive/v0.3.2/esh-0.3.2.tar.gz
-mkdir -p /tmp/esh
-tar -xzf esh-0.3.2.tar.gz -C /tmp/esh
-pushd esh/esh-0.3.2/
-make install prefix=/usr/local DESTDIR=/
-popd
-rm -r /tmp/esh
+    popd >/dev/null
+    log_success "$name installed"
+}
 
-# Fd
-curl -LO https://github.com/sharkdp/fd/releases/download/v10.2.0/fd_10.2.0_amd64.deb
-sudo dpkg -i fd_10.2.0_amd64.deb
+install_bat() {
+    install_deb_package "bat" "sharkdp/bat" "bat_{VERSION}_amd64.deb"
+}
 
-# Fzf
-# TODO: Retrieve the latest version number automatically.
-curl -LO https://github.com/junegunn/fzf/releases/download/v0.61.1/fzf-0.61.1-linux_amd64.tar.gz
-mkdir -p /tmp/fzf
-tar -xzf fzf-0.61.1-linux_amd64.tar.gz -C /tmp/fzf
-sudo mv /tmp/fzf/fzf /usr/bin
-rm -r /tmp/fzf
+install_delta() {
+    install_deb_package "delta" "dandavison/delta" "git-delta_{VERSION}_amd64.deb"
+}
 
-# Ripgrep
-# TODO: Retrieve the latest version number automatically.
-curl -LO https://github.com/BurntSushi/ripgrep/releases/download/14.1.1/ripgrep_14.1.1-1_amd64.deb
-sudo dpkg -i ripgrep_14.1.1-1_amd64.deb
+install_fd() {
+    install_deb_package "fd" "sharkdp/fd" "fd_{VERSION}_amd64.deb"
+}
 
-# Yazi
-# TODO: Retrieve the latest version number automatically.
-curl -LO https://github.com/sxyazi/yazi/releases/download/v25.3.2/yazi-x86_64-unknown-linux-gnu.zip
-mkdir -p /tmp/yazi
-unzip -d /tmp/yazi yazi-x86_64-unknown-linux-gnu.zip
-sudo mv /tmp/yazi/yazi-x86_64-unknown-linux-gnu/yazi /usr/bin
-rm -r /tmp/yazi
+install_ripgrep() {
+    install_deb_package "rg" "BurntSushi/ripgrep" "ripgrep_{VERSION}-1_amd64.deb"
+}
 
-# ZOxide
-curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
+install_direnv() {
+    if command_exists direnv; then
+        log_success "direnv is already installed"
+        return
+    fi
 
-# NodeJS / NPM
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.2/install.sh | bash
-nvm install 22
+    log_info "Installing direnv..."
+    curl -sfL https://direnv.net/install.sh | bash
+    log_success "direnv installed"
+}
 
-popd
+install_esh() {
+    if command_exists esh; then
+        log_success "esh is already installed"
+        return
+    fi
+
+    log_info "Installing esh..."
+    pushd /tmp >/dev/null
+
+    local version
+    version=$(get_latest_github_version "jirutka/esh")
+    local archive="esh-$version.tar.gz"
+    local url="https://github.com/jirutka/esh/archive/v$version/$archive"
+
+    download_file "$url" "$archive"
+
+    local esh_dir="esh-build-$$"
+    mkdir -p "$esh_dir"
+    tar -xzf "$archive" -C "$esh_dir" --strip-components=1
+
+    pushd "$esh_dir" >/dev/null
+    sudo make install prefix=/usr/local DESTDIR=/
+    popd >/dev/null
+
+    rm -rf "$esh_dir" "$archive"
+    popd >/dev/null
+    log_success "esh installed"
+}
+
+install_fzf() {
+    if command_exists fzf; then
+        log_success "fzf is already installed"
+        return
+    fi
+
+    log_info "Installing fzf..."
+    pushd /tmp >/dev/null
+
+    local version
+    version=$(get_latest_github_version "junegunn/fzf")
+    local archive="fzf-$version-linux_amd64.tar.gz"
+    local url="https://github.com/junegunn/fzf/releases/download/v$version/$archive"
+
+    download_file "$url" "$archive"
+
+    local fzf_dir="fzf-build-$$"
+    mkdir -p "$fzf_dir"
+    tar -xzf "$archive" -C "$fzf_dir"
+    sudo mv "$fzf_dir/fzf" /usr/bin/
+
+    rm -rf "$fzf_dir" "$archive"
+    popd >/dev/null
+    log_success "fzf installed"
+}
+
+install_ghostty() {
+    if command_exists ghostty; then
+        log_success "ghostty is already installed"
+        return
+    fi
+
+    log_info "Installing ghostty..."
+    curl -fsSL https://raw.githubusercontent.com/mkasberg/ghostty-ubuntu/HEAD/install.sh | bash
+    log_success "ghostty installed"
+}
+
+install_yazi() {
+    if command_exists yazi; then
+        log_success "yazi is already installed"
+        return
+    fi
+
+    log_info "Installing yazi..."
+    pushd /tmp >/dev/null
+
+    local version
+    version=$(get_latest_github_version "sxyazi/yazi")
+    local archive="yazi-x86_64-unknown-linux-gnu.zip"
+    local url="https://github.com/sxyazi/yazi/releases/download/v$version/$archive"
+
+    download_file "$url" "$archive"
+
+    local yazi_dir="yazi-build-$$"
+    mkdir -p "$yazi_dir"
+    unzip -q "$archive" -d "$yazi_dir"
+
+    sudo mv "$yazi_dir"/yazi-x86_64-unknown-linux-gnu/yazi /usr/bin/
+    sudo mv "$yazi_dir"/yazi-x86_64-unknown-linux-gnu/ya /usr/bin/
+
+    rm -rf "$yazi_dir" "$archive"
+    popd >/dev/null
+    log_success "yazi installed"
+}
+
+install_zoxide() {
+    if command_exists zoxide; then
+        log_success "zoxide is already installed"
+        return
+    fi
+
+    log_info "Installing zoxide..."
+    curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash
+    log_success "zoxide installed"
+}
+
+install_fnm() {
+    if command_exists fnm; then
+        log_success "fnm is already installed"
+        return
+    fi
+
+    log_info "Installing fnm (Fast Node Manager)..."
+    curl -fsSL https://fnm.vercel.app/install | bash
+    log_success "fnm installed"
+}
+
+install_rustup() {
+    if command_exists rustup; then
+        log_success "rustup is already installed"
+        return
+    fi
+
+    log_info "Installing rustup..."
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | bash -s -- -y
+    log_success "rustup installed"
+}
+
+# Entry point
+#-------------------------------------------------------------------------------
+main() {
+    log_info "Starting Ubuntu software installation script..."
+
+    log_info "Updating package lists..."
+    sudo apt update
+
+    install_apt_prerequisites
+    configure_python
+
+    install_custom_repo_packages
+
+    log_info "Installing manually downloaded packages..."
+    install_bat
+    install_delta
+    install_direnv
+    install_esh
+    install_fd
+    install_fzf
+    install_ghostty
+    install_ripgrep
+    install_yazi
+    install_zoxide
+    install_fnm
+    install_rustup
+
+    log_success "Installation script completed successfully!"
+}
+
+main "$@"
