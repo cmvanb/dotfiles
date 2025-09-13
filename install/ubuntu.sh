@@ -1,7 +1,9 @@
+#!/usr/bin/env bash
 #-------------------------------------------------------------------------------
 # Install user packages on Ubuntu
 #
-#   TODO: Add fzf, fd.
+#   TODO: Check whether packages are already installed.
+#   TODO: Retrieve the latest version numbers automatically.
 #-------------------------------------------------------------------------------
 
 set -euo pipefail
@@ -10,7 +12,14 @@ set -euo pipefail
 # Install prerequisite packages from default repositories.
 #-------------------------------------------------------------------------------
 
-sudo apt install -y asciidoctor make unzip zip
+sudo apt install -y \
+    asciidoctor curl make \
+    python3 python3-dev python3-pip python3-venv \
+    unzip zip \
+    wl-clipboard
+
+# Configure python
+sudo ln -s /usr/bin/python3 /usr/bin/python
 
 
 # Install packages from custom repositories.
@@ -54,7 +63,7 @@ curl -LO https://github.com/jirutka/esh/archive/v0.3.2/esh-0.3.2.tar.gz
 mkdir -p /tmp/esh
 tar -xzf esh-0.3.2.tar.gz -C /tmp/esh
 pushd esh/esh-0.3.2/
-make install prefix=/usr/local DESTDIR=/
+sudo make install prefix=/usr/local DESTDIR=/
 popd
 rm -r /tmp/esh
 
@@ -70,6 +79,9 @@ tar -xzf fzf-0.61.1-linux_amd64.tar.gz -C /tmp/fzf
 sudo mv /tmp/fzf/fzf /usr/bin
 rm -r /tmp/fzf
 
+# Ghostty
+curl -fsSL https://raw.githubusercontent.com/mkasberg/ghostty-ubuntu/HEAD/install.sh | bash
+
 # Ripgrep
 # TODO: Retrieve the latest version number automatically.
 curl -LO https://github.com/BurntSushi/ripgrep/releases/download/14.1.1/ripgrep_14.1.1-1_amd64.deb
@@ -77,17 +89,20 @@ sudo dpkg -i ripgrep_14.1.1-1_amd64.deb
 
 # Yazi
 # TODO: Retrieve the latest version number automatically.
-curl -LO https://github.com/sxyazi/yazi/releases/download/v25.3.2/yazi-x86_64-unknown-linux-gnu.zip
-mkdir -p /tmp/yazi
-unzip -d /tmp/yazi yazi-x86_64-unknown-linux-gnu.zip
-sudo mv /tmp/yazi/yazi-x86_64-unknown-linux-gnu/yazi /usr/bin
-rm -r /tmp/yazi
+YAZI_VERSION="25.5.31"
+curl -LO "https://github.com/sxyazi/yazi/releases/download/v$YAZI_VERSION/yazi-x86_64-unknown-linux-gnu.zip"
+unzip yazi-x86_64-unknown-linux-gnu.zip
+sudo mv /tmp/yazi-x86_64-unknown-linux-gnu/yazi /usr/bin
+sudo mv /tmp/yazi-x86_64-unknown-linux-gnu/ya /usr/bin
+rm -r /tmp/yazi-x86_64-unknown-linux-gnu
 
 # ZOxide
-curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
+curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash
 
-# NodeJS / NPM
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.2/install.sh | bash
-nvm install 22
+# NodeJS / NPM / fnm (node version manager)
+curl -fsSL https://fnm.vercel.app/install | bash
+
+# Rustup / cargo
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | bash
 
 popd
