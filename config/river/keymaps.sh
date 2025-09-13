@@ -77,8 +77,8 @@ riverctl map normal Super J focus-view next
 riverctl map normal Super K focus-view previous
 
 # Focus the left/right output
-riverctl map normal Super H focus-output next
-riverctl map normal Super L focus-output previous
+riverctl map normal Super H focus-output left
+riverctl map normal Super L focus-output right
 
 # Move the focused view to the top of the layout stack
 riverctl map normal Super semicolon zoom
