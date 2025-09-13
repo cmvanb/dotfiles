@@ -9,10 +9,10 @@ source "$XDG_CONFIG_HOME/theme/fonts"
 source "$XDG_CONFIG_HOME/theme/cursor"
 
 # see: https://github.com/vinceliuice/Qogir-theme
-gsettings set org.gnome.desktop.interface gtk-theme 'Qogir-Dark'
+gsettings set org.gnome.desktop.interface gtk-theme 'Qogir-Round-Dark'
 
-# TODO: Improve default icons. Install icons to `.local/share/icons`.
-# gsettings set org.gnome.desktop.interface icon-theme 'Adwaita'
+# see: https://github.com/yeyushengfan258/Win11-icon-theme
+gsettings set org.gnome.desktop.interface icon-theme 'Win11-dark'
 
 gsettings set org.gnome.desktop.interface font-name "$font_sans $font_size_medium"
 gsettings set org.gnome.desktop.interface document-font-name "$font_sans $font_size_medium"
