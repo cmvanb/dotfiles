@@ -385,6 +385,43 @@ install_zig() {
     log_success "zig installed"
 }
 
+# Install intelic packages
+#-------------------------------------------------------------------------------
+
+install_protolint() {
+    if command_exists protolint; then
+        log_success "protolint is already installed"
+        return
+    fi
+
+    log_info "Installing protolint..."
+    pushd /tmp >/dev/null
+
+    local version
+    version=$(get_latest_github_version "yoheimuta/protolint")
+    local archive="protolint_${version}_linux_amd64.tar.gz"
+    local url="https://github.com/yoheimuta/protolint/releases/download/v$version/$archive"
+
+    download_file "$url" "$archive"
+
+    local protolint_dir="protolint-build-$$"
+    mkdir -p "$protolint_dir"
+    tar -xzf "$archive" -C "$protolint_dir"
+
+    sudo mv "$protolint_dir/protolint" /usr/bin/
+
+    rm -rf "$protolint_dir" "$archive"
+    popd >/dev/null
+    log_success "protolint installed"
+}
+
+install_intelic_packages() {
+    log_info "Installing intelic packages..."
+
+    install_protolint
+    # TODO: add pnpm
+}
+
 # Entry point
 #-------------------------------------------------------------------------------
 main() {
@@ -412,6 +449,8 @@ main() {
     install_fnm
     install_rustup
     install_zig
+
+    install_intelic_packages
 
     log_success "Installation script completed successfully!"
 }
