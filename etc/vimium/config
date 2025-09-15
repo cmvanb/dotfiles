@@ -22,3 +22,6 @@ map <a-l> goForward
 
 map <c-q> removeTab
 map u restoreTab
+
+map go Vomnibar.activateEditUrl
+map gO Vomnibar.activateEditUrlInNewTab
