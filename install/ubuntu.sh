@@ -57,7 +57,7 @@ install_apt_prerequisites() {
     log_info "Installing prerequisite packages from default repositories..."
 
     local packages=(
-        asciidoctor curl make
+        asciidoctor curl make pkg-config
         python3 python3-dev python3-pip python3-venv
         unzip zip
         wl-clipboard
