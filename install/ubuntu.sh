@@ -74,7 +74,7 @@ install_apt_packages() {
     fi
 }
 
-configure_python() {
+symlink_python() {
     if [[ ! -L /usr/bin/python ]]; then
         if [[ ! -e /usr/bin/python ]]; then
             log_info "Creating python -> python3 symlink"
@@ -349,6 +349,103 @@ install_rustup() {
     log_success "rustup installed"
 }
 
+install_wlroots() {
+    if pkg-config --exists wlroots >/dev/null 2>&1; then
+        local installed_version
+        installed_version=$(pkg-config --modversion wlroots 2>/dev/null || echo "unknown")
+        if [[ "$installed_version" == "0.19"* ]]; then
+            log_success "wlroots 0.19 is already installed"
+            return
+        else
+            log_warning "wlroots version $installed_version found, but need 0.19. Proceeding with installation..."
+        fi
+    fi
+
+    log_info "Installing wlroots 0.19 build dependencies..."
+    local build_deps=(
+        build-essential
+        cmake
+        meson
+        ninja-build
+
+        libwayland-dev
+        wayland-protocols
+        libgles2
+        # libgles2-mesa-dev
+        libdrm-dev
+        libgbm-dev
+        libinput-dev
+        libxkbcommon-dev
+        libudev-dev
+        libpixman-1-dev
+        libseat-dev
+        hwdata
+        libdisplay-info-dev
+        libliftoff-dev
+
+        # X11 support via XWayland
+        xwayland
+        libxcb1-dev
+        libxcb-render-util0-dev
+        libxcb-icccm4-dev
+        libxcb-ewmh-dev
+
+        # libxcb-dri3-dev
+        # libxcb-present-dev
+        # libxcb-composite0-dev
+        # libxcb-xinput-dev
+        # libxcb-xfixes0-dev
+        # libxcb-image0-dev
+        # libxcb-res0-dev
+        # libegl1-mesa-dev
+        # libdecor-0-dev
+    )
+
+    local to_install=()
+    for package in "${build_deps[@]}"; do
+        if ! is_apt_package_installed "$package"; then
+            to_install+=("$package")
+        fi
+    done
+
+    if [ ${#to_install[@]} -gt 0 ]; then
+        log_info "Installing build dependencies: ${to_install[*]}"
+        DEBIAN_FRONTEND=noninteractive sudo apt install -y "${to_install[@]}"
+    fi
+
+    log_info "Building and installing wlroots 0.19..."
+    pushd /tmp >/dev/null
+
+    local wlroots_dir="wlroots-0.19-build-$$"
+    mkdir -p "$wlroots_dir"
+
+    log_info "Downloading wlroots 0.19 source..."
+    curl -L --progress-bar "https://gitlab.freedesktop.org/wlroots/wlroots/-/archive/0.19.0/wlroots-0.19.0.tar.gz" -o "wlroots-0.19.0.tar.gz"
+
+    tar -xzf "wlroots-0.19.0.tar.gz" -C "$wlroots_dir" --strip-components=1
+
+    pushd "$wlroots_dir" >/dev/null
+
+    log_info "Configuring wlroots build..."
+    meson setup build --prefix=/usr/local
+
+    log_info "Building wlroots..."
+    meson compile -C build
+
+    log_info "Installing wlroots..."
+    sudo meson install -C build
+
+    # Update library cache
+    sudo ldconfig
+
+    popd >/dev/null
+
+    rm -rf "$wlroots_dir" "wlroots-0.19.0.tar.gz"
+    popd >/dev/null
+
+    log_success "wlroots 0.19 installed"
+}
+
 install_zig() {
     if command_exists zig; then
         log_success "zig is already installed"
@@ -510,10 +607,13 @@ main() {
     install_zoxide
     install_fnm
     install_rustup
-    install_zig
 
     log_info "Installing intelic packages..."
     install_intelic_packages
+
+    log_info "Installing window manager packages..."
+    install_wlroots
+    install_zig
 
     log_success "Installation script completed successfully!"
 }
