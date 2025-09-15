@@ -72,14 +72,14 @@ keybind = ctrl+tab=text:\x1b\x5b\x39\x3b\x35\x75
 keybind = ctrl+semicolon=text:\x1b\x5b\x31\x35\x3b\x32\x7e
 
 # New splits
-keybind = alt+n=new_split:right
-keybind = alt+p=new_split:down
+keybind = ctrl+shift+n=new_split:right
+keybind = ctrl+shift+p=new_split:down
 
 # Focus splits
-keybind = alt+h=goto_split:left
-keybind = alt+l=goto_split:right
-keybind = alt+j=goto_split:down
-keybind = alt+k=goto_split:up
+keybind = ctrl+shift+h=goto_split:left
+keybind = ctrl+shift+l=goto_split:right
+keybind = ctrl+shift+j=goto_split:down
+keybind = ctrl+shift+k=goto_split:up
 
 # Close split/tab/window
-keybind = alt+w=close_surface
+keybind = ctrl+shift+w=close_surface
