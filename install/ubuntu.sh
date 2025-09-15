@@ -51,17 +51,10 @@ download_file() {
     curl -L --progress-bar "$url" -o "$output"
 }
 
-# Install prerequisite packages from default repositories
+# Install packages from default repositories
 #-------------------------------------------------------------------------------
-install_apt_prerequisites() {
-    log_info "Installing prerequisite packages from default repositories..."
-
-    local packages=(
-        asciidoctor curl make pkg-config
-        python3 python3-dev python3-pip python3-venv
-        unzip zip
-        wl-clipboard
-    )
+install_apt_packages() {
+    local packages=("$@")
 
     local to_install=()
     for package in "${packages[@]}"; do
@@ -75,9 +68,9 @@ install_apt_prerequisites() {
     if [ ${#to_install[@]} -gt 0 ]; then
         log_info "Installing: ${to_install[*]}"
         DEBIAN_FRONTEND=noninteractive sudo apt install -y "${to_install[@]}"
-        log_success "Prerequisite packages installed"
+        log_success "Packages installed: ${to_install[*]}"
     else
-        log_success "All prerequisite packages are already installed"
+        log_success "All specified packages are already installed"
     fi
 }
 
@@ -418,6 +411,8 @@ install_protolint() {
 install_intelic_packages() {
     log_info "Installing intelic packages..."
 
+    install_apt_packages libfontconfig1-dev
+
     install_protolint
     # TODO: add pnpm
 }
@@ -430,7 +425,10 @@ main() {
     log_info "Updating package lists..."
     sudo apt update
 
-    install_apt_prerequisites
+    install_apt_packages \
+        curl make pkg-config zip unzip wl-clipboard \
+        python3 python3-dev python3-pip python3-venv \
+        asciidoctor
     configure_python
 
     install_custom_repo_packages
