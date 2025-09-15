@@ -358,6 +358,33 @@ install_rustup() {
     log_success "rustup installed"
 }
 
+install_zig() {
+    if command_exists zig; then
+        log_success "zig is already installed"
+        return
+    fi
+
+    log_info "Installing zig..."
+    pushd /tmp >/dev/null
+
+    local version
+    version=$(get_latest_github_version "ziglang/zig")
+    local archive="zig-x86_64-linux-$version.tar.xz"
+    local url="https://ziglang.org/download/$version/$archive"
+
+    download_file "$url" "$archive"
+
+    local zig_dir="zig-build-$$"
+    mkdir -p "$zig_dir"
+    tar -xf "$archive" -C "$zig_dir" --strip-components=1
+
+    sudo mv "$zig_dir/zig" /usr/bin/
+
+    rm -rf "$zig_dir" "$archive"
+    popd >/dev/null
+    log_success "zig installed"
+}
+
 # Entry point
 #-------------------------------------------------------------------------------
 main() {
@@ -384,6 +411,7 @@ main() {
     install_zoxide
     install_fnm
     install_rustup
+    install_zig
 
     log_success "Installation script completed successfully!"
 }
