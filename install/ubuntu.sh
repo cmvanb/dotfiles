@@ -418,7 +418,7 @@ install_qgroundcontrol() {
     local version
     version=$(get_latest_github_version "mavlink/qgroundcontrol")
     local archive="QGroundControl-x86_64.AppImage"
-    local url="https://github.com/mavlink/qgroundcontrol/releases/download/${version}/${archive}"
+    local url="https://github.com/mavlink/qgroundcontrol/releases/download/v${version}/${archive}"
 
     download_file "$url" "$archive"
 
