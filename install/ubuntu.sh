@@ -425,6 +425,17 @@ install_qgroundcontrol() {
     sudo mv "$archive" /usr/local/bin/QGroundControl
     sudo chmod +x /usr/local/bin/QGroundControl
 
+    cat <<-EOF > "$XDG_DATA_HOME/applications/qgroundcontrol.desktop"
+		[Desktop Entry]
+		Name=QGroundControl
+		Comment=Ground Control Station for Drones
+		Exec=/usr/local/bin/QGroundControl
+		Icon=qgroundcontrol
+		Terminal=false
+		Type=Application
+		Categories=Utility;Application;
+	EOF
+
     popd >/dev/null
     log_success "QGroundControl installed"
 }
