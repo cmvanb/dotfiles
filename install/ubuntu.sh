@@ -376,6 +376,31 @@ install_zig() {
     log_success "zig installed"
 }
 
+install_rbw() {
+    if command_exists rbw; then
+        log_success "rbw is already installed"
+        return
+    fi
+
+    log_info "Installing rbw..."
+    pushd /tmp >/dev/null
+
+    local version
+    version=$(get_latest_github_version "doy/rbw")
+    local deb_file="rbw_${version}_amd64.deb"
+    local url="https://git.tozt.net/rbw/releases/deb/$deb_file"
+
+    download_file "$url" "$deb_file"
+    sudo DEBIAN_FRONTEND=noninteractive dpkg -i "$deb_file" || {
+        log_warning "dpkg failed, trying to fix dependencies..."
+        sudo apt-get install -f -y
+    }
+    rm -f "$deb_file"
+
+    popd >/dev/null
+    log_success "rbw installed"
+}
+
 # Install intelic packages
 #-------------------------------------------------------------------------------
 
