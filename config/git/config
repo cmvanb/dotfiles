@@ -45,3 +45,6 @@
 
 [color]
     ui = always
+
+[pager]
+    branch = false
