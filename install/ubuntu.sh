@@ -138,8 +138,6 @@ install_neovim() {
 }
 
 install_custom_repo_packages() {
-    log_info "Setting up custom repositories..."
-
     install_eza
     install_fish
     install_neovim
@@ -408,12 +406,39 @@ install_protolint() {
     log_success "protolint installed"
 }
 
-install_intelic_packages() {
-    log_info "Installing intelic packages..."
+install_qgroundcontrol() {
+    if command_exists QGroundControl; then
+        log_success "QGroundControl is already installed"
+        return
+    fi
 
-    install_apt_packages libfontconfig1-dev
+    log_info "Installing QGroundControl..."
+    pushd /tmp >/dev/null
+
+    local version
+    version=$(get_latest_github_version "mavlink/qgroundcontrol")
+    local archive="QGroundControl-x86_64.AppImage"
+    local url="https://github.com/mavlink/qgroundcontrol/releases/download/${version}/${archive}"
+
+    download_file "$url" "$archive"
+
+    sudo mv "$archive" /usr/local/bin/QGroundControl
+    sudo chmod +x /usr/local/bin/QGroundControl
+
+    popd >/dev/null
+    log_success "QGroundControl installed"
+}
+
+install_intelic_packages() {
+    # Nexus dependencies
+    # QGroundControl dependencies
+    install_apt_packages \
+        libfontconfig1-dev \
+        gstreamer1.0-plugins-bad gstreamer1.0-libav gstreamer1.0-gl \
+        libfuse2 libxcb-xinerama0 libxkbcommon-x11-0 libxcb-cursor-dev
 
     install_protolint
+    install_qgroundcontrol
     # TODO: add pnpm
 }
 
@@ -425,12 +450,14 @@ main() {
     log_info "Updating package lists..."
     sudo apt update
 
+    log_info "Installing regular packages..."
     install_apt_packages \
         curl make pkg-config zip unzip wl-clipboard \
         python3 python3-dev python3-pip python3-venv \
         asciidoctor
     configure_python
 
+    log_info "Installing custom repository packages..."
     install_custom_repo_packages
 
     log_info "Installing manually downloaded packages..."
@@ -448,6 +475,7 @@ main() {
     install_rustup
     install_zig
 
+    log_info "Installing intelic packages..."
     install_intelic_packages
 
     log_success "Installation script completed successfully!"
