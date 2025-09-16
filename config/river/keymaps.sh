@@ -17,7 +17,6 @@ source "$opt_dir/shell-utils/debug.sh"
 # Validation
 #-------------------------------------------------------------------------------
 
-assert_dependency fuzzel
 assert_dependency makoctl
 assert_dependency qutebrowser
 assert_dependency riverctl
@@ -58,7 +57,14 @@ riverctl map normal Super+Shift B spawn "open-qutebrowser-session.sh"
 riverctl map normal Super M spawn "spawn-terminal.sh --command btop"
 
 # Toggle waybar
-riverctl map normal Super Y spawn "toggle-waybar.sh"
+riverctl map normal Super R spawn "toggle-waybar.sh"
+
+# Dismiss all notifications
+riverctl map normal Super Y spawn "makoctl dismiss -a"
+
+# Take screenshot of a selected rectangle
+riverctl map normal Super P spawn "screenshot-rectangle.sh"
+riverctl map normal Super+Shift P spawn "screenshot-rectangle.sh --upload"
 
 # View mappings
 #-------------------------------------------------------------------------------
@@ -154,13 +160,3 @@ riverctl map normal Super Up send-layout-cmd rivercarro "main-location top"
 # Adjust layout main ratio
 riverctl map normal Super+Shift equal send-layout-cmd rivercarro "main-ratio +0.05"
 riverctl map normal Super minus send-layout-cmd rivercarro "main-ratio -0.05"
-
-# Miscellaneous mappings
-#-------------------------------------------------------------------------------
-
-# Take screenshot of a selected rectangle
-riverctl map normal Super P spawn "screenshot-rectangle.sh"
-riverctl map normal Super+Shift P spawn "screenshot-rectangle.sh --upload"
-
-# Dismiss notifications
-riverctl map normal Super D spawn "makoctl dismiss -a"
