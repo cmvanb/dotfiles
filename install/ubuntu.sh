@@ -456,7 +456,8 @@ install_intelic_packages() {
 # Entry point
 #-------------------------------------------------------------------------------
 main() {
-    log_info "Starting Ubuntu software installation script..."
+    log_info "Installing software for Ubuntu"
+    log_info "--------------------------------------------------------------------------------"
 
     log_info "Updating package lists..."
     sudo apt update
@@ -492,4 +493,8 @@ main() {
     log_success "Installation script completed successfully!"
 }
 
-main "$@"
+# Run entry point only if script is executed.
+if [ "${BASH_SOURCE[0]}" -ef "$0" ]
+then
+    main "$@"
+fi
