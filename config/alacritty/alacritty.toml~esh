@@ -30,6 +30,9 @@ style = 'Regular'
 
 [window]
 opacity = 0.8
+<% if [[ $DEPLOY_DISTRO == "ubuntu" ]]; then -%>
+decorations = 'none'
+<% fi -%>
 
 [window.padding]
 x = 0
