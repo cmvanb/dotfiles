@@ -203,14 +203,6 @@ install_delta() {
     install_deb_package "delta" "dandavison/delta" "git-delta_{VERSION}_amd64.deb"
 }
 
-install_fd() {
-    install_deb_package "fd" "sharkdp/fd" "fd_{VERSION}_amd64.deb"
-}
-
-install_ripgrep() {
-    install_deb_package "rg" "BurntSushi/ripgrep" "ripgrep_{VERSION}-1_amd64.deb"
-}
-
 install_direnv() {
     if command_exists direnv; then
         log_success "direnv is already installed"
@@ -251,6 +243,21 @@ install_esh() {
     log_success "esh installed"
 }
 
+install_fd() {
+    install_deb_package "fd" "sharkdp/fd" "fd_{VERSION}_amd64.deb"
+}
+
+install_fnm() {
+    if command_exists fnm; then
+        log_success "fnm is already installed"
+        return
+    fi
+
+    log_info "Installing fnm..."
+    curl -fsSL https://fnm.vercel.app/install | bash
+    log_success "fnm installed"
+}
+
 install_fzf() {
     if command_exists fzf; then
         log_success "fzf is already installed"
@@ -275,6 +282,77 @@ install_fzf() {
     rm -rf "$fzf_dir" "$archive"
     popd >/dev/null
     log_success "fzf installed"
+}
+
+install_neo() {
+    if command_exists neo; then
+        log_success "neo is already installed"
+        return
+    fi
+
+    log_info "Installing neo..."
+    pushd /tmp >/dev/null
+
+    local version
+    version=$(get_latest_github_version "st3w/neo")
+    local archive="neo-$version.tar.gz"
+    local url="https://github.com/st3w/neo/releases/download/v$version/$archive"
+
+    download_file "$url" "$archive"
+
+    local neo_dir="neo-build-$$"
+    mkdir -p "$neo_dir"
+    tar -xzf "$archive" -C "$neo_dir" --strip-components=1
+
+    pushd "$neo_dir" >/dev/null
+    ./configure
+    make -j$(nproc)
+    sudo make install
+    popd >/dev/null
+
+    rm -rf "$neo_dir" "$archive"
+    popd >/dev/null
+    log_success "neo installed"
+}
+
+install_rbw() {
+    if command_exists rbw; then
+        log_success "rbw is already installed"
+        return
+    fi
+
+    log_info "Installing rbw..."
+    pushd /tmp >/dev/null
+
+    local version
+    version=$(get_latest_github_version "doy/rbw")
+    local deb_file="rbw_${version}_amd64.deb"
+    local url="https://git.tozt.net/rbw/releases/deb/$deb_file"
+
+    download_file "$url" "$deb_file"
+    sudo DEBIAN_FRONTEND=noninteractive dpkg -i "$deb_file" || {
+        log_warning "dpkg failed, trying to fix dependencies..."
+        sudo apt-get install -f -y
+    }
+    rm -f "$deb_file"
+
+    popd >/dev/null
+    log_success "rbw installed"
+}
+
+install_ripgrep() {
+    install_deb_package "rg" "BurntSushi/ripgrep" "ripgrep_{VERSION}-1_amd64.deb"
+}
+
+install_rustup() {
+    if command_exists rustup; then
+        log_success "rustup is already installed"
+        return
+    fi
+
+    log_info "Installing rustup..."
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | bash -s -- -y
+    log_success "rustup installed"
 }
 
 install_yazi() {
@@ -305,39 +383,6 @@ install_yazi() {
     log_success "yazi installed"
 }
 
-install_zoxide() {
-    if command_exists zoxide; then
-        log_success "zoxide is already installed"
-        return
-    fi
-
-    log_info "Installing zoxide..."
-    curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash
-    log_success "zoxide installed"
-}
-
-install_fnm() {
-    if command_exists fnm; then
-        log_success "fnm is already installed"
-        return
-    fi
-
-    log_info "Installing fnm (Fast Node Manager)..."
-    curl -fsSL https://fnm.vercel.app/install | bash
-    log_success "fnm installed"
-}
-
-install_rustup() {
-    if command_exists rustup; then
-        log_success "rustup is already installed"
-        return
-    fi
-
-    log_info "Installing rustup..."
-    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | bash -s -- -y
-    log_success "rustup installed"
-}
-
 install_zig() {
     if command_exists zig; then
         log_success "zig is already installed"
@@ -365,29 +410,15 @@ install_zig() {
     log_success "zig installed"
 }
 
-install_rbw() {
-    if command_exists rbw; then
-        log_success "rbw is already installed"
+install_zoxide() {
+    if command_exists zoxide; then
+        log_success "zoxide is already installed"
         return
     fi
 
-    log_info "Installing rbw..."
-    pushd /tmp >/dev/null
-
-    local version
-    version=$(get_latest_github_version "doy/rbw")
-    local deb_file="rbw_${version}_amd64.deb"
-    local url="https://git.tozt.net/rbw/releases/deb/$deb_file"
-
-    download_file "$url" "$deb_file"
-    sudo DEBIAN_FRONTEND=noninteractive dpkg -i "$deb_file" || {
-        log_warning "dpkg failed, trying to fix dependencies..."
-        sudo apt-get install -f -y
-    }
-    rm -f "$deb_file"
-
-    popd >/dev/null
-    log_success "rbw installed"
+    log_info "Installing zoxide..."
+    curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash
+    log_success "zoxide installed"
 }
 
 # Install desktop environment packages
@@ -542,6 +573,7 @@ main() {
     install_apt_packages \
         curl make pkg-config zip unzip wl-clipboard \
         python3 python3-dev python3-pip python3-venv \
+        build-essential libncurses-dev \
         asciidoctor
     configure_python
 
@@ -554,14 +586,15 @@ main() {
     install_direnv
     install_esh
     install_fd
+    install_fnm
     install_fzf
+    install_neo
     install_rbw
     install_ripgrep
-    install_yazi
-    install_zoxide
-    install_fnm
     install_rustup
+    install_yazi
     install_zig
+    install_zoxide
 
     log_info "Installing desktop environment packages..."
     install_floorp
