@@ -277,40 +277,6 @@ install_fzf() {
     log_success "fzf installed"
 }
 
-install_ghostty() {
-    if command_exists ghostty; then
-        log_success "ghostty is already installed"
-        return
-    fi
-
-    log_info "Installing ghostty..."
-    curl -fsSL https://raw.githubusercontent.com/mkasberg/ghostty-ubuntu/HEAD/install.sh | bash
-    log_success "ghostty installed"
-}
-
-install_gtk_theme() {
-    local theme_dir="/usr/share/themes/Qogir-Round-Dark"
-
-    if [[ -d "$theme_dir" ]]; then
-        log_success "GTK theme is already installed"
-        return
-    fi
-
-    log_info "Installing GTK theme..."
-    pushd /tmp >/dev/null
-
-    local repo_dir="qogir-theme-$$"
-    git clone --depth=1 https://github.com/vinceliuice/Qogir-theme.git "$repo_dir"
-
-    pushd "$repo_dir" >/dev/null
-    sudo ./install.sh --tweaks round -c dark -d /usr/share/themes
-    popd >/dev/null
-
-    rm -rf "$repo_dir"
-    popd >/dev/null
-    log_success "GTK theme installed"
-}
-
 install_yazi() {
     if command_exists yazi; then
         log_success "yazi is already installed"
@@ -424,6 +390,68 @@ install_rbw() {
     log_success "rbw installed"
 }
 
+# Install desktop environment packages
+#-------------------------------------------------------------------------------
+
+install_floorp() {
+    if command_exists floorp; then
+        log_success "Floorp is already installed"
+        return
+    fi
+
+    log_info "Installing floorp..."
+
+    if [[ ! -f /etc/apt/keyrings/floorp.gpg ]]; then
+        curl -fsSL https://ppa.floorp.app/KEY.gpg | sudo gpg --dearmor -o /usr/share/keyrings/Floorp.gpg
+    fi
+
+    if [[ ! -f /etc/apt/sources.list.d/floorp.list ]]; then
+        sudo curl -sS --compressed -o /etc/apt/sources.list.d/Floorp.list "https://ppa.floorp.app/Floorp.list"
+    fi
+
+    log_info "Updating package lists..."
+    sudo apt update
+
+    log_info "Installing Floorp browser..."
+    DEBIAN_FRONTEND=noninteractive sudo apt install -y floorp
+
+    log_success "Floorp installed"
+}
+
+install_ghostty() {
+    if command_exists ghostty; then
+        log_success "ghostty is already installed"
+        return
+    fi
+
+    log_info "Installing ghostty..."
+    curl -fsSL https://raw.githubusercontent.com/mkasberg/ghostty-ubuntu/HEAD/install.sh | bash
+    log_success "ghostty installed"
+}
+
+install_gtk_theme() {
+    local theme_dir="/usr/share/themes/Qogir-Round-Dark"
+
+    if [[ -d "$theme_dir" ]]; then
+        log_success "GTK theme is already installed"
+        return
+    fi
+
+    log_info "Installing GTK theme..."
+    pushd /tmp >/dev/null
+
+    local repo_dir="qogir-theme-$$"
+    git clone --depth=1 https://github.com/vinceliuice/Qogir-theme.git "$repo_dir"
+
+    pushd "$repo_dir" >/dev/null
+    sudo ./install.sh --tweaks round -c dark -d /usr/share/themes
+    popd >/dev/null
+
+    rm -rf "$repo_dir"
+    popd >/dev/null
+    log_success "GTK theme installed"
+}
+
 # Install intelic packages
 #-------------------------------------------------------------------------------
 
@@ -527,14 +555,18 @@ main() {
     install_esh
     install_fd
     install_fzf
-    install_ghostty
-    install_gtk_theme
+    install_rbw
     install_ripgrep
     install_yazi
     install_zoxide
     install_fnm
     install_rustup
     install_zig
+
+    log_info "Installing desktop environment packages..."
+    install_floorp
+    install_ghostty
+    install_gtk_theme
 
     log_info "Installing intelic packages..."
     install_intelic_packages
