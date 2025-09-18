@@ -19,10 +19,12 @@ map <c-s-l> moveTabRight
 map <c-j> scrollPageDown
 map <c-k> scrollPageUp
 
+map <c-g> moveTabToNextWindow
+
 map <a-h> goBack
 map <a-l> goForward
 
-map <c-q> removeTab
+map <c-w> removeTab
 map u restoreTab
 
 map go Vomnibar.activateEditUrl
