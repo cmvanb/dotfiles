@@ -288,6 +288,29 @@ install_ghostty() {
     log_success "ghostty installed"
 }
 
+install_gtk_theme() {
+    local theme_dir="/usr/share/themes/Qogir-Round-Dark"
+
+    if [[ -d "$theme_dir" ]]; then
+        log_success "GTK theme is already installed"
+        return
+    fi
+
+    log_info "Installing GTK theme..."
+    pushd /tmp >/dev/null
+
+    local repo_dir="qogir-theme-$$"
+    git clone --depth=1 https://github.com/vinceliuice/Qogir-theme.git "$repo_dir"
+
+    pushd "$repo_dir" >/dev/null
+    sudo ./install.sh --tweaks round -c dark -d /usr/share/themes
+    popd >/dev/null
+
+    rm -rf "$repo_dir"
+    popd >/dev/null
+    log_success "GTK theme installed"
+}
+
 install_yazi() {
     if command_exists yazi; then
         log_success "yazi is already installed"
@@ -505,6 +528,7 @@ main() {
     install_fd
     install_fzf
     install_ghostty
+    install_gtk_theme
     install_ripgrep
     install_yazi
     install_zoxide
