@@ -48,3 +48,7 @@
 
 [pager]
     branch = false
+
+[alias]
+    intelic = "config user.email 'casper@intelic.ai'"
+    cmvanb = "config user.email 'draakie@proton.me'"
