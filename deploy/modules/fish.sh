@@ -28,6 +28,7 @@ fish::install () {
     force_link "$base_dir/config/fish/functions/suspend.fish" "$XDG_CONFIG_HOME/fish/functions/suspend.fish"
     esh "$base_dir/config/fish/functions/fish_deployed_aliases.fish~esh" > "$XDG_CONFIG_HOME/fish/functions/fish_deployed_aliases.fish"
     ensure_directory "$XDG_CONFIG_HOME/fish/conf.d"
+    force_link "$base_dir/config/fish/conf.d/00-xdg-base-dirs.fish" "$XDG_CONFIG_HOME/fish/conf.d/00-xdg-base-dirs.fish"
     force_link "$base_dir/config/fish/conf.d/fnm.fish" "$XDG_CONFIG_HOME/fish/conf.d/fnm.fish"
     force_link "$base_dir/config/fish/conf.d/direnv.fish" "$XDG_CONFIG_HOME/fish/conf.d/direnv.fish"
     force_link "$base_dir/config/fish/conf.d/lf.fish" "$XDG_CONFIG_HOME/fish/conf.d/lf.fish"
