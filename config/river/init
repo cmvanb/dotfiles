@@ -23,6 +23,7 @@ source "$opt_dir/shell-utils/debug.sh"
 #-------------------------------------------------------------------------------
 
 assert_dependency way-displays
+assert_dependency rivercarro
 
 # Systemd integration
 # TODO: This should be part of the river/systemd integration.
