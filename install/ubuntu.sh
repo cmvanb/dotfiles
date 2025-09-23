@@ -142,7 +142,6 @@ install_custom_repo_packages() {
     install_fish
     install_neovim
 
-    log_info "Updating package lists..."
     sudo apt update
 
     local packages=(eza fish neovim)
@@ -424,7 +423,7 @@ install_zoxide() {
 # Install desktop environment packages
 #-------------------------------------------------------------------------------
 
-install_floorp() {
+install_floorp_ppa() {
     if command_exists floorp; then
         log_success "Floorp is already installed"
         return
@@ -440,12 +439,75 @@ install_floorp() {
         sudo curl -sS --compressed -o /etc/apt/sources.list.d/Floorp.list "https://ppa.floorp.app/Floorp.list"
     fi
 
-    log_info "Updating package lists..."
     sudo apt update
 
-    log_info "Installing Floorp browser..."
     DEBIAN_FRONTEND=noninteractive sudo apt install -y floorp
 
+    log_success "Floorp installed"
+}
+
+install_floorp_gh() {
+    if command_exists floorp; then
+        log_success "Floorp is already installed"
+        return
+    fi
+
+    log_info "Installing Floorp..."
+
+    pushd /tmp >/dev/null
+
+    # Download
+    local version
+    version=$(get_latest_github_version "Floorp-Projects/Floorp")
+    local archive="floorp-linux-amd64.tar.xz"
+    local url="https://github.com/Floorp-Projects/Floorp/releases/download/v$version/$archive"
+    download_file "$url" "$archive"
+
+    # Extract
+    local floorp_dir="floorp-build-$$"
+    mkdir -p "$floorp_dir"
+    tar -xf "$archive" -C "$floorp_dir"
+
+    # Install
+    sudo mv "$floorp_dir/floorp" /opt
+    sudo ln -s /opt/floorp/floorp /usr/bin/floorp
+    sudo ln -s /opt/floorp/floorp-bin /usr/bin/floorp-bin
+
+    # Desktop entry
+    cat <<-EOF > "$XDG_DATA_HOME/applications/floorp.desktop"
+		[Desktop Entry]
+		Name=Floorp
+		GenericName=Web Browser
+		Comment=Browse the web
+		Exec=floorp %u
+		Icon=floorp
+		Terminal=false
+		Type=Application
+		MimeType=text/html;text/xml;application/xhtml+xml;application/vnd.mozilla.xul+xml;text/mml;x-scheme-handler/http;x-scheme-handler/https;
+		StartupNotify=true
+		Categories=Network;WebBrowser;
+		Keywords=ablaze;web;browser;internet;
+		Actions=new-window;new-private-window;profile-manager-window;
+		StartupWMClass=floorp
+		
+		[Desktop Action new-window]
+		Name=Open a New Window
+		Exec=floorp --new-window %u
+		
+		[Desktop Action new-private-window]
+		Name=Open a New Private Window
+		Exec=floorp --private-window %u
+		
+		[Desktop Action profile-manager-window]
+		Name=Open the Profile Manager
+		Exec=floorp --ProfileManager
+	EOF
+
+    # Icons
+
+
+    rm -rf "$floorp_dir" "$archive"
+    popd >/dev/null
     log_success "Floorp installed"
 }
 
@@ -597,7 +659,7 @@ main() {
     install_zoxide
 
     log_info "Installing desktop environment packages..."
-    install_floorp
+    install_floorp_gh
     install_ghostty
     install_gtk_theme
 
