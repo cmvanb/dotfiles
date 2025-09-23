@@ -469,7 +469,16 @@ install_floorp_gh() {
     tar -xf "$archive" -C "$floorp_dir"
 
     # Install
+    if [[ -d /opt/floorp ]]; then
+        sudo rm -rf /opt/floorp
+    fi
     sudo mv "$floorp_dir/floorp" /opt
+    if [[ -L /usr/bin/floorp ]]; then
+        sudo rm /usr/bin/floorp
+    fi
+    if [[ -L /usr/bin/floorp-bin ]]; then
+        sudo rm /usr/bin/floorp-bin
+    fi
     sudo ln -s /opt/floorp/floorp /usr/bin/floorp
     sudo ln -s /opt/floorp/floorp-bin /usr/bin/floorp-bin
 
@@ -504,7 +513,40 @@ install_floorp_gh() {
 	EOF
 
     # Icons
+    local icons_dir="floorp-icons-$$"
+    git clone --depth=1 --filter=blob:none --sparse \
+        https://github.com/Floorp-Projects/Floorp.git "$icons_dir"
 
+    pushd "$icons_dir" >/dev/null
+    git sparse-checkout set gecko/branding/floorp-official
+
+    # Install icons to system directories
+    sudo mkdir -p /usr/share/icons/hicolor/{16x16,32x32,48x48,64x64,128x128,256x256}/apps
+
+    local branding_dir="gecko/branding/floorp-official"
+    if [[ -f "$branding_dir/default16.png" ]]; then
+        sudo cp "$branding_dir/default16.png" /usr/share/icons/hicolor/16x16/apps/floorp.png
+    fi
+    if [[ -f "$branding_dir/default32.png" ]]; then
+        sudo cp "$branding_dir/default32.png" /usr/share/icons/hicolor/32x32/apps/floorp.png
+    fi
+    if [[ -f "$branding_dir/default48.png" ]]; then
+        sudo cp "$branding_dir/default48.png" /usr/share/icons/hicolor/48x48/apps/floorp.png
+    fi
+    if [[ -f "$branding_dir/default64.png" ]]; then
+        sudo cp "$branding_dir/default64.png" /usr/share/icons/hicolor/64x64/apps/floorp.png
+    fi
+    if [[ -f "$branding_dir/default128.png" ]]; then
+        sudo cp "$branding_dir/default128.png" /usr/share/icons/hicolor/128x128/apps/floorp.png
+    fi
+    if [[ -f "$branding_dir/default256.png" ]]; then
+        sudo cp "$branding_dir/default256.png" /usr/share/icons/hicolor/256x256/apps/floorp.png
+    fi
+
+    popd >/dev/null
+    rm -rf "$icons_dir"
+
+    sudo gtk-update-icon-cache -f /usr/share/icons/hicolor/ 2>/dev/null || true
 
     rm -rf "$floorp_dir" "$archive"
     popd >/dev/null
