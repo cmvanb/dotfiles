@@ -100,6 +100,8 @@ source "$base_dir/deploy/modules/zathura.sh"
 #-------------------------------------------------------------------------------
 
 echo "Deploying desktop profile from \`$base_dir\` to \`$HOME\`..."
+echo "└> Distribution: $DEPLOY_DISTRO"
+echo "└> Window Manager: $DEPLOY_WM"
 
 echo "Deploying library modules..."
 lib-shell-utils::install
