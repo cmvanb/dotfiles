@@ -120,7 +120,9 @@ args=()
 
 if [[ $TERMINAL == "alacritty" ]]; then
     if [[ "$floating" = true ]]; then
-        args+=("--class=floating -o window.dimensions.columns=120 -o window.dimensions.lines=32")
+        args+=("--class=floating")
+        args+=("-o window.dimensions.columns=120")
+        args+=("-o window.dimensions.lines=32")
     fi
     if [[ -n "$cwd" ]]; then
         args+=("--working-directory=$cwd")
@@ -129,7 +131,7 @@ if [[ $TERMINAL == "alacritty" ]]; then
         args+=("--command=$SHELL -c $command")
     fi
 
-    nohup alacritty "${args[@]}" > /dev/null 2>&1 &
+    nohup alacritty "${args[@]}" >/dev/null 2>&1 &
 
 elif [[ $TERMINAL == "ghostty" ]]; then
     if [[ "$floating" = true ]]; then
@@ -152,7 +154,6 @@ elif [[ $TERMINAL == "wezterm" ]]; then
         args+=("--cwd=$cwd")
     fi
     if [[ -n "$command" ]]; then
-        # NOTE: Not sure why but the -e arguments must be passed as separate strings.
         args+=("-e" "$SHELL" "-c" "$command")
     fi
 
