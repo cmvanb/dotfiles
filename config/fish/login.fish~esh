@@ -101,4 +101,4 @@ fish_add_path -pP $XDG_DATA_HOME/cargo/bin
 # Clean home directory
 #-------------------------------------------------------------------------------
 
-$XDG_SCRIPTS_HOME/clean-home.sh
+$XDG_SCRIPTS_HOME/clean-home.sh &>/dev/null &
