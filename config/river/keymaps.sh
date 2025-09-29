@@ -148,6 +148,18 @@ for i in $(seq 1 9); do
     riverctl map normal Super+Shift "$i" toggle-focused-tags $tags
 done
 
+# Scratchpad mappings
+#-------------------------------------------------------------------------------
+
+scratch_tag=$((1 << 20))
+riverctl map normal Super 0 toggle-focused-tags $scratch_tag
+riverctl map normal Super+Shift 0 set-view-tags $scratch_tag
+riverctl spawn-tagmask $((((1 << 32) - 1) ^ scratch_tag))
+
+sticky_tag=$((1 << 10))
+riverctl map normal Super S toggle-view-tags $sticky_tag
+riverctl spawn-tagmask $((((1 << 32) - 1) ^ sticky_tag))
+
 # Layout mappings
 #-------------------------------------------------------------------------------
 
