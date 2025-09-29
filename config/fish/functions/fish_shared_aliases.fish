@@ -53,7 +53,7 @@ function fish_shared_aliases
     abbr -a lsta eza -aT --git-ignore
     abbr -a ip ip -c
     abbr -a rga rg --hidden --no-ignore
-    abbr -a zz z /
+    abbr -a zz z -
 
     # Python
     abbr -a vv generate-venv.sh

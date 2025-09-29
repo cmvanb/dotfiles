@@ -91,7 +91,7 @@ alias lsat="eza -aT --git-ignore"
 alias lsta="eza -aT --git-ignore"
 alias ip="ip -c"
 alias rga="rg --hidden --no-ignore"
-alias zz="z /"
+alias zz="z -"
 
 # Python
 alias vv="generate-venv.sh"
