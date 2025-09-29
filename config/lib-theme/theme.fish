@@ -25,102 +25,32 @@ function parse_error --argument-names line column message
 end
 
 function parse_vars --argument-names filePath
-    set -l line_count 0
-
-    while read line
-        set -l key ''
-        set -l value ''
-        set -l assignment_op 'false'
-        set -l lookup 'false'
-
-        if test -z $line
+    while read -l line
+        # Skip empty lines, comments, and shebang
+        if test -z "$line" || string match -q '#*' "$line" || string match -q '!*' "$line"
             continue
         end
 
-        set line_count (math $line_count + 1)
-        set -l char_count 0
+        # Check for variable assignment pattern with optional leading spaces and quotes
+        # Supports: key=value, key='value', key=$reference, " key=value"
+        if string match -qr '^\s*([0-9a-zA-Z_]+)=(.+)$' "$line"
+            set -l key (string replace -r '^\s*([0-9a-zA-Z_]+)=(.+)$' '$1' "$line")
+            set -l value (string replace -r '^\s*([0-9a-zA-Z_]+)=(.+)$' '$2' "$line")
 
-        for char in (string split '' $line)
-            set char_count (math $char_count + 1)
+            # Remove surrounding quotes if present
+            set value (string replace -r "^'(.+)'\$" '$1' "$value")
 
-            # Space after assignment, append to value.
-            # Space before assignment, keep reading.
-            if test $char = ' '
-                if test $assignment_op = 'true'
-                    set value "$value$char"
-                else
-                    continue
-                end
+            # Remove leading # from color values
+            set value (string replace -r "^#(.+)" '$1' "$value")
 
-            # Hash after assignment, char is ignored, but continue parsing value.
-            # Hash before assignment, line is skipped.
-            else if test $char = '#'
-                if test $assignment_op = 'true'
-                    continue
-                else
-                    set key ''
-                    set value ''
-                    break
-                end
-
-            # Quote, char is ignored, only allowed after assignment
-            else if test $char = '\''
-                if test $assignment_op = 'true'
-                    continue
-                else
-                    parse_error $line_count $char_count "Expected character [$char] only after assignment."
-                    return 2
-                end
-
-            # Dollar, indicates variable lookup, only allowed after assignment
-            else if test $char = '$'
-                if test $assignment_op = 'true'
-                    set lookup 'true'
-                    continue
-                else
-                    parse_error $line_count $char_count "Expected character [$char] only after assignment."
-                    return 3
-                end
-
-            # Alphanumeric or underscore, append to either key or value
-            else if string match -qr -- '[0-9a-zA-Z_]' $char
-                if test $assignment_op = 'false'
-                    set key "$key$char"
-                else
-                    set value "$value$char"
-                end
-
-            # Decimal point, append to value, only allowed after assignment
-            else if test $char = '.'
-                if test $assignment_op = 'true'
-                    set value "$value$char"
-                    continue
-                else
-                    parse_error $line_count $char_count "Expected character [$char] only after assignment."
-                    return 2
-                end
-
-            # Assignment operator reached, keep reading for value
-            else if test $char = '='
-                if test $assignment_op = 'false'
-                    set assignment_op 'true'
-                end
-
-            else
-                parse_error $line_count $char_count "Unknown character [$char]."
-                return 4
-            end
-        end
-
-        # Assign value
-        if test -n $key && test -n $value
-            if test $lookup = 'true'
-                dict_set $key (dict_get $value)
+            # Handle variable references (starts with $)
+            if string match -q '$*' "$value"
+                set -l ref_var (string sub -s 2 "$value")
+                dict_set $key (dict_get $ref_var)
             else
                 dict_set $key $value
             end
         end
-
     end < $filePath
 
     return 0
