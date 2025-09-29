@@ -11,6 +11,7 @@ function fish_shared_aliases
     abbr -a gb git branch -v
     abbr -a gc git commit -m
     abbr -a gca git commit --amend
+    abbr -a gcl git clone
     abbr -a gco git checkout
     abbr -a gcp git cherry-pick
     abbr -a gd git diff
