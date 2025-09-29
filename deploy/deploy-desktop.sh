@@ -51,7 +51,6 @@ source "$base_dir/deploy/modules/python.sh"
 source "$base_dir/deploy/modules/readline.sh"
 source "$base_dir/deploy/modules/ripgrep.sh"
 source "$base_dir/deploy/modules/scripts-shell-utils.sh"
-source "$base_dir/deploy/modules/shell-stty.sh"
 source "$base_dir/deploy/modules/wget.sh"
 source "$base_dir/deploy/modules/yazi.sh"
 
@@ -125,7 +124,6 @@ python::install
 readline::install
 ripgrep::install
 scripts-shell-utils::install
-shell-stty::install
 wget::install
 yazi::install
 

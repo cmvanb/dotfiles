@@ -6,13 +6,6 @@
 # If not running interactively, don't do anything.
 [[ $- != *i* ]] && return
 
-# Imports
-#-------------------------------------------------------------------------------
-
-# Generic interactive shell configuration.
-# shellcheck disable=SC1091
-source "$XDG_CONFIG_HOME/shell-stty/stty-config"
-
 # General configuration
 #-------------------------------------------------------------------------------
 

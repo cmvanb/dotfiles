@@ -5,9 +5,6 @@
 # General
 #-------------------------------------------------------------------------------
 
-# STTY configuration.
-source $XDG_CONFIG_HOME/shell-stty/stty-config
-
 # Save python history in an XDG compliant directory.
 set -x PYTHON_HISTORY $XDG_DATA_HOME/python/history
 
