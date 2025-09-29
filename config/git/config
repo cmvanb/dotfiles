@@ -3,6 +3,8 @@
     name = Casper
 
 [core]
+    autocrlf = false
+    eol = lf
     editor = nvim
     pager = delta
 
