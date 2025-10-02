@@ -693,7 +693,8 @@ main() {
         curl make pkg-config zip unzip wl-clipboard \
         python3 python3-dev python3-pip python3-venv \
         build-essential libncurses-dev \
-        asciidoctor
+        asciidoctor \
+        mpv
     configure_python
 
     log_info "Installing custom repository packages..."
