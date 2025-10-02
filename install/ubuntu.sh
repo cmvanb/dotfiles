@@ -137,10 +137,25 @@ install_neovim() {
     fi
 }
 
+install_ytdlp() {
+    if command_exists yt-dlp; then
+        log_success "yt-dlp is already installed"
+        return
+    fi
+
+    log_info "Adding yt-dlp repository..."
+    if ! is_ppa_added "tomtomtom/yt-dlp"; then
+        sudo add-apt-repository ppa:tomtomtom/yt-dlp
+    else
+        log_success "yt-dlp PPA already added"
+    fi
+}
+
 install_custom_repo_packages() {
     install_eza
     install_fish
     install_neovim
+    install_ytdlp
 
     sudo apt update
 
