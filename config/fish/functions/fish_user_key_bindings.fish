@@ -36,8 +36,8 @@ function fish_user_key_bindings
     bind \e\[C forward-char  # Right
     bind \e\[H beginning-of-line  # Home
     bind \e\[F end-of-line  # End
-    bind -k backspace backward-delete-char
-    bind -k dc delete-char
+    bind \x7f backward-delete-char  # Backspace
+    bind \e\[3\~ delete-char  # Delete
     bind \r execute
     bind \e cancel
 
