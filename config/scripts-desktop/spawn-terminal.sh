@@ -128,7 +128,7 @@ if [[ $TERMINAL == "alacritty" ]]; then
         args+=("--working-directory=$cwd")
     fi
     if [[ -n "$command" ]]; then
-        args+=("--command=$SHELL -c $command")
+        args+=("--command" "$SHELL" "-c" "$command")
     fi
 
     nohup alacritty "${args[@]}" >/dev/null 2>&1 &
@@ -141,7 +141,7 @@ elif [[ $TERMINAL == "ghostty" ]]; then
         args+=("--working-directory=$cwd")
     fi
     if [[ -n "$command" ]]; then
-        args+=("--command=$SHELL -c $command")
+        args+=("--command" "$SHELL" "-c" "$command")
     fi
 
     nohup ghostty "${args[@]}" > /dev/null 2>&1 &
