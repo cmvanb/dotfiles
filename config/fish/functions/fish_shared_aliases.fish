@@ -5,6 +5,7 @@
 function fish_shared_aliases
 
     # Git
+    abbr -a g git
     abbr -a ga git add
     abbr -a gaa git add -A
     abbr -a gai git add -i
@@ -42,8 +43,6 @@ function fish_shared_aliases
     abbr -a edi edit
     alias eza "eza -l --color=always --group-directories-first --time-style=long-iso"
     abbr -a ez eza
-    abbr -a ex eza
-    abbr -a exa eza
     abbr -a lf lfcd
     abbr -a ls eza
     abbr -a lsa eza -a
