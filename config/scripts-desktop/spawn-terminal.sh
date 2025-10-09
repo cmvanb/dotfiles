@@ -25,7 +25,6 @@ parse_long_options() {
             command="${1#*=}"
             ;;
         --command)
-            # TODO: This is broken. Equals sign required for now.
             if [ -n "$2" ]; then
                 command="$2"
                 return 2
@@ -47,7 +46,6 @@ parse_long_options() {
             cwd="${1#*=}"
             ;;
         --working-directory)
-            # TODO: This is broken. Equals sign required for now.
             if [ -n "$2" ]; then
                 cwd="$2"
                 return 2
@@ -61,7 +59,6 @@ parse_long_options() {
             title="${1#*=}"
             ;;
         --title)
-            # TODO: This is broken. Equals sign required for now.
             if [ -n "$2" ]; then
                 title="$2"
                 return 2
@@ -83,44 +80,82 @@ parse_long_options() {
     return 1
 }
 
+parse_short_options() {
+    local opt_string="$1"
+    shift
+
+    # Strip leading dash.
+    opt_string="${opt_string#-}"
+
+    while [ -n "$opt_string" ]; do
+        local opt="${opt_string:0:1}"
+        opt_string="${opt_string:1}"
+
+        case "$opt" in
+            c)
+                # -ovalue format
+                if [ -n "$opt_string" ]; then
+                    command="$opt_string"
+                    return 0
+                # -o value format
+                elif [ $# -gt 0 ]; then
+                    command="$1"
+                    return 1
+                else
+                    echo "Error: Option -c requires an argument"
+                    usage
+                fi
+                ;;
+            d)
+                if [ -n "$opt_string" ]; then
+                    cwd="$opt_string"
+                    return 0
+                elif [ $# -gt 0 ]; then
+                    cwd="$1"
+                    return 1
+                else
+                    echo "Error: Option -d requires an argument"
+                    usage
+                fi
+                ;;
+            f)
+                floating=true
+                ;;
+            t)
+                if [ -n "$opt_string" ]; then
+                    title="$opt_string"
+                    return 0
+                elif [ $# -gt 0 ]; then
+                    title="$1"
+                    return 1
+                else
+                    echo "Error: Option -t requires an argument"
+                    usage
+                fi
+                ;;
+            h)
+                usage
+                ;;
+            *)
+                echo "Error: Invalid option: -$opt"
+                usage
+                ;;
+        esac
+    done
+    return 0
+}
+
 while [ $# -gt 0 ]; do
     case "$1" in
         --*=*|--*)
-            parse_long_options "$1" "$2"
+            parse_long_options "$1" "${2:-}"
             shift $?
             ;;
 
         -*)
-            # TODO: This is broken. Fallback case always triggers.
-            while getopts ":c:d:f:t:h" opt; do
-                case ${opt} in
-                    c)
-                        command="$OPTARG"
-                        ;;
-                    d)
-                        cwd="$OPTARG"
-                        ;;
-                    f)
-                        floating=true
-                        ;;
-                    t)
-                        title="$OPTARG"
-                        ;;
-                    h)
-                        usage
-                        ;;
-                    \?)
-                        echo "Error: Invalid option: -$OPTARG"
-                        usage
-                        ;;
-                    :)
-                        echo "Error: Option -$OPTARG requires an argument"
-                        usage
-                        ;;
-                esac
-            done
-            shift $((OPTIND - 1))
-            OPTIND=1
+            parse_short_options "$@"
+            consumed=$?
+            shift $((consumed + 1))
             ;;
 
         *)
