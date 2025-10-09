@@ -117,8 +117,11 @@ while [ $# -gt 0 ]; do
 done
 
 args=()
+terminal_cmd=()
 
 if [[ $TERMINAL == "alacritty" ]]; then
+    terminal_cmd=("alacritty")
+
     if [[ "$floating" = true ]]; then
         args+=("--class=floating")
         args+=("-o window.dimensions.columns=120")
@@ -131,9 +134,9 @@ if [[ $TERMINAL == "alacritty" ]]; then
         args+=("--command" "$SHELL" "-c" "$command")
     fi
 
-    nohup alacritty "${args[@]}" >/dev/null 2>&1 &
-
 elif [[ $TERMINAL == "ghostty" ]]; then
+    terminal_cmd=("ghostty")
+
     if [[ "$floating" = true ]]; then
         args+=("--class=com.mitchellh.ghostty.floating")
     fi
@@ -144,9 +147,9 @@ elif [[ $TERMINAL == "ghostty" ]]; then
         args+=("--command" "$SHELL" "-c" "$command")
     fi
 
-    nohup ghostty "${args[@]}" > /dev/null 2>&1 &
-
 elif [[ $TERMINAL == "wezterm" ]]; then
+    terminal_cmd=("wezterm" "start")
+
     if [[ "$floating" = true ]]; then
         args+=("--class=org.wezfurlong.wezterm.floating")
     fi
@@ -157,11 +160,11 @@ elif [[ $TERMINAL == "wezterm" ]]; then
         args+=("-e" "$SHELL" "-c" "$command")
     fi
 
-    nohup wezterm start "${args[@]}" > /dev/null 2>&1 &
-
 else
     echo "Unsupported terminal emulator: $TERMINAL"
     exit 1
 fi
+
+nohup "${terminal_cmd[@]}" "${args[@]}" >/dev/null 2>&1 &
 
 exit 0
