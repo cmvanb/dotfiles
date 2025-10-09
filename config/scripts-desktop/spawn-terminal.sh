@@ -6,6 +6,7 @@
 command=""
 cwd=""
 floating=false
+title=""
 
 usage() {
     echo "$(basename "$0") [options]"
@@ -13,6 +14,7 @@ usage() {
     echo "    -c, --command COMMAND                Command to execute in the terminal."
     echo "    -d, --working-directory DIRECTORY    Directory to start the terminal in."
     echo "    -f, --floating                       Open terminal in floating mode."
+    echo "    -t, --title TITLE                    Set the terminal window title."
     echo "    -h, --help                           Display this help message."
     exit 1
 }
@@ -55,6 +57,20 @@ parse_long_options() {
             fi
             ;;
 
+        --title=*)
+            title="${1#*=}"
+            ;;
+        --title)
+            # TODO: This is broken. Equals sign required for now.
+            if [ -n "$2" ]; then
+                title="$2"
+                return 2
+            else
+                echo "Error: --title requires an argument"
+                usage
+            fi
+            ;;
+
         --help)
             usage
             ;;
@@ -76,7 +92,7 @@ while [ $# -gt 0 ]; do
 
         -*)
             # TODO: This is broken. Fallback case always triggers.
-            while getopts ":c:d:f:h" opt; do
+            while getopts ":c:d:f:t:h" opt; do
                 case ${opt} in
                     c)
                         command="$OPTARG"
@@ -86,6 +102,9 @@ while [ $# -gt 0 ]; do
                         ;;
                     f)
                         floating=true
+                        ;;
+                    t)
+                        title="$OPTARG"
                         ;;
                     h)
                         usage
@@ -130,6 +149,9 @@ if [[ $TERMINAL == "alacritty" ]]; then
     if [[ -n "$cwd" ]]; then
         args+=("--working-directory=$cwd")
     fi
+    if [[ -n "$title" ]]; then
+        args+=("--title=$title")
+    fi
     if [[ -n "$command" ]]; then
         args+=("--command" "$SHELL" "-c" "$command")
     fi
@@ -143,6 +165,9 @@ elif [[ $TERMINAL == "ghostty" ]]; then
     if [[ -n "$cwd" ]]; then
         args+=("--working-directory=$cwd")
     fi
+    if [[ -n "$title" ]]; then
+        args+=("--title=$title")
+    fi
     if [[ -n "$command" ]]; then
         args+=("--command" "$SHELL" "-c" "$command")
     fi
@@ -155,6 +180,9 @@ elif [[ $TERMINAL == "wezterm" ]]; then
     fi
     if [[ -n "$cwd" ]]; then
         args+=("--cwd=$cwd")
+    fi
+    if [[ -n "$title" ]]; then
+        args+=("--title=$title")
     fi
     if [[ -n "$command" ]]; then
         args+=("-e" "$SHELL" "-c" "$command")
