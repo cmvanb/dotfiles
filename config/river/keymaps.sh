@@ -36,7 +36,7 @@ riverctl map normal Super+Shift W exit
 #-------------------------------------------------------------------------------
 
 # Run menu
-riverctl map normal Super O spawn "$LAUNCHER"
+riverctl map normal Super Return spawn "$LAUNCHER"
 
 # New terminal
 riverctl map normal Super T spawn "spawn-terminal.sh"
