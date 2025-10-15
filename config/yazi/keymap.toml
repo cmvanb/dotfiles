@@ -4,16 +4,38 @@
 
 [[mgr.prepend_keymap]]
 on   = "l"
-run  = 'plugin smart-enter'
+run  = "plugin smart-enter"
 
 [[mgr.prepend_keymap]]
 on   = "<C-w>"
-run  = 'quit'
+run  = "quit"
 
 [[mgr.prepend_keymap]]
 on   = "w"
-run  = 'quit --no-cwd-file'
+run  = "quit --no-cwd-file"
 
 [[mgr.prepend_keymap]]
 on   = "<Esc>"
-run  = 'quit --no-cwd-file'
+run  = "quit --no-cwd-file"
+
+#-- dedukun/bookmarks
+#-------------------------------------------------------------------------------
+[[mgr.prepend_keymap]]
+on = [ "m" ]
+run = "plugin bookmarks save"
+desc = "Save current position as a bookmark"
+
+[[mgr.prepend_keymap]]
+on = [ "'" ]
+run = "plugin bookmarks jump"
+desc = "Jump to a bookmark"
+
+[[mgr.prepend_keymap]]
+on = [ "b", "d" ]
+run = "plugin bookmarks delete"
+desc = "Delete a bookmark"
+
+[[mgr.prepend_keymap]]
+on = [ "b", "D" ]
+run = "plugin bookmarks delete_all"
+desc = "Delete all bookmarks"

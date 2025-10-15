@@ -13,6 +13,7 @@ yazi::install () {
     echo "└> Installing yazi configuration."
 
     ensure_directory "$XDG_CONFIG_HOME/yazi"
+    force_link "$base_dir/config/yazi/init.lua" "$XDG_CONFIG_HOME/yazi/init.lua"
     force_link "$base_dir/config/yazi/yazi.toml" "$XDG_CONFIG_HOME/yazi/yazi.toml"
     force_link "$base_dir/config/yazi/keymap.toml" "$XDG_CONFIG_HOME/yazi/keymap.toml"
     force_link "$base_dir/config/yazi/theme.toml" "$XDG_CONFIG_HOME/yazi/theme.toml"
@@ -22,6 +23,7 @@ yazi::install () {
     # Install plugins
     ya pkg add yazi-rs/plugins:smart-enter
     ya pkg add ndtoan96/ouch
+    ya pkg add dedukun/bookmarks
 }
 
 yazi::uninstall () {
