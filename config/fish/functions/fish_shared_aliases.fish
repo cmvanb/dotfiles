@@ -67,4 +67,5 @@ function fish_shared_aliases
     abbr -a dcd "docker compose down"
     abbr -a dps "docker ps | view"
     abbr -a dv "docker volume"
+    abbr -a dss "docker stop (docker ps -q)"
 end
