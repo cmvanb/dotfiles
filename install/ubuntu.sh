@@ -564,7 +564,8 @@ main() {
         python3 python3-dev python3-pip python3-venv \
         build-essential libncurses-dev \
         asciidoctor \
-        mpv
+        mpv \
+        zathura
     configure_python
 
     log_info "Installing custom repository packages..."
