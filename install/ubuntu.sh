@@ -151,15 +151,34 @@ install_ytdlp() {
     fi
 }
 
+install_syncthing() {
+    if command_exists syncthing; then
+        log_success "syncthing is already installed"
+        return
+    fi
+
+    log_info "Setting up syncthing repository..."
+    sudo mkdir -p /etc/apt/keyrings
+
+    if [[ ! -f /etc/apt/keyrings/syncthing-archive-keyring.gpg ]]; then
+        sudo curl -L -o /etc/apt/keyrings/syncthing-archive-keyring.gpg https://syncthing.net/release-key.gpg
+    fi
+
+    if [[ ! -f /etc/apt/sources.list.d/syncthing.list ]]; then
+        echo "deb [signed-by=/etc/apt/keyrings/syncthing-archive-keyring.gpg] https://apt.syncthing.net/ syncthing stable-v2" | sudo tee /etc/apt/sources.list.d/syncthing.list
+    fi
+}
+
 install_custom_repo_packages() {
     install_eza
     install_fish
     install_neovim
     install_ytdlp
+    install_syncthing
 
     sudo apt update
 
-    local packages=(eza fish neovim)
+    local packages=(eza fish neovim syncthing)
     local to_install=()
 
     for package in "${packages[@]}"; do
