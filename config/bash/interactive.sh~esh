@@ -108,6 +108,11 @@ alias dss="docker stop $(docker ps -q)"
 alias uu="sudo pacman -Syu"
 # <% fi -%>
 
+#<% if [[ $DEPLOY_DISTRO == "ubuntu" ]]; then -%>
+
+alias uu="sudo apt update && sudo apt upgrade -y"
+# <% fi -%>
+
 # <% if [[ $DEPLOY_PROFILE == "desktop" ]]; then -%>
 
 alias rb="reboot"
