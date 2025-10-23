@@ -613,6 +613,9 @@ main() {
     log_info "Installing intelic packages..."
     install_intelic_packages
 
+    log_info "Configuring GNOME settings..."
+    gsettings get org.gnome.desktop.session idle-delay 3600
+
     log_success "Installation script completed successfully!"
 }
 
