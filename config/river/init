@@ -105,7 +105,6 @@ riverctl rule-add -app-id '*floating' float
 riverctl rule-add -app-id gcr-prompter float
 riverctl rule-add -app-id org.gnome.Nautilus float
 riverctl rule-add -app-id nwg-look float
-riverctl rule-add -app-id org.qutebrowser.qutebrowser float
 riverctl rule-add -app-id org.gnome.seahorse.Application float
 riverctl rule-add -app-id 'com.transmissionbt.transmission*' float
 riverctl rule-add -app-id transmission-gtk float
