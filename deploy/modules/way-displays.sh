@@ -21,7 +21,7 @@ way-displays::install () {
         echo "└> Installing way-displays configuration."
 
         ensure_directory "$XDG_CONFIG_HOME/way-displays"
-        force_link "$base_dir/config/way-displays/cfg.yaml~avalor" "$XDG_CONFIG_HOME/way-displays/cfg.yaml"
+        force_link "$base_dir/config/way-displays/cfg.yaml~intelic" "$XDG_CONFIG_HOME/way-displays/cfg.yaml"
 
     else
         echo "└> Skipping way-displays - no configuration for \`$host\`."
