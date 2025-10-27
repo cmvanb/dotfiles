@@ -535,6 +535,37 @@ install_hyprlock() {
     popd >/dev/null
 }
 
+install_simp1e_cursor_theme() {
+    local theme_dir="/usr/share/icons/Simp1e"
+
+    if [[ -d "$theme_dir" ]]; then
+        log_success "Simp1e cursor theme is already installed"
+        return
+    fi
+
+    log_info "Installing Simp1e cursor theme..."
+    pushd /tmp >/dev/null
+
+    local files
+    files=$(curl -Lfs https://www.pling.com/p/1932768/loadFiles)
+    local raw_url
+    raw_url=$(echo $files | jq -r '.files[] | select(.name == "Simp1e.tar.xz") | .url')
+    local decoded_url
+    decoded_url=$(echo $raw_url | perl -pe 's/\%(\w\w)/chr hex $1/ge')
+
+    download_file "$decoded_url" "Simp1e.tar.xz"
+
+    local extract_dir="simp1e-cursor-$$"
+    mkdir -p "$extract_dir"
+    tar -xf Simp1e.tar.xz -C "$extract_dir"
+
+    sudo mv "$extract_dir/Simp1e" /usr/share/icons/
+
+    rm -rf "$extract_dir" Simp1e.tar.xz
+    popd >/dev/null
+    log_success "Simp1e cursor theme installed"
+}
+
 install_sway() {
     if command_exists sway; then
         log_success "sway is already installed"
@@ -688,6 +719,7 @@ main() {
     install_ghostty
     install_gtk_theme
     install_hyprlock
+    install_simp1e_cursor_theme
     install_sway
     install_waypaper
 
