@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 #-------------------------------------------------------------------------------
 # Open a new terminal and change the working directory, choosing from zoxide
 # history.
