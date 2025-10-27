@@ -33,6 +33,9 @@
         "all-outputs": false,
         "format": "{name}",
         "disable-scroll": true,
+        "persistent-workspaces": [
+            "home"
+        ]
     },
     "sway/window": {
         "max-length": 160,
