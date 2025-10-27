@@ -74,6 +74,11 @@ install_apt_packages() {
     fi
 }
 
+configure_pipx() {
+    log_info "Configuring pipx..."
+    pipx ensurepath
+}
+
 configure_python() {
     if [[ ! -L /usr/bin/python ]]; then
         if [[ ! -e /usr/bin/python ]]; then
@@ -491,6 +496,37 @@ install_gtk_theme() {
     log_success "GTK theme installed"
 }
 
+install_sway() {
+    if command_exists sway; then
+        log_success "sway is already installed"
+        return
+    fi
+
+    log_info "Installing sway..."
+    install_apt_packages \
+        sway waybar hyprlock fuzzel mako-notifier
+
+    cargo install sway-workspace
+    pipx install autotiling
+
+    log_success "sway installed"
+}
+
+install_waypaper() {
+    if command_exists waypaper; then
+        log_success "waypaper is already installed"
+        return
+    fi
+
+    # Waypaper dependencies
+    install_apt_packages \
+        libcairo2-dev libgirepository1.0-dev gir1.2-gtk-4.0 \
+        gir1.2-girepository-2.0-dev libgirepository-2.0-dev
+
+    log_info "Installing waypaper..."
+    pipx install waypaper
+}
+
 # Install intelic packages
 #-------------------------------------------------------------------------------
 
@@ -579,12 +615,15 @@ main() {
 
     log_info "Installing regular packages..."
     install_apt_packages \
-        curl make pkg-config zip unzip wl-clipboard \
+        curl make pkg-config gcc \
+        zip unzip wl-clipboard \
         python3 python3-dev python3-pip python3-venv \
+        pipx \
         build-essential libncurses-dev \
         asciidoctor \
         mpv \
         zathura
+    configure_pipx
     configure_python
 
     log_info "Installing custom repository packages..."
@@ -609,12 +648,14 @@ main() {
     log_info "Installing desktop environment packages..."
     install_ghostty
     install_gtk_theme
+    install_sway
+    install_waypaper
 
     log_info "Installing intelic packages..."
     install_intelic_packages
 
     log_info "Configuring GNOME settings..."
-    gsettings get org.gnome.desktop.session idle-delay 3600
+    gsettings set org.gnome.desktop.session idle-delay 3600
 
     log_success "Installation script completed successfully!"
 }
