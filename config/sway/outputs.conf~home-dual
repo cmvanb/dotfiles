@@ -1,0 +1,11 @@
+#-------------------------------------------------------------------------------
+# Sway output configuration - Dual monitor setup
+#
+# Based on way-displays configuration:
+# - DP-2: Left monitor, rotated 90° clockwise
+# - DP-1: Right monitor, normal orientation
+#-------------------------------------------------------------------------------
+
+output DP-2 pos 0 0 transform 270
+
+output DP-1 pos 1200 0

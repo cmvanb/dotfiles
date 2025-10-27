@@ -1,0 +1,148 @@
+#-------------------------------------------------------------------------------
+# Sway configuration
+#
+# See the sway(5) and swaymsg(1) man pages for complete documentation.
+#-------------------------------------------------------------------------------
+
+# Variables
+#-------------------------------------------------------------------------------
+
+set $config_dir $HOME/.config
+set $scripts_dir $HOME/.local/scripts
+
+# Input configuration
+#-------------------------------------------------------------------------------
+
+# Focus follows cursor
+focus_follows_mouse yes
+
+# Keyboard repeat rate
+input type:keyboard {
+    repeat_delay 300
+    repeat_rate 50
+}
+
+# Hide inactive cursor
+seat * hide_cursor 3000
+
+# Zowie EC2 sensitivity
+input "1189:32769:BenQ_ZOWIE_BenQ_ZOWIE_Gaming_Mouse" {
+    accel_profile flat
+    pointer_accel -0.65
+}
+
+# Logitech G Pro X Superlight sensitivity
+input "1133:50503:Logitech_USB_Receiver" {
+    accel_profile flat
+    pointer_accel 0.05
+}
+
+# Trackpad sensitivity
+input "43256:6199:Bastard_Keyboards_Dilemma_Max_Mouse" {
+    accel_profile flat
+    pointer_accel -0.15
+}
+
+# Layout configuration
+#-------------------------------------------------------------------------------
+
+gaps inner 6
+gaps outer -6
+
+default_border pixel 3
+default_floating_border pixel 3
+
+smart_gaps on
+smart_borders off
+
+# Output configuration
+#-------------------------------------------------------------------------------
+
+include $config_dir/sway/outputs.conf
+
+# Workspace configuration
+#-------------------------------------------------------------------------------
+
+include $config_dir/sway/workspace.conf
+
+# Startup applications
+#-------------------------------------------------------------------------------
+
+# Adjust screen brightness
+exec wlsunset -l 52.155472 -L 5.389358
+
+# Clean home
+exec $scripts_dir/clean-home.sh
+
+# Theme configuration
+#-------------------------------------------------------------------------------
+
+include $config_dir/sway/theme.conf
+
+# Apply wallpaper
+exec waypaper --restore &
+
+# Start waybar
+exec pkill -x waybar
+exec waybar &
+
+# Window rules
+#-------------------------------------------------------------------------------
+
+# Floating windows
+for_window [app_id="org.gnome.gitlab.somas.Apostrophe"] floating enable
+for_window [app_id="blueman-manager"] floating enable
+for_window [app_id=".*floating"] floating enable
+for_window [app_id="gcr-prompter"] floating enable
+for_window [app_id="org.gnome.Nautilus"] floating enable
+for_window [app_id="nwg-look"] floating enable
+for_window [app_id="org.gnome.seahorse.Application"] floating enable
+for_window [app_id="com.transmissionbt.transmission.*"] floating enable
+for_window [app_id="transmission-gtk"] floating enable
+for_window [app_id="waypaper"] floating enable
+for_window [app_id="xdg-desktop-portal-gtk"] floating enable
+for_window [app_id="yad"] floating enable
+for_window [app_id="nm-connection-editor"] floating enable
+
+# Window sizes
+for_window [app_id="blueman-manager"] resize set 800 600
+for_window [app_id="org.gnome.Nautilus"] resize set 1024 960
+for_window [app_id="nwg-look"] resize set 1024 960
+for_window [app_id="org.qutebrowser.qutebrowser"] resize set 1600 1200
+
+# Server-side decorations
+for_window [app_id="Alacritty"] border pixel 3
+for_window [app_id="org.gnome.gitlab.somas.Apostrophe"] border pixel 3
+for_window [app_id="blueman-manager"] border pixel 3
+for_window [app_id="chromium"] border pixel 3
+for_window [app_id="gcr-viewer"] border pixel 3
+for_window [app_id="gcr-prompter"] border pixel 3
+for_window [app_id="com.mitchellh.ghostty.*"] border pixel 3
+for_window [app_id="gtk-pipe-viewer"] border pixel 3
+for_window [app_id="gimp"] border pixel 3
+for_window [app_id="imv"] border pixel 3
+for_window [app_id="marker"] border pixel 3
+for_window [app_id="org.gnome.Nautilus"] border pixel 3
+for_window [app_id="nm-connection-editor"] border pixel 3
+for_window [app_id="nwg-look"] border pixel 3
+for_window [app_id="org.pulseaudio.pavucontrol"] border pixel 3
+for_window [app_id="org.gnome.seahorse.Application"] border pixel 3
+for_window [app_id="org.gnome.SimpleScan"] border pixel 3
+for_window [app_id="com.transmissionbt.transmission.*"] border pixel 3
+for_window [app_id="transmission-gtk"] border pixel 3
+for_window [app_id="waypaper"] border pixel 3
+for_window [app_id="org.wezfurlong.wezterm.*"] border pixel 3
+for_window [app_id="xdg-desktop-portal-gtk"] border pixel 3
+for_window [app_id="yad"] border pixel 3
+for_window [app_id="yad-settings"] border pixel 3
+for_window [app_id="org.pwmt.zathura"] border pixel 3
+
+# Key mappings
+#-------------------------------------------------------------------------------
+
+include $config_dir/sway/keymaps.conf
+
+# Include system config
+#-------------------------------------------------------------------------------
+
+include /etc/sway/config.d/*
