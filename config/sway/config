@@ -10,14 +10,6 @@
 set $config_dir $HOME/.config
 set $scripts_dir $HOME/.local/scripts
 
-# Systemd integration
-#-------------------------------------------------------------------------------
-
-exec dbus-update-activation-environment --systemd \
-    XDG_CURRENT_DESKTOP \
-    XDG_SESSION_TYPE \
-    WAYLAND_DISPLAY
-
 # Input configuration
 #-------------------------------------------------------------------------------
 
@@ -64,7 +56,7 @@ smart_gaps on
 smart_borders off
 
 # Autotiling
-exec_always autotiling
+# exec_always autotiling
 
 # Output configuration
 #-------------------------------------------------------------------------------
@@ -122,30 +114,30 @@ for_window [app_id="nwg-look"] resize set 1024 960
 for_window [app_id="org.qutebrowser.qutebrowser"] resize set 1600 1200
 
 # Server-side decorations
-for_window [app_id="org.gnome.gitlab.somas.Apostrophe"] border normal
-for_window [app_id="blueman-manager"] border normal
-for_window [app_id="chromium"] border none
-for_window [app_id="gcr-viewer"] border normal
-for_window [app_id="gcr-prompter"] border normal
-for_window [app_id="com.mitchellh.ghostty.*"] border normal
-for_window [app_id="gtk-pipe-viewer"] border normal
-for_window [app_id="gimp"] border normal
-for_window [app_id="imv"] border normal
-for_window [app_id="marker"] border normal
-for_window [app_id="org.gnome.Nautilus"] border normal
-for_window [app_id="nm-connection-editor"] border normal
-for_window [app_id="nwg-look"] border normal
-for_window [app_id="org.pulseaudio.pavucontrol"] border normal
-for_window [app_id="org.gnome.seahorse.Application"] border normal
-for_window [app_id="org.gnome.SimpleScan"] border normal
-for_window [app_id="com.transmissionbt.transmission.*"] border normal
-for_window [app_id="transmission-gtk"] border normal
-for_window [app_id="waypaper"] border normal
-for_window [app_id="org.wezfurlong.wezterm.*"] border normal
-for_window [app_id="xdg-desktop-portal-gtk"] border normal
-for_window [app_id="yad"] border normal
-for_window [app_id="yad-settings"] border normal
-for_window [app_id="org.pwmt.zathura"] border normal
+for_window [app_id="org.gnome.gitlab.somas.Apostrophe"] border pixel 3
+for_window [app_id="blueman-manager"] border pixel 3
+for_window [app_id="chromium"] border pixel 3
+for_window [app_id="gcr-viewer"] border pixel 3
+for_window [app_id="gcr-prompter"] border pixel 3
+for_window [app_id="com.mitchellh.ghostty.*"] border pixel 3
+for_window [app_id="gtk-pipe-viewer"] border pixel 3
+for_window [app_id="gimp"] border pixel 3
+for_window [app_id="imv"] border pixel 3
+for_window [app_id="marker"] border pixel 3
+for_window [app_id="org.gnome.Nautilus"] border pixel 3
+for_window [app_id="nm-connection-editor"] border pixel 3
+for_window [app_id="nwg-look"] border pixel 3
+for_window [app_id="org.pulseaudio.pavucontrol"] border pixel 3
+for_window [app_id="org.gnome.seahorse.Application"] border pixel 3
+for_window [app_id="org.gnome.SimpleScan"] border pixel 3
+for_window [app_id="com.transmissionbt.transmission.*"] border pixel 3
+for_window [app_id="transmission-gtk"] border pixel 3
+for_window [app_id="waypaper"] border pixel 3
+for_window [app_id="org.wezfurlong.wezterm.*"] border pixel 3
+for_window [app_id="xdg-desktop-portal-gtk"] border pixel 3
+for_window [app_id="yad"] border pixel 3
+for_window [app_id="yad-settings"] border pixel 3
+for_window [app_id="org.pwmt.zathura"] border pixel 3
 
 # Key mappings
 #-------------------------------------------------------------------------------
