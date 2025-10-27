@@ -24,7 +24,7 @@ export XDG_SCRIPTS_HOME="$HOME/.local/scripts"
 export XDG_TEMPLATES_DIR="$HOME/.local/share/templates"
 export DEPLOY_PROFILE="desktop"
 export DEPLOY_DISTRO="$(get_distro_id)"
-export DEPLOY_WM="river"
+export DEPLOY_WM="sway"
 
 # Determine which shell the template engine executes
 export ESH_SHELL=/usr/bin/bash
@@ -82,6 +82,7 @@ source "$base_dir/deploy/modules/scripts-markdown.sh"
 source "$base_dir/deploy/modules/scripts-misc.sh"
 source "$base_dir/deploy/modules/scripts-system-utils.sh"
 source "$base_dir/deploy/modules/ssh.sh"
+source "$base_dir/deploy/modules/sway.sh"
 source "$base_dir/deploy/modules/syncthing.sh"
 source "$base_dir/deploy/modules/spotify.sh"
 source "$base_dir/deploy/modules/udiskie.sh"
@@ -138,6 +139,7 @@ discord::install
 draw.io::install
 firefox::install
 fontconfig::install
+fuzzel::install
 ghostty::install
 imv::install
 mako::install
@@ -168,6 +170,10 @@ if [[ $DEPLOY_WM == "hyprland" ]]; then
 
 elif [[ $DEPLOY_WM == "river" ]]; then
     river::install
+    hyprlock::install
+
+elif [[ $DEPLOY_WM == "sway" ]]; then
+    sway::install
     hyprlock::install
 
 fi

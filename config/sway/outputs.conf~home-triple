@@ -1,0 +1,14 @@
+#-------------------------------------------------------------------------------
+# Sway output configuration - Triple monitor setup (supertubes/cyxwel)
+#
+# Based on way-displays configuration:
+# - HDMI-A-6: Left monitor, rotated 90° clockwise
+# - DP-3: Center monitor, 2560x1440@240Hz, scaled 1.125
+# - DP-4: Right monitor, rotated 90° clockwise
+#-------------------------------------------------------------------------------
+
+output HDMI-A-6 pos 0 0 transform 270
+
+output DP-3 pos 1200 0 scale 1.125 mode 2560x1440@240Hz
+
+output DP-4 pos 3475 0 transform 270
