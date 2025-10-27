@@ -496,6 +496,45 @@ install_gtk_theme() {
     log_success "GTK theme installed"
 }
 
+install_hyprlock() {
+    if command_exists hyprlock; then
+        log_success "hyprlock is already installed"
+        return
+    fi
+
+    log_info "Installing hyprlock..."
+    install_apt_packages \
+        libpam0g-dev libgbm-dev libdrm-dev libmagic-dev libaudit-dev \
+        libsdbus-c++-dev libgl1-mesa-dev
+
+    local tag="v0.9.1"
+
+    local hyprlock_dir="/tmp/hyprlock-build-$$"
+    mkdir -p "$hyprlock_dir"
+
+    pushd "$hyprlock_dir" >/dev/null
+
+    if git clone --recursive -b $tag https://github.com/hyprwm/hyprlock.git; then
+        pushd hyprlock >/dev/null
+
+        cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -S . -B ./build
+        cmake --build ./build --config Release --target hyprlock -j`nproc 2>/dev/null || getconf _NPROCESSORS_CONF`
+
+        if sudo cmake --install build 2>&1 ; then
+            log_success "hyprlock $tag installed successfully."
+
+        else
+            log_error "Installation failed for hyprlock $tag"
+        fi
+
+        popd >/dev/null
+    else
+        log_error "Download failed for hyprlock $tag"
+    fi
+
+    popd >/dev/null
+}
+
 install_sway() {
     if command_exists sway; then
         log_success "sway is already installed"
@@ -648,6 +687,7 @@ main() {
     log_info "Installing desktop environment packages..."
     install_ghostty
     install_gtk_theme
+    install_hyprlock
     install_sway
     install_waypaper
 
