@@ -496,40 +496,267 @@ install_gtk_theme() {
     log_success "GTK theme installed"
 }
 
+install_sdbus_cpp() {
+    if dpkg -l | grep -q "^ii  libsdbus-c++-dev"; then
+        log_info "Removing conflicting old libsdbus-c++-dev package..."
+        sudo apt remove -y libsdbus-c++-dev libsdbus-c++1
+    fi
+
+    local current_version
+    current_version=$(pkg-config --modversion sdbus-c++ 2>/dev/null || echo "0.0.0")
+
+    if [[ "$(printf '%s\n' "2.0.0" "$current_version" | sort -V | head -n1)" == "2.0.0" ]]; then
+        log_success "sdbus-c++ >= 2.0.0 is already installed (version $current_version)"
+        return
+    fi
+
+    log_info "Installing sdbus-c++ >= 2.0.0..."
+
+    install_apt_packages libsystemd-dev libexpat1-dev
+
+    pushd /tmp >/dev/null
+
+    local tag="v2.0.0"
+    local build_dir="sdbus-cpp-build-$$"
+
+    if git clone --depth 1 -b $tag https://github.com/Kistler-Group/sdbus-cpp.git "$build_dir"; then
+        pushd "$build_dir" >/dev/null
+
+        mkdir build
+        cd build
+        cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local ..
+        make -j$(nproc 2>/dev/null || getconf _NPROCESSORS_CONF)
+        sudo make install
+
+        popd >/dev/null
+        rm -rf "$build_dir"
+
+        if [[ ! -f /etc/ld.so.conf.d/usr-local.conf ]]; then
+            echo "/usr/local/lib" | sudo tee /etc/ld.so.conf.d/usr-local.conf > /dev/null
+            echo "/usr/local/lib/x86_64-linux-gnu" | sudo tee -a /etc/ld.so.conf.d/usr-local.conf > /dev/null
+        fi
+
+        sudo ldconfig
+        log_success "sdbus-c++ installed"
+    else
+        log_error "Download failed for sdbus-c++"
+    fi
+
+    popd >/dev/null
+}
+
+install_hyprutils() {
+    if pkg-config --exists hyprutils; then
+        log_success "hyprutils is already installed"
+        return
+    fi
+
+    log_info "Installing hyprutils..."
+    pushd /tmp >/dev/null
+
+    local tag="v0.8.2"
+    local build_dir="hyprutils-build-$$"
+
+    if git clone -b $tag https://github.com/hyprwm/hyprutils.git "$build_dir"; then
+        pushd "$build_dir" >/dev/null
+
+        cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -DCMAKE_INSTALL_PREFIX:PATH=/usr/local -S . -B ./build
+        cmake --build ./build --config Release --target hyprutils -j$(nproc 2>/dev/null || getconf _NPROCESSORS_CONF)
+        sudo cmake --install build
+
+        popd >/dev/null
+        rm -rf "$build_dir"
+        log_success "hyprutils installed"
+    else
+        log_error "Download failed for hyprutils"
+    fi
+
+    popd >/dev/null
+}
+
+install_hyprlang() {
+    if pkg-config --exists hyprlang; then
+        log_success "hyprlang is already installed"
+        return
+    fi
+
+    log_info "Installing hyprlang..."
+    install_apt_packages gcc-14 g++-14
+
+    pushd /tmp >/dev/null
+
+    local tag="v0.6.4"
+    local build_dir="hyprlang-build-$$"
+
+    if git clone --recursive -b $tag https://github.com/hyprwm/hyprlang.git "$build_dir"; then
+        pushd "$build_dir" >/dev/null
+
+        export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig:/usr/local/lib/x86_64-linux-gnu/pkgconfig${PKG_CONFIG_PATH:+:$PKG_CONFIG_PATH}"
+
+        cmake --no-warn-unused-cli \
+            -DCMAKE_BUILD_TYPE:STRING=Release \
+            -DCMAKE_INSTALL_PREFIX:PATH=/usr/local \
+            -DCMAKE_C_COMPILER=/usr/bin/gcc-14 \
+            -DCMAKE_CXX_COMPILER=/usr/bin/g++-14 \
+            -S . -B ./build
+        cmake --build ./build --config Release --target hyprlang -j$(nproc 2>/dev/null || getconf _NPROCESSORS_CONF)
+        sudo cmake --install ./build
+
+        popd >/dev/null
+        rm -rf "$build_dir"
+        log_success "hyprlang installed"
+    else
+        log_error "Download failed for hyprlang"
+    fi
+
+    popd >/dev/null
+}
+
+install_hyprwayland_scanner() {
+    if command_exists hyprwayland-scanner; then
+        log_success "hyprwayland-scanner is already installed"
+        return
+    fi
+
+    log_info "Installing hyprwayland-scanner..."
+    install_apt_packages libpugixml-dev
+
+    pushd /tmp >/dev/null
+
+    local tag="v0.4.5"
+    local build_dir="hyprwayland-scanner-build-$$"
+
+    if git clone --recursive -b $tag https://github.com/hyprwm/hyprwayland-scanner.git "$build_dir"; then
+        pushd "$build_dir" >/dev/null
+
+        cmake -DCMAKE_INSTALL_PREFIX=/usr -B build
+        cmake --build build -j$(nproc 2>/dev/null || getconf _NPROCESSORS_CONF)
+        sudo cmake --install build
+
+        popd >/dev/null
+        rm -rf "$build_dir"
+        log_success "hyprwayland-scanner installed"
+    else
+        log_error "Download failed for hyprwayland-scanner"
+    fi
+
+    popd >/dev/null
+}
+
+install_hyprgraphics() {
+    if pkg-config --exists hyprgraphics; then
+        log_success "hyprgraphics is already installed"
+        return
+    fi
+
+    log_info "Installing hyprgraphics..."
+    install_apt_packages libjpeg-dev libwebp-dev libpng-dev
+
+    pushd /tmp >/dev/null
+
+    local tag="v0.1.5"
+    local build_dir="hyprgraphics-build-$$"
+
+    if git clone --recursive -b $tag https://github.com/hyprwm/hyprgraphics.git "$build_dir"; then
+        pushd "$build_dir" >/dev/null
+
+        cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -DCMAKE_INSTALL_PREFIX:PATH=/usr -S . -B ./build
+        cmake --build ./build --config Release --target hyprgraphics -j$(nproc 2>/dev/null || getconf _NPROCESSORS_CONF)
+        sudo cmake --install ./build
+
+        popd >/dev/null
+        rm -rf "$build_dir"
+        log_success "hyprgraphics installed"
+    else
+        log_error "Download failed for hyprgraphics"
+    fi
+
+    popd >/dev/null
+}
+
 install_hyprlock() {
     if command_exists hyprlock; then
         log_success "hyprlock is already installed"
         return
     fi
 
-    log_info "Installing hyprlock..."
+    log_info "Installing hyprlock dependencies..."
     install_apt_packages \
         libpam0g-dev libgbm-dev libdrm-dev libmagic-dev libaudit-dev \
-        libsdbus-c++-dev libgl1-mesa-dev
+        libgl1-mesa-dev \
+        libwayland-dev libcairo2-dev libpango1.0-dev libxkbcommon-dev
+
+    install_sdbus_cpp
+    install_hyprutils
+    install_hyprlang
+    install_hyprwayland_scanner
+    install_hyprgraphics
+
+    if [[ ! -f /etc/ld.so.conf.d/usr-local.conf ]]; then
+        echo "/usr/local/lib" | sudo tee /etc/ld.so.conf.d/usr-local.conf > /dev/null
+        echo "/usr/local/lib/x86_64-linux-gnu" | sudo tee -a /etc/ld.so.conf.d/usr-local.conf > /dev/null
+    fi
+
+    sudo ldconfig
+
+    log_info "Building hyprlock..."
+
+    local old_sdbus_moved=false
+    if [[ -f /lib/x86_64-linux-gnu/libsdbus-c++.so.1 ]]; then
+        log_info "Temporarily moving conflicting libsdbus-c++.so.1..."
+        sudo mv /lib/x86_64-linux-gnu/libsdbus-c++.so.1 /lib/x86_64-linux-gnu/libsdbus-c++.so.1.backup 2>/dev/null && old_sdbus_moved=true
+        sudo mv /lib/x86_64-linux-gnu/libsdbus-c++.so /lib/x86_64-linux-gnu/libsdbus-c++.so.backup 2>/dev/null
+        sudo ldconfig
+    fi
+
+    pushd /tmp >/dev/null
 
     local tag="v0.9.1"
+    local build_dir="hyprlock-build-$$"
 
-    local hyprlock_dir="/tmp/hyprlock-build-$$"
-    mkdir -p "$hyprlock_dir"
+    if git clone --recursive -b $tag https://github.com/hyprwm/hyprlock.git "$build_dir"; then
+        pushd "$build_dir" >/dev/null
 
-    pushd "$hyprlock_dir" >/dev/null
+        rm -f src/auth/Fingerprint.cpp src/auth/Fingerprint.hpp
+        sed -i '/#include.*Fingerprint.hpp/d' src/auth/Auth.cpp
+        sed -i '/#include.*Fingerprint.hpp/d' src/core/hyprlock.cpp
+        sed -i '1i#include <algorithm>' src/auth/Auth.cpp
+        sed -i '/ENABLEFINGERPRINT/,/makeShared<CFingerprint>()/d' src/auth/Auth.cpp
+        sed -i 's/std::ranges::any_of/std::any_of/g' src/auth/Auth.cpp
+        sed -i 's|return std::any_of.*|return std::any_of(m_vImpls.begin(), m_vImpls.end(), [](const auto\& i) { return i->checkWaiting(); });|' src/auth/Auth.cpp
+        sed -i '/fingerprintAuth.*g_pAuth->getImpl/d' src/core/hyprlock.cpp
+        sed -i '/dbusConn.*CFingerprint/d' src/core/hyprlock.cpp
+        sed -i 's/fdcount = dbusConn ? 2 : 1/fdcount = 1/g' src/core/hyprlock.cpp
+        sed -i '/if (dbusConn) {/,/^    }/d' src/core/hyprlock.cpp
+        sed -i '/if (pollfds\[1\]\.revents.*dbus/,/^        }/d' src/core/hyprlock.cpp
 
-    if git clone --recursive -b $tag https://github.com/hyprwm/hyprlock.git; then
-        pushd hyprlock >/dev/null
+        export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig:/usr/local/lib/x86_64-linux-gnu/pkgconfig${PKG_CONFIG_PATH:+:$PKG_CONFIG_PATH}"
+        export LD_LIBRARY_PATH="/usr/local/lib:/usr/local/lib/x86_64-linux-gnu${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+        export LDFLAGS="-L/usr/local/lib -Wl,-rpath,/usr/local/lib"
 
-        cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -S . -B ./build
-        cmake --build ./build --config Release --target hyprlock -j`nproc 2>/dev/null || getconf _NPROCESSORS_CONF`
-
-        if sudo cmake --install build 2>&1 ; then
-            log_success "hyprlock $tag installed successfully."
-
-        else
-            log_error "Installation failed for hyprlock $tag"
-        fi
+        cmake --no-warn-unused-cli \
+            -DCMAKE_BUILD_TYPE:STRING=Release \
+            -DCMAKE_INSTALL_PREFIX="$HOME/.local" \
+            -DCMAKE_C_COMPILER=/usr/bin/gcc-14 \
+            -DCMAKE_CXX_COMPILER=/usr/bin/g++-14 \
+            -DCMAKE_PREFIX_PATH=/usr/local \
+            -DCMAKE_EXE_LINKER_FLAGS="-L/usr/local/lib -Wl,-rpath,/usr/local/lib" \
+            -S . -B ./build
+        cmake --build ./build --config Release --target hyprlock -j$(nproc 2>/dev/null || getconf _NPROCESSORS_CONF)
+        cmake --install build
 
         popd >/dev/null
+        rm -rf "$build_dir"
+        log_success "hyprlock installed"
     else
-        log_error "Download failed for hyprlock $tag"
+        log_error "Download failed for hyprlock"
+    fi
+
+    if [[ "$old_sdbus_moved" == "true" ]]; then
+        log_info "Restoring old libsdbus-c++ libraries..."
+        sudo mv /lib/x86_64-linux-gnu/libsdbus-c++.so.1.backup /lib/x86_64-linux-gnu/libsdbus-c++.so.1 2>/dev/null
+        sudo mv /lib/x86_64-linux-gnu/libsdbus-c++.so.backup /lib/x86_64-linux-gnu/libsdbus-c++.so 2>/dev/null
+        sudo ldconfig
     fi
 
     popd >/dev/null
@@ -574,7 +801,7 @@ install_sway() {
 
     log_info "Installing sway..."
     install_apt_packages \
-        sway waybar hyprlock fuzzel mako-notifier
+        sway waybar fuzzel mako-notifier
 
     cargo install sway-workspace
     pipx install autotiling
