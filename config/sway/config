@@ -47,7 +47,7 @@ input "43256:6199:Bastard_Keyboards_Dilemma_Max_Mouse" {
 #-------------------------------------------------------------------------------
 
 gaps inner 6
-gaps outer 0
+gaps outer -6
 
 default_border pixel 3
 default_floating_border pixel 3
