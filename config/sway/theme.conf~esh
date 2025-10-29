@@ -12,4 +12,4 @@ seat * xcursor_theme "<%= ${cursor_theme} %>" <%= ${cursor_size} %>
 client.focused           <%= $(color_hash "${primary_8}") %>  <%= $(color_hash "${system_bg}") %>  <%= $(color_hash "${primary_8}") %>  <%= $(color_hash "${primary_8}") %>  <%= $(color_hash "${primary_8}") %>
 client.focused_inactive  <%= $(color_hash "${primary_3}") %>  <%= $(color_hash "${system_bg}") %>  <%= $(color_hash "${primary_3}") %>  <%= $(color_hash "${primary_3}") %>  <%= $(color_hash "${primary_3}") %>
 client.unfocused         <%= $(color_hash "${primary_3}") %>  <%= $(color_hash "${system_bg}") %>  <%= $(color_hash "${primary_3}") %>  <%= $(color_hash "${primary_3}") %>  <%= $(color_hash "${primary_3}") %>
-client.urgent            <%= $(color_hash "${red_4}")     %>  <%= $(color_hash "${system_bg}") %>  <%= $(color_hash "${red_4}")     %>  <%= $(color_hash "${red_4}")     %>  <%= $(color_hash "${red_4}") %>
+client.urgent            <%= $(color_hash "${primary_3}") %>  <%= $(color_hash "${system_bg}") %>  <%= $(color_hash "${primary_3}")     %>  <%= $(color_hash "${primary_3}")     %>  <%= $(color_hash "${primary_3}") %>
