@@ -71,7 +71,7 @@ box > * > * {
 }
 
 #workspaces button.urgent {
-    background-color: <% color_hash $red_4 %>;
+    background-color: <% color_hash $primary_3 %>;
 }
 
 /* Network
