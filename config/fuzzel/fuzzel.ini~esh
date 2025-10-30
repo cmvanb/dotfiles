@@ -2,7 +2,9 @@
 [main]
 dpi-aware=no
 font=<%= $font_sans %>:size=<%= $font_size_medium %>
+<% if [[ $DEPLOY_DISTRO == "arch" ]]; then -%>
 use-bold=yes
+<% fi -%>
 width=72
 icons-enabled=no
 horizontal-pad=0

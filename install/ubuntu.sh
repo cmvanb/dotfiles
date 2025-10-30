@@ -74,6 +74,11 @@ install_apt_packages() {
     fi
 }
 
+configure_pipx() {
+    log_info "Configuring pipx..."
+    pipx ensurepath
+}
+
 configure_python() {
     if [[ ! -L /usr/bin/python ]]; then
         if [[ ! -e /usr/bin/python ]]; then
@@ -491,6 +496,107 @@ install_gtk_theme() {
     log_success "GTK theme installed"
 }
 
+install_hyprlock() {
+    if command_exists hyprlock; then
+        log_success "hyprlock is already installed"
+        return
+    fi
+
+    log_info "Installing hyprlock..."
+    install_apt_packages \
+        libpam0g-dev libgbm-dev libdrm-dev libmagic-dev libaudit-dev \
+        libsdbus-c++-dev libgl1-mesa-dev
+
+    local tag="v0.9.1"
+
+    local hyprlock_dir="/tmp/hyprlock-build-$$"
+    mkdir -p "$hyprlock_dir"
+
+    pushd "$hyprlock_dir" >/dev/null
+
+    if git clone --recursive -b $tag https://github.com/hyprwm/hyprlock.git; then
+        pushd hyprlock >/dev/null
+
+        cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -S . -B ./build
+        cmake --build ./build --config Release --target hyprlock -j`nproc 2>/dev/null || getconf _NPROCESSORS_CONF`
+
+        if sudo cmake --install build 2>&1 ; then
+            log_success "hyprlock $tag installed successfully."
+
+        else
+            log_error "Installation failed for hyprlock $tag"
+        fi
+
+        popd >/dev/null
+    else
+        log_error "Download failed for hyprlock $tag"
+    fi
+
+    popd >/dev/null
+}
+
+install_simp1e_cursor_theme() {
+    local theme_dir="/usr/share/icons/Simp1e"
+
+    if [[ -d "$theme_dir" ]]; then
+        log_success "Simp1e cursor theme is already installed"
+        return
+    fi
+
+    log_info "Installing Simp1e cursor theme..."
+    pushd /tmp >/dev/null
+
+    local files
+    files=$(curl -Lfs https://www.pling.com/p/1932768/loadFiles)
+    local raw_url
+    raw_url=$(echo $files | jq -r '.files[] | select(.name == "Simp1e.tar.xz") | .url')
+    local decoded_url
+    decoded_url=$(echo $raw_url | perl -pe 's/\%(\w\w)/chr hex $1/ge')
+
+    download_file "$decoded_url" "Simp1e.tar.xz"
+
+    local extract_dir="simp1e-cursor-$$"
+    mkdir -p "$extract_dir"
+    tar -xf Simp1e.tar.xz -C "$extract_dir"
+
+    sudo mv "$extract_dir/Simp1e" /usr/share/icons/
+
+    rm -rf "$extract_dir" Simp1e.tar.xz
+    popd >/dev/null
+    log_success "Simp1e cursor theme installed"
+}
+
+install_sway() {
+    if command_exists sway; then
+        log_success "sway is already installed"
+        return
+    fi
+
+    log_info "Installing sway..."
+    install_apt_packages \
+        sway waybar hyprlock fuzzel mako-notifier
+
+    cargo install sway-workspace
+    pipx install autotiling
+
+    log_success "sway installed"
+}
+
+install_waypaper() {
+    if command_exists waypaper; then
+        log_success "waypaper is already installed"
+        return
+    fi
+
+    # Waypaper dependencies
+    install_apt_packages \
+        libcairo2-dev libgirepository1.0-dev gir1.2-gtk-4.0 \
+        gir1.2-girepository-2.0-dev libgirepository-2.0-dev
+
+    log_info "Installing waypaper..."
+    pipx install waypaper
+}
+
 # Install intelic packages
 #-------------------------------------------------------------------------------
 
@@ -579,12 +685,15 @@ main() {
 
     log_info "Installing regular packages..."
     install_apt_packages \
-        curl make pkg-config zip unzip wl-clipboard \
+        curl make pkg-config gcc \
+        zip unzip wl-clipboard \
         python3 python3-dev python3-pip python3-venv \
+        pipx \
         build-essential libncurses-dev \
         asciidoctor \
         mpv \
         zathura
+    configure_pipx
     configure_python
 
     log_info "Installing custom repository packages..."
@@ -609,12 +718,16 @@ main() {
     log_info "Installing desktop environment packages..."
     install_ghostty
     install_gtk_theme
+    install_hyprlock
+    install_simp1e_cursor_theme
+    install_sway
+    install_waypaper
 
     log_info "Installing intelic packages..."
     install_intelic_packages
 
     log_info "Configuring GNOME settings..."
-    gsettings get org.gnome.desktop.session idle-delay 3600
+    gsettings set org.gnome.desktop.session idle-delay 3600
 
     log_success "Installation script completed successfully!"
 }
