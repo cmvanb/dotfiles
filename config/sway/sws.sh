@@ -10,7 +10,7 @@ set -euo pipefail
 if [[ $# -lt 2 ]]; then
     echo "Usage: $0 <action> <workspace_number>"
     echo "  action: 'focus' or 'move'"
-    echo "  workspace_number: 1-9"
+    echo "  workspace_number: 1-10"
     exit 1
 fi
 

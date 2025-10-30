@@ -17,8 +17,9 @@ sway::install () {
     force_link "$base_dir/config/sway/config" "$XDG_CONFIG_HOME/sway/config"
     force_link "$base_dir/config/sway/environment.sh" "$XDG_CONFIG_HOME/sway/environment.sh"
     force_link "$base_dir/config/sway/keymaps.conf" "$XDG_CONFIG_HOME/sway/keymaps.conf"
-    force_link "$base_dir/config/sway/workspace.conf" "$XDG_CONFIG_HOME/sway/workspace.conf"
+    force_link "$base_dir/config/sway/refresh.conf" "$XDG_CONFIG_HOME/sway/refresh.conf"
     force_link "$base_dir/config/sway/sws.sh" "$XDG_CONFIG_HOME/sway/sws.sh"
+    force_link "$base_dir/config/sway/workspace.conf" "$XDG_CONFIG_HOME/sway/workspace.conf"
 
     if [[ $host == "supertubes" ]] || [[ $host == "cyxwel" ]]; then
         force_link "$base_dir/config/sway/outputs.conf~home-triple" "$XDG_CONFIG_HOME/sway/outputs.conf"
