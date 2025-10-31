@@ -177,7 +177,7 @@ if [[ $TERMINAL == "alacritty" ]]; then
     terminal_cmd=("alacritty")
 
     if [[ "$floating" = true ]]; then
-        args+=("--class=floating")
+        args+=("--class=Alacritty.floating")
         args+=("-o window.dimensions.columns=120")
         args+=("-o window.dimensions.lines=32")
     fi

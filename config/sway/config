@@ -114,6 +114,7 @@ for_window [app_id="nwg-look"] resize set 1024 960
 for_window [app_id="org.qutebrowser.qutebrowser"] resize set 1600 1200
 
 # Server-side decorations
+for_window [app_id="Alacritty"] border pixel 3
 for_window [app_id="org.gnome.gitlab.somas.Apostrophe"] border pixel 3
 for_window [app_id="blueman-manager"] border pixel 3
 for_window [app_id="chromium"] border pixel 3
