@@ -468,6 +468,9 @@ config.bind('<F12>', 'devtools')
 config.bind('tj', 'config-cycle -p -t -u *://*.{url:host}/* content.javascript.enabled ;; reload ;; spawn notify-send \"Toggled javascript for: {url:host}\"')
 config.bind('tJ', 'config-cycle -p -u *://*.{url:host}/* content.javascript.enabled ;; reload ;; spawn notify-send \"Toggled javascript for: {url:host}\"')
 
+# Dark mode
+config.bind('td', 'config-cycle colors.webpage.darkmode.enabled ;; reload ;; spawn notify-send \"Toggled dark mode.\"')
+
 # Printing
 config.bind('<Ctrl-p>', 'print')
 
