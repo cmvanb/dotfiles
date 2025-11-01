@@ -219,7 +219,7 @@ install_deb_package() {
     local version
     version=$(get_latest_github_version "$repo")
     local deb_file
-    deb_file=$(echo "$deb_pattern" | sed "s/{VERSION}/$version/g")
+    deb_file=${deb_pattern//\{VERSION\}/$version}
     local url="https://github.com/$repo/releases/download/v$version/$deb_file"
 
     download_file "$url" "$deb_file"
@@ -344,7 +344,7 @@ install_neo() {
 
     pushd "$neo_dir" >/dev/null
     ./configure
-    make -j$(nproc)
+    make -j"$(nproc)"
     sudo make install
     popd >/dev/null
 
@@ -518,7 +518,7 @@ install_hyprlock() {
         pushd hyprlock >/dev/null
 
         cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -S . -B ./build
-        cmake --build ./build --config Release --target hyprlock -j`nproc 2>/dev/null || getconf _NPROCESSORS_CONF`
+        cmake --build ./build --config Release --target hyprlock -j"$(nproc 2>/dev/null || getconf _NPROCESSORS_CONF)"
 
         if sudo cmake --install build 2>&1 ; then
             log_success "hyprlock $tag installed successfully."
@@ -549,9 +549,9 @@ install_simp1e_cursor_theme() {
     local files
     files=$(curl -Lfs https://www.pling.com/p/1932768/loadFiles)
     local raw_url
-    raw_url=$(echo $files | jq -r '.files[] | select(.name == "Simp1e.tar.xz") | .url')
+    raw_url=$(echo "$files" | jq -r '.files[] | select(.name == "Simp1e.tar.xz") | .url')
     local decoded_url
-    decoded_url=$(echo $raw_url | perl -pe 's/\%(\w\w)/chr hex $1/ge')
+    decoded_url=$(echo "$raw_url" | perl -pe 's/\%(\w\w)/chr hex $1/ge')
 
     download_file "$decoded_url" "Simp1e.tar.xz"
 
