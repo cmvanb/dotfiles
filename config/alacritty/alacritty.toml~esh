@@ -149,7 +149,7 @@ draw_bold_text_with_bright_colors = false
 
 [colors.selection]
 text = '<% color_zerox $gray_0 %>'
-background = '<% color_zerox $primary_15 %>'
+background = '<% color_zerox $primary_12 %>'
 
 [colors.primary]
 background = '<% color_zerox $terminal_bg %>'

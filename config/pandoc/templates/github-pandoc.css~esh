@@ -773,6 +773,7 @@ sub {
   td::selection,
   th::selection,
   caption::selection {
-    background-color: <% color_css_rgba $secondary_10 0.3 %>;
+    color: <% color_hash $gray_0 %>;
+    background-color: <% color_css_rgba $primary_12 1.0 %>;
   }
 }
