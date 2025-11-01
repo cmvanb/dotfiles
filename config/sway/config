@@ -55,9 +55,6 @@ default_floating_border pixel 3
 smart_gaps on
 smart_borders off
 
-# Autotiling
-# exec_always autotiling
-
 # Output configuration
 #-------------------------------------------------------------------------------
 
