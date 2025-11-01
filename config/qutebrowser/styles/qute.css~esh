@@ -1,0 +1,182 @@
+/* <% source $XDG_OPT_HOME/theme/theme.sh -%> */
+
+/* General styling */
+body {
+    background-color: <% color_hash $gray_0 %> !important;
+    color: <% color_hash $text_13 %> !important;
+    font-family: sans-serif;
+
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: <% color_hash $text_15 %> !important;
+}
+
+h1 {
+    border-bottom: 2px solid <% color_hash $gray_4 %> !important;
+    padding-bottom: 0.5em;
+}
+
+h2 {
+    border-bottom: 1px solid <% color_hash $gray_3 %> !important;
+    padding-bottom: 0.3em;
+}
+
+/* Links */
+a {
+    color: <% color_hash $primary_12 %> !important;
+    text-decoration: none;
+}
+
+a:hover {
+    color: <% color_hash $primary_14 %> !important;
+    text-decoration: underline;
+}
+
+a:visited {
+    color: <% color_hash $primary_10 %> !important;
+}
+
+/* Code and pre */
+code, pre {
+    background-color: <% color_hash $text_1 %> !important;
+    color: <% color_hash $secondary_12 %> !important;
+    border: 1px solid <% color_hash $secondary_2 %> !important;
+    border-radius: 3px;
+    font-family: monospace;
+}
+
+code {
+    padding: 2px 4px;
+}
+
+pre {
+    padding: 8px 12px;
+    overflow-x: auto;
+}
+
+/* Tables */
+table {
+    border-collapse: collapse;
+    background-color: <% color_hash $gray_0 %> !important;
+}
+
+th {
+    background-color: <% color_hash $gray_2 %> !important;
+    color: <% color_hash $text_15 %> !important;
+    border: 1px solid <% color_hash $gray_4 %> !important;
+    padding: 8px 12px;
+    font-weight: bold;
+}
+
+td {
+    border: 1px solid <% color_hash $gray_4 %> !important;
+    padding: 8px 12px;
+    color: <% color_hash $text_13 %> !important;
+}
+
+tr:nth-child(even) {
+    background-color: <% color_hash $gray_1 %> !important;
+}
+
+tr:hover {
+    background-color: <% color_hash $gray_2 %> !important;
+}
+
+/* Forms and inputs */
+input, textarea, select, button {
+    background-color: <% color_hash $gray_1 %> !important;
+    color: <% color_hash $text_13 %> !important;
+    border: 1px solid <% color_hash $gray_4 %> !important;
+    border-radius: 3px;
+    padding: 6px 10px;
+}
+
+input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: <% color_hash $primary_8 %> !important;
+    box-shadow: 0 0 0 2px <% color_css_rgba $primary_8 0.2 %>;
+}
+
+button {
+    background-color: <% color_hash $primary_6 %> !important;
+    color: <% color_hash $text_15 %> !important;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: <% color_hash $primary_8 %> !important;
+}
+
+/* Lists */
+ul, ol {
+    color: <% color_hash $text_13 %> !important;
+}
+
+li {
+    margin: 0.3em 0;
+}
+
+/* Horizontal rule */
+hr {
+    border: 0;
+    border-top: 1px solid <% color_hash $gray_4 %> !important;
+    margin: 1em 0;
+}
+
+/* Blockquotes */
+blockquote {
+    border-left: 4px solid <% color_hash $gray_5 %> !important;
+    padding-left: 1em;
+    color: <% color_hash $text_10 %> !important;
+    margin: 1em 0;
+}
+
+/* qute://help specific */
+#sidebar {
+    background-color: <% color_hash $gray_1 %> !important;
+    border-right: 1px solid <% color_hash $gray_4 %> !important;
+}
+
+#content {
+    background-color: <% color_hash $gray_0 %> !important;
+}
+
+.deprecated {
+    color: <% color_hash $red_6 %> !important;
+}
+
+/* qute://settings specific */
+.setting {
+    border: 1px solid <% color_hash $gray_3 %> !important;
+    background-color: <% color_hash $gray_1 %> !important;
+    margin: 0.5em 0;
+    padding: 1em;
+    border-radius: 4px;
+}
+
+.setting:hover {
+    background-color: <% color_hash $gray_2 %> !important;
+}
+
+/* qute://history specific */
+.url {
+    color: <% color_hash $secondary_12 %> !important;
+}
+
+.title {
+    color: <% color_hash $text_13 %> !important;
+}
+
+.time {
+    color: <% color_hash $text_8 %> !important;
+}
+
+/* Search highlighting */
+mark, .highlight {
+    background-color: <% color_hash $yellow_3 %> !important;
+    color: <% color_hash $text_15 %> !important;
+}

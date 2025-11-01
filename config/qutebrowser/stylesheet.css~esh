@@ -1,0 +1,14 @@
+/* <% source $XDG_OPT_HOME/theme/theme.sh -%> */
+
+* {
+    tab-size: 4;
+}
+
+::selection {
+    color: <% color_hash $gray_0 %>;
+    background: <% color_hash $primary_12 %>;
+}
+::-moz-selection {
+    color: <% color_hash $gray_0 %>;
+    background: <% color_hash $primary_12 %>;
+}

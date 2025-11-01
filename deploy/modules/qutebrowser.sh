@@ -14,9 +14,14 @@ qutebrowser::install () {
 
     ensure_directory "$XDG_CONFIG_HOME/qutebrowser"
     force_link "$base_dir/config/qutebrowser/config.py" "$XDG_CONFIG_HOME/qutebrowser/config.py"
-    force_link "$base_dir/config/qutebrowser/stylesheet.css" "$XDG_CONFIG_HOME/qutebrowser/stylesheet.css"
+    esh "$base_dir/config/qutebrowser/stylesheet.css~esh" > "$XDG_CONFIG_HOME/qutebrowser/stylesheet.css"
     force_link "$base_dir/config/qutebrowser/stylemap.py" "$XDG_CONFIG_HOME/qutebrowser/stylemap.py"
-    force_link "$base_dir/config/qutebrowser/styles" "$XDG_CONFIG_HOME/qutebrowser/styles"
+
+    ensure_directory "$XDG_CONFIG_HOME/qutebrowser/styles"
+    esh "$base_dir/config/qutebrowser/styles/qute.css~esh" > "$XDG_CONFIG_HOME/qutebrowser/styles/qute.css"
+    force_link "$base_dir/config/qutebrowser/styles/github.css" "$XDG_CONFIG_HOME/qutebrowser/styles/github.css"
+    force_link "$base_dir/config/qutebrowser/styles/hackernews.css" "$XDG_CONFIG_HOME/qutebrowser/styles/hackernews.css"
+    force_link "$base_dir/config/qutebrowser/styles/wikipedia.css" "$XDG_CONFIG_HOME/qutebrowser/styles/wikipedia.css"
 
     ensure_directory "$XDG_DATA_HOME/applications"
     force_link "$base_dir/config/qutebrowser/org.qutebrowser.qutebrowser.desktop" "$XDG_DATA_HOME/applications/org.qutebrowser.qutebrowser.desktop"
