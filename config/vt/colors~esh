@@ -1,17 +1,45 @@
 <% source $XDG_OPT_HOME/theme/theme.sh -%>
-<% color_hash $ansi_black %>
-<% color_hash $ansi_red %>
-<% color_hash $ansi_green %>
-<% color_hash $ansi_yellow %>
-<% color_hash $primary_8 %>
-<% color_hash $ansi_magenta %>
-<% color_hash $ansi_cyan %>
-<% color_hash $ansi_white %>
-<% color_hash $text_6 %>
-<% color_hash $ansi_brred %>
-<% color_hash $ansi_brgreen %>
-<% color_hash $ansi_bryellow %>
-<% color_hash $ansi_brblue %>
-<% color_hash $ansi_brmagenta %>
-<% color_hash $ansi_brcyan %>
-<% color_hash $ansi_brwhite %>
+<%
+# Convert hex colors to RGB decimal values for setvtrgb
+# Format: 3 lines (red, green, blue), each with 16 comma-separated values
+
+declare -a colors=(
+    "$ansi_black"
+    "$ansi_red"
+    "$ansi_green"
+    "$ansi_yellow"
+    "$primary_8"
+    "$ansi_magenta"
+    "$ansi_cyan"
+    "$ansi_white"
+    "$text_6"
+    "$ansi_brred"
+    "$ansi_brgreen"
+    "$ansi_bryellow"
+    "$ansi_brblue"
+    "$ansi_brmagenta"
+    "$ansi_brcyan"
+    "$ansi_brwhite"
+)
+
+# Extract RGB components and format them
+red_values=()
+green_values=()
+blue_values=()
+
+for color in "${colors[@]}"; do
+    hex="${color:1}"  # Remove leading character
+    r=$((16#${hex:0:2}))
+    g=$((16#${hex:2:2}))
+    b=$((16#${hex:4:2}))
+    red_values+=($r)
+    green_values+=($g)
+    blue_values+=($b)
+done
+
+# Join with commas
+IFS=','
+echo "${red_values[*]}"
+echo "${green_values[*]}"
+echo "${blue_values[*]}"
+-%>
