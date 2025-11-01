@@ -19,16 +19,18 @@ workspace_num="$2"
 
 focused_output=$(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name')
 
+
 case "$focused_output" in
-    "HDMI-A-6")
-        workspace_name="1${workspace_num}"
-        ;;
-    "DP-3")
+    "DP-3"|"LG Electronics LG ULTRAWIDE 405NTPC4A128")
         workspace_name="${workspace_num}"
+        ;;
+    "HDMI-A-6 | eDP-1")
+        workspace_name="1${workspace_num}"
         ;;
     "DP-4")
         workspace_name="2${workspace_num}"
         ;;
+
     *)
         workspace_name="${workspace_num}"
         ;;
