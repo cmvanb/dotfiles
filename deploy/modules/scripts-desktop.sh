@@ -16,6 +16,7 @@ scripts-desktop::install () {
     force_link "$base_dir/config/scripts-desktop/set-output-wallpaper.sh" "$XDG_SCRIPTS_HOME/set-output-wallpaper.sh"
     force_link "$base_dir/config/scripts-desktop/spawn-launcher.sh" "$XDG_SCRIPTS_HOME/spawn-launcher.sh"
     force_link "$base_dir/config/scripts-desktop/spawn-terminal.sh" "$XDG_SCRIPTS_HOME/spawn-terminal.sh"
+    force_link "$base_dir/config/scripts-desktop/spawn.sh" "$XDG_SCRIPTS_HOME/spawn.sh"
     force_link "$base_dir/config/scripts-desktop/upload-to-0x0.sh" "$XDG_SCRIPTS_HOME/upload-to-0x0.sh"
 
     echo "└> Installing desktop shortcuts."
@@ -32,6 +33,7 @@ scripts-desktop::uninstall () {
     rm "$XDG_SCRIPTS_HOME/set-output-wallpaper.sh"
     rm "$XDG_SCRIPTS_HOME/spawn-launcher.sh"
     rm "$XDG_SCRIPTS_HOME/spawn-terminal.sh"
+    rm "$XDG_SCRIPTS_HOME/spawn.sh"
     rm "$XDG_SCRIPTS_HOME/upload-to-0x0.sh"
 
     echo "└> Uninstalling desktop shortcuts."
