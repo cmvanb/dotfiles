@@ -147,8 +147,8 @@ c.colors.downloads.error.bg = theme.color_hash('red_1')
 c.colors.downloads.error.fg = theme.color_hash('red_5')
 c.colors.downloads.stop.bg = theme.color_hash('green_1')
 c.colors.downloads.stop.fg = theme.color_hash('green_5')
-c.colors.downloads.start.bg = theme.color_hash('blue_1')
-c.colors.downloads.start.fg = theme.color_hash('blue_5')
+c.colors.downloads.start.bg = theme.color_hash('primary_6')
+c.colors.downloads.start.fg = theme.color_hash('primary_12')
 c.colors.downloads.system.bg = 'rgb'
 c.colors.downloads.system.fg = 'rgb'
 
@@ -170,7 +170,6 @@ c.hints.padding = { 'top': 2, 'bottom': 0, 'left': 2, 'right': 2 }
 c.hints.radius = 4
 
 c.colors.hints.bg = f'qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 {theme.color_rgba('purple_3', 1.0)}, stop:1 {theme.color_rgba('purple_0', 1.0)})'
-# c.colors.hints.bg = theme.color_hash('purple_3')
 c.colors.hints.fg = theme.color_hash('purple_9')
 c.colors.hints.match.fg = theme.color_hash('magenta_6')
 
@@ -303,6 +302,8 @@ c.colors.webpage.preferred_color_scheme = 'dark'
 # Dark mode
 # see: https://github.com/qutebrowser/qutebrowser/discussions/5733
 c.colors.webpage.darkmode.enabled = True
+c.colors.webpage.darkmode.policy.images = 'smart'
+c.colors.webpage.darkmode.policy.page = 'smart'
 
 # Key bindings
 #-------------------------------------------------------------------------------
