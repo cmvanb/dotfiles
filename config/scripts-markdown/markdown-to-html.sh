@@ -25,5 +25,6 @@ tmp_dir="/tmp/md"
 mkdir -p "$tmp_dir"
 
 pandoc -s -f markdown -t html --toc \
+    --syntax-highlighting "$XDG_CONFIG_HOME/theme/carbon-dark.theme" \
     --css "$XDG_DATA_HOME/pandoc/templates/github-pandoc.css" \
     "$1" > "$tmp_dir/$file_name.html"

@@ -1,0 +1,212 @@
+<% source $XDG_OPT_HOME/theme/theme.sh -%>
+{
+    "text-color": "<% color_hash $secondary_9 %>",
+    "background-color": "<% color_hash $editor_bg %>",
+    "line-number-color": "<% color_hash $primary_8 %>",
+    "line-number-background-color": "<% color_hash $gray_1 %>",
+    "text-styles": {
+        "Alert": {
+            "text-color": "<% color_hash $red_6 %>",
+            "background-color": null,
+            "bold": true,
+            "italic": false,
+            "underline": false
+        },
+        "Annotation": {
+            "text-color": "<% color_hash $text_8 %>",
+            "background-color": null,
+            "bold": false,
+            "italic": true,
+            "underline": false
+        },
+        "Attribute": {
+            "text-color": "<% color_hash $secondary_12 %>",
+            "background-color": null,
+            "bold": false,
+            "italic": false,
+            "underline": false
+        },
+        "BaseN": {
+            "text-color": "<% color_hash $red_6 %>",
+            "background-color": null,
+            "bold": false,
+            "italic": false,
+            "underline": false
+        },
+        "BuiltIn": {
+            "text-color": "<% color_hash $yellow_5 %>",
+            "background-color": null,
+            "bold": true,
+            "italic": false,
+            "underline": false
+        },
+        "Char": {
+            "text-color": "<% color_hash $orange_6 %>",
+            "background-color": null,
+            "bold": false,
+            "italic": false,
+            "underline": false
+        },
+        "Comment": {
+            "text-color": "<% color_hash $text_8 %>",
+            "background-color": null,
+            "bold": false,
+            "italic": true,
+            "underline": false
+        },
+        "CommentVar": {
+            "text-color": "<% color_hash $text_8 %>",
+            "background-color": null,
+            "bold": false,
+            "italic": true,
+            "underline": false
+        },
+        "Constant": {
+            "text-color": "<% color_hash $magenta_5 %>",
+            "background-color": null,
+            "bold": false,
+            "italic": false,
+            "underline": false
+        },
+        "ControlFlow": {
+            "text-color": "<% color_hash $green_5 %>",
+            "background-color": null,
+            "bold": true,
+            "italic": false,
+            "underline": false
+        },
+        "DataType": {
+            "text-color": "<% color_hash $secondary_12 %>",
+            "background-color": null,
+            "bold": false,
+            "italic": false,
+            "underline": false
+        },
+        "DecVal": {
+            "text-color": "<% color_hash $red_6 %>",
+            "background-color": null,
+            "bold": false,
+            "italic": false,
+            "underline": false
+        },
+        "Documentation": {
+            "text-color": "<% color_hash $text_8 %>",
+            "background-color": null,
+            "bold": false,
+            "italic": true,
+            "underline": false
+        },
+        "Error": {
+            "text-color": "<% color_hash $magenta_6 %>",
+            "background-color": null,
+            "bold": false,
+            "italic": false,
+            "underline": false
+        },
+        "Extension": {
+            "text-color": "<% color_hash $secondary_9 %>",
+            "background-color": null,
+            "bold": false,
+            "italic": false,
+            "underline": false
+        },
+        "Float": {
+            "text-color": "<% color_hash $red_6 %>",
+            "background-color": null,
+            "bold": false,
+            "italic": false,
+            "underline": false
+        },
+        "Function": {
+            "text-color": "<% color_hash $secondary_15 %>",
+            "background-color": null,
+            "bold": true,
+            "italic": false,
+            "underline": false
+        },
+        "Import": {
+            "text-color": "<% color_hash $yellow_5 %>",
+            "background-color": null,
+            "bold": true,
+            "italic": false,
+            "underline": false
+        },
+        "Information": {
+            "text-color": "<% color_hash $text_8 %>",
+            "background-color": null,
+            "bold": false,
+            "italic": true,
+            "underline": false
+        },
+        "Keyword": {
+            "text-color": "<% color_hash $green_5 %>",
+            "background-color": null,
+            "bold": true,
+            "italic": false,
+            "underline": false
+        },
+        "Operator": {
+            "text-color": "<% color_hash $green_5 %>",
+            "background-color": null,
+            "bold": true,
+            "italic": false,
+            "underline": false
+        },
+        "Other": {
+            "text-color": "<% color_hash $secondary_9 %>",
+            "background-color": null,
+            "bold": false,
+            "italic": false,
+            "underline": false
+        },
+        "Preprocessor": {
+            "text-color": "<% color_hash $yellow_5 %>",
+            "background-color": null,
+            "bold": true,
+            "italic": false,
+            "underline": false
+        },
+        "SpecialChar": {
+            "text-color": "<% color_hash $yellow_5 %>",
+            "background-color": null,
+            "bold": true,
+            "italic": false,
+            "underline": false
+        },
+        "SpecialString": {
+            "text-color": "<% color_hash $yellow_5 %>",
+            "background-color": null,
+            "bold": false,
+            "italic": false,
+            "underline": false
+        },
+        "String": {
+            "text-color": "<% color_hash $orange_6 %>",
+            "background-color": null,
+            "bold": false,
+            "italic": false,
+            "underline": false
+        },
+        "Variable": {
+            "text-color": "<% color_hash $secondary_9 %>",
+            "background-color": null,
+            "bold": false,
+            "italic": false,
+            "underline": false
+        },
+        "VerbatimString": {
+            "text-color": "<% color_hash $orange_6 %>",
+            "background-color": null,
+            "bold": false,
+            "italic": false,
+            "underline": false
+        },
+        "Warning": {
+            "text-color": "<% color_hash $yellow_5 %>",
+            "background-color": null,
+            "bold": true,
+            "italic": false,
+            "underline": false
+        }
+    }
+}

@@ -21,6 +21,7 @@ theme-base::install () {
     ensure_directory "$XDG_CONFIG_HOME/theme"
     esh "$base_dir/config/theme/dircolors~esh" > "$XDG_CONFIG_HOME/theme/dircolors"
     esh "$base_dir/config/theme/eza-colors~esh" > "$XDG_CONFIG_HOME/theme/eza-colors"
+    esh "$base_dir/config/theme/carbon-dark.theme~esh" > "$XDG_CONFIG_HOME/theme/carbon-dark.theme"
 
     "$XDG_OPT_HOME/theme/color-lookup-256-index.sh" --cache
 
@@ -37,4 +38,5 @@ theme-base::uninstall () {
 
     rm "$XDG_CONFIG_HOME/theme/dircolors"
     rm "$XDG_CONFIG_HOME/theme/eza-colors"
+    rm "$XDG_CONFIG_HOME/theme/carbon-dark.theme"
 }
