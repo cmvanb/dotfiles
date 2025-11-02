@@ -31,3 +31,5 @@ workspace 17:17 output $laptop
 workspace 18:18 output $laptop
 workspace 19:19 output $laptop
 workspace 20:20 output $laptop
+
+exec swaymsg workspace 1

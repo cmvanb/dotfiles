@@ -44,3 +44,5 @@ workspace 27:27 output $right
 workspace 28:28 output $right
 workspace 29:29 output $right
 workspace 30:30 output $right
+
+exec swaymsg workspace 1
