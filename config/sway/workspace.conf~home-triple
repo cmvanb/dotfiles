@@ -3,7 +3,7 @@
 #-------------------------------------------------------------------------------
 
 set $primary "DP-3"
-set $left "HDMI-A-6"
+set $left "BNQ BenQ BL2411 K6G02658019"
 set $right "DP-4"
 
 workspace 1 output $primary
