@@ -87,7 +87,7 @@
         "tooltip-format-disconnected": "Disconnected"
     },
     "bluetooth": {
-        "format": " {status}",
+        "format": " {status}",
         "tooltip": true,
         "tooltip-format": "{device_address} · {device_alias}",
         "tooltip-format-disabled": "controller disabled",
@@ -122,9 +122,9 @@
     --------------------------------------------------------------------------*/
     "battery": {
         "format": "{icon}  {capacity}%",
-        "format-icons": ["", "", "", "", ""],
-        "format-charging": " {icon}  {capacity}%",
-        "format-plugged": " {icon}  {capacity}%",
+        "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+        "format-charging": " {icon}  {capacity}%",
+        "format-plugged": " {icon}  {capacity}%",
         "format-full": "{icon}  {capacity}%",
         "interval": 5,
         "states": {
