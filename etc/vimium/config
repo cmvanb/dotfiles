@@ -19,7 +19,7 @@ map <c-s-l> moveTabRight
 map <c-j> scrollPageDown
 map <c-k> scrollPageUp
 
-map <c-g> moveTabToNextWindow
+map <c-g> moveTabToNewWindow
 
 map <a-h> goBack
 map <a-l> goForward
