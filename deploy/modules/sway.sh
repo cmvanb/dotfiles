@@ -21,8 +21,8 @@ sway::install () {
     force_link "$base_dir/config/sway/sws.sh" "$XDG_CONFIG_HOME/sway/sws.sh"
 
     if [[ $host == "cyxwel" ]]; then
-        force_link "$base_dir/config/sway/outputs.conf~home-triple" "$XDG_CONFIG_HOME/sway/outputs.conf"
-        force_link "$base_dir/config/sway/workspace.conf~home-triple" "$XDG_CONFIG_HOME/sway/workspace.conf"
+        force_link "$base_dir/config/sway/outputs.conf~home-dual" "$XDG_CONFIG_HOME/sway/outputs.conf"
+        force_link "$base_dir/config/sway/workspace.conf~home-dual" "$XDG_CONFIG_HOME/sway/workspace.conf"
 
     elif [[ $host == "supertubes" ]]; then
         force_link "$base_dir/config/sway/outputs.conf~home-dual" "$XDG_CONFIG_HOME/sway/outputs.conf"
