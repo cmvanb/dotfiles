@@ -687,6 +687,7 @@ main() {
     install_apt_packages \
         curl make pkg-config gcc \
         zip unzip wl-clipboard \
+        wlsunset \
         python3 python3-dev python3-pip python3-venv \
         pipx \
         build-essential libncurses-dev \
