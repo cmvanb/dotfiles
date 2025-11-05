@@ -3,4 +3,4 @@
 # Tailscale status waybar component
 #-------------------------------------------------------------------------------
 
-[ -z "$(tailscale status | grep active)" ] && echo "" || echo "🔒 tailscale"
+[ -z "$(tailscale status | grep 'Tailscale is stopped'.)" ] && echo "  tailscale" || echo ""
