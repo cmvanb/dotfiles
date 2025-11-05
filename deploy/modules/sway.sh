@@ -19,6 +19,8 @@ sway::install () {
     force_link "$base_dir/config/sway/keymaps.conf" "$XDG_CONFIG_HOME/sway/keymaps.conf"
     force_link "$base_dir/config/sway/refresh.sh" "$XDG_CONFIG_HOME/sway/refresh.sh"
     force_link "$base_dir/config/sway/sws.sh" "$XDG_CONFIG_HOME/sway/sws.sh"
+    force_link "$base_dir/config/sway/clone-terminal.sh" "$XDG_SCRIPTS_HOME/clone-terminal.sh"
+    force_link "$base_dir/config/sway/clone-terminal.sh" "$XDG_BIN_HOME/clone-terminal"
 
     if [[ $host == "cyxwel" ]]; then
         force_link "$base_dir/config/sway/outputs.conf~home-dual" "$XDG_CONFIG_HOME/sway/outputs.conf"

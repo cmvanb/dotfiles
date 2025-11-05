@@ -59,7 +59,7 @@ y = 0
 [[keyboard.bindings]]
 mods = 'Control'
 key = 'T'
-action = 'SpawnNewInstance'
+command = 'clone-terminal.sh'
 
 #------------------------------ Clipboard
 # NOTE: Not working in less pager :(
