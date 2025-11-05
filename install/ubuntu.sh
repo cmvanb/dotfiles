@@ -174,16 +174,35 @@ install_syncthing() {
     fi
 }
 
+install_tailscale() {
+    if command_exists tailscale; then
+        log_success "tailscale is already installed"
+        return
+    fi
+
+    log_info "Setting up tailscale repository..."
+    sudo mkdir -p /etc/apt/keyrings
+
+    if [[ ! -f /usr/share/keyrings/tailscale-archive-keyring.gpg ]]; then
+        curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/noble.noarmor.gpg | sudo tee /usr/share/keyrings/tailscale-archive-keyring.gpg >/dev/null
+    fi
+
+    if [[ ! -f /etc/apt/sources.list.d/tailscale.list ]]; then
+        curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/noble.tailscale-keyring.list | sudo tee /etc/apt/sources.list.d/tailscale.list
+    fi
+}
+
 install_custom_repo_packages() {
     install_eza
     install_fish
     install_neovim
     install_ytdlp
     install_syncthing
+    install_tailscale
 
     sudo apt update
 
-    local packages=(eza fish neovim syncthing)
+    local packages=(eza fish neovim syncthing tailscale)
     local to_install=()
 
     for package in "${packages[@]}"; do
