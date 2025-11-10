@@ -75,6 +75,7 @@
     "custom/tailscale": {
         "exec": "${XDG_CONFIG_HOME}/waybar/tailscale.sh",
         "format": "{}",
+        "return-type": "json",
         "interval": 5
     },
     "network": {
