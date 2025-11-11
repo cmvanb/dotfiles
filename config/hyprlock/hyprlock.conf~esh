@@ -14,7 +14,7 @@ background {
 }
 
 label {
-    text = $USER
+    text = <% echo "$USER⋅$HOSTNAME" %>
     color = <% color_css_rgba $system_text 1.0 %>
     font_size = 16
     font_family = Liberation Sans
