@@ -67,6 +67,7 @@ source "$base_dir/deploy/modules/firefox.sh"
 source "$base_dir/deploy/modules/fontconfig.sh"
 source "$base_dir/deploy/modules/fuzzel.sh"
 source "$base_dir/deploy/modules/ghostty.sh"
+source "$base_dir/deploy/modules/gitui.sh"
 source "$base_dir/deploy/modules/hyprland.sh"
 source "$base_dir/deploy/modules/hyprlock.sh"
 source "$base_dir/deploy/modules/imv.sh"
@@ -142,6 +143,7 @@ firefox::install
 fontconfig::install
 fuzzel::install
 ghostty::install
+gitui::install
 imv::install
 mako::install
 mpv::install
