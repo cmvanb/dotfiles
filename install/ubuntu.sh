@@ -412,6 +412,17 @@ install_rustup() {
     log_success "rustup installed"
 }
 
+install_uv() {
+    if command_exists uv; then
+        log_success "uv is already installed"
+        return
+    fi
+
+    log_info "Installing uv..."
+    curl -LsSf https://astral.sh/uv/install.sh | sh
+    log_success "uv installed"
+}
+
 install_yazi() {
     if command_exists yazi; then
         log_success "yazi is already installed"
@@ -731,6 +742,7 @@ main() {
     install_rbw
     install_ripgrep
     install_rustup
+    install_uv
     install_yazi
     install_zig
     install_zoxide
