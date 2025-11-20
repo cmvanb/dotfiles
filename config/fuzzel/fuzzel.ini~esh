@@ -16,8 +16,11 @@ line-height=24
 
 [colors]
 background=<% color_named $primary_1 %>ff
-selection=<% color_named $primary_8 %>ff
 border=<% color_named $primary_8 %>ff
+prompt=<% color_named $text_15 %>ff
+placeholder=<% color_named $text_6 %>ff
+input=<% color_named $system_text %>ff
+selection=<% color_named $primary_8 %>ff
 text=<% color_named $system_text %>ff
 match=<% color_named $yellow_6 %>ff
 selection-text=<% color_named $system_text %>ff
