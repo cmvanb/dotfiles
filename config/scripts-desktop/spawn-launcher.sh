@@ -40,7 +40,6 @@ parse_long_options() {
             prompt="${1#*=}"
             ;;
         --prompt)
-            # TODO: This is broken. Equals sign required for now.
             if [ -n "$2" ]; then
                 prompt="$2"
                 return 2
@@ -67,37 +66,34 @@ while [ $# -gt 0 ]; do
         --*=*|--*)
             parse_long_options "$1" "$2"
             shift $?
+            continue
+            ;;
+
+        -m)
+            menu=true
+            ;;
+
+        -p)
+            if [ -n "$2" ]; then
+                prompt="$2"
+                shift
+            else
+                echo "Error: -p requires an argument"
+                usage
+            fi
+            ;;
+
+        -h)
+            usage
             ;;
 
         -*)
-            # TODO: This is broken. Fallback case always triggers.
-            while getopts ":m:p:h" opt; do
-                case ${opt} in
-                    m)
-                        menu=true
-                        ;;
-                    p)
-                        prompt="$OPTARG"
-                        ;;
-                    h)
-                        usage
-                        ;;
-                    \?)
-                        echo "Error: Invalid option: -$OPTARG"
-                        usage
-                        ;;
-                    :)
-                        echo "Error: Option -$OPTARG requires an argument"
-                        usage
-                        ;;
-                esac
-            done
-            shift $((OPTIND - 1))
-            OPTIND=1
+            echo "Error: Unknown option: $1"
+            usage
             ;;
 
         *)
-            echo "Error: Unknown argument: -$1"
+            echo "Error: Unknown argument: $1"
             usage
             ;;
     esac
@@ -110,7 +106,7 @@ done
 args=()
 
 if [[ $LAUNCHER == "fuzzel" ]]; then
-    args+=("-p" "$prompt")
+    args+=("--placeholder" "$prompt")
 
     if [[ "$menu" = true ]]; then
         args+=("--dmenu")
