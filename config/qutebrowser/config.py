@@ -442,6 +442,8 @@ config.bind('j', 'scroll down')
 config.bind('k', 'scroll up')
 config.bind('<PgDown>', 'scroll-page 0 0.5')
 config.bind('<PgUp>', 'scroll-page 0 -0.5')
+config.bind('<Ctrl-f>', 'scroll-page 0 0.5')
+config.bind('<Ctrl-d>', 'scroll-page 0 -0.5')
 config.bind('<Ctrl-PgDown>', 'scroll-page 0 1')
 config.bind('<Ctrl-PgUp>', 'scroll-page 0 -1')
 
