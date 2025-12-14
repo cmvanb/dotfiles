@@ -488,3 +488,6 @@ config.bind('<Escape>', 'mode-leave ;; jseval -q document.activeElement.blur()',
 # Command mode
 config.bind('<Ctrl-d>', 'completion-item-del', mode='command')
 config.bind('<Escape>', 'mode-leave', mode='command')
+
+# Devtools
+config.bind('<F12>', 'devtools', mode='command')
