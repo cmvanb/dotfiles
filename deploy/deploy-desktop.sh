@@ -57,7 +57,7 @@ source "$base_dir/deploy/modules/yazi.sh"
 # Load desktop deployment modules
 source "$base_dir/deploy/modules/alacritty.sh"
 source "$base_dir/deploy/modules/bitwarden.sh"
-source "$base_dir/deploy/modules/bluetooth-autoconnect.sh"
+# source "$base_dir/deploy/modules/bluetooth-autoconnect.sh"
 source "$base_dir/deploy/modules/chromium.sh"
 source "$base_dir/deploy/modules/direnv.sh"
 source "$base_dir/deploy/modules/disable-xdg-desktop-files.sh"
@@ -133,7 +133,7 @@ yazi::install
 echo "Deploying desktop modules..."
 alacritty::install
 bitwarden::install
-bluetooth-autoconnect::install
+# bluetooth-autoconnect::install
 chromium::install
 direnv::install
 disable-xdg-desktop-files::install
@@ -183,7 +183,7 @@ elif [[ $DEPLOY_WM == "sway" ]]; then
 fi
 
 echo "Deploying desktop user services..."
-bluetooth-autoconnect::enable
+# bluetooth-autoconnect::enable
 pipewire::enable
 ssh::enable
 syncthing::enable
