@@ -20,7 +20,11 @@ sway::install () {
     force_link "$base_dir/config/sway/refresh.sh" "$XDG_CONFIG_HOME/sway/refresh.sh"
     force_link "$base_dir/config/sway/sws.sh" "$XDG_CONFIG_HOME/sway/sws.sh"
 
-    if [[ $host == "cyxwel" ]]; then
+    if [[ $host == "casino" ]]; then
+        force_link "$base_dir/config/sway/outputs.conf~home-dual" "$XDG_CONFIG_HOME/sway/outputs.conf"
+        force_link "$base_dir/config/sway/workspace.conf~home-dual" "$XDG_CONFIG_HOME/sway/workspace.conf"
+
+    elif [[ $host == "cyxwel" ]]; then
         force_link "$base_dir/config/sway/outputs.conf~home-dual" "$XDG_CONFIG_HOME/sway/outputs.conf"
         force_link "$base_dir/config/sway/workspace.conf~home-dual" "$XDG_CONFIG_HOME/sway/workspace.conf"
 

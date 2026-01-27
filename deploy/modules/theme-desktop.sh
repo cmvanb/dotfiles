@@ -16,7 +16,8 @@ theme-desktop::install () {
     ensure_directory "$XDG_CONFIG_HOME/theme"
     force_link "$base_dir/config/theme/cursor" "$XDG_CONFIG_HOME/theme/cursor"
 
-    if [[ $host == "cyxwel" ]] \
+    if [[ $host == "casino" ]] \
+        || [[ $host == "cyxwel" ]] \
         || [[ $host == "supertubes" ]] \
         || [[ $host == "vortex" ]] \
         || [[ $host == "xray" ]] \
