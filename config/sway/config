@@ -88,6 +88,9 @@ exec waybar &
 # Window rules
 #-------------------------------------------------------------------------------
 
+# Workspaces
+assign [app_id="Bitwarden"] workspace "auth"
+
 # Floating windows
 for_window [app_id="org.gnome.gitlab.somas.Apostrophe"] floating enable
 for_window [app_id="blueman-manager"] floating enable
