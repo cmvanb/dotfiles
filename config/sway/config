@@ -83,7 +83,6 @@ include $config_dir/sway/theme.conf
 exec waypaper --restore &
 
 # Start waybar
-exec pkill -x waybar
 exec waybar &
 
 # Window rules
