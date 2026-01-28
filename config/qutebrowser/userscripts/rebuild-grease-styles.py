@@ -6,6 +6,7 @@
 import os
 import importlib.machinery as im
 import importlib.util as iu
+from pathlib import Path
 
 class RebuildGreaseStyles(object):
     def __init__(self):
@@ -41,6 +42,8 @@ class RebuildGreaseStyles(object):
             css = css_file.read()
 
         grease = self.css_to_grease(css_filename, css, patterns)
+
+        Path(f'{self.config_dir}/greasemonkey').mkdir(parents=True, exist_ok=True)
 
         grease_script_path = f'{self.config_dir}/greasemonkey/{css_filename}.js'
         with open(grease_script_path, 'w') as grease_file:
