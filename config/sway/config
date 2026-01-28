@@ -90,6 +90,7 @@ exec waybar &
 
 # Workspaces
 assign [app_id="Bitwarden"] workspace "auth"
+assign [app_id="spotify"] workspace "spotify"
 
 # Floating windows
 for_window [app_id="org.gnome.gitlab.somas.Apostrophe"] floating enable
