@@ -28,7 +28,12 @@ function fish_prompt --description 'Print the prompt'
         set separator "⋅"
     end
 
-    set -l login "$user$separator$hostname "
+    set -l host_color (set_color white)
+    if test -n "$SSH_TTY"
+        set host_color (set_color bryellow)
+    end
+
+    set -l login "$user$separator$host_color$hostname$normal "
 
     # CWD
     set -l realhome (string escape --style=regex -- ~)
