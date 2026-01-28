@@ -93,7 +93,6 @@ assign [app_id="Bitwarden"] workspace "auth"
 assign [app_id="spotify"] workspace "spotify"
 
 # Floating windows
-for_window [app_id="org.gnome.gitlab.somas.Apostrophe"] floating enable
 for_window [app_id="blueman-manager"] floating enable
 for_window [app_id=".*floating"] floating enable
 for_window [app_id="gcr-prompter"] floating enable
@@ -115,7 +114,6 @@ for_window [app_id="org.qutebrowser.qutebrowser"] resize set 1600 1200
 
 # Server-side decorations
 for_window [app_id="Alacritty"] border pixel 3
-for_window [app_id="org.gnome.gitlab.somas.Apostrophe"] border pixel 3
 for_window [app_id="blueman-manager"] border pixel 3
 for_window [app_id="chromium"] border pixel 3
 for_window [app_id="gcr-viewer"] border pixel 3
