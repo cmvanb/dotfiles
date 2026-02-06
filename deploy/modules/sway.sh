@@ -47,6 +47,9 @@ sway::install () {
     ensure_directory "$XDG_BIN_HOME"
     force_link "$base_dir/config/sway/sway-run.sh" "$XDG_BIN_HOME/sway-run"
 
+    ensure_directory "$XDG_CONFIG_HOME/xdg-desktop-portal"
+    force_link "$base_dir/config/sway/sway-portals.conf" "$XDG_CONFIG_HOME/xdg-desktop-portal/sway-portals.conf"
+
     if [[ $DEPLOY_WM == "sway" ]]; then
         echo "└> Autorun sway on login."
 
