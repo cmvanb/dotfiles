@@ -32,10 +32,6 @@ sway::install () {
         force_link "$base_dir/config/sway/outputs.conf~home-dual" "$XDG_CONFIG_HOME/sway/outputs.conf"
         force_link "$base_dir/config/sway/workspace.conf~home-dual" "$XDG_CONFIG_HOME/sway/workspace.conf"
 
-    elif [[ $host == "vortex" ]]; then
-        force_link "$base_dir/config/sway/outputs.conf~intelic" "$XDG_CONFIG_HOME/sway/outputs.conf"
-        force_link "$base_dir/config/sway/workspace.conf~intelic" "$XDG_CONFIG_HOME/sway/workspace.conf"
-
     else
         echo "└> Warning: No outputs.conf configuration for host '$host'."
     fi

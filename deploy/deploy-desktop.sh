@@ -79,7 +79,6 @@ source "$base_dir/deploy/modules/pyenv.sh"
 source "$base_dir/deploy/modules/qutebrowser.sh"
 source "$base_dir/deploy/modules/river.sh"
 source "$base_dir/deploy/modules/scripts-desktop.sh"
-source "$base_dir/deploy/modules/scripts-intelic.sh"
 source "$base_dir/deploy/modules/scripts-markdown.sh"
 source "$base_dir/deploy/modules/scripts-misc.sh"
 source "$base_dir/deploy/modules/scripts-system-utils.sh"
@@ -151,7 +150,6 @@ pandoc::install
 pyenv::install
 qutebrowser::install
 scripts-desktop::install
-scripts-intelic::install
 scripts-markdown::install
 scripts-misc::install
 scripts-system-utils::install
