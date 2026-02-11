@@ -19,6 +19,7 @@ workspace home output $primary
 workspace work output $primary
 workspace todo output $primary
 workspace spotify output $primary
+workspace auth output $primary
 
 # right
 workspace 11:11 output $right
@@ -32,4 +33,5 @@ workspace 18:18 output $right
 workspace 19:19 output $right
 workspace 20:20 output $right
 
+exec swaymsg 'workspace home; exec qutebrowser -r home'
 exec swaymsg workspace 1

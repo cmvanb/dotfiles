@@ -1,35 +1,24 @@
 #-------------------------------------------------------------------------------
-# Workspace configuration at home - dual monitor
+# Workspace configuration for laptop
 #-------------------------------------------------------------------------------
 
-set $primary "Iiyama North America PL2790QS 1178024901361"
-set $right eDP-1
+set $laptop eDP-1
 
-workspace 1 output $primary
-workspace 2:2 output $primary
-workspace 3:3 output $primary
-workspace 4:4 output $primary
-workspace 5:5 output $primary
-workspace 6:6 output $primary
-workspace 7:7 output $primary
-workspace 8:8 output $primary
-workspace 9:9 output $primary
-workspace 10:10 output $primary
-workspace home output $primary
-workspace work output $primary
-workspace todo output $primary
-workspace spotify output $primary
+workspace 1 output $laptop
+workspace 2:2 output $laptop
+workspace 3:3 output $laptop
+workspace 4:4 output $laptop
+workspace 5:5 output $laptop
+workspace 6:6 output $laptop
+workspace 7:7 output $laptop
+workspace 8:8 output $laptop
+workspace 9:9 output $laptop
+workspace 10:10 output $laptop
+workspace home output $laptop
+workspace work output $laptop
+workspace todo output $laptop
+workspace spotify output $laptop
+workspace auth output $laptop
 
-# right
-workspace 11:11 output $right
-workspace 12:12 output $right
-workspace 13:13 output $right
-workspace 14:14 output $right
-workspace 15:15 output $right
-workspace 16:16 output $right
-workspace 17:17 output $right
-workspace 18:18 output $right
-workspace 19:19 output $right
-workspace 20:20 output $right
-
+exec swaymsg 'workspace home; exec qutebrowser -r home'
 exec swaymsg workspace 1
