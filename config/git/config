@@ -1,5 +1,5 @@
 [user]
-    email = draakie@proton.me
+    email = casper@codemu.ch
     name = Casper
 
 [core]
@@ -52,4 +52,4 @@
     branch = false
 
 [alias]
-    cmvanb = "config user.email 'draakie@proton.me'"
+    cmvanb = "config user.email 'casper@codemu.ch'"
