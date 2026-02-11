@@ -33,5 +33,6 @@ workspace 18:18 output $right
 workspace 19:19 output $right
 workspace 20:20 output $right
 
+exec swaymsg 'workspace todo; exec spawn-terminal.sh --working-directory ~/Wiki/todo --command edit'
 exec swaymsg 'workspace home; exec qutebrowser -r home'
 exec swaymsg workspace 1
