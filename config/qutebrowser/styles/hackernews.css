@@ -3,21 +3,22 @@ html {
 }
 
 .title {
-    font-size: 14px;
+    font-size: 18px;
 }
 
 .comhead {
-    font-size: 12px;
+    font-size: 16px;
 }
 
 .subtext {
-    font-size: 12px;
+    font-size: 16px;
 }
 
 .comment {
-    font-size: 14px;
+    font-size: 18px;
 }
 
 #hnmain {
-  max-width: 640px;
+    width: 720px;
+    min-width: 720px;
 }
