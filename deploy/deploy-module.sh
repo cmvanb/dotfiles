@@ -8,8 +8,8 @@ script_dir=$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)
 base_dir=$(realpath "$script_dir/..")
 
 # Load utility modules
-source "$base_dir/config/lib-shell-utils/fs.sh"
-source "$base_dir/config/lib-shell-utils/linux.sh"
+source "$base_dir/modules/lib-shell-utils/src/fs.sh"
+source "$base_dir/modules/lib-shell-utils/src/linux.sh"
 
 # Environment variables needed by deployment modules
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -33,7 +33,15 @@ if [ $# -eq 0 ]; then
 fi
 
 module_name="$1"
-module_path="$script_dir/modules/$module_name.sh"
+
+# Handle theme-base and theme-desktop special cases
+if [[ $module_name == "theme-base" ]]; then
+    module_path="$base_dir/modules/theme/deploy-base.sh"
+elif [[ $module_name == "theme-desktop" ]]; then
+    module_path="$base_dir/modules/theme/deploy-desktop.sh"
+else
+    module_path="$base_dir/modules/$module_name/deploy.sh"
+fi
 
 # Verify the module exists
 if [ ! -f "$module_path" ]; then

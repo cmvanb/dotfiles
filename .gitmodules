@@ -1,4 +1,4 @@
-[submodule "config/nvim"]
-	path = config/nvim
+[submodule "modules/nvim/src"]
+	path = modules/nvim/src
 	url = git@github.com:cmvanb/nvimfiles.git
 	branch = master
