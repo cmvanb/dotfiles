@@ -184,7 +184,7 @@ c.keyhint.delay = 500
 c.keyhint.radius = 5
 
 c.colors.keyhint.bg = theme.color_hash('gray_0')
-c.colors.keyhint.fg = theme.color_hash('text_15')
+c.colors.keyhint.fg = theme.color_hash('text_12')
 c.colors.keyhint.suffix.fg = theme.color_hash('yellow_6')
 
 # Messages component
@@ -267,26 +267,26 @@ c.tabs.title.format = '{audio}{index} ⋅ {current_title}'
 
 c.colors.tabs.bar.bg = theme.color_hash('gray_0')
 c.colors.tabs.odd.bg = theme.color_hash('gray_0')
-c.colors.tabs.odd.fg = theme.color_hash('text_8')
+c.colors.tabs.odd.fg = theme.color_hash('text_6')
 c.colors.tabs.even.bg = theme.color_hash('gray_0')
-c.colors.tabs.even.fg = theme.color_hash('text_8')
+c.colors.tabs.even.fg = theme.color_hash('text_6')
 c.colors.tabs.selected.odd.bg = theme.color_hash('gray_0')
-c.colors.tabs.selected.odd.fg = theme.color_hash('text_15')
+c.colors.tabs.selected.odd.fg = theme.color_hash('text_12')
 c.colors.tabs.selected.even.bg = theme.color_hash('gray_0')
-c.colors.tabs.selected.even.fg = theme.color_hash('text_15')
+c.colors.tabs.selected.even.fg = theme.color_hash('text_12')
 
 # Prompt component
 #-------------------------------------------------------------------------------
 c.colors.prompts.bg = theme.color_hash('primary_2')
 c.colors.prompts.border = f"2px solid {theme.color_hash('primary_6')}"
-c.colors.prompts.fg = theme.color_hash('text_15')
+c.colors.prompts.fg = theme.color_hash('text_12')
 c.colors.prompts.selected.bg = theme.color_hash('primary_6')
 c.colors.prompts.selected.fg = theme.color_hash('gray_15')
 
 # Context menu component
 #-------------------------------------------------------------------------------
 c.colors.contextmenu.disabled.bg = theme.color_hash('primary_1')
-c.colors.contextmenu.disabled.fg = theme.color_hash('text_8')
+c.colors.contextmenu.disabled.fg = theme.color_hash('text_6')
 c.colors.contextmenu.menu.bg = theme.color_hash('primary_2')
 c.colors.contextmenu.menu.fg = theme.color_hash('text_12')
 c.colors.contextmenu.selected.bg = theme.color_hash('primary_6')
