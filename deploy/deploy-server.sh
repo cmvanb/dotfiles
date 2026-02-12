@@ -11,8 +11,8 @@ script_dir=$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)
 base_dir=$(realpath "$script_dir/..")
 
 # Load utility modules
-source "$base_dir/config/lib-shell-utils/fs.sh"
-source "$base_dir/config/lib-shell-utils/linux.sh"
+source "$base_dir/modules/lib-shell-utils/src/fs.sh"
+source "$base_dir/modules/lib-shell-utils/src/linux.sh"
 
 # Environment variables needed by deployment modules
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -28,27 +28,27 @@ export DEPLOY_DISTRO="$(get_distro_id)"
 export ESH_SHELL=/usr/bin/bash
 
 # Load shell library modules
-source "$base_dir/deploy/modules/lib-shell-utils.sh"
-source "$base_dir/deploy/modules/lib-theme.sh"
+source "$base_dir/modules/lib-shell-utils/deploy.sh"
+source "$base_dir/modules/lib-theme/deploy.sh"
 
 # Load theme modules
-source "$base_dir/deploy/modules/theme-base.sh"
+source "$base_dir/modules/theme/deploy-base.sh"
 
 # Load server deployment modules
-source "$base_dir/deploy/modules/bash.sh"
-source "$base_dir/deploy/modules/bat.sh"
-source "$base_dir/deploy/modules/fish.sh"
-source "$base_dir/deploy/modules/git.sh"
-source "$base_dir/deploy/modules/less.sh"
-source "$base_dir/deploy/modules/lf.sh"
-source "$base_dir/deploy/modules/npm.sh"
-source "$base_dir/deploy/modules/nvim.sh"
-source "$base_dir/deploy/modules/python.sh"
-source "$base_dir/deploy/modules/readline.sh"
-source "$base_dir/deploy/modules/ripgrep.sh"
-source "$base_dir/deploy/modules/scripts-shell-utils.sh"
-source "$base_dir/deploy/modules/wget.sh"
-source "$base_dir/deploy/modules/yazi.sh"
+source "$base_dir/modules/bash/deploy.sh"
+source "$base_dir/modules/bat/deploy.sh"
+source "$base_dir/modules/fish/deploy.sh"
+source "$base_dir/modules/git/deploy.sh"
+source "$base_dir/modules/less/deploy.sh"
+source "$base_dir/modules/lf/deploy.sh"
+source "$base_dir/modules/npm/deploy.sh"
+source "$base_dir/modules/nvim/deploy.sh"
+source "$base_dir/modules/python/deploy.sh"
+source "$base_dir/modules/readline/deploy.sh"
+source "$base_dir/modules/ripgrep/deploy.sh"
+source "$base_dir/modules/scripts-shell-utils/deploy.sh"
+source "$base_dir/modules/wget/deploy.sh"
+source "$base_dir/modules/yazi/deploy.sh"
 
 # Deploy server profile
 #-------------------------------------------------------------------------------
