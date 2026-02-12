@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 font_mono='Agave Nerd Font Mono'
-font_sans='Noto Sans'
+font_sans='Nimbus Sans'
 font_serif='Noto Serif'
 
 font_size_tiny=10
