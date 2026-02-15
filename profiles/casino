@@ -1,0 +1,5 @@
+profile.extends=desktop
+profile.wm=sway
+
+modules.install=sway
+modules.enable=
