@@ -20,7 +20,7 @@ vscodium::install () {
     force_link "$src/settings.json" "$XDG_DATA_HOME/vscode/user-data/User/settings.json"
 
     ensure_directory "$XDG_DATA_HOME/vscode/extensions/custom-theme/themes"
-    render_esh_template "$src/theme.json~esh" "$module_config_dir/custom-theme/themes/theme.json"
+    render_esh_template "$src/theme.json~esh" "$XDG_DATA_HOME/vscode/extensions/custom-theme/themes/theme.json"
     force_link "$src/custom-theme" "$XDG_DATA_HOME/vscode/extensions/custom-theme"
 
     ensure_directory "$XDG_DATA_HOME/applications"

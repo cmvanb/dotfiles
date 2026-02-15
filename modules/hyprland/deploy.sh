@@ -21,9 +21,6 @@ hyprland::install () {
     force_link \
         "$src/hyprland.conf" \
         "$XDG_CONFIG_HOME/hypr/hyprland.conf"
-    render_esh_template \
-        "$src/hyprlock.conf~esh" \
-        "$XDG_CONFIG_HOME/hypr/hyprlock.conf"
 
     # Custom scripts.
     force_link \
