@@ -21,7 +21,9 @@ if [ "$file_extension" != "md" ]; then
     exit 1
 fi
 
-nohup echo "$1" | entr -r "$XDG_SCRIPTS_HOME/markdown-to-html.sh" "$1" >/dev/null 2>&1 &
-
 html_path="/tmp/md/$file_name.html"
+
+# NOTE: UNHOLY
+nohup bash -c 'echo "$1" | entr -n -r "$XDG_SCRIPTS_HOME/markdown-to-html.sh" "$1"' _ "$1" </dev/null >/dev/null 2>&1 &
+
 "$XDG_SCRIPTS_HOME/spawn.sh" "qutebrowser --target window :open $html_path"
