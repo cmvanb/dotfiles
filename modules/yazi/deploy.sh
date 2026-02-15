@@ -22,10 +22,10 @@ yazi::install () {
     force_link "$src/yzcd.fish" "$XDG_CONFIG_HOME/yazi/yzcd.fish"
     force_link "$src/yzcd.sh" "$XDG_CONFIG_HOME/yazi/yzcd.sh"
 
-    # Install plugins
-    ya pkg add yazi-rs/plugins:smart-enter
-    ya pkg add ndtoan96/ouch
-    ya pkg add dedukun/bookmarks
+    # Install plugins. Ignore if already installed.
+    ya pkg add yazi-rs/plugins:smart-enter 2>/dev/null || true
+    ya pkg add ndtoan96/ouch 2>/dev/null || true
+    ya pkg add dedukun/bookmarks 2>/dev/null || true
 }
 
 yazi::uninstall () {
