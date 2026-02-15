@@ -86,7 +86,18 @@ state::read() {
 #-------------------------------------------------------------------------------
 
 cmd_list() {
-    profile::list_available profiles
+    log_header "Profiles available:"
+    log_item "$(ls profiles | tr '\n' ' ' | sed 's/ $//')"
+
+    log_header "Modules available:"
+    local all_modules=$(
+        (
+            [[ -d modules ]] && ls modules
+            [[ -d extras ]] && ls extras
+        ) | sort -u | tr '\n' ' ' | sed 's/ $//'
+    )
+    log_item "$all_modules"
+    echo
 }
 
 cmd_show() {
@@ -113,10 +124,12 @@ cmd_show() {
     [[ -n "${merged[themes]}" ]] && log_item "Theme: ${merged[themes]}"
 
     if [[ -n "${merged[installs]}" ]]; then
-        local module_count=$(echo "${merged[installs]}" | wc -w)
-        log_item "Modules: ${merged[installs]:0:50}... ($module_count total)"
+        log_item "Modules: ${merged[installs]}"
     fi
-    [[ -n "${merged[enables]}" ]] && log_item "Services: ${merged[enables]}"
+
+    if [[ -n "${merged[enables]}" ]]; then
+        log_item "Services: ${merged[enables]}"
+    fi
     echo
 }
 
@@ -146,19 +159,18 @@ cmd_install() {
         log_header "Profile: $target"
         [[ -n "${merged[wm]}" ]] && log_item "Window manager: ${merged[wm]}"
         log_item "Distro: $DEPLOY_DISTRO"
-        [[ -n "${merged[libs]}" ]] && log_item "Libraries: ${merged[libs]}"
-        [[ -n "${merged[themes]}" ]] && log_item "Theme: ${merged[themes]}"
-
-        if [[ -n "${merged[installs]}" ]]; then
-            local module_count=$(echo "${merged[installs]}" | wc -w)
-            log_item "Modules: ... ($module_count total)"
-        fi
-        [[ -n "${merged[enables]}" ]] && log_item "Services: ${merged[enables]}"
-        echo
 
         if [[ "$dry_run" == "true" ]]; then
-            log_header "DRY RUN: Would install:"
-            echo "${merged[libs]} ${merged[themes]} ${merged[installs]}" | tr ' ' '\n' | grep -v '^$' | sed 's/^/  /'
+            log_header "Would install:"
+            log_item "${merged[libs]} ${merged[themes]} ${merged[installs]}"
+
+            if [[ -n "${merged[enables]}" ]]; then
+                log_header "Would enable:"
+                log_item "${merged[enables]}"
+            fi
+
+            log_header "Dry run complete, no changes were made."
+            echo
             return 0
         fi
 
@@ -172,11 +184,8 @@ cmd_install() {
         fi
 
         state::write "$target" "${merged[installs]}" "${merged[wm]:-}"
-        
-        local services_count=0
-        [[ -n "${merged[enables]}" ]] && services_count=$(echo "${merged[enables]}" | wc -w)
-        
-        log_header "Deployment complete. (${merged[installs]} modules$([[ $services_count -gt 0 ]] && echo ", $services_count services"))"
+
+        log_header "Deployment complete."
     else
         # Install a single module
         if [[ ! -f "modules/$target/deploy.sh" ]] && [[ ! -f "extras/$target/deploy.sh" ]]; then
@@ -272,10 +281,15 @@ cmd_status() {
         return 0
     fi
 
-    log_header "Current deployment status"
+    log_header "Active deployment status"
     log_item "Profile: $profile"
     log_item "Window manager: ${wm:-none}"
-    log_item "Modules deployed: $(echo "$modules" | wc -w)"
+
+    if [[ -n "$modules" ]]; then
+        log_item "Modules deployed:"
+        log_item "  $modules"
+    fi
+    echo
 }
 
 # Module installation helpers
@@ -287,11 +301,17 @@ install_modules() {
 
     [[ -z "$modules" ]] && return 0
 
+    echo
     case "$category" in
-        lib) echo "Deploying library modules..." ;;
-        theme) echo "Deploying theme modules..." ;;
-        install) echo "Deploying modules..." ;;
-        enable) echo "Enabling services..." ;;
+        lib)
+            echo "Deploying library modules..."
+            ;;
+        theme)
+            echo "Deploying theme modules..."
+            ;;
+        install)
+            echo "Deploying modules..."
+            ;;
     esac
 
     for module in $modules; do
@@ -371,6 +391,9 @@ uninstall_module() {
 enable_services() {
     local services="$1"
     [[ -z "$services" ]] && return 0
+
+    echo
+    echo "Enabling services..."
 
     for service in $services; do
         local module_path
@@ -461,13 +484,21 @@ main() {
             ;;
         install)
             [[ -z "${2:-}" ]] && die "install requires a profile or module name"
-            if [[ "$2" == "--host" ]]; then
-                cmd_install "$DEPLOY_HOST" "${3:-false}"
-            elif [[ "$2" == "--dry-run" ]]; then
-                cmd_install "${3:?--dry-run requires a profile or module}" true
-            else
-                cmd_install "$2" "${3:-false}"
+            local dry_run_flag=false
+            local target="${2}"
+
+            if [[ "$target" == "--host" ]]; then
+                target="$DEPLOY_HOST"
+            elif [[ "$target" == "--dry-run" ]]; then
+                die "install: --dry-run must come after the profile/module name"
             fi
+
+            # Check if --dry-run flag is in position 3
+            if [[ "${3:-}" == "--dry-run" ]]; then
+                dry_run_flag=true
+            fi
+
+            cmd_install "$target" "$dry_run_flag"
             ;;
         uninstall)
             cmd_uninstall "${2:-}"

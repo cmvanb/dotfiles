@@ -122,17 +122,3 @@ profile::merge() {
     ref_result[installs]="${installs[*]}"
     ref_result[enables]="${enables[*]}"
 }
-
-profile::list_available() {
-    local profiles_dir="$1"
-
-    echo "Profiles:"
-    ls "$profiles_dir" | sort | sed 's/^/  /'
-
-    echo
-    echo "Modules:"
-    (
-        [[ -d modules ]] && ls modules
-        [[ -d extras ]] && ls extras
-    ) | sort -u | sed 's/^/  /'
-}
