@@ -1,0 +1,6 @@
+profile.extends=
+
+modules.lib=lib-shell-utils lib-theme
+modules.theme=theme-base
+modules.install=bash bat fish git less lf npm nvim python readline ripgrep scripts-shell-utils wget yazi
+modules.enable=
