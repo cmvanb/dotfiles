@@ -16,6 +16,7 @@ theme-base::install () {
     force_link "$base_dir/modules/theme/src/carbon-dark" "$XDG_CONFIG_HOME/theme/carbon-dark"
     force_link "$base_dir/modules/theme/src/carbon-light" "$XDG_CONFIG_HOME/theme/carbon-light"
 
+    # TODO: Use a symlink with hostname suffix to point to the correct color profile.
     force_link "$XDG_CONFIG_HOME/theme/carbon-dark" "$XDG_CONFIG_HOME/theme/colors"
 
     ensure_directory "$XDG_CONFIG_HOME/theme"

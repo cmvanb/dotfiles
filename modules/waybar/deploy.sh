@@ -16,6 +16,7 @@ waybar::install () {
 
     ensure_directory "$XDG_CONFIG_HOME/waybar"
 
+    # TODO: Use a symlink with window manager suffix to point to the correct waybar profile.
     if [[ $DEPLOY_WM == "hyprland" ]]; then
         force_link "$src/hyprland-config" "$XDG_CONFIG_HOME/waybar/config"
         esh "$src/hyprland-style.css~esh" > "$XDG_CONFIG_HOME/waybar/style.css"

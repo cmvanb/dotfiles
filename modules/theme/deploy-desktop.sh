@@ -16,6 +16,7 @@ theme-desktop::install () {
     ensure_directory "$XDG_CONFIG_HOME/theme"
     force_link "$base_dir/modules/theme/src/cursor" "$XDG_CONFIG_HOME/theme/cursor"
 
+    # TODO: Use a symlink with hostname suffix to point to the correct font profile.
     if [[ $host == "casino" ]] \
         || [[ $host == "cyxwel" ]] \
         || [[ $host == "supertubes" ]] \
