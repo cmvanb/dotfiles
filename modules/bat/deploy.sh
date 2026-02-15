@@ -22,7 +22,7 @@ bat::install () {
     force_link "$src/syntaxes" "$XDG_CONFIG_HOME/bat/syntaxes"
 
     ensure_directory "$XDG_CONFIG_HOME/bat/themes"
-    esh "$base_dir/modules/theme/src/carbon-dark.tmTheme~esh" > "$XDG_CONFIG_HOME/bat/themes/carbon-dark.tmTheme"
+    esh "$base_dir/modules/theme-base/src/carbon-dark.tmTheme~esh" > "$XDG_CONFIG_HOME/bat/themes/carbon-dark.tmTheme"
 
     bat cache --build
 }

@@ -14,7 +14,7 @@ theme-desktop::install () {
     echo "└> Installing theme desktop configuration."
 
     ensure_directory "$XDG_CONFIG_HOME/theme"
-    force_link "$base_dir/modules/theme/src/cursor" "$XDG_CONFIG_HOME/theme/cursor"
+    force_link "$base_dir/modules/theme-desktop/src/cursor" "$XDG_CONFIG_HOME/theme/cursor"
 
     # TODO: Use a symlink with hostname suffix to point to the correct font profile.
     if [[ $host == "casino" ]] \
@@ -22,10 +22,10 @@ theme-desktop::install () {
         || [[ $host == "supertubes" ]] \
         || [[ $host == "xray" ]] \
     ;then
-        force_link "$base_dir/modules/theme/src/fonts~home" "$XDG_CONFIG_HOME/theme/fonts"
+        force_link "$base_dir/modules/theme-desktop/src/fonts~home" "$XDG_CONFIG_HOME/theme/fonts"
 
     elif [[ $host == "nlleq0413002159" ]]; then
-        force_link "$base_dir/modules/theme/src/fonts~windows" "$XDG_CONFIG_HOME/theme/fonts"
+        force_link "$base_dir/modules/theme-desktop/src/fonts~windows" "$XDG_CONFIG_HOME/theme/fonts"
 
     else
         # TODO: Consider adding a default configuration.
@@ -35,7 +35,7 @@ theme-desktop::install () {
     fi
 
     ensure_directory "$XDG_SCRIPTS_HOME"
-    force_link "$base_dir/modules/theme/src/generate-color-gradient-palette.py" "$XDG_SCRIPTS_HOME/generate-color-gradient-palette.py"
+    force_link "$base_dir/modules/theme-desktop/src/generate-color-gradient-palette.py" "$XDG_SCRIPTS_HOME/generate-color-gradient-palette.py"
 
     source "$XDG_OPT_HOME/theme/configure-gtk.sh"
 }

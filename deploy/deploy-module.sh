@@ -34,14 +34,7 @@ fi
 
 module_name="$1"
 
-# Handle theme-base and theme-desktop special cases
-if [[ $module_name == "theme-base" ]]; then
-    module_path="$base_dir/modules/theme/deploy-base.sh"
-elif [[ $module_name == "theme-desktop" ]]; then
-    module_path="$base_dir/modules/theme/deploy-desktop.sh"
-else
-    module_path="$base_dir/modules/$module_name/deploy.sh"
-fi
+module_path="$base_dir/modules/$module_name/deploy.sh"
 
 # Verify the module exists
 if [ ! -f "$module_path" ]; then

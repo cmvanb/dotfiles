@@ -35,8 +35,8 @@ source "$base_dir/modules/lib-theme/deploy.sh"
 source "$base_dir/modules/lib-wayland-utils/deploy.sh"
 
 # Load theme modules
-source "$base_dir/modules/theme/deploy-base.sh"
-source "$base_dir/modules/theme/deploy-desktop.sh"
+source "$base_dir/modules/theme-base/deploy.sh"
+source "$base_dir/modules/theme-desktop/deploy.sh"
 
 # Load server deployment modules
 source "$base_dir/modules/bash/deploy.sh"

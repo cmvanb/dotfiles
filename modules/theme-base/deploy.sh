@@ -13,16 +13,16 @@ theme-base::install () {
     echo "└> Installing theme base configuration."
 
     ensure_directory "$XDG_CONFIG_HOME/theme"
-    force_link "$base_dir/modules/theme/src/carbon-dark" "$XDG_CONFIG_HOME/theme/carbon-dark"
-    force_link "$base_dir/modules/theme/src/carbon-light" "$XDG_CONFIG_HOME/theme/carbon-light"
+    force_link "$base_dir/modules/theme-base/src/carbon-dark" "$XDG_CONFIG_HOME/theme/carbon-dark"
+    force_link "$base_dir/modules/theme-base/src/carbon-light" "$XDG_CONFIG_HOME/theme/carbon-light"
 
     # TODO: Use a symlink with hostname suffix to point to the correct color profile.
     force_link "$XDG_CONFIG_HOME/theme/carbon-dark" "$XDG_CONFIG_HOME/theme/colors"
 
     ensure_directory "$XDG_CONFIG_HOME/theme"
-    esh "$base_dir/modules/theme/src/dircolors~esh" > "$XDG_CONFIG_HOME/theme/dircolors"
-    esh "$base_dir/modules/theme/src/eza-colors~esh" > "$XDG_CONFIG_HOME/theme/eza-colors"
-    esh "$base_dir/modules/theme/src/carbon-dark.theme~esh" > "$XDG_CONFIG_HOME/theme/carbon-dark.theme"
+    esh "$base_dir/modules/theme-base/src/dircolors~esh" > "$XDG_CONFIG_HOME/theme/dircolors"
+    esh "$base_dir/modules/theme-base/src/eza-colors~esh" > "$XDG_CONFIG_HOME/theme/eza-colors"
+    esh "$base_dir/modules/theme-base/src/carbon-dark.theme~esh" > "$XDG_CONFIG_HOME/theme/carbon-dark.theme"
 
     "$XDG_OPT_HOME/theme/color-lookup-256-index.sh" --cache
 
