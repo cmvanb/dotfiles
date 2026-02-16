@@ -96,12 +96,7 @@ cmd_list() {
     log_item "$(ls profiles | tr '\n' ' ' | sed 's/ $//')"
 
     log_header "Modules available:"
-    local all_modules=$(
-        (
-            [[ -d modules ]] && ls modules
-            [[ -d extras ]] && ls extras
-        ) | sort -u | tr '\n' ' ' | sed 's/ $//'
-    )
+    local all_modules=$(ls modules | sort -u | tr '\n' ' ' | sed 's/ $//')
     log_item "$all_modules"
     echo
 }
@@ -208,7 +203,7 @@ cmd_install() {
         log_header "Deployment complete."
     else
         # Install a single module
-        if [[ ! -f "modules/$target/deploy.sh" ]] && [[ ! -f "extras/$target/deploy.sh" ]]; then
+        if [[ ! -f "modules/$target/deploy.sh" ]]; then
             log_error_with_hint "\`$target\` is not a profile or module" "Run \`./deploy.sh list\` to see available profiles and modules."
         fi
 
@@ -310,18 +305,9 @@ install_modules() {
 
 install_module() {
     local module="$1"
-    local module_path
+    local module_path="modules/$module/deploy.sh"
 
-    for search_dir in modules extras; do
-        if [[ -f "$search_dir/$module/deploy.sh" ]]; then
-            if [[ -n "${module_path:-}" ]]; then
-                log_error "Module name collision: \`$module\` found in multiple locations"
-            fi
-            module_path="$search_dir/$module/deploy.sh"
-        fi
-    done
-
-    [[ -n "${module_path:-}" ]] || log_error "Module not found: $module"
+    [[ -f "$module_path" ]] || log_error "Module not found: $module"
 
     source "$module_path"
 
@@ -360,18 +346,9 @@ uninstall_modules() {
 
 uninstall_module() {
     local module="$1"
-    local module_path
+    local module_path="modules/$module/deploy.sh"
 
-    for search_dir in modules extras; do
-        if [[ -f "$search_dir/$module/deploy.sh" ]]; then
-            if [[ -n "${module_path:-}" ]]; then
-                log_error "Module name collision: \`$module\` found in multiple locations"
-            fi
-            module_path="$search_dir/$module/deploy.sh"
-        fi
-    done
-
-    [[ -n "${module_path:-}" ]] || log_error "Module not found: $module"
+    [[ -f "$module_path" ]] || log_error "Module not found: $module"
 
     source "$module_path"
 
@@ -387,15 +364,9 @@ enable_services() {
     log_header "Enabling services..."
 
     for service in $services; do
-        local module_path
-        for search_dir in modules extras; do
-            if [[ -f "$search_dir/$service/deploy.sh" ]]; then
-                module_path="$search_dir/$service/deploy.sh"
-                break
-            fi
-        done
+        local module_path="modules/$service/deploy.sh"
 
-        [[ -n "${module_path:-}" ]] || log_error "Service module not found: $service"
+        [[ -f "$module_path" ]] || log_error "Service module not found: $service"
 
         source "$module_path"
 
@@ -414,15 +385,9 @@ disable_services() {
     local -a service_array=($services)
     for ((i = ${#service_array[@]} - 1; i >= 0; i--)); do
         local service="${service_array[$i]}"
-        local module_path
-        for search_dir in modules extras; do
-            if [[ -f "$search_dir/$service/deploy.sh" ]]; then
-                module_path="$search_dir/$service/deploy.sh"
-                break
-            fi
-        done
+        local module_path="modules/$service/deploy.sh"
 
-        [[ -n "${module_path:-}" ]] || log_error "Service module not found: $service"
+        [[ -f "$module_path" ]] || log_error "Service module not found: $service"
 
         source "$module_path"
 

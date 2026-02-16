@@ -17,7 +17,7 @@ wallpaper::install () {
         echo "└> Installing wallpaper configuration."
 
         ensure_directory "$XDG_CONFIG_HOME/wallpaper"
-        force_link "$base_dir/extras/wallpaper/src/wallpaper.sh~home-triple" "$XDG_CONFIG_HOME/wallpaper/wallpaper.sh"
+        force_link "$base_dir/modules/wallpaper/src/wallpaper.sh~home-triple" "$XDG_CONFIG_HOME/wallpaper/wallpaper.sh"
 
     else
         echo "└> Skipping wallpaper - no configuration for \`$host\`."
