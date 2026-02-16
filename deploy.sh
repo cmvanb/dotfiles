@@ -123,18 +123,32 @@ cmd_show() {
     local -A merged
     profile::merge profiles merged "${chain[@]}" || return 1
 
-    log_header "Profile: $profile_name"
-    [[ -n "${merged[wm]}" ]] && log_item "Window manager: ${merged[wm]}"
-    log_item "Distro: $DEPLOY_DISTRO"
-    [[ -n "${merged[libs]}" ]] && log_item "Libraries: ${merged[libs]}"
-    [[ -n "${merged[themes]}" ]] && log_item "Theme: ${merged[themes]}"
+    if [[ -n "${merged[wm]}" ]]; then
+        log_header "Window manager:"
+        log_item "${merged[wm]}"
+    fi
+
+    log_header "Distro:"
+    log_item "$DEPLOY_DISTRO"
+
+    if [[ -n "${merged[libs]}" ]]; then
+        log_header "Libraries:"
+        log_item "${merged[libs]}"
+    fi
+
+    if [[ -n "${merged[themes]}" ]]; then
+        log_header "Theme:"
+        log_item "${merged[themes]}"
+    fi
 
     if [[ -n "${merged[installs]}" ]]; then
-        log_item "Modules: ${merged[installs]}"
+        log_header "Modules:"
+        log_item "${merged[installs]}"
     fi
 
     if [[ -n "${merged[enables]}" ]]; then
-        log_item "Services: ${merged[enables]}"
+        log_header "Services:"
+        log_item "${merged[enables]}"
     fi
     echo
 }
@@ -199,7 +213,10 @@ cmd_install() {
         fi
 
         if [[ "$dry_run" == "true" ]]; then
-            log_header "DRY RUN: Would install module: $target"
+            log_header "Would install:"
+            log_item "$target"
+            log_header "Dry run complete, no changes were made."
+            echo
             return 0
         fi
 
