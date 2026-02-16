@@ -44,14 +44,20 @@ log_item() {
     echo "  $@"
 }
 
-die() {
+log_error() {
     echo "Error: $*" >&2
     exit 1
 }
 
-hint() {
+log_error_with_hint() {
+    local error_msg="$1"
+    shift
+    local hint_msg="$*"
+
+    echo "Error: $error_msg" >&2
     echo
-    echo "Hint: $*" >&2
+    echo "$hint_msg" >&2
+    exit 1
 }
 
 # State management
@@ -105,7 +111,7 @@ cmd_show() {
 
     # Get inheritance chain
     local chain_str
-    chain_str=$(profile::get_inheritance_chain "$profile_name" profiles) || die "'$profile_name' is not a profile"
+    chain_str=$(profile::get_inheritance_chain "$profile_name" profiles) || log_error "\`$profile_name\` is not a profile"
 
     log_header "Resolving profile: $profile_name"
     # Format as: parent1 -> parent2 -> profile
@@ -189,8 +195,7 @@ cmd_install() {
     else
         # Install a single module
         if [[ ! -f "modules/$target/deploy.sh" ]] && [[ ! -f "extras/$target/deploy.sh" ]]; then
-            die "'$target' is not a profile or module"
-            hint "Run './deploy.sh list' to see available profiles and modules"
+            log_error_with_hint "\`$target\` is not a profile or module" "Run \`./deploy.sh list\` to see available profiles and modules."
         fi
 
         if [[ "$dry_run" == "true" ]]; then
@@ -210,7 +215,7 @@ cmd_uninstall() {
 
     if [[ -z "$target" ]]; then
         local profile modules wm
-        state::read profile modules wm || die "No deployment state found. Specify a profile or module to uninstall."
+        state::read profile modules wm || log_error "No deployment state found. Specify a profile or module to uninstall."
 
         target="$profile"
         echo "Using tracked state: profile=$profile"
@@ -219,7 +224,7 @@ cmd_uninstall() {
     # Check if target is a profile
     if [[ -f "profiles/$target" ]]; then
         local chain_str
-        chain_str=$(profile::get_inheritance_chain "$target" profiles) || die "Failed to resolve profile: $target"
+        chain_str=$(profile::get_inheritance_chain "$target" profiles) || log_error "Failed to resolve profile: $target"
 
         local -a chain=($chain_str)
         local -A merged
@@ -243,7 +248,7 @@ cmd_uninstall() {
 
 cmd_enable() {
     local profile="$1"
-    [[ -f "profiles/$profile" ]] || die "'$profile' is not a profile"
+    [[ -f "profiles/$profile" ]] || log_error "\`$profile\` is not a profile"
 
     local chain_str
     chain_str=$(profile::get_inheritance_chain "$profile" profiles) || return 1
@@ -260,7 +265,7 @@ cmd_enable() {
 
 cmd_disable() {
     local profile="$1"
-    [[ -f "profiles/$profile" ]] || die "'$profile' is not a profile"
+    [[ -f "profiles/$profile" ]] || log_error "\`$profile\` is not a profile"
 
     local chain_str
     chain_str=$(profile::get_inheritance_chain "$profile" profiles) || return 1
@@ -316,7 +321,7 @@ install_modules() {
 
     for module in $modules; do
         install_module "$module" || {
-            die "Failed to install module: $module"
+            log_error "Failed to install module: $module"
         }
     done
 }
@@ -328,18 +333,18 @@ install_module() {
     for search_dir in modules extras; do
         if [[ -f "$search_dir/$module/deploy.sh" ]]; then
             if [[ -n "${module_path:-}" ]]; then
-                die "Module name collision: '$module' found in multiple locations"
+                log_error "Module name collision: \`$module\` found in multiple locations"
             fi
             module_path="$search_dir/$module/deploy.sh"
         fi
     done
 
-    [[ -n "${module_path:-}" ]] || die "Module not found: $module"
+    [[ -n "${module_path:-}" ]] || log_error "Module not found: $module"
 
     source "$module_path"
 
     if ! declare -F "${module}::install" >/dev/null 2>&1; then
-        die "Function '${module}::install' not found in module '$module'"
+        log_error "Function \`${module}::install\` not found in module \`$module\`"
     fi
 
     "${module}::install"
@@ -361,7 +366,7 @@ uninstall_modules() {
     local -a module_array=($modules)
     for ((i = ${#module_array[@]} - 1; i >= 0; i--)); do
         uninstall_module "${module_array[$i]}" || {
-            die "Failed to uninstall module: ${module_array[$i]}"
+            log_error "Failed to uninstall module: ${module_array[$i]}"
         }
     done
 }
@@ -373,13 +378,13 @@ uninstall_module() {
     for search_dir in modules extras; do
         if [[ -f "$search_dir/$module/deploy.sh" ]]; then
             if [[ -n "${module_path:-}" ]]; then
-                die "Module name collision: '$module' found in multiple locations"
+                log_error "Module name collision: \`$module\` found in multiple locations"
             fi
             module_path="$search_dir/$module/deploy.sh"
         fi
     done
 
-    [[ -n "${module_path:-}" ]] || die "Module not found: $module"
+    [[ -n "${module_path:-}" ]] || log_error "Module not found: $module"
 
     source "$module_path"
 
@@ -404,7 +409,7 @@ enable_services() {
             fi
         done
 
-        [[ -n "${module_path:-}" ]] || die "Service module not found: $service"
+        [[ -n "${module_path:-}" ]] || log_error "Service module not found: $service"
 
         source "$module_path"
 
@@ -429,7 +434,7 @@ disable_services() {
             fi
         done
 
-        [[ -n "${module_path:-}" ]] || die "Service module not found: $service"
+        [[ -n "${module_path:-}" ]] || log_error "Service module not found: $service"
 
         source "$module_path"
 
@@ -457,6 +462,7 @@ Commands:
 
 Options:
   --dry-run                   Show what would be done without doing it
+  --help                      Show this help message
   --host                      Auto-detect profile from hostname
 
 Examples:
@@ -479,18 +485,18 @@ main() {
             cmd_list
             ;;
         show)
-            [[ -z "${2:-}" ]] && die "show requires a profile name"
+            [[ -z "${2:-}" ]] && log_error "show requires a profile name"
             cmd_show "$2"
             ;;
         install)
-            [[ -z "${2:-}" ]] && die "install requires a profile or module name"
+            [[ -z "${2:-}" ]] && log_error "install requires a profile or module name"
             local dry_run_flag=false
             local target="${2}"
 
             if [[ "$target" == "--host" ]]; then
                 target="$DEPLOY_HOST"
             elif [[ "$target" == "--dry-run" ]]; then
-                die "install: --dry-run must come after the profile/module name"
+                log_error "install: --dry-run must come after the profile/module name"
             fi
 
             # Check if --dry-run flag is in position 3
@@ -504,11 +510,11 @@ main() {
             cmd_uninstall "${2:-}"
             ;;
         enable)
-            [[ -z "${2:-}" ]] && die "enable requires a profile name"
+            [[ -z "${2:-}" ]] && log_error "enable requires a profile name"
             cmd_enable "$2"
             ;;
         disable)
-            [[ -z "${2:-}" ]] && die "disable requires a profile name"
+            [[ -z "${2:-}" ]] && log_error "disable requires a profile name"
             cmd_disable "$2"
             ;;
         status)
@@ -519,8 +525,7 @@ main() {
             exit 0
             ;;
         *)
-            die "Unknown command: $cmd"
-            hint "Run './deploy.sh --help' for usage"
+            log_error_with_hint "Unknown command: $cmd" "Run \`./deploy.sh --help\` for usage."
             ;;
     esac
 }
