@@ -289,16 +289,15 @@ install_modules() {
 
     [[ -z "$modules" ]] && return 0
 
-    echo
     case "$category" in
         lib)
-            echo "Deploying library modules..."
+            log_header "Deploying library modules..."
             ;;
         theme)
-            echo "Deploying theme modules..."
+            log_header "Deploying theme modules..."
             ;;
         install)
-            echo "Deploying modules..."
+            log_header "Deploying modules..."
             ;;
     esac
 
@@ -340,10 +339,15 @@ uninstall_modules() {
     [[ -z "$modules" ]] && return 0
 
     case "$category" in
-        lib) echo "Uninstalling library modules..." ;;
-        theme) echo "Uninstalling theme modules..." ;;
-        install) echo "Uninstalling modules..." ;;
-        enable) echo "Disabling services..." ;;
+        lib)
+            log_header "Uninstalling library modules..."
+            ;;
+        theme)
+            log_header "Uninstalling theme modules..."
+            ;;
+        install)
+            log_header "Uninstalling modules..."
+            ;;
     esac
 
     local -a module_array=($modules)
@@ -380,8 +384,7 @@ enable_services() {
     local services="$1"
     [[ -z "$services" ]] && return 0
 
-    echo
-    echo "Enabling services..."
+    log_header "Enabling services..."
 
     for service in $services; do
         local module_path
@@ -405,6 +408,8 @@ enable_services() {
 disable_services() {
     local services="$1"
     [[ -z "$services" ]] && return 0
+
+    log_header "Disabling services..."
 
     local -a service_array=($services)
     for ((i = ${#service_array[@]} - 1; i >= 0; i--)); do
