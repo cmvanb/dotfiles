@@ -432,12 +432,8 @@ body {
   padding: 0;
 }
 body {
-  font:
-    13.34px helvetica,
-    arial,
-    freesans,
-    clean,
-    sans-serif;
+  font-family: <%= $font_sans %>, helvetica, arial, freesans, clean, sans-serif;
+  font-size: 13.34px;
   -webkit-font-smoothing: subpixel-antialiased;
   line-height: 1.4;
   padding: 3px;
@@ -643,7 +639,7 @@ tt {
   background-color: <% color_hash $text_1 %>;
   border: 1px solid <% color_hash $secondary_2 %>;
   border-radius: 3px;
-  font-family: Iosevka, Consolas, "Liberation Mono", Courier, monospace;
+  font-family: <%= $font_mono %>, Iosevka, Consolas, "Liberation Mono", Courier, monospace;
   font-size: 12px;
   color: <% color_hash $secondary_12 %>;
 }
