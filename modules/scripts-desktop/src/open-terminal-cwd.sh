@@ -25,4 +25,4 @@ target=$(printf "%s\n" "$(zoxide query --list)" | spawn-launcher.sh --menu --pro
 # Spawn a new terminal
 #-------------------------------------------------------------------------------
 
-spawn-terminal.sh --working-directory "$target"
+spawn-terminal.sh --working-directory "$target" "$@"
