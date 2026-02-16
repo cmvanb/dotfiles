@@ -17,7 +17,7 @@ export XDG_BIN_HOME="$HOME/.local/bin"
 export XDG_OPT_HOME="$HOME/.local/opt"
 export XDG_SCRIPTS_HOME="$HOME/.local/scripts"
 export XDG_SECRETS_HOME="$HOME/.local/secrets"
-# <% if [[ " $DEPLOY_PROFILE " == *" desktop "* ]]; then -%>
+# <% if [[ " $DEPLOY_PROFILE " == *" workstation "* ]]; then -%>
 
 # XDG user directories.
 export XDG_DOCUMENTS_DIR="$HOME/Documents"
@@ -77,7 +77,7 @@ if [[ $TERM == "linux" ]]; then
     "$XDG_CONFIG_HOME/vt/apply-vt-colors.sh" | systemd-cat -t bash-login
 fi
 
-# <% if [[ " $DEPLOY_PROFILE " == *" desktop "* ]]; then -%>
+# <% if [[ " $DEPLOY_PROFILE " == *" workstation "* ]]; then -%>
 
 # Ensure user directories exist
 #-------------------------------------------------------------------------------
@@ -94,7 +94,7 @@ source "$XDG_OPT_HOME/shell-utils/path.sh"
 # Add user binaries to path
 path_prepend "$XDG_BIN_HOME"
 path_prepend "$XDG_SCRIPTS_HOME"
-# <% if [[ " $DEPLOY_PROFILE " == *" desktop "* ]]; then -%>
+# <% if [[ " $DEPLOY_PROFILE " == *" workstation "* ]]; then -%>
 
 # Add pyenv python shims to path
 path_prepend "$PYENV_ROOT/bin"

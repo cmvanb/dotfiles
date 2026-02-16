@@ -1,4 +1,4 @@
-profile.extends=desktop
+profile.extends=workstation
 profile.wm=sway
 
 modules.install=sway river hyprland

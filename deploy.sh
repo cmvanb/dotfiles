@@ -420,7 +420,7 @@ Examples:
   ./deploy.sh install --host
   ./deploy.sh install nvim
   ./deploy.sh uninstall
-  ./deploy.sh show desktop
+  ./deploy.sh show workstation
   ./deploy.sh status
 EOF
 }

@@ -17,7 +17,7 @@ set -x XDG_OPT_HOME $HOME/.local/opt
 set -x XDG_SCRIPTS_HOME $HOME/.local/scripts
 set -x XDG_SECRETS_HOME $HOME/.local/secrets
 
-# <% if [[ " $DEPLOY_PROFILE " == *" desktop "* ]]; then -%>
+# <% if [[ " $DEPLOY_PROFILE " == *" workstation "* ]]; then -%>
 
 # XDG user directories.
 set -x XDG_DOCUMENTS_DIR $HOME/Documents
@@ -79,7 +79,7 @@ if test "$TERM" = "linux"
     $XDG_CONFIG_HOME/vt/apply-vt-colors.sh | systemd-cat -t fish-login
 end
 
-# <% if [[ " $DEPLOY_PROFILE " == *" desktop "* ]]; then -%>
+# <% if [[ " $DEPLOY_PROFILE " == *" workstation "* ]]; then -%>
 # Ensure user directories exist
 #-------------------------------------------------------------------------------
 
@@ -93,7 +93,7 @@ mkdir -p $XDG_DOCUMENTS_DIR $XDG_DOWNLOAD_DIR $XDG_MUSIC_DIR $XDG_PICTURES_DIR $
 fish_add_path -pP $XDG_BIN_HOME
 fish_add_path -pP $XDG_SCRIPTS_HOME
 
-# <% if [[ " $DEPLOY_PROFILE " == *" desktop "* ]]; then -%>
+# <% if [[ " $DEPLOY_PROFILE " == *" workstation "* ]]; then -%>
 # Add user rust binaries to path.
 fish_add_path -pP $XDG_DATA_HOME/cargo/bin
 
