@@ -1,0 +1,5 @@
+profile.extends=wayland-wm
+profile.wm=hyprland
+
+modules.install=hyprland
+modules.enable=

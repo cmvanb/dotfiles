@@ -39,6 +39,23 @@ profile::find() {
 profile::resolve_chain() {
     local name="$1"
     local profiles_dir="$2"
+    local visited_var="$3"
+
+    # Get current status from visited array (passed by name)
+    local status
+    eval "status=\${${visited_var}[$name]:-}"
+
+    # Cycle detection
+    if [[ "$status" == "in_progress" ]]; then
+        echo "Error: Circular dependency detected: $name" >&2
+        return 1
+    fi
+
+    # Already resolved (deduplication)
+    [[ "$status" == "done" ]] && return 0
+
+    # Mark as in progress
+    eval "${visited_var}[$name]=in_progress"
 
     # Base case: profile not found
     if ! [[ -f "$profiles_dir/$name" ]]; then
@@ -50,21 +67,23 @@ profile::resolve_chain() {
     local -A profile_data
     profile::parse "$profiles_dir/$name" profile_data || return 1
 
-    # Recursively resolve parent
-    local parent="${profile_data[profile.extends]}"
-    if [[ -n "$parent" ]]; then
-        profile::resolve_chain "$parent" "$profiles_dir" || return 1
-    fi
+    # Recursively resolve each parent (left to right)
+    local parents="${profile_data[profile.extends]:-}"
+    for parent in $parents; do
+        profile::resolve_chain "$parent" "$profiles_dir" "$visited_var" || return 1
+    done
 
-    # Output this profile name
+    # Output this profile name after all parents
     echo "$name"
+    eval "${visited_var}[$name]=done"
 }
 
 profile::get_inheritance_chain() {
     local name="$1"
     local profiles_dir="$2"
 
-    profile::resolve_chain "$name" "$profiles_dir" || return 1
+    local -A visited
+    profile::resolve_chain "$name" "$profiles_dir" "visited" || return 1
 }
 
 profile::merge() {
@@ -87,7 +106,7 @@ profile::merge() {
         local -A data
         profile::parse "$profile_file" data || return 1
 
-        if [[ -v "data[profile.wm]" ]] && [[ -z "$wm" ]]; then
+        if [[ -v "data[profile.wm]" ]] && [[ -n "${data[profile.wm]}" ]]; then
             wm="${data[profile.wm]}"
         fi
 

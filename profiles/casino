@@ -1,5 +1,4 @@
-profile.extends=workstation
-profile.wm=sway
+profile.extends=workstation sway
 
-modules.install=sway
+modules.install=
 modules.enable=

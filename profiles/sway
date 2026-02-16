@@ -1,0 +1,5 @@
+profile.extends=wayland-wm
+profile.wm=sway
+
+modules.install=sway
+modules.enable=

@@ -1,0 +1,5 @@
+profile.extends=wayland-wm
+profile.wm=river
+
+modules.install=river way-displays
+modules.enable=
