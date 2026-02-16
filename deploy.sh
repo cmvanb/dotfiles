@@ -264,12 +264,14 @@ cmd_status() {
         return 0
     fi
 
-    log_header "Active deployment status"
-    log_item "Profile: $profile"
-    log_item "Window manager: ${wm:-none}"
+    log_header "Profile:"
+    log_item "$profile"
+
+    log_header "Window manager:"
+    log_item "${wm:-none}"
 
     if [[ -n "$modules" ]]; then
-        log_item "Modules deployed:"
+        log_header "Modules deployed:"
         log_item "  $modules"
     fi
     echo
