@@ -55,13 +55,27 @@ qutebrowser::install () {
 qutebrowser::uninstall () {
     echo "└> Uninstalling qutebrowser configuration."
 
-    rm -r "$XDG_CONFIG_HOME/qutebrowser"
+    rm "$XDG_CONFIG_HOME/qutebrowser/config.py"
+    rm "$XDG_CONFIG_HOME/qutebrowser/stylesheet.css"
+    rm "$XDG_CONFIG_HOME/qutebrowser/stylemap.py"
+    rm "$XDG_CONFIG_HOME/qutebrowser/styles/qute.css"
+    rm "$XDG_CONFIG_HOME/qutebrowser/styles/github.css"
+    rm "$XDG_CONFIG_HOME/qutebrowser/styles/hackernews.css"
+    rm "$XDG_CONFIG_HOME/qutebrowser/styles/wikipedia.css"
+    rmdir "$XDG_CONFIG_HOME/qutebrowser/styles" 2>/dev/null || true
+    rmdir "$XDG_CONFIG_HOME/qutebrowser" 2>/dev/null || true
 
     rm "$XDG_DATA_HOME/applications/org.qutebrowser.qutebrowser.desktop"
 
+    rm "$XDG_DATA_HOME/qutebrowser/userscripts/format_json.sh"
+    rm "$XDG_DATA_HOME/qutebrowser/userscripts/rebuild-grease-styles.py"
+    rm "$XDG_DATA_HOME/qutebrowser/userscripts/readability.py"
+    rmdir "$XDG_DATA_HOME/qutebrowser/userscripts" 2>/dev/null || true
+
     rm "$XDG_SCRIPTS_HOME/add-bookmark.sh"
-    rm "$XDG_SCRIPTS_HOME/select-bookmark.sh"
+    rm "$XDG_SCRIPTS_HOME/browse.sh"
     rm "$XDG_SCRIPTS_HOME/open-qutebrowser-session.sh"
+    rm "$XDG_SCRIPTS_HOME/select-bookmark.sh"
 
     rm "$XDG_TEMPLATES_DIR/bookmark.md~esh"
 
