@@ -3,5 +3,5 @@ profile.wm=sway
 
 modules.lib=lib-wayland-utils
 modules.theme=theme-desktop
-modules.install=alacritty bitwarden chromium direnv disable-xdg-desktop-files discord draw.io firefox fontconfig fuzzel ghostty gitui hyprlock imv mako mpv pandoc pyenv qutebrowser scripts-desktop scripts-markdown scripts-misc scripts-system-utils spotify udiskie vscodium vt waybar way-displays wezterm wofi xdg-mimetype-associations yay zathura
+modules.install=alacritty bitwarden chromium direnv disable-xdg-desktop-files discord draw.io fontconfig fuzzel ghostty gitui hyprlock imv mako mpv pandoc pyenv qutebrowser scripts-desktop scripts-markdown scripts-misc scripts-system-utils spotify udiskie vscodium vt waybar way-displays wezterm wofi xdg-mimetype-associations yay zathura
 modules.enable=pipewire ssh syncthing udiskie
