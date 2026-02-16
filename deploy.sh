@@ -232,7 +232,7 @@ cmd_uninstall() {
 
         log_header "Uninstalling profile: $target"
 
-        uninstall_services "${merged[enables]}"
+        disable_services "${merged[enables]}"
         uninstall_modules "install" "${merged[installs]}"
         uninstall_modules "theme" "${merged[themes]}"
         uninstall_modules "lib" "${merged[libs]}"
@@ -244,40 +244,6 @@ cmd_uninstall() {
         log_header "Uninstalling module: $target"
         uninstall_module "$target"
     fi
-}
-
-cmd_enable() {
-    local profile="$1"
-    [[ -f "profiles/$profile" ]] || log_error "\`$profile\` is not a profile"
-
-    local chain_str
-    chain_str=$(profile::get_inheritance_chain "$profile" profiles) || return 1
-
-    local -a chain=($chain_str)
-    local -A merged
-    profile::merge profiles merged "${chain[@]}" || return 1
-
-    [[ -n "${merged[enables]}" ]] || { echo "No services to enable for profile: $profile"; return 0; }
-
-    log_header "Enabling services for profile: $profile"
-    enable_services "${merged[enables]}"
-}
-
-cmd_disable() {
-    local profile="$1"
-    [[ -f "profiles/$profile" ]] || log_error "\`$profile\` is not a profile"
-
-    local chain_str
-    chain_str=$(profile::get_inheritance_chain "$profile" profiles) || return 1
-
-    local -a chain=($chain_str)
-    local -A merged
-    profile::merge profiles merged "${chain[@]}" || return 1
-
-    [[ -n "${merged[enables]}" ]] || { echo "No services to disable for profile: $profile"; return 0; }
-
-    log_header "Disabling services for profile: $profile"
-    disable_services "${merged[enables]}"
 }
 
 cmd_status() {
@@ -454,8 +420,6 @@ Usage: ./deploy.sh <command> [options]
 Commands:
   install <profile|module>    Install a profile or individual module
   uninstall [profile|module]  Uninstall (defaults to tracked state)
-  enable <profile>            Enable systemd services for a profile
-  disable <profile>           Disable systemd services for a profile
   list                        List available profiles and modules
   show <profile>              Show resolved modules for a profile
   status                      Show currently deployed profile
@@ -508,14 +472,6 @@ main() {
             ;;
         uninstall)
             cmd_uninstall "${2:-}"
-            ;;
-        enable)
-            [[ -z "${2:-}" ]] && log_error "enable requires a profile name"
-            cmd_enable "$2"
-            ;;
-        disable)
-            [[ -z "${2:-}" ]] && log_error "disable requires a profile name"
-            cmd_disable "$2"
             ;;
         status)
             cmd_status
