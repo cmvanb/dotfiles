@@ -498,7 +498,7 @@ main() {
             exit 0
             ;;
         *)
-            log_error_with_hint "Unknown command: $cmd" "Run \`./deploy.sh --help\` for usage."
+            log_error_with_hint "Unknown command: $cmd" "$(usage)"
             ;;
     esac
 }
