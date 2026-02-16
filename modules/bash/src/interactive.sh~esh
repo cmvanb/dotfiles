@@ -14,7 +14,7 @@ export HISTFILE="$XDG_DATA_HOME/bash/history"
 
 # Save python history in an XDG compliant directory.
 export PYTHON_HISTORY="$XDG_DATA_HOME/python/history"
-# <% if [[ $DEPLOY_PROFILE == "desktop" ]]; then -%>
+# <% if [[ " $DEPLOY_PROFILE " == *" desktop "* ]]; then -%>
 
 # Functions
 #-------------------------------------------------------------------------------
@@ -114,7 +114,7 @@ alias uu="sudo pacman -Syu"
 alias uu="sudo apt update && sudo apt upgrade -y"
 # <% fi -%>
 
-# <% if [[ $DEPLOY_PROFILE == "desktop" ]]; then -%>
+# <% if [[ " $DEPLOY_PROFILE " == *" desktop "* ]]; then -%>
 
 alias rb="reboot"
 alias sus="suspend"

@@ -13,7 +13,7 @@ function fish_deployed_aliases
     abbr -a uu "sudo apt update && sudo apt upgrade -y"
 # <% fi -%>
 
-# <% if [[ $DEPLOY_PROFILE == "desktop" ]]; then -%>
+# <% if [[ " $DEPLOY_PROFILE " == *" desktop "* ]]; then -%>
 
     abbr -a rb reboot
     abbr -a sus suspend

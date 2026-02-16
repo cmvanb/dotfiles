@@ -159,7 +159,7 @@ cmd_install() {
         local -A merged
         profile::merge profiles merged "${chain[@]}" || return 1
 
-        export DEPLOY_PROFILE="$target"
+        export DEPLOY_PROFILE="${chain[*]}"
         [[ -n "${merged[wm]}" ]] && export DEPLOY_WM="${merged[wm]}"
 
         log_header "Profile: $target"
