@@ -338,9 +338,7 @@ uninstall_modules() {
 
     local -a module_array=($modules)
     for ((i = ${#module_array[@]} - 1; i >= 0; i--)); do
-        uninstall_module "${module_array[$i]}" || {
-            log_error "Failed to uninstall module: ${module_array[$i]}"
-        }
+        uninstall_module "${module_array[$i]}" || true
     done
 }
 
@@ -353,7 +351,7 @@ uninstall_module() {
     source "$module_path"
 
     if declare -F "${module}::uninstall" >/dev/null 2>&1; then
-        "${module}::uninstall"
+        "${module}::uninstall" || echo "  Warning: ${module}::uninstall reported errors."
     fi
 }
 
@@ -371,7 +369,7 @@ enable_services() {
         source "$module_path"
 
         if declare -F "${service}::enable" >/dev/null 2>&1; then
-            "${service}::enable"
+            "${service}::enable" || echo "  Warning: ${service}::enable reported errors."
         fi
     done
 }
@@ -392,7 +390,7 @@ disable_services() {
         source "$module_path"
 
         if declare -F "${service}::disable" >/dev/null 2>&1; then
-            "${service}::disable"
+            "${service}::disable" || echo "  Warning: ${service}::disable reported errors."
         fi
     done
 }
