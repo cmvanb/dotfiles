@@ -22,7 +22,7 @@ theme-desktop::install () {
         || [[ $host == "supertubes" ]] \
         || [[ $host == "xray" ]] \
     ;then
-        force_link "$base_dir/modules/theme-desktop/src/fonts~home" "$XDG_CONFIG_HOME/theme/fonts"
+        force_link "$base_dir/modules/theme-desktop/src/fonts~linux" "$XDG_CONFIG_HOME/theme/fonts"
 
     elif [[ $host == "nlleq0413002159" ]]; then
         force_link "$base_dir/modules/theme-desktop/src/fonts~windows" "$XDG_CONFIG_HOME/theme/fonts"
