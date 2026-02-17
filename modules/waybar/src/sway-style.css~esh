@@ -2,8 +2,8 @@
 source $XDG_OPT_HOME/theme/theme.sh
 host=$(uname -n)
 if [[ $host == "casino" ]]; then
-    waybar_font_size=$font_size_small
-    waybar_tooltip_font_size=$font_size_xsmall
+    waybar_font_size=$font_size_large
+    waybar_tooltip_font_size=$font_size_mlarge
 else
     waybar_font_size=$font_size_medium
     waybar_tooltip_font_size=$font_size_msmall
