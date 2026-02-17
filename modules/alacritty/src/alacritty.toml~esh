@@ -1,4 +1,12 @@
-<% source $XDG_OPT_HOME/theme/theme.sh -%>
+<%
+source $XDG_OPT_HOME/theme/theme.sh
+host=$(uname -n)
+if [[ $host == "casino" ]]; then
+    terminal_font_size=$font_size_large
+else
+    terminal_font_size=$font_size_mlarge
+fi
+-%>
 #-------------------------------------------------------------------------------
 # Alacritty configuration file
 #-------------------------------------------------------------------------------
@@ -22,7 +30,7 @@ blinking = 'Off'
 shape = 'Block'
 
 [font]
-size = <%= $font_size_mlarge %>
+size = <%= $terminal_font_size %>
 
 [font.normal]
 family = '<%= $font_mono %>'
