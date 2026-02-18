@@ -6,7 +6,7 @@
 script_dir=$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)
 base_dir=$(realpath "$script_dir/../..")
 
-source "$base_dir/modules/lib-shell-utils/src/fs.sh"
+source "$base_dir/lib/fs.sh"
 
 
 direnv::install () {

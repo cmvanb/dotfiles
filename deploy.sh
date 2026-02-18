@@ -11,8 +11,8 @@ script_dir=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
 cd "$script_dir"
 
 source lib/profile.sh
-source modules/lib-shell-utils/src/fs.sh
-source modules/lib-shell-utils/src/linux.sh
+source lib/fs.sh
+source lib/linux.sh
 
 # Bootstrap environment
 #-------------------------------------------------------------------------------
