@@ -25,7 +25,7 @@ export XDG_OPT_HOME="${XDG_OPT_HOME:-$HOME/.local/opt}"
 export XDG_SCRIPTS_HOME="${XDG_SCRIPTS_HOME:-$HOME/.local/scripts}"
 export XDG_TEMPLATES_DIR="${XDG_TEMPLATES_DIR:-$HOME/.local/share/templates}"
 
-export DEPLOY_DISTRO="$(get_distro_id)"
+export DEPLOY_DISTRO="$(linux::get_distro_id)"
 export DEPLOY_HOST="$(uname -n)"
 export DEPLOY_PROFILE=""  # Will be set per profile
 export ESH_SHELL=/usr/bin/bash
