@@ -7,6 +7,7 @@ script_dir=$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)
 base_dir=$(realpath "$script_dir/../..")
 
 source "$base_dir/lib/fs.sh"
+source "$base_dir/lib/template.sh"
 
 
 theme-base::install () {
@@ -20,9 +21,9 @@ theme-base::install () {
     force_link "$XDG_CONFIG_HOME/theme/carbon-dark" "$XDG_CONFIG_HOME/theme/colors"
 
     ensure_directory "$XDG_CONFIG_HOME/theme"
-    esh "$base_dir/modules/theme-base/src/dircolors~esh" > "$XDG_CONFIG_HOME/theme/dircolors"
-    esh "$base_dir/modules/theme-base/src/eza-colors~esh" > "$XDG_CONFIG_HOME/theme/eza-colors"
-    esh "$base_dir/modules/theme-base/src/carbon-dark.theme~esh" > "$XDG_CONFIG_HOME/theme/carbon-dark.theme"
+    render_esh_template "$base_dir/modules/theme-base/src/dircolors~esh" "$XDG_CONFIG_HOME/theme/dircolors"
+    render_esh_template "$base_dir/modules/theme-base/src/eza-colors~esh" "$XDG_CONFIG_HOME/theme/eza-colors"
+    render_esh_template "$base_dir/modules/theme-base/src/carbon-dark.theme~esh" "$XDG_CONFIG_HOME/theme/carbon-dark.theme"
 
     "$XDG_OPT_HOME/theme/color-lookup-256-index.sh" --cache
 

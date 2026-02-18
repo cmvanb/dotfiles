@@ -7,6 +7,7 @@ script_dir=$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)
 base_dir=$(realpath "$script_dir/../..")
 
 source "$base_dir/lib/fs.sh"
+source "$base_dir/lib/template.sh"
 
 
 qutebrowser::install () {
@@ -16,11 +17,11 @@ qutebrowser::install () {
 
     ensure_directory "$XDG_CONFIG_HOME/qutebrowser"
     force_link "$src/config.py" "$XDG_CONFIG_HOME/qutebrowser/config.py"
-    esh "$src/stylesheet.css~esh" > "$XDG_CONFIG_HOME/qutebrowser/stylesheet.css"
+    render_esh_template "$src/stylesheet.css~esh" "$XDG_CONFIG_HOME/qutebrowser/stylesheet.css"
     force_link "$src/stylemap.py" "$XDG_CONFIG_HOME/qutebrowser/stylemap.py"
 
     ensure_directory "$XDG_CONFIG_HOME/qutebrowser/styles"
-    esh "$src/styles/qute.css~esh" > "$XDG_CONFIG_HOME/qutebrowser/styles/qute.css"
+    render_esh_template "$src/styles/qute.css~esh" "$XDG_CONFIG_HOME/qutebrowser/styles/qute.css"
     force_link "$src/styles/github.css" "$XDG_CONFIG_HOME/qutebrowser/styles/github.css"
     force_link "$src/styles/hackernews.css" "$XDG_CONFIG_HOME/qutebrowser/styles/hackernews.css"
     force_link "$src/styles/wikipedia.css" "$XDG_CONFIG_HOME/qutebrowser/styles/wikipedia.css"

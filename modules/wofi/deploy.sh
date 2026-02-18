@@ -7,6 +7,7 @@ script_dir=$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)
 base_dir=$(realpath "$script_dir/../..")
 
 source "$base_dir/lib/fs.sh"
+source "$base_dir/lib/template.sh"
 
 
 wofi::install () {
@@ -16,7 +17,7 @@ wofi::install () {
 
     ensure_directory "$XDG_CONFIG_HOME/wofi"
     force_link "$src/config" "$XDG_CONFIG_HOME/wofi/config"
-    esh "$src/style.css~esh" > "$XDG_CONFIG_HOME/wofi/style.css"
+    render_esh_template "$src/style.css~esh" "$XDG_CONFIG_HOME/wofi/style.css"
 }
 
 wofi::uninstall () {

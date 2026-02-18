@@ -7,6 +7,7 @@ script_dir=$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)
 base_dir=$(realpath "$script_dir/../..")
 
 source "$base_dir/lib/fs.sh"
+source "$base_dir/lib/template.sh"
 
 
 draw.io::install () {
@@ -15,7 +16,7 @@ draw.io::install () {
     local src="$base_dir/modules/draw.io/src"
 
     ensure_directory "$XDG_DATA_HOME/applications"
-    esh "$src/draw.io.desktop~esh" > "$XDG_DATA_HOME/applications/draw.io.desktop"
+    render_esh_template "$src/draw.io.desktop~esh" "$XDG_DATA_HOME/applications/draw.io.desktop"
 }
 
 draw.io::uninstall () {

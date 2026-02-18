@@ -7,6 +7,7 @@ script_dir=$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)
 base_dir=$(realpath "$script_dir/../..")
 
 source "$base_dir/lib/fs.sh"
+source "$base_dir/lib/template.sh"
 
 
 waybar::install () {
@@ -19,19 +20,19 @@ waybar::install () {
     # TODO: Use a symlink with window manager suffix to point to the correct waybar profile.
     if [[ $DEPLOY_WM == "hyprland" ]]; then
         force_link "$src/hyprland-config" "$XDG_CONFIG_HOME/waybar/config"
-        esh "$src/hyprland-style.css~esh" > "$XDG_CONFIG_HOME/waybar/style.css"
+        render_esh_template "$src/hyprland-style.css~esh" "$XDG_CONFIG_HOME/waybar/style.css"
 
     elif [[ $DEPLOY_WM == "niri" ]]; then
         force_link "$src/niri-config" "$XDG_CONFIG_HOME/waybar/config"
-        esh "$src/niri-style.css~esh" > "$XDG_CONFIG_HOME/waybar/style.css"
+        render_esh_template "$src/niri-style.css~esh" "$XDG_CONFIG_HOME/waybar/style.css"
 
     elif [[ $DEPLOY_WM == "river" ]]; then
         force_link "$src/river-config" "$XDG_CONFIG_HOME/waybar/config"
-        esh "$src/river-style.css~esh" > "$XDG_CONFIG_HOME/waybar/style.css"
+        render_esh_template "$src/river-style.css~esh" "$XDG_CONFIG_HOME/waybar/style.css"
 
     elif [[ $DEPLOY_WM == "sway" ]]; then
         force_link "$src/sway-config" "$XDG_CONFIG_HOME/waybar/config"
-        esh "$src/sway-style.css~esh" > "$XDG_CONFIG_HOME/waybar/style.css"
+        render_esh_template "$src/sway-style.css~esh" "$XDG_CONFIG_HOME/waybar/style.css"
 
     elif [[ -z $DEPLOY_WM ]]; then
         echo "[$(basename "$0")] ERROR: \$DEPLOY_WM not set."

@@ -7,6 +7,7 @@ script_dir=$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)
 base_dir=$(realpath "$script_dir/../..")
 
 source "$base_dir/lib/fs.sh"
+source "$base_dir/lib/template.sh"
 
 
 btop::install () {
@@ -19,7 +20,7 @@ btop::install () {
 
     ensure_directory "$XDG_CONFIG_HOME/btop/themes"
     # TODO: Extract templating to a shared function.
-    esh "$src/themes/carbon.theme~esh" > "$XDG_CONFIG_HOME/btop/themes/carbon.theme"
+    render_esh_template "$src/themes/carbon.theme~esh" "$XDG_CONFIG_HOME/btop/themes/carbon.theme"
 }
 
 btop::uninstall () {

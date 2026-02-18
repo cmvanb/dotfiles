@@ -7,6 +7,7 @@ script_dir=$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)
 base_dir=$(realpath "$script_dir/../..")
 
 source "$base_dir/lib/fs.sh"
+source "$base_dir/lib/template.sh"
 
 
 fontconfig::install () {
@@ -15,7 +16,7 @@ fontconfig::install () {
     local src="$base_dir/modules/fontconfig/src"
 
     ensure_directory "$XDG_CONFIG_HOME/fontconfig"
-    esh "$src/fonts.conf~esh" > "$XDG_CONFIG_HOME/fontconfig/fonts.conf"
+    render_esh_template "$src/fonts.conf~esh" "$XDG_CONFIG_HOME/fontconfig/fonts.conf"
 }
 
 fontconfig::uninstall () {

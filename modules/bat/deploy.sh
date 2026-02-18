@@ -8,6 +8,7 @@ base_dir=$(realpath "$script_dir/../..")
 
 source "$base_dir/lib/debug.sh"
 source "$base_dir/lib/fs.sh"
+source "$base_dir/lib/template.sh"
 
 
 bat::install () {
@@ -22,7 +23,7 @@ bat::install () {
     force_link "$src/syntaxes" "$XDG_CONFIG_HOME/bat/syntaxes"
 
     ensure_directory "$XDG_CONFIG_HOME/bat/themes"
-    esh "$base_dir/modules/theme-base/src/carbon-dark.tmTheme~esh" > "$XDG_CONFIG_HOME/bat/themes/carbon-dark.tmTheme"
+    render_esh_template "$base_dir/modules/theme-base/src/carbon-dark.tmTheme~esh" "$XDG_CONFIG_HOME/bat/themes/carbon-dark.tmTheme"
 
     bat cache --build
 }

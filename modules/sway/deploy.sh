@@ -8,6 +8,7 @@ base_dir=$(realpath "$script_dir/../..")
 host=$(uname -n)
 
 source "$base_dir/lib/fs.sh"
+source "$base_dir/lib/template.sh"
 
 
 sway::install () {
@@ -38,7 +39,7 @@ sway::install () {
         echo "└> Warning: No outputs.conf configuration for host '$host'."
     fi
 
-    esh -o "$XDG_CONFIG_HOME/sway/theme.conf" "$src/theme.conf~esh"
+    render_esh_template "$src/theme.conf~esh" "$XDG_CONFIG_HOME/sway/theme.conf"
 
     echo "└> Installing sway shortcuts."
 
