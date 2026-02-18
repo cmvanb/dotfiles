@@ -512,6 +512,9 @@ table,
 pre {
   margin: 15px 0;
 }
+li > p {
+  margin-bottom: 0;
+}
 ul {
   padding-left: 30px;
 }
