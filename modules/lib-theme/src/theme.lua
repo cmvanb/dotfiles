@@ -1,176 +1,49 @@
 --------------------------------------------------------------------------------
 -- System theme Lua API
+--
+-- Loads the pre-generated theme dict from $XDG_CACHE_HOME/theme/theme.lua
+-- and exposes a typed API mirroring theme.py.
 --------------------------------------------------------------------------------
 
-local theme = {}
+local cache_dir = os.getenv('XDG_CACHE_HOME') .. '/theme'
 
--- Utilities
+-- Load the pre-generated dict.
+local _prev_path = package.path
+package.path = cache_dir .. '/?.lua;' .. package.path
+local _dict = require('theme-data')
+package.path = _prev_path
+
+assert(_dict ~= nil, '[theme.lua] Could not load theme dict from ' .. cache_dir .. '/theme-data.lua')
+
+-- Private helpers
 --------------------------------------------------------------------------------
 
-function file_exists(name)
-    local f = io.open(name, 'r')
-    if f ~= nil then
-        io.close(f)
-        return true
-    else
-        return false
+local function _color(name)
+    local v = _dict.colors[name]
+    if v == nil then
+        error('[theme.lua] Color `' .. name .. '` not found.', 3)
     end
+    return v
 end
 
-function raise_error(message)
-    error('[theme.lua] ERROR: ' .. message)
-end
-
--- Parsing
---------------------------------------------------------------------------------
-
-local function parse_error(line, column, message)
-    raise_error('Unable to continue parsing at line ' .. line.. ', column ' .. column .. ': ' .. message)
-end
-
-local function parse_vars(filePath)
-    local file = io.open(filePath, 'r')
-    if file == nil then
-        raise_error('Could not open file: ' .. filePath)
+local function _font(name)
+    local v = _dict.fonts[name]
+    if v == nil then
+        error('[theme.lua] Font `' .. name .. '` not found.', 3)
     end
+    return v
+end
 
-    local lines = io.lines(filePath)
-    io.close(file)
-
-    local vars = {}
-    local line_count = 0
-
-    for line in lines do
-        local key = nil
-        local value = nil
-        local assignment = false
-        local lookup = false
-
-        line_count = line_count + 1
-
-        for i = 1, #line do
-            local char = line:byte(i)
-
-            -- Space after assignment, append to value.
-            -- Space before assignment, keep reading.
-            if char == string.byte(' ') then
-                if assignment == true then
-                    if value == nil then
-                        value = ''
-                    end
-                    value = value .. string.char(char)
-                else
-                    goto continue
-                end
-
-            -- Hash after assignment, char is ignored, but continue parsing value.
-            -- Hash before assignment, line is skipped.
-            elseif char == string.byte('#') then
-                if assignment == true then
-                    goto continue
-                else
-                    key = nil
-                    value = nil
-                    break
-                end
-
-            -- Quote, char is ignored, only allowed after assignment
-            elseif char == string.byte('\'') then
-                if assignment == true then
-                    goto continue
-                else
-                    parse_error(line_count, i, 'Expected character [' .. char .. '] only after assignment.')
-                end
-
-            -- Dollar, indicates variable lookup, only allowed after assignment
-            elseif char == string.byte('$') then
-                if assignment == true then
-                    lookup = true
-                    goto continue
-                else
-                    parse_error(line_count, i, 'Expected character [' .. char .. '] only after assignment.')
-                end
-
-            -- Alphanumeric or underscore, append to either key or value
-            elseif string.match(string.char(char), '[%w_]') ~= nil then
-                if assignment == false then
-                    if key == nil then
-                        key = ''
-                    end
-                    key = key .. string.char(char)
-                else
-                    if value == nil then
-                        value = ''
-                    end
-                    value = value .. string.char(char)
-                end
-
-            -- Decimal point, append to value, only allowed after assignment
-            elseif char == string.byte('.') then
-                if assignment == true then
-                    if value == nil then
-                        value = ''
-                    end
-                    value = value .. string.char(char)
-                    goto continue
-                else
-                    parse_error(line_count, i, 'Expected character [' .. char .. '] only after assignment.')
-                end
-
-            -- Assignment operator reached, keep reading for value
-            elseif char == string.byte('=') then
-                if assignment == false then
-                    assignment = true
-                    goto continue
-                end
-            else
-                parse_error(line_count, i, 'Unknown character [' .. char .. '].')
-            end
-
-            -- Lua doesn't have the typical continue operator, so we use `goto`.
-            ::continue::
-        end
-
-        -- Assign value
-        if key ~= nil and value ~= nil then
-            if lookup == true then
-                vars[key] = vars[value]
-            else
-                vars[key] = value
-            end
-        end
+local function _cursor(name)
+    local v = _dict.cursor[name]
+    if v == nil then
+        error('[theme.lua] Cursor `' .. name .. '` not found.', 3)
     end
-
-    return vars
+    return v
 end
 
--- Entry point
---------------------------------------------------------------------------------
-
-local colors_path = os.getenv('XDG_CONFIG_HOME') .. '/theme/colors'
-local colors = {}
-if file_exists(colors_path) then
-    colors = parse_vars(colors_path)
-else
-    raise_error('Theme color file is not readable.')
-end
-
-local fonts_path = os.getenv('XDG_CONFIG_HOME') .. '/theme/fonts'
-local fonts = {}
-if file_exists(fonts_path) then
-    fonts = parse_vars(fonts_path)
-end
-
-local cursor_path = os.getenv('XDG_CONFIG_HOME') .. '/theme/cursor'
-local cursor = {}
-if file_exists(cursor_path) then
-    cursor = parse_vars(cursor_path)
-end
-
--- Lookup
---------------------------------------------------------------------------------
-
-local ansi_lookup = {
+-- ANSI index lookup
+local _ansi_index = {
     ['black']     = 0,
     ['red']       = 1,
     ['green']     = 2,
@@ -186,82 +59,81 @@ local ansi_lookup = {
     ['brblue']    = 12,
     ['brmagenta'] = 13,
     ['brcyan']    = 14,
-    ['brwhite']   = 15
+    ['brwhite']   = 15,
 }
 
-function theme.color_name_to_ansi_index(name)
-    if string.sub(name, 1, 5) == 'ansi_' then
-        name = string.sub(name, 6, -1)
-    else
-        error('theme.name_to_ansi_index expects string with format: `ansi_{name}`, received: `' .. name .. '`', 2)
-    end
-
-    if string.len(name) <= 0 then
-        error('theme.name_to_ansi_index expects string with format: `ansi_{name}`, received empty string.', 2)
-    end
-
-    local result = ansi_lookup[name]
-
-    if result == nil then
-        error('theme.name_to_ansi_index did not find `' .. name .. '`, expected format is: `ansi_{name}`.', 2)
-    end
-
-    return result
-end
-
-function theme.color_index_to_name(index)
-    if index < 0 or index > 15 then
-        error('theme.index_to_name expects integer 0 -> 15, received: ' .. index, 2)
-    end
-    return colors['i' .. index]
-end
-
-function theme.color_named(name)
-    local result = colors[name]
-
-    if result == nil then
-        error('theme.color_named did not find `' .. name .. '`.', 2)
-    end
-
-    return result
-end
-
-function theme.color_hash(name)
-    local result = colors[name]
-
-    if result == nil then
-        error('theme.color_hash did not find `' .. name .. '`.', 2)
-    end
-
-    return '#' .. result
-end
-
-function theme.color_zerox(name)
-    local result = colors[name]
-
-    if result == nil then
-        error('theme.color_zerox did not find `' .. name .. '`.', 2)
-    end
-
-    return '0x' .. result
-end
-
-function theme.font(name)
-    return fonts[name]
-end
-
-function theme.cursor(name)
-    return cursor[name]
-end
-
--- Debugging
+-- API
 --------------------------------------------------------------------------------
 
--- TODO: Use terminal escape codes to colorize output
-function theme.print_colors()
-    for k, v in pairs(colors) do
-        print(k .. ": " .. v)
-    end
+local Theme = {}
+
+-- Returns bare hex:  "RRGGBB"
+function Theme.color_named(name)
+    return _color(name)
 end
 
-return theme
+-- Returns hash hex:  "#RRGGBB"
+function Theme.color_hash(name)
+    return '#' .. _color(name)
+end
+
+-- Returns 0x hex:   "0xRRGGBB"
+function Theme.color_zerox(name)
+    return '0x' .. _color(name)
+end
+
+-- Returns ANSI 24-bit fg escape sequence
+function Theme.color_ansi_fg(name)
+    local hex = _color(name)
+    local r = tonumber(hex:sub(1, 2), 16)
+    local g = tonumber(hex:sub(3, 4), 16)
+    local b = tonumber(hex:sub(5, 6), 16)
+    return string.format('\x1b[38:2:%d:%d:%dm', r, g, b)
+end
+
+-- Returns ANSI 24-bit bg escape sequence
+function Theme.color_ansi_bg(name)
+    local hex = _color(name)
+    local r = tonumber(hex:sub(1, 2), 16)
+    local g = tonumber(hex:sub(3, 4), 16)
+    local b = tonumber(hex:sub(5, 6), 16)
+    return string.format('\x1b[48:2:%d:%d:%dm', r, g, b)
+end
+
+-- Returns ANSI reset sequence
+function Theme.color_ansi_reset()
+    return '\x1b[0m'
+end
+
+-- Returns the ANSI 0-15 index for an `ansi_*` color name
+function Theme.color_name_to_ansi_index(name)
+    local suffix = name:match('^ansi_(.+)$')
+    if suffix == nil then
+        error('[theme.lua] color_name_to_ansi_index expects `ansi_{name}`, received: `' .. name .. '`', 2)
+    end
+    local index = _ansi_index[suffix]
+    if index == nil then
+        error('[theme.lua] color_name_to_ansi_index: unknown ANSI name `' .. suffix .. '`', 2)
+    end
+    return index
+end
+
+-- Returns the hex color for an i0-i15 index
+function Theme.color_index_to_name(index)
+    if index < 0 or index > 15 then
+        error('[theme.lua] color_index_to_name expects 0-15, received: ' .. index, 2)
+    end
+    return _dict.colors['i' .. index]
+end
+
+-- Returns a font value by key
+function Theme.font(name)
+    return _font(name)
+end
+
+-- Returns a cursor value by key
+function Theme.cursor(name)
+    return _cursor(name)
+end
+
+return Theme

@@ -2,42 +2,43 @@
 # Color utilities
 #-------------------------------------------------------------------------------
 
-import argparse
+from dataclasses import dataclass
 
-def float_range(minimum, maximum):
-    def float_range_checker(arg):
-        try:
-            f = float(arg)
-        except ValueError:
-            raise argparse.ArgumentTypeError('Must be a floating point number.')
-        if f < minimum or f > maximum:
-            raise argparse.ArgumentTypeError(f'Must be in range ({str(minimum)} .. {str(maximum)}).')
-        return f
 
-    return float_range_checker
-
-def hex_color():
-    def hex_color_checker(arg):
-        if len(arg) != 6:
-            raise argparse.ArgumentTypeError('Hexadecimal value must be 6 chars.')
-        try:
-            _ = int(arg, 16)
-        except ValueError:
-            raise argparse.ArgumentTypeError('Must be a hexadecimal value.')
-
-        return Color(arg)
-
-    return hex_color_checker
-
+@dataclass
 class Color():
-    def __init__(self, hex):
-        self.hex = hex
-        self.r = int(hex[0:2], 16)
-        self.g = int(hex[2:4], 16)
-        self.b = int(hex[4:6], 16)
+    def __init__(self, input: str):
+        if input.startswith('#'):
+            input = input[1:]
 
-    def to_css_rgba(self, alpha):
+        if len(input) != 6:
+            raise ValueError(f'`{input}` must be 6 chars.')
+
+        try:
+            _ = int(input, 16)
+
+        except ValueError:
+            raise ValueError(f'`{input}` not a hexadecimal value.')
+
+        self.hex = input
+        self.r = int(self.hex[0:2], 16)
+        self.g = int(self.hex[2:4], 16)
+        self.b = int(self.hex[4:6], 16)
+
+    def __str__(self):
+        return self.as_hex()
+
+    def as_hex(self) -> str:
+        return self.hex
+
+    def as_css_rgba(self, alpha: float) -> str:
         return f'rgba({self.r}, {self.g}, {self.b}, {alpha})'
 
-    def to_rgb_int(self):
+    def as_rgb_int(self) -> str:
         return f'{self.r},{self.g},{self.b}'
+
+    def with_hash(self) -> str:
+        return f'#{self.hex}'
+
+    def with_zerox(self) -> str:
+        return f'0x{self.hex}'

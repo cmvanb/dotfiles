@@ -7,7 +7,7 @@ local wezterm = require('wezterm')
 -- Retrieve system theme
 --------------------------------------------------------------------------------
 
-package.path = os.getenv('XDG_OPT_HOME') .. '/theme' .. [[/?.lua]]
+package.path = os.getenv('XDG_OPT_HOME') .. '/theme/?.lua;' .. package.path
 local theme = require('theme')
 
 -- Helpers
