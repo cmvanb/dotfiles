@@ -16,6 +16,7 @@ function fish_shared_aliases
     abbr -a gco git checkout
     abbr -a gcp git cherry-pick
     abbr -a gd git diff
+    abbr -a gdd git -c delta.side-by-side=true diff
     abbr -a gds git diff --staged
     abbr -a gl git log --pretty=history
     abbr -a gp git push
