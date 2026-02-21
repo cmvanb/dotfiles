@@ -19,13 +19,11 @@ theme-base::install () {
 
     force_link "$src/carbon-dark.yaml"  "$XDG_CONFIG_HOME/theme/carbon-dark.yaml"
     force_link "$src/carbon-light.yaml" "$XDG_CONFIG_HOME/theme/carbon-light.yaml"
-    force_link "$src/fonts-linux.yaml"  "$XDG_CONFIG_HOME/theme/fonts-linux.yaml"
-    force_link "$src/fonts-windows.yaml" "$XDG_CONFIG_HOME/theme/fonts-windows.yaml"
     force_link "$src/cursor.yaml"       "$XDG_CONFIG_HOME/theme/cursor.yaml"
 
-    # TODO: Symlink the colors and fonts based on hostname.
+    # TODO: Select color scheme and fonts based on hostname.
     force_link "$XDG_CONFIG_HOME/theme/carbon-dark.yaml" "$XDG_CONFIG_HOME/theme/colors.yaml"
-    force_link "$XDG_CONFIG_HOME/theme/fonts-linux.yaml" "$XDG_CONFIG_HOME/theme/fonts.yaml"
+    force_link "$src/fonts-linux.yaml" "$XDG_CONFIG_HOME/theme/fonts.yaml"
 
     python3 "$XDG_OPT_HOME/theme/theme.py" parse \
         "$XDG_CONFIG_HOME/theme/colors.yaml" \
@@ -42,8 +40,6 @@ theme-base::uninstall () {
 
     rm -f "$XDG_CONFIG_HOME/theme/carbon-dark.yaml"
     rm -f "$XDG_CONFIG_HOME/theme/carbon-light.yaml"
-    rm -f "$XDG_CONFIG_HOME/theme/fonts-linux.yaml"
-    rm -f "$XDG_CONFIG_HOME/theme/fonts-windows.yaml"
     rm -f "$XDG_CONFIG_HOME/theme/cursor.yaml"
     rm -f "$XDG_CONFIG_HOME/theme/colors.yaml"
     rm -f "$XDG_CONFIG_HOME/theme/fonts.yaml"
