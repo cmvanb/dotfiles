@@ -262,30 +262,77 @@ n
 
 Provides unified color, font, and cursor management across all dotfiles. The theme system has three layers:
 
-- **`lib-theme`** — Runtime APIs and color conversion utilities
-- **`theme-base`** — Color scheme definitions and terminal-level assets
-- **`theme-desktop`** — Font definitions, cursor theme, GTK configuration
+- **`lib-theme`** — Runtime APIs in Bash, Fish, Lua, and Python, plus a cache generator
+- **`theme-base`** — Color scheme definitions, font definitions, cursor definitions, and terminal-level assets
+- **`theme-desktop`** — GTK configuration
+
+### Source Files
+
+Theme data is split into composable YAML files, each containing a single concern:
+
+```
+theme-base/src/
+├── carbon-dark.yaml       # Colors — dark scheme
+├── carbon-light.yaml      # Colors — light scheme
+├── fonts-linux.yaml       # Fonts — Linux
+├── fonts-windows.yaml     # Fonts — Windows
+└── cursor.yaml            # Cursor — shared
+```
+
+Each file contains a single top-level key (`colors:`, `fonts:`, or `cursor:`).
 
 ### Color Scheme Structure
 
-Color schemes are text files with key-value pairs. Colors are defined as hex strings in `key='#RRGGBB'` format. Variables can reference other variables: `i0=$gray_0`.
+Color schemes are YAML files. Colors are defined as hex strings in `key: "#RRGGBB"` format. YAML anchors and aliases enable internal references: `i0: *gray_0`.
 
-**Core palettes** — Four 16-step gradients.
+**Core palettes** — Four 16-step gradients: `primary`, `secondary`, `text`, `gray`
 
-**Accent palettes** — Eight 10-step gradients.
+**Accent palettes** — Eight 10-step gradients: `red`, `orange`, `yellow`, `green`, `cyan`, `blue`, `purple`, `magenta`
 
-**ANSI colors** — The 16 terminal color indices are mapped to palette colors, with ANSI aliases.
+**ANSI colors** — The 16 terminal color indices (`i0`–`i15`) are mapped to palette colors, with named aliases (`ansi_red`, `ansi_brblue`, etc.)
 
-### Color Scheme Selection
+### Deployed Layout
 
-The active scheme is selected by a symlink at `$XDG_CONFIG_HOME/theme/colors` pointing to a color scheme file.
+At deploy time, `theme-base` symlinks the source files and creates indirection symlinks to select the active configuration:
+
+```
+$XDG_CONFIG_HOME/theme/
+├── carbon-dark.yaml       -> src/carbon-dark.yaml
+├── carbon-light.yaml      -> src/carbon-light.yaml
+├── cursor.yaml            -> src/cursor.yaml
+├── colors.yaml            -> carbon-dark.yaml       # active color scheme
+└── fonts.yaml             -> src/fonts-linux.yaml   # active font set
+```
+
+The deploy script then runs the cache generator:
+
+```bash
+python3 $XDG_OPT_HOME/theme/theme.py parse \
+    $XDG_CONFIG_HOME/theme/colors.yaml \
+    $XDG_CONFIG_HOME/theme/fonts.yaml \
+    $XDG_CONFIG_HOME/theme/cursor.yaml
+```
+
+This merges the YAML files and writes three cache files to `$XDG_CACHE_HOME/theme/`:
+
+- **`theme-data.lua`** — Lua table (consumed by `theme.lua`)
+- **`theme-data.sh`** — Bash variables as `key='RRGGBB'` (consumed by `theme.sh`)
+- **`theme-data.fish`** — Fish variables as `set -g key 'RRGGBB'` (consumed by `theme.fish`)
 
 ### Theme API
 
-Provides functions to retrieve colors in various formats, as well as font and cursor variables. Lookup functions are available in Bash, Fish, Lua and Python.
+The `lib-theme` module provides runtime lookup functions in four languages. All APIs are symlinked into `$XDG_OPT_HOME/theme/`.
 
-**Color functions**:
+**Library files:**
 
+| File | Language | Loads from |
+|---|---|---|
+| `theme.sh` | Bash | `$XDG_CACHE_HOME/theme/theme-data.sh` |
+| `theme.fish` | Fish | `$XDG_CACHE_HOME/theme/theme-data.fish` |
+| `theme.lua` | Lua | `$XDG_CACHE_HOME/theme/theme-data.lua` |
+| `theme.py` | Python | `$XDG_CONFIG_HOME/theme/{colors,fonts,cursor}.yaml` |
+
+**Color functions:**
 
 | Function | Output format | Example |
 |---|---|---|
@@ -295,15 +342,16 @@ Provides functions to retrieve colors in various formats, as well as font and cu
 | `color_rgb_int` | `R,G,B` | `5,170,255` |
 | `color_css_rgba` | `rgba(R, G, B, A)` | `rgba(5, 170, 255, 0.8)` |
 | `color_256` | 256-color index | `31` |
-| `color_ansi` | ANSI 24-bit escape | `\e[38;2;5;170;255m` |
+| `color_ansi_fg` | ANSI 24-bit fg escape | `\e[38:2:5:170:255m` |
+| `color_ansi_bg` | ANSI 24-bit bg escape | `\e[48:2:5:170:255m` |
+| `color_ansi_reset` | ANSI reset escape | `\e[0m` |
 
-
-**Font and cursor variables**:
+**Font and cursor functions:**
 
 | Function | Output format | Example |
 |---|---|---|
-| `font` | `font_name` | `Agave Nerd Font Mono` |
-| `cursor` | `cursor_name` | `Qogir-dark` |
+| `font` | font value by key | `Agave Nerd Font Mono` |
+| `cursor` | cursor value by key | `Simp1e` |
 
 ---
 
