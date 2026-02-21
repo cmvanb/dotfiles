@@ -169,7 +169,7 @@ c.hints.border = f'1px solid {theme.color_hash("purple_2")}'
 c.hints.padding = { 'top': 2, 'bottom': 0, 'left': 2, 'right': 2 }
 c.hints.radius = 4
 
-c.colors.hints.bg = f'qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 {theme.color_rgba('purple_3', 1.0)}, stop:1 {theme.color_rgba('purple_0', 1.0)})'
+c.colors.hints.bg = f'qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 {theme.color_css_rgba('purple_3', 1.0)}, stop:1 {theme.color_css_rgba('purple_0', 1.0)})'
 c.colors.hints.fg = theme.color_hash('purple_9')
 c.colors.hints.match.fg = theme.color_hash('magenta_6')
 

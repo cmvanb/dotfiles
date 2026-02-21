@@ -19,7 +19,8 @@ fish_deployed_aliases
 #-------------------------------------------------------------------------------
 
 # Configure directory colors (ls, eza, lf).
-source $XDG_OPT_HOME/theme/configure-dircolors.fish
+eval (dircolors --c-shell $XDG_CONFIG_HOME/theme/dircolors)
+set -x EZA_COLORS (tr -d '\n' < $XDG_CONFIG_HOME/theme/eza-colors)$LS_COLORS
 
 # Parse system theme and provide API.
 source $XDG_OPT_HOME/theme/theme.fish

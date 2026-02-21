@@ -161,8 +161,9 @@ bind -x '"\C-y":"clear"'
 #-------------------------------------------------------------------------------
 
 # Configure directory colors (ls, eza, lf).
-# shellcheck disable=SC1091
-source "$XDG_OPT_HOME/theme/configure-dircolors.sh"
+eval "$(dircolors --bourne-shell "$XDG_CONFIG_HOME/theme/dircolors")"
+EZA_COLORS="$(tr -d '\n' < "$XDG_CONFIG_HOME/theme/eza-colors")$LS_COLORS"
+export EZA_COLORS
 
 # Prompt
 #-------------------------------------------------------------------------------

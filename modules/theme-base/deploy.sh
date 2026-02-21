@@ -14,31 +14,45 @@ theme-base::install () {
     echo "└> Installing theme base configuration."
 
     ensure_directory "$XDG_CONFIG_HOME/theme"
-    force_link "$base_dir/modules/theme-base/src/carbon-dark" "$XDG_CONFIG_HOME/theme/carbon-dark"
-    force_link "$base_dir/modules/theme-base/src/carbon-light" "$XDG_CONFIG_HOME/theme/carbon-light"
 
-    # TODO: Use a symlink with hostname suffix to point to the correct color profile.
-    force_link "$XDG_CONFIG_HOME/theme/carbon-dark" "$XDG_CONFIG_HOME/theme/colors"
+    local src="$base_dir/modules/theme-base/src"
 
-    ensure_directory "$XDG_CONFIG_HOME/theme"
-    render_esh_template "$base_dir/modules/theme-base/src/dircolors~esh" "$XDG_CONFIG_HOME/theme/dircolors"
-    render_esh_template "$base_dir/modules/theme-base/src/eza-colors~esh" "$XDG_CONFIG_HOME/theme/eza-colors"
-    render_esh_template "$base_dir/modules/theme-base/src/carbon-dark.theme~esh" "$XDG_CONFIG_HOME/theme/carbon-dark.theme"
+    force_link "$src/carbon-dark.yaml"  "$XDG_CONFIG_HOME/theme/carbon-dark.yaml"
+    force_link "$src/carbon-light.yaml" "$XDG_CONFIG_HOME/theme/carbon-light.yaml"
+    force_link "$src/fonts-linux.yaml"  "$XDG_CONFIG_HOME/theme/fonts-linux.yaml"
+    force_link "$src/fonts-windows.yaml" "$XDG_CONFIG_HOME/theme/fonts-windows.yaml"
+    force_link "$src/cursor.yaml"       "$XDG_CONFIG_HOME/theme/cursor.yaml"
 
-    "$XDG_OPT_HOME/theme/color-lookup-256-index.sh" --cache
+    # TODO: Symlink the colors and fonts based on hostname.
+    force_link "$XDG_CONFIG_HOME/theme/carbon-dark.yaml" "$XDG_CONFIG_HOME/theme/colors.yaml"
+    force_link "$XDG_CONFIG_HOME/theme/fonts-linux.yaml" "$XDG_CONFIG_HOME/theme/fonts.yaml"
 
-    source "$XDG_OPT_HOME/theme/configure-dircolors.sh"
+    python3 "$XDG_OPT_HOME/theme/theme.py" parse \
+        "$XDG_CONFIG_HOME/theme/colors.yaml" \
+        "$XDG_CONFIG_HOME/theme/fonts.yaml" \
+        "$XDG_CONFIG_HOME/theme/cursor.yaml"
+
+    render_esh_template "$src/dircolors~esh" "$XDG_CONFIG_HOME/theme/dircolors"
+    render_esh_template "$src/eza-colors~esh" "$XDG_CONFIG_HOME/theme/eza-colors"
+    render_esh_template "$src/carbon-dark.theme~esh" "$XDG_CONFIG_HOME/theme/carbon-dark.theme"
 }
 
 theme-base::uninstall () {
     echo "└> Uninstalling theme base configuration."
 
-    rm "$XDG_CONFIG_HOME/theme/carbon-dark"
-    rm "$XDG_CONFIG_HOME/theme/carbon-light"
+    rm -f "$XDG_CONFIG_HOME/theme/carbon-dark.yaml"
+    rm -f "$XDG_CONFIG_HOME/theme/carbon-light.yaml"
+    rm -f "$XDG_CONFIG_HOME/theme/fonts-linux.yaml"
+    rm -f "$XDG_CONFIG_HOME/theme/fonts-windows.yaml"
+    rm -f "$XDG_CONFIG_HOME/theme/cursor.yaml"
+    rm -f "$XDG_CONFIG_HOME/theme/colors.yaml"
+    rm -f "$XDG_CONFIG_HOME/theme/fonts.yaml"
 
-    rm "$XDG_CONFIG_HOME/theme/colors"
+    rm -f "$XDG_CACHE_HOME/theme/theme-data.lua"
+    rm -f "$XDG_CACHE_HOME/theme/theme-data.sh"
+    rm -f "$XDG_CACHE_HOME/theme/theme-data.fish"
 
-    rm "$XDG_CONFIG_HOME/theme/dircolors"
-    rm "$XDG_CONFIG_HOME/theme/eza-colors"
-    rm "$XDG_CONFIG_HOME/theme/carbon-dark.theme"
+    rm -f "$XDG_CONFIG_HOME/theme/dircolors"
+    rm -f "$XDG_CONFIG_HOME/theme/eza-colors"
+    rm -f "$XDG_CONFIG_HOME/theme/carbon-dark.theme"
 }
