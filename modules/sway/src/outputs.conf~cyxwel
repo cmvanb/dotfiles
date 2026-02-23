@@ -1,0 +1,11 @@
+#-------------------------------------------------------------------------------
+# Sway output configuration - cyxwel
+#
+# HDMI-A-6 is optional; sway ignores it when disconnected.
+#-------------------------------------------------------------------------------
+
+output HDMI-A-6 pos -1200 0 transform 270
+
+output "Iiyama North America PL2790QS 1178024901361" pos 0 0 scale 1.125 mode 2560x1440@240Hz
+
+output DP-4 pos 2275 0 transform 270

@@ -1,0 +1,22 @@
+# Workspace-to-output assignments (auto-generated)
+<%
+order_file="${XDG_CONFIG_HOME:-$HOME/.config}/sway/output-order"
+named_workspaces=(home work todo spotify auth)
+slot=0
+while IFS= read -r output; do
+    offset=$(( slot * 10 ))
+    for i in {1..10}; do
+-%>
+workspace <%= $(( offset + i )) %> output <%= $output %>
+<%
+    done
+    if [[ $slot -eq 0 ]]; then
+        for ws in "${named_workspaces[@]}"; do
+-%>
+workspace <%= $ws %> output <%= $output %>
+<%
+        done
+    fi
+    slot=$(( slot + 1 ))
+done < <(grep -v '^\s*#' "$order_file" | grep -v '^\s*$')
+-%>

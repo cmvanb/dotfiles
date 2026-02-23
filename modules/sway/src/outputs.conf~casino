@@ -1,7 +1,7 @@
 #-------------------------------------------------------------------------------
-# Sway output configuration - Dual monitor setup
+# Sway output configuration - casino (laptop)
 #-------------------------------------------------------------------------------
 
-output "Iiyama North America PL2790QS 1178024901361" pos 0 0
+output "Iiyama North America PL2790QS 1178024901361" pos 0 0 scale 1.125 mode 2560x1440@240Hz
 
 output eDP-1 pos 2560 0 scale 1.5 mode 2560x1600@120Hz
