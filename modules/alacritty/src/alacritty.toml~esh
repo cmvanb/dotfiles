@@ -2,9 +2,9 @@
 source $XDG_OPT_HOME/theme/theme.sh
 host=$(uname -n)
 if [[ $host == "casino" ]]; then
-    terminal_font_size=$font_size_large
+    terminal_font_size=$font_size_medium
 else
-    terminal_font_size=$font_size_mlarge
+    terminal_font_size=$font_size_msmall
 fi
 -%>
 #-------------------------------------------------------------------------------
