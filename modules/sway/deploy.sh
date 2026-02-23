@@ -22,23 +22,22 @@ sway::install () {
     force_link "$src/keymaps.conf" "$XDG_CONFIG_HOME/sway/keymaps.conf"
     force_link "$src/refresh.sh" "$XDG_CONFIG_HOME/sway/refresh.sh"
     force_link "$src/sws.sh" "$XDG_CONFIG_HOME/sway/sws.sh"
+    force_link "$src/outputs-workspace-mapper.sh" "$XDG_CONFIG_HOME/sway/outputs-workspace-mapper.sh"
+    force_link "$src/startup-workspace.sh" "$XDG_CONFIG_HOME/sway/startup-workspace.sh"
 
     if [[ $host == "casino" ]]; then
-        force_link "$src/outputs.conf~home-laptop" "$XDG_CONFIG_HOME/sway/outputs.conf"
-        force_link "$src/workspace.conf~home-laptop" "$XDG_CONFIG_HOME/sway/workspace.conf"
+        force_link "$src/outputs.conf~casino" "$XDG_CONFIG_HOME/sway/outputs.conf"
+        force_link "$src/output-order~casino" "$XDG_CONFIG_HOME/sway/output-order"
 
     elif [[ $host == "cyxwel" ]]; then
-        force_link "$src/outputs.conf~home-dual" "$XDG_CONFIG_HOME/sway/outputs.conf"
-        force_link "$src/workspace.conf~home-dual" "$XDG_CONFIG_HOME/sway/workspace.conf"
-
-    elif [[ $host == "supertubes" ]]; then
-        force_link "$src/outputs.conf~home-dual" "$XDG_CONFIG_HOME/sway/outputs.conf"
-        force_link "$src/workspace.conf~home-dual" "$XDG_CONFIG_HOME/sway/workspace.conf"
+        force_link "$src/outputs.conf~cyxwel" "$XDG_CONFIG_HOME/sway/outputs.conf"
+        force_link "$src/output-order~cyxwel" "$XDG_CONFIG_HOME/sway/output-order"
 
     else
-        echo "└> Warning: No outputs.conf configuration for host '$host'."
+        echo "└> Warning: No outputs configuration for host '$host'."
     fi
 
+    render_esh_template "$src/workspaces.conf~esh" "$XDG_CONFIG_HOME/sway/workspaces.conf"
     render_esh_template "$src/theme.conf~esh" "$XDG_CONFIG_HOME/sway/theme.conf"
 
     echo "└> Installing sway shortcuts."

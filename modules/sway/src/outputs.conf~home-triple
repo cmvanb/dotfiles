@@ -1,9 +1,0 @@
-#-------------------------------------------------------------------------------
-# Sway output configuration - Triple monitor setup
-#-------------------------------------------------------------------------------
-
-output HDMI-A-6 pos 0 0 transform 270
-
-output DP-3 pos 1200 0 scale 1.125 mode 2560x1440@240Hz
-
-output DP-4 pos 3475 0 transform 270

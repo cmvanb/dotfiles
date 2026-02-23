@@ -59,14 +59,13 @@ smart_borders off
 #-------------------------------------------------------------------------------
 
 include $config_dir/sway/outputs.conf
+include $config_dir/sway/workspaces.conf
 
-# Workspace configuration
+# Startup
 #-------------------------------------------------------------------------------
 
-include $config_dir/sway/workspace.conf
-
-# Startup applications
-#-------------------------------------------------------------------------------
+exec_always $config_dir/sway/outputs-workspace-mapper.sh
+exec $config_dir/sway/startup-workspace.sh
 
 # Adjust screen brightness
 exec wlsunset -l 52.155472 -L 5.389358
