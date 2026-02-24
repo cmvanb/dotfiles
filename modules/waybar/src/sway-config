@@ -4,7 +4,7 @@
     "layer": "top",
     "position": "top",
     "height": 28,
-    "margin-top": -2,
+    "margin-top": 0,
     "mode": "dock",
 
     /* Module layout
@@ -79,7 +79,7 @@
         "interval": 5
     },
     "network": {
-        "format-ethernet": "󰲝  {ifname}",
+        "format-ethernet": "󰈀  {ifname}",
         "format-wifi": "󰖩  {essid}",
         "format-disconnected": "󰲜  no network",
         "tooltip": true,
