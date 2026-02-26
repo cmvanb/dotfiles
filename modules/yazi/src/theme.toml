@@ -96,8 +96,9 @@ exts = [
     { name = "7z", text = "" }
 ]
 prepend_conds = [
-    { if = "link", text = "" },
+    { if = "link", text = "" },
     { if = "sock", text = "" },
     { if = "fifo", text = "" },
-    { if = "exec & !dir", text = "" }
+    { if = "exec & !dir & !link", text = "" },
+    { if = "dir", text = "", fg = "blue" }
 ]
