@@ -401,7 +401,7 @@ config.unbind('.')
 config.bind('<Ctrl+Shift+w>', 'close')
 
 # Config management
-config.bind('<Ctrl-Shift-r>', 'config-source ;; spawn notify-send \"Qutebrowser configuration reloaded.\"')
+config.bind('<Ctrl-Shift-r>', 'spawn --userscript rebuild-grease-styles.py ;; config-source ;; spawn notify-send \"Qutebrowser configuration reloaded.\"')
 
 # Session management
 config.bind('<Ctrl-o>', 'cmd-set-text -s :session-load')
