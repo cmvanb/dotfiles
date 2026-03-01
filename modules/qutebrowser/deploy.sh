@@ -22,6 +22,7 @@ qutebrowser::install () {
 
     ensure_directory "$XDG_CONFIG_HOME/qutebrowser/styles"
     render_esh_template "$src/styles/qute.css~esh" "$XDG_CONFIG_HOME/qutebrowser/styles/qute.css"
+    force_link "$src/styles/arch-linux-forum.css" "$XDG_CONFIG_HOME/qutebrowser/styles/arch-linux-forum.css"
     force_link "$src/styles/github.css" "$XDG_CONFIG_HOME/qutebrowser/styles/github.css"
     force_link "$src/styles/hackernews.css" "$XDG_CONFIG_HOME/qutebrowser/styles/hackernews.css"
     force_link "$src/styles/wikipedia.css" "$XDG_CONFIG_HOME/qutebrowser/styles/wikipedia.css"
