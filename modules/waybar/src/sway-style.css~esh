@@ -140,12 +140,12 @@ box > * > * {
 
 /* Memory
 *-----------------------------------------------------------------------------*/
-#memory.medium {
+#custom-memory.medium {
     color: <% color_hash $yellow_7 %>;
 }
-#memory.heavy {
+#custom-memory.heavy {
     color: <% color_hash $orange_6 %>;
 }
-#memory.critical {
+#custom-memory.critical {
     color: <% color_hash $red_6 %>;
 }

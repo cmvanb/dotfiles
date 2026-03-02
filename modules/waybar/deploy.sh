@@ -47,6 +47,7 @@ waybar::install () {
     force_link "$src/toggle-waybar.sh" "$XDG_SCRIPTS_HOME/toggle-waybar.sh"
 
     force_link "$src/tailscale.sh" "$XDG_CONFIG_HOME/waybar/tailscale.sh"
+    force_link "$src/memory.sh" "$XDG_CONFIG_HOME/waybar/memory.sh"
 }
 
 waybar::uninstall () {

@@ -22,7 +22,7 @@
         "wireplumber",
         "battery",
         "cpu",
-        "memory",
+        "custom/memory",
         "clock#calendar",
         "clock"
     ],
@@ -109,9 +109,11 @@
             "critical": 90
         }
     },
-    "memory": {
+    "custom/memory": {
+        "exec": "${XDG_CONFIG_HOME}/waybar/memory.sh",
+        "format": "{}",
+        "return-type": "json",
         "interval": 30,
-        "format": "mem {percentage}%",
         "states": {
             "medium": 50,
             "heavy": 70,
