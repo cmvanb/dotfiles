@@ -41,6 +41,14 @@ c.content.javascript.enabled = False
 # is set to False (e.g. Slack).
 c.content.notifications.enabled = False
 c.content.user_stylesheets = [ 'stylesheet.css' ]
+c.content.javascript.log_message.excludes = {
+    'userscript:_qute_stylesheet': [
+        "*Refused to apply inline style because it violates the following Content Security Policy directive: *",
+    ],
+    'userscript:_qute_js': [
+        "*Failed to set the 'selectionStart' property on 'HTMLInputElement': *",
+    ],
+}
 
 # File selector settings
 #-------------------------------------------------------------------------------
