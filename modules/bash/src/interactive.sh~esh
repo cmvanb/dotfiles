@@ -108,6 +108,9 @@ alias dss="docker stop $(docker ps -q)"
 # Deployment specific
 # <% if [[ $DEPLOY_DISTRO == "arch" ]]; then -%>
 
+alias p="pacman"
+alias pa="pacman"
+alias pac="pacman"
 alias uu="sudo pacman -Syu"
 # <% fi -%>
 

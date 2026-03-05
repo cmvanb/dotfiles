@@ -5,6 +5,9 @@
 function fish_deployed_aliases
 #<% if [[ $DEPLOY_DISTRO == "arch" ]]; then -%>
 
+    abbr -a p pacman
+    abbr -a pa pacman
+    abbr -a pac pacman
     abbr -a uu sudo pacman -Syu
 # <% fi -%>
 
