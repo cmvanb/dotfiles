@@ -406,7 +406,7 @@ Usage: ./deploy.sh <command> [options]
 
 Commands:
   install <profile|module>    Install a profile or individual module
-  uninstall [profile|module]  Uninstall (defaults to tracked state)
+  uninstall <profile|module>  Uninstall (defaults to tracked state)
   list                        List available profiles and modules
   show <profile>              Show resolved modules for a profile
   status                      Show currently deployed profile
