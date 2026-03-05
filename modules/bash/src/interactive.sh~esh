@@ -87,6 +87,7 @@ alias lst="eza -T --git-ignore"
 alias lsat="eza -aT --git-ignore"
 alias lsta="eza -aT --git-ignore"
 alias ip="ip -c"
+alias oc="opencode"
 alias rga="rg --hidden --no-ignore"
 alias zz="z -"
 
