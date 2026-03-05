@@ -1,0 +1,6 @@
+[X-GNOME-Metatheme]
+Name=carbon-dark-gtk
+Type=X-GNOME-Metatheme
+Comment=carbon-dark-gtk theme
+Encoding=UTF-8
+GtkTheme=carbon-dark-gtk
