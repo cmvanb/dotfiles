@@ -61,6 +61,28 @@ force_link () {
     ln -sfT "$1" "$2"
 }
 
+force_copy () {
+    if [[ -z "$1" ]]; then
+        echo "[$(basename "$0")] ERROR: Missing argument: source"
+        return 1
+    fi
+    if [[ -z "$2" ]]; then
+        echo "[$(basename "$0")] ERROR: Missing argument: destination"
+        return 1
+    fi
+    if [[ ! -f "$1" && ! -d "$1" ]]; then
+        echo "[$(basename "$0")] ERROR: Tried to copy non-existent \`$1\`"
+        return 1
+    fi
+
+    # Delete pre-existing link
+    if [[ -L "$2" ]]; then
+        rm "$2"
+    fi
+
+    cp -rfT "$1" "$2"
+}
+
 happy_move() {
     # NOTE: `mv` returns an error code if the source and destination are the
     # same, so exit early with a success code.
