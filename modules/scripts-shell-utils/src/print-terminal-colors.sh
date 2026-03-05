@@ -24,53 +24,6 @@ case "$TERM" in
         ;;
 esac
 
-# Print a string with foreground color.
-#-------------------------------------------------------------------------------
-
-function print_string_in_color() {
-    local string="$1"
-    local color="$2"
-
-    local style=""
-    if [[ $terminal_supports_256_colors = false ]] && (( color > 7 )); then
-        style="1;"
-    fi
-    printf "\e[%s38;5;%sm%s\e[0m" "$style" "$color" "$string"
-}
-
-# Print a string with foreground and background color.
-#-------------------------------------------------------------------------------
-
-function print_string_in_color_fg_bg() {
-    local string="$1"
-    local fg="$2"
-    local bg="$3"
-
-    local fg_style=""
-    if [[ $terminal_supports_256_colors = false ]] && (( fg > 7 )); then
-        fg_style="1;"
-    fi
-    printf "\e[%s38;5;%sm\e[48;5;%sm%s\e[0m" "$fg_style" "$fg" "$bg" "$string"
-}
-
-# Print a color block to the terminal.
-#-------------------------------------------------------------------------------
-
-function print_color_block() {
-    local width="$1"
-    local color="$2"
-
-    local style=""
-    if [[ $terminal_supports_256_colors = false ]] && (( color > 7 )); then
-        style="1;"
-    fi
-
-    local string
-    string=$(for _ in $(seq 1 "$width"); do printf "█"; done)
-
-    print_string_in_color "$string" "$color"
-}
-
 # Print a band of $2 color blocks starting from index $1.
 #-------------------------------------------------------------------------------
 
@@ -88,8 +41,17 @@ function print_band() {
         echo "[$(basename "$0")] ERROR: Block height must be 1 or greater."
     fi
 
+    # Pre-build the full-width block string (used by extra height rows).
+    local full_block=""
+    local i
+    for (( i = 0; i < width; i++ )); do
+        full_block+="█"
+    done
+
+    local style=""
+    local row=""
     local color
-    for (( color = "$1"; color < "$start" + "$count"; color++ )) do
+    for (( color = start; color < start + count; color++ )) do
         local buffer
         if (( color > 99 )); then
             buffer=$(( width - 3 ))
@@ -99,27 +61,49 @@ function print_band() {
             buffer=$(( width - 1 ))
         fi
 
-        print_color_block "$buffer" "$color"
+        # Build block string inline (avoids subshell).
+        local block=""
+        for (( i = 0; i < buffer; i++ )); do
+            block+="█"
+        done
 
-        # Text color is shifted along the band range with an offset for constrast.
+        if [[ $terminal_supports_256_colors = false ]] && (( color > 7 )); then
+            style="1;"
+        else
+            style=""
+        fi
+        row+="\e[${style}38;5;${color}m${block}\e[0m"
+
+        # Text color is shifted along the band range with an offset for contrast.
         local offset
         if (( color < 16 )); then # ANSI 16
             offset=3
-        elif (( color >= 16 && color < 80 )); then # Theme palettes
+        elif (( color < 80 )); then # Theme palettes
             offset=8
-        elif (( color >= 80 )); then # Color palettes
+        else # Color palettes
             offset=5
         fi
-        local text_color=$(( (((color - start) + (offset)) % count) + start ))
-        print_string_in_color_fg_bg "$color" "$text_color" "$color"
-    done
-    printf "  \n"
+        local text_color=$(( (((color - start) + offset) % count) + start ))
 
-    for (( i = 0; i < "$height" - 1; i++ )) do
-        for (( color = "$1"; color < "$start" + "$count"; color++ )) do
-            print_color_block "$width" "$color"
+        local fg_style=""
+        if [[ $terminal_supports_256_colors = false ]] && (( text_color > 7 )); then
+            fg_style="1;"
+        fi
+        row+="\e[${fg_style}38;5;${text_color}m\e[48;5;${color}m${color}\e[0m"
+    done
+    printf "%b  \n" "$row"
+
+    for (( i = 0; i < height - 1; i++ )) do
+        row=""
+        for (( color = start; color < start + count; color++ )) do
+            if [[ $terminal_supports_256_colors = false ]] && (( color > 7 )); then
+                style="1;"
+            else
+                style=""
+            fi
+            row+="\e[${style}38;5;${color}m${full_block}\e[0m"
         done
-        printf "  \n"
+        printf "%b  \n" "$row"
     done
 }
 
