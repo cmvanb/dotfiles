@@ -285,15 +285,29 @@ Each file contains a single top-level key (`colors:`, `fonts:`, or `cursor:`).
 
 Color schemes are YAML files. Colors are defined as hex strings in `key: "#RRGGBB"` format. YAML anchors and aliases enable internal references: `i0: *gray_0`.
 
-**Core palettes** — Four 16-step gradients: `primary`, `secondary`, `text`, `gray`
+**Core palettes** — Four 16-step gradients:
 
-**Accent palettes** — Eight 10-step gradients: `red`, `orange`, `yellow`, `green`, `cyan`, `blue`, `purple`, `magenta`
+- `primary`
+- `secondary`
+- `text`
+- `gray`
 
-**ANSI colors** — The 16 terminal color indices (`i0`–`i15`) are mapped to palette colors, with named aliases (`ansi_red`, `ansi_brblue`, etc.)
+**Accent palettes** — Eight 10-step gradients:
 
-### Deployed Layout
+- `red`
+- `orange`
+- `yellow`
+- `green`
+- `cyan`
+- `blue`
+- `purple`
+- `magenta`
 
-At deploy time, `theme-base` symlinks the source files and creates indirection symlinks to select the active configuration:
+**ANSI colors** — The 16 terminal color indices are mapped to palette colors, with aliases (`ansi_red`, `ansi_brblue`, etc.)
+
+### Deployment
+
+At deploy time, `theme-base` symlinks the colorscheme files and makes an additional symlinks to select the active scheme.
 
 ```
 $XDG_CONFIG_HOME/theme/
@@ -301,7 +315,7 @@ $XDG_CONFIG_HOME/theme/
 ├── carbon-light.yaml      -> src/carbon-light.yaml
 ├── cursor.yaml            -> src/cursor.yaml
 ├── colors.yaml            -> carbon-dark.yaml       # active color scheme
-└── fonts.yaml             -> src/fonts-linux.yaml   # active font set
+└── fonts.yaml             -> src/fonts-linux.yaml
 ```
 
 The deploy script then runs the cache generator:
@@ -313,15 +327,11 @@ python3 $XDG_OPT_HOME/theme/theme.py parse \
     $XDG_CONFIG_HOME/theme/cursor.yaml
 ```
 
-This merges the YAML files and writes three cache files to `$XDG_CACHE_HOME/theme/`:
-
-- **`theme-data.lua`** — Lua table (consumed by `theme.lua`)
-- **`theme-data.sh`** — Bash variables as `key='RRGGBB'` (consumed by `theme.sh`)
-- **`theme-data.fish`** — Fish variables as `set -g key 'RRGGBB'` (consumed by `theme.fish`)
+This merges the YAML files and writes cache files to `$XDG_CACHE_HOME/theme/` for runtime lookup.
 
 ### Theme API
 
-The `lib-theme` module provides runtime lookup functions in four languages. All APIs are symlinked into `$XDG_OPT_HOME/theme/`.
+The `lib-theme` module provides runtime lookup and formatting functions in four languages. All APIs are symlinked into `$XDG_OPT_HOME/theme/`.
 
 **Library files:**
 
@@ -359,7 +369,7 @@ The `lib-theme` module provides runtime lookup functions in four languages. All 
 
 Some configuration files are generated via templates at deploy time. This enables dotfiles to adapt to the environment.
 
-### Backend
+### Engine
 
 [ESH](https://github.com/jirutka/esh) processes bash code blocks in config files. Template files are indicated with a variant suffix, typically `~esh`.
 
