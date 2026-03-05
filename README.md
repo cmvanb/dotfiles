@@ -1,4 +1,4 @@
-# Linux dotfiles
+# Dotfiles
 
 ## Setup
 
@@ -13,3 +13,11 @@ Deploy the host profile.
 ```bash
 ./deploy.sh install --host
 ```
+
+## Documentation
+
+- [docs/design.md](docs/design.md)
+- [docs/profiles.md](docs/profiles.md)
+- [docs/modules.md](docs/modules.md)
+- [docs/theme.md](docs/theme.md)
+- [docs/templates.md](docs/templates.md)
