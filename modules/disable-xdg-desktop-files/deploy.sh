@@ -20,6 +20,8 @@ disable-xdg-desktop-files::install () {
     force_link "$src/cmake-gui.desktop" "$XDG_DATA_HOME/applications/cmake-gui.desktop"
     force_link "$src/electron36.desktop" "$XDG_DATA_HOME/applications/electron36.desktop"
     force_link "$src/lstopo.desktop" "$XDG_DATA_HOME/applications/lstopo.desktop"
+    force_link "$src/jconsole-java-openjdk.desktop" "$XDG_DATA_HOME/applications/jconsole-java-openjdk.desktop"
+    force_link "$src/jshell-java-openjdk.desktop" "$XDG_DATA_HOME/applications/jshell-java-openjdk.desktop"
     force_link "$src/qv4l2.desktop" "$XDG_DATA_HOME/applications/qv4l2.desktop"
     force_link "$src/qvidcap.desktop" "$XDG_DATA_HOME/applications/qvidcap.desktop"
 }
@@ -33,6 +35,8 @@ disable-xdg-desktop-files::uninstall () {
     rm "$XDG_DATA_HOME/applications/cmake-gui.desktop"
     rm "$XDG_DATA_HOME/applications/electron36.desktop"
     rm "$XDG_DATA_HOME/applications/lstopo.desktop"
+    rm "$XDG_DATA_HOME/applications/jconsole-java-openjdk.desktop"
+    rm "$XDG_DATA_HOME/applications/jshell-java-openjdk.desktop"
     rm "$XDG_DATA_HOME/applications/qv4l2.desktop"
     rm "$XDG_DATA_HOME/applications/qvidcap.desktop"
 }
