@@ -1,5 +1,7 @@
 # Linux dotfiles
 
+## Setup
+
 Initialize the [neovim](https://github.com/cmvanb/nvimfiles) submodule.
 
 ```bash
