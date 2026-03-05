@@ -20,7 +20,7 @@ sway::install () {
     force_link "$src/config" "$XDG_CONFIG_HOME/sway/config"
     force_link "$src/environment.sh" "$XDG_CONFIG_HOME/sway/environment.sh"
     force_link "$src/keymaps.conf" "$XDG_CONFIG_HOME/sway/keymaps.conf"
-    force_link "$src/refresh.sh" "$XDG_CONFIG_HOME/sway/refresh.sh"
+    force_link "$src/reload.sh" "$XDG_CONFIG_HOME/sway/reload.sh"
     force_link "$src/sws.sh" "$XDG_CONFIG_HOME/sway/sws.sh"
     force_link "$src/outputs-workspace-mapper.sh" "$XDG_CONFIG_HOME/sway/outputs-workspace-mapper.sh"
     force_link "$src/startup-workspace.sh" "$XDG_CONFIG_HOME/sway/startup-workspace.sh"
