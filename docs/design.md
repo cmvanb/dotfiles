@@ -76,7 +76,7 @@ Each module::install():
 
 State is written to `~/.local/state/dotfiles/{profile,modules,wm}` for `uninstall` and `status`.
 
-## Key design decisions
+## Design decisions
 
 | Decision | Rationale |
 |---|---|

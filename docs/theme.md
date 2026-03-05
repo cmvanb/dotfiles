@@ -14,9 +14,9 @@ Unified color, font, and cursor management across all dotfiles. Three modules co
 ```
 carbon-dark.yaml    # colors — dark scheme
 carbon-light.yaml   # colors — light scheme
+cursor.yaml         # cursor — shared
 fonts-linux.yaml    # fonts — Linux
 fonts-windows.yaml  # fonts — Windows
-cursor.yaml         # cursor — shared
 ```
 
 Each file has a single top-level key (`colors:`, `fonts:`, `cursor:`).
@@ -35,23 +35,22 @@ Colors are `key: "#RRGGBB"` hex strings. YAML anchors/aliases allow internal ref
 
 `theme-base::install()` symlinks source files, selects active scheme/fonts, then runs the cache generator:
 
+`$XDG_CONFIG_HOME/theme/`:
 ```
-$XDG_CONFIG_HOME/theme/
 ├── carbon-dark.yaml   -> modules/theme-base/src/carbon-dark.yaml
 ├── carbon-light.yaml  -> modules/theme-base/src/carbon-light.yaml
 ├── cursor.yaml        -> modules/theme-base/src/cursor.yaml
-├── colors.yaml        -> carbon-dark.yaml        # active scheme selection
-└── fonts.yaml         -> modules/theme-base/src/fonts-linux.yaml
+├── fonts.yaml         -> modules/theme-base/src/fonts-linux.yaml
+└── colors.yaml        -> carbon-dark.yaml
 ```
 
 Cache generator merges the YAML files and writes language-specific cache files:
 
-```bash
-python3 $XDG_OPT_HOME/theme/theme.py parse \
-    $XDG_CONFIG_HOME/theme/colors.yaml \
-    $XDG_CONFIG_HOME/theme/fonts.yaml \
-    $XDG_CONFIG_HOME/theme/cursor.yaml
-# writes: $XDG_CACHE_HOME/theme/theme-data.{sh,fish,lua}
+`$XDG_CACHE_HOME/theme/`:
+```
+├──  theme-data.sh    # Bash variables
+├──  theme-data.fish  # Fish variables
+└──  theme-data.lua   # Lua table
 ```
 
 ## Runtime API
