@@ -105,6 +105,7 @@ for_window [app_id="waypaper"] floating enable
 for_window [app_id="xdg-desktop-portal-gtk"] floating enable
 for_window [app_id="yad"] floating enable
 for_window [app_id="nm-connection-editor"] floating enable
+for_window [app_id="org.pulseaudio.pavucontrol"] floating on, resize set 900 1200, move position center
 
 # Window sizes
 for_window [app_id="blueman-manager"] resize set 800 600
