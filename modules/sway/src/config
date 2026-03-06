@@ -99,6 +99,7 @@ for_window [app_id="imv"] floating enable
 for_window [app_id="org.gnome.Nautilus"] floating enable
 for_window [app_id="nwg-look"] floating enable
 for_window [app_id="org.gnome.seahorse.Application"] floating enable
+for_window [app_id="Thunar"] floating enable
 for_window [app_id="com.transmissionbt.transmission.*"] floating enable
 for_window [app_id="transmission-gtk"] floating enable
 for_window [app_id="waypaper"] floating enable
@@ -112,6 +113,7 @@ for_window [app_id="blueman-manager"] resize set 800 600
 for_window [app_id="org.gnome.Nautilus"] resize set 1024 960
 for_window [app_id="nwg-look"] resize set 1024 960
 for_window [app_id="org.qutebrowser.qutebrowser"] resize set 1600 1200
+for_window [app_id="Thunar"] resize set 1200 900
 for_window [app_id="waypaper"] resize set 900 1200
 
 # Server-side decorations
