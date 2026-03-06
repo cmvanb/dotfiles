@@ -22,6 +22,7 @@ qutebrowser::install () {
 
     ensure_directory "$XDG_CONFIG_HOME/qutebrowser/styles"
     render_esh_template "$src/styles/qute.css~esh" "$XDG_CONFIG_HOME/qutebrowser/styles/qute.css"
+    force_link "$src/styles/ansible-docs.css" "$XDG_CONFIG_HOME/qutebrowser/styles/ansible-docs.css"
     force_link "$src/styles/arch-linux-forum.css" "$XDG_CONFIG_HOME/qutebrowser/styles/arch-linux-forum.css"
     force_link "$src/styles/arch-linux-wiki.css" "$XDG_CONFIG_HOME/qutebrowser/styles/arch-linux-wiki.css"
     force_link "$src/styles/github.css" "$XDG_CONFIG_HOME/qutebrowser/styles/github.css"
@@ -62,6 +63,7 @@ qutebrowser::uninstall () {
     rm "$XDG_CONFIG_HOME/qutebrowser/stylesheet.css"
     rm "$XDG_CONFIG_HOME/qutebrowser/stylemap.py"
     rm "$XDG_CONFIG_HOME/qutebrowser/styles/qute.css"
+    rm "$XDG_CONFIG_HOME/qutebrowser/styles/ansible-docs.css"
     rm "$XDG_CONFIG_HOME/qutebrowser/styles/github.css"
     rm "$XDG_CONFIG_HOME/qutebrowser/styles/hackernews.css"
     rm "$XDG_CONFIG_HOME/qutebrowser/styles/wikipedia.css"
