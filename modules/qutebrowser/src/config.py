@@ -35,7 +35,7 @@ c.content.autoplay = False
 c.content.blocking.enabled = True
 c.content.blocking.method = 'both'
 c.content.headers.do_not_track = True
-c.content.headers.user_agent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36'
+c.content.headers.user_agent = 'Mozilla/5.0 ({os_info}) AppleWebKit/{webkit_version} (KHTML, like Gecko) {upstream_browser_key}/{upstream_browser_version_short} Safari/{webkit_version}'
 c.content.javascript.enabled = False
 # Possible values are True/False/'ask'. Some websites hide functionality if this
 # is set to False (e.g. Slack).
