@@ -29,6 +29,7 @@ export DEPLOY_DISTRO="$(linux::get_distro_id)"
 export DEPLOY_HOST="$(uname -n)"
 export DEPLOY_PROFILE=""  # Will be set per profile
 export ESH_SHELL=/usr/bin/bash
+export PYENV_ROOT="${PYENV_ROOT:-$XDG_OPT_HOME/pyenv}"
 
 state_dir="$HOME/.local/state/dotfiles"
 
