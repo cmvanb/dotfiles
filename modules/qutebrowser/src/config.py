@@ -417,8 +417,7 @@ config.bind('<Ctrl-s>', 'cmd-set-text -s :session-save -o')
 
 # Tab management
 config.bind('<Ctrl-w>', 'tab-close')
-config.bind('<Ctrl-Tab>', 'tab-next')
-config.bind('<Ctrl-Shift-Tab>', 'tab-prev')
+config.bind('<Ctrl-Tab>', 'tab-focus last')
 config.bind('<Ctrl-h>', 'tab-prev')
 config.bind('<Ctrl-l>', 'tab-next')
 config.bind('<Ctrl-Shift-h>', 'tab-move -')
