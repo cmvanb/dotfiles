@@ -20,6 +20,8 @@ bash::install () {
     force_link "$src/bashrc" "$XDG_CONFIG_HOME/bash/bashrc"
     render_esh_template "$src/env.sh~esh" "$XDG_CONFIG_HOME/bash/env.sh"
     render_esh_template "$src/interactive.sh~esh" "$XDG_CONFIG_HOME/bash/interactive.sh"
+    force_link "$src/shared_aliases.sh" "$XDG_CONFIG_HOME/bash/shared_aliases.sh"
+    render_esh_template "$src/deployed_aliases.sh~esh" "$XDG_CONFIG_HOME/bash/deployed_aliases.sh"
     render_esh_template "$src/login.sh~esh" "$XDG_CONFIG_HOME/bash/login.sh"
     force_link "$src/logout.sh" "$XDG_CONFIG_HOME/bash/logout.sh"
     force_link "$src/prompt.sh" "$XDG_CONFIG_HOME/bash/prompt.sh"
