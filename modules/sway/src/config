@@ -89,7 +89,7 @@ exec waybar &
 
 # Workspaces
 assign [app_id="Bitwarden"] workspace "auth"
-assign [app_id="spotify"] workspace "spotify"
+assign [app_id="spotify"] workspace "audio"
 
 # Floating windows
 for_window [app_id="blueman-manager"] floating enable
