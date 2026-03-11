@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 #-------------------------------------------------------------------------------
-# Preview a markdown file in the browser.
+# Preview a markdown file in the browser with live reload.
 #
-# TODO: Kill the entr process when the browser is closed.
+# Starts a self-contained background server that watches the file with entr
+# and shuts everything down when the browser tab is closed. The script itself
+# exits immediately after opening the browser.
 #-------------------------------------------------------------------------------
 
 set -euo pipefail
@@ -23,7 +25,12 @@ fi
 
 html_path="/tmp/md/$file_name.html"
 
-# NOTE: UNHOLY
-nohup bash -c 'echo "$1" | entr -n -r "$XDG_SCRIPTS_HOME/markdown-to-html.sh" "$1"' _ "$1" </dev/null >/dev/null 2>&1 &
+# Run an initial conversion so the file is ready before the browser opens.
+"$XDG_SCRIPTS_HOME/markdown-to-html.sh" "$1"
 
-"$XDG_SCRIPTS_HOME/browse.sh" "$html_path"
+# Delegate everything else to the server, which daemonizes itself.
+# It prints the chosen port to stdout before forking into the background.
+port=$(python3 "$XDG_SCRIPTS_HOME/preview-server.py" \
+    "$1" "$html_path" "$XDG_SCRIPTS_HOME/markdown-to-html.sh")
+
+"$XDG_SCRIPTS_HOME/browse.sh" "http://localhost:$port"

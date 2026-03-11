@@ -16,6 +16,7 @@ scripts-markdown::install () {
     ensure_directory "$XDG_SCRIPTS_HOME"
     force_link "$src/markdown-to-html.sh" "$XDG_SCRIPTS_HOME/markdown-to-html.sh"
     force_link "$src/preview-markdown.sh" "$XDG_SCRIPTS_HOME/preview-markdown.sh"
+    force_link "$src/preview-server.py"   "$XDG_SCRIPTS_HOME/preview-server.py"
 }
 
 scripts-markdown::uninstall () {
@@ -23,4 +24,5 @@ scripts-markdown::uninstall () {
 
     rm "$XDG_SCRIPTS_HOME/markdown-to-html.sh"
     rm "$XDG_SCRIPTS_HOME/preview-markdown.sh"
+    rm "$XDG_SCRIPTS_HOME/preview-server.py"
 }
