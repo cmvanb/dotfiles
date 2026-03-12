@@ -639,12 +639,12 @@ tt {
   margin: 0 2px;
   padding: 0 5px;
   white-space: nowrap;
-  background-color: <% color_hash $text_1 %>;
-  border: 1px solid <% color_hash $secondary_2 %>;
+  background-color: <% color_hash $secondary_2 %>;
+  border: 1px solid <% color_hash $secondary_1 %>;
   border-radius: 3px;
   font-family: <%= $font_mono %>, Iosevka, Consolas, "Liberation Mono", Courier, monospace;
   font-size: 12px;
-  color: <% color_hash $secondary_12 %>;
+  color: <% color_hash $secondary_11 %>;
 }
 pre > code {
   margin: 0;
@@ -654,8 +654,8 @@ pre > code {
   background: transparent;
 }
 .highlight pre {
-  background-color: <% color_hash $text_1 %>;
-  border: 1px solid <% color_hash $secondary_2 %>;
+  background-color: <% color_hash $secondary_2 %>;
+  border: 1px solid <% color_hash $secondary_1 %>;
   font-size: 13px;
   line-height: 19px;
   overflow: auto;
@@ -663,8 +663,8 @@ pre > code {
   border-radius: 3px;
 }
 pre {
-  background-color: <% color_hash $text_1 %>;
-  border: 1px solid <% color_hash $secondary_2 %>;
+  background-color: <% color_hash $secondary_2 %>;
+  border: 1px solid <% color_hash $secondary_1 %>;
   font-size: 13px;
   line-height: 19px;
   overflow: auto;
