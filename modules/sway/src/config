@@ -96,6 +96,7 @@ for_window [app_id="blueman-manager"] floating enable
 for_window [app_id=".*floating"] floating enable
 for_window [app_id="gcr-prompter"] floating enable
 for_window [app_id="imv"] floating enable
+for_window [app_id="mpv"] floating enable
 for_window [app_id="org.gnome.Nautilus"] floating enable
 for_window [app_id="nwg-look"] floating enable
 for_window [app_id="org.gnome.seahorse.Application"] floating enable
