@@ -425,7 +425,7 @@ body {
   padding-right: 1em;
   padding-left: 1em;
   max-width: 44em;
-  color: <% color_hash $text_13 %>;
+  color: <% color_hash $text_10 %>;
 }
 *:not("#mkdbuttons") {
   margin: 0;
@@ -450,7 +450,7 @@ a {
   text-decoration: none;
 }
 body {
-  background-color: <% color_hash $gray_0 %>;
+  background-color: <% color_hash $primary_2 %>;
   padding: 30px;
   margin: 15px;
   font-size: 14px;
@@ -617,20 +617,21 @@ table {
 }
 table th {
   font-weight: bold;
-  border: 1px solid <% color_hash $gray_4 %>;
+  border: 1px solid <% color_hash $primary_4 %>;
+  background-color: <% color_hash $primary_3 %>;
   padding: 6px 13px;
 }
 table td {
-  border: 1px solid <% color_hash $gray_4 %>;
+  border: 1px solid <% color_hash $gray_1 %>;
   padding: 6px 13px;
 }
 table tr {
-  border-top: 1px solid <% color_hash $gray_4 %>;
-  background-color: <% color_hash $gray_0 %>;
+  border-top: 1px solid <% color_hash $gray_1 %>;
+  background-color: <% color_hash $editor_bg %>;
 }
-table tr:nth-child(2n) {
-  background-color: <% color_hash $gray_1 %>;
-}
+/* table tr:nth-child(2n) { */
+/*   background-color: <% color_hash $primary_1 %>; */
+/* } */
 img {
   max-width: 100%;
 }
@@ -639,8 +640,8 @@ tt {
   margin: 0 2px;
   padding: 0 5px;
   white-space: nowrap;
-  background-color: <% color_hash $secondary_2 %>;
-  border: 1px solid <% color_hash $secondary_1 %>;
+  background-color: <% color_hash $editor_bg %>;
+  border: 1px solid <% color_hash $gray_1 %>;
   border-radius: 3px;
   font-family: <%= $font_mono %>, Iosevka, Consolas, "Liberation Mono", Courier, monospace;
   font-size: 12px;
@@ -654,8 +655,8 @@ pre > code {
   background: transparent;
 }
 .highlight pre {
-  background-color: <% color_hash $secondary_2 %>;
-  border: 1px solid <% color_hash $secondary_1 %>;
+  background-color: <% color_hash $editor_bg %>;
+  border: 1px solid <% color_hash $gray_1 %>;
   font-size: 13px;
   line-height: 19px;
   overflow: auto;
@@ -663,8 +664,8 @@ pre > code {
   border-radius: 3px;
 }
 pre {
-  background-color: <% color_hash $secondary_2 %>;
-  border: 1px solid <% color_hash $secondary_1 %>;
+  background-color: <% color_hash $editor_bg %>;
+  border: 1px solid <% color_hash $gray_1 %>;
   font-size: 13px;
   line-height: 19px;
   overflow: auto;
