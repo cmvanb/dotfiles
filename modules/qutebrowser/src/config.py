@@ -59,6 +59,7 @@ c.fileselect.multiple_files.command = [ 'yad', '--file', '--width', '1280', '--h
 c.fileselect.folder.command = [ 'yad', '--file', '--directory', '--width', '1280', '--height', '800'  ]
 
 # Font settings
+# TODO: Consider moving the font settings closer to the components they affect.
 #-------------------------------------------------------------------------------
 
 # Zoom
@@ -90,7 +91,7 @@ c.fonts.messages.error      = f"bold {theme.font('font_size_small')}pt  {theme.f
 c.fonts.messages.info       = f"{theme.font('font_size_small')}pt {theme.font('font_mono')}"
 c.fonts.messages.warning    = f"bold {theme.font('font_size_small')}pt  {theme.font('font_mono')}"
 c.fonts.statusbar           = f"default_size {theme.font('font_mono')}"
-c.fonts.tabs.selected       = f"{theme.font('font_size_small')}pt {theme.font('font_sans')}"
+c.fonts.tabs.selected       = f"bold {theme.font('font_size_small')}pt {theme.font('font_sans')}"
 c.fonts.tabs.unselected     = f"{theme.font('font_size_small')}pt {theme.font('font_sans')}"
 
 # Input settings
