@@ -17,7 +17,7 @@ Linux dotfiles managed via a profile/module deployment system. Configs are symli
 ```bash
 ./deploy.sh install --host          # deploy profile matching hostname
 ./deploy.sh install <profile>       # deploy named profile (see profiles/)
-./deploy.sh install <module>        # deploy single module
+./deploy.sh install <module...>     # deploy one or more modules
 ./deploy.sh uninstall               # uninstall using tracked state
 ./deploy.sh status                  # show active profile
 ./deploy.sh list                    # list all profiles and modules

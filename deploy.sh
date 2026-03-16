@@ -150,77 +150,85 @@ cmd_show() {
 }
 
 cmd_install() {
-    local target="$1"
-    local dry_run="${2:-false}"
+    local dry_run="${1:-false}"
+    shift
+    local -a targets=("$@")
 
-    # Check if target is a profile
-    local is_profile=false
-    local chain_str=""
-    chain_str=$(profile::get_inheritance_chain "$target" profiles 2>/dev/null) && is_profile=true || true
+    # If a single target is a profile, deploy it as a profile
+    if [[ "${#targets[@]}" -eq 1 ]]; then
+        local target="${targets[0]}"
+        local is_profile=false
+        local chain_str=""
+        chain_str=$(profile::get_inheritance_chain "$target" profiles 2>/dev/null) && is_profile=true || true
 
-    if [[ "$is_profile" == "true" ]]; then
-        # Deploy a profile
-        local -a chain=($chain_str)
+        if [[ "$is_profile" == "true" ]]; then
+            local -a chain=($chain_str)
 
-        log_header "Resolving profile: $target"
-        local chain_display=$(echo "$chain_str" | paste -sd ' ' - | sed 's/ / -> /g')
-        log_item "$chain_display"
+            log_header "Resolving profile: $target"
+            local chain_display=$(echo "$chain_str" | paste -sd ' ' - | sed 's/ / -> /g')
+            log_item "$chain_display"
 
-        local -A merged
-        profile::merge profiles merged "${chain[@]}" || return 1
+            local -A merged
+            profile::merge profiles merged "${chain[@]}" || return 1
 
-        export DEPLOY_PROFILE="${chain[*]}"
-        [[ -n "${merged[wm]}" ]] && export DEPLOY_WM="${merged[wm]}"
+            export DEPLOY_PROFILE="${chain[*]}"
+            [[ -n "${merged[wm]}" ]] && export DEPLOY_WM="${merged[wm]}"
 
-        log_header "Profile: $target"
-        [[ -n "${merged[wm]}" ]] && log_item "Window manager: ${merged[wm]}"
-        log_item "Distro: $DEPLOY_DISTRO"
+            log_header "Profile: $target"
+            [[ -n "${merged[wm]}" ]] && log_item "Window manager: ${merged[wm]}"
+            log_item "Distro: $DEPLOY_DISTRO"
 
-        if [[ "$dry_run" == "true" ]]; then
-            log_header "Would install:"
-            log_item "${merged[libs]} ${merged[themes]} ${merged[installs]}"
+            if [[ "$dry_run" == "true" ]]; then
+                log_header "Would install:"
+                log_item "${merged[libs]} ${merged[themes]} ${merged[installs]}"
 
-            if [[ -n "${merged[enables]}" ]]; then
-                log_header "Would enable:"
-                log_item "${merged[enables]}"
+                if [[ -n "${merged[enables]}" ]]; then
+                    log_header "Would enable:"
+                    log_item "${merged[enables]}"
+                fi
+
+                log_header "Dry run complete, no changes were made."
+                echo
+                return 0
             fi
 
-            log_header "Dry run complete, no changes were made."
-            echo
+            # Deploy in category order
+            install_modules "lib" "${merged[libs]}"
+            install_modules "theme" "${merged[themes]}"
+            install_modules "install" "${merged[installs]}"
+
+            if [[ -n "${merged[enables]}" ]]; then
+                enable_services "${merged[enables]}"
+            fi
+
+            state::write "$target" "${merged[installs]}" "${merged[wm]:-}"
+
+            log_header "Deployment complete."
             return 0
         fi
+    fi
 
-        # Deploy in category order
-        install_modules "lib" "${merged[libs]}"
-        install_modules "theme" "${merged[themes]}"
-        install_modules "install" "${merged[installs]}"
-
-        if [[ -n "${merged[enables]}" ]]; then
-            enable_services "${merged[enables]}"
-        fi
-
-        state::write "$target" "${merged[installs]}" "${merged[wm]:-}"
-
-        log_header "Deployment complete."
-    else
-        # Install a single module
+    # Install one or more individual modules
+    for target in "${targets[@]}"; do
         if [[ ! -f "modules/$target/deploy.sh" ]]; then
             log_error_with_hint "\`$target\` is not a profile or module" "Run \`./deploy.sh list\` to see available profiles and modules."
         fi
+    done
 
-        if [[ "$dry_run" == "true" ]]; then
-            log_header "Would install:"
-            log_item "$target"
-            log_header "Dry run complete, no changes were made."
-            echo
-            return 0
-        fi
-
-        export DEPLOY_PROFILE=""
-
-        log_header "Installing module: $target"
-        install_module "$target"
+    if [[ "$dry_run" == "true" ]]; then
+        log_header "Would install:"
+        log_item "${targets[*]}"
+        log_header "Dry run complete, no changes were made."
+        echo
+        return 0
     fi
+
+    export DEPLOY_PROFILE=""
+
+    log_header "Installing modules..."
+    for target in "${targets[@]}"; do
+        install_module "$target"
+    done
 }
 
 cmd_uninstall() {
@@ -406,8 +414,8 @@ usage() {
 Usage: ./deploy.sh <command> [options]
 
 Commands:
-  install <profile|module>    Install a profile or individual module
-  uninstall <profile|module>  Uninstall (defaults to tracked state)
+  install <profile|module...>  Install a profile or one or more modules
+  uninstall <profile|module>   Uninstall (defaults to tracked state)
   list                        List available profiles and modules
   show <profile>              Show resolved modules for a profile
   status                      Show currently deployed profile
@@ -422,6 +430,7 @@ Examples:
   ./deploy.sh install server
   ./deploy.sh install --host
   ./deploy.sh install nvim
+  ./deploy.sh install theme-base alacritty pandoc vt
   ./deploy.sh uninstall
   ./deploy.sh show workstation
   ./deploy.sh status
@@ -443,20 +452,22 @@ main() {
         install)
             [[ -z "${2:-}" ]] && log_error "install requires a profile or module name"
             local dry_run_flag=false
-            local target="${2}"
+            local -a install_targets=()
 
-            if [[ "$target" == "--host" ]]; then
-                target="$DEPLOY_HOST"
-            elif [[ "$target" == "--dry-run" ]]; then
-                log_error "install: --dry-run must come after the profile/module name"
-            fi
+            shift  # remove 'install'
+            for arg in "$@"; do
+                if [[ "$arg" == "--host" ]]; then
+                    install_targets+=("$DEPLOY_HOST")
+                elif [[ "$arg" == "--dry-run" ]]; then
+                    dry_run_flag=true
+                else
+                    install_targets+=("$arg")
+                fi
+            done
 
-            # Check if --dry-run flag is in position 3
-            if [[ "${3:-}" == "--dry-run" ]]; then
-                dry_run_flag=true
-            fi
+            [[ "${#install_targets[@]}" -eq 0 ]] && log_error "install requires a profile or module name"
 
-            cmd_install "$target" "$dry_run_flag"
+            cmd_install "$dry_run_flag" "${install_targets[@]}"
             ;;
         uninstall)
             cmd_uninstall "${2:-}"

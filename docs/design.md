@@ -57,24 +57,23 @@ ESH (embedded shell) templates (`~esh` suffix) are rendered at deploy time. Cont
 
 ## Deployment flow
 
+**Profile install** (`deploy.sh install <profile>`):
 ```
-deploy.sh install <profile>
-  │
-  ├─ resolve profile inheritance chain (lib/profile.sh)
-  ├─ export DEPLOY_PROFILE, DEPLOY_WM, DEPLOY_DISTRO, DEPLOY_HOST
-  │
-  ├─ install modules.lib   (lib-shell-utils, lib-theme, …)
-  ├─ install modules.theme (theme-base, theme-desktop, …)
-  ├─ install modules.install (nvim, fish, waybar, …)
-  └─ enable  modules.enable  (pipewire, syncthing, …)
-
-Each module::install():
-  ├─ ensure_directory  → mkdir -p (removing conflicting file/link)
-  ├─ force_link        → ln -sfT  (atomic symlink)
-  └─ esh <tpl~esh>     → rendered config file
+resolve inheritance chain  →  export DEPLOY_* vars  →  install modules.lib
+  →  install modules.theme  →  install modules.install  →  enable modules.enable
 ```
 
-State is written to `~/.local/state/dotfiles/{profile,modules,wm}` for `uninstall` and `status`.
+**Module install** (`deploy.sh install <module...>`):
+```
+install each named module in order
+```
+
+**Each `module::install()`**:
+```
+ensure_directory  →  force_link / force_copy  →  esh <tpl~esh>
+```
+
+State is written to `~/.local/state/dotfiles/{profile,modules,wm}` for use with `uninstall` and `status`.
 
 ## Design decisions
 
