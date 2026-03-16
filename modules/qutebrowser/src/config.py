@@ -37,8 +37,8 @@ c.content.blocking.method = 'both'
 c.content.headers.do_not_track = True
 c.content.headers.user_agent = 'Mozilla/5.0 ({os_info}) AppleWebKit/{webkit_version} (KHTML, like Gecko) {upstream_browser_key}/{upstream_browser_version_short} Safari/{webkit_version}'
 c.content.javascript.enabled = False
-# Possible values are True/False/'ask'. Some websites hide functionality if this
-# is set to False (e.g. Slack).
+# Possible values are True/False/'ask'.
+# NOTE: Some websites hide functionality if this is set to False (e.g. Slack).
 c.content.notifications.enabled = False
 c.content.user_stylesheets = [ 'stylesheet.css' ]
 c.content.javascript.log_message.excludes = {
@@ -91,7 +91,7 @@ c.fonts.messages.error      = f"bold {theme.font('font_size_small')}pt  {theme.f
 c.fonts.messages.info       = f"{theme.font('font_size_small')}pt {theme.font('font_mono')}"
 c.fonts.messages.warning    = f"bold {theme.font('font_size_small')}pt  {theme.font('font_mono')}"
 c.fonts.statusbar           = f"default_size {theme.font('font_mono')}"
-c.fonts.tabs.selected       = f"bold {theme.font('font_size_small')}pt {theme.font('font_sans')}"
+c.fonts.tabs.selected       = f"{theme.font('font_size_small')}pt {theme.font('font_sans')}"
 c.fonts.tabs.unselected     = f"{theme.font('font_size_small')}pt {theme.font('font_sans')}"
 
 # Input settings
@@ -269,20 +269,20 @@ c.tabs.tooltips = False
 c.tabs.favicons.show = 'never'
 c.tabs.indicator.width = 0
 c.tabs.max_width = 240
-c.tabs.padding = { 'top': 6, 'bottom': 5, 'left': 8, 'right': 8 }
+c.tabs.padding = { 'top': 4, 'bottom': 3, 'left': 8, 'right': 8 }
 c.tabs.position = 'top'
 c.tabs.title.alignment = 'left'
 c.tabs.title.format = '{audio}{index} ⋅ {current_title}'
 
-c.colors.tabs.bar.bg = theme.color_hash('gray_0')
-c.colors.tabs.odd.bg = theme.color_hash('gray_0')
-c.colors.tabs.odd.fg = theme.color_hash('text_6')
-c.colors.tabs.even.bg = theme.color_hash('gray_0')
-c.colors.tabs.even.fg = theme.color_hash('text_6')
-c.colors.tabs.selected.odd.bg = theme.color_hash('gray_0')
-c.colors.tabs.selected.odd.fg = theme.color_hash('text_12')
-c.colors.tabs.selected.even.bg = theme.color_hash('gray_0')
-c.colors.tabs.selected.even.fg = theme.color_hash('text_12')
+c.colors.tabs.bar.bg = theme.color_hash('primary_3')
+c.colors.tabs.odd.bg = theme.color_hash('gray_3')
+c.colors.tabs.odd.fg = theme.color_hash('gray_10')
+c.colors.tabs.even.bg = theme.color_hash('gray_3')
+c.colors.tabs.even.fg = theme.color_hash('gray_10')
+c.colors.tabs.selected.odd.bg = theme.color_hash('primary_8')
+c.colors.tabs.selected.odd.fg = theme.color_hash('text_15')
+c.colors.tabs.selected.even.bg = theme.color_hash('primary_8')
+c.colors.tabs.selected.even.fg = theme.color_hash('text_15')
 
 # Prompt component
 #-------------------------------------------------------------------------------
@@ -305,7 +305,7 @@ c.colors.contextmenu.selected.fg = theme.color_hash('gray_15')
 #-------------------------------------------------------------------------------
 
 # Websites
-c.colors.webpage.bg = theme.color_hash('secondary_0')
+c.colors.webpage.bg = theme.color_hash('gray_0')
 c.colors.webpage.preferred_color_scheme = 'dark'
 
 # Dark mode
