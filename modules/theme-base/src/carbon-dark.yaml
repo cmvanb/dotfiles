@@ -11,207 +11,200 @@ colors:
   debug: &debug "#ff00ff"
 
   # Primary (16-31)
-  primary_0:  &primary_0  "#000610"
-  primary_1:  &primary_1  "#000d1e"
-  primary_2:  &primary_2  "#00152d"
-  primary_3:  &primary_3  "#011d3c"
-  primary_4:  &primary_4  "#01244b"
-  primary_5:  &primary_5  "#022c5a"
-  primary_6:  &primary_6  "#023469"
-  primary_7:  &primary_7  "#023b78"
-  primary_8:  &primary_8  "#034387"
-  primary_9:  &primary_9  "#034b96"
-  primary_10: &primary_10 "#055eb5"
-  primary_11: &primary_11 "#056dc4"
-  primary_12: &primary_12 "#057cd3"
-  primary_13: &primary_13 "#058be1"
-  primary_14: &primary_14 "#059af0"
-  primary_15: &primary_15 "#05aaff"
+  # generate-color-gradient-palette.py --samples 16 --start '#0f1229' --middle '#2050b0' --end '#4099ff' --midpoint 0.6 --curve linear
+  primary_0:  &primary_0  "#0f1229"
+  primary_1:  &primary_1  "#101838"
+  primary_2:  &primary_2  "#121f47"
+  primary_3:  &primary_3  "#142656"
+  primary_4:  &primary_4  "#162d65"
+  primary_5:  &primary_5  "#183474"
+  primary_6:  &primary_6  "#1a3b83"
+  primary_7:  &primary_7  "#1c4292"
+  primary_8:  &primary_8  "#1e49a1"
+  primary_9:  &primary_9  "#2050b0"
+  primary_10: &primary_10 "#255cbd"
+  primary_11: &primary_11 "#2a68ca"
+  primary_12: &primary_12 "#3074d7"
+  primary_13: &primary_13 "#3580e4"
+  primary_14: &primary_14 "#3a8cf1"
+  primary_15: &primary_15 "#4099ff"
 
   # Secondary (32-47)
-  secondary_0:  &secondary_0  "#000e14"
-  secondary_1:  &secondary_1  "#02151d"
-  secondary_2:  &secondary_2  "#041d27"
-  secondary_3:  &secondary_3  "#062431"
-  secondary_4:  &secondary_4  "#082c3b"
-  secondary_5:  &secondary_5  "#0a3344"
-  secondary_6:  &secondary_6  "#0c3b4e"
-  secondary_7:  &secondary_7  "#0e4e65"
-  secondary_8:  &secondary_8  "#0d5d74"
-  secondary_9:  &secondary_9  "#0c6c84"
-  secondary_10: &secondary_10 "#0b7b93"
-  secondary_11: &secondary_11 "#0a8aa2"
-  secondary_12: &secondary_12 "#0999b1"
-  secondary_13: &secondary_13 "#08a8c0"
-  secondary_14: &secondary_14 "#07b7cf"
-  secondary_15: &secondary_15 "#06c6df"
+  secondary_0:  &secondary_0  "#011620"
+  secondary_1:  &secondary_1  "#02212c"
+  secondary_2:  &secondary_2  "#032c39"
+  secondary_3:  &secondary_3  "#043746"
+  secondary_4:  &secondary_4  "#054253"
+  secondary_5:  &secondary_5  "#064e5f"
+  secondary_6:  &secondary_6  "#07596c"
+  secondary_7:  &secondary_7  "#086479"
+  secondary_8:  &secondary_8  "#096f86"
+  secondary_9:  &secondary_9  "#0b7b93"
+  secondary_10: &secondary_10 "#0a8a9f"
+  secondary_11: &secondary_11 "#0999ac"
+  secondary_12: &secondary_12 "#08a8b9"
+  secondary_13: &secondary_13 "#07b7c5"
+  secondary_14: &secondary_14 "#06c6d2"
+  secondary_15: &secondary_15 "#06d6df"
 
   # Text (48-63)
-  text_0:  &text_0  "#001020"
-  text_1:  &text_1  "#0e1e2e"
-  text_2:  &text_2  "#1d2d3d"
-  text_3:  &text_3  "#2c3c4c"
-  text_4:  &text_4  "#3b4b5b"
-  text_5:  &text_5  "#4a5a6a"
-  text_6:  &text_6  "#596979"
-  text_7:  &text_7  "#687888"
-  text_8:  &text_8  "#768696"
-  text_9:  &text_9  "#8595a5"
-  text_10: &text_10 "#94a4b4"
-  text_11: &text_11 "#a3b3c3"
-  text_12: &text_12 "#b2c2d2"
-  text_13: &text_13 "#c1d1e1"
-  text_14: &text_14 "#d0e0f0"
-  text_15: &text_15 "#dfefff"
+  text_0: &text_0   "#cdab95"
+  text_1: &text_1   "#d0af99"
+  text_2: &text_2   "#d3b49e"
+  text_3: &text_3   "#d7b8a3"
+  text_4: &text_4   "#dabda8"
+  text_5: &text_5   "#ddc1ad"
+  text_6: &text_6   "#e1c6b2"
+  text_7: &text_7   "#e4cab7"
+  text_8: &text_8   "#e7cfbc"
+  text_9: &text_9   "#ebd3c1"
+  text_10: &text_10 "#eed8c6"
+  text_11: &text_11 "#f1dccb"
+  text_12: &text_12 "#f5e1d0"
+  text_13: &text_13 "#f8e5d5"
+  text_14: &text_14 "#fbeada"
+  text_15: &text_15 "#ffefdf"
 
   # Gray (64-79)
-  gray_0:  &gray_0  "#0b0b0e"
-  gray_1:  &gray_1  "#191a20"
-  gray_2:  &gray_2  "#282932"
-  gray_3:  &gray_3  "#363844"
-  gray_4:  &gray_4  "#454757"
-  gray_5:  &gray_5  "#535669"
-  gray_6:  &gray_6  "#62657b"
-  gray_7:  &gray_7  "#71758e"
-  gray_8:  &gray_8  "#71758e"
-  gray_9:  &gray_9  "#83869c"
-  gray_10: &gray_10 "#9598ab"
-  gray_11: &gray_11 "#a7aab9"
-  gray_12: &gray_12 "#babbc8"
-  gray_13: &gray_13 "#cccdd6"
-  gray_14: &gray_14 "#dedfe5"
-  gray_15: &gray_15 "#f1f1f4"
+  # generate-color-gradient-palette.py --samples 15 --start '#0e1522' --middle '#7683a0' --end '#dfefff' --midpoint 0.7 --curve linear
+  # NOTE: 0-index is hard coded
+  gray_0:  &gray_0  "#01080f"
+  gray_1:  &gray_1  "#0e1522"
+  gray_2:  &gray_2  "#171f2d"
+  gray_3:  &gray_3  "#212939"
+  gray_4:  &gray_4  "#2b3345"
+  gray_5:  &gray_5  "#343e50"
+  gray_6:  &gray_6  "#3e485c"
+  gray_7:  &gray_7  "#485268"
+  gray_8:  &gray_8  "#515d74"
+  gray_9:  &gray_9  "#5b677f"
+  gray_10: &gray_10 "#65718b"
+  gray_11: &gray_11 "#7f8ca8"
+  gray_12: &gray_12 "#97a5be"
+  gray_13: &gray_13 "#afbdd3"
+  gray_14: &gray_14 "#c7d6e9"
+  gray_15: &gray_15 "#dfefff"
 
   # Red (80-89)
-  red_0: &red_0 "#1a0200"
-  red_1: &red_1 "#4d0500"
-  red_2: &red_2 "#800900"
-  red_3: &red_3 "#b30c00"
-  red_4: &red_4 "#cc0e00"
-  red_5: &red_5 "#e60f00"
-  red_6: &red_6 "#ff291a"
-  red_7: &red_7 "#ff584d"
-  red_8: &red_8 "#ff8880"
-  red_9: &red_9 "#ffb8b3"
+  # generate-color-gradient-palette.py --samples 10 --start '#3a0200' --middle '#ff0000' --end '#ffaa99'  --midpoint 0.5 --curve linear
+  red_0: &red_0 "#3a0200"
+  red_1: &red_1 "#600100"
+  red_2: &red_2 "#870100"
+  red_3: &red_3 "#ae0000"
+  red_4: &red_4 "#d50000"
+  red_5: &red_5 "#ff2220"
+  red_6: &red_6 "#ff443e"
+  red_7: &red_7 "#ff665c"
+  red_8: &red_8 "#ff887a"
+  red_9: &red_9 "#ffaa99"
 
   # Orange (90-99)
-  orange_0: &orange_0 "#1a0f00"
-  orange_1: &orange_1 "#331f00"
-  orange_2: &orange_2 "#663d00"
-  orange_3: &orange_3 "#995c00"
-  orange_4: &orange_4 "#ff9500"
-  orange_5: &orange_5 "#ff9900"
-  orange_6: &orange_6 "#ffad33"
-  orange_7: &orange_7 "#ffc266"
-  orange_8: &orange_8 "#ffd699"
-  orange_9: &orange_9 "#ffebcc"
+  # generate-color-gradient-palette.py --samples 10 --start '#330700' --middle '#ff9000' --end '#ffd070'  --midpoint 0.6 --curve linear
+  orange_0: &orange_0 "#330700"
+  orange_1: &orange_1 "#551e00"
+  orange_2: &orange_2 "#783500"
+  orange_3: &orange_3 "#9b4d00"
+  orange_4: &orange_4 "#be6400"
+  orange_5: &orange_5 "#e17b00"
+  orange_6: &orange_6 "#ffa321"
+  orange_7: &orange_7 "#ffb23b"
+  orange_8: &orange_8 "#ffc155"
+  orange_9: &orange_9 "#ffd070"
 
   # Yellow (100-109)
-  yellow_0: &yellow_0 "#332a00"
-  yellow_1: &yellow_1 "#665300"
-  yellow_2: &yellow_2 "#997d00"
-  yellow_3: &yellow_3 "#cca700"
-  yellow_4: &yellow_4 "#ffd000"
-  yellow_5: &yellow_5 "#ffda33"
-  yellow_6: &yellow_6 "#ffde4d"
-  yellow_7: &yellow_7 "#ffe880"
-  yellow_8: &yellow_8 "#fff1b3"
-  yellow_9: &yellow_9 "#fffae6"
+  # generate-color-gradient-palette.py --samples 10 --start '#220a00' --middle '#ffcc10' --end '#ffff99'  --midpoint 0.45 --curve linear
+  yellow_0: &yellow_0 "#220a00"
+  yellow_1: &yellow_1 "#573903"
+  yellow_2: &yellow_2 "#8d6807"
+  yellow_3: &yellow_3 "#c3970b"
+  yellow_4: &yellow_4 "#f9c60e"
+  yellow_5: &yellow_5 "#ffdd3f"
+  yellow_6: &yellow_6 "#ffe555"
+  yellow_7: &yellow_7 "#ffee6c"
+  yellow_8: &yellow_8 "#fff682"
+  yellow_9: &yellow_9 "#ffff99"
 
   # Green (110-119)
-  green_0: &green_0 "#001a0f"
-  green_1: &green_1 "#00331f"
-  green_2: &green_2 "#00663d"
-  green_3: &green_3 "#00995c"
-  green_4: &green_4 "#00cc7a"
-  green_5: &green_5 "#00e68a"
-  green_6: &green_6 "#1affa3"
-  green_7: &green_7 "#4dffb8"
-  green_8: &green_8 "#80ffcc"
-  green_9: &green_9 "#b3ffe0"
+  # generate-color-gradient-palette.py --samples 10 --start '#002220' --middle '#44cc44' --end '#bbff77' --midpoint 0.47
+  green_0: &green_0 "#002220"
+  green_1: &green_1 "#0f4728"
+  green_2: &green_2 "#1e6d30"
+  green_3: &green_3 "#2d9338"
+  green_4: &green_4 "#3cb940"
+  green_5: &green_5 "#67da52"
+  green_6: &green_6 "#7ce35b"
+  green_7: &green_7 "#91ec64"
+  green_8: &green_8 "#a6f56d"
+  green_9: &green_9 "#bbff77"
 
   # Cyan (120-129)
-  cyan_0: &cyan_0 "#00131a"
-  cyan_1: &cyan_1 "#00384d"
-  cyan_2: &cyan_2 "#005e80"
-  cyan_3: &cyan_3 "#0083b3"
-  cyan_4: &cyan_4 "#00a8e6"
-  cyan_5: &cyan_5 "#00bbff"
-  cyan_6: &cyan_6 "#33c9ff"
-  cyan_7: &cyan_7 "#66d6ff"
-  cyan_8: &cyan_8 "#99e4ff"
-  cyan_9: &cyan_9 "#ccf1ff"
+  # generate-color-gradient-palette.py --samples 10 --start '#012233' --middle '#11ccaa' --end '#aaeedd'  --midpoint 0.6 --curve linear
+  cyan_0: &cyan_0 "#012233"
+  cyan_1: &cyan_1 "#033f47"
+  cyan_2: &cyan_2 "#065c5b"
+  cyan_3: &cyan_3 "#087970"
+  cyan_4: &cyan_4 "#0b9684"
+  cyan_5: &cyan_5 "#0db398"
+  cyan_6: &cyan_6 "#3fd5b9"
+  cyan_7: &cyan_7 "#62ddc5"
+  cyan_8: &cyan_8 "#86e5d1"
+  cyan_9: &cyan_9 "#aaeedd"
 
   # Blue (130-139)
-  blue_0: &blue_0 "#00061a"
-  blue_1: &blue_1 "#000d33"
-  blue_2: &blue_2 "#001a66"
-  blue_3: &blue_3 "#002699"
-  blue_4: &blue_4 "#0033cc"
-  blue_5: &blue_5 "#003fff"
-  blue_6: &blue_6 "#3366ff"
-  blue_7: &blue_7 "#668cff"
-  blue_8: &blue_8 "#99b3ff"
-  blue_9: &blue_9 "#ccd9ff"
+  # generate-color-gradient-palette.py --samples 10 --start '#111d3f' --middle '#2057bd' --end '#99ccff'  --midpoint 0.4
+  blue_0: &blue_0 "#111d3f"
+  blue_1: &blue_1 "#142a5c"
+  blue_2: &blue_2 "#173779"
+  blue_3: &blue_3 "#1b4596"
+  blue_4: &blue_4 "#3067c5"
+  blue_5: &blue_5 "#457bd1"
+  blue_6: &blue_6 "#5a8fdc"
+  blue_7: &blue_7 "#6fa3e8"
+  blue_8: &blue_8 "#84b7f3"
+  blue_9: &blue_9 "#99ccff"
 
   # Purple (140-149)
-  purple_0: &purple_0 "#0e001a"
-  purple_1: &purple_1 "#1d0033"
-  purple_2: &purple_2 "#3a0066"
-  purple_3: &purple_3 "#570099"
-  purple_4: &purple_4 "#7400cc"
-  purple_5: &purple_5 "#9200ff"
-  purple_6: &purple_6 "#a733ff"
-  purple_7: &purple_7 "#bd66ff"
-  purple_8: &purple_8 "#d399ff"
-  purple_9: &purple_9 "#e9ccff"
+  # generate-color-gradient-palette.py --samples 10 --start '#0f001a' --middle '#7700cc' --end '#deaaff'  --midpoint 0.5 --curve linear
+  purple_0: &purple_0 "#0f001a"
+  purple_1: &purple_1 "#23003d"
+  purple_2: &purple_2 "#370060"
+  purple_3: &purple_3 "#4c0083"
+  purple_4: &purple_4 "#6000a6"
+  purple_5: &purple_5 "#8c22d6"
+  purple_6: &purple_6 "#a044e0"
+  purple_7: &purple_7 "#b566ea"
+  purple_8: &purple_8 "#c988f4"
+  purple_9: &purple_9 "#deaaff"
 
   # Magenta (150-159)
-  magenta_0: &magenta_0 "#1a000a"
-  magenta_1: &magenta_1 "#330014"
-  magenta_2: &magenta_2 "#660029"
-  magenta_3: &magenta_3 "#99003d"
-  magenta_4: &magenta_4 "#cc0052"
-  magenta_5: &magenta_5 "#ff0066"
-  magenta_6: &magenta_6 "#ff3385"
-  magenta_7: &magenta_7 "#ff66a3"
-  magenta_8: &magenta_8 "#ff99c2"
-  magenta_9: &magenta_9 "#ffcce0"
-
-  # 16 indexed colors
-  i0:  *gray_0
-  i1:  *red_4
-  i2:  *green_3
-  i3:  *orange_6
-  i4:  *primary_11
-  i5:  *magenta_4
-  i6:  *secondary_10
-  i7:  *text_13
-  i8:  *text_8
-  i9:  *red_6
-  i10: *green_5
-  i11: *yellow_6
-  i12: *primary_15
-  i13: *magenta_6
-  i14: *secondary_15
-  i15: *text_15
+  # generate-color-gradient-palette.py --samples 10 --start '#22000a' --middle '#dd0066' --end '#ff99cc'  --midpoint 0.5 --curve linear
+  magenta_0: &magenta_0 "#22000a"
+  magenta_1: &magenta_1 "#46001c"
+  magenta_2: &magenta_2 "#6b002e"
+  magenta_3: &magenta_3 "#900040"
+  magenta_4: &magenta_4 "#b50052"
+  magenta_5: &magenta_5 "#e3207b"
+  magenta_6: &magenta_6 "#ea3e8f"
+  magenta_7: &magenta_7 "#f15ca3"
+  magenta_8: &magenta_8 "#f87ab7"
+  magenta_9: &magenta_9 "#ff99cc"
 
   # ANSI named shortcuts
   ansi_black:     *gray_0
   ansi_red:       *red_4
-  ansi_green:     *green_3
+  ansi_green:     *green_4
   ansi_yellow:    *orange_6
   ansi_blue:      *primary_11
   ansi_magenta:   *magenta_4
-  ansi_cyan:      *secondary_10
-  ansi_white:     *text_13
-  ansi_brblack:   *text_8
+  ansi_cyan:      *cyan_4
+  ansi_white:     *text_9
+  ansi_brblack:   *gray_5
   ansi_brred:     *red_6
-  ansi_brgreen:   *green_5
+  ansi_brgreen:   *green_6
   ansi_bryellow:  *yellow_6
   ansi_brblue:    *primary_15
   ansi_brmagenta: *magenta_6
-  ansi_brcyan:    *secondary_15
+  ansi_brcyan:    *cyan_6
   ansi_brwhite:   *text_15
 
   # Themed
