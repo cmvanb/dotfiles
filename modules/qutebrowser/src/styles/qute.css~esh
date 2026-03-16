@@ -2,27 +2,60 @@
 
 /* General styling */
 body {
-    background-color: <% color_hash $gray_0 %> !important;
-    color: <% color_hash $text_13 %> !important;
+    background-color: <% color_hash $primary_1 %> !important;
+    color: <% color_hash $text_10 %> !important;
     font-family: sans-serif;
+    font-size: <%= $font_size_medium %>px;
+    line-height: 1.6;
 
-    max-width: 800px;
+    max-width: 720px;
     margin: 0 auto;
     padding: 2em;
 }
 
+p {
+    margin: 0;
+    padding: 0;
+}
+
 h1, h2, h3, h4, h5, h6 {
-    color: <% color_hash $text_15 %> !important;
+    margin: 20px 0 10px;
+    padding: 0;
+    font-weight: bold;
+    -webkit-font-smoothing: subpixel-antialiased;
+    cursor: text;
 }
 
 h1 {
-    border-bottom: 2px solid <% color_hash $gray_4 %> !important;
-    padding-bottom: 0.5em;
+    font-size: 28px;
+    border-bottom: none !important;
+    color: <% color_hash $text_15 %> !important;
 }
 
 h2 {
-    border-bottom: 1px solid <% color_hash $gray_3 %> !important;
-    padding-bottom: 0.3em;
+    font-size: 24px;
+    border-bottom: 1px solid <% color_hash $gray_4 %> !important;
+    color: <% color_hash $text_15 %> !important;
+}
+
+h3 {
+    font-size: <%= $font_size_xlarge %>px;
+    color: <% color_hash $text_14 %> !important;
+}
+
+h4 {
+    font-size: <%= $font_size_large %>px;
+    color: <% color_hash $text_14 %> !important;
+}
+
+h5 {
+    font-size: <%= $font_size_medium %>px;
+    color: <% color_hash $text_13 %> !important;
+}
+
+h6 {
+    font-size: <%= $font_size_medium %>px;
+    color: <% color_hash $text_12 %> !important;
 }
 
 /* Links */
@@ -31,35 +64,68 @@ a {
     text-decoration: none;
 }
 
-a:hover {
-    color: <% color_hash $primary_14 %> !important;
-    text-decoration: underline;
+a:focus {
+    outline: thin dotted;
 }
 
 a:visited {
-    color: <% color_hash $primary_10 %> !important;
+    color: <% color_hash $gray_8 %> !important;
+}
+
+a:active,
+a:hover {
+    color: <% color_hash $primary_15 %> !important;
+    text-decoration: underline;
+
+    outline: 0;
 }
 
 /* Code and pre */
-code, pre {
-    background-color: <% color_hash $text_1 %> !important;
-    color: <% color_hash $secondary_12 %> !important;
-    border: 1px solid <% color_hash $secondary_2 %> !important;
+code, tt {
+    margin: 0 2px;
+    padding: 0 5px;
+    white-space: nowrap;
+    background-color: <% color_hash $editor_bg %> !important;
+    border: 1px solid <% color_hash $gray_1 %> !important;
     border-radius: 3px;
     font-family: monospace;
+    font-size: <%= $font_size_medium %>px;
+    color: <% color_hash $secondary_11 %> !important;
 }
 
-code {
-    padding: 2px 4px;
+em {
+    color: <% color_hash $secondary_15 %> !important;
+    style: italic;
+}
+
+strong {
+    color: <% color_hash $secondary_15 %> !important;
+    font-weight: bold;
 }
 
 pre {
-    padding: 8px 12px;
-    overflow-x: auto;
+    background-color: <% color_hash $editor_bg %> !important;
+    border: 1px solid <% color_hash $gray_1 %> !important;
+    border-radius: 3px;
+    font-size: <%= $font_size_msmall %>px;
+    line-height: 19px;
+    overflow: auto;
+    padding: 6px 10px;
+}
+
+pre > code, pre > tt {
+    background-color: transparent !important;
+    border: 0 !important;
+    margin: 0;
+    padding: 0;
+    white-space: pre;
+    color: inherit !important;
+    font-size: inherit;
 }
 
 /* Tables */
 table {
+    border: 1px solid <% color_hash $gray_4 %> !important;
     border-collapse: collapse;
     background-color: <% color_hash $gray_0 %> !important;
 }
@@ -75,7 +141,7 @@ th {
 td {
     border: 1px solid <% color_hash $gray_4 %> !important;
     padding: 8px 12px;
-    color: <% color_hash $text_13 %> !important;
+    color: <% color_hash $text_10 %> !important;
 }
 
 tr:nth-child(even) {
@@ -89,7 +155,7 @@ tr:hover {
 /* Forms and inputs */
 input, textarea, select, button {
     background-color: <% color_hash $gray_1 %> !important;
-    color: <% color_hash $text_13 %> !important;
+    color: <% color_hash $text_10 %> !important;
     border: 1px solid <% color_hash $gray_4 %> !important;
     border-radius: 3px;
     padding: 6px 10px;
@@ -113,11 +179,29 @@ button:hover {
 
 /* Lists */
 ul, ol {
-    color: <% color_hash $text_13 %> !important;
+    color: <% color_hash $text_10 %> !important;
+    padding-left: 1.5em;
+}
+
+ul > li {
+    color: <% color_hash $text_10 %> !important;
+}
+
+ul > li > * {
+    color: <% color_hash $text_10 %> !important;
 }
 
 li {
     margin: 0.3em 0;
+}
+
+dt {
+    color: <% color_hash $text_13 %> !important;
+    font-weight: bold;
+}
+
+dd {
+    margin-left: 1.5em;
 }
 
 /* Horizontal rule */
@@ -136,13 +220,38 @@ blockquote {
 }
 
 /* qute://help specific */
+div.admonitionblock {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0;
+}
+
 #sidebar {
     background-color: <% color_hash $gray_1 %> !important;
     border-right: 1px solid <% color_hash $gray_4 %> !important;
 }
 
+#preamble {
+    margin: 0;
+}
+
 #content {
-    background-color: <% color_hash $gray_0 %> !important;
+    background-color: <% color_hash $primary_2 %> !important;
+    border-radius: 0.8em;
+    padding: 1.5em;
+    margin-top: 1.5em;
+}
+
+.sectionbody {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+
+/* first child doesn't need a margin */
+#content .sect1:first-child * {
+    margin-top: 0;
 }
 
 .deprecated {
@@ -155,7 +264,6 @@ blockquote {
     background-color: <% color_hash $gray_1 %> !important;
     margin: 0.5em 0;
     padding: 1em;
-    border-radius: 4px;
 }
 
 .setting:hover {

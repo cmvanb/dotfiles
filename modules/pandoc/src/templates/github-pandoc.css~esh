@@ -85,26 +85,33 @@ body {
 /**
  * Remove the gray background color from active links in IE 10.
  */
-
 a {
-  background: transparent;
+    background: transparent;
+    color: <% color_hash $primary_12 %> !important;
+
+    text-decoration: none;
 }
 
 /**
  * Address `outline` inconsistency between Chrome and other browsers.
  */
-
 a:focus {
-  outline: thin dotted;
+    outline: thin dotted;
+}
+
+a:visited {
+    color: <% color_hash $gray_8 %> !important;
 }
 
 /**
  * Improve readability when focused and also mouse hovered in all browsers.
  */
-
 a:active,
 a:hover {
-  outline: 0;
+    color: <% color_hash $primary_15 %> !important;
+
+    text-decoration: underline;
+    outline: 0;
 }
 
 /* ==========================================================================
@@ -174,7 +181,7 @@ kbd,
 pre,
 samp {
   font-family: monospace, serif;
-  font-size: 1em;
+  font-size: <%= $font_size_medium %>px;
 }
 
 /**
@@ -412,7 +419,7 @@ table {
   right: 2em;
   text-decoration: none;
   background-color: #e0e0e0;
-  font-size: 12px;
+  font-size: <%= $font_size_medium %>px;
   padding: 1em;
   display: inline;
 }
@@ -437,7 +444,7 @@ body {
   -webkit-font-smoothing: subpixel-antialiased;
   line-height: 1.4;
   padding: 3px;
-  background: <% color_hash $gray_0 %>;
+  background-color: <% color_hash $primary_1 %>;
   border-radius: 3px;
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
@@ -453,7 +460,7 @@ body {
   background-color: <% color_hash $primary_2 %>;
   padding: 30px;
   margin: 15px;
-  font-size: 14px;
+  font-size: <%= font_size_medium %>px;
   line-height: 1.6;
 }
 body > *:first-child {
@@ -491,20 +498,20 @@ h2 {
   color: <% color_hash $text_15 %>;
 }
 h3 {
-  font-size: 18px;
+  font-size: <%= $font_size_xlarge %>px;
   color: <% color_hash $text_14 %>;
 }
 h4 {
-  font-size: 16px;
+  font-size: <%= $font_size_large %>px;
   color: <% color_hash $text_14 %>;
 }
 h5 {
-  font-size: 14px;
+  font-size: <%= $font_size_medium %>px;
   color: <% color_hash $text_13 %>;
 }
 h6 {
   color: <% color_hash $text_12 %>;
-  font-size: 14px;
+  font-size: <%= $font_size_medium %>px;
 }
 p,
 blockquote,
@@ -573,7 +580,7 @@ dl {
   padding: 0;
 }
 dl dt {
-  font-size: 14px;
+  font-size: <%= font_size_medium %>px;
   font-weight: bold;
   font-style: italic;
   padding: 0;
@@ -614,24 +621,28 @@ table {
   border-spacing: 0;
   font-size: 100%;
   font: inherit;
+  background-color: <% color_hash $gray_0 %>;
 }
 table th {
   font-weight: bold;
-  border: 1px solid <% color_hash $primary_4 %>;
-  background-color: <% color_hash $primary_3 %>;
-  padding: 6px 13px;
+  border: 1px solid <% color_hash $gray_4 %>;
+  background-color: <% color_hash $gray_2 %>;
+  color: <% color_hash $text_15 %>;
+  padding: 8px 12px;
 }
 table td {
-  border: 1px solid <% color_hash $gray_1 %>;
-  padding: 6px 13px;
+  border: 1px solid <% color_hash $gray_4 %>;
+  padding: 8px 12px;
 }
 table tr {
-  border-top: 1px solid <% color_hash $gray_1 %>;
-  background-color: <% color_hash $editor_bg %>;
+  border-top: 1px solid <% color_hash $gray_4 %>;
 }
-/* table tr:nth-child(2n) { */
-/*   background-color: <% color_hash $primary_1 %>; */
-/* } */
+table tr:nth-child(even) {
+  background-color: <% color_hash $gray_1 %>;
+}
+table tr:hover {
+  background-color: <% color_hash $gray_2 %>;
+}
 img {
   max-width: 100%;
 }
@@ -644,7 +655,7 @@ tt {
   border: 1px solid <% color_hash $gray_1 %>;
   border-radius: 3px;
   font-family: <%= $font_mono %>, Iosevka, Consolas, "Liberation Mono", Courier, monospace;
-  font-size: 12px;
+  font-size: <%= $font_size_medium %>px;
   color: <% color_hash $secondary_11 %>;
 }
 pre > code {
@@ -657,7 +668,7 @@ pre > code {
 .highlight pre {
   background-color: <% color_hash $editor_bg %>;
   border: 1px solid <% color_hash $gray_1 %>;
-  font-size: 13px;
+  font-size: <%= $font_size_msmall %>px;
   line-height: 19px;
   overflow: auto;
   padding: 6px 10px;
@@ -666,7 +677,7 @@ pre > code {
 pre {
   background-color: <% color_hash $editor_bg %>;
   border: 1px solid <% color_hash $gray_1 %>;
-  font-size: 13px;
+  font-size: <%= $font_size_msmall %>px;
   line-height: 19px;
   overflow: auto;
   padding: 6px 10px;
@@ -709,7 +720,7 @@ sub {
 }
 @media print {
   body {
-    background: <% color_hash $gray_0 %>;
+    background: <% color_hash $primary_2 %>;
   }
   img,
   pre,
@@ -719,7 +730,7 @@ sub {
     page-break-inside: avoid;
   }
   body {
-    background: <% color_hash $gray_0 %>;
+    background: <% color_hash $primary_2 %>;
     border: 0;
   }
   code {
