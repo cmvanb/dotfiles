@@ -118,14 +118,6 @@ function Theme.color_name_to_ansi_index(name)
     return index
 end
 
--- Returns the hex color for an i0-i15 index
-function Theme.color_index_to_name(index)
-    if index < 0 or index > 15 then
-        error('[theme.lua] color_index_to_name expects 0-15, received: ' .. index, 2)
-    end
-    return _dict.colors['i' .. index]
-end
-
 -- Returns a font value by key
 function Theme.font(name)
     return _font(name)
