@@ -463,6 +463,12 @@ config.bind('<Ctrl-r>', 'spawn --userscript readability')
 # Format JSON
 config.bind('<Ctrl-;>', 'spawn --userscript format_json.sh')
 
+# Bitwarden (rbw)
+config.bind('<Alt-Shift-p>', 'spawn --userscript qute-rbw')
+config.bind('<Alt-p>', 'spawn --userscript qute-rbw --password')
+config.bind('<Alt-u>', 'spawn --userscript qute-rbw --username')
+config.bind('<Alt-o>', 'spawn --userscript qute-rbw --totp')
+
 # Video playback
 config.bind(';v', 'hint links spawn --verbose --detach mpv --input-ipc-server=/tmp/mpvsocket {hint-url}')
 

@@ -36,6 +36,7 @@ qutebrowser::install () {
     force_link "$src/userscripts/format_json.sh" "$XDG_DATA_HOME/qutebrowser/userscripts/format_json.sh"
     force_link "$src/userscripts/rebuild-grease-styles.py" "$XDG_DATA_HOME/qutebrowser/userscripts/rebuild-grease-styles.py"
     force_link "$src/userscripts/readability.py" "$XDG_DATA_HOME/qutebrowser/userscripts/readability.py"
+    force_link "$src/userscripts/qute-rbw" "$XDG_DATA_HOME/qutebrowser/userscripts/qute-rbw"
 
     ensure_directory "$XDG_SCRIPTS_HOME"
     force_link "$src/add-bookmark.sh" "$XDG_SCRIPTS_HOME/add-bookmark.sh"
@@ -75,6 +76,7 @@ qutebrowser::uninstall () {
     rm "$XDG_DATA_HOME/qutebrowser/userscripts/format_json.sh"
     rm "$XDG_DATA_HOME/qutebrowser/userscripts/rebuild-grease-styles.py"
     rm "$XDG_DATA_HOME/qutebrowser/userscripts/readability.py"
+    rm "$XDG_DATA_HOME/qutebrowser/userscripts/qute-rbw"
     rmdir "$XDG_DATA_HOME/qutebrowser/userscripts" 2>/dev/null || true
 
     rm "$XDG_SCRIPTS_HOME/add-bookmark.sh"

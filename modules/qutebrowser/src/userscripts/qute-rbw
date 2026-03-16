@@ -1,0 +1,282 @@
+#!/usr/bin/env bash
+#-------------------------------------------------------------------------------
+# Qutebrowser userscript: qute-rbw
+#
+# Populate login fields using rbw (the unofficial Bitwarden CLI daemon).
+# Uses spawn-launcher.sh (via $LAUNCHER) as the selection menu.
+#
+# Usage (from qutebrowser config.py):
+#   spawn --userscript qute-rbw              # fill username + password
+#   spawn --userscript qute-rbw --username   # fill username only
+#   spawn --userscript qute-rbw --password   # fill password only
+#   spawn --userscript qute-rbw --totp       # fill TOTP code
+#
+# Dependencies: rbw, spawn-launcher.sh (in $PATH), wl-copy (optional, for TOTP)
+#-------------------------------------------------------------------------------
+
+set -euo pipefail
+
+# Helpers
+#-------------------------------------------------------------------------------
+
+die() {
+    echo "$*" >&2
+    exit 1
+}
+
+qute() {
+    printf '%s\n' "$*" >> "$QUTE_FIFO"
+}
+
+notify() {
+    # Use printf to avoid embedding variable data in the command string, which
+    # qutebrowser would parse and could allow command injection via vault names.
+    printf 'message-info %s\n' "$(printf '%s' "$*" | jq -Rr @json)" >> "$QUTE_FIFO"
+}
+
+notify_error() {
+    printf 'message-error %s\n' "$(printf '%s' "$*" | jq -Rr @json)" >> "$QUTE_FIFO"
+}
+
+# Fill a form field by CSS selector using jseval.
+# Sets the value and fires input+change events so JS frameworks react.
+# The value is passed URL-encoded to avoid any quoting issues with special
+# characters (single quotes, backslashes, etc.) in passwords.
+fill_field() {
+    local selector="$1"
+    local value="$2"
+    # URL-encode the value so it survives embedding in a JS string literal.
+    # Encode % first so pre-existing percent sequences in the value are not
+    # decoded by decodeURIComponent on the JS side (jq @uri does not encode %).
+    local encoded
+    encoded=$(printf '%s' "$value" | sed 's/%/%25/g' | jq -Rr @uri)
+    # Use a heredoc for readability, then strip all newlines before writing to
+    # the FIFO — qutebrowser treats each newline as a separate command.
+    local js
+    js=$(tr -d '\n' <<ENDOFJS
+    (function(){
+        var el = document.querySelector('${selector}');
+        if (!el) return;
+        var val = decodeURIComponent('${encoded}');
+        var n = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value');
+        if (n && n.set) { n.set.call(el, val); } else { el.value = val; }
+        el.dispatchEvent(new Event('input',  {bubbles:true}));
+        el.dispatchEvent(new Event('change', {bubbles:true}));
+    })()
+ENDOFJS
+)
+    qute "jseval -q ${js}"
+}
+
+# Type a string into the currently focused element using fake-key.
+# Used as a fallback when there is no reliable field selector (e.g. TOTP).
+type_text() {
+    local text="$1"
+    local i char
+    for (( i = 0; i < ${#text}; i++ )); do
+        char="${text:$i:1}"
+        if [[ "$char" == " " ]]; then
+            qute 'fake-key " "'
+        else
+            qute "fake-key '\\${char}'"
+        fi
+    done
+}
+
+# Parse arguments
+#-------------------------------------------------------------------------------
+
+mode="both"  # both | username | password | totp
+
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        --username|-u)  mode="username" ;;
+        --password|-p)  mode="password" ;;
+        --totp|-t)      mode="totp"     ;;
+        --help|-h)
+            echo "Usage: qute-rbw [--username|--password|--totp]"
+            exit 0
+            ;;
+        *)
+            die "Unknown argument: $1"
+            ;;
+    esac
+    shift
+done
+
+# Validate environment
+#-------------------------------------------------------------------------------
+
+[[ -n "${QUTE_URL:-}" ]]  || die "QUTE_URL is not set. Run this script from qutebrowser."
+[[ -n "${QUTE_FIFO:-}" ]] || die "QUTE_FIFO is not set. Run this script from qutebrowser."
+
+command -v rbw            > /dev/null 2>&1 || die "rbw not found in PATH."
+command -v spawn-launcher.sh > /dev/null 2>&1 || die "spawn-launcher.sh not found in PATH."
+
+# Ensure rbw agent is running and vault is unlocked
+#-------------------------------------------------------------------------------
+
+if ! rbw unlocked 2>/dev/null; then
+    rbw unlock 2>/dev/null || { notify_error "rbw: unlock failed or was cancelled."; exit 1; }
+fi
+
+# Extract the hostname from the current URL for pre-filtering
+#-------------------------------------------------------------------------------
+
+# Strip scheme, strip path/query, lowercase
+raw_host="${QUTE_URL#*://}"
+raw_host="${raw_host%%/*}"
+raw_host="${raw_host%%\?*}"
+raw_host="${raw_host,,}"
+
+# Drop www. prefix for matching
+domain="${raw_host#www.}"
+
+# Build candidate list
+#-------------------------------------------------------------------------------
+# Format from `rbw list --fields`: id<TAB>name<TAB>user<TAB>folder
+# We build display lines of the form:  name (user) [folder]
+# and keep a parallel array mapping display index → "name<TAB>user"
+
+all_entries=$(rbw list --fields name,user,folder 2>/dev/null) || {
+    notify_error "rbw: failed to list entries."
+    exit 1
+}
+
+# Pre-filter: entries whose name or URI contains the domain.
+# We do a case-insensitive substring match on the entry name; rbw's `get`
+# command does its own URI matching but listing by URI is not supported.
+if [[ -n "$domain" ]]; then
+    filtered=$(echo "$all_entries" | grep -iF "$domain" || true)
+else
+    filtered=""
+fi
+
+# Fall back to the full list if nothing matched
+if [[ -z "$filtered" ]]; then
+    filtered="$all_entries"
+fi
+
+# Build the fuzzel-friendly display list and a lookup table
+#-------------------------------------------------------------------------------
+
+declare -a display_lines=()
+declare -a entry_names=()
+declare -a entry_users=()
+
+while IFS=$'\t' read -r name user folder; do
+    [[ -z "$name" ]] && continue
+
+    # Build a human-readable display line
+    label="$name"
+    [[ -n "$user"   ]] && label+="  ·  $user"
+    [[ -n "$folder" ]] && label+="  [$folder]"
+
+    display_lines+=("$label")
+    entry_names+=("$name")
+    entry_users+=("$user")
+done <<< "$filtered"
+
+if [[ ${#display_lines[@]} -eq 0 ]]; then
+    notify_error "rbw: no entries found for ${domain:-this page}."
+    exit 0
+fi
+
+# Show the selection menu
+#-------------------------------------------------------------------------------
+
+chosen=""
+
+if [[ ${#display_lines[@]} -eq 1 ]]; then
+    # Only one candidate — skip the menu
+    chosen="${display_lines[0]}"
+else
+    prompt="Bitwarden ($domain)"
+    chosen=$(printf '%s\n' "${display_lines[@]}" \
+        | spawn-launcher.sh --menu --prompt "$prompt") || true
+fi
+
+[[ -z "$chosen" ]] && exit 0  # user cancelled
+
+# Find the matching entry
+#-------------------------------------------------------------------------------
+
+selected_name=""
+selected_user=""
+
+for i in "${!display_lines[@]}"; do
+    if [[ "${display_lines[$i]}" == "$chosen" ]]; then
+        selected_name="${entry_names[$i]}"
+        selected_user="${entry_users[$i]}"
+        break
+    fi
+done
+
+if [[ -z "$selected_name" ]]; then
+    notify_error "rbw: could not resolve selection."
+    exit 1
+fi
+
+# Fetch credentials
+#-------------------------------------------------------------------------------
+
+rbw_args=("$selected_name")
+[[ -n "$selected_user" ]] && rbw_args+=("$selected_user")
+
+entry_json=$(rbw get --raw "${rbw_args[@]}" 2>/dev/null) || {
+    notify_error "rbw: failed to retrieve entry '${selected_name}'."
+    exit 1
+}
+
+username=$(echo "$entry_json" | jq -r '.data.username // empty')
+password=$(echo "$entry_json" | jq -r '.data.password // empty')
+totp_secret=$(echo "$entry_json" | jq -r '.data.totp // empty')
+
+# Fill the form
+#-------------------------------------------------------------------------------
+# For username/password modes we use jseval to locate and fill the correct
+# input field directly — no reliance on prior focus state.
+# CSS selector precedence for the username field:
+#   1. input[type=email]   — most login forms
+#   2. input[type=text]    — fallback for non-email username fields
+# For TOTP there is no reliable heuristic, so we fall back to fake-key into
+# whatever element the user has focused.
+
+USERNAME_SELECTOR="input[type=email]:not([disabled]):not([hidden]), input[type=text]:not([disabled]):not([hidden])"
+PASSWORD_SELECTOR="input[type=password]:not([disabled]):not([hidden])"
+
+case "$mode" in
+    username)
+        [[ -z "$username" ]] && { notify_error "rbw: no username for '${selected_name}'."; exit 1; }
+        fill_field "$USERNAME_SELECTOR" "$username"
+        ;;
+
+    password)
+        [[ -z "$password" ]] && { notify_error "rbw: no password for '${selected_name}'."; exit 1; }
+        fill_field "$PASSWORD_SELECTOR" "$password"
+        ;;
+
+    totp)
+        if [[ -z "$totp_secret" ]]; then
+            notify_error "rbw: no TOTP for '${selected_name}'."
+            exit 1
+        fi
+        totp_code=$(rbw code "${rbw_args[@]}" 2>/dev/null) || {
+            notify_error "rbw: failed to generate TOTP for '${selected_name}'."
+            exit 1
+        }
+        qute 'mode-enter insert'
+        type_text "$totp_code"
+        ;;
+
+    both)
+        if [[ -z "$username" && -z "$password" ]]; then
+            notify_error "rbw: no credentials for '${selected_name}'."
+            exit 1
+        fi
+        [[ -n "$username" ]] && fill_field "$USERNAME_SELECTOR" "$username"
+        [[ -n "$password" ]] && fill_field "$PASSWORD_SELECTOR" "$password"
+        ;;
+esac
+
+notify "rbw: filled '${selected_name}'."
