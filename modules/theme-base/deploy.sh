@@ -32,7 +32,7 @@ theme-base::install () {
 
     render_esh_template "$src/dircolors~esh" "$XDG_CONFIG_HOME/theme/dircolors"
     render_esh_template "$src/eza-colors~esh" "$XDG_CONFIG_HOME/theme/eza-colors"
-    render_esh_template "$src/carbon-dark.theme~esh" "$XDG_CONFIG_HOME/theme/carbon-dark.theme"
+    render_esh_template "$src/carbon-dark-pandoc.theme~esh" "$XDG_CONFIG_HOME/theme/carbon-dark.pandoc.theme"
 }
 
 theme-base::uninstall () {

@@ -18,7 +18,7 @@ pandoc::install () {
     ensure_directory "$XDG_DATA_HOME/pandoc/templates"
 
     force_link "$src/templates/default.html5" "$XDG_DATA_HOME/pandoc/templates/default.html5"
-    render_esh_template "$src/templates/github-pandoc.css~esh" "$XDG_DATA_HOME/pandoc/templates/github-pandoc.css"
+    render_esh_template "$src/templates/markdown.css~esh" "$XDG_DATA_HOME/pandoc/templates/markdown.css"
 }
 
 pandoc::uninstall () {
