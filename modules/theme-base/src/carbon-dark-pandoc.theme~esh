@@ -1,12 +1,12 @@
 <% source $XDG_OPT_HOME/theme/theme.sh -%>
 {
-    "text-color": "<% color_hash $syn_generic %>",
+    "text-color": "<% color_hash $editor_text_normal %>",
     "background-color": "<% color_hash $editor_bg %>",
     "line-number-color": "<% color_hash $primary_8 %>",
     "line-number-background-color": "<% color_hash $gray_1 %>",
     "text-styles": {
         "Alert": {
-            "text-color": "<% color_hash $red_6 %>",
+            "text-color": "<% color_hash $syn_number %>",
             "background-color": null,
             "bold": true,
             "italic": false,
@@ -27,7 +27,7 @@
             "underline": false
         },
         "BaseN": {
-            "text-color": "<% color_hash $red_6 %>",
+            "text-color": "<% color_hash $syn_number %>",
             "background-color": null,
             "bold": false,
             "italic": false,
@@ -62,14 +62,14 @@
             "underline": false
         },
         "Constant": {
-            "text-color": "<% color_hash $magenta_5 %>",
+            "text-color": "<% color_hash $syn_constant %>",
             "background-color": null,
             "bold": false,
             "italic": false,
             "underline": false
         },
         "ControlFlow": {
-            "text-color": "<% color_hash $green_5 %>",
+            "text-color": "<% color_hash $syn_keyword %>",
             "background-color": null,
             "bold": true,
             "italic": false,
@@ -83,7 +83,7 @@
             "underline": false
         },
         "DecVal": {
-            "text-color": "<% color_hash $red_6 %>",
+            "text-color": "<% color_hash $syn_number %>",
             "background-color": null,
             "bold": false,
             "italic": false,
@@ -111,7 +111,7 @@
             "underline": false
         },
         "Float": {
-            "text-color": "<% color_hash $red_6 %>",
+            "text-color": "<% color_hash $syn_number %>",
             "background-color": null,
             "bold": false,
             "italic": false,
@@ -125,7 +125,7 @@
             "underline": false
         },
         "Import": {
-            "text-color": "<% color_hash $yellow_5 %>",
+            "text-color": "<% color_hash $syn_special %>",
             "background-color": null,
             "bold": true,
             "italic": false,
@@ -139,14 +139,14 @@
             "underline": false
         },
         "Keyword": {
-            "text-color": "<% color_hash $green_5 %>",
+            "text-color": "<% color_hash $syn_keyword %>",
             "background-color": null,
             "bold": true,
             "italic": false,
             "underline": false
         },
         "Operator": {
-            "text-color": "<% color_hash $green_5 %>",
+            "text-color": "<% color_hash $syn_keyword %>",
             "background-color": null,
             "bold": true,
             "italic": false,
@@ -160,21 +160,21 @@
             "underline": false
         },
         "Preprocessor": {
-            "text-color": "<% color_hash $yellow_5 %>",
+            "text-color": "<% color_hash $syn_special %>",
             "background-color": null,
             "bold": true,
             "italic": false,
             "underline": false
         },
         "SpecialChar": {
-            "text-color": "<% color_hash $yellow_5 %>",
+            "text-color": "<% color_hash $syn_special %>",
             "background-color": null,
             "bold": true,
             "italic": false,
             "underline": false
         },
         "SpecialString": {
-            "text-color": "<% color_hash $yellow_5 %>",
+            "text-color": "<% color_hash $syn_special %>",
             "background-color": null,
             "bold": false,
             "italic": false,
@@ -202,7 +202,7 @@
             "underline": false
         },
         "Warning": {
-            "text-color": "<% color_hash $yellow_5 %>",
+            "text-color": "<% color_hash $syn_special %>",
             "background-color": null,
             "bold": true,
             "italic": false,
