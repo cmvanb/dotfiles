@@ -91,8 +91,6 @@ c.fonts.messages.error      = f"bold {theme.font('font_size_small')}pt  {theme.f
 c.fonts.messages.info       = f"{theme.font('font_size_small')}pt {theme.font('font_mono')}"
 c.fonts.messages.warning    = f"bold {theme.font('font_size_small')}pt  {theme.font('font_mono')}"
 c.fonts.statusbar           = f"default_size {theme.font('font_mono')}"
-c.fonts.tabs.selected       = f"{theme.font('font_size_small')}pt {theme.font('font_sans')}"
-c.fonts.tabs.unselected     = f"{theme.font('font_size_small')}pt {theme.font('font_sans')}"
 
 # Input settings
 #-------------------------------------------------------------------------------
@@ -266,15 +264,19 @@ c.tabs.show = 'multiple'
 c.tabs.tooltips = False
 
 # Appearance
-c.tabs.favicons.show = 'never'
+c.fonts.tabs.selected       = f"bold {theme.font('font_size_small')}pt {theme.font('font_sans')}"
+c.fonts.tabs.unselected     = f"bold {theme.font('font_size_small')}pt {theme.font('font_sans')}"
+
+c.tabs.favicons.show = 'always'
+c.tabs.favicons.scale = 0.75
 c.tabs.indicator.width = 0
 c.tabs.max_width = 240
-c.tabs.padding = { 'top': 4, 'bottom': 3, 'left': 8, 'right': 8 }
+c.tabs.padding = { 'top': 4, 'bottom': 3, 'left': 6, 'right': 6 }
 c.tabs.position = 'top'
 c.tabs.title.alignment = 'left'
-c.tabs.title.format = '{audio}{index} ⋅ {current_title}'
+c.tabs.title.format = '{audio}{current_title}'
 
-c.colors.tabs.bar.bg = theme.color_hash('primary_3')
+c.colors.tabs.bar.bg = theme.color_hash('primary_0')
 c.colors.tabs.odd.bg = theme.color_hash('gray_3')
 c.colors.tabs.odd.fg = theme.color_hash('gray_10')
 c.colors.tabs.even.bg = theme.color_hash('gray_3')
@@ -283,6 +285,12 @@ c.colors.tabs.selected.odd.bg = theme.color_hash('primary_8')
 c.colors.tabs.selected.odd.fg = theme.color_hash('text_15')
 c.colors.tabs.selected.even.bg = theme.color_hash('primary_8')
 c.colors.tabs.selected.even.fg = theme.color_hash('text_15')
+
+# Customize audio/mute icons
+from qutebrowser.mainwindow.tabwidget import TabWidget
+
+TabWidget.MUTE_STRING = '󰖁 '
+TabWidget.AUDIBLE_STRING = '󰕾 '
 
 # Prompt component
 #-------------------------------------------------------------------------------
