@@ -196,3 +196,14 @@ colors:
   terminal_text:      *text_13
   editor_bg:          *gray_0
   editor_text_normal: *text_10
+
+  # Syntax
+  syn_generic:    *debug
+  syn_identifier: *cyan_4
+  syn_comment:    *gray_8
+  syn_function:   *cyan_6
+  syn_param:      *cyan_4
+  syn_string:     *orange_6
+  syn_constant:   *magenta_5
+  syn_type:       *cyan_6
+  syn_special:    *yellow_5

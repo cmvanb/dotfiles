@@ -28,13 +28,13 @@ source $XDG_OPT_HOME/theme/theme.fish
 # Syntax
 set -U fish_color_autosuggestion (color_named 'text_8')
 set -U fish_color_command (color_named 'ansi_cyan')
-set -U fish_color_comment (color_named 'secondary_5')
+set -U fish_color_comment (color_named 'syn_comment')
 set -U fish_color_end (color_named 'green_4')  # pipe
 set -U fish_color_error (color_named 'ansi_red')
 set -U fish_color_normal (color_named 'text_12')  # search: text
 set -U fish_color_operator (color_named 'green_4')
 set -U fish_color_option (color_named 'ansi_bryellow')
-set -U fish_color_param (color_named 'secondary_12')
+set -U fish_color_param (color_named 'syn_param')
 set -U fish_color_quote (color_named 'ansi_yellow')
 set -U fish_color_redirection (color_named 'ansi_brmagenta')
 set -U fish_color_search_match --background=(color_named 'l1_magenta')

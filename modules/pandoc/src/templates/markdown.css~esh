@@ -656,7 +656,7 @@ tt {
   border-radius: 3px;
   font-family: <%= $font_mono %>, Iosevka, Consolas, "Liberation Mono", Courier, monospace;
   font-size: <%= $font_size_medium %>px;
-  color: <% color_hash $secondary_11 %>;
+  color: <% color_hash $syn_generic %>;
 }
 pre > code {
   margin: 0;

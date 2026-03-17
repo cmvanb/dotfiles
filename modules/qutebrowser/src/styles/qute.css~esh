@@ -69,7 +69,7 @@ a:focus {
 }
 
 a:visited {
-    color: <% color_hash $gray_8 %> !important;
+    color: <% color_hash $green_3 %> !important;
 }
 
 a:active,
@@ -90,16 +90,16 @@ code, tt {
     border-radius: 3px;
     font-family: monospace;
     font-size: <%= $font_size_medium %>px;
-    color: <% color_hash $secondary_11 %> !important;
+    color: <% color_hash $syn_generic %> !important;
 }
 
 em {
-    color: <% color_hash $secondary_15 %> !important;
+    color: <% color_hash $yellow_5 %> !important;
     style: italic;
 }
 
 strong {
-    color: <% color_hash $secondary_15 %> !important;
+    color: <% color_hash $orange_6 %> !important;
     font-weight: bold;
 }
 
@@ -146,6 +146,9 @@ td {
 
 tr:nth-child(even) {
     background-color: <% color_hash $gray_1 %> !important;
+}
+tr:nth-child(odd) {
+    background-color: <% color_hash $gray_0 %> !important;
 }
 
 tr:hover {
@@ -271,16 +274,16 @@ div.admonitionblock {
 }
 
 /* qute://history specific */
-.url {
-    color: <% color_hash $secondary_12 %> !important;
-}
-
 .title {
     color: <% color_hash $text_13 %> !important;
 }
 
+.hostname {
+    color: <% color_hash $text_10 %> !important;
+}
+
 .time {
-    color: <% color_hash $text_8 %> !important;
+    color: <% color_hash $text_10 %> !important;
 }
 
 /* Search highlighting */
