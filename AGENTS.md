@@ -44,6 +44,8 @@ Linux dotfiles managed via a profile/module deployment system. Configs are symli
 
 ## Documentation
 
+**Before making any changes, read the documentation files relevant to the task.**
+
 - [docs/design.md](docs/design.md) — Design overview
 - [docs/profiles.md](docs/profiles.md) — Profile format, inheritance, examples
 - [docs/modules.md](docs/modules.md) — Module structure, deploy script API, patterns
