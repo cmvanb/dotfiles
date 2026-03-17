@@ -29,24 +29,6 @@ colors:
   primary_14: &primary_14 "#3a8cf1"
   primary_15: &primary_15 "#4099ff"
 
-  # Secondary (32-47)
-  secondary_0:  &secondary_0  "#011620"
-  secondary_1:  &secondary_1  "#02212c"
-  secondary_2:  &secondary_2  "#032c39"
-  secondary_3:  &secondary_3  "#043746"
-  secondary_4:  &secondary_4  "#054253"
-  secondary_5:  &secondary_5  "#064e5f"
-  secondary_6:  &secondary_6  "#07596c"
-  secondary_7:  &secondary_7  "#086479"
-  secondary_8:  &secondary_8  "#096f86"
-  secondary_9:  &secondary_9  "#0b7b93"
-  secondary_10: &secondary_10 "#0a8a9f"
-  secondary_11: &secondary_11 "#0999ac"
-  secondary_12: &secondary_12 "#08a8b9"
-  secondary_13: &secondary_13 "#07b7c5"
-  secondary_14: &secondary_14 "#06c6d2"
-  secondary_15: &secondary_15 "#06d6df"
-
   # Text (48-63)
   text_0: &text_0   "#cdab95"
   text_1: &text_1   "#d0af99"
