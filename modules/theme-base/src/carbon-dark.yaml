@@ -199,12 +199,16 @@ colors:
   editor_text_normal: *text_10
 
   # Syntax
-  syn_generic:    *debug
+  syn_generic:    *text_10
   syn_identifier: *cyan_4
+  syn_param:      *cyan_4
   syn_comment:    *gray_8
   syn_function:   *cyan_6
-  syn_param:      *cyan_4
+  syn_type:       *cyan_6
   syn_string:     *orange_6
   syn_constant:   *magenta_5
-  syn_type:       *cyan_6
   syn_special:    *yellow_5
+  syn_keyword:    *green_6
+  syn_delimiter:  *green_4
+  syn_number:     *red_6
+  syn_boolean:    *red_5

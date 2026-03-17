@@ -20,7 +20,7 @@
                     <key>caret</key>
                     <string><% color_hash $text_0 %></string>
                     <key>foreground</key>
-                    <string><% color_hash $secondary_9 %></string>
+                    <string><% color_hash $editor_text_normal %></string>
                     <key>invisibles</key>
                     <string><% color_hash $debug %></string>
                     <key>lineHighlight</key>
@@ -50,7 +50,7 @@
                 <key>settings</key>
                 <dict>
                     <key>foreground</key>
-                    <string><% color_hash $secondary_9 %></string>
+                    <string><% color_hash $editor_text_normal %></string>
                 </dict>
             </dict>
             <!-- 
@@ -155,7 +155,7 @@
                 <key>settings</key>
                 <dict>
                     <key>foreground</key>
-                    <string><% color_hash $magenta_5 %></string>
+                    <string><% color_hash $syn_constant %></string>
                 </dict>
             </dict>
             <!--
@@ -224,7 +224,7 @@
                 <key>settings</key>
                 <dict>
                     <key>foreground</key>
-                    <string><% color_hash $green_4 %></string>
+                    <string><% color_hash $syn_delimiter %></string>
                 </dict>
             </dict>
             <!-- 
@@ -238,7 +238,7 @@
                 <key>settings</key>
                 <dict>
                     <key>foreground</key>
-                    <string><% color_hash $orange_6 %></string>
+                    <string><% color_hash $syn_string %></string>
                 </dict>
             </dict>
             <dict>
@@ -263,7 +263,7 @@
                 <key>settings</key>
                 <dict>
                     <key>foreground</key>
-                    <string><% color_hash $green_4 %></string>
+                    <string><% color_hash $syn_keyword %></string>
                     <key>fontStyle</key>
                     <string>bold</string>
                 </dict>
@@ -276,7 +276,7 @@
                 <key>settings</key>
                 <dict>
                     <key>foreground</key>
-                    <string><% color_hash $green_4 %></string>
+                    <string><% color_hash $syn_keyword %></string>
                     <key>fontStyle</key>
                     <string>bold</string>
                 </dict>
@@ -292,7 +292,7 @@
                 <key>settings</key>
                 <dict>
                     <key>foreground</key>
-                    <string><% color_hash $green_4 %></string>
+                    <string><% color_hash $syn_keyword %></string>
                 </dict>
             </dict>
             <dict>
@@ -303,7 +303,7 @@
                 <key>settings</key>
                 <dict>
                     <key>foreground</key>
-                    <string><% color_hash $green_4 %></string>
+                    <string><% color_hash $syn_delimiter %></string>
                 </dict>
             </dict>
             <!--
@@ -317,7 +317,7 @@
                 <key>settings</key>
                 <dict>
                     <key>foreground</key>
-                    <string><% color_hash $secondary_15 %></string>
+                    <string><% color_hash $syn_function %></string>
                     <key>fontStyle</key>
                     <string>bold</string>
                 </dict>
@@ -333,7 +333,7 @@
                 <key>settings</key>
                 <dict>
                     <key>foreground</key>
-                    <string><% color_hash $red_6 %></string>
+                    <string><% color_hash $syn_number %></string>
                 </dict>
             </dict>
             <!--
@@ -341,13 +341,13 @@
             -->
             <dict>
                 <key>name</key>
-                <string>Numbers</string>
+                <string>Booleans</string>
                 <key>scope</key>
                 <string>constant.language.boolean</string>
                 <key>settings</key>
                 <dict>
                     <key>foreground</key>
-                    <string><% color_hash $red_5 %></string>
+                    <string><% color_hash $syn_boolean %></string>
                 </dict>
             </dict>
             <!-- 
