@@ -264,8 +264,8 @@ c.tabs.show = 'multiple'
 c.tabs.tooltips = False
 
 # Appearance
-c.fonts.tabs.selected       = f"bold {theme.font('font_size_small')}pt {theme.font('font_sans')}"
-c.fonts.tabs.unselected     = f"bold {theme.font('font_size_small')}pt {theme.font('font_sans')}"
+c.fonts.tabs.selected       = f"bold {theme.font('font_size_xsmall')}pt {theme.font('font_sans')}"
+c.fonts.tabs.unselected     = f"bold {theme.font('font_size_xsmall')}pt {theme.font('font_sans')}"
 
 c.tabs.favicons.show = 'always'
 c.tabs.favicons.scale = 0.75
