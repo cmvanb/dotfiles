@@ -3,11 +3,16 @@
 # Spawn a launcher menu.
 #-------------------------------------------------------------------------------
 
-# Imports
+# Dependencies
 #-------------------------------------------------------------------------------
 
 # shellcheck disable=SC1091
 source "$XDG_OPT_HOME/shell-utils/debug.sh"
+
+if [[ -z "$LAUNCHER" ]]; then
+    LAUNCHER="fuzzel"
+    notify-send "spawn-launcher" "LAUNCHER is not set; defaulting to fuzzel."
+fi
 
 assert_dependency "$LAUNCHER"
 

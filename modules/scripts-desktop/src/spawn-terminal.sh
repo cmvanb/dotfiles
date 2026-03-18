@@ -3,6 +3,22 @@
 # Spawn a new terminal
 #-------------------------------------------------------------------------------
 
+# Dependencies
+#-------------------------------------------------------------------------------
+
+# shellcheck disable=SC1091
+source "$XDG_OPT_HOME/shell-utils/debug.sh"
+
+if [[ -z "$TERMINAL" ]]; then
+    TERMINAL="alacritty"
+    notify-send "spawn-terminal" "TERMINAL is not set; defaulting to alacritty."
+fi
+
+assert_dependency "$LAUNCHER"
+
+# Parse arguments
+#-------------------------------------------------------------------------------
+
 command=""
 cwd=""
 floating=false
@@ -170,6 +186,9 @@ while [ $# -gt 0 ]; do
     esac
 done
 
+# Construct terminal arguments
+#-------------------------------------------------------------------------------
+
 args=()
 terminal_cmd=()
 
@@ -228,6 +247,7 @@ else
     exit 1
 fi
 
-nohup "${terminal_cmd[@]}" "${args[@]}" >/dev/null 2>&1 &
+# Spawn a terminal
+#-------------------------------------------------------------------------------
 
-exit 0
+nohup "${terminal_cmd[@]}" "${args[@]}" >/dev/null 2>&1 &
