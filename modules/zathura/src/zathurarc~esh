@@ -27,7 +27,7 @@ set n-completion-items 10
 set font "<%= $font_mono %> 14"
 
 set default-bg "<% color_hash $system_bg %>"
-set default-fg "<% color_hash $gray_15 %>"
+set default-fg "<% color_hash $system_text %>"
 
 set statusbar-bg "<% color_hash $primary_1 %>"
 set statusbar-fg "<% color_hash $text_15 %>"
@@ -36,9 +36,9 @@ set inputbar-bg "<% color_hash $system_bg %>"
 set inputbar-fg "<% color_hash $text_12 %>"
 
 set completion-bg "<% color_hash $system_bg %>"
-set completion-fg "<% color_hash $gray_15 %>"
+set completion-fg "<% color_hash $system_text %>"
 set completion-group-bg "<% color_hash $primary_1 %>"
-set completion-group-fg "#<% color_hash $gray_15 %>"
+set completion-group-fg "#<% color_hash $system_text %>"
 set completion-highlight-bg "<% color_hash $menu_selection_bg %>"
 set completion-highlight-fg "<% color_hash $menu_selection_fg %>"
 
