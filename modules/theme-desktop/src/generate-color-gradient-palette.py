@@ -88,15 +88,15 @@ class Color():
             )
         return Color(int(argument[1:3], 16), int(argument[3:5], 16), int(argument[5:7], 16))
 
-def ease_in(t):
+def quad_in(t):
     """Quadratic ease-in: slow start, fast end."""
     return t * t
 
-def ease_out(t):
+def quad_out(t):
     """Quadratic ease-out: fast start, slow end."""
     return t * (2 - t)
 
-def ease_in_out(t):
+def quad_in_out(t):
     """Quadratic ease-in-out: slow at both ends."""
     return 2 * t * t if t < 0.5 else -1 + (4 - 2 * t) * t
 
@@ -104,12 +104,27 @@ def smoothstep(t):
     """Cubic Hermite: slow at both ends, less compression in the middle than ease-in-out."""
     return t * t * (3 - 2 * t)
 
+def sine_in(t):
+    """Sine ease-in: slow start, fast end."""
+    return 1 - math.cos((t * math.pi) / 2)
+
+def sine_out(t):
+    """Sine ease-out: fast start, slow end."""
+    return math.sin((t * math.pi) / 2)
+
+def sine_in_out(t):
+    """Sine ease-in-out: slow at both ends."""
+    return -(math.cos(math.pi * t) - 1) / 2
+
 CURVES = {
     'linear':       lambda t: t,
-    'ease-in':      ease_in,
-    'ease-out':     ease_out,
-    'ease-in-out':  ease_in_out,
+    'quad-in':      quad_in,
+    'quad-out':     quad_out,
+    'quad-in-out':  quad_in_out,
     'smoothstep':   smoothstep,
+    'sine-in':      sine_in,
+    'sine-out':     sine_out,
+    'sine-in-out':  sine_in_out,
 }
 
 def interp(start, end, percentage):
@@ -126,7 +141,7 @@ def main():
     parser.add_argument('--end',      required=True,  help='The end of the gradient. Hexadecimal color in the format #RRGGBB.')
     parser.add_argument('--middle',   required=False, help='The middle of the gradient, this is optional. Hexadecimal color in the format #RRGGBB.')
     parser.add_argument('--midpoint', required=False, type=float_range(0.0, 1.0), help='Decimal in the range 0.0 to 1.0 representing the position of the middle color.')
-    parser.add_argument('--curve',    required=False, default='linear', choices=list(CURVES.keys()), help='Interpolation curve. One of: linear (default), ease-in, ease-out, ease-in-out, smoothstep.')
+    parser.add_argument('--curve',    required=False, default='linear', choices=list(CURVES.keys()), help='Interpolation curve. One of: linear (default), quad-in, quad-out, quad-in-out, smoothstep, sine-in, sine-out, sine-in-out.')
 
     try:
         args = parser.parse_args()
