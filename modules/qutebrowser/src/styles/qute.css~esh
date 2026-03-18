@@ -131,7 +131,7 @@ table {
 }
 
 th {
-    background-color: <% color_hash $gray_2 %> !important;
+    background-color: <% color_hash $black%> !important;
     color: <% color_hash $text_15 %> !important;
     border: 1px solid <% color_hash $gray_4 %> !important;
     padding: 8px 12px;

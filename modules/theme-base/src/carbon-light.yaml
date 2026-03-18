@@ -9,6 +9,7 @@ colors:
 
   # Special
   debug: &debug "#ff00ff"
+  light: &light "#ffefdf"
 
   # Primary (16-31)
   primary_0:  &primary_0  "#034b96"
@@ -171,7 +172,7 @@ colors:
   magenta_9: &magenta_9 "#ff99cc"
 
   # ANSI named shortcuts
-  ansi_black:     *text_15
+  ansi_black:     *light
   ansi_red:       *red_4
   ansi_green:     *green_4
   ansi_yellow:    *orange_7
@@ -189,11 +190,11 @@ colors:
   ansi_brwhite:   *text_0
 
   # Themed
-  system_bg:          *text_15
+  system_bg:          *light
   system_text:        *text_2
-  terminal_bg:        *text_15
+  terminal_bg:        *light
   terminal_text:      *text_2
-  editor_bg:          *text_15
+  editor_bg:          *light
   editor_text_normal: *text_2
 
   # Syntax

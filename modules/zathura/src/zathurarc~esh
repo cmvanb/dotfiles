@@ -26,29 +26,29 @@ set n-completion-items 10
 #-------------------------------------------------------------------------------
 set font "<%= $font_mono %> 14"
 
-set default-bg "<% color_hash $gray_0 %>"
+set default-bg "<% color_hash $system_bg %>"
 set default-fg "<% color_hash $gray_15 %>"
 
 set statusbar-bg "<% color_hash $primary_1 %>"
 set statusbar-fg "<% color_hash $text_15 %>"
 
-set inputbar-bg "<% color_hash $gray_0 %>"
+set inputbar-bg "<% color_hash $system_bg %>"
 set inputbar-fg "<% color_hash $text_12 %>"
 
-set completion-bg "<% color_hash $gray_0 %>"
+set completion-bg "<% color_hash $system_bg %>"
 set completion-fg "<% color_hash $gray_15 %>"
 set completion-group-bg "<% color_hash $primary_1 %>"
 set completion-group-fg "#<% color_hash $gray_15 %>"
 set completion-highlight-bg "<% color_hash $primary_6 %>"
 set completion-highlight-fg "<% color_hash $text_15 %>"
 
-set notification-error-bg "<% color_hash $gray_0 %>"
+set notification-error-bg "<% color_hash $system_bg %>"
 set notification-error-fg "<% color_hash $red_6 %>"
 
-set notification-warning-bg "<% color_hash $gray_0 %>"
+set notification-warning-bg "<% color_hash $system_bg %>"
 set notification-warning-fg "<% color_hash $yellow_6 %>"
 
-set notification-bg "<% color_hash $gray_0 %>"
+set notification-bg "<% color_hash $system_bg %>"
 set notification-fg "<% color_hash $text_8 %>"
 
 set highlight-color "<% color_css_rgba $magenta_5 0.5 %>"

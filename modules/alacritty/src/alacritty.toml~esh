@@ -22,7 +22,7 @@ COLORTERM = 'truecolor'
 
 [bell]
 animation = 'Linear'
-color = '<% color_hash $gray_0 %>'
+color = '<% color_hash $black %>'
 duration = 100
 
 [cursor.style]
@@ -156,7 +156,7 @@ chars = "\u001b\u005b\u0031\u0035\u003b\u0032\u007e"
 draw_bold_text_with_bright_colors = false
 
 [colors.selection]
-text = '<% color_zerox $gray_0 %>'
+text = '<% color_zerox $black %>'
 background = '<% color_zerox $primary_12 %>'
 
 [colors.primary]
