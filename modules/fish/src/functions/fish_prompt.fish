@@ -13,7 +13,7 @@ function fish_prompt --description 'Print the prompt'
     set -lx __fish_last_status $status
 
     # Colors
-    set -l normal (set_color normal)
+    set -l normal (set_color white)
 
     # Login
     set -l user (whoami)
@@ -28,7 +28,7 @@ function fish_prompt --description 'Print the prompt'
         set separator "⋅"
     end
 
-    set -l host_color (set_color white)
+    set -l host_color $normal
     if test -n "$SSH_TTY"
         set host_color (set_color bryellow)
     end
