@@ -469,13 +469,6 @@ body > *:first-child {
 body > *:last-child {
   margin-bottom: 0 !important;
 }
-/* @media screen { */
-/*   body { */
-/*     box-shadow: */
-/*       0 0 0 1px #cacaca, */
-/*       0 0 0 4px #eee; */
-/*   } */
-/* } */
 h1,
 h2,
 h3,
@@ -621,12 +614,12 @@ table {
   border-spacing: 0;
   font-size: 100%;
   font: inherit;
-  background-color: <% color_hash $gray_0 %>;
+  background-color: <% color_hash $gray_1 %>;
 }
 table th {
   font-weight: bold;
   border: 1px solid <% color_hash $gray_4 %>;
-  background-color: <% color_hash $gray_2 %>;
+  background-color: <% color_hash $gray_3 %>;
   color: <% color_hash $text_15 %>;
   padding: 8px 12px;
 }
@@ -638,10 +631,10 @@ table tr {
   border-top: 1px solid <% color_hash $gray_4 %>;
 }
 table tr:nth-child(even) {
-  background-color: <% color_hash $gray_1 %>;
+  background-color: <% color_hash $gray_2 %>;
 }
 table tr:hover {
-  background-color: <% color_hash $gray_2 %>;
+  background-color: <% color_hash $gray_3 %>;
 }
 img {
   max-width: 100%;

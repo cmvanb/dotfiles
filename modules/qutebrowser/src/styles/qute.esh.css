@@ -94,12 +94,12 @@ code, tt {
 }
 
 em {
-    color: <% color_hash $yellow_5 %> !important;
+    color: <% color_hash $syn_identifier %> !important;
     style: italic;
 }
 
 strong {
-    color: <% color_hash $orange_6 %> !important;
+    color: <% color_hash $syn_special %> !important;
     font-weight: bold;
 }
 
@@ -127,32 +127,32 @@ pre > code, pre > tt {
 table {
     border: 1px solid <% color_hash $gray_4 %> !important;
     border-collapse: collapse;
-    background-color: <% color_hash $gray_0 %> !important;
+    background-color: <% color_hash $gray_1 %> !important;
 }
 
-th {
-    background-color: <% color_hash $black%> !important;
+table th {
+    background-color: <% color_hash $gray_3%> !important;
     color: <% color_hash $text_15 %> !important;
     border: 1px solid <% color_hash $gray_4 %> !important;
     padding: 8px 12px;
     font-weight: bold;
 }
 
-td {
+table td {
     border: 1px solid <% color_hash $gray_4 %> !important;
     padding: 8px 12px;
     color: <% color_hash $text_10 %> !important;
 }
 
-tr:nth-child(even) {
+table tr:nth-child(even) {
+    background-color: <% color_hash $gray_2 %> !important;
+}
+table tr:nth-child(odd) {
     background-color: <% color_hash $gray_1 %> !important;
 }
-tr:nth-child(odd) {
-    background-color: <% color_hash $gray_0 %> !important;
-}
 
-tr:hover {
-    background-color: <% color_hash $gray_2 %> !important;
+table tr:hover {
+    background-color: <% color_hash $gray_3 %> !important;
 }
 
 /* Forms and inputs */
