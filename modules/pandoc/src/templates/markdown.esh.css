@@ -426,43 +426,33 @@ table {
 
 /* Github css */
 
-html,
 body {
-  margin: auto;
-  padding-right: 1em;
-  padding-left: 1em;
-  max-width: 44em;
-  color: <% color_hash $text_10 %>;
+    background-color: <% color_hash $web_page_bg %>;
+    color: <% color_hash $text_10 %>;
+    font-family: <%= $font_sans %>, helvetica, arial, freesans, clean, sans-serif;
+    font-size: <%= $font_size_medium %>px;
+    line-height: 1.6;
+    -webkit-font-smoothing: subpixel-antialiased;
+
+    max-width: 44em;
+    margin: 0 auto;
+    padding: 2em;
 }
+
 *:not("#mkdbuttons") {
   margin: 0;
   padding: 0;
 }
-body {
-  font-family: <%= $font_sans %>, helvetica, arial, freesans, clean, sans-serif;
-  font-size: 13.34px;
-  -webkit-font-smoothing: subpixel-antialiased;
-  line-height: 1.4;
-  padding: 3px;
-  background-color: <% color_hash $web_page_bg %>;
-  border-radius: 3px;
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
-}
+
 p {
   margin: 1em 0;
 }
+
 a {
   color: <% color_hash $web_link %>;
   text-decoration: none;
 }
-body {
-  background-color: <% color_hash $web_page_bg %>;
-  padding: 30px;
-  margin: 15px;
-  font-size: <%= font_size_medium %>px;
-  line-height: 1.6;
-}
+
 body > *:first-child {
   margin-top: 0 !important;
 }
@@ -573,7 +563,7 @@ dl {
   padding: 0;
 }
 dl dt {
-  font-size: <%= font_size_medium %>px;
+  font-size: <%= $font_size_medium %>px;
   font-weight: bold;
   font-style: italic;
   padding: 0;

@@ -206,12 +206,12 @@ colors:
   web_link_visited:   *green_3
 
   # Headings
-  heading_1:          *text_15
-  heading_2:          *text_15
+  heading_1:          *text_12
+  heading_2:          *text_13
   heading_3:          *text_14
-  heading_4:          *text_14
-  heading_5:          *text_13
-  heading_6:          *text_12
+  heading_4:          *text_15
+  heading_5:          *text_14
+  heading_6:          *text_13
 
   # Selection
   selection_bg:       *primary_12
@@ -229,7 +229,7 @@ colors:
   menu_match_fg:      *yellow_6
 
   # Syntax
-  syn_generic:    *text_10
+  syn_generic:    *cyan_4
   syn_identifier: *cyan_4
   syn_param:      *cyan_4
   syn_comment:    *gray_10
