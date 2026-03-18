@@ -33,11 +33,11 @@
         "sideBarSectionHeader.foreground": "<% color_hash $text_15 %>",
 
         /* List (affects side bar) */
-        "list.activeSelectionBackground": "<% color_hash $primary_6 %>",
-        "list.activeSelectionForeground": "<% color_hash $text_15 %>",
+        "list.activeSelectionBackground": "<% color_hash $menu_selection_bg %>",
+        "list.activeSelectionForeground": "<% color_hash $menu_selection_fg %>",
         "list.inactiveSelectionBackground": "<% color_hash $primary_4 %>",
         "list.inactiveSelectionForeground": "<% color_hash $text_12 %>",
-        "list.highlightForeground": "<% color_hash $yellow_6 %>",
+        "list.highlightForeground": "<% color_hash $menu_match_fg %>",
         "list.hoverBackground": "<% color_hash $text_2 %>",
 
         /* Editor groups */
@@ -135,19 +135,19 @@
         "editor.wordHighlightBackground": "<% color_hash $primary_3 %>",
 
         /* Editor selection highlighting */
-        "editor.selectionBackground": "<% color_hash $primary_10 %>60",
+        "editor.selectionBackground": "<% color_hash $selection_bg %>60",
         /* NOTE: This setting is not working.
             see: https://github.com/microsoft/vscode/issues/36490 */
         "editor.selectionForeground": "<% color_hash $debug %>",
-        "editor.inactiveSelectionBackground": "<% color_hash $primary_10 %>60",
-        "editor.selectionHighlightBackground": "<% color_hash $primary_10 %>60",
-        "editor.selectionHighlightBorder": "<% color_hash $primary_10 %>",
+        "editor.inactiveSelectionBackground": "<% color_hash $selection_bg %>60",
+        "editor.selectionHighlightBackground": "<% color_hash $selection_bg %>60",
+        "editor.selectionHighlightBorder": "<% color_hash $selection_bg %>",
 
         /* Editor find highlighting */
-        "editor.findMatchBackground": "<% color_hash $magenta_5 %>",
-        "editor.findMatchForeground": "<% color_hash $black %>",
-        "editor.findMatchHighlightBackground": "<% color_hash $green_4 %>",
-        "editor.findMatchHighlightForeground": "<% color_hash $black %>",
+        "editor.findMatchBackground": "<% color_hash $search_bg %>",
+        "editor.findMatchForeground": "<% color_hash $search_fg %>",
+        "editor.findMatchHighlightBackground": "<% color_hash $search_active_bg %>",
+        "editor.findMatchHighlightForeground": "<% color_hash $search_active_fg %>",
         "editor.rangeHighlightBackground": "<% color_hash $magenta_5 %>40",
 
         /* Editor diagnostics */

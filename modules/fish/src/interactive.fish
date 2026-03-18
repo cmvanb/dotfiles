@@ -46,15 +46,15 @@ set -U fish_pager_color_completion (color_named 'text_8')
 set -U fish_pager_color_description (color_named 'editor_text_normal')
 set -U fish_pager_color_prefix (color_named 'yellow_6')
 set -U fish_pager_color_progress (color_named 'syn_delimiter')
-set -U fish_pager_color_selected_background --background=(color_named 'primary_5')
-set -U fish_pager_color_selected_completion (color_named 'yellow_6')
+set -U fish_pager_color_selected_background --background=(color_named 'menu_selection_bg')
+set -U fish_pager_color_selected_completion (color_named 'menu_selection_fg')
 set -U fish_pager_color_selected_description (color_named 'editor_text_normal')
 
 # Unknown
 # TODO: Find where these colors are used by fish.
 set -U fish_color_cancel (color_named 'debug') # -r
 set -U fish_color_history_current (color_named 'debug') # --bold
-set -U fish_color_selection (color_named 'debug')  # Used when manually selecting text.
+set -U fish_color_selection (color_named 'selection_bg')  # Used when manually selecting text.
 
 # Terminal color support
 #-------------------------------------------------------------------------------

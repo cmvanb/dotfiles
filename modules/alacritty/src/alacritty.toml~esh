@@ -156,8 +156,8 @@ chars = "\u001b\u005b\u0031\u0035\u003b\u0032\u007e"
 draw_bold_text_with_bright_colors = false
 
 [colors.selection]
-text = '<% color_zerox $black %>'
-background = '<% color_zerox $primary_12 %>'
+text = '<% color_zerox $selection_fg %>'
+background = '<% color_zerox $selection_bg %>'
 
 [colors.primary]
 background = '<% color_zerox $terminal_bg %>'
