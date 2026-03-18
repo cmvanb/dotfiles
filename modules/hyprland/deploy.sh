@@ -34,7 +34,7 @@ hyprland::install () {
 
         ensure_directory "$XDG_BIN_HOME"
         force_link \
-            "$src/init~hyprland" \
+            "$src/init.hyprland" \
             "$XDG_BIN_HOME/init"
     fi
 }
@@ -48,7 +48,7 @@ hyprland::uninstall () {
 
     echo "└> Uninstalling hyprland shortcuts."
 
-    if same_file "$XDG_BIN_HOME/init" "$src/init~hyprland"; then
+    if same_file "$XDG_BIN_HOME/init" "$src/init.hyprland"; then
         rm "$XDG_BIN_HOME/init"
     fi
 }

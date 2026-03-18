@@ -18,7 +18,7 @@ river::install () {
     ensure_directory "$XDG_CONFIG_HOME/river"
 
     if [[ $host == "supertubes" || $host == "cyxwel" ]]; then
-        force_link "$src/workspace.sh~home-triple" "$XDG_CONFIG_HOME/river/workspace.sh"
+        force_link "$src/workspace.home-triple.sh" "$XDG_CONFIG_HOME/river/workspace.sh"
 
     fi
 
@@ -42,7 +42,7 @@ river::install () {
         force_link "$src/river-log.sh" "$XDG_BIN_HOME/river-log"
         force_link "$src/refresh.sh" "$XDG_BIN_HOME/river-refresh"
         force_link "$src/river-run.sh" "$XDG_BIN_HOME/river-run"
-        force_link "$src/init~river" "$XDG_BIN_HOME/init"
+        force_link "$src/init.river" "$XDG_BIN_HOME/init"
     fi
 }
 
@@ -59,7 +59,7 @@ river::uninstall () {
 
     rm "$XDG_BIN_HOME/river-log"
     rm "$XDG_BIN_HOME/river-run"
-    if same_file "$XDG_BIN_HOME/init" "$src/init~river"; then
+    if same_file "$XDG_BIN_HOME/init" "$src/init.river"; then
         rm "$XDG_BIN_HOME/init"
     fi
 }

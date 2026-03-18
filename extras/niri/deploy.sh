@@ -16,7 +16,7 @@ niri::install () {
     ensure_directory "$XDG_CONFIG_HOME/niri"
 
     if [[ $host == "supertubes" || $host == "cyxwel" ]]; then
-        force_link "$base_dir/modules/niri/src/workspace.sh~home-triple" "$XDG_CONFIG_HOME/niri/workspace.sh"
+        force_link "$base_dir/modules/niri/src/workspace.home-triple.sh" "$XDG_CONFIG_HOME/niri/workspace.sh"
 
     fi
 
@@ -34,7 +34,7 @@ niri::install () {
         echo "└> Installing niri shortcuts."
 
         ensure_directory "$XDG_BIN_HOME"
-        force_link "$base_dir/modules/niri/src/init~niri" "$XDG_BIN_HOME/init"
+        force_link "$base_dir/modules/niri/src/init.niri" "$XDG_BIN_HOME/init"
     fi
 }
 
@@ -48,7 +48,7 @@ niri::uninstall () {
 
     echo "└> Uninstalling niri shortcuts."
 
-    if same_file "$XDG_BIN_HOME/init" "$base_dir/modules/niri/src/init~niri"; then
+    if same_file "$XDG_BIN_HOME/init" "$base_dir/modules/niri/src/init.niri"; then
         rm "$XDG_BIN_HOME/init"
     fi
 }

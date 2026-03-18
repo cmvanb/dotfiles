@@ -26,12 +26,12 @@ sway::install () {
     force_link "$src/startup-workspace.sh" "$XDG_CONFIG_HOME/sway/startup-workspace.sh"
 
     if [[ $host == "casino" ]]; then
-        force_link "$src/outputs.conf~casino" "$XDG_CONFIG_HOME/sway/outputs.conf"
-        force_link "$src/output-order~casino" "$XDG_CONFIG_HOME/sway/output-order"
+        force_link "$src/outputs.casino.conf" "$XDG_CONFIG_HOME/sway/outputs.conf"
+        force_link "$src/output-order.casino" "$XDG_CONFIG_HOME/sway/output-order"
 
     elif [[ $host == "cyxwel" ]]; then
-        force_link "$src/outputs.conf~cyxwel" "$XDG_CONFIG_HOME/sway/outputs.conf"
-        force_link "$src/output-order~cyxwel" "$XDG_CONFIG_HOME/sway/output-order"
+        force_link "$src/outputs.cyxwel.conf" "$XDG_CONFIG_HOME/sway/outputs.conf"
+        force_link "$src/output-order.cyxwel" "$XDG_CONFIG_HOME/sway/output-order"
 
     else
         echo "└> Warning: No outputs configuration for host '$host'."
@@ -51,7 +51,7 @@ sway::install () {
     if [[ $DEPLOY_WM == "sway" ]]; then
         echo "└> Autorun sway on login."
 
-        force_link "$src/init~sway" "$XDG_BIN_HOME/init"
+        force_link "$src/init.sway" "$XDG_BIN_HOME/init"
     fi
 }
 
@@ -66,7 +66,7 @@ sway::uninstall () {
 
     rm "$XDG_BIN_HOME/sway-run"
 
-    if same_file "$XDG_BIN_HOME/init" "$src/init~sway"; then
+    if same_file "$XDG_BIN_HOME/init" "$src/init.sway"; then
         rm "$XDG_BIN_HOME/init"
     fi
 }

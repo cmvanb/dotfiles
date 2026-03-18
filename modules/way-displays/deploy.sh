@@ -17,7 +17,7 @@ way-displays::install () {
         local src="$base_dir/modules/way-displays/src"
 
         ensure_directory "$XDG_CONFIG_HOME/way-displays"
-        force_link "$src/cfg.yaml~home-triple" "$XDG_CONFIG_HOME/way-displays/cfg.yaml"
+        force_link "$src/cfg.home-triple.yaml" "$XDG_CONFIG_HOME/way-displays/cfg.yaml"
 
     else
         echo "└> Skipping way-displays - no configuration for \`$host\`."

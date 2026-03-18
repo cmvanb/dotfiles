@@ -67,7 +67,7 @@ render_esh_template "$src/env.esh.sh" "$XDG_CONFIG_HOME/bash/env.sh"
 
 **Variant file** (host/distro/wm specific)
 ```bash
-force_link "$src/config~variant" "$XDG_CONFIG_HOME/app/config"
+force_link "$src/config.variant.ext" "$XDG_CONFIG_HOME/app/config.ext"
 ```
 
 

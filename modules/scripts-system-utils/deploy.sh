@@ -14,7 +14,7 @@ scripts-system-utils::install () {
     local src="$base_dir/modules/scripts-system-utils/src"
 
     ensure_directory "$XDG_BIN_HOME"
-    force_link "$src/init~basic" "$XDG_BIN_HOME/init"
+    force_link "$src/init.basic" "$XDG_BIN_HOME/init"
     force_link "$src/logout.sh" "$XDG_BIN_HOME/logout"
     force_link "$src/reboot.sh" "$XDG_BIN_HOME/reboot"
     force_link "$src/shutdown.sh" "$XDG_BIN_HOME/shutdown"
@@ -26,7 +26,7 @@ scripts-system-utils::uninstall () {
 
     local src="$base_dir/modules/scripts-system-utils/src"
 
-    if same_file "$XDG_BIN_HOME/init" "$src/init~basic"; then
+    if same_file "$XDG_BIN_HOME/init" "$src/init.basic"; then
         rm "$XDG_BIN_HOME/init"
     fi
     rm "$XDG_BIN_HOME/logout"
