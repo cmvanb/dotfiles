@@ -180,7 +180,7 @@ colors:
   ansi_blue:      *primary_11
   ansi_magenta:   *magenta_4
   ansi_cyan:      *cyan_4
-  ansi_white:     *text_9
+  ansi_white:     *text_10
   ansi_brblack:   *gray_5
   ansi_brred:     *red_6
   ansi_brgreen:   *green_6
@@ -188,7 +188,7 @@ colors:
   ansi_brblue:    *primary_15
   ansi_brmagenta: *magenta_6
   ansi_brcyan:    *cyan_6
-  ansi_brwhite:   *text_15
+  ansi_brwhite:   *text_13
 
   # Themed
   system_bg:          *gray_0
@@ -202,9 +202,9 @@ colors:
   syn_generic:    *text_10
   syn_identifier: *cyan_4
   syn_param:      *cyan_4
-  syn_comment:    *gray_8
+  syn_comment:    *gray_10
   syn_function:   *cyan_6
-  syn_type:       *cyan_6
+  syn_type:       *cyan_5
   syn_string:     *orange_6
   syn_constant:   *magenta_5
   syn_special:    *yellow_5
