@@ -9,6 +9,7 @@ colors:
 
   # Special
   debug: &debug "#ff00ff"
+  black: &black "#01080f"
 
   # Primary (16-31)
   # generate-color-gradient-palette.py --samples 16 --start '#0f1229' --middle '#2050b0' --end '#4099ff' --midpoint 0.6 --curve linear
@@ -49,23 +50,22 @@ colors:
   text_15: &text_15 "#ffefdf"
 
   # Gray (64-79)
-  # generate-color-gradient-palette.py --samples 15 --start '#0e1522' --middle '#7683a0' --end '#dfefff' --midpoint 0.7 --curve linear
-  # NOTE: 0-index is hard coded
-  gray_0:  &gray_0  "#01080f"
-  gray_1:  &gray_1  "#0e1522"
-  gray_2:  &gray_2  "#171f2d"
-  gray_3:  &gray_3  "#212939"
-  gray_4:  &gray_4  "#2b3345"
-  gray_5:  &gray_5  "#343e50"
-  gray_6:  &gray_6  "#3e485c"
-  gray_7:  &gray_7  "#485268"
-  gray_8:  &gray_8  "#515d74"
-  gray_9:  &gray_9  "#5b677f"
-  gray_10: &gray_10 "#65718b"
-  gray_11: &gray_11 "#7f8ca8"
-  gray_12: &gray_12 "#97a5be"
-  gray_13: &gray_13 "#afbdd3"
-  gray_14: &gray_14 "#c7d6e9"
+  # generate-color-gradient-palette.py --samples 16 --start '#0e1522' --middle '#7683a0' --end '#dfefff' --midpoint 0.7 --curve linear
+  gray_0:  &gray_0  "#0e1522"
+  gray_1:  &gray_1  "#171e2d"
+  gray_2:  &gray_2  "#202838"
+  gray_3:  &gray_3  "#2a3244"
+  gray_4:  &gray_4  "#333c4f"
+  gray_5:  &gray_5  "#3d465b"
+  gray_6:  &gray_6  "#465066"
+  gray_7:  &gray_7  "#505a72"
+  gray_8:  &gray_8  "#59647d"
+  gray_9:  &gray_9  "#626e88"
+  gray_10: &gray_10 "#6c7894"
+  gray_11: &gray_11 "#8b99b3"
+  gray_12: &gray_12 "#a0afc6"
+  gray_13: &gray_13 "#b5c4d9"
+  gray_14: &gray_14 "#cad9ec"
   gray_15: &gray_15 "#dfefff"
 
   # Red (80-89)
@@ -173,7 +173,7 @@ colors:
   magenta_9: &magenta_9 "#ff99cc"
 
   # ANSI named shortcuts
-  ansi_black:     *gray_0
+  ansi_black:     *black
   ansi_red:       *red_4
   ansi_green:     *green_4
   ansi_yellow:    *orange_6
@@ -191,11 +191,11 @@ colors:
   ansi_brwhite:   *text_13
 
   # Themed
-  system_bg:          *gray_0
+  system_bg:          *black
   system_text:        *text_13
-  terminal_bg:        *gray_0
+  terminal_bg:        *black
   terminal_text:      *text_13
-  editor_bg:          *gray_0
+  editor_bg:          *black
   editor_text_normal: *text_10
 
   # Syntax

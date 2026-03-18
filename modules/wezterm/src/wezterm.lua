@@ -225,40 +225,40 @@ return {
         cursor_border = theme.color_hash('text_12'),
 
         selection_bg = theme.color_hash('primary_15'),
-        selection_fg = theme.color_hash('gray_0'),
+        selection_fg = theme.color_hash('black'),
 
-        visual_bell = theme.color_hash('gray_0'),
+        visual_bell = theme.color_hash('black'),
 
         tab_bar = {
-            background = theme.color_hash('gray_0'),
+            background = theme.color_hash('system_bg'),
 
             active_tab = {
-                bg_color = theme.color_hash('gray_0'),
-                fg_color = theme.color_hash('gray_15'),
+                bg_color = theme.color_hash('primary_8'),
+                fg_color = theme.color_hash('text_15'),
 
                 intensity = 'Bold',
             },
 
             inactive_tab = {
-                bg_color = theme.color_hash('gray_0'),
-                fg_color = theme.color_hash('gray_5'),
+                bg_color = theme.color_hash('gray_2'),
+                fg_color = theme.color_hash('gray_10'),
 
                 intensity = 'Normal',
             },
 
             inactive_tab_hover = {
-                bg_color = theme.color_hash('gray_2'),
-                fg_color = theme.color_hash('gray_4'),
+                bg_color = theme.color_hash('gray_3'),
+                fg_color = theme.color_hash('gray_10'),
             },
 
             new_tab = {
-                bg_color = theme.color_hash('gray_0'),
-                fg_color = theme.color_hash('gray_5'),
+                bg_color = theme.color_hash('gray_2'),
+                fg_color = theme.color_hash('gray_10'),
             },
 
             new_tab_hover = {
-                bg_color = theme.color_hash('gray_2'),
-                fg_color = theme.color_hash('gray_4'),
+                bg_color = theme.color_hash('gray_3'),
+                fg_color = theme.color_hash('gray_10'),
             },
         },
 

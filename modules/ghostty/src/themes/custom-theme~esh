@@ -22,4 +22,4 @@ palette = 15=<% color_hash $ansi_brwhite %>
 cursor-color = <% color_hash $terminal_text %>
 
 selection-background = <% color_hash $primary_15 %>
-selection-foreground = <% color_hash $gray_0 %>
+selection-foreground = <% color_hash $black %>

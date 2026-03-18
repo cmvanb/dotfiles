@@ -127,12 +127,7 @@
         "editor.foreground": "<% color_hash $editor_text_normal %>",
 
         /* Editor cursor */
-        "editorCursor.background": "<% color_hash $gray_0 %>",
-        "editorCursor.foreground": "<% color_hash $text_15 %>",
-        "editor.lineHighlightBackground": "<% color_hash $primary_2 %>",
-
-        /* Editor cursor */
-        "editorCursor.background": "<% color_hash $gray_0 %>",
+        "editorCursor.background": "<% color_hash $black %>",
         "editorCursor.foreground": "<% color_hash $text_15 %>",
         "editor.lineHighlightBackground": "<% color_hash $primary_2 %>",
 
@@ -150,9 +145,9 @@
 
         /* Editor find highlighting */
         "editor.findMatchBackground": "<% color_hash $magenta_5 %>",
-        "editor.findMatchForeground": "<% color_hash $gray_0 %>",
+        "editor.findMatchForeground": "<% color_hash $black %>",
         "editor.findMatchHighlightBackground": "<% color_hash $green_4 %>",
-        "editor.findMatchHighlightForeground": "<% color_hash $gray_0 %>",
+        "editor.findMatchHighlightForeground": "<% color_hash $black %>",
         "editor.rangeHighlightBackground": "<% color_hash $magenta_5 %>40",
 
         /* Editor diagnostics */
@@ -194,7 +189,7 @@
 
         /* Scrollbar */
         "editorOverviewRuler.background": "<% color_hash $primary_2 %>",
-        "scrollbar.shadow": "<% color_hash $gray_0 %>40",
+        "scrollbar.shadow": "<% color_hash $black %>40",
         "scrollbarSlider.background": "<% color_hash $primary_6 %>40",
         "scrollbarSlider.hoverBackground": "<% color_hash $primary_6 %>40",
         "scrollbarSlider.activeBackground": "<% color_hash $primary_10 %>60",

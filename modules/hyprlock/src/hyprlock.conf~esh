@@ -6,7 +6,7 @@
 background {
     monitor =
     path = screenshot
-    color = <% color_css_rgba $gray_0 1.0 %>
+    color = <% color_css_rgba $system_bg 1.0 %>
 
     blur_passes = 3
     blur_size = 5

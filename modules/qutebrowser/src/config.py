@@ -149,7 +149,7 @@ c.completion.web_history.exclude = [ '*.duckduckgo.com', 'www.google.com/search*
 # Appearance
 c.downloads.position = 'bottom'
 
-c.colors.downloads.bar.bg = theme.color_hash('gray_0')
+c.colors.downloads.bar.bg = theme.color_hash('system_bg')
 c.colors.downloads.error.bg = theme.color_hash('red_1')
 c.colors.downloads.error.fg = theme.color_hash('red_5')
 c.colors.downloads.stop.bg = theme.color_hash('green_1')
@@ -190,7 +190,7 @@ c.keyhint.delay = 500
 # Appearance
 c.keyhint.radius = 5
 
-c.colors.keyhint.bg = theme.color_hash('gray_0')
+c.colors.keyhint.bg = theme.color_hash('system_bg')
 c.colors.keyhint.fg = theme.color_hash('text_12')
 c.colors.keyhint.suffix.fg = theme.color_hash('yellow_6')
 
@@ -206,14 +206,14 @@ c.colors.keyhint.suffix.fg = theme.color_hash('yellow_6')
 c.messages.timeout = 3980
 
 # Appearance
-c.colors.messages.info.border = theme.color_hash('gray_0')
-c.colors.messages.info.bg = theme.color_hash('gray_0')
+c.colors.messages.info.border = theme.color_hash('system_bg')
+c.colors.messages.info.bg = theme.color_hash('system_bg')
 c.colors.messages.info.fg = theme.color_hash('text_8')
-c.colors.messages.warning.border = theme.color_hash('gray_0')
-c.colors.messages.warning.bg = theme.color_hash('gray_0')
+c.colors.messages.warning.border = theme.color_hash('system_bg')
+c.colors.messages.warning.bg = theme.color_hash('system_bg')
 c.colors.messages.warning.fg = theme.color_hash('yellow_6')
-c.colors.messages.error.border = theme.color_hash('gray_0')
-c.colors.messages.error.bg = theme.color_hash('gray_0')
+c.colors.messages.error.border = theme.color_hash('system_bg')
+c.colors.messages.error.bg = theme.color_hash('system_bg')
 c.colors.messages.error.fg = theme.color_hash('red_6')
 
 # Statusbar component
@@ -227,21 +227,21 @@ c.statusbar.widgets = [ 'keypress', 'url', 'scroll', 'history', 'tabs', 'progres
 c.statusbar.padding = { 'top': 1, 'bottom': 1, 'left': 0, 'right': 0 }
 c.statusbar.position = 'bottom'
 
-c.colors.statusbar.normal.bg = theme.color_hash('gray_0')
+c.colors.statusbar.normal.bg = theme.color_hash('system_bg')
 c.colors.statusbar.normal.fg = theme.color_hash('text_12')
-c.colors.statusbar.caret.bg = theme.color_hash('gray_0')
+c.colors.statusbar.caret.bg = theme.color_hash('system_bg')
 c.colors.statusbar.caret.fg = theme.color_hash('magenta_5')
-c.colors.statusbar.caret.selection.bg = theme.color_hash('gray_0')
+c.colors.statusbar.caret.selection.bg = theme.color_hash('system_bg')
 c.colors.statusbar.caret.selection.fg = theme.color_hash('cyan_6')
-c.colors.statusbar.command.bg = theme.color_hash('gray_0')
+c.colors.statusbar.command.bg = theme.color_hash('system_bg')
 c.colors.statusbar.command.fg = theme.color_hash('text_8')
-c.colors.statusbar.insert.bg = theme.color_hash('gray_0')
+c.colors.statusbar.insert.bg = theme.color_hash('system_bg')
 c.colors.statusbar.insert.fg = theme.color_hash('green_5')
-c.colors.statusbar.passthrough.bg = theme.color_hash('gray_0')
+c.colors.statusbar.passthrough.bg = theme.color_hash('system_bg')
 c.colors.statusbar.passthrough.fg = theme.color_hash('yellow_5')
 c.colors.statusbar.private.bg = theme.color_hash('purple_1')
 c.colors.statusbar.private.fg = theme.color_hash('text_15')
-c.colors.statusbar.command.private.bg = theme.color_hash('gray_0')
+c.colors.statusbar.command.private.bg = theme.color_hash('system_bg')
 c.colors.statusbar.command.private.fg = theme.color_hash('text_8')
 c.colors.statusbar.progress.bg = theme.color_hash('text_15')
 c.colors.statusbar.url.error.fg = theme.color_hash('red_5')
@@ -277,9 +277,9 @@ c.tabs.title.alignment = 'left'
 c.tabs.title.format = '{audio}{current_title}'
 
 c.colors.tabs.bar.bg = theme.color_hash('primary_0')
-c.colors.tabs.odd.bg = theme.color_hash('gray_3')
+c.colors.tabs.odd.bg = theme.color_hash('gray_2')
 c.colors.tabs.odd.fg = theme.color_hash('gray_10')
-c.colors.tabs.even.bg = theme.color_hash('gray_3')
+c.colors.tabs.even.bg = theme.color_hash('gray_2')
 c.colors.tabs.even.fg = theme.color_hash('gray_10')
 c.colors.tabs.selected.odd.bg = theme.color_hash('primary_8')
 c.colors.tabs.selected.odd.fg = theme.color_hash('text_15')
@@ -313,7 +313,7 @@ c.colors.contextmenu.selected.fg = theme.color_hash('gray_15')
 #-------------------------------------------------------------------------------
 
 # Websites
-c.colors.webpage.bg = theme.color_hash('gray_0')
+c.colors.webpage.bg = theme.color_hash('system_bg')
 c.colors.webpage.preferred_color_scheme = 'dark'
 
 # Dark mode

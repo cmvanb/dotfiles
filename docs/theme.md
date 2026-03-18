@@ -23,7 +23,7 @@ Each file has a single top-level key (`colors:`, `fonts:`, `cursor:`).
 
 ### Color scheme structure
 
-Colors are `key: "#RRGGBB"` hex strings. YAML anchors/aliases allow internal references (`i0: *gray_0`).
+Colors are `key: "#RRGGBB"` hex strings. YAML anchors/aliases allow internal references (`ansi_red: *red_4`).
 
 **Core palettes** (16-step gradients): `primary`, `secondary`, `text`, `gray`
 

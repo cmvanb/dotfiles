@@ -5,10 +5,10 @@
 }
 
 ::selection {
-    color: <% color_hash $gray_0 %>;
+    color: <% color_hash $black %>;
     background: <% color_hash $primary_12 %>;
 }
 ::-moz-selection {
-    color: <% color_hash $gray_0 %>;
+    color: <% color_hash $black %>;
     background: <% color_hash $primary_12 %>;
 }

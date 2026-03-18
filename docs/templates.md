@@ -36,7 +36,7 @@ Source the theme API once, then call color functions inline:
 ```css
 /* <% source $XDG_OPT_HOME/theme/theme.sh -%> */
 window#waybar {
-    background: <% color_hash $gray_0 %>;
+    background: <% color_hash $system_bg %>;
     color:      <% color_hash $system_text %>;
     border:     1px solid <% color_css_rgba $primary_10 0.45 %>;
 }

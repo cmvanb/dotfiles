@@ -17,7 +17,7 @@ fi
 }
 
 window#waybar {
-    background: <% color_hash $gray_0 %>;
+    background: <% color_hash $system_bg %>;
     color: <% color_hash $system_text %>;
     transition-property: background-color;
     transition-duration: .5s;
