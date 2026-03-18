@@ -198,6 +198,12 @@ colors:
   editor_bg:          *black
   editor_text_normal: *text_10
 
+  # Web
+  web_page_bg:        *gray_0
+  web_link:           *primary_12
+  web_link_hover:     *primary_15
+  web_link_visited:   *green_3
+
   # Selection
   selection_bg:       *primary_12
   selection_fg:       *black

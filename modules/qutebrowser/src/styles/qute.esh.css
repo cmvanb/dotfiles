@@ -2,7 +2,7 @@
 
 /* General styling */
 body {
-    background-color: <% color_hash $primary_1 %> !important;
+    background-color: <% color_hash $web_page_bg %> !important;
     color: <% color_hash $text_10 %> !important;
     font-family: sans-serif;
     font-size: <%= $font_size_medium %>px;
@@ -60,7 +60,7 @@ h6 {
 
 /* Links */
 a {
-    color: <% color_hash $primary_12 %> !important;
+    color: <% color_hash $web_link %> !important;
     text-decoration: none;
 }
 
@@ -69,12 +69,12 @@ a:focus {
 }
 
 a:visited {
-    color: <% color_hash $green_3 %> !important;
+    color: <% color_hash $web_link_visited %> !important;
 }
 
 a:active,
 a:hover {
-    color: <% color_hash $primary_15 %> !important;
+    color: <% color_hash $web_link_hover %> !important;
     text-decoration: underline;
 
     outline: 0;

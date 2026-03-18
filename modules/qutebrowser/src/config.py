@@ -313,7 +313,7 @@ c.colors.contextmenu.selected.fg = theme.color_hash('gray_15')
 #-------------------------------------------------------------------------------
 
 # Websites
-c.colors.webpage.bg = theme.color_hash('system_bg')
+c.colors.webpage.bg = theme.color_hash('web_page_bg')
 c.colors.webpage.preferred_color_scheme = 'dark'
 
 # Dark mode
