@@ -26,29 +26,29 @@ set -x EZA_COLORS (tr -d '\n' < $XDG_CONFIG_HOME/theme/eza-colors)$LS_COLORS
 source $XDG_OPT_HOME/theme/theme.fish
 
 # Syntax
-set -U fish_color_autosuggestion (color_named 'text_8')
-set -U fish_color_command (color_named 'ansi_cyan')
+set -U fish_color_autosuggestion (color_named 'syn_comment')
+set -U fish_color_command (color_named 'syn_function')
 set -U fish_color_comment (color_named 'syn_comment')
-set -U fish_color_end (color_named 'green_4')  # pipe
+set -U fish_color_end (color_named 'syn_delimiter')  # pipe
 set -U fish_color_error (color_named 'ansi_red')
-set -U fish_color_normal (color_named 'text_12')  # search: text
-set -U fish_color_operator (color_named 'green_4')
-set -U fish_color_option (color_named 'ansi_bryellow')
+set -U fish_color_normal (color_named 'editor_text_normal')
+set -U fish_color_operator (color_named 'syn_delimiter')
+set -U fish_color_option (color_named 'syn_special')  # ansi_bryellow
 set -U fish_color_param (color_named 'syn_param')
-set -U fish_color_quote (color_named 'ansi_yellow')
-set -U fish_color_redirection (color_named 'ansi_brmagenta')
-set -U fish_color_search_match --background=(color_named 'l1_magenta')
-set -U fish_color_valid_path (color_named 'ansi_brcyan') --bold #--underline
-set -U fish_color_escape (color_named 'ansi_brmagenta')  # escape characters
+set -U fish_color_quote (color_named 'syn_string')
+set -U fish_color_redirection (color_named 'magenta_6')  # ansi_brmagenta
+set -U fish_color_search_match --background=(color_named 'primary_7')
+set -U fish_color_valid_path (color_named 'ansi_blue')  # ansi_brcyan
+set -U fish_color_escape (color_named 'syn_special')  # escape characters
 
 # Pager
 set -U fish_pager_color_completion (color_named 'text_8')
-set -U fish_pager_color_description (color_named 'text_12')
-set -U fish_pager_color_prefix (color_named 'yellow_5')
-set -U fish_pager_color_progress (color_named 'green_4')
-set -U fish_pager_color_selected_background --background=(color_named 'primary_7')
-set -U fish_pager_color_selected_completion (color_named 'text_15')
-set -U fish_pager_color_selected_description (color_named 'text_15')
+set -U fish_pager_color_description (color_named 'editor_text_normal')
+set -U fish_pager_color_prefix (color_named 'yellow_6')
+set -U fish_pager_color_progress (color_named 'syn_delimiter')
+set -U fish_pager_color_selected_background --background=(color_named 'primary_5')
+set -U fish_pager_color_selected_completion (color_named 'yellow_6')
+set -U fish_pager_color_selected_description (color_named 'editor_text_normal')
 
 # Unknown
 # TODO: Find where these colors are used by fish.
