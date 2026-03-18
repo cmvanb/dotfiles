@@ -483,27 +483,27 @@ h6 {
 }
 h1 {
   font-size: 28px;
-  color: <% color_hash $text_15 %>;
+  color: <% color_hash $heading_1 %>;
 }
 h2 {
   font-size: 24px;
   border-bottom: 1px solid <% color_hash $gray_4 %>;
-  color: <% color_hash $text_15 %>;
+  color: <% color_hash $heading_2 %>;
 }
 h3 {
   font-size: <%= $font_size_xlarge %>px;
-  color: <% color_hash $text_14 %>;
+  color: <% color_hash $heading_3 %>;
 }
 h4 {
   font-size: <%= $font_size_large %>px;
-  color: <% color_hash $text_14 %>;
+  color: <% color_hash $heading_4 %>;
 }
 h5 {
   font-size: <%= $font_size_medium %>px;
-  color: <% color_hash $text_13 %>;
+  color: <% color_hash $heading_5 %>;
 }
 h6 {
-  color: <% color_hash $text_12 %>;
+  color: <% color_hash $heading_6 %>;
   font-size: <%= $font_size_medium %>px;
 }
 p,

@@ -203,6 +203,14 @@ colors:
   web_link_hover:     *primary_0
   web_link_visited:   *green_2
 
+  # Headings
+  heading_1:          *text_2
+  heading_2:          *text_2
+  heading_3:          *text_3
+  heading_4:          *text_3
+  heading_5:          *text_4
+  heading_6:          *text_5
+
   # Selection
   selection_bg:       *primary_4
   selection_fg:       *text_15
