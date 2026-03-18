@@ -27,7 +27,6 @@ export XDG_TEMPLATES_DIR="${XDG_TEMPLATES_DIR:-$HOME/.local/share/templates}"
 
 export DEPLOY_DISTRO="$(linux::get_distro_id)"
 export DEPLOY_HOST="$(uname -n)"
-export DEPLOY_PROFILE=""  # Will be set per profile
 export ESH_SHELL=/usr/bin/bash
 export PYENV_ROOT="${PYENV_ROOT:-$XDG_OPT_HOME/pyenv}"
 
@@ -222,8 +221,6 @@ cmd_install() {
         echo
         return 0
     fi
-
-    export DEPLOY_PROFILE=""
 
     log_header "Installing modules..."
     for target in "${targets[@]}"; do
