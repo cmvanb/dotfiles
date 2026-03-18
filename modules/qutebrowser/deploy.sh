@@ -19,6 +19,7 @@ qutebrowser::install () {
     force_link "$src/config.py" "$XDG_CONFIG_HOME/qutebrowser/config.py"
     render_esh_template "$src/stylesheet.esh.css" "$XDG_CONFIG_HOME/qutebrowser/stylesheet.css"
     force_link "$src/stylemap.py" "$XDG_CONFIG_HOME/qutebrowser/stylemap.py"
+    force_link "$src/modern-normalize.css" "$XDG_CONFIG_HOME/qutebrowser/modern-normalize.css"
 
     ensure_directory "$XDG_CONFIG_HOME/qutebrowser/styles"
     render_esh_template "$src/styles/qute.esh.css" "$XDG_CONFIG_HOME/qutebrowser/styles/qute.css"
