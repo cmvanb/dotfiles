@@ -181,7 +181,7 @@ colors:
   ansi_magenta:   *magenta_4
   ansi_cyan:      *cyan_4
   ansi_white:     *text_10
-  ansi_brblack:   *gray_5
+  ansi_brblack:   *gray_8
   ansi_brred:     *red_6
   ansi_brgreen:   *green_6
   ansi_bryellow:  *yellow_6
