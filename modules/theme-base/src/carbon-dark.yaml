@@ -202,11 +202,13 @@ colors:
   selection_bg:       *primary_12
   selection_fg:       *black
 
+  # Search
   search_bg:          *primary_12
   search_fg:          *black
   search_active_bg:   *green_4
   search_active_fg:   *black
 
+  # Menus
   menu_selection_bg:  *primary_8
   menu_selection_fg:  *text_15
   menu_match_fg:      *yellow_6

@@ -19,7 +19,7 @@ hyprlock::install () {
 
     # Configuration files.
     render_esh_template \
-        "$src/hyprlock.conf~esh" \
+        "$src/hyprlock.esh.conf" \
         "$XDG_CONFIG_HOME/hypr/hyprlock.conf"
 }
 

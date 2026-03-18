@@ -16,7 +16,7 @@ wget::install () {
     local src="$base_dir/modules/wget/src"
 
     ensure_directory "$XDG_CONFIG_HOME/wget"
-    render_esh_template "$src/wgetrc~esh" "$XDG_CONFIG_HOME/wget/wgetrc"
+    render_esh_template "$src/wgetrc.esh" "$XDG_CONFIG_HOME/wget/wgetrc"
 }
 
 wget::uninstall () {

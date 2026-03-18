@@ -16,7 +16,7 @@ ripgrep::install () {
     local src="$base_dir/modules/ripgrep/src"
 
     ensure_directory "$XDG_CONFIG_HOME/ripgrep"
-    render_esh_template "$src/config~esh" "$XDG_CONFIG_HOME/ripgrep/config"
+    render_esh_template "$src/config.esh" "$XDG_CONFIG_HOME/ripgrep/config"
 
     echo "└> Installing ripgrep shortcuts."
 

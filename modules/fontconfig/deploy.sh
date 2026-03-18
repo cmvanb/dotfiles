@@ -16,7 +16,7 @@ fontconfig::install () {
     local src="$base_dir/modules/fontconfig/src"
 
     ensure_directory "$XDG_CONFIG_HOME/fontconfig"
-    render_esh_template "$src/fonts.conf~esh" "$XDG_CONFIG_HOME/fontconfig/fonts.conf"
+    render_esh_template "$src/fonts.esh.conf" "$XDG_CONFIG_HOME/fontconfig/fonts.conf"
 }
 
 fontconfig::uninstall () {

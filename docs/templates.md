@@ -12,7 +12,7 @@ Some config files are generated at deploy time to adapt to the environment (them
 | `<%= ... %>` | Execute and inline the output |
 | `<%- ... -%>` | Trim surrounding whitespace |
 
-Template files use a `~esh` suffix (e.g. `config~esh`, `style.css~esh`). Rendered output is never committed.
+Template files use a `.esh` suffix (e.g. `config.esh`, `style.esh.css`). Rendered output is never committed.
 
 ## Context variables
 
@@ -89,5 +89,5 @@ Modules render templates via the `render_esh_template` wrapper from `lib/templat
 
 ```bash
 source "$base_dir/lib/template.sh"
-render_esh_template "$src/config~esh" "$XDG_CONFIG_HOME/app/config"
+render_esh_template "$src/config.esh" "$XDG_CONFIG_HOME/app/config"
 ```

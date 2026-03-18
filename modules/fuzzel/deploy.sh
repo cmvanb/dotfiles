@@ -16,7 +16,7 @@ fuzzel::install () {
     local src="$base_dir/modules/fuzzel/src"
 
     ensure_directory "$XDG_CONFIG_HOME/fuzzel"
-    render_esh_template "$src/fuzzel.ini~esh" "$XDG_CONFIG_HOME/fuzzel/fuzzel.ini"
+    render_esh_template "$src/fuzzel.esh.ini" "$XDG_CONFIG_HOME/fuzzel/fuzzel.ini"
 }
 
 fuzzel::uninstall () {

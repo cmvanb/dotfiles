@@ -17,7 +17,7 @@ wofi::install () {
 
     ensure_directory "$XDG_CONFIG_HOME/wofi"
     force_link "$src/config" "$XDG_CONFIG_HOME/wofi/config"
-    render_esh_template "$src/style.css~esh" "$XDG_CONFIG_HOME/wofi/style.css"
+    render_esh_template "$src/style.esh.css" "$XDG_CONFIG_HOME/wofi/style.css"
 }
 
 wofi::uninstall () {

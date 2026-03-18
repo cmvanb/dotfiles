@@ -16,7 +16,7 @@ mako::install () {
     local src="$base_dir/modules/mako/src"
 
     ensure_directory "$XDG_CONFIG_HOME/mako"
-    render_esh_template "$src/config~esh" "$XDG_CONFIG_HOME/mako/config"
+    render_esh_template "$src/config.esh" "$XDG_CONFIG_HOME/mako/config"
 }
 
 mako::uninstall () {

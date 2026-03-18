@@ -26,6 +26,6 @@ mkdir -p "$tmp_dir"
 
 pandoc -s -f markdown -t html --toc \
     --embed-resources \
-    --syntax-highlighting "$XDG_CONFIG_HOME/theme/carbon-dark-pandoc.theme" \
+    --syntax-highlighting "$XDG_CONFIG_HOME/theme/carbon-dark.pygments.theme" \
     --css "$XDG_DATA_HOME/pandoc/templates/markdown.css" \
     "$1" > "$tmp_dir/$file_name.html"

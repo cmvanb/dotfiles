@@ -22,7 +22,7 @@ broot::install () {
     force_link "$src/verbs.hjson" "$XDG_CONFIG_HOME/broot/verbs.hjson"
 
     ensure_directory "$XDG_CONFIG_HOME/broot/skins"
-    render_esh_template "$src/skins/carbon-dark.hjson~esh" "$XDG_CONFIG_HOME/broot/skins/carbon-dark.hjson"
+    render_esh_template "$src/skins/carbon-dark.esh.hjson" "$XDG_CONFIG_HOME/broot/skins/carbon-dark.hjson"
 }
 
 broot::uninstall () {

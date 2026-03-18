@@ -20,7 +20,7 @@ btop::install () {
 
     ensure_directory "$XDG_CONFIG_HOME/btop/themes"
     # TODO: Extract templating to a shared function.
-    render_esh_template "$src/themes/carbon.theme~esh" "$XDG_CONFIG_HOME/btop/themes/carbon.theme"
+    render_esh_template "$src/themes/carbon.esh.theme" "$XDG_CONFIG_HOME/btop/themes/carbon.theme"
 }
 
 btop::uninstall () {

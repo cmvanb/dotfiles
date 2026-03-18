@@ -19,9 +19,9 @@ theme-desktop::install_gtk_theme () {
     ensure_directory "$XDG_CONFIG_HOME/gtk-3.0"
     ensure_directory "$XDG_CONFIG_HOME/gtk-4.0"
 
-    render_esh_template "$src/gtk-4.0-gtk.css~esh"               "$XDG_CONFIG_HOME/gtk-4.0/gtk.css"
-    render_esh_template "$src/gtk-3.0-settings.ini~esh"          "$XDG_CONFIG_HOME/gtk-3.0/settings.ini"
-    render_esh_template "$src/gtk-4.0-settings.ini~esh"          "$XDG_CONFIG_HOME/gtk-4.0/settings.ini"
+    render_esh_template "$src/gtk-4.0-gtk.esh.css"               "$XDG_CONFIG_HOME/gtk-4.0/gtk.css"
+    render_esh_template "$src/gtk-3.0-settings.esh.ini"          "$XDG_CONFIG_HOME/gtk-3.0/settings.ini"
+    render_esh_template "$src/gtk-4.0-settings.esh.ini"          "$XDG_CONFIG_HOME/gtk-4.0/settings.ini"
 
     # Install GTK CSS files
     local theme_src="$src/carbon-dark-gtk"
@@ -47,8 +47,8 @@ theme-desktop::install_gtk_theme () {
     # NOTE: Export fragment path so the libadwaita ESH template can reference them.
     export CARBON_GTK4_SRC="$theme_src/gtk-4.0"
 
-    render_esh_template "$theme_src/gtk-3.0/gtk-dark.css~esh"   "$theme_dest/gtk-3.0/gtk-dark.css"
-    render_esh_template "$theme_src/gtk-4.0/libadwaita.css~esh" "$theme_dest/gtk-4.0/libadwaita.css"
+    render_esh_template "$theme_src/gtk-3.0/gtk-dark.esh.css"   "$theme_dest/gtk-3.0/gtk-dark.css"
+    render_esh_template "$theme_src/gtk-4.0/libadwaita.esh.css" "$theme_dest/gtk-4.0/libadwaita.css"
 }
 
 theme-desktop::configure_gtk () {

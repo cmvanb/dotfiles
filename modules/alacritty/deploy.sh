@@ -16,7 +16,7 @@ alacritty::install () {
 
     ensure_directory "$XDG_CONFIG_HOME/alacritty"
     # TODO: Extract templating to a shared function.
-    render_esh_template "$src/alacritty.toml~esh" "$XDG_CONFIG_HOME/alacritty/alacritty.toml"
+    render_esh_template "$src/alacritty.esh.toml" "$XDG_CONFIG_HOME/alacritty/alacritty.toml"
 }
 
 alacritty::uninstall () {

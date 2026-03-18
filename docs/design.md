@@ -51,7 +51,7 @@ Three cooperating modules (`lib-theme`, `theme-base`, `theme-desktop`) provide a
 
 ### Templates
 
-ESH (embedded shell) templates (`~esh` suffix) are rendered at deploy time. Context includes `DEPLOY_*` vars and the full XDG set, enabling theme injection, distro conditionals, and host-specific tuning.
+ESH (embedded shell) templates (`.esh` suffix) are rendered at deploy time. Context includes `DEPLOY_*` vars and the full XDG set, enabling theme injection, distro conditionals, and host-specific tuning.
 
 → [templates.md](templates.md)
 
@@ -70,7 +70,7 @@ install each named module in order
 
 **Each `module::install()`**:
 ```
-ensure_directory  →  force_link / force_copy  →  esh <tpl~esh>
+ensure_directory  →  force_link / force_copy  →  esh <tpl.esh>
 ```
 
 State is written to `~/.local/state/dotfiles/{profile,modules,wm}` for use with `uninstall` and `status`.

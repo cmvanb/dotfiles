@@ -19,7 +19,7 @@ source "$XDG_OPT_HOME/shell-utils/name-formatting.sh"
 assert_dependency yad
 assert_dependency esh
 
-bookmark_template="$XDG_TEMPLATES_DIR/bookmark.md~esh"
+bookmark_template="$XDG_TEMPLATES_DIR/bookmark.esh.md"
 bookmark_dir="$HOME/Wiki/bookmarks"
 
 if [[ ! -f $bookmark_template ]]; then

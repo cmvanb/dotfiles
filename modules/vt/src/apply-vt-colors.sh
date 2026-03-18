@@ -10,9 +10,9 @@ fi
 
 script_dir=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)
 
-echo "Applying virtual terminal colors from \`$script_dir/colors~esh\`."
+echo "Applying virtual terminal colors from \`$script_dir/colors.esh\`."
 
 # Generate the colors template and pass it to setvtrgb.
-esh "$script_dir/colors~esh" > /tmp/vtcolors
+esh "$script_dir/colors.esh" > /tmp/vtcolors
 setvtrgb /tmp/vtcolors
 rm /tmp/vtcolors

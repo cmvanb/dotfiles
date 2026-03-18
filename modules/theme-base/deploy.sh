@@ -30,9 +30,9 @@ theme-base::install () {
         "$XDG_CONFIG_HOME/theme/fonts.yaml" \
         "$XDG_CONFIG_HOME/theme/cursor.yaml"
 
-    render_esh_template "$src/dircolors~esh" "$XDG_CONFIG_HOME/theme/dircolors"
-    render_esh_template "$src/eza-colors~esh" "$XDG_CONFIG_HOME/theme/eza-colors"
-    render_esh_template "$src/carbon-dark-pandoc.theme~esh" "$XDG_CONFIG_HOME/theme/carbon-dark.pandoc.theme"
+    render_esh_template "$src/dircolors.esh" "$XDG_CONFIG_HOME/theme/dircolors"
+    render_esh_template "$src/eza-colors.esh" "$XDG_CONFIG_HOME/theme/eza-colors"
+    render_esh_template "$src/carbon-dark.pygments.esh.theme" "$XDG_CONFIG_HOME/theme/carbon-dark.pygments.theme"
 }
 
 theme-base::uninstall () {
@@ -50,5 +50,5 @@ theme-base::uninstall () {
 
     rm -f "$XDG_CONFIG_HOME/theme/dircolors"
     rm -f "$XDG_CONFIG_HOME/theme/eza-colors"
-    rm -f "$XDG_CONFIG_HOME/theme/carbon-dark.theme"
+    rm -f "$XDG_CONFIG_HOME/theme/carbon-dark.pygments.theme"
 }

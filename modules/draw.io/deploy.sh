@@ -16,7 +16,7 @@ draw.io::install () {
     local src="$base_dir/modules/draw.io/src"
 
     ensure_directory "$XDG_DATA_HOME/applications"
-    render_esh_template "$src/draw.io.desktop~esh" "$XDG_DATA_HOME/applications/draw.io.desktop"
+    render_esh_template "$src/draw.io.esh.desktop" "$XDG_DATA_HOME/applications/draw.io.desktop"
 }
 
 draw.io::uninstall () {

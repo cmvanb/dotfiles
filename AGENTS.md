@@ -29,7 +29,7 @@ Linux dotfiles managed via a profile/module deployment system. Configs are symli
 - Modules live at `modules/<name>/deploy.sh`; must define `<name>::install()` and `<name>::uninstall()`
 - Profile files are plain key=value text in `profiles/`; profiles compose via `profile.extends=`
 - Module install order within a profile: `modules.lib` → `modules.theme` → `modules.install`
-- Templates use [ESH](https://github.com/jirutka/esh) (`~esh` suffix); rendered at deploy time, never committed
+- Templates use [ESH](https://github.com/jirutka/esh) (`.esh` suffix); rendered at deploy time, never committed
 - All paths are XDG-compliant; `deploy.sh` exports the full set of `XDG_*` vars
 - State is tracked in `~/.local/state/dotfiles/`
 

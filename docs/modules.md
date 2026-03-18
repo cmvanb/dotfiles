@@ -14,7 +14,7 @@ modules/<name>/
 
 ## Deploy script structure
 
-Every `deploy.sh` defines `<name>::install()` and `<name>::uninstall()`. Some modules provide `<name>::enable()` / `<name>::disable()` for systemd user services.
+Every `deploy.sh` provides `<name>::install()` and `<name>::uninstall()`. Some modules provide `<name>::enable()` / `<name>::disable()` for systemd user services.
 
 
 ```bash
@@ -22,7 +22,7 @@ Every `deploy.sh` defines `<name>::install()` and `<name>::uninstall()`. Some mo
     local src="$base_dir/modules/<name>/src"
     ensure_directory "$XDG_CONFIG_HOME/<app>"
     force_link "$src/config" "$XDG_CONFIG_HOME/<app>/config"
-    esh "$src/style.css~esh" > "$XDG_CONFIG_HOME/<app>/style.css"
+    render_esh_template "$src/style.esh.css" "$XDG_CONFIG_HOME/<app>/style.css"
 }
 
 <name>::uninstall() {
@@ -47,12 +47,33 @@ Every `deploy.sh` defines `<name>::install()` and `<name>::uninstall()`. Some mo
 
 ## Common deployment patterns
 
+**Symlink entire directory**
 ```bash
-force_link "$src" "$XDG_CONFIG_HOME/git"                        # symlink entire directory
-force_link "$src/bashrc" "$XDG_CONFIG_HOME/bash/bashrc"         # symlink individual file
-esh "$src/env.sh~esh" > "$XDG_CONFIG_HOME/bash/env.sh"          # render template inline
-force_link "$src/config~variant" "$XDG_CONFIG_HOME/app/config"  # variant source file
-force_link "$src/upload-to-0x0.sh" "$XDG_BIN_HOME/0x0"          # script with alias name
+force_link "$src" "$XDG_CONFIG_HOME/git"
+```
+
+
+**Symlink individual file**
+```bash
+force_link "$src/bashrc" "$XDG_CONFIG_HOME/bash/bashrc"
+```
+
+
+**Render template file**
+```bash
+render_esh_template "$src/env.esh.sh" "$XDG_CONFIG_HOME/bash/env.sh"
+```
+
+
+**Variant file** (host/distro/wm specific)
+```bash
+force_link "$src/config~variant" "$XDG_CONFIG_HOME/app/config"
+```
+
+
+**Script alias**
+```bash
+force_link "$src/upload-to-0x0.sh" "$XDG_BIN_HOME/0x0"
 ```
 
 ## Example module
@@ -70,12 +91,11 @@ bat::install() {
     local src="$base_dir/modules/bat/src"
 
     ensure_directory "$XDG_CONFIG_HOME/bat"
-    force_link "$src/config"    "$XDG_CONFIG_HOME/bat/config"
-    force_link "$src/syntaxes"  "$XDG_CONFIG_HOME/bat/syntaxes"
+    force_link "$src/config" "$XDG_CONFIG_HOME/bat/config"
+    force_link "$src/syntaxes" "$XDG_CONFIG_HOME/bat/syntaxes"
 
     ensure_directory "$XDG_CONFIG_HOME/bat/themes"
-    esh "$base_dir/modules/theme-base/src/carbon-dark.tmTheme~esh" \
-        > "$XDG_CONFIG_HOME/bat/themes/carbon-dark.tmTheme"
+    render_esh_template "$base_dir/modules/theme-base/src/carbon-dark.syntect.esh.tmTheme" "$XDG_CONFIG_HOME/bat/themes/carbon-dark.syntect.tmTheme"
 
     bat cache --build
 }

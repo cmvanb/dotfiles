@@ -37,8 +37,8 @@ sway::install () {
         echo "└> Warning: No outputs configuration for host '$host'."
     fi
 
-    render_esh_template "$src/workspaces.conf~esh" "$XDG_CONFIG_HOME/sway/workspaces.conf"
-    render_esh_template "$src/theme.conf~esh" "$XDG_CONFIG_HOME/sway/theme.conf"
+    render_esh_template "$src/workspaces.esh.conf" "$XDG_CONFIG_HOME/sway/workspaces.conf"
+    render_esh_template "$src/theme.esh.conf" "$XDG_CONFIG_HOME/sway/theme.conf"
 
     echo "└> Installing sway shortcuts."
 

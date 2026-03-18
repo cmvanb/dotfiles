@@ -19,7 +19,7 @@ ghostty::install () {
     force_link "$src/config" "$XDG_CONFIG_HOME/ghostty/config"
 
     ensure_directory "$XDG_CONFIG_HOME/ghostty/themes"
-    render_esh_template "$src/themes/custom-theme~esh" "$XDG_CONFIG_HOME/ghostty/themes/custom-theme"
+    render_esh_template "$src/themes/custom-theme.esh" "$XDG_CONFIG_HOME/ghostty/themes/custom-theme"
 }
 
 ghostty::uninstall () {

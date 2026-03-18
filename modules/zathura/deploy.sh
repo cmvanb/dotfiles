@@ -16,7 +16,7 @@ zathura::install () {
     local src="$base_dir/modules/zathura/src"
 
     ensure_directory "$XDG_CONFIG_HOME/zathura"
-    render_esh_template "$src/zathurarc~esh" "$XDG_CONFIG_HOME/zathura/zathurarc"
+    render_esh_template "$src/zathurarc.esh" "$XDG_CONFIG_HOME/zathura/zathurarc"
 
     ensure_directory "$XDG_DATA_HOME/applications"
     force_link "$src/org.pwmt.zathura.desktop" "$XDG_DATA_HOME/applications/org.pwmt.zathura.desktop"

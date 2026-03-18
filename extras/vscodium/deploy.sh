@@ -13,14 +13,14 @@ source "$base_dir/lib/template.sh"
 vscodium::install () {
     echo "└> Installing vscodium configuration."
 
-    local src="$base_dir/modules/vscodium/src"
+    local src="$base_dir/extras/vscodium/src"
 
     ensure_directory "$XDG_DATA_HOME/vscode/user-data/User"
     force_link "$src/keybindings.json" "$XDG_DATA_HOME/vscode/user-data/User/keybindings.json"
     force_link "$src/settings.json" "$XDG_DATA_HOME/vscode/user-data/User/settings.json"
 
     ensure_directory "$XDG_DATA_HOME/vscode/extensions/custom-theme/themes"
-    render_esh_template "$src/theme.json~esh" "$XDG_DATA_HOME/vscode/extensions/custom-theme/themes/theme.json"
+    render_esh_template "$src/theme.esh.json" "$XDG_DATA_HOME/vscode/extensions/custom-theme/themes/theme.json"
     force_link "$src/custom-theme" "$XDG_DATA_HOME/vscode/extensions/custom-theme"
 
     ensure_directory "$XDG_DATA_HOME/applications"
