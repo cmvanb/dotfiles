@@ -29,9 +29,9 @@
 }
 
 #text:selected {
-    color: <% color_hash $text_15 %>;
+    color: <% color_hash $menu_selection_fg %>;
 }
 
 #entry:selected {
-    background-color: <% color_hash $primary_8 %>;
+    background-color: <% color_hash $menu_selection_bg %>;
 }

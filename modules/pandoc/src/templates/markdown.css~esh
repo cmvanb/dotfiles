@@ -749,16 +749,16 @@ sub {
 }
 @media screen {
   ::selection {
-    color: <% color_hash $black %>;
-    background: <% color_css_rgba $primary_12 1.0 %>;
+    color: <% color_hash $selection_fg %>;
+    background: <% color_css_rgba $selection_bg 1.0 %>;
   }
   h1::selection {
-    color: <% color_hash $black %>;
-    background-color: <% color_css_rgba $primary_12 1.0 %>;
+    color: <% color_hash $selection_fg %>;
+    background-color: <% color_css_rgba $selection_bg 1.0 %>;
   }
   h2::selection {
-    color: <% color_hash $black %>;
-    background-color: <% color_css_rgba $primary_12 1.0 %>;
+    color: <% color_hash $selection_fg %>;
+    background-color: <% color_css_rgba $selection_bg 1.0 %>;
   }
   h3::selection,
   h4::selection,
@@ -766,25 +766,25 @@ sub {
   h6::selection,
   li::selection,
   ol::selection {
-    color: <% color_hash $black %>;
-    background-color: <% color_css_rgba $primary_12 1.0 %>;
+    color: <% color_hash $selection_fg %>;
+    background-color: <% color_css_rgba $selection_bg 1.0 %>;
   }
   code::selection {
-    color: <% color_hash $black %>;
-    background-color: <% color_css_rgba $primary_12 1.0 %>;
+    color: <% color_hash $selection_fg %>;
+    background-color: <% color_css_rgba $selection_bg 1.0 %>;
   }
   code span::selection {
-    background-color: <% color_css_rgba $primary_12 1.0 %> !important;
-    color: <% color_hash $black %> !important;
+    background-color: <% color_css_rgba $selection_bg 1.0 %> !important;
+    color: <% color_hash $selection_fg %> !important;
   }
   a::selection {
-    color: <% color_hash $black %>;
-    background-color: <% color_css_rgba $primary_12 1.0 %>;
+    color: <% color_hash $selection_fg %>;
+    background-color: <% color_css_rgba $selection_bg 1.0 %>;
   }
   td::selection,
   th::selection,
   caption::selection {
-    color: <% color_hash $black %>;
-    background-color: <% color_css_rgba $primary_12 1.0 %>;
+    color: <% color_hash $selection_fg %>;
+    background-color: <% color_css_rgba $selection_bg 1.0 %>;
   }
 }

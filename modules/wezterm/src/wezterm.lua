@@ -224,8 +224,8 @@ return {
         cursor_fg = theme.color_hash('terminal_bg'),
         cursor_border = theme.color_hash('text_12'),
 
-        selection_bg = theme.color_hash('primary_15'),
-        selection_fg = theme.color_hash('black'),
+        selection_bg = theme.color_hash('selection_bg'),
+        selection_fg = theme.color_hash('selection_fg'),
 
         visual_bell = theme.color_hash('black'),
 

@@ -39,8 +39,8 @@ set completion-bg "<% color_hash $system_bg %>"
 set completion-fg "<% color_hash $gray_15 %>"
 set completion-group-bg "<% color_hash $primary_1 %>"
 set completion-group-fg "#<% color_hash $gray_15 %>"
-set completion-highlight-bg "<% color_hash $primary_6 %>"
-set completion-highlight-fg "<% color_hash $text_15 %>"
+set completion-highlight-bg "<% color_hash $menu_selection_bg %>"
+set completion-highlight-fg "<% color_hash $menu_selection_fg %>"
 
 set notification-error-bg "<% color_hash $system_bg %>"
 set notification-error-fg "<% color_hash $red_6 %>"
@@ -51,8 +51,8 @@ set notification-warning-fg "<% color_hash $yellow_6 %>"
 set notification-bg "<% color_hash $system_bg %>"
 set notification-fg "<% color_hash $text_8 %>"
 
-set highlight-color "<% color_css_rgba $magenta_5 0.5 %>"
-set highlight-active-color "<% color_css_rgba $green_4 0.5 %>"
+set highlight-color "<% color_css_rgba $search_bg 0.5 %>"
+set highlight-active-color "<% color_css_rgba $search_active_bg 0.5 %>"
 
 # Key mappings
 #-------------------------------------------------------------------------------

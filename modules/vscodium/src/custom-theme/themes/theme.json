@@ -32,7 +32,7 @@
         "sideBarSectionHeader.foreground": "#ffefdf",
 
         /* List (affects side bar) */
-        "list.activeSelectionBackground": "#1a3b83",
+        "list.activeSelectionBackground": "#1e49a1",
         "list.activeSelectionForeground": "#ffefdf",
         "list.inactiveSelectionBackground": "#162d65",
         "list.inactiveSelectionForeground": "#e5ccbc",
@@ -126,12 +126,7 @@
         "editor.foreground": "#d4b5a4",
 
         /* Editor cursor */
-        "editorCursor.background": "#0e1522",
-        "editorCursor.foreground": "#ffefdf",
-        "editor.lineHighlightBackground": "#121f47",
-
-        /* Editor cursor */
-        "editorCursor.background": "#0e1522",
+        "editorCursor.background": "#01080f",
         "editorCursor.foreground": "#ffefdf",
         "editor.lineHighlightBackground": "#121f47",
 
@@ -139,19 +134,19 @@
         "editor.wordHighlightBackground": "#142656",
 
         /* Editor selection highlighting */
-        "editor.selectionBackground": "#255cbd60",
+        "editor.selectionBackground": "#3074d760",
         /* NOTE: This setting is not working.
             see: https://github.com/microsoft/vscode/issues/36490 */
         "editor.selectionForeground": "#ff00ff",
-        "editor.inactiveSelectionBackground": "#255cbd60",
-        "editor.selectionHighlightBackground": "#255cbd60",
-        "editor.selectionHighlightBorder": "#255cbd",
+        "editor.inactiveSelectionBackground": "#3074d760",
+        "editor.selectionHighlightBackground": "#3074d760",
+        "editor.selectionHighlightBorder": "#3074d7",
 
         /* Editor find highlighting */
-        "editor.findMatchBackground": "#e3207b",
-        "editor.findMatchForeground": "#0e1522",
+        "editor.findMatchBackground": "#3074d7",
+        "editor.findMatchForeground": "#01080f",
         "editor.findMatchHighlightBackground": "#3cb940",
-        "editor.findMatchHighlightForeground": "#0e1522",
+        "editor.findMatchHighlightForeground": "#01080f",
         "editor.rangeHighlightBackground": "#e3207b40",
 
         /* Editor diagnostics */
@@ -193,7 +188,7 @@
 
         /* Scrollbar */
         "editorOverviewRuler.background": "#121f47",
-        "scrollbar.shadow": "#0e152240",
+        "scrollbar.shadow": "#01080f40",
         "scrollbarSlider.background": "#1a3b8340",
         "scrollbarSlider.hoverBackground": "#1a3b8340",
         "scrollbarSlider.activeBackground": "#255cbd60",

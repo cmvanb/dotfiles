@@ -26,10 +26,10 @@ theme[title]="<% color_hash $text_15 %>"
 theme[hi_fg]="<% color_hash $primary_15 %>"
 
 # Background color of selected item in processes box
-theme[selected_bg]="<% color_hash $primary_7 %>"
+theme[selected_bg]="<% color_hash $menu_selection_bg %>"
 
 # Foreground color of selected item in processes box
-theme[selected_fg]="<% color_hash $text_15 %>"
+theme[selected_fg]="<% color_hash $menu_selection_fg %>"
 
 # Color of inactive/disabled text
 theme[inactive_fg]="<% color_hash $text_8 %>"
