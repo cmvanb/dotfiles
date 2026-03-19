@@ -6,7 +6,7 @@ Unified color, font, and cursor management across all dotfiles. Three modules co
 |---|---|
 | `lib-theme` | Runtime APIs (Bash, Fish, Lua, Python) + cache generator |
 | `theme-base` | YAML source files, terminal assets, cache generation at deploy time |
-| `theme-desktop` | GTK configuration |
+| `theme-desktop` | GTK configuration and theme CSS |
 
 ## YAML source files
 
@@ -23,13 +23,15 @@ Each file has a single top-level key (`colors:`, `fonts:`, `cursor:`).
 
 ### Color scheme structure
 
-Colors are `key: "#RRGGBB"` hex strings. YAML anchors/aliases allow internal references (`ansi_red: *red_4`).
+Colors are `key: "#RRGGBB"` hex strings. YAML anchors and aliases allow internal references (`ansi_red: *red_4`).
 
-**Core palettes** (16-step gradients): `primary`, `secondary`, `text`, `gray`
+**Core palettes** (16-step gradients): `primary`, `text`, `gray`
 
 **Accent palettes** (10-step gradients): `red`, `orange`, `yellow`, `green`, `cyan`, `blue`, `purple`, `magenta`
 
 **ANSI mapping**: 16 terminal color indices mapped to palette entries, with aliases (`ansi_red`, `ansi_brblue`, …)
+
+**Semantic aliases**: reference palette colors via YAML aliases (`system_bg`, `web_page_bg`, `syn_function`).
 
 ## Deploy-time flow
 
