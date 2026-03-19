@@ -92,30 +92,22 @@ assign [app_id="Bitwarden"] workspace "auth"
 assign [app_id="spotify"] workspace "audio"
 
 # Floating windows
-for_window [app_id="blueman-manager"] floating enable
+for_window [app_id="blueman-manager"] floating enable, resize set 800 600
 for_window [app_id=".*floating"] floating enable
 for_window [app_id="gcr-prompter"] floating enable
 for_window [app_id="imv"] floating enable
 for_window [app_id="mpv"] floating enable
-for_window [app_id="org.gnome.Nautilus"] floating enable
-for_window [app_id="nwg-look"] floating enable
+for_window [app_id="nwg-look"] floating enable, resize set 1024 960
 for_window [app_id="org.gnome.seahorse.Application"] floating enable
-for_window [app_id="thunar"] floating enable
+for_window [app_id="thunar"] floating enable, resize set 1200 900
 for_window [app_id="com.transmissionbt.transmission.*"] floating enable
 for_window [app_id="transmission-gtk"] floating enable
-for_window [app_id="waypaper"] floating enable
+for_window [app_id="waypaper"] floating enable, resize set 900 1200
 for_window [app_id="xdg-desktop-portal-gtk"] floating enable
 for_window [app_id="yad"] floating enable
 for_window [app_id="nm-connection-editor"] floating enable
-for_window [app_id="org.pulseaudio.pavucontrol"] floating on, resize set 900 1200, move position center
-
-# Window sizes
-for_window [app_id="blueman-manager"] resize set 800 600
-for_window [app_id="org.gnome.Nautilus"] resize set 1024 960
-for_window [app_id="nwg-look"] resize set 1024 960
-for_window [app_id="org.qutebrowser.qutebrowser"] resize set 1600 1200
-for_window [app_id="thunar"] resize set 1200 900
-for_window [app_id="waypaper"] resize set 900 1200
+for_window [app_id="org.pulseaudio.pavucontrol"] floating on, resize set 900 1200
+for_window [app_id="org.pwmt.zathura"] floating enable, resize set 900 1200
 
 # Server-side decorations
 for_window [app_id="Alacritty"] border pixel 3
@@ -128,7 +120,6 @@ for_window [app_id="gtk-pipe-viewer"] border pixel 3
 for_window [app_id="gimp"] border pixel 3
 for_window [app_id="imv"] border pixel 3
 for_window [app_id="marker"] border pixel 3
-for_window [app_id="org.gnome.Nautilus"] border pixel 3
 for_window [app_id="nm-connection-editor"] border pixel 3
 for_window [app_id="nwg-look"] border pixel 3
 for_window [app_id="org.pulseaudio.pavucontrol"] border pixel 3
