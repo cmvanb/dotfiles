@@ -270,11 +270,12 @@ c.fonts.tabs.unselected     = f"bold {theme.font('font_size_xsmall')}pt {theme.f
 c.tabs.favicons.show = 'always'
 c.tabs.favicons.scale = 0.75
 c.tabs.indicator.width = 0
-c.tabs.max_width = 240
-c.tabs.padding = { 'top': 4, 'bottom': 3, 'left': 8, 'right': 8 }
+c.tabs.min_width = -1
+c.tabs.max_width = 220
+c.tabs.padding = { 'top': 4, 'bottom': 3, 'left': 10, 'right': 8 }
 c.tabs.position = 'top'
 c.tabs.title.alignment = 'left'
-c.tabs.title.format = '{audio}{current_title}'
+c.tabs.title.format = ' {audio}{current_title}'
 
 c.colors.tabs.bar.bg = theme.color_hash('primary_0')
 c.colors.tabs.odd.bg = theme.color_hash('gray_2')
