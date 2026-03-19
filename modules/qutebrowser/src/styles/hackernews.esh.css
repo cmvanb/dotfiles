@@ -4,6 +4,10 @@ html {
     background-color: #0b0b0e;
 }
 
+body {
+    margin: 0.5em;
+}
+
 .title {
     font-size: <%= $font_size_xlarge %>px;
 }
@@ -23,4 +27,8 @@ html {
 #hnmain {
     width: 720px;
     min-width: 720px;
+}
+
+#bigbox {
+    padding: 0.5em;
 }
