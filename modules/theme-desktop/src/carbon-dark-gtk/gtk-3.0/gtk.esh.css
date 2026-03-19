@@ -1,0 +1,105 @@
+<% source $XDG_OPT_HOME/theme/theme.sh -%>
+<%#
+ Carbon Dark GTK3 theme entry point.
+ GTK3 loads this as the primary theme stylesheet.
+ Defines all colors then imports the widget CSS.
+-%>
+
+<%# Named palette -%>
+@define-color blue_1   #<%= $primary_15 %>;   @define-color blue_2   #<%= $primary_13 %>;
+@define-color blue_3   #<%= $primary_11 %>;   @define-color blue_4   #<%= $primary_9 %>;
+@define-color blue_5   #<%= $primary_7 %>;
+
+@define-color green_1  #<%= $green_9 %>;      @define-color green_2  #<%= $green_7 %>;
+@define-color green_3  #<%= $green_6 %>;      @define-color green_4  #<%= $green_4 %>;
+@define-color green_5  #<%= $green_3 %>;
+
+@define-color yellow_1 #<%= $yellow_9 %>;     @define-color yellow_2 #<%= $yellow_7 %>;
+@define-color yellow_3 #<%= $yellow_5 %>;     @define-color yellow_4 #<%= $yellow_4 %>;
+@define-color yellow_5 #<%= $yellow_3 %>;
+
+@define-color orange_1 #<%= $orange_9 %>;     @define-color orange_2 #<%= $orange_8 %>;
+@define-color orange_3 #<%= $orange_6 %>;     @define-color orange_4 #<%= $orange_5 %>;
+@define-color orange_5 #<%= $orange_3 %>;
+
+@define-color red_1    #<%= $red_9 %>;        @define-color red_2    #<%= $red_8 %>;
+@define-color red_3    #<%= $red_7 %>;        @define-color red_4    #<%= $red_5 %>;
+@define-color red_5    #<%= $red_4 %>;
+
+@define-color purple_1 #<%= $purple_9 %>;     @define-color purple_2 #<%= $purple_7 %>;
+@define-color purple_3 #<%= $purple_5 %>;     @define-color purple_4 #<%= $purple_4 %>;
+@define-color purple_5 #<%= $purple_3 %>;
+
+@define-color brown_1  #<%= $text_9 %>;       @define-color brown_2  #<%= $text_7 %>;
+@define-color brown_3  #<%= $text_5 %>;       @define-color brown_4  #<%= $text_4 %>;
+@define-color brown_5  #<%= $text_2 %>;
+
+@define-color light_1  #<%= $text_15 %>;      @define-color light_2  #<%= $text_14 %>;
+@define-color light_3  #<%= $text_12 %>;      @define-color light_4  #<%= $text_10 %>;
+@define-color light_5  #<%= $text_8 %>;
+
+@define-color dark_1   #<%= $gray_9 %>;       @define-color dark_2   #<%= $gray_6 %>;
+@define-color dark_3   #<%= $gray_4 %>;       @define-color dark_4   #<%= $gray_2 %>;
+@define-color dark_5   #<%= $gray_0 %>;
+
+<%# Semantic colors -%>
+@define-color accent_bg_color  #<%= $primary_10 %>;
+@define-color accent_fg_color  #<%= $text_15 %>;
+@define-color accent_color     #<%= $primary_15 %>;
+
+@define-color destructive_bg_color @red_4;
+@define-color destructive_fg_color white;
+@define-color destructive_color    @red_3;
+
+@define-color success_bg_color @green_5;
+@define-color success_fg_color white;
+@define-color success_color    @green_1;
+
+@define-color warning_bg_color #<%= $orange_6 %>;
+@define-color warning_fg_color rgba(0, 0, 0, 0.8);
+@define-color warning_color    @yellow_2;
+
+@define-color error_bg_color @red_4;
+@define-color error_fg_color white;
+@define-color error_color    @red_3;
+
+@define-color window_bg_color  #<%= $primary_2 %>;
+@define-color window_fg_color  #<%= $text_12 %>;
+@define-color view_bg_color    #<%= $primary_1 %>;
+@define-color view_fg_color    #<%= $text_10 %>;
+
+@define-color headerbar_bg_color         #<%= $primary_4 %>;
+@define-color headerbar_fg_color         #<%= $text_15 %>;
+@define-color headerbar_border_color     #<%= $text_15 %>;
+@define-color headerbar_backdrop_color   @window_bg_color;
+@define-color headerbar_shade_color      rgba(0, 0, 0, 0.36);
+@define-color headerbar_darker_shade_color rgba(0, 0, 0, 0.9);
+
+@define-color sidebar_bg_color           #<%= $primary_3 %>;
+@define-color sidebar_fg_color           #<%= $text_14 %>;
+@define-color sidebar_backdrop_color     #<%= $primary_2 %>;
+@define-color sidebar_shade_color        rgba(0, 0, 0, 0.25);
+@define-color sidebar_border_color       rgba(0, 0, 0, 0.36);
+
+@define-color card_bg_color    rgba(255, 255, 255, 0.06);
+@define-color card_fg_color    #<%= $text_15 %>;
+@define-color card_shade_color rgba(0, 0, 0, 0.36);
+
+@define-color dialog_bg_color    #<%= $primary_4 %>;
+@define-color dialog_fg_color    #<%= $text_15 %>;
+@define-color popover_bg_color   #<%= $primary_4 %>;
+@define-color popover_fg_color   #<%= $text_15 %>;
+@define-color popover_shade_color rgba(0, 0, 0, 0.25);
+
+@define-color thumbnail_bg_color #<%= $primary_5 %>;
+@define-color thumbnail_fg_color #<%= $text_15 %>;
+
+@define-color shade_color             rgba(0, 0, 0, 0.25);
+@define-color scrollbar_outline_color rgba(0, 0, 0, 0.95);
+@define-color incognito_bg_color      #<%= $primary_3 %>;
+@define-color new_title_bg_color      #<%= $primary_3 %>;
+
+@define-color selection_bg_color #<%= $selection_bg %>;
+@define-color selection_fg_color #<%= $selection_fg %>;
+
+@import url("gtk-dark-widgets.css");

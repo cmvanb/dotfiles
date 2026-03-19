@@ -1,65 +1,34 @@
 <% source $XDG_OPT_HOME/theme/theme.sh -%>
 /*
--------------------------------------------------------------------------------
- Carbon Dark GTK4 color overrides
- Generated from the carbon-dark theme at deploy time.
- GTK4 apps use libadwaita natively; this file provides color overrides only.
--------------------------------------------------------------------------------
+ Carbon Dark GTK4 user stylesheet.
+ Applied on top of the theme's libadwaita.css.
+ Sets the full semantic color surface so any GTK4 app that reads these
+ named colors (with or without the theme installed) gets the right palette.
 */
-<%# Accent - primary_10 as background, primary_15 as highlight -%>
-@define-color accent_color #<%= $primary_15 %>;
-@define-color accent_bg_color #<%= $primary_10 %>;
-@define-color accent_fg_color #<%= $text_15 %>;
-<%# Semantic status colors (standard) -%>
-@define-color destructive_color #ff7b63;
-@define-color destructive_bg_color @red_4;
-@define-color destructive_fg_color white;
-@define-color success_color @green_1;
-@define-color success_bg_color @green_5;
-@define-color success_fg_color white;
-@define-color warning_color @yellow_2;
-@define-color warning_bg_color #cd9309;
-@define-color warning_fg_color rgba(0, 0, 0, 0.8);
-@define-color error_color #ff7b63;
-@define-color error_bg_color @red_4;
-@define-color error_fg_color white;
-<%# Window - primary_2 (darkest usable navy) as window bg -%>
-@define-color window_bg_color #<%= $primary_2 %>;
-@define-color window_fg_color #<%= $text_12 %>;
-<%# View - primary_1 (deepest navy) for content areas -%>
-@define-color view_bg_color #<%= $primary_1 %>;
-@define-color view_fg_color #<%= $text_10 %>;
-<%# Headerbar - primary_4 for raised header chrome -%>
-@define-color headerbar_bg_color #<%= $primary_4 %>;
-@define-color headerbar_fg_color #<%= $text_15 %>;
-@define-color headerbar_border_color #<%= $text_15 %>;
-@define-color headerbar_backdrop_color @window_bg_color;
-@define-color headerbar_shade_color rgba(0, 0, 0, 0.36);
-<%# Sidebar - primary_3 for side panels -%>
-@define-color sidebar_bg_color #<%= $primary_3 %>;
-@define-color sidebar_fg_color #<%= $text_14 %>;
-@define-color sidebar_backdrop_color #<%= $primary_2 %>;
-@define-color sidebar_shade_color rgba(0, 0, 0, 0.25);
-@define-color sidebar_border_color rgba(0, 0, 0, 0.36);
-<%# Secondary sidebar -%>
-@define-color secondary_sidebar_bg_color #<%= $primary_2 %>;
-@define-color secondary_sidebar_fg_color #<%= $text_12 %>;
-@define-color secondary_sidebar_backdrop_color #<%= $primary_1 %>;
-@define-color secondary_sidebar_shade_color rgba(0, 0, 0, 0.25);
-@define-color secondary_sidebar_border_color rgba(0, 0, 0, 0.36);
-<%# Cards -%>
-@define-color card_bg_color rgba(255, 255, 255, 0.08);
-@define-color card_fg_color #<%= $text_15 %>;
-@define-color card_shade_color rgba(0, 0, 0, 0.36);
-<%# Dialogs and popovers - primary_4 for elevated surfaces -%>
-@define-color dialog_bg_color #<%= $primary_4 %>;
-@define-color dialog_fg_color #<%= $text_15 %>;
-@define-color popover_bg_color #<%= $primary_4 %>;
-@define-color popover_fg_color #<%= $text_15 %>;
-@define-color popover_shade_color rgba(0, 0, 0, 0.25);
-<%# Thumbnails -%>
-@define-color thumbnail_bg_color #<%= $primary_5 %>;
-@define-color thumbnail_fg_color #<%= $text_15 %>;
-<%# Misc -%>
-@define-color shade_color rgba(0, 0, 0, 0.25);
-@define-color scrollbar_outline_color rgba(0, 0, 0, 0.95);
+@define-color accent_bg_color  #<%= $primary_10 %>;
+@define-color accent_fg_color  #<%= $text_15 %>;
+@define-color accent_color     #<%= $primary_15 %>;
+
+@define-color window_bg_color  #<%= $primary_2 %>;
+@define-color window_fg_color  #<%= $text_12 %>;
+@define-color view_bg_color    #<%= $primary_1 %>;
+@define-color view_fg_color    #<%= $text_10 %>;
+
+@define-color headerbar_bg_color         #<%= $primary_4 %>;
+@define-color headerbar_fg_color         #<%= $text_15 %>;
+@define-color headerbar_border_color     #<%= $text_15 %>;
+@define-color headerbar_backdrop_color   @window_bg_color;
+@define-color headerbar_shade_color      rgba(0, 0, 0, 0.36);
+@define-color headerbar_darker_shade_color rgba(0, 0, 0, 0.9);
+
+@define-color sidebar_bg_color           #<%= $primary_3 %>;
+@define-color sidebar_fg_color           #<%= $text_14 %>;
+@define-color sidebar_backdrop_color     #<%= $primary_2 %>;
+
+@define-color card_bg_color   rgba(255, 255, 255, 0.06);
+@define-color card_fg_color   #<%= $text_15 %>;
+
+@define-color dialog_bg_color   #<%= $primary_4 %>;
+@define-color dialog_fg_color   #<%= $text_15 %>;
+@define-color popover_bg_color  #<%= $primary_4 %>;
+@define-color popover_fg_color  #<%= $text_15 %>;
