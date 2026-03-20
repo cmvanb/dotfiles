@@ -21,6 +21,7 @@ scripts-desktop::install () {
     force_link "$src/spawn-launcher.sh" "$XDG_SCRIPTS_HOME/spawn-launcher.sh"
     force_link "$src/spawn-terminal.sh" "$XDG_SCRIPTS_HOME/spawn-terminal.sh"
     force_link "$src/spawn.sh" "$XDG_SCRIPTS_HOME/spawn.sh"
+    force_link "$src/backup.sh" "$XDG_SCRIPTS_HOME/backup.sh"
     force_link "$src/upload-to-0x0.sh" "$XDG_SCRIPTS_HOME/upload-to-0x0.sh"
 
     echo "└> Installing desktop shortcuts."
@@ -39,6 +40,7 @@ scripts-desktop::uninstall () {
     rm "$XDG_SCRIPTS_HOME/spawn-launcher.sh"
     rm "$XDG_SCRIPTS_HOME/spawn-terminal.sh"
     rm "$XDG_SCRIPTS_HOME/spawn.sh"
+    rm "$XDG_SCRIPTS_HOME/backup.sh"
     rm "$XDG_SCRIPTS_HOME/upload-to-0x0.sh"
 
     echo "└> Uninstalling desktop shortcuts."
