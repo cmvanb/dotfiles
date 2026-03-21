@@ -398,16 +398,19 @@ build_filter_args RSYNC_ARGS
 
 START_TIME=$(date +%s)
 
+RSYNC_STATS_FILE="$(mktemp)"
+
 if ! $DRY_RUN; then
     info "Running with live progress..."
     echo ""
     rsync "${RSYNC_ARGS[@]}" "${SOURCE}" "${DEST}" \
-        2>&1 | grep --line-buffered -v "^$" \
+        2>&1 | tee "${RSYNC_STATS_FILE}" \
+             | grep --line-buffered -v "^$" \
              | pv -lbt -N "files" > /dev/null
     RSYNC_EXIT=${PIPESTATUS[0]}
 else
-    rsync "${RSYNC_ARGS[@]}" "${SOURCE}" "${DEST}"
-    RSYNC_EXIT=$?
+    rsync "${RSYNC_ARGS[@]}" "${SOURCE}" "${DEST}" | tee "${RSYNC_STATS_FILE}"
+    RSYNC_EXIT=${PIPESTATUS[0]}
 fi
 
 END_TIME=$(date +%s)
@@ -446,12 +449,13 @@ else
 fi
 
 # Transfer stats
-if [[ -f "${LOG_FILE}" ]]; then
+if [[ -s "${RSYNC_STATS_FILE}" ]]; then
     echo ""
     echo -e "${BOLD}Transfer statistics:${RESET}"
     grep -E "^(Number of files|Number of created|Number of deleted|Total file size|Total transferred file)" \
-        "${LOG_FILE}" 2>/dev/null | sed 's/^/  /' || true
+        "${RSYNC_STATS_FILE}" 2>/dev/null | sed 's/^/  /' || true
 fi
+rm -f "${RSYNC_STATS_FILE}"
 
 # Conflict summary
 if (( CONFLICT_COUNT > 0 )); then
