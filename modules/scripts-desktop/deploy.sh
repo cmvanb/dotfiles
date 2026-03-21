@@ -23,6 +23,7 @@ scripts-desktop::install () {
     force_link "$src/spawn.sh" "$XDG_SCRIPTS_HOME/spawn.sh"
     force_link "$src/backup.sh" "$XDG_SCRIPTS_HOME/backup.sh"
     force_link "$src/upload-to-0x0.sh" "$XDG_SCRIPTS_HOME/upload-to-0x0.sh"
+    force_link "$src/system-menu.sh" "$XDG_SCRIPTS_HOME/system-menu.sh"
 
     echo "└> Installing desktop shortcuts."
 
@@ -42,6 +43,7 @@ scripts-desktop::uninstall () {
     rm "$XDG_SCRIPTS_HOME/spawn.sh"
     rm "$XDG_SCRIPTS_HOME/backup.sh"
     rm "$XDG_SCRIPTS_HOME/upload-to-0x0.sh"
+    rm "$XDG_SCRIPTS_HOME/system-menu.sh"
 
     echo "└> Uninstalling desktop shortcuts."
 
