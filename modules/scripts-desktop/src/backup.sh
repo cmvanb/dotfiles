@@ -72,7 +72,7 @@ success() { echo -e "${GREEN}${BOLD}[OK]${RESET}      $*"; }
 warn()    { echo -e "${YELLOW}${BOLD}[WARN]${RESET}    $*"; }
 error()   { echo -e "${RED}${BOLD}[ERROR]${RESET}   $*" >&2; }
 section() { echo -e "\n${BOLD}${BLUE}── $*${RESET}"; }
-hr()      { printf "${DIM}%60s${RESET}\n" '' | tr ' ' '─'; }
+hr()      { printf "${DIM}%60s${RESET}\n" '' | tr ' ' '-'; }
 
 # Argument parsing
 #-------------------------------------------------------------------------------
@@ -202,14 +202,26 @@ LOG_FILE="${LOG_DIR}/backup_${TIMESTAMP}.log"
 #-------------------------------------------------------------------------------
 
 # Append rsync filter rules to a named array. Include patterns are anchored
-# with a leading / so rsync only traverses directories in the include list.
-# Excludes are listed first so they apply within included directories.
+# with a leading /. For nested paths (e.g. Projects/myproject), parent
+# directories are included with a trailing / so rsync can descend into them
+# without picking up siblings. Excludes are listed first so they apply within
+# included directories.
 build_filter_args() {
     local -n _arr=$1
     for excl in "${EXCLUDE[@]}"; do
         _arr+=(--exclude="${excl}")
     done
     for dir in "${INCLUDE[@]}"; do
+        # For nested paths (e.g. Projects/myproject), rsync must be allowed to
+        # traverse each parent directory or --exclude=* will block descent.
+        local part=""
+        local IFS="/"
+        read -ra segments <<< "${dir}"
+        for (( i=0; i < ${#segments[@]}-1; i++ )); do
+            part="${part}${part:+/}${segments[$i]}"
+            _arr+=(--include="/${part}/")
+        done
+        unset IFS
         _arr+=(--include="/${dir}/***")
     done
     _arr+=(--exclude="*")
