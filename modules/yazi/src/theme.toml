@@ -79,7 +79,9 @@ exts = [
     # Images
     { name = "heic", text = "" },
     { name = "jpg", text = "" },
+    { name = "jpeg", text = "" },
     { name = "png", text = "" },
+    { name = "webp", text = "" },
 
     # Video
     { name = "mkv", text = "" },
