@@ -118,6 +118,7 @@ for_window [app_id="gcr-prompter"] border pixel 3
 for_window [app_id="com.mitchellh.ghostty.*"] border pixel 3
 for_window [app_id="gtk-pipe-viewer"] border pixel 3
 for_window [app_id="gimp"] border pixel 3
+for_window [app_id="font-manager"] border pixel 3
 for_window [app_id="imv"] border pixel 3
 for_window [app_id="marker"] border pixel 3
 for_window [app_id="nm-connection-editor"] border pixel 3
