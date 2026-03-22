@@ -1,4 +1,22 @@
+/* other pages
+*-----------------------------------------------------------------------------*/
+
+#repo-content-turbo-frame > react-app {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* repo front page
+*-----------------------------------------------------------------------------*/
+
+/* container */
 #repo-content-pjax-container {
     max-width: 1200px;
     margin: 0 auto;
+}
+
+/* header */
+#repo-content-pjax-container > react-app > div > div > div.prc-PageLayout-PageLayoutRoot--KH-d > div > div > div > div > div > div > div > header {
+    max-width: 872px;
+    padding-right: var(--base-size-16, 16px)!important;
 }
