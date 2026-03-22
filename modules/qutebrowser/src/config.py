@@ -457,12 +457,12 @@ config.bind('<Alt-l>', 'forward')
 # Page navigation
 config.bind('j', 'scroll down')
 config.bind('k', 'scroll up')
-config.bind('<PgDown>', 'scroll-page 0 0.5')
-config.bind('<PgUp>', 'scroll-page 0 -0.5')
-config.bind('<Ctrl-f>', 'scroll-page 0 0.5')
-config.bind('<Ctrl-d>', 'scroll-page 0 -0.5')
-config.bind('<Ctrl-PgDown>', 'scroll-page 0 1')
-config.bind('<Ctrl-PgUp>', 'scroll-page 0 -1')
+config.bind('<PgDown>', 'cmd-run-with-count 10 scroll down')
+config.bind('<PgUp>', 'cmd-run-with-count 10 scroll up')
+config.bind('<Ctrl-f>', 'cmd-run-with-count 10 scroll down')
+config.bind('<Ctrl-d>', 'cmd-run-with-count 10 scroll up')
+config.bind('<Ctrl-PgDown>', 'cmd-run-with-count 25 scroll down')
+config.bind('<Ctrl-PgUp>', 'cmd-run-with-count 25 scroll up')
 
 # Selection
 config.bind('<Ctrl-a>', 'mode-enter caret ;; selection-toggle ;; move-to-end-of-document')
