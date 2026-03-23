@@ -181,7 +181,7 @@ colors:
   ansi_blue:      *primary_11
   ansi_magenta:   *magenta_4
   ansi_cyan:      *cyan_4
-  ansi_white:     *text_10
+  ansi_white:     *text_11
   ansi_brblack:   *gray_8
   ansi_brred:     *red_6
   ansi_brgreen:   *green_6
@@ -193,11 +193,11 @@ colors:
 
   # Themed
   system_bg:          *black
-  system_text:        *text_13
+  system_text:        *text_11
   terminal_bg:        *black
-  terminal_text:      *text_13
+  terminal_text:      *text_11
   editor_bg:          *black
-  editor_text_normal: *text_10
+  editor_text_normal: *text_11
 
   # Web
   web_page_bg:        *primary_1
