@@ -206,12 +206,12 @@ colors:
   web_link_visited:   *green_3
 
   # Headings
-  heading_1:          *text_12
-  heading_2:          *text_13
-  heading_3:          *text_14
-  heading_4:          *text_15
-  heading_5:          *text_14
-  heading_6:          *text_13
+  heading_1:          *text_15
+  heading_2:          *text_14
+  heading_3:          *text_13
+  heading_4:          *text_12
+  heading_5:          *text_11
+  heading_6:          *text_10
 
   # Selection
   selection_bg:       *primary_12
