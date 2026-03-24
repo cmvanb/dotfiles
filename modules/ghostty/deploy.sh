@@ -7,7 +7,6 @@ script_dir=$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)
 base_dir=$(realpath "$script_dir/../..")
 
 source "$base_dir/lib/fs.sh"
-source "$base_dir/lib/template.sh"
 
 
 ghostty::install () {
@@ -19,7 +18,7 @@ ghostty::install () {
     force_link "$src/config" "$XDG_CONFIG_HOME/ghostty/config"
 
     ensure_directory "$XDG_CONFIG_HOME/ghostty/themes"
-    render_esh_template "$src/themes/custom-theme.esh" "$XDG_CONFIG_HOME/ghostty/themes/custom-theme"
+    render-mako "$src/themes/custom-theme.mako" "$XDG_CONFIG_HOME/ghostty/themes/custom-theme"
 }
 
 ghostty::uninstall () {

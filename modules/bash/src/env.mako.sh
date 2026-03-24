@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+#-------------------------------------------------------------------------------
+# Bash environment configuration
+#-------------------------------------------------------------------------------
+
+# No write permissions for group or others.
+umask 0022
+
+# Environment
+#-------------------------------------------------------------------------------
+
+# Tell Bash how to configure its environment (for *non-interactive* shells).
+export BASH_ENV="$HOME/.config/bash/env"
+
+# Some programs respect these defaults, others are supported by XDG with
+# configuration in `.config/mimeapps.list` and `.local/share/applications/`.
+% if 'workstation' in DEPLOY_PROFILE.split():
+% if DEPLOY_DISTRO == 'ubuntu':
+#
+export BROWSER="chromium"
+% else:
+
+export BROWSER="qutebrowser"
+% endif
+
+export LAUNCHER="fuzzel"
+export TERMINAL="alacritty"
+% endif
+
+export EDITOR="nvim"
+
+# Configure less pager.
+export LESS="--clear-screen --RAW-CONTROL-CHARS --tilde +25d"

@@ -4,7 +4,7 @@
 
 - **Declarative** — profiles compose modules; no imperative setup scripts
 - **Instant updates** — configs are symlinks; editing source is immediately live
-- **Dynamically themable** — ESH templates are re-rendered at deploy time
+- **Dynamically themable** — Mako templates are re-rendered at deploy time
 - **XDG-compliant** — paths follow the XDG Base Directory spec
 
 ## Repository layout
@@ -24,7 +24,6 @@ dotfiles/
 └── lib/               # shared Bash utilities
     ├── fs.sh          # force_link, ensure_directory, …
     ├── profile.sh     # parse/resolve/merge profile files
-    ├── template.sh    # render_esh_template wrapper
     ├── linux.sh       # distro detection
     └── debug.sh
 ```
@@ -51,36 +50,37 @@ Three cooperating modules (`lib-theme`, `theme-base`, `theme-desktop`) provide a
 
 ### Templates
 
-ESH (embedded shell) templates (`.esh` suffix) are rendered at deploy time. Context includes `DEPLOY_*` vars and the full XDG set, enabling theme injection, distro conditionals, and host-specific tuning.
+Mako templates (`.mako` infix, e.g. `config.mako`, `style.mako.css`) are rendered at deploy time. Context includes the theme color/font/cursor values, deploy vars and relevant environment vars. This enables theme injection and distro/host/profile/wm conditionals.
 
 → [templates.md](templates.md)
 
 ## Deployment flow
 
-**Profile install** (`deploy.sh install <profile>`):
-```
-resolve inheritance chain  →  export DEPLOY_* vars  →  install modules.lib
-  →  install modules.theme  →  install modules.install  →  enable modules.enable
-```
+**Profile install**:
 
-**Module install** (`deploy.sh install <module...>`):
-```
-install each named module in order
-```
+`deploy.sh install <profile>`
 
-**Each `module::install()`**:
-```
-ensure_directory  →  force_link / force_copy  →  esh <tpl.esh>
-```
+1. resolve inheritance chain
+1. export `DEPLOY_*` vars
+1. install `modules.lib` modules
+1. install `modules.theme` modules
+1. install `modules.install` modules
+1. run `modules.enable` logic
 
-State is written to `~/.local/state/dotfiles/{profile,modules,wm}` for use with `uninstall` and `status`.
+**Module install**:
+
+`deploy.sh install <module...>`
+
+1. ensure directory structure with `ensure_directory`
+1. symlink configuration files with `force_link`
+1. render templates with `render-mako`
 
 ## Design decisions
 
+
 | Decision | Rationale |
 |---|---|
-| Symlinks over copies | Edits to source are immediately live; no re-deploy needed for config tweaks |
-| Profiles as plain text | Trivially parseable by Bash without a parser library |
-| ESH over other template engines | Shell-native; zero additional dependencies |
+| Symlinks over copies | Edits are immediately live |
+| Profiles compose modules | Flexible, composition over inheritance |
+| Mako template engine | Python-native; portable to windows |
 | Depth-first profile resolution | Predictable merge order; child values win over parents |
-| Uninstall in reverse order | Avoids dependency issues when removing modules |

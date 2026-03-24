@@ -1,0 +1,125 @@
+#!/usr/bin/env bash
+#-------------------------------------------------------------------------------
+# Bash login configuration
+#-------------------------------------------------------------------------------
+
+# Environment
+#-------------------------------------------------------------------------------
+
+# XDG base directories.
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.local/cache"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
+
+# Custom directories.
+export XDG_BIN_HOME="$HOME/.local/bin"
+export XDG_OPT_HOME="$HOME/.local/opt"
+export XDG_SCRIPTS_HOME="$HOME/.local/scripts"
+export XDG_SECRETS_HOME="$HOME/.local/secrets"
+% if 'workstation' in DEPLOY_PROFILE.split():
+
+# XDG user directories.
+export XDG_DOCUMENTS_DIR="$HOME/Documents"
+export XDG_DOWNLOAD_DIR="$HOME/Downloads"
+export XDG_MUSIC_DIR="$HOME/Media/Music"
+export XDG_PICTURES_DIR="$HOME/Media/Images"
+export XDG_TEMPLATES_DIR="$XDG_DATA_HOME/templates"
+export XDG_VIDEOS_DIR="$HOME/Media/Videos"
+
+# Custom directories.
+export XDG_CODE_DIR="$HOME/Code"
+export XDG_WIKI_DIR="$HOME/Wiki"
+
+# SSH agent integration.
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/gcr/ssh"
+
+# Pyenv installation.
+export PYENV_ROOT="$XDG_OPT_HOME/pyenv"
+
+# Docker config.
+export DOCKER_CONFIG="$XDG_STATE_HOME/docker"
+
+# GNUPG config.
+export GNUPGHOME="$XDG_STATE_HOME/gnupg"
+
+# Python config.
+export PYTHONPYCACHEPREFIX="$XDG_CACHE_HOME/python"
+
+# Rust config.
+export CARGO_HOME="$XDG_DATA_HOME/cargo"
+export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
+
+# VSCode config.
+export VSCODE_PORTABLE="$XDG_DATA_HOME/vscode"
+% endif
+
+# NPM config.
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
+
+# Readline config.
+export INPUTRC="$XDG_CONFIG_HOME/readline/inputrc"
+
+# Wget config.
+export WGETRC="$XDG_CONFIG_HOME/wget/wgetrc"
+
+# Ansible config.
+export ANSIBLE_HOME="${XDG_CONFIG_HOME}/ansible"
+export ANSIBLE_CONFIG="${XDG_CONFIG_HOME}/ansible.cfg"
+export ANSIBLE_GALAXY_CACHE_DIR="${XDG_CACHE_HOME}/ansible/galaxy_cache"
+export ANSIBLE_LOCAL_TEMP="${XDG_CACHE_HOME}/ansible/tmp"
+export ANSIBLE_REMOTE_TEMP="${XDG_CACHE_HOME}/ansible/tmp"
+export ANSIBLE_SSH_CONTROL_PATH_DIR="${XDG_CACHE_HOME}/ansible/cp"
+export ANSIBLE_ASYNC_DIR="${XDG_CACHE_HOME}/ansible_async"
+
+# Terminal support
+#-------------------------------------------------------------------------------
+
+# 24bit color support
+if [[ $TERM == "alacritty" ]] \
+|| [[ $TERM == "xterm-256color" ]]; then
+    export COLORTERM truecolor
+fi
+
+# Virtual terminal theme
+if [[ $TERM == "linux" ]]; then
+    "$XDG_CONFIG_HOME/vt/apply-vt-colors.sh" | systemd-cat -t bash-login
+fi
+
+% if 'workstation' in DEPLOY_PROFILE.split():
+
+# Ensure user directories exist
+#-------------------------------------------------------------------------------
+
+mkdir -p "$XDG_DOCUMENTS_DIR" "$XDG_DOWNLOAD_DIR" "$XDG_MUSIC_DIR" "$XDG_PICTURES_DIR" "$XDG_VIDEOS_DIR"
+% endif
+
+# Path
+#-------------------------------------------------------------------------------
+
+# Import path utils.
+source "$XDG_OPT_HOME/shell-utils/path.sh"
+
+# Add user binaries to path
+path_prepend "$XDG_BIN_HOME"
+path_prepend "$XDG_SCRIPTS_HOME"
+% if 'workstation' in DEPLOY_PROFILE.split():
+
+# Add pyenv python shims to path
+path_prepend "$PYENV_ROOT/bin"
+
+# Add user rust binaries to path.
+path_prepend "$XDG_DATA_HOME/cargo/bin"
+
+# Pyenv integration
+#-------------------------------------------------------------------------------
+
+if command -v pyenv &> /dev/null; then
+    eval "$(pyenv init -)"
+fi
+% endif
+
+# Clean home directory
+#-------------------------------------------------------------------------------
+
+"$XDG_SCRIPTS_HOME/clean-home.sh" &>/dev/null &

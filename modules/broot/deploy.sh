@@ -7,7 +7,6 @@ script_dir=$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)
 base_dir=$(realpath "$script_dir/../..")
 
 source "$base_dir/lib/fs.sh"
-source "$base_dir/lib/template.sh"
 
 
 broot::install () {
@@ -22,7 +21,7 @@ broot::install () {
     force_link "$src/verbs.hjson" "$XDG_CONFIG_HOME/broot/verbs.hjson"
 
     ensure_directory "$XDG_CONFIG_HOME/broot/skins"
-    render_esh_template "$src/skins/carbon-dark.esh.hjson" "$XDG_CONFIG_HOME/broot/skins/carbon-dark.hjson"
+    render-mako "$src/skins/carbon-dark.mako.hjson" "$XDG_CONFIG_HOME/broot/skins/carbon-dark.hjson"
 }
 
 broot::uninstall () {

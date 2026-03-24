@@ -7,7 +7,6 @@ script_dir=$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)
 base_dir=$(realpath "$script_dir/../..")
 
 source "$base_dir/lib/fs.sh"
-source "$base_dir/lib/template.sh"
 
 
 qutebrowser::install () {
@@ -17,13 +16,13 @@ qutebrowser::install () {
 
     ensure_directory "$XDG_CONFIG_HOME/qutebrowser"
     force_link "$src/config.py" "$XDG_CONFIG_HOME/qutebrowser/config.py"
-    render_esh_template "$src/stylesheet.esh.css" "$XDG_CONFIG_HOME/qutebrowser/stylesheet.css"
+    render-mako "$src/stylesheet.mako.css" "$XDG_CONFIG_HOME/qutebrowser/stylesheet.css"
     force_link "$src/stylemap.py" "$XDG_CONFIG_HOME/qutebrowser/stylemap.py"
     force_link "$src/modern-normalize.css" "$XDG_CONFIG_HOME/qutebrowser/modern-normalize.css"
 
     ensure_directory "$XDG_CONFIG_HOME/qutebrowser/styles"
-    render_esh_template "$src/styles/qute.esh.css" "$XDG_CONFIG_HOME/qutebrowser/styles/qute.css"
-    render_esh_template "$src/styles/hackernews.esh.css" "$XDG_CONFIG_HOME/qutebrowser/styles/hackernews.css"
+    render-mako "$src/styles/qute.mako.css" "$XDG_CONFIG_HOME/qutebrowser/styles/qute.css"
+    render-mako "$src/styles/hackernews.mako.css" "$XDG_CONFIG_HOME/qutebrowser/styles/hackernews.css"
     force_link "$src/styles/ansible-docs.css" "$XDG_CONFIG_HOME/qutebrowser/styles/ansible-docs.css"
     force_link "$src/styles/arch-linux-forum.css" "$XDG_CONFIG_HOME/qutebrowser/styles/arch-linux-forum.css"
     force_link "$src/styles/arch-linux-wiki.css" "$XDG_CONFIG_HOME/qutebrowser/styles/arch-linux-wiki.css"
@@ -46,7 +45,7 @@ qutebrowser::install () {
     force_link "$src/select-bookmark.sh" "$XDG_SCRIPTS_HOME/select-bookmark.sh"
 
     ensure_directory "$XDG_TEMPLATES_DIR"
-    force_link "$src/bookmark.esh.md" "$XDG_TEMPLATES_DIR/bookmark.esh.md"
+    force_link "$src/bookmark.mako.md" "$XDG_TEMPLATES_DIR/bookmark.mako.md"
 
     echo "└> Installing qutebrowser shortcuts."
 
@@ -85,7 +84,7 @@ qutebrowser::uninstall () {
     rm "$XDG_SCRIPTS_HOME/open-qutebrowser-session.sh"
     rm "$XDG_SCRIPTS_HOME/select-bookmark.sh"
 
-    rm "$XDG_TEMPLATES_DIR/bookmark.esh.md"
+    rm "$XDG_TEMPLATES_DIR/bookmark.mako.md"
 
     echo "└> Uninstalling qutebrowser shortcuts."
 

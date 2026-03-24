@@ -22,7 +22,7 @@ Every `deploy.sh` provides `<name>::install()` and `<name>::uninstall()`. Some m
     local src="$base_dir/modules/<name>/src"
     ensure_directory "$XDG_CONFIG_HOME/<app>"
     force_link "$src/config" "$XDG_CONFIG_HOME/<app>/config"
-    render_esh_template "$src/style.esh.css" "$XDG_CONFIG_HOME/<app>/style.css"
+    render-mako "$src/style.mako.css" "$XDG_CONFIG_HOME/<app>/style.css"
 }
 
 <name>::uninstall() {
@@ -43,7 +43,7 @@ Every `deploy.sh` provides `<name>::install()` and `<name>::uninstall()`. Some m
 | `force_copy <src> <dest>` | `cp -rfT` — removes existing file/link at dest first |
 | `ensure_directory <path>` | `mkdir -p` — removes existing file/link at path first |
 | `happy_move <src> <dest>` | `mv` — no-ops if src == dest |
-| `render_esh_template <tpl> <dest>` | Render ESH template to dest |
+| `render-mako <tpl> <dest>` | Render Mako template to dest |
 
 ## Common deployment patterns
 
@@ -61,7 +61,7 @@ force_link "$src/bashrc" "$XDG_CONFIG_HOME/bash/bashrc"
 
 **Render template file**
 ```bash
-render_esh_template "$src/env.esh.sh" "$XDG_CONFIG_HOME/bash/env.sh"
+render-mako "$src/env.mako.sh" "$XDG_CONFIG_HOME/bash/env.sh"
 ```
 
 
@@ -95,7 +95,7 @@ bat::install() {
     force_link "$src/syntaxes" "$XDG_CONFIG_HOME/bat/syntaxes"
 
     ensure_directory "$XDG_CONFIG_HOME/bat/themes"
-    render_esh_template "$base_dir/modules/theme-base/src/carbon-dark.syntect.esh.tmTheme" "$XDG_CONFIG_HOME/bat/themes/carbon-dark.syntect.tmTheme"
+    render-mako "$base_dir/modules/theme-base/src/carbon-dark.syntect.mako.tmTheme" "$XDG_CONFIG_HOME/bat/themes/carbon-dark.syntect.tmTheme"
 
     bat cache --build
 }

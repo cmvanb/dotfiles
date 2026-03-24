@@ -1,18 +1,12 @@
 #!/usr/bin/env bash
 #-------------------------------------------------------------------------------
-# Apply the virtual terminal colors from a configuration file
+# Apply the virtual terminal colors from the theme
 #-------------------------------------------------------------------------------
-
-if ! command -v esh &> /dev/null; then
-    echo "ERROR: $(basename "$0") missing dependency: esh"
-    exit
-fi
 
 script_dir=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)
 
-echo "Applying virtual terminal colors from \`$script_dir/colors.esh\`."
+echo "Applying virtual terminal colors from \`$script_dir/colors.mako\`."
 
-# Generate the colors template and pass it to setvtrgb.
-esh "$script_dir/colors.esh" > /tmp/vtcolors
+python3 "$XDG_OPT_HOME/theme/template.py" "$script_dir/colors.mako" /tmp/vtcolors
 setvtrgb /tmp/vtcolors
 rm /tmp/vtcolors

@@ -1,0 +1,15 @@
+[project]
+name = "template"
+version = "1.0.0"
+requires-python = ">=3.12"
+dependencies = [
+    "mako",
+    "pyyaml",
+]
+
+[project.scripts]
+render-mako = "template:main"
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"

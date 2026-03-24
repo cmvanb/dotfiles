@@ -7,7 +7,6 @@ script_dir=$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)
 base_dir=$(realpath "$script_dir/../..")
 
 source "$base_dir/lib/fs.sh"
-source "$base_dir/lib/template.sh"
 
 
 theme-desktop::install_gtk_theme () {
@@ -19,9 +18,9 @@ theme-desktop::install_gtk_theme () {
     ensure_directory "$XDG_CONFIG_HOME/gtk-3.0"
     ensure_directory "$XDG_CONFIG_HOME/gtk-4.0"
 
-    render_esh_template "$src/gtk-4.0-gtk.esh.css"      "$XDG_CONFIG_HOME/gtk-4.0/gtk.css"
-    render_esh_template "$src/gtk-3.0-settings.esh.ini" "$XDG_CONFIG_HOME/gtk-3.0/settings.ini"
-    render_esh_template "$src/gtk-4.0-settings.esh.ini" "$XDG_CONFIG_HOME/gtk-4.0/settings.ini"
+    render-mako "$src/gtk-4.0-gtk.mako.css"      "$XDG_CONFIG_HOME/gtk-4.0/gtk.css"
+    render-mako "$src/gtk-3.0-settings.mako.ini" "$XDG_CONFIG_HOME/gtk-3.0/settings.ini"
+    render-mako "$src/gtk-4.0-settings.mako.ini" "$XDG_CONFIG_HOME/gtk-4.0/settings.ini"
 
     # Install GTK CSS files
     local theme_src="$src/carbon-dark-gtk"
@@ -44,12 +43,9 @@ theme-desktop::install_gtk_theme () {
     force_link "$theme_src/gtk-4.0/libadwaita-tail.css"   "$theme_dest/gtk-4.0/libadwaita-tail.css"
 
     # Render CSS templates
-    # NOTE: Export fragment path so the libadwaita ESH template can reference the tail/tweaks fragments.
-    export CARBON_GTK4_SRC="$theme_src/gtk-4.0"
-
-    render_esh_template "$theme_src/gtk-3.0/gtk.esh.css"        "$theme_dest/gtk-3.0/gtk.css"
-    render_esh_template "$theme_src/gtk-3.0/gtk-dark.esh.css"   "$theme_dest/gtk-3.0/gtk-dark.css"
-    render_esh_template "$theme_src/gtk-4.0/libadwaita.esh.css" "$theme_dest/gtk-4.0/libadwaita.css"
+    render-mako "$theme_src/gtk-3.0/gtk.mako.css"        "$theme_dest/gtk-3.0/gtk.css"
+    render-mako "$theme_src/gtk-3.0/gtk-dark.mako.css"   "$theme_dest/gtk-3.0/gtk-dark.css"
+    render-mako "$theme_src/gtk-4.0/libadwaita.mako.css" "$theme_dest/gtk-4.0/libadwaita.css"
 }
 
 theme-desktop::configure_gtk () {

@@ -17,9 +17,8 @@ source "$XDG_OPT_HOME/shell-utils/name-formatting.sh"
 #-------------------------------------------------------------------------------
 
 assert_dependency yad
-assert_dependency esh
 
-bookmark_template="$XDG_TEMPLATES_DIR/bookmark.esh.md"
+bookmark_template="$XDG_TEMPLATES_DIR/bookmark.mako.md"
 bookmark_dir="$HOME/Wiki/bookmarks"
 
 if [[ ! -f $bookmark_template ]]; then
@@ -107,7 +106,9 @@ fi
 # echo "$new_bookmark_url"
 # echo "${new_bookmark_tags[*]}"
 
-esh -o "$bookmark_file_path" "$bookmark_template" \
+python3 "$XDG_OPT_HOME/theme/template.py" \
+    "$bookmark_template" \
+    "$bookmark_file_path" \
     new_bookmark_name="$new_bookmark_name" \
     new_bookmark_name_kebab="$new_bookmark_name_kebab" \
     new_bookmark_url="$new_bookmark_url" \

@@ -1,0 +1,32 @@
+html {
+    background-color: #0b0b0e;
+}
+
+body {
+    margin: 0.5em;
+}
+
+.title {
+    font-size: ${font_size_xlarge}px;
+}
+
+.comhead {
+    font-size: ${font_size_large}px;
+}
+
+.subtext {
+    font-size: ${font_size_large}px;
+}
+
+.comment {
+    font-size: ${font_size_xlarge}px;
+}
+
+#hnmain {
+    width: 720px;
+    min-width: 720px;
+}
+
+#bigbox {
+    padding: 0.5em;
+}

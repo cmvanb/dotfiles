@@ -184,11 +184,14 @@ _ANSI_INDICES = {
 }
 
 
-def color_named(name: str) -> str:
-    return _get_color(name).as_hex()
+def _float_to_hex(alpha: float) -> str:
+    return f'{round(alpha * 255):02x}'
 
-def color_hash(name: str) -> str:
-    return _get_color(name).with_hash()
+def color_named(name: str, alpha: float | None = None) -> str:
+    return _get_color(name).as_hex() + (_float_to_hex(alpha) if alpha is not None else '')
+
+def color_hash(name: str, alpha: float | None = None) -> str:
+    return _get_color(name).with_hash() + (_float_to_hex(alpha) if alpha is not None else '')
 
 def color_zerox(name: str) -> str:
     return _get_color(name).with_zerox()

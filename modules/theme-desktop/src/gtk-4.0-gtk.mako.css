@@ -1,0 +1,33 @@
+/*
+ Carbon Dark GTK4 user stylesheet.
+ Applied on top of the theme's libadwaita.css.
+ Sets the full semantic color surface so any GTK4 app that reads these
+ named colors (with or without the theme installed) gets the right palette.
+*/
+@define-color accent_bg_color  ${color_hash('primary_10')};
+@define-color accent_fg_color  ${color_hash('text_15')};
+@define-color accent_color     ${color_hash('primary_15')};
+
+@define-color window_bg_color  ${color_hash('primary_2')};
+@define-color window_fg_color  ${color_hash('text_12')};
+@define-color view_bg_color    ${color_hash('primary_1')};
+@define-color view_fg_color    ${color_hash('text_10')};
+
+@define-color headerbar_bg_color         ${color_hash('primary_4')};
+@define-color headerbar_fg_color         ${color_hash('text_15')};
+@define-color headerbar_border_color     ${color_hash('text_15')};
+@define-color headerbar_backdrop_color   @window_bg_color;
+@define-color headerbar_shade_color      rgba(0, 0, 0, 0.36);
+@define-color headerbar_darker_shade_color rgba(0, 0, 0, 0.9);
+
+@define-color sidebar_bg_color           ${color_hash('primary_3')};
+@define-color sidebar_fg_color           ${color_hash('text_14')};
+@define-color sidebar_backdrop_color     ${color_hash('primary_2')};
+
+@define-color card_bg_color   rgba(255, 255, 255, 0.06);
+@define-color card_fg_color   ${color_hash('text_15')};
+
+@define-color dialog_bg_color   ${color_hash('primary_4')};
+@define-color dialog_fg_color   ${color_hash('text_15')};
+@define-color popover_bg_color  ${color_hash('primary_4')};
+@define-color popover_fg_color  ${color_hash('text_15')};

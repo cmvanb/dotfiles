@@ -5,7 +5,6 @@
 
 script_dir=$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)
 base_dir=$(realpath "$script_dir/../..")
-source "$base_dir/lib/template.sh"
 source "$base_dir/lib/fs.sh"
 
 
@@ -16,7 +15,7 @@ alacritty::install () {
 
     ensure_directory "$XDG_CONFIG_HOME/alacritty"
     # TODO: Extract templating to a shared function.
-    render_esh_template "$src/alacritty.esh.toml" "$XDG_CONFIG_HOME/alacritty/alacritty.toml"
+    render-mako "$src/alacritty.mako.toml" "$XDG_CONFIG_HOME/alacritty/alacritty.toml"
 }
 
 alacritty::uninstall () {
