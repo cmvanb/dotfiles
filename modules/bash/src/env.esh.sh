@@ -30,4 +30,4 @@ export TERMINAL="alacritty"
 export EDITOR="nvim"
 
 # Configure less pager.
-export LESS="--clear-screen --RAW-CONTROL-CHARS --tilde"
+export LESS="--clear-screen --RAW-CONTROL-CHARS --tilde +25d"

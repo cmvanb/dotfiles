@@ -29,4 +29,4 @@ set -x TERMINAL "alacritty"
 set -x EDITOR "nvim"
 
 # Configure less pager.
-set -x LESS "--clear-screen --RAW-CONTROL-CHARS --tilde"
+set -x LESS "--clear-screen --RAW-CONTROL-CHARS --tilde +25d"
