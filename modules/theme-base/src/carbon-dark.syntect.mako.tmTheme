@@ -20,8 +20,9 @@
                     <string>${color_hash('text_0')}</string>
                     <key>foreground</key>
                     <string>${color_hash('editor_text_normal')}</string>
+                    <!-- whitespace -->
                     <key>invisibles</key>
-                    <string>${color_hash('debug')}</string>
+                    <string>${color_hash('gray_2')}</string>
                     <key>lineHighlight</key>
                     <string>${color_hash('primary_4')}</string>
                     <key>selection</key>
