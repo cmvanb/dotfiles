@@ -14,11 +14,15 @@ git::install () {
 
     local src="$base_dir/modules/git/src"
 
-    force_link "$src" "$XDG_CONFIG_HOME/git"
+    ensure_directory "$XDG_CONFIG_HOME/git"
+
+    render-mako "$src/config.mako"  "$XDG_CONFIG_HOME/git/config"
+    force_link  "$src/ignore"       "$XDG_CONFIG_HOME/git/ignore"
 }
 
 git::uninstall () {
     echo "└> Uninstalling git configuration."
 
-    rm "$XDG_CONFIG_HOME/git"
+    rm "$XDG_CONFIG_HOME/git/config"
+    rm "$XDG_CONFIG_HOME/git/ignore"
 }

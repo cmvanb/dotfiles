@@ -58,12 +58,11 @@
             "weeks-pos"     : "right",
             "on-scroll"     : 1,
             "format": {
-                /* TODO: templating for theme vars */
-                "months":     "<span color='#dfefff'><b>{}</b></span>",
-                "days":       "<span color='#b2c2d2'><b>{}</b></span>",
-                "weeks":      "<span color='#768696'><b>W{}</b></span>",
-                "weekdays":   "<span color='#768696'><b>{}</b></span>",
-                "today":      "<span color='#05aaff'><b>{}</b></span>"
+                "months":     "<span color='${color_hash('text_15')}'><b>{}</b></span>",
+                "days":       "<span color='${color_hash('text_14')}'><b>{}</b></span>",
+                "weeks":      "<span color='${color_hash('text_12')}'><b>W{}</b></span>",
+                "weekdays":   "<span color='${color_hash('text_12')}'><b>{}</b></span>",
+                "today":      "<span color='${color_hash('primary_15')}'><b>{}</b></span>"
             }
         },
         "actions":  {

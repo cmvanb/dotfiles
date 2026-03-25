@@ -30,7 +30,7 @@ waybar::install () {
         render-mako "$src/river-style.mako.css" "$XDG_CONFIG_HOME/waybar/style.css"
 
     elif [[ $DEPLOY_WM == "sway" ]]; then
-        force_link "$src/sway-config" "$XDG_CONFIG_HOME/waybar/config"
+        render-mako "$src/sway-config.mako" "$XDG_CONFIG_HOME/waybar/config"
         render-mako "$src/sway-style.mako.css" "$XDG_CONFIG_HOME/waybar/style.css"
 
     elif [[ -z $DEPLOY_WM ]]; then

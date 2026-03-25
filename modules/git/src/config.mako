@@ -23,14 +23,14 @@
     line-numbers-right-format = "{np:>2}│"
     hunk-header-style = 'omit'
     syntax-theme = carbon-dark
-    file-style = '"#055eb5"'
-    line-numbers-zero-style = '"#023469"'
-    minus-style = '"#ff291a" "#4d0500"'
-    minus-emph-style = '"#dfefff" bold "#b30c00"'
-    line-numbers-minus-style = '"#b30c00"'
-    plus-style = 'syntax "#00331f"'
-    plus-emph-style = '"#dfefff" bold "#00995c"'
-    line-numbers-plus-style = '"#00995c"'
+    file-style = '"${color_hash('primary_11')}"'
+    line-numbers-zero-style = '"${color_hash('primary_3')}"'
+    minus-style = '"${color_hash('red_5')}" "${color_hash('red_0')}"'
+    minus-emph-style = '"${color_hash('text_15')}" bold "${color_hash('red_3')}"'
+    line-numbers-minus-style = '"${color_hash('red_3')}"'
+    plus-style = 'syntax "${color_hash('green_0')}"'
+    plus-emph-style = '"${color_hash('text_15')}" bold "${color_hash('green_3')}"'
+    line-numbers-plus-style = '"${color_hash('green_3')}"'
 
 [filter "lfs"]
     clean = git-lfs clean -- %f
