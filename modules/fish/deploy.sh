@@ -33,7 +33,6 @@ fish::install () {
     force_link "$src/conf.d/00-xdg-base-dirs.fish" "$XDG_CONFIG_HOME/fish/conf.d/00-xdg-base-dirs.fish"
     force_link "$src/conf.d/fnm.fish" "$XDG_CONFIG_HOME/fish/conf.d/fnm.fish"
     force_link "$src/conf.d/direnv.fish" "$XDG_CONFIG_HOME/fish/conf.d/direnv.fish"
-    force_link "$src/conf.d/lf.fish" "$XDG_CONFIG_HOME/fish/conf.d/lf.fish"
     force_link "$src/conf.d/pnpm.fish" "$XDG_CONFIG_HOME/fish/conf.d/pnpm.fish"
     force_link "$src/conf.d/pyenv.fish" "$XDG_CONFIG_HOME/fish/conf.d/pyenv.fish"
     force_link "$src/conf.d/yazi.fish" "$XDG_CONFIG_HOME/fish/conf.d/yazi.fish"

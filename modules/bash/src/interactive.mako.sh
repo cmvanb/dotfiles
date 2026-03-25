@@ -80,7 +80,7 @@ bind -x '"\C-y":"clear"'
 # Theme
 #-------------------------------------------------------------------------------
 
-# Configure directory colors (ls, eza, lf).
+# Configure directory colors (ls, eza).
 eval "$(dircolors --bourne-shell "$XDG_CONFIG_HOME/theme/dircolors")"
 EZA_COLORS="$(tr -d '\n' < "$XDG_CONFIG_HOME/theme/eza-colors")$LS_COLORS"
 export EZA_COLORS
@@ -99,9 +99,6 @@ eval "$(direnv hook bash)"
 
 # Enable Zoxide.
 eval "$(zoxide init bash)"
-
-# LF CD integration.
-source "$XDG_CONFIG_HOME/lf/lfcd.sh"
 
 # Yazi integration.
 source "$XDG_CONFIG_HOME/yazi/yzcd.sh"

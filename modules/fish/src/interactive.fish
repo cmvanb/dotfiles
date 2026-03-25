@@ -18,7 +18,7 @@ fish_deployed_aliases
 # see: https://fishshell.com/docs/current/interactive.html#color
 #-------------------------------------------------------------------------------
 
-# Configure directory colors (ls, eza, lf).
+# Configure directory colors (ls, eza).
 eval (dircolors --c-shell $XDG_CONFIG_HOME/theme/dircolors)
 set -x EZA_COLORS (tr -d '\n' < $XDG_CONFIG_HOME/theme/eza-colors)$LS_COLORS
 

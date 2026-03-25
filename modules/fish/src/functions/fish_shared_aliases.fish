@@ -46,7 +46,6 @@ function fish_shared_aliases
     abbr -a edi edit
     alias eza "eza -l --color=always --group-directories-first --time-style=long-iso"
     abbr -a ez eza
-    abbr -a lf lfcd
     abbr -a ls eza
     abbr -a lsa eza -a
     abbr -a lsd eza -a
