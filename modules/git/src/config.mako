@@ -24,13 +24,13 @@
     hunk-header-style = 'omit'
     syntax-theme = carbon-dark
     file-style = '"${color_hash('primary_11')}"'
-    line-numbers-zero-style = '"${color_hash('primary_3')}"'
+    line-numbers-zero-style = '"${color_hash('primary_11')}"'
     minus-style = '"${color_hash('red_5')}" "${color_hash('red_0')}"'
     minus-emph-style = '"${color_hash('text_15')}" bold "${color_hash('red_3')}"'
-    line-numbers-minus-style = '"${color_hash('red_3')}"'
+    line-numbers-minus-style = '"${color_hash('red_4')}"'
     plus-style = 'syntax "${color_hash('green_0')}"'
     plus-emph-style = '"${color_hash('text_15')}" bold "${color_hash('green_3')}"'
-    line-numbers-plus-style = '"${color_hash('green_3')}"'
+    line-numbers-plus-style = '"${color_hash('green_4')}"'
 
 [filter "lfs"]
     clean = git-lfs clean -- %f
