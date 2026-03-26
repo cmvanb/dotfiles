@@ -1,3 +1,9 @@
+<%
+    if DEPLOY_HOST == 'casino':
+        terminal_font_size = font_size_medium
+    else:
+        terminal_font_size = font_size_msmall
+%>
 #-------------------------------------------------------------------------------
 # GhosTTY configuration file
 #-------------------------------------------------------------------------------
@@ -8,8 +14,7 @@
 background-opacity = 0.84
 
 font-family = "IosevkaTerm"
-# TODO: theme template value
-font-size = 13
+font-size = ${terminal_font_size}
 
 cursor-style = "block"
 cursor-style-blink = false

@@ -16,7 +16,7 @@ ghostty::install () {
     local src="$base_dir/modules/ghostty/src"
 
     ensure_directory "$XDG_CONFIG_HOME/ghostty"
-    force_link "$src/config" "$XDG_CONFIG_HOME/ghostty/config"
+    template::render_mako "$src/config.mako" "$XDG_CONFIG_HOME/ghostty/config"
 
     ensure_directory "$XDG_CONFIG_HOME/ghostty/themes"
     template::render_mako "$src/themes/custom-theme.mako" "$XDG_CONFIG_HOME/ghostty/themes/custom-theme"
