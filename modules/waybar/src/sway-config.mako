@@ -45,12 +45,12 @@
     /* Common modules
     --------------------------------------------------------------------------*/
     "clock": {
-        "format": "  {:%H:%M}",
+        "format": "  {:%H:%M}",
         "tooltip": true,
         "tooltip-format": "{:%A, %B %d, %Y  %H:%M:%S (%Z)}"
     },
     "clock#calendar": {
-        "format": "󰸘  {:%Y-%m-%d}",
+        "format": "󰃭  {:%Y-%m-%d}",
         "tooltip-format": "<big><tt>{calendar}</tt></big>",
         "calendar": {
             "mode"          : "month",
