@@ -7,6 +7,7 @@ script_dir=$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)
 base_dir=$(realpath "$script_dir/../..")
 
 source "$base_dir/lib/fs.sh"
+source "$base_dir/lib/template.sh"
 
 
 fontconfig::install () {
@@ -15,7 +16,7 @@ fontconfig::install () {
     local src="$base_dir/modules/fontconfig/src"
 
     ensure_directory "$XDG_CONFIG_HOME/fontconfig"
-    render-mako "$src/fonts.mako.conf" "$XDG_CONFIG_HOME/fontconfig/fonts.conf"
+    template::render_mako "$src/fonts.mako.conf" "$XDG_CONFIG_HOME/fontconfig/fonts.conf"
 }
 
 fontconfig::uninstall () {

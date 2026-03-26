@@ -7,6 +7,7 @@ script_dir=$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)
 base_dir=$(realpath "$script_dir/../..")
 
 source "$base_dir/lib/fs.sh"
+source "$base_dir/lib/template.sh"
 
 
 theme-base::install () {
@@ -29,9 +30,9 @@ theme-base::install () {
         "$XDG_CONFIG_HOME/theme/fonts.yaml" \
         "$XDG_CONFIG_HOME/theme/cursor.yaml"
 
-    render-mako "$src/dircolors.mako" "$XDG_CONFIG_HOME/theme/dircolors"
-    render-mako "$src/eza-colors.mako" "$XDG_CONFIG_HOME/theme/eza-colors"
-    render-mako "$src/carbon-dark.pygments.mako.theme" "$XDG_CONFIG_HOME/theme/carbon-dark.pygments.theme"
+    template::render_mako "$src/dircolors.mako" "$XDG_CONFIG_HOME/theme/dircolors"
+    template::render_mako "$src/eza-colors.mako" "$XDG_CONFIG_HOME/theme/eza-colors"
+    template::render_mako "$src/carbon-dark.pygments.mako.theme" "$XDG_CONFIG_HOME/theme/carbon-dark.pygments.theme"
 }
 
 theme-base::uninstall () {

@@ -7,6 +7,7 @@ script_dir=$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)
 base_dir=$(realpath "$script_dir/../..")
 
 source "$base_dir/lib/fs.sh"
+source "$base_dir/lib/template.sh"
 
 
 hyprlock::install () {
@@ -17,7 +18,7 @@ hyprlock::install () {
     ensure_directory "$XDG_CONFIG_HOME/hypr"
 
     # Configuration files.
-    render-mako \
+    template::render_mako \
         "$src/hyprlock.mako.conf" \
         "$XDG_CONFIG_HOME/hypr/hyprlock.conf"
 }

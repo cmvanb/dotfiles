@@ -7,6 +7,7 @@ script_dir=$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)
 base_dir=$(realpath "$script_dir/../..")
 
 source "$base_dir/lib/fs.sh"
+source "$base_dir/lib/template.sh"
 
 
 btop::install () {
@@ -18,8 +19,7 @@ btop::install () {
     force_link "$src/btop.conf" "$XDG_CONFIG_HOME/btop/btop.conf"
 
     ensure_directory "$XDG_CONFIG_HOME/btop/themes"
-    # TODO: Extract templating to a shared function.
-    render-mako "$src/themes/carbon.mako.theme" "$XDG_CONFIG_HOME/btop/themes/carbon.theme"
+    template::render_mako "$src/themes/carbon.mako.theme" "$XDG_CONFIG_HOME/btop/themes/carbon.theme"
 }
 
 btop::uninstall () {

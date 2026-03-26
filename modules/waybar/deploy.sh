@@ -7,6 +7,7 @@ script_dir=$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)
 base_dir=$(realpath "$script_dir/../..")
 
 source "$base_dir/lib/fs.sh"
+source "$base_dir/lib/template.sh"
 
 
 waybar::install () {
@@ -19,19 +20,19 @@ waybar::install () {
     # TODO: Use a symlink with window manager suffix to point to the correct waybar profile.
     if [[ $DEPLOY_WM == "hyprland" ]]; then
         force_link "$src/hyprland-config" "$XDG_CONFIG_HOME/waybar/config"
-        render-mako "$src/hyprland-style.mako.css" "$XDG_CONFIG_HOME/waybar/style.css"
+        template::render_mako "$src/hyprland-style.mako.css" "$XDG_CONFIG_HOME/waybar/style.css"
 
     elif [[ $DEPLOY_WM == "niri" ]]; then
         force_link "$src/niri-config" "$XDG_CONFIG_HOME/waybar/config"
-        render-mako "$src/niri-style.mako.css" "$XDG_CONFIG_HOME/waybar/style.css"
+        template::render_mako "$src/niri-style.mako.css" "$XDG_CONFIG_HOME/waybar/style.css"
 
     elif [[ $DEPLOY_WM == "river" ]]; then
         force_link "$src/river-config" "$XDG_CONFIG_HOME/waybar/config"
-        render-mako "$src/river-style.mako.css" "$XDG_CONFIG_HOME/waybar/style.css"
+        template::render_mako "$src/river-style.mako.css" "$XDG_CONFIG_HOME/waybar/style.css"
 
     elif [[ $DEPLOY_WM == "sway" ]]; then
-        render-mako "$src/sway-config.mako" "$XDG_CONFIG_HOME/waybar/config"
-        render-mako "$src/sway-style.mako.css" "$XDG_CONFIG_HOME/waybar/style.css"
+        template::render_mako "$src/sway-config.mako" "$XDG_CONFIG_HOME/waybar/config"
+        template::render_mako "$src/sway-style.mako.css" "$XDG_CONFIG_HOME/waybar/style.css"
 
     elif [[ -z $DEPLOY_WM ]]; then
         echo "[$(basename "$0")] ERROR: \$DEPLOY_WM not set."

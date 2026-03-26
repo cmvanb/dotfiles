@@ -7,6 +7,7 @@ script_dir=$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)
 base_dir=$(realpath "$script_dir/../..")
 
 source "$base_dir/lib/fs.sh"
+source "$base_dir/lib/template.sh"
 
 
 git::install () {
@@ -16,7 +17,7 @@ git::install () {
 
     ensure_directory "$XDG_CONFIG_HOME/git"
 
-    render-mako "$src/config.mako"  "$XDG_CONFIG_HOME/git/config"
+    template::render_mako "$src/config.mako"  "$XDG_CONFIG_HOME/git/config"
     force_link  "$src/ignore"       "$XDG_CONFIG_HOME/git/ignore"
 }
 

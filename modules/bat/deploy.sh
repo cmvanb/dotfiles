@@ -8,6 +8,7 @@ base_dir=$(realpath "$script_dir/../..")
 
 source "$base_dir/lib/debug.sh"
 source "$base_dir/lib/fs.sh"
+source "$base_dir/lib/template.sh"
 
 
 bat::install () {
@@ -22,7 +23,7 @@ bat::install () {
     force_link "$src/syntaxes" "$XDG_CONFIG_HOME/bat/syntaxes"
 
     ensure_directory "$XDG_CONFIG_HOME/bat/themes"
-    render-mako "$base_dir/modules/theme-base/src/carbon-dark.syntect.mako.tmTheme" "$XDG_CONFIG_HOME/bat/themes/carbon-dark.tmTheme"
+    template::render_mako "$base_dir/modules/theme-base/src/carbon-dark.syntect.mako.tmTheme" "$XDG_CONFIG_HOME/bat/themes/carbon-dark.tmTheme"
 
     bat cache --build
 }

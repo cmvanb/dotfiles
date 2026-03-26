@@ -7,6 +7,7 @@ script_dir=$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)
 base_dir=$(realpath "$script_dir/../..")
 
 source "$base_dir/lib/fs.sh"
+source "$base_dir/lib/template.sh"
 
 
 theme-desktop::install_gtk_theme () {
@@ -18,9 +19,9 @@ theme-desktop::install_gtk_theme () {
     ensure_directory "$XDG_CONFIG_HOME/gtk-3.0"
     ensure_directory "$XDG_CONFIG_HOME/gtk-4.0"
 
-    render-mako "$src/gtk-4.0-gtk.mako.css"      "$XDG_CONFIG_HOME/gtk-4.0/gtk.css"
-    render-mako "$src/gtk-3.0-settings.mako.ini" "$XDG_CONFIG_HOME/gtk-3.0/settings.ini"
-    render-mako "$src/gtk-4.0-settings.mako.ini" "$XDG_CONFIG_HOME/gtk-4.0/settings.ini"
+    template::render_mako "$src/gtk-4.0-gtk.mako.css"      "$XDG_CONFIG_HOME/gtk-4.0/gtk.css"
+    template::render_mako "$src/gtk-3.0-settings.mako.ini" "$XDG_CONFIG_HOME/gtk-3.0/settings.ini"
+    template::render_mako "$src/gtk-4.0-settings.mako.ini" "$XDG_CONFIG_HOME/gtk-4.0/settings.ini"
 
     # Install GTK CSS files
     local theme_src="$src/carbon-dark-gtk"
@@ -43,9 +44,9 @@ theme-desktop::install_gtk_theme () {
     force_link "$theme_src/gtk-4.0/libadwaita-tail.css"   "$theme_dest/gtk-4.0/libadwaita-tail.css"
 
     # Render CSS templates
-    render-mako "$theme_src/gtk-3.0/gtk.mako.css"        "$theme_dest/gtk-3.0/gtk.css"
-    render-mako "$theme_src/gtk-3.0/gtk-dark.mako.css"   "$theme_dest/gtk-3.0/gtk-dark.css"
-    render-mako "$theme_src/gtk-4.0/libadwaita.mako.css" "$theme_dest/gtk-4.0/libadwaita.css"
+    template::render_mako "$theme_src/gtk-3.0/gtk.mako.css"        "$theme_dest/gtk-3.0/gtk.css"
+    template::render_mako "$theme_src/gtk-3.0/gtk-dark.mako.css"   "$theme_dest/gtk-3.0/gtk-dark.css"
+    template::render_mako "$theme_src/gtk-4.0/libadwaita.mako.css" "$theme_dest/gtk-4.0/libadwaita.css"
 }
 
 theme-desktop::configure_gtk () {

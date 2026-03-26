@@ -8,6 +8,7 @@ base_dir=$(realpath "$script_dir/../..")
 host=$(uname -n)
 
 source "$base_dir/lib/fs.sh"
+source "$base_dir/lib/template.sh"
 
 
 sway::install () {
@@ -36,8 +37,8 @@ sway::install () {
         echo "└> Warning: No outputs configuration for host '$host'."
     fi
 
-    render-mako "$src/workspaces.mako.conf" "$XDG_CONFIG_HOME/sway/workspaces.conf"
-    render-mako "$src/theme.mako.conf" "$XDG_CONFIG_HOME/sway/theme.conf"
+    template::render_mako "$src/workspaces.mako.conf" "$XDG_CONFIG_HOME/sway/workspaces.conf"
+    template::render_mako "$src/theme.mako.conf" "$XDG_CONFIG_HOME/sway/theme.conf"
 
     echo "└> Installing sway shortcuts."
 

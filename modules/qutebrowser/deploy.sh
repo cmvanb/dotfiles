@@ -7,6 +7,7 @@ script_dir=$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)
 base_dir=$(realpath "$script_dir/../..")
 
 source "$base_dir/lib/fs.sh"
+source "$base_dir/lib/template.sh"
 
 
 qutebrowser::install () {
@@ -16,13 +17,13 @@ qutebrowser::install () {
 
     ensure_directory "$XDG_CONFIG_HOME/qutebrowser"
     force_link "$src/config.py" "$XDG_CONFIG_HOME/qutebrowser/config.py"
-    render-mako "$src/stylesheet.mako.css" "$XDG_CONFIG_HOME/qutebrowser/stylesheet.css"
+    template::render_mako "$src/stylesheet.mako.css" "$XDG_CONFIG_HOME/qutebrowser/stylesheet.css"
     force_link "$src/stylemap.py" "$XDG_CONFIG_HOME/qutebrowser/stylemap.py"
     force_link "$src/modern-normalize.css" "$XDG_CONFIG_HOME/qutebrowser/modern-normalize.css"
 
     ensure_directory "$XDG_CONFIG_HOME/qutebrowser/styles"
-    render-mako "$src/styles/qute.mako.css" "$XDG_CONFIG_HOME/qutebrowser/styles/qute.css"
-    render-mako "$src/styles/hackernews.mako.css" "$XDG_CONFIG_HOME/qutebrowser/styles/hackernews.css"
+    template::render_mako "$src/styles/qute.mako.css" "$XDG_CONFIG_HOME/qutebrowser/styles/qute.css"
+    template::render_mako "$src/styles/hackernews.mako.css" "$XDG_CONFIG_HOME/qutebrowser/styles/hackernews.css"
     force_link "$src/styles/ansible-docs.css" "$XDG_CONFIG_HOME/qutebrowser/styles/ansible-docs.css"
     force_link "$src/styles/arch-linux-forum.css" "$XDG_CONFIG_HOME/qutebrowser/styles/arch-linux-forum.css"
     force_link "$src/styles/arch-linux-wiki.css" "$XDG_CONFIG_HOME/qutebrowser/styles/arch-linux-wiki.css"
