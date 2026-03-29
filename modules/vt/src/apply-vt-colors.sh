@@ -7,6 +7,6 @@ script_dir=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)
 
 echo "Applying virtual terminal colors from \`$script_dir/colors.mako\`."
 
-python3 "$XDG_OPT_HOME/theme/template.py" "$script_dir/colors.mako" /tmp/vtcolors
+"${XDG_BIN_HOME:-$HOME/.local/bin}/render-mako" "$script_dir/colors.mako" /tmp/vtcolors
 setvtrgb /tmp/vtcolors
 rm /tmp/vtcolors
