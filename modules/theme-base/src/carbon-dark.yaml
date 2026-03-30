@@ -109,12 +109,12 @@ colors:
   yellow_9: &yellow_9 "#ffff99"
 
   # Green (110-119)
-  # generate-color-gradient-palette.py --samples 10 --start '#002220' --middle '#44cc44' --end '#bbff77' --midpoint 0.47
-  green_0: &green_0 "#002220"
-  green_1: &green_1 "#0f4728"
-  green_2: &green_2 "#1e6d30"
-  green_3: &green_3 "#2d9338"
-  green_4: &green_4 "#3cb940"
+  # generate-color-gradient-palette.py --samples 10 --start '#00281c' --middle '#44cc44' --end '#bbff77' --midpoint 0.47
+  green_0: &green_0 "#00281c"
+  green_1: &green_1 "#0f4c24"
+  green_2: &green_2 "#1e712d"
+  green_3: &green_3 "#2d9536"
+  green_4: &green_4 "#3cba3e"
   green_5: &green_5 "#67da52"
   green_6: &green_6 "#7ce35b"
   green_7: &green_7 "#91ec64"
