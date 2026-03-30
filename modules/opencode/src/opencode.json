@@ -3,4 +3,48 @@
   "model": "anthropic/claude-sonnet-4-6",
   "autoupdate": false,
   "plugin": ["opencode-claude-auth"],
+  "permission": {
+    "external_directory": {
+      "*": "ask",
+      "~/Code/**": "allow",
+    },
+    "read": {
+      "*": "allow",
+      "*.env": "deny",
+      "*.env.*": "deny",
+      "*.env.example": "allow",
+    },
+    "edit": {
+      "*": "allow",
+      "~/Code/**": "ask",
+    },
+    "glob": {
+      "*": "allow",
+    },
+    "grep": {
+      "*": "allow",
+    },
+    "list": {
+      "*": "allow",
+    },
+    "bash": {
+      "*": "ask",
+      "ls": "allow",
+      "grep": "allow",
+      "which": "allow",
+    },
+    "task": {
+      "*": "ask",
+      "explore": "allow",
+    },
+    "skill": {
+      "*": "ask",
+    },
+    "lsp": {
+      "*": "allow",
+    },
+    "webfetch": "ask",
+    "websearch": "ask",
+    "codesearch": "ask",
+  }
 }
