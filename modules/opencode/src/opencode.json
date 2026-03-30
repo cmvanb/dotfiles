@@ -29,13 +29,15 @@
     },
     "bash": {
       "*": "ask",
-      "ls": "allow",
-      "grep": "allow",
-      "which": "allow",
+      "ls *": "allow",
+      "which *": "allow",
+      "grep *": "allow",
+      "rg *": "allow",
+      "find *": "allow",
+      "fd *": "allow",
     },
     "task": {
-      "*": "ask",
-      "explore": "allow",
+      "*": "allow",
     },
     "skill": {
       "*": "ask",
@@ -43,7 +45,7 @@
     "lsp": {
       "*": "allow",
     },
-    "webfetch": "ask",
+    "webfetch": "allow",
     "websearch": "ask",
     "codesearch": "ask",
   }
