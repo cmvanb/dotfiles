@@ -12,8 +12,8 @@ indirect_expand () {
 #     path_remove ~/bin PATH
 path_remove () {
     local IFS=':'
-    local newpath
-    local dir
+    local newpath=''
+    local dir=''
     local var=${2:-PATH}
     # Bash has ${!var}, but this is not portable.
     for dir in `indirect_expand "$var"`; do
@@ -31,7 +31,7 @@ path_remove () {
 path_prepend () {
     # if the path is already in the variable,
     # remove it so we can move it to the front
-    path_remove "$1" "$2"
+    path_remove "$1" "${2:-}"
     #[ -d "${1}" ] || return
     local var="${2:-PATH}"
     local value=`indirect_expand "$var"`
