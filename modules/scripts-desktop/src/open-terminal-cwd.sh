@@ -12,9 +12,9 @@ set -euo pipefail
 # shellcheck disable=SC1091
 source "$XDG_OPT_HOME/shell-utils/debug.sh"
 
-assert_dependency spawn-launcher.sh
-assert_dependency spawn-terminal.sh
-assert_dependency zoxide
+debug::assert_dependency spawn-launcher.sh
+debug::assert_dependency spawn-terminal.sh
+debug::assert_dependency zoxide
 
 # Choose the working directory
 #-------------------------------------------------------------------------------

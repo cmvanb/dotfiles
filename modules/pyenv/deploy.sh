@@ -10,7 +10,7 @@ source "$base_dir/lib/debug.sh"
 
 
 pyenv::install () {
-    assert_dependency curl
+    debug::assert_dependency curl
 
     if [[ ! -d $PYENV_ROOT ]]; then
         echo "└> Installing pyenv to \`$PYENV_ROOT\`."

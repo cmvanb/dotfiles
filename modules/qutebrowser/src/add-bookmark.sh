@@ -13,27 +13,16 @@ source "$XDG_OPT_HOME/shell-utils/debug.sh"
 # shellcheck disable=1091
 source "$XDG_OPT_HOME/shell-utils/name-formatting.sh"
 
-# Helpers
-#-------------------------------------------------------------------------------
-
-_script=$(basename "$0")
-
-err() {
-    local msg="$*"
-    echo "[$_script] ERROR: $msg" >&2
-    notify-send "$_script" "$msg"
-}
-
 # Validation
 #-------------------------------------------------------------------------------
 
-assert_dependency yad
+debug::assert_dependency yad
 
 bookmark_template="$XDG_TEMPLATES_DIR/bookmark.mako.md"
 bookmark_dir="$HOME/Wiki/bookmarks"
 
 if [[ ! -f $bookmark_template ]]; then
-    err "Missing template: \`$bookmark_template\`"
+    debug::error_notify "Missing template: \`$bookmark_template\`"
     exit 1
 fi
 
@@ -68,7 +57,7 @@ new_bookmark_tags_raw=$(echo "$form_input" | cut -d $'\x1F' -f 3)
 
 # Validate name.
 if [[ -z "$new_bookmark_name" ]]; then
-    err "Missing or bad input for bookmark name."
+    debug::error_notify "Missing or bad input for bookmark name."
     exit 20
 fi
 
@@ -76,7 +65,7 @@ new_bookmark_name_kebab=$(convert_to_kebab_case "$new_bookmark_name")
 
 # Validate URL.
 if [[ -z "$new_bookmark_url" ]]; then
-    err "Missing or bad input for bookmark url."
+    debug::error_notify "Missing or bad input for bookmark url."
     exit 21
 fi
 
@@ -95,7 +84,7 @@ for t in "${input_tags[@]+"${input_tags[@]}"}"; do
 done
 
 if [[ ${#new_bookmark_tags[@]} -eq 0 ]]; then
-    err "Missing or bad input for bookmark tags."
+    debug::error_notify "Missing or bad input for bookmark tags."
     exit 22
 fi
 
@@ -104,7 +93,7 @@ bookmark_file_path="$bookmark_dir/$new_bookmark_name_kebab.md"
 
 # NOTE: Should we also check the URL being already being bookmarked?
 if [[ -f "$bookmark_file_path" ]]; then
-    err "Bookmark already exists: \`$bookmark_file_path\`"
+    debug::error_notify "Bookmark already exists: \`$bookmark_file_path\`"
     exit 23
 fi
 
@@ -118,6 +107,6 @@ if ! render-mako \
     new_bookmark_name_kebab="$new_bookmark_name_kebab" \
     new_bookmark_url="$new_bookmark_url" \
     new_bookmark_tags="${new_bookmark_tags[*]+"${new_bookmark_tags[*]}"}";  then
-    err "Failed to create bookmark file: \`$bookmark_file_path\`"
+    debug::error_notify "Failed to create bookmark file: \`$bookmark_file_path\`"
     exit 30
 fi

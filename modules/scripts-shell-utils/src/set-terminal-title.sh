@@ -5,8 +5,11 @@
 
 set -euo pipefail
 
+# shellcheck disable=SC1091
+source "$XDG_OPT_HOME/shell-utils/debug.sh"
+
 if [[ -z "$1" ]]; then
-    echo "[$(basename "$0")] ERROR: Missing argument: string"
+    debug::error "Missing argument: string"
     exit 1
 fi
 

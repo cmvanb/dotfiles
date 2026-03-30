@@ -17,11 +17,11 @@ source "$opt_dir/shell-utils/debug.sh"
 # Validation
 #-------------------------------------------------------------------------------
 
-assert_dependency makoctl
-assert_dependency qutebrowser
-assert_dependency riverctl
-assert_dependency river-shifttags
-assert_dependency spawn-terminal.sh
+debug::assert_dependency makoctl
+debug::assert_dependency qutebrowser
+debug::assert_dependency riverctl
+debug::assert_dependency river-shifttags
+debug::assert_dependency spawn-terminal.sh
 
 # System mappings
 #-------------------------------------------------------------------------------

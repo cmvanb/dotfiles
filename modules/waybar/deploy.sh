@@ -35,11 +35,11 @@ waybar::install () {
         template::render_mako "$src/sway-style.mako.css" "$XDG_CONFIG_HOME/waybar/style.css"
 
     elif [[ -z $DEPLOY_WM ]]; then
-        echo "[$(basename "$0")] ERROR: \$DEPLOY_WM not set."
+        debug::error "\$DEPLOY_WM not set."
         exit 2
 
     else
-        echo "[$(basename "$0")] ERROR: \`$DEPLOY_WM\` is not accounted for."
+        debug::error "\`$DEPLOY_WM\` is not accounted for."
         exit 1
     fi
 

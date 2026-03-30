@@ -23,8 +23,8 @@ if [[ "${TRACE-0}" == "1" ]]; then set -o xtrace; fi
 # shellcheck disable=SC1091
 source "$XDG_OPT_HOME/shell-utils/debug.sh"
 
-assert_dependency udisksctl
-assert_dependency spawn-launcher.sh
+debug::assert_dependency udisksctl
+debug::assert_dependency spawn-launcher.sh
 
 # Parse subcommand
 #-------------------------------------------------------------------------------
@@ -44,7 +44,7 @@ fi
 mode="$1"
 
 if [[ "$mode" != "mount" && "$mode" != "unmount" ]]; then
-    echo "Error: unknown subcommand: $mode"
+    debug::error "unknown subcommand: $mode"
     usage
 fi
 
@@ -130,8 +130,8 @@ menu_entries=$(build_menu "$mode")
 
 if [[ -z "$menu_entries" ]]; then
     case "$mode" in
-        mount)   notify-send "usb-disks" "No unmounted removable disks found." ;;
-        unmount) notify-send "usb-disks" "No mounted removable disks found." ;;
+        mount)   debug::error_notify "No unmounted removable disks found." ;;
+        unmount) debug::error_notify "No mounted removable disks found." ;;
     esac
     exit 0
 fi
@@ -152,7 +152,7 @@ device=$(
 )
 
 if [[ -z "$device" ]]; then
-    notify-send "usb-disks" "Could not resolve device for: $chosen_line"
+    debug::error_notify "Could not resolve device for: $chosen_line"
     exit 1
 fi
 
@@ -162,17 +162,17 @@ fi
 case "$mode" in
     mount)
         if udisksctl mount --block-device "$device" --no-user-interaction; then
-            notify-send "usb-disks" "Mounted $device."
+            notify-send "$(basename "$0")" "Mounted $device."
         else
-            notify-send "usb-disks" "Failed to mount $device."
+            debug::error_notify "Failed to mount $device."
             exit 1
         fi
         ;;
     unmount)
         if udisksctl unmount --block-device "$device" --no-user-interaction; then
-            notify-send "usb-disks" "Unmounted $device."
+            notify-send "$(basename "$0")" "Unmounted $device."
         else
-            notify-send "usb-disks" "Failed to unmount $device."
+            debug::error_notify "Failed to unmount $device."
             exit 1
         fi
         ;;

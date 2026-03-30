@@ -12,8 +12,8 @@ source "$XDG_OPT_HOME/shell-utils/debug.sh"
 # Validation
 #-------------------------------------------------------------------------------
 
-assert_dependency spawn-launcher.sh
-assert_dependency qutebrowser
+debug::assert_dependency spawn-launcher.sh
+debug::assert_dependency qutebrowser
 
 # Choose Qutebrowser session
 #-------------------------------------------------------------------------------

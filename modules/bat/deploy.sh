@@ -12,7 +12,7 @@ source "$base_dir/lib/template.sh"
 
 
 bat::install () {
-    assert_dependency bat
+    debug::assert_dependency bat
 
     echo "└> Installing bat configuration."
 

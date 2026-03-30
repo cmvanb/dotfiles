@@ -11,10 +11,10 @@ source "$XDG_OPT_HOME/shell-utils/debug.sh"
 
 if [[ -z "$LAUNCHER" ]]; then
     LAUNCHER="fuzzel"
-    notify-send "spawn-launcher" "LAUNCHER is not set; defaulting to fuzzel."
+    debug::error_notify "LAUNCHER is not set; defaulting to fuzzel."
 fi
 
-assert_dependency "$LAUNCHER"
+debug::assert_dependency "$LAUNCHER"
 
 # Parse arguments
 #-------------------------------------------------------------------------------
@@ -34,7 +34,7 @@ usage() {
 parse_long_options() {
     case "$1" in
         --menu=*)
-            echo "Error: --menu does not take arguments"
+            debug::error "--menu does not take arguments"
             usage
             ;;
         --menu)
@@ -49,7 +49,7 @@ parse_long_options() {
                 prompt="$2"
                 return 2
             else
-                echo "Error: --prompt requires an argument"
+                debug::error "--prompt requires an argument"
                 usage
             fi
             ;;
@@ -59,7 +59,7 @@ parse_long_options() {
             ;;
 
         *)
-            echo "Error: Unknown option: $1"
+            debug::error "Unknown option: $1"
             usage
             ;;
     esac
@@ -83,7 +83,7 @@ while [ $# -gt 0 ]; do
                 prompt="$2"
                 shift
             else
-                echo "Error: -p requires an argument"
+                debug::error "-p requires an argument"
                 usage
             fi
             ;;
@@ -93,12 +93,12 @@ while [ $# -gt 0 ]; do
             ;;
 
         -*)
-            echo "Error: Unknown option: $1"
+            debug::error "Unknown option: $1"
             usage
             ;;
 
         *)
-            echo "Error: Unknown argument: $1"
+            debug::error "Unknown argument: $1"
             usage
             ;;
     esac

@@ -2,6 +2,9 @@
 # Bash file system utilities
 #-------------------------------------------------------------------------------
 
+# shellcheck disable=SC1091
+source "$(dirname "${BASH_SOURCE[0]}")/debug.sh"
+
 get_script_dir () {
     # Get the directory of the script that is calling this function.
     cd -- "$( dirname -- "${BASH_SOURCE[1]}" )" &> /dev/null && pwd
@@ -9,7 +12,7 @@ get_script_dir () {
 
 ensure_directory () {
     if [[ -z "$1" ]]; then
-        echo "[$(basename "$0")] ERROR: Missing argument: directory"
+        debug::error "Missing argument: directory"
         return 1
     fi
 
@@ -25,12 +28,12 @@ ensure_directory () {
 
 same_file() {
     if [[ -z "$1" || -z "$2" ]]; then
-        echo "[$(basename "$0")] ERROR: Missing argument: file1 file2"
+        debug::error "Missing argument: file1 file2"
         return 1
     fi
 
     if [[ ! -f "$1" || ! -f "$2" ]]; then
-        echo "[$(basename "$0")] ERROR: Arguments must be files"
+        debug::error "Arguments must be files"
         return 1
     fi
     if [[ "$1" -ef "$2" ]]; then
@@ -41,15 +44,15 @@ same_file() {
 
 force_link () {
     if [[ -z "$1" ]]; then
-        echo "[$(basename "$0")] ERROR: Missing argument: target"
+        debug::error "Missing argument: target"
         return 1
     fi
     if [[ -z "$2" ]]; then
-        echo "$(basename "$0") ERROR: Missing argument: link name"
+        debug::error "Missing argument: link name"
         return 1
     fi
     if [[ ! -f "$1" && ! -d "$1" ]]; then
-        echo "[$(basename "$0")] ERROR: Tried to link non-existent \`$1\`"
+        debug::error "Tried to link non-existent \`$1\`"
         return 1
     fi
 
@@ -63,15 +66,15 @@ force_link () {
 
 force_copy () {
     if [[ -z "$1" ]]; then
-        echo "[$(basename "$0")] ERROR: Missing argument: source"
+        debug::error "Missing argument: source"
         return 1
     fi
     if [[ -z "$2" ]]; then
-        echo "[$(basename "$0")] ERROR: Missing argument: destination"
+        debug::error "Missing argument: destination"
         return 1
     fi
     if [[ ! -f "$1" && ! -d "$1" ]]; then
-        echo "[$(basename "$0")] ERROR: Tried to copy non-existent \`$1\`"
+        debug::error "Tried to copy non-existent \`$1\`"
         return 1
     fi
 
@@ -95,12 +98,12 @@ happy_move() {
 
 file_mime_type () {
     if [[ -z "$1" ]]; then
-        echo "[$(basename "$0")] ERROR: Missing argument: file name"
+        debug::error "Missing argument: file name"
         return 1
     fi
 
     if [[ ! -f "$1" ]]; then
-        echo "[$(basename "$0")] ERROR: Argument is not a file"
+        debug::error "Argument is not a file"
         return 1
     fi
 
@@ -109,12 +112,12 @@ file_mime_type () {
 
 file_encoding () {
     if [[ -z "$1" ]]; then
-        echo "[$(basename "$0")] ERROR: Missing argument: file name"
+        debug::error "Missing argument: file name"
         return 1
     fi
 
     if [[ ! -f "$1" ]]; then
-        echo "[$(basename "$0")] ERROR: Argument is not a file"
+        debug::error "Argument is not a file"
         return 1
     fi
 
@@ -131,12 +134,12 @@ file_is_binary () {
 
 file_extension () {
     if [[ -z "$1" ]]; then
-        echo "[$(basename "$0")] ERROR: Missing argument: file name"
+        debug::error "Missing argument: file name"
         return 1
     fi
 
     if [[ ! -f "$1" ]]; then
-        echo "[$(basename "$0")] ERROR: Argument is not a file"
+        debug::error "Argument is not a file"
         return 1
     fi
 

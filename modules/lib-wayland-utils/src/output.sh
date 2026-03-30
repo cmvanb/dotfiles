@@ -11,8 +11,8 @@ source "$XDG_OPT_HOME/shell-utils/debug.sh"
 # Validation
 #-------------------------------------------------------------------------------
 
-assert_dependency wlr-randr
-assert_dependency swaybg
+debug::assert_dependency wlr-randr
+debug::assert_dependency swaybg
 
 # Functions
 #-------------------------------------------------------------------------------
@@ -30,7 +30,7 @@ wl_output_exists() {
     output=$(wl_get_output "$1")
 
     if [[ -z $output ]]; then
-        echo "ERROR: output named \`$1\` not found"
+        debug::error "output named \`$1\` not found"
         return 1
     fi
 }
@@ -40,7 +40,7 @@ wl_get_output_transform() {
     output=$(wl_get_output "$1")
 
     if [[ -z $output ]]; then
-        echo "ERROR: output named \`$1\` not found"
+        debug::error "output named \`$1\` not found"
         return 1
     fi
 

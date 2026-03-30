@@ -16,22 +16,22 @@ source "$XDG_OPT_HOME/shell-utils/fs.sh"
 # Validation
 #-------------------------------------------------------------------------------
 
-assert_dependency chafa
-assert_dependency mediainfo
-assert_dependency gs
-assert_dependency zipinfo
-assert_dependency tree
-assert_dependency tar
-assert_dependency 7z
-assert_dependency bat
+debug::assert_dependency chafa
+debug::assert_dependency mediainfo
+debug::assert_dependency gs
+debug::assert_dependency zipinfo
+debug::assert_dependency tree
+debug::assert_dependency tar
+debug::assert_dependency 7z
+debug::assert_dependency bat
 
 if [[ -z "$1" ]]; then
-    echo "[$(basename "$0")] ERROR: Missing argument: file name"
+    debug::error "Missing argument: file name"
     exit 1
 fi
 
 if [[ ! -r "$1" ]]; then
-    echo "[$(basename "$0")] ERROR: File is not readable."
+    debug::error "File is not readable."
     exit 1
 fi
 
@@ -85,6 +85,6 @@ elif file_is_binary "$1"; then
     file -b --mime "$1" && echo "" && hexdump "$1"
 
 else
-    file -b --mime "$1" && echo "[$(basename "$0")] ERROR: unknown file type"
+    file -b --mime "$1" && debug::error "unknown file type"
 
 fi

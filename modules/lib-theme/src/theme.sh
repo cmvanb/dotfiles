@@ -6,6 +6,9 @@
 # The functions below resolve a variable name to the desired format.
 #-------------------------------------------------------------------------------
 
+# shellcheck disable=SC1091
+source "$XDG_OPT_HOME/shell-utils/debug.sh"
+
 declare theme_lib_dir="$XDG_OPT_HOME/theme"
 
 # API
@@ -106,6 +109,6 @@ if [[ -r "$theme_cache_dir/theme-data.sh" ]]; then
     # shellcheck disable=SC1091
     source "$theme_cache_dir/theme-data.sh"
 else
-    echo "[$(basename "$0")] ERROR: Theme cache file is not readable. Run \`python3 \$XDG_OPT_HOME/theme/theme.py parse\` to generate it."
+    debug::error "Theme cache file is not readable. Run \`python3 \$XDG_OPT_HOME/theme/theme.py parse\` to generate it."
     exit 1
 fi

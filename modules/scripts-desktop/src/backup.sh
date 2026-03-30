@@ -14,8 +14,8 @@ source "$XDG_OPT_HOME/shell-utils/debug.sh"
 # Validation
 #-------------------------------------------------------------------------------
 
-assert_dependency rsync
-assert_dependency pv
+debug::assert_dependency rsync
+debug::assert_dependency pv
 
 # Defaults
 #-------------------------------------------------------------------------------

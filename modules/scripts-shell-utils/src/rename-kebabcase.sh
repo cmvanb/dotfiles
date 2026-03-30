@@ -6,6 +6,8 @@
 set -euo pipefail
 
 # shellcheck disable=SC1091
+source "$XDG_OPT_HOME/shell-utils/debug.sh"
+# shellcheck disable=SC1091
 source "$XDG_OPT_HOME/shell-utils/fs.sh"
 # shellcheck disable=SC1091
 source "$XDG_OPT_HOME/shell-utils/name-formatting.sh"
@@ -23,6 +25,6 @@ elif [[ -d "$1" ]]; then
     happy_move "$1" "$dst_dirname"
     echo "$1 -> $dst_dirname"
 else
-    echo "File or directory \`$1\` does not exist." 1>&2
+    debug::error "File or directory \`$1\` does not exist."
     exit 1
 fi

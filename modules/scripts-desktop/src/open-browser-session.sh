@@ -12,8 +12,8 @@ source "$XDG_OPT_HOME/shell-utils/debug.sh"
 # Validation
 #-------------------------------------------------------------------------------
 
-assert_dependency spawn-launcher.sh
-assert_dependency python
+debug::assert_dependency spawn-launcher.sh
+debug::assert_dependency python
 
 # Get browser from environment
 #-------------------------------------------------------------------------------
@@ -24,8 +24,7 @@ case "$browser" in
     *qutebrowser*|*chromium*|*firefox*)
         ;;
     *)
-        echo "Error: Unsupported browser '$browser'"
-        echo "Supported browsers: qutebrowser, chromium, firefox"
+        debug::error "Unsupported browser '$browser' (supported: qutebrowser, chromium, firefox)"
         exit 1
         ;;
 esac
@@ -93,7 +92,7 @@ EOF
 )
 
         if [[ -z "$urls" ]]; then
-            echo "Error: No URLs found in session '$session'"
+            debug::error "No URLs found in session '$session'"
             exit 1
         fi
 

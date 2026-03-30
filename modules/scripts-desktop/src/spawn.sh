@@ -5,6 +5,9 @@
 
 set -euo pipefail
 
+# shellcheck disable=SC1091
+source "$XDG_OPT_HOME/shell-utils/debug.sh"
+
 if [ "$#" -lt 1 ]; then
     echo "Usage: $(basename "$0") <command> [args...]" >&2
     echo "Example: $(basename "$0") alacritty" >&2
@@ -26,8 +29,7 @@ case "${wm,,}" in
         hyprctl dispatch exec "$@"
         ;;
     *)
-        echo "Error: Unsupported or unknown window manager: $wm" >&2
-        echo "Falling back to direct spawn" >&2
+        debug::error "Unsupported or unknown window manager: $wm — falling back to direct spawn"
         nohup "$@" >/dev/null 2>&1 &
         ;;
 esac

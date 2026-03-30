@@ -5,6 +5,9 @@
 
 set -euo pipefail
 
+# shellcheck disable=SC1091
+source "$XDG_OPT_HOME/shell-utils/debug.sh"
+
 declare terminal_supports_256_colors
 
 case "$TERM" in
@@ -34,11 +37,11 @@ function print_band() {
     local height="${4:-1}"
 
     if (( width < 3 )); then
-        echo "[$(basename "$0")] ERROR: Block width must be 3 or greater."
+        debug::error "Block width must be 3 or greater."
     fi
 
     if (( height < 1 )); then
-        echo "[$(basename "$0")] ERROR: Block height must be 1 or greater."
+        debug::error "Block height must be 1 or greater."
     fi
 
     # Pre-build the full-width block string (used by extra height rows).

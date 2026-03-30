@@ -11,10 +11,10 @@ source "$XDG_OPT_HOME/shell-utils/debug.sh"
 
 if [[ -z "$TERMINAL" ]]; then
     TERMINAL="alacritty"
-    notify-send "spawn-terminal" "TERMINAL is not set; defaulting to alacritty."
+    debug::error_notify "TERMINAL is not set; defaulting to alacritty."
 fi
 
-assert_dependency "$LAUNCHER"
+debug::assert_dependency "$TERMINAL"
 
 # Parse arguments
 #-------------------------------------------------------------------------------
@@ -45,13 +45,13 @@ parse_long_options() {
                 command="$2"
                 return 2
             else
-                echo "Error: --command requires an argument"
+                debug::error "--command requires an argument"
                 usage
             fi
             ;;
 
         --floating=*)
-            echo "Error: --floating does not take arguments"
+            debug::error "--floating does not take arguments"
             usage
             ;;
         --floating)
@@ -66,7 +66,7 @@ parse_long_options() {
                 cwd="$2"
                 return 2
             else
-                echo "Error: --working-directory requires an argument"
+                debug::error "--working-directory requires an argument"
                 usage
             fi
             ;;
@@ -79,7 +79,7 @@ parse_long_options() {
                 title="$2"
                 return 2
             else
-                echo "Error: --title requires an argument"
+                debug::error "--title requires an argument"
                 usage
             fi
             ;;
@@ -89,7 +89,7 @@ parse_long_options() {
             ;;
 
         *)
-            echo "Error: Unknown option: $1"
+            debug::error "Unknown option: $1"
             usage
             ;;
     esac
@@ -118,7 +118,7 @@ parse_short_options() {
                     command="$1"
                     return 1
                 else
-                    echo "Error: Option -c requires an argument"
+                    debug::error "Option -c requires an argument"
                     usage
                 fi
                 ;;
@@ -130,7 +130,7 @@ parse_short_options() {
                     cwd="$1"
                     return 1
                 else
-                    echo "Error: Option -d requires an argument"
+                    debug::error "Option -d requires an argument"
                     usage
                 fi
                 ;;
@@ -145,7 +145,7 @@ parse_short_options() {
                     title="$1"
                     return 1
                 else
-                    echo "Error: Option -t requires an argument"
+                    debug::error "Option -t requires an argument"
                     usage
                 fi
                 ;;
@@ -153,7 +153,7 @@ parse_short_options() {
                 usage
                 ;;
             *)
-                echo "Error: Invalid option: -$opt"
+                debug::error "Invalid option: -$opt"
                 usage
                 ;;
         esac
@@ -243,7 +243,7 @@ elif [[ $TERMINAL == "wezterm" ]]; then
     fi
 
 else
-    echo "Unsupported terminal emulator: $TERMINAL"
+    debug::error "Unsupported terminal emulator: $TERMINAL"
     exit 1
 fi
 

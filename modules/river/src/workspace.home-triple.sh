@@ -11,7 +11,7 @@ source "$XDG_OPT_HOME/shell-utils/debug.sh"
 source "$XDG_OPT_HOME/wayland-utils/output.sh"
 source "$XDG_CONFIG_HOME/river/utils.sh"
 
-assert_dependency spawn-terminal.sh
+debug::assert_dependency spawn-terminal.sh
 
 # Workspace
 #-------------------------------------------------------------------------------

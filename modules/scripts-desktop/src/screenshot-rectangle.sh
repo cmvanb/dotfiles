@@ -5,6 +5,9 @@
 
 if [[ "${TRACE-0}" == "1" ]]; then set -o xtrace; fi
 
+# shellcheck disable=SC1091
+source "$XDG_OPT_HOME/shell-utils/debug.sh"
+
 scriptName=$(basename "$0")
 
 # Print the usage instructions.
@@ -40,18 +43,6 @@ while getopts ":-:" option; do
     esac
 done
 
-# Log a debug message.
-log() {
-    echo "$1" 1>&2
-}
-
-# Log a fatal error and dispatch a notification.
-fatal_error() {
-    log "$2"
-    notify-send "$2"
-    exit "$1"
-}
-
 # Where to save screenshots.
 screenshotDir="${XDG_PICTURES_DIR:-"$HOME/Media/Images"}/screenshots"
 mkdir -p "$screenshotDir"
@@ -65,13 +56,15 @@ filePath="$screenshotDir/$currentDateTime.jpg"
 # Get the screen coordinates (or error out).
 coordinates=$(slurp 2>&1)
 if [[ $coordinates == "selection cancelled" ]]; then
-    fatal_error 1 "Screenshot selection cancelled."
+    debug::error_notify "Screenshot selection cancelled."
+    exit 1
 fi
 
 # Take a screenshot (or error out).
 error="$(grim -g "$coordinates" "$filePath" 2>&1)"
 if [[ -n $error ]]; then
-    fatal_error 2 "$error"
+    debug::error_notify "$error"
+    exit 2
 fi
 
 # If `upload` flag was passed, upload screenshot to image share host and
@@ -80,7 +73,7 @@ if [[ "$upload" == true ]]; then
     url=$(0x0 -f "$filePath" 2>/dev/null)
 
     message="Screenshot saved to $filePath and uploaded to $url"
-    log "$message"
+    >&2 echo "$message"
 
     # Notifcation with multiple actions.
     result=$(notify-send --action="default=View URL." --action="image=View image." "$message")
@@ -92,7 +85,7 @@ if [[ "$upload" == true ]]; then
 # Dispatch succcess notifcation.
 else
     message="Screenshot saved to $filePath"
-    log "$message"
+    >&2 echo "$message"
 
     # Notifcation with singular default action.
     result=$(notify-send --action="default=View image." "$message")

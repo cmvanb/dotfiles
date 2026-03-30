@@ -13,9 +13,9 @@ source "$XDG_OPT_HOME/shell-utils/debug.sh"
 # Validation
 #-------------------------------------------------------------------------------
 
-assert_dependency jq
-assert_dependency river-bedload
-assert_dependency riverctl
+debug::assert_dependency jq
+debug::assert_dependency river-bedload
+debug::assert_dependency riverctl
 
 # Tag view
 #-------------------------------------------------------------------------------

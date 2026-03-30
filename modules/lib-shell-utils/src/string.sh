@@ -2,13 +2,16 @@
 # Bash string utilities
 #-------------------------------------------------------------------------------
 
+# shellcheck disable=SC1091
+source "$(dirname "${BASH_SOURCE[0]}")/debug.sh"
+
 string_contains () {
     if [[ -z "$1" ]]; then
-        echo "[$(basename "$0")] ERROR: Missing argument: string"
+        debug::error "Missing argument: string"
         return 1
     fi
     if [[ -z "$2" ]]; then
-        echo "$(basename "$0") ERROR: Missing argument: substring[s]"
+        debug::error "Missing argument: substring[s]"
         return 1
     fi
 

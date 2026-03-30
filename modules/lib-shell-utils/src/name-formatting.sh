@@ -3,6 +3,9 @@
 # Name formatting functions
 # ------------------------------------------------------------------------------
 
+# shellcheck disable=SC1091
+source "$(dirname "${BASH_SOURCE[0]}")/debug.sh"
+
 # API
 # ------------------------------------------------------------------------------
 
@@ -89,10 +92,6 @@ nf_dedup_spaces() {
 }
 
 nf_not_implemented() {
-    error 1 "Not implemented."
-}
-
-nf_error() {
-    echo "Error: $2"
-    exit $1
+    debug::error "Not implemented."
+    exit 1
 }

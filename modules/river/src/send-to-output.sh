@@ -14,10 +14,10 @@ source "$XDG_OPT_HOME/wayland-utils/output.sh"
 # Validation
 #-------------------------------------------------------------------------------
 
-assert_dependency jq
-assert_dependency river-bedload
-assert_dependency riverctl
-assert_dependency spawn-launcher.sh
+debug::assert_dependency jq
+debug::assert_dependency river-bedload
+debug::assert_dependency riverctl
+debug::assert_dependency spawn-launcher.sh
 
 # Choose output
 #-------------------------------------------------------------------------------
