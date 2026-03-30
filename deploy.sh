@@ -13,6 +13,7 @@ cd "$script_dir"
 source lib/profile.sh
 source lib/fs.sh
 source lib/linux.sh
+source lib/path.sh
 
 # Bootstrap environment
 #-------------------------------------------------------------------------------
@@ -30,6 +31,9 @@ export DEPLOY_HOST="$(uname -n)"
 export PYENV_ROOT="${PYENV_ROOT:-$XDG_OPT_HOME/pyenv}"
 
 state_dir="$HOME/.local/state/dotfiles"
+
+# Makes render-mako available outside of user shells.
+path_prepend "$XDG_BIN_HOME"
 
 # Utilities
 #-------------------------------------------------------------------------------
