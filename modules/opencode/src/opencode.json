@@ -35,6 +35,9 @@
       "rg *": "allow",
       "find *": "allow",
       "fd *": "allow",
+      "git *": "ask",
+      "git diff *": "allow",
+      "git status *": "allow",
     },
     "task": {
       "*": "allow",
