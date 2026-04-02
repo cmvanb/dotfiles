@@ -39,8 +39,15 @@ The uninstall function simply removes installed files or links.
 Some modules provide `enable` / `disable` for systemd user services.
 
 ```bash
-<name>::enable()  { systemctl --user enable  <service>; }
-<name>::disable() { systemctl --user disable <service>; }
+<name>::enable() {
+    systemctl --user enable  <service>;
+}
+```
+
+```bash
+<name>::disable() {
+    systemctl --user disable <service>;
+}
 ```
 
 ## Shared library functions
@@ -55,19 +62,18 @@ Some modules provide `enable` / `disable` for systemd user services.
 
 ## Common deployment patterns
 
-**Symlink entire directory**
-```bash
-force_link "$src" "$XDG_CONFIG_HOME/git"
-```
-
-Use this when all files in `src/` are static and the destination is owned entirely by this module.
-
 **Symlink individual file**
 ```bash
 force_link "$src/bashrc" "$XDG_CONFIG_HOME/bash/bashrc"
 ```
 
-Use individual file links when `src/` contains a mix of static files and templates, files from other modules, or host/distro variants.
+**Symlink entire directory**
+```bash
+force_link "$src" "$XDG_CONFIG_HOME/git"
+```
+
+> [!NOTE]
+> Use this when all files in `src/` are static and the destination is owned entirely by this module.
 
 **Render template file**
 ```bash
