@@ -38,6 +38,7 @@
       "git *": "ask",
       "git diff *": "allow",
       "git status *": "allow",
+      "head": "allow",
     },
     "task": {
       "*": "allow",
