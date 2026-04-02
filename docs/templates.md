@@ -18,7 +18,7 @@ Template files use a `.mako` infix (e.g. `config.mako`, `style.mako.css`). Rende
 
 ## Context variables
 
-The `render-mako` command injects these into every template:
+The `render-mako` command (invoked via `template::render_mako`) injects these into every template:
 
 | Variable | Value |
 |---|---|
@@ -108,8 +108,8 @@ size = ${terminal_font_size}
 
 `render-mako` (the `template` pip package installed by `lib-python-utils`) does the rendering: it builds the context, compiles the Mako template, and writes the output file.
 
-Modules call it directly:
+Modules call it via the `template::render_mako` wrapper (from `lib/template.sh`), which removes any pre-existing file or link at the destination before rendering:
 
 ```bash
-render-mako "$src/config.mako" "$XDG_CONFIG_HOME/app/config"
+template::render_mako "$src/config.mako" "$XDG_CONFIG_HOME/app/config"
 ```

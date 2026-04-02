@@ -16,14 +16,14 @@ modules/<name>/
 
 A module `deploy.sh` provides namespaced `install` and `uninstall` functions.
 
-The install function typically uses `force_link` or `render-mako` to deploy individual config files, although where possible we also link entire directories.
+The install function typically uses `force_link` or `template::render_mako` to deploy individual config files, although where possible we also link entire directories.
 
 ```bash
 <name>::install() {
     local src="$base_dir/modules/<name>/src"
     ensure_directory "$XDG_CONFIG_HOME/<app>"
     force_link "$src/config" "$XDG_CONFIG_HOME/<app>/config"
-    render-mako "$src/style.mako.css" "$XDG_CONFIG_HOME/<app>/style.css"
+    template::render_mako "$src/style.mako.css" "$XDG_CONFIG_HOME/<app>/style.css"
 }
 ```
 
@@ -32,7 +32,7 @@ The uninstall function simply removes installed files or links.
 ```bash
 <name>::uninstall() {
     rm "$XDG_CONFIG_HOME/<app>/config"
-    rm "$XDG_CONFIG_HOME/<app>/style.mako.css"
+    rm "$XDG_CONFIG_HOME/<app>/style.css"
 }
 ```
 
@@ -51,7 +51,7 @@ Some modules provide `enable` / `disable` for systemd user services.
 | `force_copy <src> <dest>` | `cp -rfT` — removes existing file/link at dest first |
 | `ensure_directory <path>` | `mkdir -p` — removes existing file/link at path first |
 | `happy_move <src> <dest>` | `mv` — no-ops if src == dest |
-| `render-mako <tpl> <dest>` | Render Mako template to dest |
+| `template::render_mako <tpl> <dest>` | Render Mako template to dest |
 
 ## Common deployment patterns
 
@@ -71,7 +71,7 @@ Use individual file links when `src/` contains a mix of static files and templat
 
 **Render template file**
 ```bash
-render-mako "$src/env.mako.sh" "$XDG_CONFIG_HOME/bash/env.sh"
+template::render_mako "$src/env.mako.sh" "$XDG_CONFIG_HOME/bash/env.sh"
 ```
 
 
@@ -94,6 +94,7 @@ script_dir=$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)
 base_dir=$(realpath "$script_dir/../..")
 
 source "$base_dir/lib/fs.sh"
+source "$base_dir/lib/template.sh"
 
 bat::install() {
     assert_dependency bat
@@ -105,7 +106,7 @@ bat::install() {
     force_link "$src/syntaxes" "$XDG_CONFIG_HOME/bat/syntaxes"
 
     ensure_directory "$XDG_CONFIG_HOME/bat/themes"
-    render-mako "$base_dir/modules/theme-base/src/carbon-dark.syntect.mako.tmTheme" "$XDG_CONFIG_HOME/bat/themes/carbon-dark.syntect.tmTheme"
+    template::render_mako "$base_dir/modules/theme-base/src/carbon-dark.syntect.mako.tmTheme" "$XDG_CONFIG_HOME/bat/themes/carbon-dark.syntect.tmTheme"
 
     bat cache --build
 }
