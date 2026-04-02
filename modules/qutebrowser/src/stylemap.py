@@ -5,5 +5,6 @@ styles = {
     'hackernews.css': ['*news.ycombinator.com*'],
     'github.css': ['*github.com*'],
     'wikipedia.css': ['*wikipedia.org*'],
+    'claude.css': ['*claude.ai*'],
     'qute.css': ['qute://*'],
 }

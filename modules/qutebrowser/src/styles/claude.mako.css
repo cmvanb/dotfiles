@@ -1,0 +1,34 @@
+/* Header */
+.from-bg-100 {
+    --bg-100: ${color_hash('web_page_bg')} !important;
+    --tw-gradient-from: ${color_hash('web_page_bg')} !important;
+    --tw-gradient-to: transparent var(--tw-gradient-to-position) !important;
+}
+
+/* Input */
+.bg-bg-000 {
+    background-color: ${color_hash('primary_0')} !important;
+}
+
+/* Background */
+.bg-bg-100 {
+    background-color: ${color_hash('web_page_bg')} !important;
+}
+
+/* User speech */
+.bg-bg-300 {
+    background-color: ${color_hash('primary_3')} !important;
+}
+
+/* Text */
+body {
+    font-size: ${font_size_large}px !important;
+}
+
+/* Code block */
+pre, code {
+    background-color: ${color_hash('editor_bg')} !important;
+    font-family: ${font_mono}, Iosevka, Consolas, "Liberation Mono", Courier, monospace !important;
+    font-size: ${font_size_mlarge}px !important;
+    color: ${color_hash('syn_generic')} !important;
+}
