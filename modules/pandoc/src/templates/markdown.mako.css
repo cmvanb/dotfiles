@@ -598,6 +598,139 @@ blockquote > :first-child {
 blockquote > :last-child {
   margin-bottom: 0;
 }
+
+/* ==========================================================================
+   Pandoc alerts (markdown+alerts extension)
+   Rendered as: <div class="note|tip|important|warning|caution">
+                  <div class="title"><p>...</p></div>
+                  <p>...</p>
+                </div>
+   ========================================================================== */
+
+div.note,
+div.tip,
+div.important,
+div.warning,
+div.caution {
+  border-left: 5px solid;
+  border-radius: 3px;
+  padding: 1em;
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+  margin-right: 0;
+  margin-left: 0;
+}
+
+div.note > div.title,
+div.tip > div.title,
+div.important > div.title,
+div.warning > div.title,
+div.caution > div.title {
+  font-weight: bold;
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+
+div.note > div.title > p,
+div.tip > div.title > p,
+div.important > div.title > p,
+div.warning > div.title > p,
+div.caution > div.title > p {
+  margin: 0;
+  line-height: 11px;
+}
+
+div.note > div.title > p::before,
+div.tip > div.title > p::before,
+div.important > div.title > p::before,
+div.warning > div.title > p::before,
+div.caution > div.title > p::before {
+  content: '';
+  display: inline-block;
+  width: 11px;
+  height: 11px;
+  vertical-align: middle;
+  position: relative;
+  top: -1px;
+  margin-right: 6px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+div.note > :last-child,
+div.tip > :last-child,
+div.important > :last-child,
+div.warning > :last-child,
+div.caution > :last-child {
+  margin-bottom: 0;
+}
+
+/* Note — blue */
+div.note {
+  background-color: ${color_hash('blue_1')};
+  border-color: ${color_hash('blue_5')};
+}
+div.note > div.title {
+  color: ${color_hash('blue_8')};
+}
+div.note > div.title > p::before {
+  /* info circle icon */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' width='16' height='16'%3E%3Cpath fill='%2384b7f3' d='M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z'/%3E%3C/svg%3E");
+}
+
+/* Tip — green */
+div.tip {
+  background-color: ${color_hash('green_1')};
+  border-color: ${color_hash('green_4')};
+}
+div.tip > div.title {
+  color: ${color_hash('green_7')};
+}
+div.tip > div.title > p::before {
+  /* lightbulb icon */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' width='16' height='16'%3E%3Cpath fill='%2391ec64' d='M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 14.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z'/%3E%3C/svg%3E");
+}
+
+/* Important — purple */
+div.important {
+  background-color: ${color_hash('purple_1')};
+  border-color: ${color_hash('purple_5')};
+}
+div.important > div.title {
+  color: ${color_hash('purple_8')};
+}
+div.important > div.title > p::before {
+  /* report icon */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' width='16' height='16'%3E%3Cpath fill='%23c988f4' d='M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z'/%3E%3C/svg%3E");
+}
+
+/* Warning — orange */
+div.warning {
+  background-color: ${color_hash('yellow_1')};
+  border-color: ${color_hash('yellow_5')};
+}
+div.warning > div.title {
+  color: ${color_hash('orange_8')};
+}
+div.warning > div.title > p::before {
+  /* alert triangle icon */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' width='16' height='16'%3E%3Cpath fill='%23ffc155' d='M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z'/%3E%3C/svg%3E");
+}
+
+/* Caution — red */
+div.caution {
+  background-color: ${color_hash('red_1')};
+  border-color: ${color_hash('red_4')};
+}
+div.caution > div.title {
+  color: ${color_hash('red_7')};
+}
+div.caution > div.title > p::before {
+  /* stop icon */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' width='16' height='16'%3E%3Cpath fill='%23ff665c' d='M4.47.22A.749.749 0 0 1 5 0h6c.199 0 .389.079.53.22l4.25 4.25c.141.14.22.331.22.53v6a.749.749 0 0 1-.22.53l-4.25 4.25A.749.749 0 0 1 11 16H5a.749.749 0 0 1-.53-.22L.22 11.53A.749.749 0 0 1 0 11V5c0-.199.079-.389.22-.53Zm.84 1.28L1.5 5.31v5.38l3.81 3.81h5.38l3.81-3.81V5.31L10.69 1.5ZM8 4a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 8 4Zm0 8a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z'/%3E%3C/svg%3E");
+}
+
 table {
   border-collapse: collapse;
   border-spacing: 0;
