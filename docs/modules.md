@@ -14,8 +14,9 @@ modules/<name>/
 
 ## Deploy script structure
 
-Every `deploy.sh` provides `<name>::install()` and `<name>::uninstall()`. Some modules provide `<name>::enable()` / `<name>::disable()` for systemd user services.
+A module `deploy.sh` provides namespaced `install` and `uninstall` functions.
 
+The install function typically uses `force_link` or `render-mako` to deploy individual config files, although where possible we also link entire directories.
 
 ```bash
 <name>::install() {
@@ -24,16 +25,23 @@ Every `deploy.sh` provides `<name>::install()` and `<name>::uninstall()`. Some m
     force_link "$src/config" "$XDG_CONFIG_HOME/<app>/config"
     render-mako "$src/style.mako.css" "$XDG_CONFIG_HOME/<app>/style.css"
 }
+```
 
+The uninstall function simply removes installed files or links.
+
+```bash
 <name>::uninstall() {
-    rm -rf "$XDG_CONFIG_HOME/<app>"
+    rm "$XDG_CONFIG_HOME/<app>/config"
+    rm "$XDG_CONFIG_HOME/<app>/style.mako.css"
 }
+```
 
+Some modules provide `enable` / `disable` for systemd user services.
+
+```bash
 <name>::enable()  { systemctl --user enable  <service>; }
 <name>::disable() { systemctl --user disable <service>; }
 ```
-
-`deploy.sh` uses `base_dir` (resolved to repo root) and the `XDG_*` vars exported by `deploy.sh`.
 
 ## Shared library functions
 
@@ -52,12 +60,14 @@ Every `deploy.sh` provides `<name>::install()` and `<name>::uninstall()`. Some m
 force_link "$src" "$XDG_CONFIG_HOME/git"
 ```
 
+Use this when all files in `src/` are static and the destination is owned entirely by this module.
 
 **Symlink individual file**
 ```bash
 force_link "$src/bashrc" "$XDG_CONFIG_HOME/bash/bashrc"
 ```
 
+Use individual file links when `src/` contains a mix of static files and templates, files from other modules, or host/distro variants.
 
 **Render template file**
 ```bash
