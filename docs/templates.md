@@ -106,9 +106,9 @@ size = ${terminal_font_size}
 
 ## Rendering
 
-`render-mako` (the `template` pip package installed by `lib-python-utils`) does the rendering: it builds the context, compiles the Mako template, and writes the output file.
+`render-mako` (from `lib-python-utils`) does the rendering: it builds the context, compiles the Mako template, and writes the output file.
 
-Modules call it via the `template::render_mako` wrapper (from `lib/template.sh`), which removes any pre-existing file or link at the destination before rendering:
+Modules use the `template::render_mako` wrapper (from `lib-shell-utils`), which removes any pre-existing file or link at the destination before rendering:
 
 ```bash
 template::render_mako "$src/config.mako" "$XDG_CONFIG_HOME/app/config"
