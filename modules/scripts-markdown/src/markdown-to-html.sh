@@ -24,7 +24,7 @@ fi
 tmp_dir="/tmp/md"
 mkdir -p "$tmp_dir"
 
-pandoc -s -f markdown+alerts+emoji+autolink_bare_uris -t html --toc \
+pandoc -s -f markdown+alerts+emoji+autolink_bare_uris+hard_line_breaks -t html --toc \
     --embed-resources \
     --syntax-highlighting "$XDG_CONFIG_HOME/theme/carbon-dark.pygments.theme" \
     --css "$XDG_DATA_HOME/pandoc/templates/markdown.css" \
