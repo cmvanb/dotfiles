@@ -31,7 +31,7 @@ set -U fish_color_command (color_named 'syn_function')
 set -U fish_color_comment (color_named 'syn_comment')
 set -U fish_color_end (color_named 'syn_delimiter')  # pipe
 set -U fish_color_error (color_named 'ansi_red')
-set -U fish_color_normal (color_named 'editor_text_normal')
+set -U fish_color_normal (color_named 'terminal_text')
 set -U fish_color_operator (color_named 'syn_delimiter')
 set -U fish_color_option (color_named 'syn_special')  # ansi_bryellow
 set -U fish_color_param (color_named 'syn_param')
@@ -43,12 +43,12 @@ set -U fish_color_escape (color_named 'syn_special')  # escape characters
 
 # Pager
 set -U fish_pager_color_completion (color_named 'text_8')
-set -U fish_pager_color_description (color_named 'editor_text_normal')
+set -U fish_pager_color_description (color_named 'terminal_text')
 set -U fish_pager_color_prefix (color_named 'yellow_6')
 set -U fish_pager_color_progress (color_named 'syn_delimiter')
 set -U fish_pager_color_selected_background --background=(color_named 'menu_selection_bg')
 set -U fish_pager_color_selected_completion (color_named 'menu_selection_fg')
-set -U fish_pager_color_selected_description (color_named 'editor_text_normal')
+set -U fish_pager_color_selected_description (color_named 'terminal_text')
 
 # Unknown
 # TODO: Find where these colors are used by fish.

@@ -15,11 +15,11 @@
                 <key>settings</key>
                 <dict>
                     <key>background</key>
-                    <string>${color_hash('editor_bg')}</string>
+                    <string>${color_hash('terminal_bg')}</string>
                     <key>caret</key>
                     <string>${color_hash('text_0')}</string>
                     <key>foreground</key>
-                    <string>${color_hash('editor_text_normal')}</string>
+                    <string>${color_hash('terminal_text')}</string>
                     <!-- whitespace -->
                     <key>invisibles</key>
                     <string>${color_hash('gray_2')}</string>
@@ -50,7 +50,7 @@
                 <key>settings</key>
                 <dict>
                     <key>foreground</key>
-                    <string>${color_hash('editor_text_normal')}</string>
+                    <string>${color_hash('terminal_text')}</string>
                 </dict>
             </dict>
             <!-- 

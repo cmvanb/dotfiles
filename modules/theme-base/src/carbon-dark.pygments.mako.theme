@@ -1,6 +1,6 @@
 {
-    "text-color": "${color_hash('editor_text_normal')}",
-    "background-color": "${color_hash('editor_bg')}",
+    "text-color": "${color_hash('terminal_text')}",
+    "background-color": "${color_hash('terminal_bg')}",
     "line-number-color": "${color_hash('primary_8')}",
     "line-number-background-color": "${color_hash('gray_1')}",
     "text-styles": {

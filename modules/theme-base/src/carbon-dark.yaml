@@ -197,7 +197,7 @@ colors:
   terminal_bg:        *black
   terminal_text:      *text_11
   editor_bg:          *black
-  editor_text_normal: *text_11
+  editor_text:        *text_11
 
   # Web
   web_page_bg:        *primary_1
