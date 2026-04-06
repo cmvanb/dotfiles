@@ -43,6 +43,12 @@ input "43256:6199:Bastard_Keyboards_Dilemma_Max_Mouse" {
     pointer_accel -0.15
 }
 
+# Touchpad
+input type:touchpad {
+    natural_scroll enabled
+    tap enabled
+}
+
 # Layout configuration
 #-------------------------------------------------------------------------------
 
