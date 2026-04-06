@@ -9,25 +9,26 @@ colors:
 
   # Special
   debug: &debug "#ff00ff"
-  light: &light "#ffefdf"
+  black: &black "#01080f"
 
   # Primary (16-31)
-  primary_0:  &primary_0  "#034b96"
-  primary_1:  &primary_1  "#0356a3"
-  primary_2:  &primary_2  "#0362b0"
-  primary_3:  &primary_3  "#036ebd"
-  primary_4:  &primary_4  "#0379ca"
-  primary_5:  &primary_5  "#0385d7"
-  primary_6:  &primary_6  "#0391e4"
-  primary_7:  &primary_7  "#039df1"
-  primary_8:  &primary_8  "#17b0fe"
-  primary_9:  &primary_9  "#29b6fe"
-  primary_10: &primary_10 "#3cbcfe"
-  primary_11: &primary_11 "#4ec2fe"
-  primary_12: &primary_12 "#61c8fe"
-  primary_13: &primary_13 "#73cefe"
-  primary_14: &primary_14 "#86d4fe"
-  primary_15: &primary_15 "#99dbfe"
+  # generate-color-gradient-palette.py --samples 16 --start '#305070' --middle '#7090b0' --end '#a0c0e0' --midpoint 0.6 --curve linear
+  primary_0:  &primary_0  "#305070"
+  primary_1:  &primary_1  "#375777"
+  primary_2:  &primary_2  "#3e5e7e"
+  primary_3:  &primary_3  "#456585"
+  primary_4:  &primary_4  "#4c6c8c"
+  primary_5:  &primary_5  "#537393"
+  primary_6:  &primary_6  "#5a7a9a"
+  primary_7:  &primary_7  "#6181a1"
+  primary_8:  &primary_8  "#6888a8"
+  primary_9:  &primary_9  "#7090b0"
+  primary_10: &primary_10 "#7898b8"
+  primary_11: &primary_11 "#80a0c0"
+  primary_12: &primary_12 "#88a8c8"
+  primary_13: &primary_13 "#90b0d0"
+  primary_14: &primary_14 "#98b8d8"
+  primary_15: &primary_15 "#a0c0e0"
 
   # Text (48-63)
   # generate-color-gradient-palette.py --samples 16 --start '#22111a' --middle '#ccaa99'  --end '#ffefdf' --curve linear --midpoint 0.6
@@ -172,7 +173,7 @@ colors:
   magenta_9: &magenta_9 "#ff99cc"
 
   # ANSI named shortcuts
-  ansi_black:     *light
+  ansi_black:     *black
   ansi_red:       *red_4
   ansi_green:     *green_4
   ansi_yellow:    *orange_7
@@ -190,12 +191,13 @@ colors:
   ansi_brwhite:   *text_0
 
   # Themed
-  system_bg:          *light
-  system_text:        *text_2
-  terminal_bg:        *light
-  terminal_text:      *text_2
-  editor_bg:          *light
-  editor_text:        *text_2
+  system_bg:          *text_12
+  system_text:        *text_4
+  terminal_bg:        *text_12
+  terminal_text:      *text_4
+  editor_bg:          *text_12
+  editor_text:        *text_4
+  editor_nontext:     *text_9
 
   # Web
   web_page_bg:        *primary_3
@@ -204,12 +206,12 @@ colors:
   web_link_visited:   *green_2
 
   # Headings
-  heading_1:          *text_2
-  heading_2:          *text_2
-  heading_3:          *text_3
-  heading_4:          *text_3
-  heading_5:          *text_4
-  heading_6:          *text_5
+  heading_1:          *text_4
+  heading_2:          *text_5
+  heading_3:          *text_6
+  heading_4:          *text_7
+  heading_5:          *text_8
+  heading_6:          *text_9
 
   # Selection
   selection_bg:       *primary_4
@@ -227,13 +229,13 @@ colors:
   menu_match_fg:      *yellow_3
 
   # Syntax
-  syn_generic:    *text_2
+  syn_generic:    *cyan_4
   syn_identifier: *cyan_4
   syn_param:      *cyan_4
   syn_comment:    *gray_8
   syn_function:   *cyan_3
   syn_type:       *cyan_4
-  syn_string:     *orange_3
+  syn_string:     *orange_5
   syn_constant:   *magenta_5
   syn_special:    *yellow_3
   syn_keyword:    *green_3
