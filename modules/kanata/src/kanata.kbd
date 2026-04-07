@@ -1,0 +1,25 @@
+(defcfg
+  ;; Only target the built-in keyboard — leave external keyboards alone
+  linux-dev /dev/input/by-path/platform-i8042-serio-0-event-kbd
+  ;; Don't process keys from other devices
+  linux-dev-names-include ("AT Translated Set 2 keyboard")
+)
+
+(defsrc
+  a s d f j k l ;
+)
+
+(deflayer default
+  @a @s @d @f @j @k @l @semi
+)
+
+(defalias
+  a (tap-hold-release 200 200 a lmet)
+  s (tap-hold-release 200 200 s lalt)
+  d (tap-hold-release 200 200 d lsft)
+  f (tap-hold-release 200 200 f lctl)
+  j (tap-hold-release 200 200 j rctl)
+  k (tap-hold-release 200 200 k rsft)
+  l (tap-hold-release 200 200 l lalt)
+  semi (tap-hold-release 200 200 ; rmet)
+)
