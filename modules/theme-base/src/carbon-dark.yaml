@@ -196,9 +196,12 @@ colors:
   system_text:        *text_11
   terminal_bg:        *black
   terminal_text:      *text_11
+
+  # Editor
   editor_bg:          *black
   editor_text:        *text_11
   editor_nontext:     *gray_2
+  editor_nontext_hl:  *gray_4
 
   # Web
   web_page_bg:        *primary_1
