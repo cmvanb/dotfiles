@@ -40,6 +40,8 @@
       "git status *": "allow",
       "head *": "allow",
       "sort *": "allow",
+      "mkdir *": "allow",
+      "cargo *": "allow",
     },
     "task": {
       "*": "allow",
