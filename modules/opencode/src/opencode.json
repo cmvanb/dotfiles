@@ -29,7 +29,9 @@
     },
     "bash": {
       "*": "ask",
+      "rm *": "ask",
       "ls *": "allow",
+      "cp *": "allow",
       "which *": "allow",
       "grep *": "allow",
       "rg *": "allow",
