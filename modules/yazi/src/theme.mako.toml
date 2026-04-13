@@ -2,6 +2,26 @@
 # Yazi theme
 #-------------------------------------------------------------------------------
 
+[filetype]
+## File type coloring to match ls/eza/dircolors
+rules = [
+    ## Directories
+    { url = "*/", is = "sticky", fg = "${color_hash('ansi_magenta')}" },
+    { url = "*/", fg = "${color_hash('ansi_blue')}" },
+
+    ## Special file types
+    { url = "*", is = "exec",   fg = "${color_hash('ansi_green')}", bold = true },
+    { url = "*", is = "link",   fg = "${color_hash('ansi_brcyan')}", bold = true },
+    { url = "*", is = "orphan", fg = "${color_hash('ansi_red')}" },
+    { url = "*", is = "fifo",   fg = "${color_hash('ansi_bryellow')}" },
+    { url = "*", is = "sock",   fg = "${color_hash('ansi_bryellow')}" },
+    { url = "*", is = "block",  fg = "${color_hash('ansi_brmagenta')}" },
+    { url = "*", is = "char",   fg = "${color_hash('ansi_magenta')}" },
+
+    ## Regular files
+    { url = "*", fg = "${color_hash('ansi_brblue')}" },
+]
+
 [mgr]
 syntect_theme = "~/.config/bat/themes/carbon-dark.tmTheme"
 border_style = { fg = "#1d2d3d" }

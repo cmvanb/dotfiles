@@ -7,6 +7,7 @@ script_dir=$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)
 base_dir=$(realpath "$script_dir/../..")
 
 source "$base_dir/lib/fs.sh"
+source "$base_dir/lib/template.sh"
 
 
 yazi::install () {
@@ -18,7 +19,7 @@ yazi::install () {
     force_link "$src/init.lua" "$XDG_CONFIG_HOME/yazi/init.lua"
     force_link "$src/yazi.toml" "$XDG_CONFIG_HOME/yazi/yazi.toml"
     force_link "$src/keymap.toml" "$XDG_CONFIG_HOME/yazi/keymap.toml"
-    force_link "$src/theme.toml" "$XDG_CONFIG_HOME/yazi/theme.toml"
+    template::render_mako "$src/theme.mako.toml" "$XDG_CONFIG_HOME/yazi/theme.toml"
     force_link "$src/yzcd.fish" "$XDG_CONFIG_HOME/yazi/yzcd.fish"
     force_link "$src/yzcd.sh" "$XDG_CONFIG_HOME/yazi/yzcd.sh"
 
