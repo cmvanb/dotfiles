@@ -20,5 +20,5 @@ template::render_mako () {
         rm "$2"
     fi
 
-    render-mako "$1" "$2"
+    ${XDG_BIN_HOME:-HOME/.local/bin}/render-mako "$1" "$2"
 }
