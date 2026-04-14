@@ -36,6 +36,7 @@
       "grep *": "allow",
       "rg *": "allow",
       "find *": "allow",
+      "echo *": "allow",
       "fd *": "allow",
       "git *": "ask",
       "git diff *": "allow",
@@ -44,6 +45,7 @@
       "sort *": "allow",
       "mkdir *": "allow",
       "cargo *": "allow",
+      "uniq *": "allow",
     },
     "task": {
       "*": "allow",
