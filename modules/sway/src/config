@@ -1,7 +1,5 @@
 #-------------------------------------------------------------------------------
 # Sway configuration
-#
-# See the sway(5) and swaymsg(1) man pages for complete documentation.
 #-------------------------------------------------------------------------------
 
 # Variables
@@ -90,63 +88,14 @@ exec waypaper --restore &
 # Start waybar
 exec waybar &
 
-# Window rules
+# Includes
 #-------------------------------------------------------------------------------
 
-# Workspaces
-assign [app_id="Bitwarden"] workspace "auth"
-assign [app_id="spotify"] workspace "audio"
-
-# Floating windows
-for_window [app_id="blueman-manager"] floating enable, resize set 800 600
-for_window [app_id=".*floating"] floating enable
-for_window [app_id="gcr-prompter"] floating enable
-for_window [app_id="imv"] floating enable, move position center
-for_window [app_id="mpv"] floating enable, move position 560 315
-for_window [app_id="nwg-look"] floating enable, resize set 1024 960
-for_window [app_id="org.gnome.seahorse.Application"] floating enable
-for_window [app_id="thunar"] floating enable, resize set 1200 900
-for_window [app_id="com.transmissionbt.transmission.*"] floating enable
-for_window [app_id="transmission-gtk"] floating enable
-for_window [app_id="waypaper"] floating enable, resize set 900 1200
-for_window [app_id="xdg-desktop-portal-gtk"] floating enable
-for_window [app_id="yad"] floating enable
-for_window [app_id="nm-connection-editor"] floating enable
-for_window [app_id="org.pulseaudio.pavucontrol"] floating on, resize set 900 1200
-for_window [app_id="org.pwmt.zathura"] floating enable, resize set 900 1200
-
-# Server-side decorations
-for_window [app_id="Alacritty"] border pixel 3
-for_window [app_id="blueman-manager"] border pixel 3
-for_window [app_id="chromium"] border pixel 3
-for_window [app_id="gcr-viewer"] border pixel 3
-for_window [app_id="gcr-prompter"] border pixel 3
-for_window [app_id="com.mitchellh.ghostty.*"] border pixel 3
-for_window [app_id="gtk-pipe-viewer"] border pixel 3
-for_window [app_id="gimp"] border pixel 3
-for_window [app_id="font-manager"] border pixel 3
-for_window [app_id="imv"] border pixel 3
-for_window [app_id="marker"] border pixel 3
-for_window [app_id="nm-connection-editor"] border pixel 3
-for_window [app_id="nwg-look"] border pixel 3
-for_window [app_id="org.pulseaudio.pavucontrol"] border pixel 3
-for_window [app_id="org.gnome.seahorse.Application"] border pixel 3
-for_window [app_id="org.gnome.SimpleScan"] border pixel 3
-for_window [app_id="com.transmissionbt.transmission.*"] border pixel 3
-for_window [app_id="transmission-gtk"] border pixel 3
-for_window [app_id="waypaper"] border pixel 3
-for_window [app_id="org.wezfurlong.wezterm.*"] border pixel 3
-for_window [app_id="xdg-desktop-portal-gtk"] border pixel 3
-for_window [app_id="yad"] border pixel 3
-for_window [app_id="yad-settings"] border pixel 3
-for_window [app_id="org.pwmt.zathura"] border pixel 3
+# Window rules
+include $config_dir/sway/winrules.conf
 
 # Key mappings
-#-------------------------------------------------------------------------------
-
 include $config_dir/sway/keymaps.conf
 
-# Include system config
-#-------------------------------------------------------------------------------
-
+# System config
 include /etc/sway/config.d/*
