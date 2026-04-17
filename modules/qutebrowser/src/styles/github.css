@@ -20,3 +20,9 @@
     max-width: 872px;
     padding-right: var(--base-size-16, 16px)!important;
 }
+
+/* remove search bar */
+#repo-content-pjax-container > react-app > div > div:nth-child(4) > div.prc-PageLayout-PageLayoutRoot--KH-d > div > div > div > div > div > div > div > div > div.prc-PageLayout-ContentWrapper-gR9eG > div > div > div.OverviewContent-module__Box_1__MPS0U > div.OverviewContent-module__Box_6__Y_Yb_ > div.OverviewContent-module__Box_7__JuRXo {
+	visibility: hidden !important;
+	width: 0 !important;
+}
