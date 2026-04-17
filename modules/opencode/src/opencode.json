@@ -29,6 +29,8 @@
     },
     "bash": {
       "*": "ask",
+      "git *": "ask",
+      "python *": "ask",
       "rm *": "ask",
       "ls *": "allow",
       "cp *": "allow",
@@ -39,7 +41,6 @@
       "cat *": "allow",
       "echo *": "allow",
       "fd *": "allow",
-      "git *": "ask",
       "git diff *": "allow",
       "git status *": "allow",
       "head *": "allow",
@@ -47,6 +48,7 @@
       "mkdir *": "allow",
       "cargo *": "allow",
       "uniq *": "allow",
+      "xargs *": "allow",
     },
     "task": {
       "*": "allow",
