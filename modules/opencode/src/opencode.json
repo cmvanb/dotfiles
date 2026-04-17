@@ -47,6 +47,7 @@
       "mkdir *": "allow",
       "cargo *": "allow",
       "uniq *": "allow",
+      "xargs *": "allow",
     },
     "task": {
       "*": "allow",
