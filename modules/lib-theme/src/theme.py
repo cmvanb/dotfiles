@@ -33,7 +33,38 @@ def _raise(message: str) -> None:
 # Parsing
 #-------------------------------------------------------------------------------
 
-def _parse_one(path: Path) -> tuple[dict, dict, dict]:
+def _parse_aliases(path: Path) -> dict[str, str]:
+    """Return a map of {key_name: anchor_name} for every YAML alias in path.
+
+    Uses the raw parse event stream so alias targets are captured before
+    yaml.safe_load resolves them. YAML aliases always reference anchors
+    directly (chained aliases are not valid YAML), so resolution is one hop.
+    Anchor names in this codebase are identical to the key that defines them,
+    so anchor_name == target key name.
+    """
+    aliases: dict[str, str] = {}
+    pending_key: str | None = None
+
+    with open(path, 'r') as f:
+        content = f.read()
+
+    for event in yaml.parse(content):
+        if isinstance(event, yaml.ScalarEvent) and not event.anchor:
+            # Candidate key (plain scalar with no anchor = a key or a bare value)
+            pending_key = event.value
+        elif isinstance(event, yaml.ScalarEvent) and event.anchor:
+            # Value with an anchor — this is a definition, not an alias.
+            pending_key = None
+        elif isinstance(event, yaml.AliasEvent):
+            if pending_key is not None:
+                aliases[pending_key] = event.anchor
+            pending_key = None
+        else:
+            pending_key = None
+
+    return aliases
+
+def _parse_one(path: Path) -> tuple[dict, dict, dict, dict]:
     if not _is_readable_file(path):
         _raise(f'`{path}` is not readable.')
 
@@ -43,17 +74,19 @@ def _parse_one(path: Path) -> tuple[dict, dict, dict]:
     colors  = { k: Color(str(v)) for k, v in data.get('colors', {}).items() }
     fonts   = { k: str(v)        for k, v in data.get('fonts', {}).items() }
     cursor  = { k: str(v)        for k, v in data.get('cursor', {}).items() }
+    aliases = _parse_aliases(path)
 
-    return colors, fonts, cursor
+    return colors, fonts, cursor, aliases
 
-def _parse(*paths: Path) -> tuple[dict, dict, dict]:
-    colors, fonts, cursor = {}, {}, {}
+def _parse(*paths: Path) -> tuple[dict, dict, dict, dict]:
+    colors, fonts, cursor, aliases = {}, {}, {}, {}
     for path in paths:
-        c, f, cu = _parse_one(path)
+        c, f, cu, a = _parse_one(path)
         colors.update(c)
         fonts.update(f)
         cursor.update(cu)
-    return colors, fonts, cursor
+        aliases.update(a)
+    return colors, fonts, cursor, aliases
 
 
 # Cache generation
@@ -118,11 +151,11 @@ def _write_fish(colors: dict, fonts: dict, cursor: dict):
 # Entry point
 #-------------------------------------------------------------------------------
 
-_colors, _fonts, _cursor = _parse(COLORS_PATH, FONTS_PATH, CURSOR_PATH)
+_colors, _fonts, _cursor, _aliases = _parse(COLORS_PATH, FONTS_PATH, CURSOR_PATH)
 
 
 def parse(*paths: Path):
-    colors, fonts, cursor = _parse(*paths)
+    colors, fonts, cursor, _aliases = _parse(*paths)
     _write_lua(colors, fonts, cursor)
     _write_sh(colors, fonts, cursor)
     _write_fish(colors, fonts, cursor)
@@ -184,6 +217,34 @@ _ANSI_INDICES = {
 }
 
 
+def _build_color_256_indices() -> dict[str, int]:
+    indices: dict[str, int] = {}
+
+    for name, index in _ANSI_INDICES.items():
+        indices[name] = index
+
+    for name in _colors:
+        parts = name.rsplit('_', 1)
+        if len(parts) == 2:
+            palette, index_str = parts
+            if palette in _PALETTE_OFFSETS:
+                try:
+                    index = int(index_str)
+                    limit = 15 if palette in _LARGE_PALETTES else 9
+                    if 0 <= index <= limit:
+                        indices[name] = _PALETTE_OFFSETS[palette] + index
+                except ValueError:
+                    pass
+
+    for alias, target in _aliases.items():
+        if alias not in indices and target in indices:
+            indices[alias] = indices[target]
+
+    return indices
+
+_color_256_indices: dict[str, int] = _build_color_256_indices()
+
+
 def _float_to_hex(alpha: float) -> str:
     return f'{round(alpha * 255):02x}'
 
@@ -234,22 +295,8 @@ def color_ansi_reset() -> str:
     return '\x1b[0m'
 
 def color_256(name: str) -> int:
-    if name in _ANSI_INDICES:
-        return _ANSI_INDICES[name]
-
-    parts = name.rsplit('_', 1)
-    if len(parts) == 2:
-        palette, index_str = parts
-        if palette in _PALETTE_OFFSETS:
-            try:
-                index = int(index_str)
-            except ValueError:
-                pass
-            else:
-                limit = 15 if palette in _LARGE_PALETTES else 9
-                if 0 <= index <= limit:
-                    return _PALETTE_OFFSETS[palette] + index
-
+    if name in _color_256_indices:
+        return _color_256_indices[name]
     raise Exception(f'[theme.py] color_256: unknown color `{name}`')
 
 
