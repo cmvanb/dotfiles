@@ -190,11 +190,15 @@ colors:
   ansi_brcyan:    *cyan_7
   ansi_brwhite:   *text_0
 
-  # Themed
+  # System
   system_bg:          *text_12
   system_text:        *text_4
+
+  # Terminal
   terminal_bg:        *text_12
   terminal_text:      *text_4
+  terminal_file:      *primary_12
+  terminal_dir:       *primary_8
 
   # Editor
   editor_bg:          *text_12

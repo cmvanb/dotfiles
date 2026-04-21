@@ -191,11 +191,15 @@ colors:
   ansi_brcyan:    *cyan_6
   ansi_brwhite:   *text_13
 
-  # Themed
+  # System
   system_bg:          *black
   system_text:        *text_11
+
+  # Terminal
   terminal_bg:        *black
   terminal_text:      *text_11
+  terminal_file:      *primary_15
+  terminal_dir:       *primary_11
 
   # Editor
   editor_bg:          *black
