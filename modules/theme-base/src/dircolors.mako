@@ -21,8 +21,8 @@ TERM xterm-ghostty
 
 RESET 0 # reset to "normal" color
 NORMAL 38;5;${color_256('ansi_white')} # default
-FILE 38;5;${color_256('ansi_brblue')} # regular file
-DIR 0;38;5;${color_256('ansi_blue')} # directory
+FILE 38;5;${color_256('terminal_file')} # regular file
+DIR 0;38;5;${color_256('terminal_dir')} # directory
 LINK 1;38;5;${color_256('ansi_brcyan')} # symbolic link. (If you set this to 'target' instead of a numerical value, the color is as for the file pointed to.)
 MULTIHARDLINK 00 # regular file with more than one link
 FIFO 38;5;${color_256('ansi_bryellow')} # pipe
