@@ -223,7 +223,7 @@ elif [[ $TERMINAL == "ghostty" ]]; then
         args+=("--title=$title")
     fi
     if [[ -n "$command" ]]; then
-        args+=("--command" "$SHELL" "-c" "$command")
+        args+=("-e" "$SHELL" "-c" "$command")
     fi
 
 elif [[ $TERMINAL == "wezterm" ]]; then
