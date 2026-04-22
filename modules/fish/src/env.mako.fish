@@ -23,7 +23,7 @@ set -x BROWSER "qutebrowser"
 % endif
 
 set -x LAUNCHER "fuzzel"
-set -x TERMINAL "alacritty"
+set -x TERMINAL "ghostty"
 % endif
 
 set -x EDITOR "nvim"

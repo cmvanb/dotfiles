@@ -24,7 +24,7 @@ export BROWSER="qutebrowser"
 % endif
 
 export LAUNCHER="fuzzel"
-export TERMINAL="alacritty"
+export TERMINAL="ghostty"
 % endif
 
 export EDITOR="nvim"
