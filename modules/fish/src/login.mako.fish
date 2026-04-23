@@ -37,6 +37,9 @@ set -x SSH_AUTH_SOCK $XDG_RUNTIME_DIR/gcr/ssh
 # Pyenv installation.
 set -x PYENV_ROOT $XDG_OPT_HOME/pyenv
 
+# Claude config.
+set -x CLAUDE_CONFIG_DIR $XDG_CONFIG_HOME/claude
+
 # Docker config.
 set -x DOCKER_CONFIG $XDG_STATE_HOME/docker
 
