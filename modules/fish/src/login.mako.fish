@@ -50,6 +50,10 @@ set -x GNUPGHOME $XDG_STATE_HOME/gnupg
 set -x CARGO_HOME $XDG_DATA_HOME/cargo
 set -x RUSTUP_HOME $XDG_DATA_HOME/rustup
 
+# Pi coding agent config.
+set -x PI_CONFIG_DIR $XDG_CONFIG_HOME/pi
+set -x PI_CODING_AGENT_DIR $XDG_CONFIG_HOME/pi
+
 # VSCode config.
 set -x VSCODE_PORTABLE $XDG_DATA_HOME/vscode
 

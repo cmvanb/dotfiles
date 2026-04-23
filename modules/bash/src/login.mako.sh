@@ -53,6 +53,10 @@ export PYTHONPYCACHEPREFIX="$XDG_CACHE_HOME/python"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 
+# Pi coding agent config.
+export PI_CONFIG_DIR="$XDG_CONFIG_HOME/pi"
+export PI_CODING_AGENT_DIR="$XDG_CONFIG_HOME/pi"
+
 # VSCode config.
 export VSCODE_PORTABLE="$XDG_DATA_HOME/vscode"
 % endif
