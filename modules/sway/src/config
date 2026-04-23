@@ -83,10 +83,10 @@ exec $scripts_dir/clean-home.sh
 include $config_dir/sway/theme.conf
 
 # Apply wallpaper
-exec waypaper --restore &
+exec waypaper --restore
 
 # Start waybar
-exec waybar &
+exec waybar
 
 # Includes
 #-------------------------------------------------------------------------------
