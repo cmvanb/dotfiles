@@ -23,7 +23,9 @@ shell-integration-features = no-cursor
 theme = "custom-theme"
 
 window-decoration = false
-window-padding-color = extend-always
+window-padding-color = extend
+window-padding-x = 2
+window-padding-y = 0
 window-theme = "ghostty"
 
 # Behavior
