@@ -1,0 +1,27 @@
+body {
+    width: 1024px !important;
+    margin: auto !important;
+}
+
+/* warning: Nasty hack for https://old.reddit.com/r/worldnews/ */
+.titlebox .usertext-body > .md > blockquote:nth-child(1) > blockquote > blockquote {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* margins */
+.content {
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 1.5em;
+}
+
+.side {
+    margin-left: 1.5em;
+    margin-right: 0;
+    margin-top: 1.5em;
+}
+
+body > div.side > div:nth-child(1) {
+    margin-top: 0;
+}

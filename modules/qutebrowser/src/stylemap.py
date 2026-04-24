@@ -6,6 +6,7 @@ styles = {
     'codemuch.css': ['*git.codemu.ch*'],
     'github.css': ['*github.com*'],
     'wikipedia.css': ['*wikipedia.org*'],
+    'reddit.css': ['*old.reddit.com*'],
     'claude.css': ['*claude.ai*'],
     'qute.css': ['qute://*'],
 }

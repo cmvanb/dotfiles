@@ -30,6 +30,7 @@ qutebrowser::install () {
     template::render_mako "$src/styles/claude.mako.css" "$XDG_CONFIG_HOME/qutebrowser/styles/claude.css"
     fs::force_link "$src/styles/codemuch.css" "$XDG_CONFIG_HOME/qutebrowser/styles/codemuch.css"
     fs::force_link "$src/styles/github.css" "$XDG_CONFIG_HOME/qutebrowser/styles/github.css"
+    fs::force_link "$src/styles/reddit.css" "$XDG_CONFIG_HOME/qutebrowser/styles/reddit.css"
     fs::force_link "$src/styles/wikipedia.css" "$XDG_CONFIG_HOME/qutebrowser/styles/wikipedia.css"
 
     fs::ensure_directory "$XDG_DATA_HOME/applications"
@@ -72,6 +73,7 @@ qutebrowser::uninstall () {
     rm "$XDG_CONFIG_HOME/qutebrowser/styles/codemuch.css"
     rm "$XDG_CONFIG_HOME/qutebrowser/styles/github.css"
     rm "$XDG_CONFIG_HOME/qutebrowser/styles/hackernews.css"
+    rm "$XDG_CONFIG_HOME/qutebrowser/styles/reddit.css"
     rm "$XDG_CONFIG_HOME/qutebrowser/styles/wikipedia.css"
     rmdir "$XDG_CONFIG_HOME/qutebrowser/styles" 2>/dev/null || true
     rmdir "$XDG_CONFIG_HOME/qutebrowser" 2>/dev/null || true
