@@ -15,9 +15,9 @@ pandoc::install () {
 
     local src="$base_dir/modules/pandoc/src"
 
-    ensure_directory "$XDG_DATA_HOME/pandoc/templates"
+    fs::ensure_directory "$XDG_DATA_HOME/pandoc/templates"
 
-    force_link "$src/templates/default.html5" "$XDG_DATA_HOME/pandoc/templates/default.html5"
+    fs::force_link "$src/templates/default.html5" "$XDG_DATA_HOME/pandoc/templates/default.html5"
     template::render_mako "$src/templates/markdown.mako.css" "$XDG_DATA_HOME/pandoc/templates/markdown.css"
 }
 

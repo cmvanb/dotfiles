@@ -15,13 +15,13 @@ ripgrep::install () {
 
     local src="$base_dir/modules/ripgrep/src"
 
-    ensure_directory "$XDG_CONFIG_HOME/ripgrep"
+    fs::ensure_directory "$XDG_CONFIG_HOME/ripgrep"
     template::render_mako "$src/config.mako" "$XDG_CONFIG_HOME/ripgrep/config"
 
     echo "└> Installing ripgrep shortcuts."
 
-    ensure_directory "$XDG_BIN_HOME"
-    force_link "$src/ripgrep.sh" "$XDG_BIN_HOME/rg"
+    fs::ensure_directory "$XDG_BIN_HOME"
+    fs::force_link "$src/ripgrep.sh" "$XDG_BIN_HOME/rg"
 }
 
 ripgrep::uninstall () {

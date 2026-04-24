@@ -22,7 +22,7 @@ dotfiles/
 │       └── deploy.sh
 ├── extras/            # optional/reference modules (same structure)
 └── lib/               # shared Bash utilities
-    ├── fs.sh          # force_link, ensure_directory, …
+    ├── fs.sh          # create links, move and copy files, etc.
     ├── profile.sh     # parse/resolve/merge profile files
     ├── linux.sh       # distro detection
     └── debug.sh
@@ -71,8 +71,8 @@ Mako templates (`.mako` infix, e.g. `config.mako`, `style.mako.css`) are rendere
 
 `deploy.sh install <module...>`
 
-1. ensure directory structure with `ensure_directory`
-1. symlink configuration files with `force_link`
+1. ensure directory structure with `fs::ensure_directory`
+1. symlink configuration files with `fs::force_link`
 1. render templates with `render-mako`
 
 ## Design decisions

@@ -15,11 +15,11 @@ zathura::install () {
 
     local src="$base_dir/modules/zathura/src"
 
-    ensure_directory "$XDG_CONFIG_HOME/zathura"
+    fs::ensure_directory "$XDG_CONFIG_HOME/zathura"
     template::render_mako "$src/zathurarc.mako" "$XDG_CONFIG_HOME/zathura/zathurarc"
 
-    ensure_directory "$XDG_DATA_HOME/applications"
-    force_link "$src/org.pwmt.zathura.desktop" "$XDG_DATA_HOME/applications/org.pwmt.zathura.desktop"
+    fs::ensure_directory "$XDG_DATA_HOME/applications"
+    fs::force_link "$src/org.pwmt.zathura.desktop" "$XDG_DATA_HOME/applications/org.pwmt.zathura.desktop"
 }
 
 zathura::uninstall () {

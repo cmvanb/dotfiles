@@ -15,19 +15,19 @@ waybar::install () {
 
     local src="$base_dir/modules/waybar/src"
 
-    ensure_directory "$XDG_CONFIG_HOME/waybar"
+    fs::ensure_directory "$XDG_CONFIG_HOME/waybar"
 
     # TODO: Use a symlink with window manager suffix to point to the correct waybar profile.
     if [[ $DEPLOY_WM == "hyprland" ]]; then
-        force_link "$src/hyprland-config" "$XDG_CONFIG_HOME/waybar/config"
+        fs::force_link "$src/hyprland-config" "$XDG_CONFIG_HOME/waybar/config"
         template::render_mako "$src/hyprland-style.mako.css" "$XDG_CONFIG_HOME/waybar/style.css"
 
     elif [[ $DEPLOY_WM == "niri" ]]; then
-        force_link "$src/niri-config" "$XDG_CONFIG_HOME/waybar/config"
+        fs::force_link "$src/niri-config" "$XDG_CONFIG_HOME/waybar/config"
         template::render_mako "$src/niri-style.mako.css" "$XDG_CONFIG_HOME/waybar/style.css"
 
     elif [[ $DEPLOY_WM == "river" ]]; then
-        force_link "$src/river-config" "$XDG_CONFIG_HOME/waybar/config"
+        fs::force_link "$src/river-config" "$XDG_CONFIG_HOME/waybar/config"
         template::render_mako "$src/river-style.mako.css" "$XDG_CONFIG_HOME/waybar/style.css"
 
     elif [[ $DEPLOY_WM == "sway" ]]; then
@@ -43,11 +43,11 @@ waybar::install () {
         exit 1
     fi
 
-    force_link "$src/restart-waybar.sh" "$XDG_SCRIPTS_HOME/restart-waybar.sh"
-    force_link "$src/toggle-waybar.sh" "$XDG_SCRIPTS_HOME/toggle-waybar.sh"
+    fs::force_link "$src/restart-waybar.sh" "$XDG_SCRIPTS_HOME/restart-waybar.sh"
+    fs::force_link "$src/toggle-waybar.sh" "$XDG_SCRIPTS_HOME/toggle-waybar.sh"
 
-    force_link "$src/tailscale.sh" "$XDG_CONFIG_HOME/waybar/tailscale.sh"
-    force_link "$src/memory.sh" "$XDG_CONFIG_HOME/waybar/memory.sh"
+    fs::force_link "$src/tailscale.sh" "$XDG_CONFIG_HOME/waybar/tailscale.sh"
+    fs::force_link "$src/memory.sh" "$XDG_CONFIG_HOME/waybar/memory.sh"
 }
 
 waybar::uninstall () {

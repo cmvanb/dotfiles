@@ -38,9 +38,9 @@ fi
 # Choose a file preview method based on file mime type and extension.
 #-------------------------------------------------------------------------------
 
-mimetype=$(file_mime_type "$1")
-encoding=$(file_encoding "$1")
-extension=$(file_extension "$1")
+mimetype=$(fs::file_mime_type "$1")
+encoding=$(fs::file_encoding "$1")
+extension=$(fs::file_extension "$1")
 
 lines=$(stty -F /dev/tty size | cut -d' ' -f1)
 max_lines=$(( lines - 2 ))
@@ -81,7 +81,7 @@ elif [[ $mimetype == "application/json" ]] || [[ $mimetype == "text/plain" && $e
 elif [[ $mimetype == "text"* || $encoding == *"ascii" || $encoding == "utf-8" ]]; then
     bat --style=numbers --force-colorization --paging=never --wrap=never --line-range=":$max_lines" "$1"
 
-elif file_is_binary "$1"; then
+elif fs::file_is_binary "$1"; then
     file -b --mime "$1" && echo "" && hexdump "$1"
 
 else

@@ -13,11 +13,11 @@ opencode::install () {
 
     local src="$base_dir/modules/opencode/src"
 
-    ensure_directory "$XDG_CONFIG_HOME/opencode"
-    force_link "$src/opencode.json" "$XDG_CONFIG_HOME/opencode/opencode.json"
-    force_link "$src/tui.json" "$XDG_CONFIG_HOME/opencode/tui.json"
+    fs::ensure_directory "$XDG_CONFIG_HOME/opencode"
+    fs::force_link "$src/opencode.json" "$XDG_CONFIG_HOME/opencode/opencode.json"
+    fs::force_link "$src/tui.json" "$XDG_CONFIG_HOME/opencode/tui.json"
 
-    ensure_directory "$XDG_CONFIG_HOME/opencode/themes"
+    fs::ensure_directory "$XDG_CONFIG_HOME/opencode/themes"
     template::render_mako "$src/themes/carbon-dark.mako.json" "$XDG_CONFIG_HOME/opencode/themes/carbon-dark.json"
 }
 

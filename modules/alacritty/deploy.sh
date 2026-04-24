@@ -14,7 +14,7 @@ alacritty::install () {
 
     local src="$base_dir/modules/alacritty/src"
 
-    ensure_directory "$XDG_CONFIG_HOME/alacritty"
+    fs::ensure_directory "$XDG_CONFIG_HOME/alacritty"
     template::render_mako "$src/alacritty.mako.toml" "$XDG_CONFIG_HOME/alacritty/alacritty.toml"
 }
 

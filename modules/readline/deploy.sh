@@ -14,7 +14,7 @@ readline::install () {
 
     local src="$base_dir/modules/readline/src"
 
-    force_link "$src" "$XDG_CONFIG_HOME/readline"
+    fs::force_link "$src" "$XDG_CONFIG_HOME/readline"
 }
 
 readline::uninstall () {

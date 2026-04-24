@@ -13,11 +13,11 @@ flatpak::install () {
 
     local src="$base_dir/modules/flatpak/src"
 
-    ensure_directory "$XDG_SCRIPTS_HOME"
-    force_link "$src/flatpak-run.sh" "$XDG_SCRIPTS_HOME/flatpak-run.sh"
+    fs::ensure_directory "$XDG_SCRIPTS_HOME"
+    fs::force_link "$src/flatpak-run.sh" "$XDG_SCRIPTS_HOME/flatpak-run.sh"
 
-    ensure_directory "$XDG_BIN_HOME"
-    force_link "$src/flatpak-run.sh" "$XDG_BIN_HOME/flatpak-run"
+    fs::ensure_directory "$XDG_BIN_HOME"
+    fs::force_link "$src/flatpak-run.sh" "$XDG_BIN_HOME/flatpak-run"
 }
 
 flatpak::uninstall () {

@@ -14,8 +14,8 @@ yay::install () {
 
     local src="$base_dir/modules/yay/src"
 
-    ensure_directory "$XDG_CONFIG_HOME/yay"
-    force_link "$src/config.json" "$XDG_CONFIG_HOME/yay/config.json"
+    fs::ensure_directory "$XDG_CONFIG_HOME/yay"
+    fs::force_link "$src/config.json" "$XDG_CONFIG_HOME/yay/config.json"
 }
 
 yay::uninstall () {

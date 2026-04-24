@@ -14,7 +14,7 @@ mpv::install () {
 
     local src="$base_dir/modules/mpv/src"
 
-    force_link "$src" "$XDG_CONFIG_HOME/mpv"
+    fs::force_link "$src" "$XDG_CONFIG_HOME/mpv"
 }
 
 mpv::uninstall () {

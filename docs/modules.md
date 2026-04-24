@@ -16,13 +16,13 @@ modules/<name>/
 
 A module `deploy.sh` provides namespaced `install` and `uninstall` functions.
 
-The install function typically uses `force_link` or `template::render_mako` to deploy individual config files, although where possible we also link entire directories.
+The install function typically uses `fs::force_link` or `template::render_mako` to deploy individual config files, although where possible we also link entire directories.
 
 ```bash
 <name>::install() {
     local src="$base_dir/modules/<name>/src"
-    ensure_directory "$XDG_CONFIG_HOME/<app>"
-    force_link "$src/config" "$XDG_CONFIG_HOME/<app>/config"
+    fs::ensure_directory "$XDG_CONFIG_HOME/<app>"
+    fs::force_link "$src/config" "$XDG_CONFIG_HOME/<app>/config"
     template::render_mako "$src/style.mako.css" "$XDG_CONFIG_HOME/<app>/style.css"
 }
 ```
@@ -54,22 +54,22 @@ Some modules provide `enable` / `disable` for systemd user services.
 
 | Function | Effect |
 |---|---|
-| `force_link <src> <dest>` | `ln -sfT` — removes existing dir/file at dest first |
-| `force_copy <src> <dest>` | `cp -rfT` — removes existing file/link at dest first |
-| `ensure_directory <path>` | `mkdir -p` — removes existing file/link at path first |
-| `happy_move <src> <dest>` | `mv` — no-ops if src == dest |
+| `fs::force_link <src> <dest>` | `ln -sfT` — removes existing dir/file at dest first |
+| `fs::force_copy <src> <dest>` | `cp -rfT` — removes existing file/link at dest first |
+| `fs::ensure_directory <path>` | `mkdir -p` — removes existing file/link at path first |
+| `fs::happy_move <src> <dest>` | `mv` — no-ops if src == dest |
 | `template::render_mako <tpl> <dest>` | Render Mako template to dest |
 
 ## Common deployment patterns
 
 **Symlink individual file**
 ```bash
-force_link "$src/bashrc" "$XDG_CONFIG_HOME/bash/bashrc"
+fs::force_link "$src/bashrc" "$XDG_CONFIG_HOME/bash/bashrc"
 ```
 
 **Symlink entire directory**
 ```bash
-force_link "$src" "$XDG_CONFIG_HOME/git"
+fs::force_link "$src" "$XDG_CONFIG_HOME/git"
 ```
 
 > [!NOTE]
@@ -83,13 +83,13 @@ template::render_mako "$src/env.mako.sh" "$XDG_CONFIG_HOME/bash/env.sh"
 
 **Variant file** (host/distro/wm specific)
 ```bash
-force_link "$src/config.variant.ext" "$XDG_CONFIG_HOME/app/config.ext"
+fs::force_link "$src/config.variant.ext" "$XDG_CONFIG_HOME/app/config.ext"
 ```
 
 
 **Script alias**
 ```bash
-force_link "$src/upload-to-0x0.sh" "$XDG_BIN_HOME/0x0"
+fs::force_link "$src/upload-to-0x0.sh" "$XDG_BIN_HOME/0x0"
 ```
 
 ## Example module
@@ -107,11 +107,11 @@ bat::install() {
 
     local src="$base_dir/modules/bat/src"
 
-    ensure_directory "$XDG_CONFIG_HOME/bat"
-    force_link "$src/config" "$XDG_CONFIG_HOME/bat/config"
-    force_link "$src/syntaxes" "$XDG_CONFIG_HOME/bat/syntaxes"
+    fs::ensure_directory "$XDG_CONFIG_HOME/bat"
+    fs::force_link "$src/config" "$XDG_CONFIG_HOME/bat/config"
+    fs::force_link "$src/syntaxes" "$XDG_CONFIG_HOME/bat/syntaxes"
 
-    ensure_directory "$XDG_CONFIG_HOME/bat/themes"
+    fs::ensure_directory "$XDG_CONFIG_HOME/bat/themes"
     template::render_mako "$base_dir/modules/theme-base/src/carbon-dark.syntect.mako.tmTheme" "$XDG_CONFIG_HOME/bat/themes/carbon-dark.syntect.tmTheme"
 
     bat cache --build

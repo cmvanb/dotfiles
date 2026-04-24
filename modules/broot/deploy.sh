@@ -15,13 +15,13 @@ broot::install () {
 
     local src="$base_dir/modules/broot/src"
 
-    ensure_directory "$XDG_CONFIG_HOME/broot"
-    force_link "$src/brcd.sh" "$XDG_CONFIG_HOME/broot/brcd.sh"
-    force_link "$src/brcd.fish" "$XDG_CONFIG_HOME/broot/brcd.fish"
-    force_link "$src/conf.hjson" "$XDG_CONFIG_HOME/broot/conf.hjson"
-    force_link "$src/verbs.hjson" "$XDG_CONFIG_HOME/broot/verbs.hjson"
+    fs::ensure_directory "$XDG_CONFIG_HOME/broot"
+    fs::force_link "$src/brcd.sh" "$XDG_CONFIG_HOME/broot/brcd.sh"
+    fs::force_link "$src/brcd.fish" "$XDG_CONFIG_HOME/broot/brcd.fish"
+    fs::force_link "$src/conf.hjson" "$XDG_CONFIG_HOME/broot/conf.hjson"
+    fs::force_link "$src/verbs.hjson" "$XDG_CONFIG_HOME/broot/verbs.hjson"
 
-    ensure_directory "$XDG_CONFIG_HOME/broot/skins"
+    fs::ensure_directory "$XDG_CONFIG_HOME/broot/skins"
     template::render_mako "$src/skins/carbon-dark.mako.hjson" "$XDG_CONFIG_HOME/broot/skins/carbon-dark.hjson"
 }
 

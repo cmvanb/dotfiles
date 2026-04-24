@@ -16,7 +16,7 @@ nvim::install () {
 
     git submodule update --recursive --remote
 
-    force_link "$src" "$XDG_CONFIG_HOME/nvim"
+    fs::force_link "$src" "$XDG_CONFIG_HOME/nvim"
 }
 
 nvim::uninstall () {

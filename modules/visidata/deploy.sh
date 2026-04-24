@@ -18,7 +18,7 @@ visidata::install () {
 
     local src="$base_dir/modules/visidata/src"
 
-    ensure_directory "$XDG_CONFIG_HOME/visidata"
+    fs::ensure_directory "$XDG_CONFIG_HOME/visidata"
     template::render_mako "$src/config.mako.py" "$XDG_CONFIG_HOME/visidata/config.py"
 }
 

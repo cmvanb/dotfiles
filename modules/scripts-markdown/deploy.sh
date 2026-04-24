@@ -13,10 +13,10 @@ scripts-markdown::install () {
 
     local src="$base_dir/modules/scripts-markdown/src"
 
-    ensure_directory "$XDG_SCRIPTS_HOME"
-    force_link "$src/markdown-to-html.sh" "$XDG_SCRIPTS_HOME/markdown-to-html.sh"
-    force_link "$src/preview-markdown.sh" "$XDG_SCRIPTS_HOME/preview-markdown.sh"
-    force_link "$src/preview-server.py"   "$XDG_SCRIPTS_HOME/preview-server.py"
+    fs::ensure_directory "$XDG_SCRIPTS_HOME"
+    fs::force_link "$src/markdown-to-html.sh" "$XDG_SCRIPTS_HOME/markdown-to-html.sh"
+    fs::force_link "$src/preview-markdown.sh" "$XDG_SCRIPTS_HOME/preview-markdown.sh"
+    fs::force_link "$src/preview-server.py"   "$XDG_SCRIPTS_HOME/preview-server.py"
 }
 
 scripts-markdown::uninstall () {

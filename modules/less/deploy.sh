@@ -14,8 +14,8 @@ less::install () {
 
     local src="$base_dir/modules/less/src"
 
-    ensure_directory "$XDG_CONFIG_HOME"
-    force_link "$src/lesskey" "$XDG_CONFIG_HOME/lesskey"
+    fs::ensure_directory "$XDG_CONFIG_HOME"
+    fs::force_link "$src/lesskey" "$XDG_CONFIG_HOME/lesskey"
 }
 
 less::uninstall () {

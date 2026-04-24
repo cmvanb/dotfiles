@@ -15,13 +15,13 @@ yazi::install () {
 
     local src="$base_dir/modules/yazi/src"
 
-    ensure_directory "$XDG_CONFIG_HOME/yazi"
-    force_link "$src/init.lua" "$XDG_CONFIG_HOME/yazi/init.lua"
-    force_link "$src/yazi.toml" "$XDG_CONFIG_HOME/yazi/yazi.toml"
-    force_link "$src/keymap.toml" "$XDG_CONFIG_HOME/yazi/keymap.toml"
+    fs::ensure_directory "$XDG_CONFIG_HOME/yazi"
+    fs::force_link "$src/init.lua" "$XDG_CONFIG_HOME/yazi/init.lua"
+    fs::force_link "$src/yazi.toml" "$XDG_CONFIG_HOME/yazi/yazi.toml"
+    fs::force_link "$src/keymap.toml" "$XDG_CONFIG_HOME/yazi/keymap.toml"
     template::render_mako "$src/theme.mako.toml" "$XDG_CONFIG_HOME/yazi/theme.toml"
-    force_link "$src/yzcd.fish" "$XDG_CONFIG_HOME/yazi/yzcd.fish"
-    force_link "$src/yzcd.sh" "$XDG_CONFIG_HOME/yazi/yzcd.sh"
+    fs::force_link "$src/yzcd.fish" "$XDG_CONFIG_HOME/yazi/yzcd.fish"
+    fs::force_link "$src/yzcd.sh" "$XDG_CONFIG_HOME/yazi/yzcd.sh"
 
     # Install plugins. Ignore if already installed.
     ya pkg add yazi-rs/plugins:smart-enter 2>/dev/null || true

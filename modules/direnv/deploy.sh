@@ -14,7 +14,7 @@ direnv::install () {
 
     local src="$base_dir/modules/direnv/src"
 
-    force_link "$src" "$XDG_CONFIG_HOME/direnv"
+    fs::force_link "$src" "$XDG_CONFIG_HOME/direnv"
 }
 
 direnv::uninstall () {

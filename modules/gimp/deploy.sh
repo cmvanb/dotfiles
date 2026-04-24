@@ -14,8 +14,8 @@ gimp::install () {
 
     local src="$base_dir/modules/gimp/src"
 
-    ensure_directory "$XDG_CONFIG_HOME/GIMP/3.0"
-    force_link "$src/gimprc" "$XDG_CONFIG_HOME/GIMP/3.0/gimprc"
+    fs::ensure_directory "$XDG_CONFIG_HOME/GIMP/3.0"
+    fs::force_link "$src/gimprc" "$XDG_CONFIG_HOME/GIMP/3.0/gimprc"
 }
 
 gimp::uninstall () {

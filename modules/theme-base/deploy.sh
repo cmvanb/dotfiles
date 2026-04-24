@@ -13,17 +13,17 @@ source "$base_dir/lib/template.sh"
 theme-base::install () {
     echo "└> Installing theme base configuration."
 
-    ensure_directory "$XDG_CONFIG_HOME/theme"
+    fs::ensure_directory "$XDG_CONFIG_HOME/theme"
 
     local src="$base_dir/modules/theme-base/src"
 
-    force_link "$src/carbon-dark.yaml"  "$XDG_CONFIG_HOME/theme/carbon-dark.yaml"
-    force_link "$src/carbon-light.yaml" "$XDG_CONFIG_HOME/theme/carbon-light.yaml"
-    force_link "$src/cursor.yaml"       "$XDG_CONFIG_HOME/theme/cursor.yaml"
+    fs::force_link "$src/carbon-dark.yaml"  "$XDG_CONFIG_HOME/theme/carbon-dark.yaml"
+    fs::force_link "$src/carbon-light.yaml" "$XDG_CONFIG_HOME/theme/carbon-light.yaml"
+    fs::force_link "$src/cursor.yaml"       "$XDG_CONFIG_HOME/theme/cursor.yaml"
 
     # TODO: Select color scheme and fonts based on hostname.
-    force_link "$XDG_CONFIG_HOME/theme/carbon-dark.yaml" "$XDG_CONFIG_HOME/theme/colors.yaml"
-    force_link "$src/fonts-linux.yaml" "$XDG_CONFIG_HOME/theme/fonts.yaml"
+    fs::force_link "$XDG_CONFIG_HOME/theme/carbon-dark.yaml" "$XDG_CONFIG_HOME/theme/colors.yaml"
+    fs::force_link "$src/fonts-linux.yaml" "$XDG_CONFIG_HOME/theme/fonts.yaml"
 
     python3 "$XDG_OPT_HOME/theme/theme.py" parse \
         "$XDG_CONFIG_HOME/theme/colors.yaml" \

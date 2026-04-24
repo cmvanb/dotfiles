@@ -14,7 +14,7 @@ gitui::install () {
 
     local src="$base_dir/modules/gitui/src"
 
-    force_link "$src" "$XDG_CONFIG_HOME/gitui"
+    fs::force_link "$src" "$XDG_CONFIG_HOME/gitui"
 }
 
 gitui::uninstall () {

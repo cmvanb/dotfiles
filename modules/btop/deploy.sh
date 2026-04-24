@@ -15,10 +15,10 @@ btop::install () {
 
     local src="$base_dir/modules/btop/src"
 
-    ensure_directory "$XDG_CONFIG_HOME/btop"
-    force_link "$src/btop.conf" "$XDG_CONFIG_HOME/btop/btop.conf"
+    fs::ensure_directory "$XDG_CONFIG_HOME/btop"
+    fs::force_link "$src/btop.conf" "$XDG_CONFIG_HOME/btop/btop.conf"
 
-    ensure_directory "$XDG_CONFIG_HOME/btop/themes"
+    fs::ensure_directory "$XDG_CONFIG_HOME/btop/themes"
     template::render_mako "$src/themes/carbon.mako.theme" "$XDG_CONFIG_HOME/btop/themes/carbon.theme"
 }
 

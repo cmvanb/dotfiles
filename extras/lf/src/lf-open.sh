@@ -22,8 +22,8 @@ fi
 # Open file
 #-------------------------------------------------------------------------------
 
-mimetype="$(file_mime_type "$1")"
-encoding=$(file_encoding "$1")
+mimetype="$(fs::file_mime_type "$1")"
+encoding=$(fs::file_encoding "$1")
 
 if [[ $mimetype == "text"* || $mimetype == "application/javascript" || $encoding == *"ascii" || $encoding == "utf-8" ]]; then
     "$XDG_SCRIPTS_HOME/set-terminal-title.sh" "${1/$HOME/\~}"

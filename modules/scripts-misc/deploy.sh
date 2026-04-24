@@ -13,10 +13,10 @@ scripts-misc::install () {
 
     local src="$base_dir/modules/scripts-misc/src"
 
-    ensure_directory "$XDG_SCRIPTS_HOME"
-    force_link "$src/count-command-usage.sh" "$XDG_SCRIPTS_HOME/count-command-usage.sh"
-    force_link "$src/matrix.sh" "$XDG_SCRIPTS_HOME/matrix.sh"
-    force_link "$src/show-webcam.sh" "$XDG_SCRIPTS_HOME/show-webcam.sh"
+    fs::ensure_directory "$XDG_SCRIPTS_HOME"
+    fs::force_link "$src/count-command-usage.sh" "$XDG_SCRIPTS_HOME/count-command-usage.sh"
+    fs::force_link "$src/matrix.sh" "$XDG_SCRIPTS_HOME/matrix.sh"
+    fs::force_link "$src/show-webcam.sh" "$XDG_SCRIPTS_HOME/show-webcam.sh"
 }
 
 scripts-misc::uninstall () {

@@ -15,7 +15,7 @@ draw.io::install () {
 
     local src="$base_dir/modules/draw.io/src"
 
-    ensure_directory "$XDG_DATA_HOME/applications"
+    fs::ensure_directory "$XDG_DATA_HOME/applications"
     template::render_mako "$src/draw.io.mako.desktop" "$XDG_DATA_HOME/applications/draw.io.desktop"
 }
 

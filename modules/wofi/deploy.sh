@@ -15,8 +15,8 @@ wofi::install () {
 
     local src="$base_dir/modules/wofi/src"
 
-    ensure_directory "$XDG_CONFIG_HOME/wofi"
-    force_link "$src/config" "$XDG_CONFIG_HOME/wofi/config"
+    fs::ensure_directory "$XDG_CONFIG_HOME/wofi"
+    fs::force_link "$src/config" "$XDG_CONFIG_HOME/wofi/config"
     template::render_mako "$src/style.mako.css" "$XDG_CONFIG_HOME/wofi/style.css"
 }
 

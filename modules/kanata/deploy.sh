@@ -14,11 +14,11 @@ kanata::install() {
 
     local src="$base_dir/modules/kanata/src"
 
-    ensure_directory "$XDG_CONFIG_HOME/kanata"
-    force_link "$src/kanata.kbd" "$XDG_CONFIG_HOME/kanata/kanata.kbd"
+    fs::ensure_directory "$XDG_CONFIG_HOME/kanata"
+    fs::force_link "$src/kanata.kbd" "$XDG_CONFIG_HOME/kanata/kanata.kbd"
 
-    ensure_directory "$XDG_CONFIG_HOME/systemd/user"
-    force_link "$src/kanata.service" "$XDG_CONFIG_HOME/systemd/user/kanata.service"
+    fs::ensure_directory "$XDG_CONFIG_HOME/systemd/user"
+    fs::force_link "$src/kanata.service" "$XDG_CONFIG_HOME/systemd/user/kanata.service"
 }
 
 kanata::uninstall() {

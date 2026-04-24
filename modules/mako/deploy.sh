@@ -15,7 +15,7 @@ mako::install () {
 
     local src="$base_dir/modules/mako/src"
 
-    ensure_directory "$XDG_CONFIG_HOME/mako"
+    fs::ensure_directory "$XDG_CONFIG_HOME/mako"
     template::render_mako "$src/config.mako" "$XDG_CONFIG_HOME/mako/config"
 }
 

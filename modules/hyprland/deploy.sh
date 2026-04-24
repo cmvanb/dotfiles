@@ -14,26 +14,26 @@ hyprland::install () {
 
     local src="$base_dir/modules/hyprland/src"
 
-    ensure_directory "$XDG_CONFIG_HOME/hypr"
+    fs::ensure_directory "$XDG_CONFIG_HOME/hypr"
 
     # Configuration files.
-    force_link \
+    fs::force_link \
         "$src/hyprland.conf" \
         "$XDG_CONFIG_HOME/hypr/hyprland.conf"
 
     # Custom scripts.
-    force_link \
+    fs::force_link \
         "$src/close-window-under-cursor.sh" \
         "$XDG_CONFIG_HOME/hypr/close-window-under-cursor.sh"
-    force_link \
+    fs::force_link \
         "$src/move-window-hy3.sh" \
         "$XDG_CONFIG_HOME/hypr/move-window-hy3.sh"
 
     if [[ $DEPLOY_WM == "hyprland" ]]; then
         echo "└> Installing hyprland shortcuts."
 
-        ensure_directory "$XDG_BIN_HOME"
-        force_link \
+        fs::ensure_directory "$XDG_BIN_HOME"
+        fs::force_link \
             "$src/init.hyprland" \
             "$XDG_BIN_HOME/init"
     fi
@@ -48,7 +48,7 @@ hyprland::uninstall () {
 
     echo "└> Uninstalling hyprland shortcuts."
 
-    if same_file "$XDG_BIN_HOME/init" "$src/init.hyprland"; then
+    if fs::same_file "$XDG_BIN_HOME/init" "$src/init.hyprland"; then
         rm "$XDG_BIN_HOME/init"
     fi
 }

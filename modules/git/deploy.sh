@@ -15,10 +15,10 @@ git::install () {
 
     local src="$base_dir/modules/git/src"
 
-    ensure_directory "$XDG_CONFIG_HOME/git"
+    fs::ensure_directory "$XDG_CONFIG_HOME/git"
 
     template::render_mako "$src/config.mako"  "$XDG_CONFIG_HOME/git/config"
-    force_link  "$src/ignore"       "$XDG_CONFIG_HOME/git/ignore"
+    fs::force_link  "$src/ignore"       "$XDG_CONFIG_HOME/git/ignore"
 }
 
 git::uninstall () {

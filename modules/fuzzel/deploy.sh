@@ -15,7 +15,7 @@ fuzzel::install () {
 
     local src="$base_dir/modules/fuzzel/src"
 
-    ensure_directory "$XDG_CONFIG_HOME/fuzzel"
+    fs::ensure_directory "$XDG_CONFIG_HOME/fuzzel"
     template::render_mako "$src/fuzzel.mako.ini" "$XDG_CONFIG_HOME/fuzzel/fuzzel.ini"
 }
 

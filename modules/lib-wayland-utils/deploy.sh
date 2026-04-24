@@ -14,8 +14,8 @@ lib-wayland-utils::install () {
 
     local src="$base_dir/modules/lib-wayland-utils/src"
 
-    ensure_directory "$XDG_OPT_HOME"
-    force_link "$src" "$XDG_OPT_HOME/wayland-utils"
+    fs::ensure_directory "$XDG_OPT_HOME"
+    fs::force_link "$src" "$XDG_OPT_HOME/wayland-utils"
 }
 
 lib-wayland-utils::uninstall () {

@@ -16,8 +16,8 @@ theme-desktop::install_gtk_theme () {
     # Install GTK settings files
     local src="$base_dir/modules/theme-desktop/src"
 
-    ensure_directory "$XDG_CONFIG_HOME/gtk-3.0"
-    ensure_directory "$XDG_CONFIG_HOME/gtk-4.0"
+    fs::ensure_directory "$XDG_CONFIG_HOME/gtk-3.0"
+    fs::ensure_directory "$XDG_CONFIG_HOME/gtk-4.0"
 
     template::render_mako "$src/gtk-4.0-gtk.mako.css"      "$XDG_CONFIG_HOME/gtk-4.0/gtk.css"
     template::render_mako "$src/gtk-3.0-settings.mako.ini" "$XDG_CONFIG_HOME/gtk-3.0/settings.ini"
@@ -27,21 +27,21 @@ theme-desktop::install_gtk_theme () {
     local theme_src="$src/carbon-dark-gtk"
     local theme_dest="$HOME/.local/share/themes/carbon-dark-gtk"
 
-    ensure_directory "$theme_dest"
-    ensure_directory "$theme_dest/gtk-3.0"
-    ensure_directory "$theme_dest/gtk-4.0"
+    fs::ensure_directory "$theme_dest"
+    fs::ensure_directory "$theme_dest/gtk-3.0"
+    fs::ensure_directory "$theme_dest/gtk-4.0"
 
-    force_link "$theme_src/index.theme" "$theme_dest/index.theme"
+    fs::force_link "$theme_src/index.theme" "$theme_dest/index.theme"
 
     # GTK3: static assets + widget CSS (symlinked); color palette + dark variant (rendered)
-    force_link "$theme_src/gtk-3.0/libadwaita-tweaks.css" "$theme_dest/gtk-3.0/libadwaita-tweaks.css"
-    force_link "$theme_src/gtk-3.0/gtk-dark-widgets.css"  "$theme_dest/gtk-3.0/gtk-dark-widgets.css"
-    force_link "$theme_src/gtk-3.0/assets"                "$theme_dest/gtk-3.0/assets"
+    fs::force_link "$theme_src/gtk-3.0/libadwaita-tweaks.css" "$theme_dest/gtk-3.0/libadwaita-tweaks.css"
+    fs::force_link "$theme_src/gtk-3.0/gtk-dark-widgets.css"  "$theme_dest/gtk-3.0/gtk-dark-widgets.css"
+    fs::force_link "$theme_src/gtk-3.0/assets"                "$theme_dest/gtk-3.0/assets"
 
     # GTK4: tail and tweaks are symlinked (static); libadwaita is rendered with full palette inline
-    force_link "$theme_src/gtk-4.0/gtk.css"               "$theme_dest/gtk-4.0/gtk.css"
-    force_link "$theme_src/gtk-4.0/libadwaita-tweaks.css" "$theme_dest/gtk-4.0/libadwaita-tweaks.css"
-    force_link "$theme_src/gtk-4.0/libadwaita-tail.css"   "$theme_dest/gtk-4.0/libadwaita-tail.css"
+    fs::force_link "$theme_src/gtk-4.0/gtk.css"               "$theme_dest/gtk-4.0/gtk.css"
+    fs::force_link "$theme_src/gtk-4.0/libadwaita-tweaks.css" "$theme_dest/gtk-4.0/libadwaita-tweaks.css"
+    fs::force_link "$theme_src/gtk-4.0/libadwaita-tail.css"   "$theme_dest/gtk-4.0/libadwaita-tail.css"
 
     # Render CSS templates
     template::render_mako "$theme_src/gtk-3.0/gtk.mako.css"        "$theme_dest/gtk-3.0/gtk.css"
@@ -75,8 +75,8 @@ theme-desktop::configure_gtk () {
 theme-desktop::install () {
     echo "└> Installing theme desktop configuration."
 
-    ensure_directory "$XDG_SCRIPTS_HOME"
-    force_link "$base_dir/modules/theme-desktop/src/generate-color-gradient-palette.py" "$XDG_SCRIPTS_HOME/generate-color-gradient-palette.py"
+    fs::ensure_directory "$XDG_SCRIPTS_HOME"
+    fs::force_link "$base_dir/modules/theme-desktop/src/generate-color-gradient-palette.py" "$XDG_SCRIPTS_HOME/generate-color-gradient-palette.py"
 
     theme-desktop::install_gtk_theme
     theme-desktop::configure_gtk

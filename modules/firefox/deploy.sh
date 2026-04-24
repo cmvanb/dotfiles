@@ -14,8 +14,8 @@ firefox::install () {
 
     local src="$base_dir/modules/firefox/src"
 
-    ensure_directory "$XDG_DATA_HOME/applications"
-    force_link "$src/firefox.desktop" "$XDG_DATA_HOME/applications/firefox.desktop"
+    fs::ensure_directory "$XDG_DATA_HOME/applications"
+    fs::force_link "$src/firefox.desktop" "$XDG_DATA_HOME/applications/firefox.desktop"
 }
 
 firefox::uninstall () {

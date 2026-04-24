@@ -27,8 +27,8 @@ format_json() {
 # Formatting is based on file type and extension.
 #-------------------------------------------------------------------------------
 
-mimetype=$(file_mime_type "$1")
-extension=$(file_extension "$1")
+mimetype=$(fs::file_mime_type "$1")
+extension=$(fs::file_extension "$1")
 
 if [[ $mimetype == "application/json" ]] || [[ $mimetype == "text/plain" && $extension == "json" ]]; then
     format_json "$1"

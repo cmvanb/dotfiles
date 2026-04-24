@@ -5,12 +5,12 @@
 # shellcheck disable=SC1091
 source "$(dirname "${BASH_SOURCE[0]}")/debug.sh"
 
-get_script_dir () {
+fs::get_script_dir () {
     # Get the directory of the script that is calling this function.
     cd -- "$( dirname -- "${BASH_SOURCE[1]}" )" &> /dev/null && pwd
 }
 
-ensure_directory () {
+fs::ensure_directory () {
     if [[ -z "$1" ]]; then
         debug::error "Missing argument: directory"
         return 1
@@ -26,7 +26,7 @@ ensure_directory () {
     fi
 }
 
-same_file() {
+fs::same_file() {
     if [[ -z "$1" || -z "$2" ]]; then
         debug::error "Missing argument: file1 file2"
         return 1
@@ -42,7 +42,7 @@ same_file() {
     return 1
 }
 
-force_link () {
+fs::force_link () {
     if [[ -z "$1" ]]; then
         debug::error "Missing argument: target"
         return 1
@@ -64,7 +64,7 @@ force_link () {
     ln -sfT "$1" "$2"
 }
 
-force_copy () {
+fs::force_copy () {
     if [[ -z "$1" ]]; then
         debug::error "Missing argument: source"
         return 1
@@ -86,7 +86,7 @@ force_copy () {
     cp -rfT "$1" "$2"
 }
 
-happy_move() {
+fs::happy_move() {
     # NOTE: `mv` returns an error code if the source and destination are the
     # same, so exit early with a success code.
     if [[ "$1" == "$2" ]]; then
@@ -96,7 +96,7 @@ happy_move() {
     mv "$1" "$2"
 }
 
-file_mime_type () {
+fs::file_mime_type () {
     if [[ -z "$1" ]]; then
         debug::error "Missing argument: file name"
         return 1
@@ -110,7 +110,7 @@ file_mime_type () {
     file -L -b --mime-type "$1"
 }
 
-file_encoding () {
+fs::file_encoding () {
     if [[ -z "$1" ]]; then
         debug::error "Missing argument: file name"
         return 1
@@ -124,15 +124,15 @@ file_encoding () {
     file -L -b --mime-encoding "$1"
 }
 
-file_is_binary () {
-    encoding=$(file_encoding "$1")
+fs::file_is_binary () {
+    encoding=$(fs::file_encoding "$1")
     if [[ $encoding == "binary" ]]; then
         return 0
     fi
     return 1
 }
 
-file_extension () {
+fs::file_extension () {
     if [[ -z "$1" ]]; then
         debug::error "Missing argument: file name"
         return 1

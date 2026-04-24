@@ -14,7 +14,7 @@ vt::install () {
 
     local src="$base_dir/modules/vt/src"
 
-    force_link "$src" "$XDG_CONFIG_HOME/vt"
+    fs::force_link "$src" "$XDG_CONFIG_HOME/vt"
 
     if [[ $TERM == "linux" ]]; then
         "$XDG_CONFIG_HOME/vt/apply-vt-colors.sh"

@@ -14,7 +14,7 @@ imv::install () {
 
     local src="$base_dir/modules/imv/src"
 
-    force_link "$src" "$XDG_CONFIG_HOME/imv"
+    fs::force_link "$src" "$XDG_CONFIG_HOME/imv"
 }
 
 imv::uninstall () {

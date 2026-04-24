@@ -14,15 +14,15 @@ lf::install () {
 
     local src="$base_dir/modules/lf/src"
 
-    ensure_directory "$XDG_CONFIG_HOME/lf"
-    force_link "$src/icons" "$XDG_CONFIG_HOME/lf/icons"
-    force_link "$src/lf-open.sh" "$XDG_CONFIG_HOME/lf/lf-open.sh"
-    force_link "$src/lfcd.fish" "$XDG_CONFIG_HOME/lf/lfcd.fish"
-    force_link "$src/lfcd.sh" "$XDG_CONFIG_HOME/lf/lfcd.sh"
-    force_link "$src/lfrc" "$XDG_CONFIG_HOME/lf/lfrc"
+    fs::ensure_directory "$XDG_CONFIG_HOME/lf"
+    fs::force_link "$src/icons" "$XDG_CONFIG_HOME/lf/icons"
+    fs::force_link "$src/lf-open.sh" "$XDG_CONFIG_HOME/lf/lf-open.sh"
+    fs::force_link "$src/lfcd.fish" "$XDG_CONFIG_HOME/lf/lfcd.fish"
+    fs::force_link "$src/lfcd.sh" "$XDG_CONFIG_HOME/lf/lfcd.sh"
+    fs::force_link "$src/lfrc" "$XDG_CONFIG_HOME/lf/lfrc"
 
-    ensure_directory "$XDG_DATA_HOME/applications"
-    force_link "$src/lf.desktop" "$XDG_DATA_HOME/applications/lf.desktop"
+    fs::ensure_directory "$XDG_DATA_HOME/applications"
+    fs::force_link "$src/lf.desktop" "$XDG_DATA_HOME/applications/lf.desktop"
 }
 
 lf::uninstall () {

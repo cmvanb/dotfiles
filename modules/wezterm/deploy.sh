@@ -14,8 +14,8 @@ wezterm::install () {
 
     local src="$base_dir/modules/wezterm/src"
 
-    ensure_directory "$XDG_CONFIG_HOME/wezterm"
-    force_link "$src/wezterm.lua" "$XDG_CONFIG_HOME/wezterm/wezterm.lua"
+    fs::ensure_directory "$XDG_CONFIG_HOME/wezterm"
+    fs::force_link "$src/wezterm.lua" "$XDG_CONFIG_HOME/wezterm/wezterm.lua"
 }
 
 wezterm::uninstall () {

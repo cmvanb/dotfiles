@@ -14,8 +14,8 @@ chromium::install () {
 
     local src="$base_dir/modules/chromium/src"
 
-    ensure_directory "$XDG_DATA_HOME/applications"
-    force_link "$src/chromium.desktop" "$XDG_DATA_HOME/applications/chromium.desktop"
+    fs::ensure_directory "$XDG_DATA_HOME/applications"
+    fs::force_link "$src/chromium.desktop" "$XDG_DATA_HOME/applications/chromium.desktop"
 }
 
 chromium::uninstall () {

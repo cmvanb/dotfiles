@@ -14,8 +14,8 @@ discord::install () {
 
     local src="$base_dir/modules/discord/src"
 
-    ensure_directory "$XDG_DATA_HOME/applications"
-    force_link "$src/discord.desktop" "$XDG_DATA_HOME/applications/discord.desktop"
+    fs::ensure_directory "$XDG_DATA_HOME/applications"
+    fs::force_link "$src/discord.desktop" "$XDG_DATA_HOME/applications/discord.desktop"
 }
 
 discord::uninstall () {

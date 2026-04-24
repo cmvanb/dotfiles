@@ -9,7 +9,7 @@ geary::install() {
 
     local src="$base_dir/modules/geary/src"
 
-    ensure_directory "$XDG_CONFIG_HOME/geary"
+    fs::ensure_directory "$XDG_CONFIG_HOME/geary"
     template::render_mako "$src/user-message.css.mako" "$XDG_CONFIG_HOME/geary/user-message.css"
 }
 

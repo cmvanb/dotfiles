@@ -18,11 +18,11 @@ bat::install () {
 
     local src="$base_dir/modules/bat/src"
 
-    ensure_directory "$XDG_CONFIG_HOME/bat"
-    force_link "$src/config" "$XDG_CONFIG_HOME/bat/config"
-    force_link "$src/syntaxes" "$XDG_CONFIG_HOME/bat/syntaxes"
+    fs::ensure_directory "$XDG_CONFIG_HOME/bat"
+    fs::force_link "$src/config" "$XDG_CONFIG_HOME/bat/config"
+    fs::force_link "$src/syntaxes" "$XDG_CONFIG_HOME/bat/syntaxes"
 
-    ensure_directory "$XDG_CONFIG_HOME/bat/themes"
+    fs::ensure_directory "$XDG_CONFIG_HOME/bat/themes"
     template::render_mako "$base_dir/modules/theme-base/src/carbon-dark.syntect.mako.tmTheme" "$XDG_CONFIG_HOME/bat/themes/carbon-dark.tmTheme"
 
     bat cache --build

@@ -15,7 +15,7 @@ wget::install () {
 
     local src="$base_dir/modules/wget/src"
 
-    ensure_directory "$XDG_CONFIG_HOME/wget"
+    fs::ensure_directory "$XDG_CONFIG_HOME/wget"
     template::render_mako "$src/wgetrc.mako" "$XDG_CONFIG_HOME/wget/wgetrc"
 }
 

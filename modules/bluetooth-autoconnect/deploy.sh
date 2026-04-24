@@ -14,8 +14,8 @@ bluetooth-autoconnect::install () {
 
     local src="$base_dir/modules/bluetooth-autoconnect/src"
 
-    ensure_directory "$XDG_CONFIG_HOME/systemd/user"
-    force_link "$src/bluetooth-autoconnect.service" "$XDG_CONFIG_HOME/systemd/user/bluetooth-autoconnect.service"
+    fs::ensure_directory "$XDG_CONFIG_HOME/systemd/user"
+    fs::force_link "$src/bluetooth-autoconnect.service" "$XDG_CONFIG_HOME/systemd/user/bluetooth-autoconnect.service"
 }
 
 bluetooth-autoconnect::uninstall () {

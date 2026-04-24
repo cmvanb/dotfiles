@@ -14,9 +14,9 @@ wireplumber::install () {
 
     local src="$base_dir/modules/wireplumber/src"
 
-    ensure_directory "$XDG_CONFIG_HOME/wireplumber/wireplumber.conf.d"
+    fs::ensure_directory "$XDG_CONFIG_HOME/wireplumber/wireplumber.conf.d"
 
-    force_link "$src/wireplumber.conf.d/50-audio-priority.conf" \
+    fs::force_link "$src/wireplumber.conf.d/50-audio-priority.conf" \
         "$XDG_CONFIG_HOME/wireplumber/wireplumber.conf.d/50-audio-priority.conf"
 }
 

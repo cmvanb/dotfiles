@@ -14,8 +14,8 @@ udiskie::install () {
 
     local src="$base_dir/modules/udiskie/src"
 
-    ensure_directory "$XDG_CONFIG_HOME/systemd/user"
-    force_link "$src/udiskie.service" "$XDG_CONFIG_HOME/systemd/user/udiskie.service"
+    fs::ensure_directory "$XDG_CONFIG_HOME/systemd/user"
+    fs::force_link "$src/udiskie.service" "$XDG_CONFIG_HOME/systemd/user/udiskie.service"
 }
 
 udiskie::uninstall () {

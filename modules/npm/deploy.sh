@@ -14,7 +14,7 @@ npm::install () {
 
     local src="$base_dir/modules/npm/src"
 
-    force_link "$src" "$XDG_CONFIG_HOME/npm"
+    fs::force_link "$src" "$XDG_CONFIG_HOME/npm"
 }
 
 npm::uninstall () {

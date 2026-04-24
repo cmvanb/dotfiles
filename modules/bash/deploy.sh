@@ -15,16 +15,16 @@ bash::install () {
 
     local src="$base_dir/modules/bash/src"
 
-    ensure_directory "$XDG_CONFIG_HOME/bash"
-    force_link "$src/bash_profile" "$XDG_CONFIG_HOME/bash/bash_profile"
-    force_link "$src/bashrc" "$XDG_CONFIG_HOME/bash/bashrc"
+    fs::ensure_directory "$XDG_CONFIG_HOME/bash"
+    fs::force_link "$src/bash_profile" "$XDG_CONFIG_HOME/bash/bash_profile"
+    fs::force_link "$src/bashrc" "$XDG_CONFIG_HOME/bash/bashrc"
     template::render_mako "$src/env.mako.sh" "$XDG_CONFIG_HOME/bash/env.sh"
     template::render_mako "$src/interactive.mako.sh" "$XDG_CONFIG_HOME/bash/interactive.sh"
-    force_link "$src/shared_aliases.sh" "$XDG_CONFIG_HOME/bash/shared_aliases.sh"
+    fs::force_link "$src/shared_aliases.sh" "$XDG_CONFIG_HOME/bash/shared_aliases.sh"
     template::render_mako "$src/deployed_aliases.mako.sh" "$XDG_CONFIG_HOME/bash/deployed_aliases.sh"
     template::render_mako "$src/login.mako.sh" "$XDG_CONFIG_HOME/bash/login.sh"
-    force_link "$src/logout.sh" "$XDG_CONFIG_HOME/bash/logout.sh"
-    force_link "$src/prompt.sh" "$XDG_CONFIG_HOME/bash/prompt.sh"
+    fs::force_link "$src/logout.sh" "$XDG_CONFIG_HOME/bash/logout.sh"
+    fs::force_link "$src/prompt.sh" "$XDG_CONFIG_HOME/bash/prompt.sh"
 }
 
 bash::uninstall () {

@@ -15,7 +15,7 @@ fontconfig::install () {
 
     local src="$base_dir/modules/fontconfig/src"
 
-    ensure_directory "$XDG_CONFIG_HOME/fontconfig"
+    fs::ensure_directory "$XDG_CONFIG_HOME/fontconfig"
     template::render_mako "$src/fonts.mako.conf" "$XDG_CONFIG_HOME/fontconfig/fonts.conf"
 }
 

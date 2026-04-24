@@ -14,8 +14,8 @@ spotify::install () {
 
     local src="$base_dir/modules/spotify/src"
 
-    ensure_directory "$XDG_DATA_HOME/applications"
-    force_link "$src/spotify.desktop" "$XDG_DATA_HOME/applications/spotify.desktop"
+    fs::ensure_directory "$XDG_DATA_HOME/applications"
+    fs::force_link "$src/spotify.desktop" "$XDG_DATA_HOME/applications/spotify.desktop"
 }
 
 spotify::uninstall () {

@@ -15,17 +15,17 @@ vscodium::install () {
 
     local src="$base_dir/extras/vscodium/src"
 
-    ensure_directory "$XDG_DATA_HOME/vscode/user-data/User"
-    force_link "$src/keybindings.json" "$XDG_DATA_HOME/vscode/user-data/User/keybindings.json"
-    force_link "$src/settings.json" "$XDG_DATA_HOME/vscode/user-data/User/settings.json"
+    fs::ensure_directory "$XDG_DATA_HOME/vscode/user-data/User"
+    fs::force_link "$src/keybindings.json" "$XDG_DATA_HOME/vscode/user-data/User/keybindings.json"
+    fs::force_link "$src/settings.json" "$XDG_DATA_HOME/vscode/user-data/User/settings.json"
 
-    ensure_directory "$XDG_DATA_HOME/vscode/extensions/custom-theme/themes"
+    fs::ensure_directory "$XDG_DATA_HOME/vscode/extensions/custom-theme/themes"
     render_mako_template "$src/theme.mako.json" "$XDG_DATA_HOME/vscode/extensions/custom-theme/themes/theme.json"
-    force_link "$src/custom-theme" "$XDG_DATA_HOME/vscode/extensions/custom-theme"
+    fs::force_link "$src/custom-theme" "$XDG_DATA_HOME/vscode/extensions/custom-theme"
 
-    ensure_directory "$XDG_DATA_HOME/applications"
-    force_link "$src/vscodium-wayland.desktop" "$XDG_DATA_HOME/applications/vscodium-wayland.desktop"
-    force_link "$src/vscodium.desktop" "$XDG_DATA_HOME/applications/vscodium.desktop"
+    fs::ensure_directory "$XDG_DATA_HOME/applications"
+    fs::force_link "$src/vscodium-wayland.desktop" "$XDG_DATA_HOME/applications/vscodium-wayland.desktop"
+    fs::force_link "$src/vscodium.desktop" "$XDG_DATA_HOME/applications/vscodium.desktop"
 }
 
 vscodium::uninstall () {

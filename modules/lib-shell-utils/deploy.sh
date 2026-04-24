@@ -14,8 +14,8 @@ lib-shell-utils::install () {
 
     local src="$base_dir/modules/lib-shell-utils/src"
 
-    ensure_directory "$XDG_OPT_HOME"
-    force_link "$src" "$XDG_OPT_HOME/shell-utils"
+    fs::ensure_directory "$XDG_OPT_HOME"
+    fs::force_link "$src" "$XDG_OPT_HOME/shell-utils"
 }
 
 lib-shell-utils::uninstall () {

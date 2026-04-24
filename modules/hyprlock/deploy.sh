@@ -15,7 +15,7 @@ hyprlock::install () {
 
     local src="$base_dir/modules/hyprlock/src"
 
-    ensure_directory "$XDG_CONFIG_HOME/hypr"
+    fs::ensure_directory "$XDG_CONFIG_HOME/hypr"
 
     # Configuration files.
     template::render_mako \

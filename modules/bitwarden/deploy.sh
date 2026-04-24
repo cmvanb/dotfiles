@@ -13,12 +13,12 @@ bitwarden::install () {
 
     local src="$base_dir/modules/bitwarden/src"
 
-    ensure_directory "$XDG_CONFIG_HOME/Bitwarden"
+    fs::ensure_directory "$XDG_CONFIG_HOME/Bitwarden"
     # NOTE: Don't symlink Bitwarden config because it will be overwritten by the app.
     cp --update=none "$src/data.json" "$XDG_CONFIG_HOME/Bitwarden/data.json" && true
 
-    ensure_directory "$XDG_DATA_HOME/applications"
-    force_link "$src/bitwarden.desktop" "$XDG_DATA_HOME/applications/bitwarden.desktop"
+    fs::ensure_directory "$XDG_DATA_HOME/applications"
+    fs::force_link "$src/bitwarden.desktop" "$XDG_DATA_HOME/applications/bitwarden.desktop"
 }
 
 bitwarden::uninstall () {

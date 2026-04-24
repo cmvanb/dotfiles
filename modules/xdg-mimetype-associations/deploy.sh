@@ -14,8 +14,8 @@ xdg-mimetype-associations::install () {
 
     local src="$base_dir/modules/xdg-mimetype-associations/src"
 
-    ensure_directory "$XDG_CONFIG_HOME"
-    force_link "$src/mimeapps.list" "$XDG_CONFIG_HOME/mimeapps.list"
+    fs::ensure_directory "$XDG_CONFIG_HOME"
+    fs::force_link "$src/mimeapps.list" "$XDG_CONFIG_HOME/mimeapps.list"
 }
 
 xdg-mimetype-associations::uninstall () {
