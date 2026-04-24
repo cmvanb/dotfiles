@@ -2843,6 +2843,14 @@ window.background.caja-navigation-window #Toolbar:backdrop { background-color: @
 
 gnc-id-sheet-list { background-color: @window_bg_color; }
 
+row.conversation-list.unread {
+    background-color: @sidebar_bg_color;
+}
+
+row.conversation-list.unread:hover {
+    background-color: @headerbar_bg_color;
+}
+
 geary-conversation-viewer#conversation_viewer list.background.conversation-listbox.content { background-color: @window_bg_color; border: none; border-radius: 0; }
 
 geary-conversation-viewer#conversation_viewer list.background.conversation-listbox.content > row.activatable { border: 1px solid mix(currentColor,@window_bg_color,0.85); border-bottom-width: 0; }
