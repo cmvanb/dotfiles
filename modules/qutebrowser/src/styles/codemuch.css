@@ -1,0 +1,3 @@
+.page-content .ui.ui.ui.container:not(.fluid) {
+    width: 1000px;
+}
