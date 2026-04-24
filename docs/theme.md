@@ -96,4 +96,4 @@ source $XDG_OPT_HOME/theme/theme.sh
 bg=$(color_hash $primary_0)
 ```
 
-Or inside an ESH template — see [templates.md](templates.md).
+Or inside a Mako template — see [templates.md](templates.md).
