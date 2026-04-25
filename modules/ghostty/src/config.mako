@@ -13,7 +13,7 @@
 
 background-opacity = 0.84
 
-font-family = "IosevkaTerm"
+font-family = "${font_mono}"
 font-size = ${terminal_font_size}
 
 cursor-style = "block"
