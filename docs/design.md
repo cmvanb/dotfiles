@@ -20,6 +20,7 @@ dotfiles/
 │   └── <name>/
 │       ├── src/       # config files, scripts, templates
 │       └── deploy.sh
+├── share/             # shared source files referenced by multiple modules
 ├── extras/            # optional/reference modules (same structure)
 └── lib/               # shared Bash utilities
     ├── fs.sh          # create links, move and copy files, etc.

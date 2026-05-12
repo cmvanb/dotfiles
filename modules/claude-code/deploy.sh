@@ -15,8 +15,8 @@ claude-code::install() {
     local src="$base_dir/modules/claude-code/src"
 
     fs::ensure_directory "$XDG_CONFIG_HOME/claude"
-    fs::force_link "$src/settings.json" "$XDG_CONFIG_HOME/claude/settings.json"
-    fs::force_link "$src/CLAUDE.md"     "$XDG_CONFIG_HOME/claude/CLAUDE.md"
+    fs::force_link "$src/settings.json"                  "$XDG_CONFIG_HOME/claude/settings.json"
+    fs::force_link "$base_dir/share/AGENTS.global.md"    "$XDG_CONFIG_HOME/claude/CLAUDE.md"
 }
 
 claude-code::uninstall() {

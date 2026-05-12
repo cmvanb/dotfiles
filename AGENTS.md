@@ -10,6 +10,7 @@ Linux dotfiles managed via a profile/module deployment system. Configs are symli
 | Profiles | `profiles/` | Declare module sets for specific hosts/roles |
 | Modules | `modules/` | Per-app config + deploy script |
 | Lib | `lib/` | Shared Bash utilities (fs, profile, template) |
+| Share | `share/` | Shared source files referenced by multiple modules |
 | Theme | `modules/lib-theme/`, `modules/theme-base/`, `modules/theme-desktop/` | Color/font/cursor system |
 
 ## Common tasks
