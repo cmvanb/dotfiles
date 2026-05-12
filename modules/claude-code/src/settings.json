@@ -1,0 +1,44 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash -c 'echo \"$HOME/.config/claude/CLAUDE.md\"; for f in CLAUDE.md .claude.md; do [ -f \"$(pwd)/$f\" ] && echo \"$(pwd)/$f\"; done; for f in AGENTS.md .agents.md agents.md; do if [ -f \"$f\" ]; then echo \"$(pwd)/$f\"; cat \"$f\"; break; fi; done'"
+          }
+        ]
+      }
+    ]
+  },
+  "permissions": {
+    "allow": [
+      "Bash(ls *)",
+      "Bash(cp *)",
+      "Bash(which *)",
+      "Bash(grep *)",
+      "Bash(rg *)",
+      "Bash(find *)",
+      "Bash(cat *)",
+      "Bash(echo *)",
+      "Bash(fd *)",
+      "Bash(git diff *)",
+      "Bash(git status *)",
+      "Bash(head *)",
+      "Bash(sort *)",
+      "Bash(mkdir *)",
+      "Bash(cargo *)",
+      "Bash(uniq *)",
+      "Bash(xargs *)",
+      "Read",
+      "Edit",
+      "Glob",
+      "Grep",
+      "WebFetch"
+    ],
+    "deny": [
+      "Read(*.env)",
+      "Read(*.env.*)"
+    ]
+  }
+}
