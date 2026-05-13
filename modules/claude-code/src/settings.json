@@ -1,5 +1,15 @@
 {
   "hooks": {
+    "Notification": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "input=$(cat); type=$(printf '%s' \"$input\" | jq -r '.notification_type'); [ \"$type\" != \"idle_prompt\" ] && notify-send \"Claude Code\" \"$(printf '%s' \"$input\" | jq -r '.message')\" || true"
+          }
+        ]
+      }
+    ],
     "SessionStart": [
       {
         "hooks": [
@@ -11,6 +21,8 @@
       }
     ]
   },
+  "inputNeededNotifEnabled": false,
+  "preferredNotifChannel": "notifications_disabled",
   "permissions": {
     "allow": [
       "Bash(ls *)",
