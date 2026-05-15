@@ -36,7 +36,7 @@ alias gsh="git show"
 alias gsu="git status -u"
 alias gss="git switch"
 alias gsc="git switch -c"
-alias wip="git add -A; git commit -m '[WIP]'; git push"
+alias wip="git add -A; git commit -m '[WIP]'"
 
 # General
 alias bat="bat --force-colorization --no-paging --style=grid,numbers"

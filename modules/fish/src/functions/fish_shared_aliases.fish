@@ -37,7 +37,7 @@ function fish_shared_aliases
     abbr -a gsu git status -u
     abbr -a gss git switch
     abbr -a gsc git switch -c
-    abbr -a wip "git add -A; git commit -m '[WIP]'; git push"
+    abbr -a wip "git add -A; git commit -m '[WIP]'"
 
     # General
     alias bat "bat --force-colorization --no-paging --style=grid,numbers"
