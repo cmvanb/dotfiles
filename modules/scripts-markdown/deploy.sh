@@ -14,9 +14,10 @@ scripts-markdown::install () {
     local src="$base_dir/modules/scripts-markdown/src"
 
     fs::ensure_directory "$XDG_SCRIPTS_HOME"
-    fs::force_link "$src/markdown-to-html.sh" "$XDG_SCRIPTS_HOME/markdown-to-html.sh"
-    fs::force_link "$src/preview-markdown.sh" "$XDG_SCRIPTS_HOME/preview-markdown.sh"
-    fs::force_link "$src/preview-server.py"   "$XDG_SCRIPTS_HOME/preview-server.py"
+    fs::force_link "$src/markdown-to-html.sh"   "$XDG_SCRIPTS_HOME/markdown-to-html.sh"
+    fs::force_link "$src/preview-markdown.sh"   "$XDG_SCRIPTS_HOME/preview-markdown.sh"
+    fs::force_link "$src/preview-server.py"     "$XDG_SCRIPTS_HOME/preview-server.py"
+    fs::force_link "$src/svg-inject-style.py"   "$XDG_SCRIPTS_HOME/svg-inject-style.py"
 }
 
 scripts-markdown::uninstall () {
@@ -25,4 +26,5 @@ scripts-markdown::uninstall () {
     rm "$XDG_SCRIPTS_HOME/markdown-to-html.sh"
     rm "$XDG_SCRIPTS_HOME/preview-markdown.sh"
     rm "$XDG_SCRIPTS_HOME/preview-server.py"
+    rm "$XDG_SCRIPTS_HOME/svg-inject-style.py"
 }
