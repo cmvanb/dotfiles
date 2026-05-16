@@ -3,6 +3,9 @@
   linux-dev /dev/input/by-path/platform-i8042-serio-0-event-kbd
   ;; Don't process keys from other devices
   linux-dev-names-include ("AT Translated Set 2 keyboard")
+  ;; Route all key events through kanata's pipeline so keys not in defsrc
+  ;; are buffered while a tap-hold key is pending, preserving press order.
+  process-unmapped-keys yes
 )
 
 (defsrc
