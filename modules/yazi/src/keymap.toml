@@ -7,6 +7,10 @@ on   = "l"
 run  = "plugin smart-enter"
 
 [[mgr.prepend_keymap]]
+on   = "<Right>"
+run  = "plugin smart-enter"
+
+[[mgr.prepend_keymap]]
 on   = "<C-w>"
 run  = "quit"
 
