@@ -91,6 +91,14 @@ export EZA_COLORS
 # shellcheck disable=SC1091
 source "$XDG_CONFIG_HOME/bash/prompt.sh"
 
+# Completions
+#-------------------------------------------------------------------------------
+
+for _completion_file in "$XDG_CONFIG_HOME/bash/completions/"*.bash; do
+    [[ -r "$_completion_file" ]] && source "$_completion_file"
+done
+unset _completion_file
+
 # Integrations
 #-------------------------------------------------------------------------------
 

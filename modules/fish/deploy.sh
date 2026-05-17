@@ -38,6 +38,9 @@ fish::install () {
     fs::force_link "$src/conf.d/pyenv.fish" "$XDG_CONFIG_HOME/fish/conf.d/pyenv.fish"
     fs::force_link "$src/conf.d/yazi.fish" "$XDG_CONFIG_HOME/fish/conf.d/yazi.fish"
     fs::force_link "$src/conf.d/zoxide.fish" "$XDG_CONFIG_HOME/fish/conf.d/zoxide.fish"
+    fs::force_link "$src/conf.d/deploy-completion.fish" "$XDG_CONFIG_HOME/fish/conf.d/deploy-completion.fish"
+    fs::ensure_directory "$XDG_CONFIG_HOME/fish/completions"
+    fs::force_link "$src/completions/deploy.sh.fish" "$XDG_CONFIG_HOME/fish/completions/deploy.sh.fish"
 
 }
 
