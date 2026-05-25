@@ -429,7 +429,7 @@ body {
     background-color: ${color_hash('web_page_bg')};
     color: ${color_hash('text_10')};
     font-family: ${font_sans}, helvetica, arial, freesans, clean, sans-serif;
-    font-size: ${font_size_medium}px;
+    font-size: 1em;
     line-height: 1.6;
     -webkit-font-smoothing: subpixel-antialiased;
 
