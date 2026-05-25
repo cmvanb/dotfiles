@@ -1,4 +1,4 @@
-# Agent Conduct
+# Agent Instructions
 
 ## Never Assume, Always Verify
 
@@ -16,6 +16,10 @@ Fix problems, don't report them. If software can recover automatically, it must 
 - Never write "I should" or end with deferred offers
 - Stop only when done or genuinely blocked
 
-# Startup
+## Startup
 
 Before the first response, list every instruction file path that was loaded in session context. Then state the working directory and active git branch.
+
+## Skills
+
+- **Markdown formatting**: When writing or editing any `.md` file, load and follow the `markdown` skill.
