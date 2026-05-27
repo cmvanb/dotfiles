@@ -1,28 +1,4 @@
 {
-  "hooks": {
-    "Notification": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "input=$(cat); type=$(printf '%s' \"$input\" | jq -r '.notification_type'); [ \"$type\" != \"idle_prompt\" ] && notify-send \"Claude Code\" \"$(printf '%s' \"$input\" | jq -r '.message')\" || true"
-          }
-        ]
-      }
-    ],
-    "SessionStart": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bash -c 'echo \"$HOME/.config/claude/CLAUDE.md\"; for f in CLAUDE.md .claude.md; do [ -f \"$(pwd)/$f\" ] && echo \"$(pwd)/$f\"; done; for f in AGENTS.md .agents.md agents.md; do if [ -f \"$f\" ]; then echo \"$(pwd)/$f\"; cat \"$f\"; break; fi; done'"
-          }
-        ]
-      }
-    ]
-  },
-  "inputNeededNotifEnabled": false,
-  "preferredNotifChannel": "notifications_disabled",
   "permissions": {
     "allow": [
       "Bash(ls *)",
@@ -52,5 +28,32 @@
       "Read(*.env)",
       "Read(*.env.*)"
     ]
+  },
+  "hooks": {
+    "Notification": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "input=$(cat); type=$(printf '%s' \"$input\" | jq -r '.notification_type'); [ \"$type\" != \"idle_prompt\" ] && notify-send \"Claude Code\" \"$(printf '%s' \"$input\" | jq -r '.message')\" || true"
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash -c 'echo \"$HOME/.config/claude/CLAUDE.md\"; for f in CLAUDE.md .claude.md; do [ -f \"$(pwd)/$f\" ] && echo \"$(pwd)/$f\"; done; for f in AGENTS.md .agents.md agents.md; do if [ -f \"$f\" ]; then echo \"$(pwd)/$f\"; cat \"$f\"; break; fi; done'"
+          }
+        ]
+      }
+    ]
+  },
+  "preferredNotifChannel": "notifications_disabled",
+  "inputNeededNotifEnabled": false,
+  "enabledPlugins": {
+    "rust-analyzer-lsp@claude-plugins-official": true
   }
 }
