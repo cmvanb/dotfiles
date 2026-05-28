@@ -1,3 +1,8 @@
+---
+name: markdown
+description: Apply style and formatting rules when writing markdown documents.
+---
+
 # Markdown Skill
 
 ## Rules
