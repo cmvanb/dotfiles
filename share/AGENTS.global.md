@@ -23,7 +23,8 @@ Before the first response, list every instruction file path that was loaded in s
 ## Skills
 
 - **Markdown formatting**: When writing or editing any `.md` file, load and follow the `markdown` skill.
-- **Linux context**: Whenever making system level changes, debugging or troubleshooting in a live linux environment — invoke the `linux-context` skill.
+- **Linux context**: When making system level changes, debugging or troubleshooting in a live linux environment — invoke the `linux-context` skill.
+- **Software Developer**: When writing, modifying or refactoring code, designing or developing software, load the `software-developer` skill.
 - **Diagnose**: When the user says "diagnose this" / "debug this", reports a bug, says something is broken/throwing/failing, or describes a performance regression — invoke the `diagnose` skill.
 - **Grill with docs**: When the user is brainstorming, planning or otherwise developing documentation — invoke the `grill-with-docs` skill.
 - **TDD**: When the user wants to build features or fix bugs using TDD, mentions "red-green-refactor", wants integration tests, or asks for test-first development — invoke the `tdd` skill.
