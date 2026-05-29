@@ -26,6 +26,7 @@ mkdir -p "$tmp_dir"
 
 pandoc -s -f markdown+alerts+emoji+autolink_bare_uris+hard_line_breaks -t html --toc \
     --embed-resources \
+    --resource-path "$(dirname "$1")" \
     --syntax-highlighting "$XDG_CONFIG_HOME/theme/carbon-dark.pygments.theme" \
     --css "$XDG_DATA_HOME/pandoc/templates/markdown.css" \
     "$1" | python3 "$XDG_SCRIPTS_HOME/svg-inject-style.py" > "$tmp_dir/$file_name.html"
