@@ -9,11 +9,29 @@ import base64
 import re
 import sys
 
+# Matches an opening <svg ...> tag. The alternation [^>]|"[^"]*"|'[^']*' advances
+# through the tag character-by-character while treating quoted attribute values as
+# atomic units, so a literal '>' inside e.g. alt="a>b" doesn't end the match early.
 _SVG_TAG_RE = re.compile(r'<svg(?:[^>]|"[^"]*"|\'[^\']*\')*>')
+
+# Matches a base64 SVG data-URI in an src attribute and captures the payload.
+# \+ escapes the literal '+' in the MIME type; ([^"]+) captures the base64 string.
 _B64_SVG_RE = re.compile(r'src="data:image/svg\+xml;base64,([^"]+)"')
+
+# Same attribute-safe pattern as _SVG_TAG_RE, but for <img> tags.
+# The trailing /? allows both <img ...> and self-closing <img ... />.
 _IMG_TAG_RE = re.compile(r'<img(?:[^>]|"[^"]*"|\'[^\']*\')*/?>')
+
+# Captures the value of an alt attribute. \b prevents a false match on e.g. halt=.
+# [^"]* allows an empty alt value.
 _ALT_RE = re.compile(r'\balt="([^"]*)"')
+
+# Detects whether a title= attribute is already present anywhere in the tag.
 _TITLE_ATTR_RE = re.compile(r'\btitle=')
+
+# Matches a <p> whose sole content is one <img> (with optional surrounding whitespace
+# and a trailing newline), capturing the <img> so the paragraph wrapper can be stripped.
+_P_IMG_RE = re.compile(r'<p>\s*(<img(?:[^>]|"[^"]*"|\'[^\']*\')*/?>) *\n?</p>')
 
 
 def _inject(m: re.Match) -> str:
@@ -57,4 +75,5 @@ html = sys.stdin.read()
 html = _inject_into_svg_source(html)
 html = _B64_SVG_RE.sub(_replace_b64, html)
 html = _IMG_TAG_RE.sub(_add_title_from_alt, html)
+html = _P_IMG_RE.sub(r'\1', html)
 sys.stdout.write(html)
