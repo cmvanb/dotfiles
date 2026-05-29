@@ -11,6 +11,9 @@ import sys
 
 _SVG_TAG_RE = re.compile(r'<svg(?:[^>]|"[^"]*"|\'[^\']*\')*>')
 _B64_SVG_RE = re.compile(r'src="data:image/svg\+xml;base64,([^"]+)"')
+_IMG_TAG_RE = re.compile(r'<img(?:[^>]|"[^"]*"|\'[^\']*\')*/?>')
+_ALT_RE = re.compile(r'\balt="([^"]*)"')
+_TITLE_ATTR_RE = re.compile(r'\btitle=')
 
 
 def _inject(m: re.Match) -> str:
@@ -37,7 +40,21 @@ def _replace_b64(m: re.Match) -> str:
         return m.group(0)
 
 
+def _add_title_from_alt(m: re.Match) -> str:
+    tag = m.group(0)
+    if _TITLE_ATTR_RE.search(tag):
+        return tag
+    alt_m = _ALT_RE.search(tag)
+    if not alt_m or not alt_m.group(1):
+        return tag
+    title = alt_m.group(1)
+    if tag.endswith("/>"):
+        return tag[:-2] + f' title="{title}" />'
+    return tag[:-1] + f' title="{title}">'
+
+
 html = sys.stdin.read()
 html = _inject_into_svg_source(html)
 html = _B64_SVG_RE.sub(_replace_b64, html)
+html = _IMG_TAG_RE.sub(_add_title_from_alt, html)
 sys.stdout.write(html)
