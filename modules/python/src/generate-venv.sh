@@ -7,7 +7,7 @@ set -euo pipefail
 
 echo "Generating python virtual environment in \`{$PWD}\`."
 
-python -m venv venv
+python -m venv .venv
 
 # Configure direnv to activate venv automatically.
-echo "activate_venv $PWD/venv" > "$PWD/.envrc"
+echo "activate_venv $PWD/.venv" > "$PWD/.envrc"
