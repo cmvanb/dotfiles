@@ -56,7 +56,7 @@
       "*": "allow",
     },
     "skill": {
-      "*": "ask",
+      "*": "allow",
     },
     "lsp": {
       "*": "allow",
