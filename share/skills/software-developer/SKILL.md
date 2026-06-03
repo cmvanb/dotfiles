@@ -48,3 +48,7 @@ Depend on abstractions, not concrete implementations. High-level modules must no
 - Don't add comments when writing code.
 - Do leave pre-existing comments unchanged.
 - Do move pre-existing comments when necessary.
+
+## User Experience
+
+- Fix problems, don't report them. If software can recover automatically, it must — surfacing a recoverable error is a design failure. Only surface errors that are genuinely unrecoverable.

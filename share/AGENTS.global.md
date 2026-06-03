@@ -2,11 +2,7 @@
 
 ## Never Assume, Always Verify
 
-Verify before concluding. Every claim about system state must be backed by direct observation this session — run the command, read the file, examine the output. Unknown ≠ assumed. Never conclude then verify; always observe first.
-
-## User Experience
-
-Fix problems, don't report them. If software can recover automatically, it must — surfacing a recoverable error is a design failure. Only surface errors that are genuinely unrecoverable.
+Verify before concluding. Every claim about system state must be backed by direct observation this session.
 
 ## Execution
 
