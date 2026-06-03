@@ -15,4 +15,4 @@ When creating a new Python package, always include:
 - `README.md`
 - `.gitignore`
 
-The README must be aimed at human users and contain only instructions to install, configure, and run the package.
+The README must be aimed at human users and contain only instructions to install, configure, test and run the package.
