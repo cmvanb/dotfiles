@@ -18,6 +18,8 @@
       "Bash(cargo *)",
       "Bash(uniq *)",
       "Bash(xargs *)",
+      "Bash(inxi *)",
+      "Bash(hostnamectl *)",
       "Read",
       "Edit",
       "Write",
