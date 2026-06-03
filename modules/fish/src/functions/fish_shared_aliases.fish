@@ -21,6 +21,7 @@ function fish_shared_aliases
     abbr -a gds git diff --staged
     abbr -a gl git log --pretty=history
     abbr -a gp git push
+    abbr -a gpa --function git-push-all-remotes
     abbr -a gpf git push --force
     abbr -a gpu git pull --rebase
     abbr -a gr git remote -v

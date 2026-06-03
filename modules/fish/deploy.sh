@@ -27,6 +27,7 @@ fish::install () {
     fs::force_link "$src/functions/fish_title.fish" "$XDG_CONFIG_HOME/fish/functions/fish_title.fish"
     fs::force_link "$src/functions/fish_shared_aliases.fish" "$XDG_CONFIG_HOME/fish/functions/fish_shared_aliases.fish"
     fs::force_link "$src/functions/fish_user_key_bindings.fish" "$XDG_CONFIG_HOME/fish/functions/fish_user_key_bindings.fish"
+    fs::force_link "$src/functions/git-push-all-remotes.fish" "$XDG_CONFIG_HOME/fish/functions/git-push-all-remotes.fish"
     fs::force_link "$src/functions/renr.fish" "$XDG_CONFIG_HOME/fish/functions/renr.fish"
     fs::force_link "$src/functions/suspend.fish" "$XDG_CONFIG_HOME/fish/functions/suspend.fish"
     template::render_mako "$src/functions/fish_deployed_aliases.mako.fish" "$XDG_CONFIG_HOME/fish/functions/fish_deployed_aliases.fish"
