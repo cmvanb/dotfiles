@@ -28,13 +28,20 @@ target_workspace="$2"
 
 state_file="${XDG_STATE_HOME:-$HOME/.local/state}/sway/outputs-workspace-map"
 
+declare -A NAMED_WS=(
+    [home]="11:home"     [mail]="12:mail"     [todo]="13:todo"
+    [audio]="14:audio"   [auth]="15:auth"     [system]="16:system"
+    [config]="17:config" [editor]="18:editor" [project]="19:project"
+    [ssh]="20:ssh"
+)
+
 if [[ "$target_workspace" =~ ^[0-9]+$ ]]; then
     focused_output=$(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name')
     offset=$(grep -m1 "^${focused_output}:" "$state_file" 2>/dev/null | cut -d: -f2)
     offset=${offset:-0}
     workspace_name=$(( target_workspace + offset ))
 else
-    workspace_name="$target_workspace"
+    workspace_name="${NAMED_WS[$target_workspace]:-$target_workspace}"
 fi
 
 case "$action" in
