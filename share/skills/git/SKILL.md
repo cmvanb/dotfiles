@@ -5,6 +5,10 @@ description: Apply git conventions for commits and version control.
 
 # Git Skill
 
+## When to Commit
+
+Never commit without the user's explicit permission.
+
 ## Commit Messages
 
 - Single line only — no body, no footers

@@ -28,4 +28,4 @@ Evaluate every trigger below against the full task before starting. Load all ski
 - **TDD**: When the user wants to build features or fix bugs using TDD, mentions "red-green-refactor", wants integration tests, or asks for test-first development — invoke the `tdd` skill.
 - **Zoom out**: When the user is unfamiliar with a section of code or needing to understand how it fits into the bigger picture — invoke the `zoom-out` skill.
 - **Python**: When working with Python code, packages, or dependencies — invoke the `python` skill.
-- **Git**: When creating git commits or working with version control — invoke the `git` skill.
+- **Git**: When the users explicitly asks you to commit changes — invoke the `git` skill.
