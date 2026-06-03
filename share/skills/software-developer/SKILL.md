@@ -40,3 +40,11 @@ Prefer narrow, focused interfaces. Callers must not depend on methods they do no
 ### Dependency Inversion
 
 Depend on abstractions, not concrete implementations. High-level modules must not import low-level details directly.
+
+## Code Style
+
+### Comments
+
+- Don't add comments when writing code.
+- Do leave pre-existing comments unchanged.
+- Do move pre-existing comments when necessary.
