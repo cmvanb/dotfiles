@@ -7,6 +7,11 @@ description: Apply style and formatting rules when writing markdown documents.
 
 ## Rules
 
-- Always precede lists (ordered and unordered) with a blank line.
-- Always precede fenced code blocks with a blank line.
-- Never omit blank lines between block-level elements (headings, paragraphs, lists, code blocks).
+- Always insert a blank line before:
+    - Headings
+    - Paragraphs
+    - Lists
+    - Code blocks
+    - Diagrams
+- Don't add parentheticals after list items
+- Do not announce item counts
