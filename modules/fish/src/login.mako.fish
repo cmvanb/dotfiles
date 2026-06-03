@@ -5,18 +5,6 @@
 # Environment
 #-------------------------------------------------------------------------------
 
-# XDG base directories.
-set -x XDG_CONFIG_HOME $HOME/.config
-set -x XDG_CACHE_HOME $HOME/.local/cache
-set -x XDG_DATA_HOME $HOME/.local/share
-set -x XDG_STATE_HOME $HOME/.local/state
-
-# Custom directories.
-set -x XDG_BIN_HOME $HOME/.local/bin
-set -x XDG_OPT_HOME $HOME/.local/opt
-set -x XDG_SCRIPTS_HOME $HOME/.local/scripts
-set -x XDG_SECRETS_HOME $HOME/.local/secrets
-
 % if 'workstation' in DEPLOY_PROFILE.split():
 
 # XDG user directories.
@@ -33,9 +21,6 @@ set -x XDG_WIKI_DIR $HOME/Wiki
 
 # SSH agent integration.
 set -x SSH_AUTH_SOCK $XDG_RUNTIME_DIR/gcr/ssh
-
-# Pyenv installation.
-set -x PYENV_ROOT $XDG_OPT_HOME/pyenv
 
 # Claude config.
 set -x CLAUDE_CONFIG_DIR $XDG_CONFIG_HOME/claude

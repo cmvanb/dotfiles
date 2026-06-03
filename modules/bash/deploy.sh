@@ -25,6 +25,8 @@ bash::install () {
     template::render_mako "$src/login.mako.sh" "$XDG_CONFIG_HOME/bash/login.sh"
     fs::force_link "$src/logout.sh" "$XDG_CONFIG_HOME/bash/logout.sh"
     fs::force_link "$src/prompt.sh" "$XDG_CONFIG_HOME/bash/prompt.sh"
+    fs::ensure_directory "$XDG_CONFIG_HOME/bash/conf.d"
+    fs::force_link "$src/conf.d/00-xdg-base-dirs.sh" "$XDG_CONFIG_HOME/bash/conf.d/00-xdg-base-dirs.sh"
     fs::ensure_directory "$XDG_CONFIG_HOME/bash/completions"
     fs::force_link "$src/completions/deploy.bash" "$XDG_CONFIG_HOME/bash/completions/deploy.bash"
 }

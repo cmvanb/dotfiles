@@ -2,6 +2,8 @@
 # Pyenv integration
 #-------------------------------------------------------------------------------
 
+set -x PYENV_ROOT $XDG_OPT_HOME/pyenv
+
 # Add python shims to path.
 fish_add_path -pP $PYENV_ROOT/bin
 

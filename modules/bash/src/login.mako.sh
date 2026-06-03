@@ -3,20 +3,16 @@
 # Bash login configuration
 #-------------------------------------------------------------------------------
 
+# Source modular login configuration.
+#-------------------------------------------------------------------------------
+
+for f in "$HOME/.config/bash/conf.d/"*.sh; do
+    [[ -f "$f" ]] && source "$f"
+done
+
 # Environment
 #-------------------------------------------------------------------------------
 
-# XDG base directories.
-export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_CACHE_HOME="$HOME/.local/cache"
-export XDG_DATA_HOME="$HOME/.local/share"
-export XDG_STATE_HOME="$HOME/.local/state"
-
-# Custom directories.
-export XDG_BIN_HOME="$HOME/.local/bin"
-export XDG_OPT_HOME="$HOME/.local/opt"
-export XDG_SCRIPTS_HOME="$HOME/.local/scripts"
-export XDG_SECRETS_HOME="$HOME/.local/secrets"
 % if 'workstation' in DEPLOY_PROFILE.split():
 
 # XDG user directories.
@@ -33,9 +29,6 @@ export XDG_WIKI_DIR="$HOME/Wiki"
 
 # SSH agent integration.
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/gcr/ssh"
-
-# Pyenv installation.
-export PYENV_ROOT="$XDG_OPT_HOME/pyenv"
 
 # Claude config.
 export CLAUDE_CONFIG_DIR="$XDG_CONFIG_HOME/claude"
@@ -112,18 +105,8 @@ path_prepend "$XDG_BIN_HOME"
 path_prepend "$XDG_SCRIPTS_HOME"
 % if 'workstation' in DEPLOY_PROFILE.split():
 
-# Add pyenv python shims to path
-path_prepend "$PYENV_ROOT/bin"
-
 # Add user rust binaries to path.
 path_prepend "$XDG_DATA_HOME/cargo/bin"
-
-# Pyenv integration
-#-------------------------------------------------------------------------------
-
-if command -v pyenv &> /dev/null; then
-    eval "$(pyenv init -)"
-fi
 % endif
 
 # Clean home directory
