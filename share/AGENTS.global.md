@@ -31,3 +31,4 @@ Evaluate every trigger below against the full task before starting. Load all ski
 - **Grill with docs**: When the user is brainstorming, planning or otherwise developing documentation — invoke the `grill-with-docs` skill.
 - **TDD**: When the user wants to build features or fix bugs using TDD, mentions "red-green-refactor", wants integration tests, or asks for test-first development — invoke the `tdd` skill.
 - **Zoom out**: When the user is unfamiliar with a section of code or needing to understand how it fits into the bigger picture — invoke the `zoom-out` skill.
+- **Python**: When working with Python code, packages, or dependencies — invoke the `python` skill.
