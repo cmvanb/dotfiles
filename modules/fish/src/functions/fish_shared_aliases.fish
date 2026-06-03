@@ -42,7 +42,7 @@ function fish_shared_aliases
 
     # General
     alias bat "bat --force-colorization --no-paging --style=grid,numbers"
-    abbr -a c clear
+    abbr -a cl claude
     abbr -a e edit
     abbr -a ed edit
     abbr -a edi edit

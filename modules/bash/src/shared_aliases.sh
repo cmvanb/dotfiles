@@ -40,7 +40,7 @@ alias wip="git add -A; git commit -m '[WIP]'"
 
 # General
 alias bat="bat --force-colorization --no-paging --style=grid,numbers"
-alias c="clear"
+alias cl="claude"
 alias e="edit"
 alias ed="edit"
 alias edi="edit"
