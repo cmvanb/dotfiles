@@ -20,7 +20,7 @@
       "Bash(xargs *)",
       "Bash(inxi *)",
       "Bash(hostnamectl *)",
-      "Bash(uv)",
+      "Bash(uv *)",
       "Read",
       "Edit",
       "Write",
