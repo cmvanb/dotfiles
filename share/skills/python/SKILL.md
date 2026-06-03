@@ -11,6 +11,8 @@ Use `uv` for all Python management tasks: creating projects, managing dependenci
 
 ## New Packages
 
-When creating a new Python package, always include a `README.md` at the package root.
+When creating a new Python package, always include:
+- `README.md`
+- `.gitignore`
 
 The README must be aimed at human users and contain only instructions to install, configure, and run the package.
