@@ -32,7 +32,7 @@ pyenv::install () {
 pyenv::uninstall () {
     echo "└> Uninstalling pyenv."
 
-    rm -r "$PYENV_ROOT"
+    rm -rf "$PYENV_ROOT"
     rm -f "$XDG_CONFIG_HOME/fish/conf.d/pyenv.fish"
     rm -f "$XDG_CONFIG_HOME/bash/conf.d/pyenv.sh"
 }
