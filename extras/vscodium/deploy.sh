@@ -20,12 +20,15 @@ vscodium::install () {
     fs::force_link "$src/settings.json" "$XDG_DATA_HOME/vscode/user-data/User/settings.json"
 
     fs::ensure_directory "$XDG_DATA_HOME/vscode/extensions/custom-theme/themes"
-    render_mako_template "$src/theme.mako.json" "$XDG_DATA_HOME/vscode/extensions/custom-theme/themes/theme.json"
+    template::render_mako "$src/theme.mako.json" "$XDG_DATA_HOME/vscode/extensions/custom-theme/themes/theme.json"
     fs::force_link "$src/custom-theme" "$XDG_DATA_HOME/vscode/extensions/custom-theme"
 
     fs::ensure_directory "$XDG_DATA_HOME/applications"
     fs::force_link "$src/vscodium-wayland.desktop" "$XDG_DATA_HOME/applications/vscodium-wayland.desktop"
     fs::force_link "$src/vscodium.desktop" "$XDG_DATA_HOME/applications/vscodium.desktop"
+
+    fs::force_link "$src/bash/vscode.sh"   "$XDG_CONFIG_HOME/bash/conf.d/vscode.sh"
+    fs::force_link "$src/fish/vscode.fish" "$XDG_CONFIG_HOME/fish/conf.d/vscode.fish"
 }
 
 vscodium::uninstall () {
@@ -33,4 +36,6 @@ vscodium::uninstall () {
 
     rm "$XDG_DATA_HOME/applications/vscodium-wayland.desktop"
     rm "$XDG_DATA_HOME/applications/vscodium.desktop"
+    rm -f "$XDG_CONFIG_HOME/bash/conf.d/vscode.sh"
+    rm -f "$XDG_CONFIG_HOME/fish/conf.d/vscode.fish"
 }

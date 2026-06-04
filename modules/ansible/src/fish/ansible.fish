@@ -1,0 +1,7 @@
+set -x ANSIBLE_HOME $XDG_CONFIG_HOME/ansible
+set -x ANSIBLE_CONFIG $XDG_CONFIG_HOME/ansible.cfg
+set -x ANSIBLE_GALAXY_CACHE_DIR $XDG_CACHE_HOME/ansible/galaxy_cache
+set -x ANSIBLE_LOCAL_TEMP $XDG_CACHE_HOME/ansible/tmp
+set -x ANSIBLE_REMOTE_TEMP $XDG_CACHE_HOME/ansible/tmp
+set -x ANSIBLE_SSH_CONTROL_PATH_DIR $XDG_CACHE_HOME/ansible/cp
+set -x ANSIBLE_ASYNC_DIR $XDG_CACHE_HOME/ansible_async

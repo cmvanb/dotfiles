@@ -17,10 +17,15 @@ wget::install () {
 
     fs::ensure_directory "$XDG_CONFIG_HOME/wget"
     template::render_mako "$src/wgetrc.mako" "$XDG_CONFIG_HOME/wget/wgetrc"
+
+    fs::force_link "$src/bash/wget.sh"   "$XDG_CONFIG_HOME/bash/conf.d/wget.sh"
+    fs::force_link "$src/fish/wget.fish" "$XDG_CONFIG_HOME/fish/conf.d/wget.fish"
 }
 
 wget::uninstall () {
     echo "└> Uninstalling wget configuration."
 
     rm -r "$XDG_CONFIG_HOME/wget"
+    rm -f "$XDG_CONFIG_HOME/bash/conf.d/wget.sh"
+    rm -f "$XDG_CONFIG_HOME/fish/conf.d/wget.fish"
 }

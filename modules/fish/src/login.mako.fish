@@ -22,48 +22,10 @@ set -x XDG_WIKI_DIR $HOME/Wiki
 # SSH agent integration.
 set -x SSH_AUTH_SOCK $XDG_RUNTIME_DIR/gcr/ssh
 
-# Claude config.
-set -x CLAUDE_CONFIG_DIR $XDG_CONFIG_HOME/claude
-
-# Docker config.
-set -x DOCKER_CONFIG $XDG_STATE_HOME/docker
-
-# GNUPG config.
-set -x GNUPGHOME $XDG_STATE_HOME/gnupg
-
-# Rust config.
-set -x CARGO_HOME $XDG_DATA_HOME/cargo
-set -x RUSTUP_HOME $XDG_DATA_HOME/rustup
-
-# Pi coding agent config.
-set -x PI_CONFIG_DIR $XDG_CONFIG_HOME/pi
-set -x PI_CODING_AGENT_DIR $XDG_CONFIG_HOME/pi
-
-# VSCode config.
-set -x VSCODE_PORTABLE $XDG_DATA_HOME/vscode
-
 % endif
-
-# NPM config.
-set -x NPM_CONFIG_USERCONFIG $XDG_CONFIG_HOME/npm/npmrc
-
-# Python config.
-set -x PYTHONPYCACHEPREFIX $XDG_CACHE_HOME/python
 
 # Readline config.
 set -x INPUTRC $XDG_CONFIG_HOME/readline/inputrc
-
-# Wget config.
-set -x WGETRC $XDG_CONFIG_HOME/wget/wgetrc
-
-# Ansible config.
-set -x ANSIBLE_HOME $XDG_CONFIG_HOME/ansible
-set -x ANSIBLE_CONFIG $XDG_CONFIG_HOME/ansible.cfg
-set -x ANSIBLE_GALAXY_CACHE_DIR $XDG_CACHE_HOME/ansible/galaxy_cache
-set -x ANSIBLE_LOCAL_TEMP $XDG_CACHE_HOME/ansible/tmp
-set -x ANSIBLE_REMOTE_TEMP $XDG_CACHE_HOME/ansible/tmp
-set -x ANSIBLE_SSH_CONTROL_PATH_DIR $XDG_CACHE_HOME/ansible/cp
-set -x ANSIBLE_ASYNC_DIR $XDG_CACHE_HOME/ansible_async
 
 # Terminal support
 #-------------------------------------------------------------------------------
@@ -94,11 +56,6 @@ mkdir -p $XDG_DOCUMENTS_DIR $XDG_DOWNLOAD_DIR $XDG_MUSIC_DIR $XDG_PICTURES_DIR $
 fish_add_path -pP $XDG_BIN_HOME
 fish_add_path -pP $XDG_SCRIPTS_HOME
 
-% if 'workstation' in DEPLOY_PROFILE.split():
-# Add user rust binaries to path.
-fish_add_path -pP $XDG_DATA_HOME/cargo/bin
-
-% endif
 # Clean home directory
 #-------------------------------------------------------------------------------
 

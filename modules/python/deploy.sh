@@ -19,6 +19,9 @@ python::install () {
 
     fs::ensure_directory "$XDG_SCRIPTS_HOME"
     fs::force_link "$src/generate-venv.sh" "$XDG_SCRIPTS_HOME/generate-venv.sh"
+
+    fs::force_link "$src/bash/python.sh"   "$XDG_CONFIG_HOME/bash/conf.d/python.sh"
+    fs::force_link "$src/fish/python.fish" "$XDG_CONFIG_HOME/fish/conf.d/python.fish"
 }
 
 python::uninstall () {
@@ -28,4 +31,7 @@ python::uninstall () {
     rmdir --ignore-fail-on-non-empty "$XDG_CONFIG_HOME/pip"
 
     rm -f "$XDG_SCRIPTS_HOME/generate-venv.sh"
+
+    rm -f "$XDG_CONFIG_HOME/bash/conf.d/python.sh"
+    rm -f "$XDG_CONFIG_HOME/fish/conf.d/python.fish"
 }

@@ -1,0 +1,1 @@
+set -x GNUPGHOME $XDG_STATE_HOME/gnupg

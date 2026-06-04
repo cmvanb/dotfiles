@@ -1,0 +1,1 @@
+set -x DOCKER_CONFIG $XDG_STATE_HOME/docker

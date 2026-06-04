@@ -12,3 +12,8 @@ export XDG_BIN_HOME="$HOME/.local/bin"
 export XDG_OPT_HOME="$HOME/.local/opt"
 export XDG_SCRIPTS_HOME="$HOME/.local/scripts"
 export XDG_SECRETS_HOME="$HOME/.local/secrets"
+
+source "$XDG_OPT_HOME/shell-utils/path.sh"
+
+path_prepend "$XDG_BIN_HOME"
+path_prepend "$XDG_SCRIPTS_HOME"

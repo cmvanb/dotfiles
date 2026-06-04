@@ -29,48 +29,10 @@ export XDG_WIKI_DIR="$HOME/Wiki"
 
 # SSH agent integration.
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/gcr/ssh"
-
-# Claude config.
-export CLAUDE_CONFIG_DIR="$XDG_CONFIG_HOME/claude"
-
-# Docker config.
-export DOCKER_CONFIG="$XDG_STATE_HOME/docker"
-
-# GNUPG config.
-export GNUPGHOME="$XDG_STATE_HOME/gnupg"
-
-# Python config.
-export PYTHONPYCACHEPREFIX="$XDG_CACHE_HOME/python"
-
-# Rust config.
-export CARGO_HOME="$XDG_DATA_HOME/cargo"
-export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
-
-# Pi coding agent config.
-export PI_CONFIG_DIR="$XDG_CONFIG_HOME/pi"
-export PI_CODING_AGENT_DIR="$XDG_CONFIG_HOME/pi"
-
-# VSCode config.
-export VSCODE_PORTABLE="$XDG_DATA_HOME/vscode"
 % endif
-
-# NPM config.
-export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 
 # Readline config.
 export INPUTRC="$XDG_CONFIG_HOME/readline/inputrc"
-
-# Wget config.
-export WGETRC="$XDG_CONFIG_HOME/wget/wgetrc"
-
-# Ansible config.
-export ANSIBLE_HOME="${XDG_CONFIG_HOME}/ansible"
-export ANSIBLE_CONFIG="${XDG_CONFIG_HOME}/ansible.cfg"
-export ANSIBLE_GALAXY_CACHE_DIR="${XDG_CACHE_HOME}/ansible/galaxy_cache"
-export ANSIBLE_LOCAL_TEMP="${XDG_CACHE_HOME}/ansible/tmp"
-export ANSIBLE_REMOTE_TEMP="${XDG_CACHE_HOME}/ansible/tmp"
-export ANSIBLE_SSH_CONTROL_PATH_DIR="${XDG_CACHE_HOME}/ansible/cp"
-export ANSIBLE_ASYNC_DIR="${XDG_CACHE_HOME}/ansible_async"
 
 # Terminal support
 #-------------------------------------------------------------------------------
@@ -92,21 +54,6 @@ fi
 #-------------------------------------------------------------------------------
 
 mkdir -p "$XDG_DOCUMENTS_DIR" "$XDG_DOWNLOAD_DIR" "$XDG_MUSIC_DIR" "$XDG_PICTURES_DIR" "$XDG_VIDEOS_DIR"
-% endif
-
-# Path
-#-------------------------------------------------------------------------------
-
-# Import path utils.
-source "$XDG_OPT_HOME/shell-utils/path.sh"
-
-# Add user binaries to path
-path_prepend "$XDG_BIN_HOME"
-path_prepend "$XDG_SCRIPTS_HOME"
-% if 'workstation' in DEPLOY_PROFILE.split():
-
-# Add user rust binaries to path.
-path_prepend "$XDG_DATA_HOME/cargo/bin"
 % endif
 
 # Clean home directory
