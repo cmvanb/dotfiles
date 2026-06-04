@@ -32,7 +32,7 @@ declare -A NAMED_WS=(
     [home]="11:home"     [mail]="12:mail"     [todo]="13:todo"
     [audio]="14:audio"   [auth]="15:auth"     [system]="16:system"
     [config]="17:config" [editor]="18:editor" [project]="19:project"
-    [ssh]="20:ssh"
+    [ssh]="20:ssh"       [chat]="21:chat"
 )
 
 if [[ "$target_workspace" =~ ^[0-9]+$ ]]; then
