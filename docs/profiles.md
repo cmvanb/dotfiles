@@ -39,7 +39,7 @@ modules.enable=
 profile.extends=server
 
 modules.theme=theme-desktop
-modules.install=alacritty bitwarden btop chromium direnv disable-xdg-desktop-files discord draw.io fontconfig ghostty gitui imv mpv opencode pandoc pyenv qutebrowser scripts-markdown scripts-misc scripts-system-utils spotify udiskie vscodium vt wezterm xdg-mimetype-associations yay zathura
+modules.install=alacritty bitwarden btop chromium direnv disable-xdg-desktop-files discord draw.io fontconfig ghostty gitui imv mpv opencode pandoc qutebrowser scripts-markdown scripts-misc scripts-system-utils spotify udiskie vscodium vt wezterm xdg-mimetype-associations yay zathura
 modules.enable=pipewire ssh syncthing udiskie
 ```
 
