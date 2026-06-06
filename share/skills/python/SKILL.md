@@ -7,7 +7,7 @@ description: Apply Python conventions for package management and new package cre
 
 ## Tooling
 
-Use `uv` for all Python management tasks: creating projects, managing dependencies, running scripts, and building packages.
+Use `uv` for all Python management tasks: creating projects, managing dependencies, running scripts, and building packages. Write documentation such as READMEs with `uv` commands.
 
 ## New Packages
 
