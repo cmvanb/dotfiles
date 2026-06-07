@@ -11,7 +11,8 @@ Use `uv` for all Python management tasks: creating projects, managing dependenci
 
 ## New Packages
 
-When creating a new Python package, always include:
+When creating a new Python package, always create:
+- `pyproject.toml`
 - `README.md`
 - `.gitignore`
 
