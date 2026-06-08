@@ -43,10 +43,10 @@ resize-overlay = never
 keybind = ctrl+shift+r=reload_config
 
 # Page scroll
-# NOTE: These bindings work, but don't allow terminal apps to respond to them.
-# Neither `performable` nor `unconsumed` seem to work.
-keybind = page_down=scroll_page_lines:28
-keybind = page_up=scroll_page_lines:-28
+# NOTE: Direct `page_up/down` bindings work, but don't allow terminal apps to
+# respond to them. Neither `performable` nor `unconsumed` seem to work.
+keybind = shift+page_down=scroll_page_lines:28
+keybind = shift+page_up=scroll_page_lines:-28
 
 # New window
 keybind = ctrl+t=new_window
