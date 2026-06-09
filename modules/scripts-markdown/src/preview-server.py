@@ -20,7 +20,7 @@ import sys
 import threading
 import time
 
-TIMEOUT = 5   # seconds of silence after last ping before shutdown
+TIMEOUT = 30  # seconds of silence after last ping before shutdown
 POLL    = 1   # watchdog polling interval (seconds)
 
 HEARTBEAT_JS = """\
@@ -29,9 +29,7 @@ HEARTBEAT_JS = """\
   function ping() { fetch('/ping', { method: 'POST' }).catch(function () {}); }
   ping();
   setInterval(ping, 3000);
-  document.addEventListener('visibilitychange', function () {
-    if (document.visibilityState === 'hidden') ping();
-  });
+  document.addEventListener('visibilitychange', function () { ping(); });
 }());
 </script>
 """
