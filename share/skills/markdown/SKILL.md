@@ -15,3 +15,4 @@ description: Apply style and formatting rules when writing markdown documents.
     - Diagrams
 - Don't add parentheticals after list items
 - Do not announce item counts
+- Keep paragraphs on a single line
