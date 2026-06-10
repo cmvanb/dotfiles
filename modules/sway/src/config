@@ -14,10 +14,11 @@ set $scripts_dir $HOME/.local/scripts
 # Focus follows cursor
 focus_follows_mouse yes
 
-# Keyboard repeat rate
+# Keyboard repeat rate; custom:fkeys restores F13-F15 keysyms (see xkb module)
 input type:keyboard {
     repeat_delay 300
     repeat_rate 50
+    xkb_options "custom:fkeys"
 }
 
 # Hide inactive cursor

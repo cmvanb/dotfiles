@@ -1,0 +1,9 @@
+// The default keymap (symbols/inet) assigns XF86Tools/XF86Launch5/XF86Launch6
+// to the F13-F15 keycodes; restore the real function keysyms so terminals can
+// encode them.
+partial function_keys
+xkb_symbols "fkeys" {
+    key <FK13> { [ F13 ] };
+    key <FK14> { [ F14 ] };
+    key <FK15> { [ F15 ] };
+};

@@ -1,0 +1,6 @@
+! include %S/evdev
+
+// After the system include, so custom(fkeys) merges after inet(evdev),
+// which would otherwise override it.
+! option = symbols
+  custom:fkeys = +custom(fkeys)
