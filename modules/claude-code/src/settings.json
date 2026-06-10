@@ -55,9 +55,9 @@
       }
     ]
   },
-  "preferredNotifChannel": "notifications_disabled",
-  "inputNeededNotifEnabled": false,
   "enabledPlugins": {
     "rust-analyzer-lsp@claude-plugins-official": true
-  }
+  },
+  "preferredNotifChannel": "notifications_disabled",
+  "inputNeededNotifEnabled": false
 }
