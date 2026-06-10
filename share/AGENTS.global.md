@@ -14,7 +14,7 @@ Verify before concluding. Every claim about system state must be backed by direc
 
 ## Startup
 
-Before the first response, list every instruction file path that was loaded in session context. Then state the working directory and active git branch.
+Before the first response, list the full filesystem path of every instruction file that was loaded in session context. Then state the working directory and active git branch.
 
 ## Skills
 
@@ -28,4 +28,4 @@ Evaluate every trigger below against the full task before starting. Load all ski
 - **TDD**: When the user wants to build features or fix bugs using TDD, mentions "red-green-refactor", wants integration tests, or asks for test-first development — invoke the `tdd` skill.
 - **Zoom out**: When the user is unfamiliar with a section of code or needing to understand how it fits into the bigger picture — invoke the `zoom-out` skill.
 - **Python**: When working with Python code, packages, or dependencies — invoke the `python` skill.
-- **Git**: When the users explicitly asks you to commit changes — invoke the `git` skill.
+- **Git**: When the user asks you to commit changes or perform other git operations — invoke the `git` skill.
