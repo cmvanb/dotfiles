@@ -161,22 +161,22 @@ return {
         {
             key = 'i',
             mods = 'CTRL',
-            action = wezterm.action { SendString = '\x1b[1;2P' },
+            action = wezterm.action { SendString = '\x1b[1;2S' },
         },
         {
             key = 'm',
             mods = 'CTRL',
-            action = wezterm.action { SendString = '\x1b[1;2Q' },
+            action = wezterm.action { SendString = '\x1b[15;2~' },
         },
         {
             key = 'Backspace',
             mods = 'CTRL',
-            action = wezterm.action { SendString = '\x1b[1;2R' },
+            action = wezterm.action { SendString = '\x1b[17;2~' },
         },
         {
             key = 'Period',
             mods = 'CTRL',
-            action = wezterm.action { SendString = '\x1b[1;2S' },
+            action = wezterm.action { SendString = '\x1b[18;2~' },
         },
         {
             key = 'Tab',
@@ -186,7 +186,7 @@ return {
         {
             key = 'Semicolon',
             mods = 'CTRL',
-            action = wezterm.action { SendString = '\x1b[15;2~' },
+            action = wezterm.action { SendString = '\x1b[19;2~' },
         },
         -- Font size
         {

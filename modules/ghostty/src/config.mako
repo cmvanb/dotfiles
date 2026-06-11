@@ -61,23 +61,23 @@ keybind = ctrl+x=text:\x03
 # Rebind Ctrl+D STTY end-of-file
 keybind = ctrl+period=text:\x04
 
-# Ctrl+I -> F13 passthrough
-keybind = ctrl+i=text:\x1b\x5b\x31\x3b\x32\x50
+# Ctrl+I -> F16 passthrough
+keybind = ctrl+i=text:\x1b\x5b\x31\x3b\x32\x53
 
-# Ctrl+M -> F14 passthrough
-keybind = ctrl+m=text:\x1b\x5b\x31\x3b\x32\x51
+# Ctrl+M -> F17 passthrough
+keybind = ctrl+m=text:\x1b\x5b\x31\x35\x3b\x32\x7e
 
-# Ctrl+Backspace -> F15 passthrough
-keybind = ctrl+backspace=text:\x1b\x5b\x31\x3b\x32\x52
+# Ctrl+Backspace -> F18 passthrough
+keybind = ctrl+backspace=text:\x1b\x5b\x31\x37\x3b\x32\x7e
 
-# Ctrl+Period -> F16 passthrough
-keybind = ctrl+period=text:\x1b\x5b\x31\x3b\x32\x53
+# Ctrl+Period -> F19 passthrough
+keybind = ctrl+period=text:\x1b\x5b\x31\x38\x3b\x32\x7e
 
 # Ctrl+Tab passthrough (NVIM can correctly interpret this, no function key hack)
 keybind = ctrl+tab=text:\x1b\x5b\x39\x3b\x35\x75
 
-# Ctrl+Semicolon -> F17 passthrough
-keybind = ctrl+semicolon=text:\x1b\x5b\x31\x35\x3b\x32\x7e
+# Ctrl+Semicolon -> F20 passthrough
+keybind = ctrl+semicolon=text:\x1b\x5b\x31\x39\x3b\x32\x7e
 
 # New splits
 keybind = ctrl+shift+n=new_split:right

@@ -110,29 +110,29 @@ key = 'X'
 chars = "\u0003"
 
 #------------------------------ Passthrough
-# Ctrl+I -> F13 passthrough
+# Ctrl+I -> F16 passthrough
 [[keyboard.bindings]]
 mods = 'Control'
 key = 'I'
-chars = "\u001b\u005b\u0031\u003b\u0032\u0050"
+chars = "\u001b\u005b\u0031\u003b\u0032\u0053"
 
-# Ctrl+M -> F14 passthrough
+# Ctrl+M -> F17 passthrough
 [[keyboard.bindings]]
 mods = 'Control'
 key = 'M'
-chars = "\u001b\u005b\u0031\u003b\u0032\u0051"
+chars = "\u001b\u005b\u0031\u0035\u003b\u0032\u007e"
 
-# Ctrl+Backspace -> F15 passthrough
+# Ctrl+Backspace -> F18 passthrough
 [[keyboard.bindings]]
 mods = 'Control'
 key = 'Backspace'
-chars = "\u001b\u005b\u0031\u003b\u0032\u0052"
+chars = "\u001b\u005b\u0031\u0037\u003b\u0032\u007e"
 
-# Ctrl+Period -> F16 passthrough
+# Ctrl+Period -> F19 passthrough
 [[keyboard.bindings]]
 mods = 'Control'
 key = 'Period'
-chars = "\u001b\u005b\u0031\u003b\u0032\u0053"
+chars = "\u001b\u005b\u0031\u0038\u003b\u0032\u007e"
 
 # Ctrl+Tab passthrough (NVIM can correctly interpret this, no function key hack)
 [[keyboard.bindings]]
@@ -140,11 +140,11 @@ mods = 'Control'
 key = 'Tab'
 chars = "\u001b\u005b\u0039\u003b\u0035\u0075"
 
-# Ctrl+Semicolon -> F17 passthrough
+# Ctrl+Semicolon -> F20 passthrough
 [[keyboard.bindings]]
 mods = 'Control'
 key = 'Semicolon'
-chars = "\u001b\u005b\u0031\u0035\u003b\u0032\u007e"
+chars = "\u001b\u005b\u0031\u0039\u003b\u0032\u007e"
 
 # Colors
 #-------------------------------------------------------------------------------

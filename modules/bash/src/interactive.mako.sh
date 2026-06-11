@@ -65,8 +65,8 @@ bind -x '"\C-u":"clear; eza -al | view.sh"'
 
 # List all files in tree format
 # NOTE: Ctrl+I is normally interpreted as Tab, but we want to use it here, so
-# we rebind it to simulate F13 (\e\[1\;2P).
-bind -x '"\e\[1\;2P":"clear; eza -aT --git-ignore | view.sh"'
+# we rebind it to simulate F16 (\e\[1\;2S).
+bind -x '"\e\[1\;2S":"clear; eza -aT --git-ignore | view.sh"'
 
 # # Copy the whole line to clipboard
 copy_line_to_clipboard () {
