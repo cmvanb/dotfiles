@@ -33,6 +33,7 @@
       "Read(*.env.*)"
     ]
   },
+  "model": "",
   "hooks": {
     "Notification": [
       {
