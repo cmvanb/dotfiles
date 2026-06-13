@@ -21,6 +21,7 @@
         "bluetooth",
         "wireplumber",
         "battery",
+        "custom/claude",
         "custom/cpu",
         "custom/memory",
         "clock#calendar",
@@ -96,6 +97,17 @@
         "format-icons": ["󰕿", "󰖀", "󰕾"],
         "on-click": "pavucontrol",
         "on-click-right": "wpctl set-mute 167 toggle"
+    },
+    "custom/claude": {
+        "exec": "${XDG_CONFIG_HOME}/waybar/claude.sh",
+        "format": "{}",
+        "return-type": "json",
+        "interval": 300,
+        "states": {
+            "medium": 50,
+            "heavy": 70,
+            "critical": 90
+        }
     },
     "custom/cpu": {
         "exec": "${XDG_CONFIG_HOME}/waybar/cpu.sh",
