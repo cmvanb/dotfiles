@@ -78,6 +78,9 @@ exec wlsunset -l 52.155472 -L 5.389358
 # Clean home
 exec $scripts_dir/clean-home.sh
 
+# Workspace switcher widget
+exec_always swavey daemon
+
 # Theme configuration
 #-------------------------------------------------------------------------------
 
