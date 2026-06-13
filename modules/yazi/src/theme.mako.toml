@@ -122,5 +122,6 @@ prepend_conds = [
     { if = "sock", text = "" },
     { if = "fifo", text = "" },
     { if = "exec & !dir & !link", text = "" },
-    { if = "dir", text = "", fg = "blue" }
+    { if = "dir", text = "", fg = "blue" },
+    { if = "!dir & !link & !exec & !fifo & !sock", text = "", fg = "${color_hash('ansi_brblue')}" }
 ]
