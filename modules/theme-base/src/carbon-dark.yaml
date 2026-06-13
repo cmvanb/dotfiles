@@ -208,7 +208,7 @@ colors:
   editor_nontext_hl:  *gray_4
 
   # Web
-  web_page_bg:        *primary_1
+  web_page_bg:        *purple_0
   web_link:           *primary_12
   web_link_hover:     *primary_15
   web_link_visited:   *green_3
