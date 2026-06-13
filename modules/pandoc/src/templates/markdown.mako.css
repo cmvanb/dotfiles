@@ -53,7 +53,7 @@ body {
   background-color: ${color_hash('web_page_bg')};
   color: ${color_hash('text_10')};
   font-family: ${font_sans}, helvetica, arial, freesans, clean, sans-serif;
-  font-size: 1.0em;
+  font-size: 0.9em;
   line-height: 1.45;
   -webkit-font-smoothing: subpixel-antialiased;
 
@@ -68,10 +68,6 @@ body > *:first-child {
 
 body > *:last-child {
   margin-bottom: 0 !important;
-}
-
-p {
-  font-size: 0.90em;
 }
 
 /* ============================================================
@@ -260,7 +256,6 @@ dl {
 }
 
 dl dt {
-  font-size: 1em;
   font-weight: bold;
   font-style: italic;
   padding: 0;
