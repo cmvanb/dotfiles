@@ -2,3 +2,7 @@
 	path = modules/nvim/src
 	url = git@github.com:cmvanb/nvimfiles.git
 	branch = main
+[submodule "modules/theme-desktop/src/carbon-gtk"]
+	path = modules/theme-desktop/src/carbon-gtk
+	url = git@github.com:cmvanb/carbon-gtk.git
+	branch = main

@@ -13,6 +13,8 @@ source "$base_dir/lib/template.sh"
 theme-desktop::install_gtk_theme () {
     echo "└> Installing GTK theme."
 
+    git submodule update --recursive --remote
+
     # Install GTK settings files
     local src="$base_dir/modules/theme-desktop/src"
 
@@ -24,7 +26,7 @@ theme-desktop::install_gtk_theme () {
     template::render_mako "$src/gtk-4.0-settings.mako.ini" "$XDG_CONFIG_HOME/gtk-4.0/settings.ini"
 
     # Install GTK CSS files
-    local theme_src="$src/carbon-dark-gtk"
+    local theme_src="$src/carbon-gtk/carbon-dark-gtk"
     local theme_dest="$HOME/.local/share/themes/carbon-dark-gtk"
 
     fs::ensure_directory "$theme_dest"
