@@ -53,8 +53,8 @@ body {
   background-color: ${color_hash('web_page_bg')};
   color: ${color_hash('text_10')};
   font-family: ${font_sans}, helvetica, arial, freesans, clean, sans-serif;
-  font-size: 1em;
-  line-height: 1.6;
+  font-size: 1.0em;
+  line-height: 1.45;
   -webkit-font-smoothing: subpixel-antialiased;
 
   max-width: 38em;
@@ -68,6 +68,10 @@ body > *:first-child {
 
 body > *:last-child {
   margin-bottom: 0 !important;
+}
+
+p {
+  font-size: 0.90em;
 }
 
 /* ============================================================
@@ -113,33 +117,33 @@ h6 {
 }
 
 h1 {
-  font-size: 1.6em;
+  font-size: 2em;
   color: ${color_hash('heading_1')};
 }
 
 h2 {
-  font-size: 1.4em;
+  font-size: 1.5em;
   border-bottom: 1px solid ${color_hash('gray_4')};
   color: ${color_hash('heading_2')};
 }
 
 h3 {
-  font-size: 1.25em;
+  font-size: 1.15em;
   color: ${color_hash('heading_3')};
 }
 
 h4 {
-  font-size: 1.15em;
+  font-size: 1.05em;
   color: ${color_hash('heading_4')};
 }
 
 h5 {
-  font-size: 1.1em;
+  font-size: 0.95em;
   color: ${color_hash('heading_5')};
 }
 
 h6 {
-  font-size: 1.05em;
+  font-size: 0.8em;
   color: ${color_hash('heading_6')};
 }
 
@@ -157,18 +161,6 @@ a:first-child h3,
 a:first-child h4,
 a:first-child h5,
 a:first-child h6 {
-  margin-top: 0;
-}
-
-/* Suppress top margin on first content immediately following a heading */
-h1 + p,
-h2 + p,
-h3 + p,
-h4 + p,
-h5 + p,
-h6 + p,
-ul li > :first-child,
-ol li > :first-child {
   margin-top: 0;
 }
 
@@ -246,6 +238,7 @@ hr {
 
 ul,
 ol {
+  line-height: 1.6em;
   padding-left: 30px;
   padding-right: 30px;
 }
@@ -306,7 +299,7 @@ blockquote > :last-child  { margin-bottom: 0; }
 code,
 tt {
   margin: 0 2px;
-  padding: 0 5px;
+  padding: 3px 3px 1px 3px;
   white-space: nowrap;
   background-color: ${color_hash('editor_bg')};
   border: 1px solid ${color_hash('gray_1')};
