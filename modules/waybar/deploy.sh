@@ -48,6 +48,7 @@ waybar::install () {
 
     fs::force_link "$src/tailscale.sh" "$XDG_CONFIG_HOME/waybar/tailscale.sh"
     fs::force_link "$src/memory.sh" "$XDG_CONFIG_HOME/waybar/memory.sh"
+    fs::force_link "$src/cpu.sh" "$XDG_CONFIG_HOME/waybar/cpu.sh"
 }
 
 waybar::uninstall () {

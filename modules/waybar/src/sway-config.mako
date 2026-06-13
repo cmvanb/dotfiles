@@ -21,7 +21,7 @@
         "bluetooth",
         "wireplumber",
         "battery",
-        "cpu",
+        "custom/cpu",
         "custom/memory",
         "clock#calendar",
         "clock"
@@ -79,7 +79,7 @@
         "format-wifi": "󰖩  {essid}",
         "format-disconnected": "󰲜  no network",
         "tooltip": true,
-        "tooltip-format": "󰩟 {gwaddr}  ↑{bandwidthUpBytes}  ↓{bandwidthDownBytes}",
+        "tooltip-format": "󰩟  {gwaddr}    {bandwidthUpBytes}    {bandwidthDownBytes}",
         "tooltip-format-wifi": "󰤨  {signalStrength}%  ↑{bandwidthUpBytes}  ↓{bandwidthDownBytes}",
         "tooltip-format-disconnected": "Disconnected"
     },
@@ -97,8 +97,11 @@
         "on-click": "pavucontrol",
         "on-click-right": "wpctl set-mute 167 toggle"
     },
-    "cpu": {
-        "format": "cpu {usage}%",
+    "custom/cpu": {
+        "exec": "${XDG_CONFIG_HOME}/waybar/cpu.sh",
+        "format": "{}",
+        "return-type": "json",
+        "interval": 3,
         "states": {
             "medium": 50,
             "heavy": 70,
@@ -109,7 +112,7 @@
         "exec": "${XDG_CONFIG_HOME}/waybar/memory.sh",
         "format": "{}",
         "return-type": "json",
-        "interval": 30,
+        "interval": 3,
         "states": {
             "medium": 50,
             "heavy": 70,
