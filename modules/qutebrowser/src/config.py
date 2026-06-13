@@ -123,22 +123,28 @@ c.completion.height = '40%'
 c.completion.scrollbar.padding = 3
 c.completion.scrollbar.width = 10
 
-c.colors.completion.category.border.top = theme.color_hash('primary_1')
-c.colors.completion.category.border.bottom = theme.color_hash('primary_1')
-c.colors.completion.category.bg = theme.color_hash('primary_2')
+# the scrollbar
+c.colors.completion.scrollbar.fg = theme.color_hash('gray_8')
+c.colors.completion.scrollbar.bg = theme.color_hash('gray_1')
+
+# the divider at the top of each category
+c.colors.completion.category.border.top = theme.color_hash('gray_4')
+c.colors.completion.category.border.bottom = theme.color_hash('gray_4')
+c.colors.completion.category.bg = theme.color_hash('gray_4')
 c.colors.completion.category.fg = theme.color_hash('text_15')
-c.colors.completion.even.bg = theme.color_hash('primary_1')
-c.colors.completion.odd.bg = theme.color_hash('primary_1')
+
+# an item in the list
+c.colors.completion.even.bg = theme.color_hash('gray_1')
+c.colors.completion.odd.bg = theme.color_hash('gray_1')
 c.colors.completion.fg = [ theme.color_hash('text_12'), theme.color_hash('text_12'), theme.color_hash('text_12') ]
 
-c.colors.completion.item.selected.border.bottom = theme.color_hash('primary_6')
-c.colors.completion.item.selected.border.top = theme.color_hash('primary_6')
-c.colors.completion.item.selected.bg = theme.color_hash('primary_6')
+# the selected item
+c.colors.completion.item.selected.border.bottom = theme.color_hash('primary_8')
+c.colors.completion.item.selected.border.top = theme.color_hash('primary_8')
+c.colors.completion.item.selected.bg = theme.color_hash('primary_8')
 c.colors.completion.item.selected.fg = theme.color_hash('text_15')
 c.colors.completion.item.selected.match.fg = theme.color_hash('yellow_5')
 c.colors.completion.match.fg = theme.color_hash('magenta_5')
-c.colors.completion.scrollbar.fg = theme.color_hash('gray_2')
-c.colors.completion.scrollbar.bg = theme.color_hash('primary_1')
 
 # Behavior
 c.completion.web_history.exclude = [ '*.duckduckgo.com', 'www.google.com/search*', 'rdx.overdevs.com/*' ]
@@ -227,21 +233,21 @@ c.statusbar.widgets = [ 'keypress', 'url', 'scroll', 'history', 'tabs', 'progres
 c.statusbar.padding = { 'top': 1, 'bottom': 1, 'left': 0, 'right': 0 }
 c.statusbar.position = 'bottom'
 
-c.colors.statusbar.normal.bg = theme.color_hash('gray_1')
+c.colors.statusbar.normal.bg = theme.color_hash('black')
 c.colors.statusbar.normal.fg = theme.color_hash('text_12')
 c.colors.statusbar.caret.bg = theme.color_hash('magenta_2')
 c.colors.statusbar.caret.fg = theme.color_hash('magenta_5')
 c.colors.statusbar.caret.selection.bg = theme.color_hash('cyan_3')
 c.colors.statusbar.caret.selection.fg = theme.color_hash('cyan_6')
-c.colors.statusbar.command.bg = theme.color_hash('gray_1')
+c.colors.statusbar.command.bg = theme.color_hash('black')
 c.colors.statusbar.command.fg = theme.color_hash('text_8')
 c.colors.statusbar.insert.bg = theme.color_hash('green_2')
 c.colors.statusbar.insert.fg = theme.color_hash('green_5')
 c.colors.statusbar.passthrough.bg = theme.color_hash('yellow_2')
 c.colors.statusbar.passthrough.fg = theme.color_hash('yellow_5')
-c.colors.statusbar.private.bg = theme.color_hash('purple_1')
+c.colors.statusbar.private.bg = theme.color_hash('purple_2')
 c.colors.statusbar.private.fg = theme.color_hash('text_15')
-c.colors.statusbar.command.private.bg = theme.color_hash('gray_1')
+c.colors.statusbar.command.private.bg = theme.color_hash('black')
 c.colors.statusbar.command.private.fg = theme.color_hash('text_8')
 c.colors.statusbar.progress.bg = theme.color_hash('text_15')
 c.colors.statusbar.url.error.fg = theme.color_hash('red_5')
