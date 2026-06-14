@@ -30,9 +30,9 @@ state_file="${XDG_STATE_HOME:-$HOME/.local/state}/sway/outputs-workspace-map"
 
 declare -A NAMED_WS=(
     [home]="11:home"     [mail]="12:mail"     [todo]="13:todo"
-    [audio]="14:audio"   [auth]="15:auth"     [system]="16:system"
+    [vim]="14:vim"       [auth]="15:auth"     [system]="16:system"
     [config]="17:config" [dev]="18:dev"       [project]="19:project"
-    [ssh]="20:ssh"       [chat]="21:chat"
+    [ssh]="20:ssh"       [chat]="21:chat"     [audio]="22:audio"
 )
 
 if [[ "$target_workspace" =~ ^[0-9]+$ ]]; then
