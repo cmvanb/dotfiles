@@ -14,8 +14,8 @@ lib-python-utils::install () {
     local bin_dir="${XDG_BIN_HOME:-$HOME/.local/bin}"
 
     python -m venv "$venv_dir"
-    "$venv_dir/bin/pip" install --quiet setuptools
-    "$venv_dir/bin/pip" install --quiet -e "$src"
+    "$venv_dir/bin/pip" install --quiet --timeout 3 setuptools
+    "$venv_dir/bin/pip" install --quiet --timeout 3 -e "$src"
 
     mkdir -p "$bin_dir"
     ln -sf "$venv_dir/bin/render-mako" "$bin_dir/render-mako"
