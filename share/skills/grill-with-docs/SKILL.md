@@ -9,6 +9,8 @@ Interview me relentlessly about every aspect of this plan until we reach a share
 
 Ask the questions one at a time, waiting for feedback on each question before continuing.
 
+Use the Question or AskUserQuestion tool to ask questions.
+
 If a question can be answered by exploring the codebase, explore the codebase instead.
 
 </what-to-do>
