@@ -113,23 +113,13 @@
         "exec": "${XDG_CONFIG_HOME}/waybar/cpu.sh",
         "format": "{}",
         "return-type": "json",
-        "interval": 3,
-        "states": {
-            "medium": 50,
-            "heavy": 70,
-            "critical": 90
-        }
+        "interval": 3
     },
     "custom/memory": {
         "exec": "${XDG_CONFIG_HOME}/waybar/memory.sh",
         "format": "{}",
         "return-type": "json",
-        "interval": 3,
-        "states": {
-            "medium": 50,
-            "heavy": 70,
-            "critical": 90
-        }
+        "interval": 3
     },
 
     /* Laptop modules

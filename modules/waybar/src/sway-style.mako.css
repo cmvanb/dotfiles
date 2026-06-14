@@ -128,13 +128,13 @@ box > * > * {
 
 /* CPU
 *-----------------------------------------------------------------------------*/
-#cpu.medium {
+#custom-cpu.medium {
     color: ${color_hash('yellow_7')};
 }
-#cpu.heavy {
+#custom-cpu.heavy {
     color: ${color_hash('orange_6')};
 }
-#cpu.critical {
+#custom-cpu.critical {
     color: ${color_hash('red_6')};
 }
 

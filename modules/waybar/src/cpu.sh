@@ -25,4 +25,5 @@ temp=$(sensors coretemp-isa-0000 2>/dev/null \
     | awk '/^Package id 0:/ { match($0, /\+([0-9.]+)°/, a); printf "%d", int(a[1]) }')
 temp=${temp:-0}
 
-printf '{"text":"cpu %d%%","tooltip":"%d°C","percentage":%d}\n' "$usage" "$temp" "$usage"
+class=$( [ "$usage" -ge 90 ] && echo critical || ( [ "$usage" -ge 70 ] && echo heavy || ( [ "$usage" -ge 50 ] && echo medium || echo "" ) ) )
+printf '{"text":"cpu %d%%","tooltip":"%d°C","percentage":%d,"class":"%s"}\n' "$usage" "$temp" "$usage" "$class"
