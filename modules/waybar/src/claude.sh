@@ -54,7 +54,7 @@ currency=$(jq -r '.extra_usage.currency // "?"' <<< "$response")
 h5_left=$(humanize_remaining "$h5_resets")
 d7_left=$(humanize_remaining "$d7_resets")
 
-tooltip="5h: ${h5}%  ·  resets in ${h5_left}"$'\n'"7d: ${d7}%  ·  resets in ${d7_left}"$'\n'"credits: ${credits_used}/${credits_limit} ${currency}  (${credits_pct}%)"
+tooltip="5h: ${h5}%  ·  resets in ${h5_left}"$'\n'"7d: ${d7}%  ·  resets in ${d7_left}"$'\n'"extra: ${credits_used}/${credits_limit} ${currency}  (${credits_pct}%)"
 
 jq -cn \
     --arg text "claude ${h5}%" \
