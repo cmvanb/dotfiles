@@ -22,6 +22,13 @@ run  = "quit --no-cwd-file"
 on   = "<Esc>"
 run  = "quit --no-cwd-file"
 
+#-- scripts-markdown
+#-------------------------------------------------------------------------------
+[[mgr.prepend_keymap]]
+on   = "M"
+run  = "shell '$XDG_SCRIPTS_HOME/preview-markdown.sh \"$@\"'"
+desc = "Preview markdown file"
+
 #-- dedukun/bookmarks
 #-------------------------------------------------------------------------------
 [[mgr.prepend_keymap]]
