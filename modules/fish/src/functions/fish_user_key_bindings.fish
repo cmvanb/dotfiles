@@ -50,6 +50,7 @@ function fish_user_key_bindings
 
     # History
     bind \ck history-pager
+    bind ctrl-delete history-delete
     bind \cz undo
     bind \e\[1\;5A undo  # Ctrl+Up
     bind \e\[1\;5B redo  # Ctrl+Down
