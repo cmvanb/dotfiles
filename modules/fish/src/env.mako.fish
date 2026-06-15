@@ -28,5 +28,3 @@ set -x TERMINAL "ghostty"
 
 set -x EDITOR "nvim"
 
-# Configure less pager.
-set -x LESS "--clear-screen --RAW-CONTROL-CHARS --tilde +25d"

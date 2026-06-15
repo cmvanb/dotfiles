@@ -29,5 +29,3 @@ export TERMINAL="ghostty"
 
 export EDITOR="nvim"
 
-# Configure less pager.
-export LESS="--clear-screen --RAW-CONTROL-CHARS --tilde +25d"

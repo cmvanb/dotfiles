@@ -15,11 +15,15 @@ less::install () {
     local src="$base_dir/modules/less/src"
 
     fs::ensure_directory "$XDG_CONFIG_HOME"
-    fs::force_link "$src/lesskey" "$XDG_CONFIG_HOME/lesskey"
+    fs::force_link "$src/lesskey"        "$XDG_CONFIG_HOME/lesskey"
+    fs::force_link "$src/bash/less.sh"   "$XDG_CONFIG_HOME/bash/conf.d/less.sh"
+    fs::force_link "$src/fish/less.fish" "$XDG_CONFIG_HOME/fish/conf.d/less.fish"
 }
 
 less::uninstall () {
     echo "└> Uninstalling less configuration."
 
     rm "$XDG_CONFIG_HOME/lesskey"
+    rm -f "$XDG_CONFIG_HOME/bash/conf.d/less.sh"
+    rm -f "$XDG_CONFIG_HOME/fish/conf.d/less.fish"
 }
