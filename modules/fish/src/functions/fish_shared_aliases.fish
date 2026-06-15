@@ -35,6 +35,7 @@ function fish_shared_aliases
     abbr -a grts git restore --staged
     abbr -a gs git status
     abbr -a gsh git show
+    abbr -a gsd git -c delta.side-by-side=true show
     abbr -a gsu git status -u
     abbr -a gss git switch
     abbr -a gsc git switch -c
