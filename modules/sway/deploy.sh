@@ -24,6 +24,7 @@ sway::install () {
     fs::force_link "$src/reload.sh" "$XDG_CONFIG_HOME/sway/reload.sh"
     fs::force_link "$src/open-pavucontrol.sh" "$XDG_CONFIG_HOME/sway/open-pavucontrol.sh"
     fs::force_link "$src/sws.sh" "$XDG_CONFIG_HOME/sway/sws.sh"
+    fs::force_link "$src/equalize-splits.py" "$XDG_CONFIG_HOME/sway/equalize-splits.py"
     fs::force_link "$src/outputs-workspace-mapper.sh" "$XDG_CONFIG_HOME/sway/outputs-workspace-mapper.sh"
     fs::force_link "$src/startup-workspace.sh" "$XDG_CONFIG_HOME/sway/startup-workspace.sh"
 
