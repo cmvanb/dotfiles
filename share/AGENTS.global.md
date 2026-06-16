@@ -49,3 +49,4 @@ Evaluate every trigger below against the full task before starting. Load all ski
 - **Python**: When working with Python code, packages, or dependencies — invoke the `python` skill.
 - **Rust**: When working with Rust code, Cargo projects, or crates — invoke the `rust` skill.
 - **Git**: When the user asks you to commit changes or perform other git operations — invoke the `git` skill.
+- **XDG Base Dirs**: When placing any user-level file path, writing a dotfiles module deploy script, or referencing paths under `~/.config`, `~/.local`, or `~/.cache` — invoke the `xdg-base-dirs` skill.
