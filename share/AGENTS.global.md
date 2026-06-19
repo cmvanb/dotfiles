@@ -56,3 +56,4 @@ Evaluate every trigger below against the full task before starting. Load all ski
 - **Rust**: When working with Rust code, Cargo projects, or crates — invoke the `rust` skill.
 - **Git**: When the user asks you to commit changes or perform other git operations — invoke the `git` skill.
 - **XDG Base Dirs**: When placing any user-level file path, writing a dotfiles module deploy script, or referencing paths under `~/.config`, `~/.local`, or `~/.cache` — invoke the `xdg-base-dirs` skill.
+- **Sway**: When inspecting or controlling the Sway window manager — identifying windows, targeting them with criteria, floating/tiling, resizing, or positioning — invoke the `sway` skill.
