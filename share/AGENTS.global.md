@@ -35,6 +35,12 @@ Verify before concluding. Every claim about system state must be backed by direc
 
 Before the first response, list the full filesystem path of every instruction file that was loaded in session context. Then state the working directory and active git branch.
 
+## Working Directory
+
+Confine every write to the current working directory. Get explicit approval from the user before attempting writes outside of the CWD.
+
+The CWD may be a git worktree rather than the primary checkout. Confirm the active branch before writing. Never read for action or write into a sibling worktree or any other checkout outside the working directory.
+
 ## Skills
 
 Evaluate every trigger below against the full task before starting. Load all skills whose conditions match — not just the first one.
