@@ -6,10 +6,10 @@ Never use the memory system. Keep all persistent knowledge in `AGENTS.md` files 
 
 When you need to remember something for a future session, first determine its position in the hierarchy.
 
-**Global** — `~/Code/dotfiles/share/AGENTS.global.md`
+**Global** — `~/.config/agents/AGENTS.md`
 Facts or rules that apply in every project and every context: agent behavior, universal conventions, skill triggers.
 
-**Skill** — `~/Code/dotfiles/share/skills/`
+**Skill** — `~/.config/agents/skills/`
 Facts or rules scoped to a specific domain, tool, language, or task type. Loaded only when relevant. Create a new skill file if none fits.
 
 **Project** — project root `AGENTS.md`

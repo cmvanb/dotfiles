@@ -1,5 +1,5 @@
 profile.extends=server
 
 modules.theme=theme-desktop
-modules.install=alacritty ansible bitwarden btop chromium claude-code direnv disable-xdg-desktop-files discord docker draw.io fontconfig ghostty gimp gitui gnupg imv mpv opencode pandoc qutebrowser rust scripts-markdown scripts-misc scripts-system-utils spotify udiskie vt wezterm wireplumber xdg-mimetype-associations yay zathura
+modules.install=agents alacritty ansible bitwarden btop chromium claude-code direnv disable-xdg-desktop-files discord docker draw.io fontconfig ghostty gimp gitui gnupg imv mpv opencode pandoc qutebrowser rust scripts-markdown scripts-misc scripts-system-utils spotify udiskie vt wezterm wireplumber xdg-mimetype-associations yay zathura
 modules.enable=pipewire wireplumber ssh syncthing udiskie
