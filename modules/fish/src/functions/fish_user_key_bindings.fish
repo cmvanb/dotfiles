@@ -94,8 +94,8 @@ function fish_user_key_bindings
 
     # List all files in tree format
     # NOTE: Fish normally cannot interpret Ctrl+I. The terminal emulator can,
-    # so we remapped Ctrl+I to send F13.
-    bind \e\[1\;2P 'clear; commandline -f repaint; eza -aT --git-ignore | view.sh'
+    # so we remapped Ctrl+I to send F16.
+    bind \e\[1\;2S 'clear; commandline -f repaint; eza -aT --git-ignore | view.sh'
 
     # Expand ... to ../..
     bind . 'expand-dot-to-double-dot'
