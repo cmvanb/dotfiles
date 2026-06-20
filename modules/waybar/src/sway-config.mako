@@ -102,7 +102,7 @@
         "exec": "${XDG_CONFIG_HOME}/waybar/claude.sh",
         "format": "{}",
         "return-type": "json",
-        "interval": 300,
+        "interval": 60,
         "states": {
             "medium": 50,
             "heavy": 70,
