@@ -25,7 +25,7 @@ Each file has a single top-level key (`colors:`, `fonts:`, `cursor:`).
 
 Colors are `key: "#RRGGBB"` hex strings. YAML anchors and aliases allow internal references (`ansi_red: *red_4`).
 
-**Core palettes** (16-step gradients): `primary`, `text`, `gray`
+**Core palettes** (16-step gradients): `primary`, `secondary`, `text`, `gray`
 
 **Accent palettes** (10-step gradients): `red`, `orange`, `yellow`, `green`, `cyan`, `blue`, `purple`, `magenta`
 

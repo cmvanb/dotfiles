@@ -30,6 +30,25 @@ colors:
   primary_14: &primary_14 "#98b8d8"
   primary_15: &primary_15 "#a0c0e0"
 
+  # Secondary (32-47)
+  # WIP: Placeholder — copy of primary palette.
+  secondary_0:  &secondary_0  "#305070"
+  secondary_1:  &secondary_1  "#375777"
+  secondary_2:  &secondary_2  "#3e5e7e"
+  secondary_3:  &secondary_3  "#456585"
+  secondary_4:  &secondary_4  "#4c6c8c"
+  secondary_5:  &secondary_5  "#537393"
+  secondary_6:  &secondary_6  "#5a7a9a"
+  secondary_7:  &secondary_7  "#6181a1"
+  secondary_8:  &secondary_8  "#6888a8"
+  secondary_9:  &secondary_9  "#7090b0"
+  secondary_10: &secondary_10 "#7898b8"
+  secondary_11: &secondary_11 "#80a0c0"
+  secondary_12: &secondary_12 "#88a8c8"
+  secondary_13: &secondary_13 "#90b0d0"
+  secondary_14: &secondary_14 "#98b8d8"
+  secondary_15: &secondary_15 "#a0c0e0"
+
   # Text (48-63)
   # generate-color-gradient-palette.py --samples 16 --start '#22111a' --middle '#ccaa99'  --end '#ffefdf' --curve linear --midpoint 0.6
   text_0: &text_0   "#22111a"

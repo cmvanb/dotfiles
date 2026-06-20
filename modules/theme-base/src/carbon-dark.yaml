@@ -30,6 +30,25 @@ colors:
   primary_14: &primary_14 "#3a8cf1"
   primary_15: &primary_15 "#4099ff"
 
+  # Secondary (32-47)
+  # Desaturated primary (HSL saturation × 0.35), same lightness ramp.
+  secondary_0:  &secondary_0  "#171821"
+  secondary_1:  &secondary_1  "#1d202b"
+  secondary_2:  &secondary_2  "#232836"
+  secondary_3:  &secondary_3  "#293041"
+  secondary_4:  &secondary_4  "#30384b"
+  secondary_5:  &secondary_5  "#364056"
+  secondary_6:  &secondary_6  "#3c4861"
+  secondary_7:  &secondary_7  "#42506c"
+  secondary_8:  &secondary_8  "#495876"
+  secondary_9:  &secondary_9  "#4f6081"
+  secondary_10: &secondary_10 "#566a8c"
+  secondary_11: &secondary_11 "#5e7496"
+  secondary_12: &secondary_12 "#667ea1"
+  secondary_13: &secondary_13 "#6e88ab"
+  secondary_14: &secondary_14 "#7592b6"
+  secondary_15: &secondary_15 "#7e9dc1"
+
   # Text (48-63)
   # generate-color-gradient-palette.py --samples 16 --start '#22111a' --middle '#ccaa99'  --end '#ffefdf' --curve linear --midpoint 0.6
   text_0: &text_0   "#22111a"
