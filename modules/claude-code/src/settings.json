@@ -69,5 +69,6 @@
     "rust-analyzer-lsp@claude-plugins-official": true
   },
   "preferredNotifChannel": "notifications_disabled",
-  "inputNeededNotifEnabled": false
+  "inputNeededNotifEnabled": false,
+  "tui": "fullscreen"
 }
