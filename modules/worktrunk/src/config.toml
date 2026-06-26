@@ -1,0 +1,7 @@
+skip-shell-integration-prompt = true
+skip-commit-generation-prompt = true
+
+[projects]
+
+[merge]
+squash = false
