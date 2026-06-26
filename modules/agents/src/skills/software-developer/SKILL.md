@@ -45,7 +45,8 @@ Depend on abstractions, not concrete implementations. High-level modules must no
 
 ### Comments
 
-- Don't add comments when writing code.
+- All comments must explain either domain intent or a non-obvious rationale.
+- Avoid adding comments throughout code.
 - Do leave pre-existing comments unchanged.
 - Do move pre-existing comments when necessary.
 
