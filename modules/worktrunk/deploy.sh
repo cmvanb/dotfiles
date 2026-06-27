@@ -4,6 +4,8 @@ base_dir=$(realpath "$script_dir/../..")
 source "$base_dir/lib/fs.sh"
 
 worktrunk::install() {
+    echo "└> Installing worktrunk configuration."
+
     assert_dependency wt
 
     local src="$base_dir/modules/worktrunk/src"
@@ -13,5 +15,7 @@ worktrunk::install() {
 }
 
 worktrunk::uninstall() {
+    echo "└> Uninstalling worktrunk configuration."
+
     rm -f "$XDG_CONFIG_HOME/worktrunk/config.toml"
 }
