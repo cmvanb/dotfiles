@@ -17,6 +17,7 @@ scripts-system-utils::install () {
     fs::force_link "$src/init.basic" "$XDG_BIN_HOME/init"
     fs::force_link "$src/logout.sh" "$XDG_BIN_HOME/logout"
     fs::force_link "$src/reboot.sh" "$XDG_BIN_HOME/reboot"
+    fs::force_link "$src/reboot-windows.sh" "$XDG_BIN_HOME/windows"
     fs::force_link "$src/shutdown.sh" "$XDG_BIN_HOME/shutdown"
     fs::force_link "$src/suspend.sh" "$XDG_BIN_HOME/suspend"
 }
@@ -31,6 +32,7 @@ scripts-system-utils::uninstall () {
     fi
     rm "$XDG_BIN_HOME/logout"
     rm "$XDG_BIN_HOME/reboot"
+    rm "$XDG_BIN_HOME/windows"
     rm "$XDG_BIN_HOME/shutdown"
     rm "$XDG_BIN_HOME/suspend"
 }
