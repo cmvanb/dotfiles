@@ -66,9 +66,10 @@
     ]
   },
   "enabledPlugins": {
-    "rust-analyzer-lsp@claude-plugins-official": true
+    "rust-analyzer-lsp@claude-plugins-official": true,
+    "context7@claude-plugins-official": true
   },
+  "tui": "fullscreen",
   "preferredNotifChannel": "notifications_disabled",
-  "inputNeededNotifEnabled": false,
-  "tui": "fullscreen"
+  "inputNeededNotifEnabled": false
 }
