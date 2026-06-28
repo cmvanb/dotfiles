@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=Yazi File Manager
+GenericName=File Manager
+Comment=Open directory in Yazi file manager
+Exec=spawn-terminal.sh -c "yazi %f"
+Terminal=false
+Type=Application
+NoDisplay=true
+MimeType=inode/directory;

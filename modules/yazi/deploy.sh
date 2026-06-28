@@ -27,10 +27,14 @@ yazi::install () {
     ya pkg add yazi-rs/plugins:smart-enter 2>/dev/null || true
     ya pkg add ndtoan96/ouch 2>/dev/null || true
     ya pkg add dedukun/bookmarks 2>/dev/null || true
+
+    fs::ensure_directory "$XDG_DATA_HOME/applications"
+    fs::force_link "$src/yazi-open.desktop" "$XDG_DATA_HOME/applications/yazi-open.desktop"
 }
 
 yazi::uninstall () {
     echo "└> Uninstalling yazi configuration."
 
     rm -r "$XDG_CONFIG_HOME/yazi"
+    rm "$XDG_DATA_HOME/applications/yazi-open.desktop"
 }

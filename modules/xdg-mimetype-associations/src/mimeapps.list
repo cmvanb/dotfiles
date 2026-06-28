@@ -1,4 +1,5 @@
 [Default Applications]
+inode/directory=yazi-open.desktop
 application/pdf=org.pwmt.zathura.desktop
 application/x-terminal-emulator=Alacritty.desktop
 image/bmp=imv.desktop
