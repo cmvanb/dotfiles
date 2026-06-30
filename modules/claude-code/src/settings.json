@@ -13,12 +13,12 @@
       "Bash(echo *)",
       "Bash(fd *)",
       "Bash(find *)",
-      "Bash(git diff *)",
       "Bash(git -C * diff *)",
-      "Bash(git log *)",
       "Bash(git -C * log *)",
-      "Bash(git status *)",
       "Bash(git -C * status *)",
+      "Bash(git diff *)",
+      "Bash(git log *)",
+      "Bash(git status *)",
       "Bash(grep *)",
       "Bash(head *)",
       "Bash(hostnamectl *)",
@@ -26,6 +26,7 @@
       "Bash(ls *)",
       "Bash(mkdir *)",
       "Bash(rg *)",
+      "Bash(sed *)",
       "Bash(sort *)",
       "Bash(tail *)",
       "Bash(uniq *)",
@@ -36,6 +37,9 @@
     "deny": [
       "Read(*.env)",
       "Read(*.env.*)"
+    ],
+    "ask": [
+      "Bash(sed -i *)"
     ],
     "additionalDirectories": [
       "~/.config",
