@@ -48,16 +48,6 @@
   },
   "model": "",
   "hooks": {
-    "Notification": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "input=$(cat); type=$(printf '%s' \"$input\" | jq -r '.notification_type'); [ \"$type\" != \"idle_prompt\" ] && notify-send \"Claude Code\" \"$(printf '%s' \"$input\" | jq -r '.message')\" || true"
-          }
-        ]
-      }
-    ],
     "SessionStart": [
       {
         "hooks": [
@@ -73,7 +63,5 @@
     "rust-analyzer-lsp@claude-plugins-official": true,
     "context7@claude-plugins-official": true
   },
-  "tui": "fullscreen",
-  "preferredNotifChannel": "notifications_disabled",
-  "inputNeededNotifEnabled": false
+  "tui": "fullscreen"
 }
