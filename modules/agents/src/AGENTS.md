@@ -45,9 +45,9 @@ The CWD may be a git worktree rather than the primary checkout. Confirm the acti
 
 Evaluate every trigger below against the full task before starting. Load all skills whose conditions match — not just the first one.
 
-- **Markdown formatting**: When writing or editing any `.md` file, load and follow the `markdown` skill.
+- **Markdown formatting**: When writing or editing any `.md` file — invoke the `markdown` skill.
 - **Linux context**: When making system level changes, modifying system or user configuration, debugging or troubleshooting in a live linux environment — invoke the `linux-context` skill.
-- **Software Developer**: When writing, modifying or refactoring code, designing or developing software, load the `software-developer` skill.
+- **Software Developer**: When writing, modifying or refactoring code, designing or developing software — invoke the `software-developer` skill.
 - **Diagnose**: When the user says "diagnose this" / "debug this", reports a bug, says something is broken/throwing/failing, or describes a performance regression — invoke the `diagnose` skill.
 - **Grill with docs**: When the user is brainstorming, planning or otherwise developing documentation — invoke the `grill-with-docs` skill.
 - **TDD**: When the user wants to build features or fix bugs using TDD, mentions "red-green-refactor", wants integration tests, or asks for test-first development — invoke the `tdd` skill.
