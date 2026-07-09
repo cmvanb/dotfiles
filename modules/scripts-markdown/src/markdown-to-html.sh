@@ -24,9 +24,18 @@ fi
 tmp_dir="/tmp/md"
 mkdir -p "$tmp_dir"
 
+fq_path=$(realpath -- "$1")
+header=$(grep -m1 -E '^# ' "$1" | sed -E 's/^#[[:space:]]+//') || true
+if [ -n "$header" ]; then
+    page_title="$header ($fq_path)"
+else
+    page_title="$fq_path"
+fi
+
 pandoc -s -f markdown+alerts+emoji+autolink_bare_uris+hard_line_breaks-implicit_figures -t html --toc \
     --embed-resources \
     --resource-path "$(dirname "$1")" \
     --syntax-highlighting "$XDG_CONFIG_HOME/theme/carbon-dark.pygments.theme" \
     --css "$XDG_DATA_HOME/pandoc/templates/markdown.css" \
+    --metadata pagetitle="$page_title" \
     "$1" | python3 "$XDG_SCRIPTS_HOME/svg-inject-style.py" > "$tmp_dir/$file_name.html"
