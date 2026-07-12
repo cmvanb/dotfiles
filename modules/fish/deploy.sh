@@ -34,6 +34,7 @@ fish::install () {
     fs::ensure_directory "$XDG_CONFIG_HOME/fish/conf.d"
     fs::force_link "$src/conf.d/00-xdg-base-dirs.fish" "$XDG_CONFIG_HOME/fish/conf.d/00-xdg-base-dirs.fish"
     fs::force_link "$src/conf.d/java.fish" "$XDG_CONFIG_HOME/fish/conf.d/java.fish"
+    fs::force_link "$src/conf.d/ibus.fish" "$XDG_CONFIG_HOME/fish/conf.d/ibus.fish"
     fs::force_link "$src/conf.d/fnm.fish" "$XDG_CONFIG_HOME/fish/conf.d/fnm.fish"
     fs::force_link "$src/conf.d/direnv.fish" "$XDG_CONFIG_HOME/fish/conf.d/direnv.fish"
     fs::force_link "$src/conf.d/pnpm.fish" "$XDG_CONFIG_HOME/fish/conf.d/pnpm.fish"
