@@ -6,13 +6,13 @@ Never use the memory system. Keep all persistent knowledge in `AGENTS.md` files 
 
 When you need to remember something for a future session, first determine its position in the hierarchy.
 
-**Global** — `~/.config/agents/AGENTS.md`
+**Global**: `~/.config/agents/AGENTS.md`
 Facts or rules that apply in every project and every context: agent behavior, universal conventions, skill triggers.
 
-**Skill** — `~/.config/agents/skills/`
+**Skill**: `~/.config/agents/skills/`
 Facts or rules scoped to a specific domain, tool, language, or task type. Loaded only when relevant. Create a new skill file if none fits.
 
-**Project** — project root `AGENTS.md`
+**Project**: project root `AGENTS.md`
 Facts or rules specific to one repository: commands, architecture, conventions, gotchas. Create if absent.
 
 - Keep a single source of truth
@@ -22,6 +22,10 @@ Facts or rules specific to one repository: commands, architecture, conventions, 
 ## Never Assume, Always Verify
 
 Verify before concluding. Every claim about system state must be backed by direct observation this session.
+
+## Writing Style
+
+- Never use em dashes. Use a colon, a comma, parentheses, or two separate sentences instead.
 
 ## Execution
 
@@ -43,17 +47,17 @@ The CWD may be a git worktree rather than the primary checkout. Confirm the acti
 
 ## Skills
 
-Evaluate every trigger below against the full task before starting. Load all skills whose conditions match — not just the first one.
+Evaluate every trigger below against the full task before starting. Load all skills whose conditions match, not just the first one.
 
-- **Markdown formatting**: When writing or editing any `.md` file — invoke the `markdown` skill.
-- **Linux context**: When making system level changes, modifying system or user configuration, debugging or troubleshooting in a live linux environment — invoke the `linux-context` skill.
-- **Software Developer**: When writing, modifying or refactoring code, designing or developing software — invoke the `software-developer` skill.
-- **Diagnose**: When the user says "diagnose this" / "debug this", reports a bug, says something is broken/throwing/failing, or describes a performance regression — invoke the `diagnose` skill.
-- **Grill with docs**: When the user is brainstorming, planning or otherwise developing documentation — invoke the `grill-with-docs` skill.
-- **TDD**: When the user wants to build features or fix bugs using TDD, mentions "red-green-refactor", wants integration tests, or asks for test-first development — invoke the `tdd` skill.
-- **Zoom out**: When the user is unfamiliar with a section of code or needing to understand how it fits into the bigger picture — invoke the `zoom-out` skill.
-- **Python**: When working with Python code, packages, or dependencies — invoke the `python` skill.
-- **Rust**: When working with Rust code, Cargo projects, or crates — invoke the `rust` skill.
-- **Git**: When the user asks you to commit changes or perform other git operations — invoke the `git` skill.
-- **XDG Base Dirs**: When placing any user-level file path, writing a dotfiles module deploy script, or referencing paths under `~/.config`, `~/.local`, or `~/.cache` — invoke the `xdg-base-dirs` skill.
-- **Sway**: When inspecting or controlling the Sway window manager — identifying windows, targeting them with criteria, floating/tiling, resizing, or positioning — invoke the `sway` skill.
+- **Markdown formatting**: When writing or editing any `.md` file, invoke the `markdown` skill.
+- **Linux context**: When making system level changes, modifying system or user configuration, debugging or troubleshooting in a live linux environment, invoke the `linux-context` skill.
+- **Software Developer**: When writing, modifying or refactoring code, designing or developing software, invoke the `software-developer` skill.
+- **Diagnose**: When the user says "diagnose this" / "debug this", reports a bug, says something is broken/throwing/failing, or describes a performance regression, invoke the `diagnose` skill.
+- **Grill with docs**: When the user is brainstorming, planning or otherwise developing documentation, invoke the `grill-with-docs` skill.
+- **TDD**: When the user wants to build features or fix bugs using TDD, mentions "red-green-refactor", wants integration tests, or asks for test-first development, invoke the `tdd` skill.
+- **Zoom out**: When the user is unfamiliar with a section of code or needing to understand how it fits into the bigger picture, invoke the `zoom-out` skill.
+- **Python**: When working with Python code, packages, or dependencies, invoke the `python` skill.
+- **Rust**: When working with Rust code, Cargo projects, or crates, invoke the `rust` skill.
+- **Git**: When the user asks you to commit changes or perform other git operations, invoke the `git` skill.
+- **XDG Base Dirs**: When placing any user-level file path, writing a dotfiles module deploy script, or referencing paths under `~/.config`, `~/.local`, or `~/.cache`, invoke the `xdg-base-dirs` skill.
+- **Sway**: When inspecting or controlling the Sway window manager, identifying windows, targeting them with criteria, floating/tiling, resizing, or positioning, invoke the `sway` skill.
