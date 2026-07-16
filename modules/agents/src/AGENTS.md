@@ -26,6 +26,9 @@ Verify before concluding. Every claim about system state must be backed by direc
 ## Writing Style
 
 - Never use em dashes. Use a colon, a comma, parentheses, or two separate sentences instead.
+- Avoid stating negatives. Always prefer positive statements.
+- Never use double negatives.
+- Avoid using parentheticals.
 
 ## Execution
 
