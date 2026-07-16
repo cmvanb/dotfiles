@@ -7,6 +7,7 @@
       "Glob",
       "Grep",
       "WebFetch",
+      "WebSearch",
       "Bash(cargo *)",
       "Bash(cat *)",
       "Bash(cp *)",
