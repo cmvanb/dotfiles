@@ -7,7 +7,13 @@ description: Apply git conventions for commits and version control.
 
 ## When to Commit
 
-Never commit without the user's explicit permission.
+- Never commit without the user's explicit permission.
+- Never ask to commit.
+
+## When to Push
+
+- Never push without the user's explicit permission.
+- Never ask to push.
 
 ## Commit Messages
 
