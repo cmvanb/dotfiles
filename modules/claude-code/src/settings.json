@@ -1,5 +1,6 @@
 {
   "permissions": {
+    "defaultMode": "auto",
     "allow": [
       "Read",
       "Edit",
@@ -47,7 +48,7 @@
       "~/.local"
     ]
   },
-  "model": "",
+  "model": "opus",
   "hooks": {
     "SessionStart": [
       {
