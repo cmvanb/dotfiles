@@ -5,7 +5,7 @@ description: Apply style and formatting rules when writing markdown documents.
 
 # Markdown Skill
 
-## Rules
+## Formatting
 
 - Always insert a blank line before:
     - Headings
@@ -13,6 +13,10 @@ description: Apply style and formatting rules when writing markdown documents.
     - Lists
     - Code blocks
     - Diagrams
-- Don't add parentheticals after list items
-- Do not announce item counts
-- Keep paragraphs on a single line
+- Within a paragraph, break lines at clause/sentence boundaries.
+- Wrap prose at 76 characters: break at the semantic boundary if it fits, otherwise at the nearest word boundary under 76.
+
+## Content
+
+- Don't announce item counts.
+- Don't add parentheticals after list items.
