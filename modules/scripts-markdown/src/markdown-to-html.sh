@@ -44,7 +44,7 @@ tmp_html="$tmp_dir/$file_name.html.tmp"
     MERMAID_FILTER_FORMAT=svg \
     MERMAID_FILTER_THEME=dark \
     MERMAID_FILTER_BACKGROUND=transparent \
-    pandoc -s -f markdown+alerts+emoji+autolink_bare_uris+hard_line_breaks-implicit_figures -t html --toc \
+    pandoc -s -f markdown+alerts+emoji+autolink_bare_uris-implicit_figures -t html --toc \
         --embed-resources \
         --resource-path "$(dirname "$fq_path")" \
         --syntax-highlighting "$XDG_CONFIG_HOME/theme/carbon-dark.pygments.theme" \
