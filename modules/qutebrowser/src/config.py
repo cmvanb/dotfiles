@@ -431,8 +431,8 @@ config.bind('<Ctrl-o>', 'cmd-set-text -s :session-load')
 config.bind('<Ctrl-s>', 'cmd-set-text -s :session-save -o')
 
 # Tab management
+config.bind('<Ctrl-;>', 'tab-focus last')
 config.bind('<Ctrl-w>', 'tab-close')
-config.bind('<Ctrl-Tab>', 'tab-focus last')
 config.bind('<Ctrl-h>', 'tab-prev')
 config.bind('<Ctrl-l>', 'tab-next')
 config.bind('<Ctrl-Shift-h>', 'tab-move -')
@@ -474,9 +474,6 @@ config.bind('<Ctrl-a>', 'mode-enter caret ;; selection-toggle ;; move-to-end-of-
 
 # Reader mode
 config.bind('<Ctrl-r>', 'spawn --userscript readability')
-
-# Format JSON
-config.bind('<Ctrl-;>', 'spawn --userscript format_json.sh')
 
 # Bitwarden (rbw)
 config.bind('<Ctrl-i>', 'spawn --userscript qute-rbw --submit')
