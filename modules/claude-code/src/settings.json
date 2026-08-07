@@ -1,6 +1,5 @@
 {
   "permissions": {
-    "defaultMode": "auto",
     "allow": [
       "Read",
       "Edit",
@@ -43,12 +42,13 @@
     "ask": [
       "Bash(sed -i *)"
     ],
+    "defaultMode": "auto",
     "additionalDirectories": [
       "~/.config",
       "~/.local"
     ]
   },
-  "model": "",
+  "model": "sonnet",
   "hooks": {
     "SessionStart": [
       {
