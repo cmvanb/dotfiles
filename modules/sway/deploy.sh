@@ -21,32 +21,30 @@ sway::install () {
     fs::force_link "$src/environment.sh" "$XDG_CONFIG_HOME/sway/environment.sh"
     fs::force_link "$src/keymaps.conf" "$XDG_CONFIG_HOME/sway/keymaps.conf"
     fs::force_link "$src/winrules.conf" "$XDG_CONFIG_HOME/sway/winrules.conf"
-    fs::force_link "$src/reload.sh" "$XDG_CONFIG_HOME/sway/reload.sh"
-    fs::force_link "$src/open-pavucontrol.sh" "$XDG_CONFIG_HOME/sway/open-pavucontrol.sh"
-    fs::force_link "$src/sws.sh" "$XDG_CONFIG_HOME/sway/sws.sh"
-    fs::force_link "$src/equalize-splits.py" "$XDG_CONFIG_HOME/sway/equalize-splits.py"
-    fs::force_link "$src/outputs-workspace-mapper.sh" "$XDG_CONFIG_HOME/sway/outputs-workspace-mapper.sh"
-    fs::force_link "$src/startup-workspace.sh" "$XDG_CONFIG_HOME/sway/startup-workspace.sh"
+    fs::force_link "$src/scripts" "$XDG_CONFIG_HOME/sway/scripts"
+
+    fs::ensure_directory "$XDG_CONFIG_HOME/sway/outputs"
+    fs::force_link "$src/outputs/outputs-workspace-mapper.sh" "$XDG_CONFIG_HOME/sway/outputs/outputs-workspace-mapper.sh"
 
     if [[ $host == "casino" ]]; then
-        fs::force_link "$src/outputs.casino.conf" "$XDG_CONFIG_HOME/sway/outputs.conf"
-        fs::force_link "$src/output-order.casino" "$XDG_CONFIG_HOME/sway/output-order"
+        fs::force_link "$src/outputs/outputs.casino.conf" "$XDG_CONFIG_HOME/sway/outputs/outputs.conf"
+        fs::force_link "$src/outputs/output-order.casino" "$XDG_CONFIG_HOME/sway/outputs/output-order"
 
     elif [[ $host == "cyxwel" ]]; then
-        fs::force_link "$src/outputs.cyxwel.conf" "$XDG_CONFIG_HOME/sway/outputs.conf"
-        fs::force_link "$src/output-order.cyxwel" "$XDG_CONFIG_HOME/sway/output-order"
+        fs::force_link "$src/outputs/outputs.cyxwel.conf" "$XDG_CONFIG_HOME/sway/outputs/outputs.conf"
+        fs::force_link "$src/outputs/output-order.cyxwel" "$XDG_CONFIG_HOME/sway/outputs/output-order"
 
     else
         echo "└> Warning: No outputs configuration for host '$host'."
     fi
 
-    template::render_mako "$src/workspaces.mako.conf" "$XDG_CONFIG_HOME/sway/workspaces.conf"
+    template::render_mako "$src/outputs/workspaces.mako.conf" "$XDG_CONFIG_HOME/sway/outputs/workspaces.conf"
     template::render_mako "$src/theme.mako.conf" "$XDG_CONFIG_HOME/sway/theme.conf"
 
     echo "└> Installing sway shortcuts."
 
     fs::ensure_directory "$XDG_BIN_HOME"
-    fs::force_link "$src/sway-run.sh" "$XDG_BIN_HOME/sway-run"
+    fs::force_link "$src/scripts/sway-run.sh" "$XDG_BIN_HOME/sway-run"
 
     fs::ensure_directory "$XDG_CONFIG_HOME/xdg-desktop-portal"
     fs::force_link "$src/sway-portals.conf" "$XDG_CONFIG_HOME/xdg-desktop-portal/sway-portals.conf"

@@ -19,7 +19,7 @@ set -euo pipefail
 # Kill any previous instance before taking over.
 pkill -f "outputs-workspace-mapper.sh" --ignore-ancestors || true
 
-order_file="${XDG_CONFIG_HOME:-$HOME/.config}/sway/output-order"
+order_file="${XDG_CONFIG_HOME:-$HOME/.config}/sway/outputs/output-order"
 state_file="${XDG_STATE_HOME:-$HOME/.local/state}/sway/outputs-workspace-map"
 
 read_order() {
