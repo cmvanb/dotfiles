@@ -20,5 +20,7 @@ description: Apply git conventions for commits and version control.
 - Single line only — no body, no footers
 - Keep commit messages terse, preferably **< 50** chars, always **< 80** chars
 - Use a lowercase prefix followed by a colon and space: `feat:`, `fix:`, `build:`, `chore:`, `ci:`, `docs:`, `style:`, `refactor:`, `perf:`, `test:`
+- Capitalize the first letter after the colon
+- End the subject with a period
 - Do not sign commits
 - Do not attribute commits
