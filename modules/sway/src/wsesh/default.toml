@@ -11,12 +11,6 @@
 # winrules.conf's `assign` rule for that program, or set it to override.
 
 [[entry]]
-type = "browser"
-workspace = "101:home"
-session = "home"
-wait_for_network = true
-
-[[entry]]
 type = "terminal"
 workspace = "103:todo"
 cwd = "~/Wiki/todo"
@@ -27,9 +21,11 @@ type = "app"
 exec = "open-desktop-app.sh bitwarden"
 
 [[entry]]
-type = "app"
-exec = "geary"
+type = "browser"
+workspace = "102:mail"
+session = "mail"
+wait_for_network = true
 
 [[entry]]
 type = "focus"
-workspace = "1"
+workspace = "102:mail"
