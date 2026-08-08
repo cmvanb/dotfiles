@@ -34,6 +34,11 @@ Linux dotfiles managed via a profile/module deployment system. Configs are symli
 - All paths are XDG compliant.
 - Deployment state is tracked in `~/.local/state/dotfiles/`
 
+## Git conventions
+
+- Commit prefix is the module name: `sway:`
+- Use one module prefix, unless the change is cross-cutting: `bash/fish:`
+
 ## Environment variables set by deploy.sh
 
 | Variable | Value |
