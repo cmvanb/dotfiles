@@ -12,13 +12,13 @@
 
 [[entry]]
 type = "browser"
-workspace = "11:home"
+workspace = "101:home"
 session = "home"
 wait_for_network = true
 
 [[entry]]
 type = "terminal"
-workspace = "13:todo"
+workspace = "103:todo"
 cwd = "~/Wiki/todo"
 command = "edit"
 
