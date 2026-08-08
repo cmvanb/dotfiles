@@ -2,7 +2,7 @@
 
 [[entry]]
 type = "browser"
-workspace = "102:mail"
+workspace = "mail"
 session = "omnia-outlook-webmail"
 
 [[entry]]
@@ -17,22 +17,22 @@ session = "omnia-hfh-cicd"
 
 [[entry]]
 type = "terminal"
-workspace = "108:dev"
+workspace = "dev"
 cwd = "/home/surfer/Code/wellbeing-people-mobile-app"
 
 [[entry]]
 type = "terminal"
-workspace = "108:dev"
+workspace = "dev"
 cwd = "/home/surfer/Code/wellbeing-people-mobile-app"
 command = "edit"
 
 [[entry]]
 type = "terminal"
-workspace = "109:project"
+workspace = "project"
 cwd = "/home/surfer/Documents/work/codemuch/clients/omnia-digital"
 
 [[entry]]
 type = "terminal"
-workspace = "109:project"
+workspace = "project"
 cwd = "/home/surfer/Documents/work/codemuch/clients/omnia-digital"
 command = "edit"

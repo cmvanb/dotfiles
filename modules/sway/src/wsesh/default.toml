@@ -4,28 +4,34 @@
 #   terminal  workspace? cwd? command? title? floating?  -- spawn-terminal.sh
 #   browser   workspace? browser? session? wait_for_network?  -- open-browser-session.sh,
 #             or a plain browser launch if `session` is omitted
-#   app       workspace? exec  -- an arbitrary shell command
+#   app       workspace? (desktop | exec)  -- launch by desktop file id, or
+#             an arbitrary shell command
 #   focus     workspace  -- focus a workspace, usually the last entry
 #
 # `workspace` is optional on terminal/browser/app entries: omit it to rely on
 # winrules.conf's `assign` rule for that program, or set it to override.
+#
+# `workspace` takes a named workspace's name (e.g. "mail"), resolved at
+# launch time against workspaces.conf to its "NUM:name" form (e.g.
+# "102:mail") -- no need to remember the number. A bare number (e.g. "1")
+# addresses an unnamed, per-output workspace directly.
 
 [[entry]]
 type = "terminal"
-workspace = "103:todo"
+workspace = "todo"
 cwd = "~/Wiki/todo"
 command = "edit"
 
 [[entry]]
 type = "app"
-exec = "open-desktop-app.sh bitwarden"
+desktop = "bitwarden"
 
 [[entry]]
 type = "browser"
-workspace = "102:mail"
+workspace = "mail"
 session = "mail"
 wait_for_network = true
 
 [[entry]]
 type = "focus"
-workspace = "102:mail"
+workspace = "mail"

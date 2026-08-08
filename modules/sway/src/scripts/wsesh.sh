@@ -15,6 +15,10 @@ set -euo pipefail
 # shellcheck disable=SC1091
 source "$XDG_OPT_HOME/shell-utils/debug.sh"
 
+script_dir=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)
+# shellcheck disable=SC1091
+source "$script_dir/workspace-names.sh"
+
 debug::assert_dependency tomlq
 debug::assert_dependency swaymsg
 debug::assert_dependency jq
@@ -29,6 +33,34 @@ usage() {
     exit 1
 }
 
+# Resolve a workspace name to its "NUM:name" form
+#
+# A bare number (e.g. "1") addresses an unnamed, per-output workspace and is
+# passed through unchanged. Anything else is looked up via
+# workspace_resolve_name() (workspace-names.sh), so wsesh files can say
+# `workspace = "mail"` instead of hardcoding the number.
+#-------------------------------------------------------------------------------
+
+resolve_workspace() {
+    local name="$1"
+    [[ -z $name ]] && return 0
+
+    if [[ $name =~ ^[0-9]+$ ]]; then
+        echo "$name"
+        return 0
+    fi
+
+    local resolved
+    resolved=$(workspace_resolve_name "$name")
+
+    if [[ -z $resolved ]]; then
+        debug::error "Unknown workspace name: $name"
+        return 1
+    fi
+
+    echo "$resolved"
+}
+
 # Run one wsesh entry
 #-------------------------------------------------------------------------------
 
@@ -36,8 +68,10 @@ spawn_entry() {
     # Fields are unit-separator (\x1f) delimited, not tab: bash's `read`
     # collapses consecutive *tab* delimiters (it treats tab as IFS
     # whitespace), which would silently swallow empty fields.
-    local type workspace cwd command floating title browser session exec_cmd wait_for_network
-    IFS=$'\x1f' read -r type workspace cwd command floating title browser session exec_cmd wait_for_network
+    local type workspace cwd command floating title browser session exec_cmd desktop wait_for_network
+    IFS=$'\x1f' read -r type workspace cwd command floating title browser session exec_cmd desktop wait_for_network
+
+    workspace=$(resolve_workspace "$workspace") || return 1
 
     local cmd=()
 
@@ -60,7 +94,11 @@ spawn_entry() {
             ;;
 
         app)
-            cmd=(sh -c "$exec_cmd")
+            if [[ -n $desktop ]]; then
+                cmd=(open-desktop-app.sh "$desktop")
+            else
+                cmd=(sh -c "$exec_cmd")
+            fi
             ;;
 
         focus)
@@ -137,6 +175,7 @@ wsesh_launch() {
         (.browser // ""),
         (.session // ""),
         (.exec // ""),
+        (.desktop // ""),
         (.wait_for_network // "" | tostring)
     ] | join("\u001f")' "$file"); then
         debug::error_notify "Failed to parse wsesh file: $file"
