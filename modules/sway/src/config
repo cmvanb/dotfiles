@@ -70,7 +70,7 @@ include $config_dir/sway/outputs/workspaces.conf
 #-------------------------------------------------------------------------------
 
 exec_always $config_dir/sway/outputs/outputs-workspace-mapper.sh
-exec $config_dir/sway/scripts/startup-workspace.sh
+exec $config_dir/sway/scripts/wsesh.sh launch default
 
 # Adjust screen brightness
 exec wlsunset -l 52.155472 -L 5.389358

@@ -15,10 +15,32 @@ source "$XDG_OPT_HOME/shell-utils/debug.sh"
 debug::assert_dependency spawn-launcher.sh
 debug::assert_dependency python
 
-# Get browser from environment
+# Parse arguments
 #-------------------------------------------------------------------------------
 
+session=""
 browser="${BROWSER:-qutebrowser}"
+
+usage() {
+    echo "$(basename "$0") [options]"
+    echo "Options:"
+    echo "    -s, --session SESSION    Session to open, skipping the picker."
+    echo "    -b, --browser BROWSER    Browser to open the session in (default: \$BROWSER)."
+    echo "    -h, --help               Display this help message."
+    exit 1
+}
+
+while [ $# -gt 0 ]; do
+    case "$1" in
+        --session=*)  session="${1#*=}" ;;
+        --session|-s) session="$2"; shift ;;
+        --browser=*)  browser="${1#*=}" ;;
+        --browser|-b) browser="$2"; shift ;;
+        --help|-h)    usage ;;
+        *)            debug::error "Unknown option: $1"; usage ;;
+    esac
+    shift
+done
 
 case "$browser" in
     *qutebrowser*|*chromium*|*firefox*)
@@ -34,14 +56,22 @@ esac
 
 data_dir="${XDG_DATA_HOME:-$HOME/.local/share}"
 session_dir="$data_dir/qutebrowser/sessions"
-session_files=$(fd ".yml" "$session_dir" -E 'before-qt-515' -x basename | sed -e 's/\.yml//' | sort)
-session=$(echo "$session_files" | spawn-launcher.sh --menu --prompt="Open browser session..." 2> /dev/null)
+
+if [[ -z $session ]]; then
+    session_files=$(fd ".yml" "$session_dir" -E 'before-qt-515' -x basename | sed -e 's/\.yml//' | sort)
+    session=$(echo "$session_files" | spawn-launcher.sh --menu --prompt="Open browser session..." 2> /dev/null)
+fi
 
 if [[ -z $session ]]; then
     exit 1
 fi
 
 session_file="$session_dir/$session.yml"
+
+if [[ ! -f $session_file ]]; then
+    debug::error "No such session '$session'"
+    exit 1
+fi
 
 # Open session based on browser type
 #-------------------------------------------------------------------------------

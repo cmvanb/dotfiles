@@ -1,0 +1,35 @@
+# Workspace session (wsesh) launched at sway startup.
+#
+# Entry types:
+#   terminal  workspace? cwd? command? title? floating?  -- spawn-terminal.sh
+#   browser   workspace? browser? session? wait_for_network?  -- open-browser-session.sh,
+#             or a plain browser launch if `session` is omitted
+#   app       workspace? exec  -- an arbitrary shell command
+#   focus     workspace  -- focus a workspace, usually the last entry
+#
+# `workspace` is optional on terminal/browser/app entries: omit it to rely on
+# winrules.conf's `assign` rule for that program, or set it to override.
+
+[[entry]]
+type = "browser"
+workspace = "11:home"
+session = "home"
+wait_for_network = true
+
+[[entry]]
+type = "terminal"
+workspace = "13:todo"
+cwd = "~/Wiki/todo"
+command = "edit"
+
+[[entry]]
+type = "app"
+exec = "Bitwarden"
+
+[[entry]]
+type = "app"
+exec = "geary"
+
+[[entry]]
+type = "focus"
+workspace = "1"
