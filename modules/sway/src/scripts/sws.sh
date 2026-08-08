@@ -46,10 +46,10 @@ fi
 
 case "$action" in
     "focus")
-        swaymsg workspace "$workspace_name"
+        swaymsg workspace number "$workspace_name"
         ;;
     "move")
-        swaymsg move container to workspace "$workspace_name"
+        swaymsg move container to workspace number "$workspace_name"
         ;;
     *)
         echo "Invalid action: $action"
