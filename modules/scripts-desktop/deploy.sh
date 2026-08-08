@@ -16,6 +16,7 @@ scripts-desktop::install () {
     fs::ensure_directory "$XDG_SCRIPTS_HOME"
     fs::force_link "$src/open-browser-session.sh" "$XDG_SCRIPTS_HOME/open-browser-session.sh"
     fs::force_link "$src/open-claude-cwd.sh" "$XDG_SCRIPTS_HOME/open-claude-cwd.sh"
+    fs::force_link "$src/open-desktop-app.sh" "$XDG_SCRIPTS_HOME/open-desktop-app.sh"
     fs::force_link "$src/open-terminal-cwd.sh" "$XDG_SCRIPTS_HOME/open-terminal-cwd.sh"
     fs::force_link "$src/screenshot-rectangle.sh" "$XDG_SCRIPTS_HOME/screenshot-rectangle.sh"
     fs::force_link "$src/set-output-wallpaper.sh" "$XDG_SCRIPTS_HOME/set-output-wallpaper.sh"
@@ -39,6 +40,7 @@ scripts-desktop::uninstall () {
 
     rm "$XDG_SCRIPTS_HOME/open-browser-session.sh"
     rm "$XDG_SCRIPTS_HOME/open-claude-cwd.sh"
+    rm "$XDG_SCRIPTS_HOME/open-desktop-app.sh"
     rm "$XDG_SCRIPTS_HOME/open-terminal-cwd.sh"
     rm "$XDG_SCRIPTS_HOME/screenshot-rectangle.sh"
     rm "$XDG_SCRIPTS_HOME/set-output-wallpaper.sh"
