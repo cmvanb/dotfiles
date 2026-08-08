@@ -17,6 +17,7 @@ source "$XDG_OPT_HOME/shell-utils/debug.sh"
 
 debug::assert_dependency tomlq
 debug::assert_dependency swaymsg
+debug::assert_dependency jq
 
 wsesh_dir="${XDG_CONFIG_HOME:-$HOME/.config}/sway/wsesh"
 
@@ -64,12 +65,12 @@ spawn_entry() {
 
         focus)
             swaymsg workspace "$workspace"
-            return
+            return 1
             ;;
 
         *)
             debug::error "Unknown entry type: $type"
-            return
+            return 1
             ;;
     esac
 
@@ -88,6 +89,29 @@ spawn_entry() {
     else
         swaymsg "exec \"$quoted\""
     fi
+}
+
+# Wait for a new window to map
+#
+# sway assigns a newly-mapped window to whichever workspace is *currently
+# focused at map time*, not at exec time. Firing entries back-to-back with
+# no synchronization races slow-starting apps (GUI apps in particular) against
+# the next entry's workspace switch, landing their window on the wrong
+# workspace — or, for single-instance apps like qutebrowser, racing a second
+# invocation against the first one's still-starting IPC server, causing it to
+# fall back to a blank window instead of attaching to the running instance.
+#-------------------------------------------------------------------------------
+
+wait_for_window() {
+    local before="$1"
+    local after i
+    for ((i = 0; i < 75; i++)); do
+        after=$(swaymsg -t get_tree | jq '[.. | objects | select(.pid?)] | length')
+        [[ $after -gt $before ]] && return 0
+        sleep 0.2
+    done
+    debug::error "Timed out waiting for a window to appear"
+    return 1
 }
 
 # Launch a wsesh file
@@ -120,7 +144,12 @@ wsesh_launch() {
     fi
 
     while IFS= read -r line; do
-        spawn_entry <<< "$line"
+        local window_count
+        window_count=$(swaymsg -t get_tree | jq '[.. | objects | select(.pid?)] | length')
+
+        if spawn_entry <<< "$line"; then
+            wait_for_window "$window_count" || true
+        fi
     done <<< "$entries"
 }
 
