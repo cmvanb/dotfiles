@@ -24,7 +24,7 @@ command = "edit"
 
 [[entry]]
 type = "app"
-exec = "Bitwarden"
+exec = "open-desktop-app.sh bitwarden"
 
 [[entry]]
 type = "app"
