@@ -1,0 +1,38 @@
+# Workspace session for the Habits for Health (HfH) project.
+
+[[entry]]
+type = "browser"
+workspace = "12:mail"
+session = "omnia-outlook-webmail"
+
+[[entry]]
+type = "browser"
+workspace = "1"
+session = "omnia-hfh-kanban"
+
+[[entry]]
+type = "browser"
+workspace = "2"
+session = "omnia-hfh-cicd"
+
+[[entry]]
+type = "terminal"
+workspace = "18:dev"
+cwd = "/home/surfer/Code/wellbeing-people-mobile-app"
+
+[[entry]]
+type = "terminal"
+workspace = "18:dev"
+cwd = "/home/surfer/Code/wellbeing-people-mobile-app"
+command = "edit"
+
+[[entry]]
+type = "terminal"
+workspace = "19:project"
+cwd = "/home/surfer/Documents/work/codemuch/clients/omnia-digital"
+
+[[entry]]
+type = "terminal"
+workspace = "19:project"
+cwd = "/home/surfer/Documents/work/codemuch/clients/omnia-digital"
+command = "edit"
