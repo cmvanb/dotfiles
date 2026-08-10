@@ -1,13 +1,19 @@
 ---
 name: sway
-description: Control the Sway (i3-compatible Wayland) window manager programmatically via swaymsg — identify windows, target them with criteria, and float/tile/resize/position them.
+description: Control the Sway (i3-compatible Wayland) window manager programmatically via swaymsg. Identify windows, target them with criteria, and float/tile/resize/position them.
 ---
 
 # Sway Skill
 
+## swaymsg
+
 Drive Sway from the shell with `swaymsg`. See `man 5 sway` and `man 5 sway-input` for the full command and criteria reference.
 
-`swaymsg [-t <type>] [<command>]` sends commands or queries the IPC. Without `-t` it runs a command; with `-t` it queries. Add `-r` for raw JSON, `-q` to suppress output.
+Check the exit status, not just the printed body: `-q` silences the JSON but a failing command still exits nonzero, and an unreachable socket fails with a plain error line instead of JSON.
+
+## Rules
+
+- When testing or experimenting with workspaces, snapshot the focused workspace. Restore its focus, name, and layout when done.
 
 ## Inspect State
 
@@ -21,17 +27,19 @@ swaymsg -t get_marks                 # all defined marks
 swaymsg -t get_seats                 # input seats / focus
 ```
 
-Key identity fields on a window node:
+A window node exposes these key identity fields.
 
-- `id` (container id, stable for the session)
-- `app_id` (Wayland-native apps)
-- `window_properties.class`/`.instance`/`.title` (XWayland apps)
-- `name` (current title)
-- `pid`
-- `shell`
-- `focused`
-- `floating`
-- `rect`
+| Field | Notes |
+|---|---|
+| `id` | Container id. Remains valid until the window closes; a stale id fails with `"No matching node."` |
+| `app_id` | Identifies Wayland-native apps. |
+| `window_properties.class`/`.instance`/`.title` | Identifies XWayland apps. |
+| `name` | Window's current title. |
+| `pid` | |
+| `shell` | |
+| `focused` | |
+| `floating` | |
+| `rect` | |
 
 ## Identify a Window
 
@@ -70,21 +78,23 @@ swaymsg '[pid=197182] focus'
 swaymsg '[app_id="mpv" floating] move position center'
 ```
 
-Useful criteria:
+The table below lists the useful criteria.
 
-- `app_id` — Wayland-native app identifier
-- `class`, `instance` — XWayland app identifiers
-- `title` — current window title
-- `con_id` — container id from `get_tree`
-- `con_mark` — a user-assigned mark
-- `pid` — process id
-- `shell` — `xdg_shell`, `xwayland`, etc.
-- `workspace` — name of the containing workspace
-- `floating`, `tiling` — match by layout state
-- `urgent` — windows with the urgency hint set
-- `all` — every window
+| Criterion | Notes |
+|---|---|
+| `app_id` | Wayland-native app identifier. |
+| `class`, `instance` | XWayland app identifiers. |
+| `title` | Current window title. |
+| `con_id` | Container id from `get_tree`. |
+| `con_mark` | User-assigned mark. |
+| `pid` | Process id. |
+| `shell` | `xdg_shell`, `xwayland`, or similar. |
+| `workspace` | Name of the containing workspace. |
+| `floating`, `tiling` | Match by layout state. |
+| `urgent` | Matches windows with the urgency hint set. |
+| `all` | Matches every window. |
 
-Special values: `con_id=__focused__`, `app_id=__focused__`, `urgent=latest`. Text criteria are PCRE regexes, so anchor them (`title="^Foo$"`) to avoid partial matches.
+Special values include `con_id=__focused__`, `app_id=__focused__`, and `urgent=latest`. Text criteria are PCRE regexes, so anchor them (`title="^Foo$"`) to avoid partial matches.
 
 ## Float vs Tile
 
@@ -148,9 +158,3 @@ swaymsg move scratchpad                                 # hide focused window
 swaymsg scratchpad show                                 # cycle visible scratchpad windows
 swaymsg '[app_id="telegram"] scratchpad show'           # show a specific one
 ```
-
-## Notes
-
-- Run `swaymsg <command>` and check exit status; on bad syntax it prints `{"success": false, "error": ...}` as JSON.
-- Commands always act on the focused window unless a `[criteria]` prefix selects others.
-- `con_id` is stable only for the current session; resolve it fresh from `get_tree` each time, don't cache it.
