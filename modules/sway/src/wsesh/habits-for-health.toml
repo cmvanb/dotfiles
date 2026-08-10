@@ -3,11 +3,13 @@
 [[entry]]
 type = "browser"
 workspace = "1"
+workspace_name = "kanban"
 session = "omnia-hfh-kanban"
 
 [[entry]]
 type = "browser"
 workspace = "2"
+workspace_name = "cicd"
 session = "omnia-hfh-cicd"
 
 [[entry]]

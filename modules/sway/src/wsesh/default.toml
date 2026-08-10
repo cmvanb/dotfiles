@@ -15,6 +15,11 @@
 # launch time against workspaces.conf to its "NUM:name" form (e.g.
 # "102:mail") -- no need to remember the number. A bare number (e.g. "1")
 # addresses an unnamed, per-output workspace directly.
+#
+# `workspace_name` renames the entry's `workspace` via rename-workspace.sh
+# at launch time. Use it to give an ad-hoc numeric workspace (e.g. "1") a
+# display name without pre-registering it in workspaces.mako.conf's
+# named_workspaces list.
 
 [[entry]]
 type = "terminal"

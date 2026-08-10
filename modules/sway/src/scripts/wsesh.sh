@@ -61,6 +61,32 @@ resolve_workspace() {
     echo "$resolved"
 }
 
+# Rename a resolved workspace via rename-workspace.sh
+#
+# Lets an entry give an ad-hoc numeric workspace (e.g. "1") a display name
+# without pre-registering it in workspaces.mako.conf's named_workspaces list.
+# rename-workspace.sh renames whichever workspace is focused, so this
+# switches to it first, then prints the renamed "NUM:name" so the caller can
+# address the workspace by its new name -- sway matches `workspace <name>`
+# on the exact string, so any later command still using the old bare number
+# would miss the renamed workspace and spawn a fresh empty one under it.
+#-------------------------------------------------------------------------------
+
+rename_workspace() {
+    local workspace="$1"
+    local new_name="$2"
+
+    if [[ -z $workspace ]]; then
+        debug::error "workspace_name given without a workspace"
+        return 1
+    fi
+
+    swaymsg workspace "$workspace" > /dev/null
+    "$script_dir/rename-workspace.sh" "$new_name" > /dev/null
+
+    echo "${workspace%%:*}:$new_name"
+}
+
 # Run one wsesh entry
 #-------------------------------------------------------------------------------
 
@@ -68,10 +94,11 @@ spawn_entry() {
     # Fields are unit-separator (\x1f) delimited, not tab: bash's `read`
     # collapses consecutive *tab* delimiters (it treats tab as IFS
     # whitespace), which would silently swallow empty fields.
-    local type workspace cwd command floating title browser session exec_cmd desktop wait_for_network
-    IFS=$'\x1f' read -r type workspace cwd command floating title browser session exec_cmd desktop wait_for_network
+    local type workspace workspace_name cwd command floating title browser session exec_cmd desktop wait_for_network
+    IFS=$'\x1f' read -r type workspace workspace_name cwd command floating title browser session exec_cmd desktop wait_for_network
 
     workspace=$(resolve_workspace "$workspace") || return 1
+    [[ -n $workspace_name ]] && { workspace=$(rename_workspace "$workspace" "$workspace_name") || return 1; }
 
     local cmd=()
 
@@ -168,6 +195,7 @@ wsesh_launch() {
     if ! entries=$(tomlq -r '.entry[] | [
         .type,
         (.workspace // ""),
+        (.workspace_name // ""),
         (.cwd // ""),
         (.command // ""),
         (.floating // "" | tostring),
