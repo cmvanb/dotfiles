@@ -17,7 +17,7 @@ source "$XDG_OPT_HOME/shell-utils/debug.sh"
 
 script_dir=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)
 # shellcheck disable=SC1091
-source "$script_dir/workspace-names.sh"
+source "$script_dir/workspace.sh"
 
 debug::assert_dependency tomlq
 debug::assert_dependency swaymsg
@@ -33,60 +33,6 @@ usage() {
     exit 1
 }
 
-# Resolve a workspace name to its "NUM:name" form
-#
-# A bare number (e.g. "1") addresses an unnamed, per-output workspace and is
-# passed through unchanged. Anything else is looked up via
-# workspace_resolve_name() (workspace-names.sh), so wsesh files can say
-# `workspace = "mail"` instead of hardcoding the number.
-#-------------------------------------------------------------------------------
-
-resolve_workspace() {
-    local name="$1"
-    [[ -z $name ]] && return 0
-
-    if [[ $name =~ ^[0-9]+$ ]]; then
-        echo "$name"
-        return 0
-    fi
-
-    local resolved
-    resolved=$(workspace_resolve_name "$name")
-
-    if [[ -z $resolved ]]; then
-        debug::error "Unknown workspace name: $name"
-        return 1
-    fi
-
-    echo "$resolved"
-}
-
-# Rename a resolved workspace via rename-workspace.sh
-#
-# Lets an entry give an ad-hoc numeric workspace (e.g. "1") a display name
-# without pre-registering it in workspaces.mako.conf's named_workspaces list.
-# rename-workspace.sh renames whichever workspace is focused, so this
-# switches to it first, then prints the renamed "NUM:name" so the caller can
-# address the workspace by its new name -- sway matches `workspace <name>`
-# on the exact string, so any later command still using the old bare number
-# would miss the renamed workspace and spawn a fresh empty one under it.
-#-------------------------------------------------------------------------------
-
-rename_workspace() {
-    local workspace="$1"
-    local new_name="$2"
-
-    if [[ -z $workspace ]]; then
-        debug::error "workspace_name given without a workspace"
-        return 1
-    fi
-
-    swaymsg workspace "$workspace" > /dev/null
-    "$script_dir/rename-workspace.sh" "$new_name" > /dev/null
-
-    echo "${workspace%%:*}:$new_name"
-}
-
 # Run one wsesh entry
 #-------------------------------------------------------------------------------
 
@@ -97,8 +43,8 @@ spawn_entry() {
     local type workspace workspace_name cwd command floating title browser session exec_cmd desktop wait_for_network
     IFS=$'\x1f' read -r type workspace workspace_name cwd command floating title browser session exec_cmd desktop wait_for_network
 
-    workspace=$(resolve_workspace "$workspace") || return 1
-    [[ -n $workspace_name ]] && { workspace=$(rename_workspace "$workspace" "$workspace_name") || return 1; }
+    workspace=$(workspace::resolve "$workspace") || return 1
+    [[ -n $workspace_name ]] && { workspace=$(workspace::rename "$workspace" "$workspace_name") || return 1; }
 
     local cmd=()
 

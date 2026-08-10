@@ -18,7 +18,7 @@ set -euo pipefail
 
 script_dir=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)
 # shellcheck disable=SC1091
-source "$script_dir/workspace-names.sh"
+source "$script_dir/workspace.sh"
 
 if [[ $# -lt 2 ]]; then
     echo "Usage: $0 <action> <workspace_number>"
@@ -38,7 +38,7 @@ if [[ "$target_workspace" =~ ^[0-9]+$ ]]; then
     offset=${offset:-0}
     workspace_name=$(( target_workspace + offset ))
 else
-    resolved=$(workspace_resolve_name "$target_workspace")
+    resolved=$(workspace::resolve_name "$target_workspace")
     workspace_name="${resolved:-$target_workspace}"
 fi
 
