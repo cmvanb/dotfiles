@@ -2,11 +2,6 @@
 
 [[entry]]
 type = "browser"
-workspace = "mail"
-session = "omnia-outlook-webmail"
-
-[[entry]]
-type = "browser"
 workspace = "1"
 session = "omnia-hfh-kanban"
 
