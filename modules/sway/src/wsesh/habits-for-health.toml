@@ -13,6 +13,11 @@ workspace_name = "cicd"
 session = "omnia-hfh-cicd"
 
 [[entry]]
+type = "app"
+workspace = "chat"
+desktop = "teams-for-linux"
+
+[[entry]]
 type = "terminal"
 workspace = "dev"
 cwd = "/home/surfer/Code/wellbeing-people-mobile-app"
