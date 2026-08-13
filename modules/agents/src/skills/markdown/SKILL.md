@@ -22,6 +22,25 @@ description: Apply style and formatting rules when writing markdown documents.
 - To force a visible line break, end the line with two trailing spaces.
 - Stacked short lines that are not a list need forced breaks: metadata headers, key/value blocks, addresses.
 
+## Callouts
+
+- Use GitHub-style alerts for callouts.
+- Syntax: a blockquote whose first line is `[!TYPE]`.
+- Pick the type by intent:
+    - `NOTE` for extra context
+    - `TIP` for optional advice
+    - `IMPORTANT` for information essential to success
+    - `WARNING` for a likely problem
+    - `CAUTION` for a risk of irreversible harm
+
+```markdown
+> [!NOTE]
+> Supporting detail the reader should not skip.
+
+> [!WARNING]
+> A risk that needs the reader's attention before they proceed.
+```
+
 ## Content
 
 - Don't announce item counts.
