@@ -32,8 +32,7 @@
       "Bash(tail *)",
       "Bash(uniq *)",
       "Bash(uv *)",
-      "Bash(which *)",
-      "Bash(xargs *)"
+      "Bash(which *)"
     ],
     "deny": [
       "Read(*.env)",
