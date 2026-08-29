@@ -309,13 +309,17 @@ totp_secret=$(echo "$entry_json" | jq -r '.data.totp // empty')
 #-------------------------------------------------------------------------------
 # For username/password modes we use jseval to locate and fill the correct
 # input field directly — no reliance on prior focus state.
-# CSS selector precedence for the username field:
-#   1. input[type=email]   — most login forms
-#   2. input[type=text]    — fallback for non-email username fields
+# Candidates for the username field (querySelector returns the first in
+# document order, not the first matching alternative):
+#   - input[type=email]  — most login forms
+#   - input[type=text]   — fallback for non-email username fields
+#   - input:not([type])  — some JS frameworks (e.g. Proton's login) omit the
+#     type attribute entirely; the browser still treats it as text, but the
+#     [type=text] selector only matches when the attribute is present.
 # For TOTP there is no reliable heuristic, so we fall back to fake-key into
 # whatever element the user has focused.
 
-USERNAME_SELECTOR="input[type=email]:not([disabled]):not([hidden]), input[type=text]:not([disabled]):not([hidden])"
+USERNAME_SELECTOR="input[type=email]:not([disabled]):not([hidden]), input[type=text]:not([disabled]):not([hidden]), input:not([type]):not([disabled]):not([hidden])"
 PASSWORD_SELECTOR="input[type=password]:not([disabled]):not([hidden])"
 
 case "$mode" in
