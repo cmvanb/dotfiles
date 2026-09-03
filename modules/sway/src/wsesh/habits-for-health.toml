@@ -14,27 +14,28 @@ session = "omnia-hfh-cicd"
 
 [[entry]]
 type = "app"
-workspace = "chat"
+workspace = "10"
+workspace_name = "teams"
 desktop = "teams-for-linux"
 
 [[entry]]
 type = "terminal"
 workspace = "dev"
-cwd = "/home/surfer/Code/wellbeing-people-mobile-app"
+cwd = "~/Code/wellbeing-people-mobile-app"
 
 [[entry]]
 type = "terminal"
 workspace = "dev"
-cwd = "/home/surfer/Code/wellbeing-people-mobile-app"
+cwd = "~/Code/wellbeing-people-mobile-app"
 command = "edit"
 
 [[entry]]
 type = "terminal"
 workspace = "project"
-cwd = "/home/surfer/Documents/work/codemuch/clients/omnia-digital"
+cwd = "~/Documents/work/codemuch/clients/omnia-digital"
 
 [[entry]]
 type = "terminal"
 workspace = "project"
-cwd = "/home/surfer/Documents/work/codemuch/clients/omnia-digital"
+cwd = "~/Documents/work/codemuch/clients/omnia-digital"
 command = "edit"
