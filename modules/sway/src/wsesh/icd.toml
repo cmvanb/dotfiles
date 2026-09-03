@@ -1,0 +1,17 @@
+# Workspace session for the ICD project.
+
+[[entry]]
+type = "terminal"
+workspace = "dev"
+cwd = "~/Code/icd-frontend"
+
+[[entry]]
+type = "terminal"
+workspace = "dev"
+cwd = "~/Code/icd-api"
+
+[[entry]]
+type = "app"
+workspace = "10"
+workspace_name = "teams"
+desktop = "teams-for-linux"
