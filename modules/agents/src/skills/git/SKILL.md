@@ -30,3 +30,8 @@ description: Apply git conventions for commits and version control.
 - End the subject with a period.
 - Do not sign commits.
 - Do not attribute commits.
+
+## Branch Names
+
+- Use lowercase kebab-case, three to five words.
+- Default to `<type>/<name>`, with the same prefixes as commit messages.
