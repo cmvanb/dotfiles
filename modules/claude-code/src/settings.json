@@ -44,7 +44,7 @@
       "~/.local"
     ]
   },
-  "model": "opus",
+  "model": "sonnet",
   "hooks": {
     "SessionStart": [
       {
