@@ -1,0 +1,20 @@
+#-------------------------------------------------------------------------------
+# ALSA defaults
+#
+# pipewire-audio ships the `pipewire` PCM, and leaves the ALSA default alone.
+# ALSA clients that ask for `default` then reach the hardware through dmix and
+# dsnoop, which fails while PipeWire holds the devices. Point the default at
+# the PipeWire server instead.
+#-------------------------------------------------------------------------------
+
+pcm.!default {
+    type pipewire
+    hint {
+        show on
+        description "Default ALSA Device (PipeWire Media Server)"
+    }
+}
+
+ctl.!default {
+    type pipewire
+}
