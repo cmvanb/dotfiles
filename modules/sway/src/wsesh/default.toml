@@ -28,10 +28,6 @@ cwd = "~/Wiki/todo"
 command = "edit"
 
 [[entry]]
-type = "app"
-desktop = "bitwarden"
-
-[[entry]]
 type = "browser"
 workspace = "mail"
 session = "mail"
