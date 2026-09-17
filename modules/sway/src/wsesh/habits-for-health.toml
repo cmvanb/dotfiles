@@ -30,12 +30,5 @@ cwd = "~/Code/wellbeing-people-mobile-app"
 command = "edit"
 
 [[entry]]
-type = "terminal"
-workspace = "project"
-cwd = "~/Documents/work/codemuch/clients/omnia-digital"
-
-[[entry]]
-type = "terminal"
-workspace = "project"
-cwd = "~/Documents/work/codemuch/clients/omnia-digital"
-command = "edit"
+type = "focus"
+workspace = "dev"

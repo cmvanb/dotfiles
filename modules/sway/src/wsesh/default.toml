@@ -34,10 +34,10 @@ session = "mail"
 wait_for_network = true
 
 [[entry]]
-type = "focus"
-workspace = "mail"
-
-[[entry]]
 type = "app"
 workspace = "audio"
 desktop = "org.pulseaudio.pavucontrol"
+
+[[entry]]
+type = "focus"
+workspace = "mail"
