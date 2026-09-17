@@ -1,0 +1,60 @@
+#-------------------------------------------------------------------------------
+# whisrs dictation daemon
+#
+# Offline transcription with whisper.cpp, injected at the cursor over uinput.
+# Recording is driven by compositor keybinds (see the sway keymaps), so no
+# built-in [hotkeys] are declared here.
+#-------------------------------------------------------------------------------
+
+[general]
+backend = "local-whisper"
+language = "en"
+notify = true
+remove_filler_words = true
+audio_feedback = true
+audio_feedback_volume = 0.4
+tray = false
+overlay = true
+
+# Visual feedback
+#-------------------------------------------------------------------------------
+
+[overlay]
+theme = "custom"
+width = 110
+height = 44
+
+[overlay.colors]
+background = "#${system_bg}EB"
+ring = "#${gray_5}80"
+recording = "#${red_5}"
+transcribing = "#${cyan_5}"
+speaking = "#${green_5}"
+glow = "#${red_4}"
+
+# Audio capture
+#-------------------------------------------------------------------------------
+
+[audio]
+device = "default"
+
+# Text injection
+#-------------------------------------------------------------------------------
+
+[input]
+key_delay_ms = 2
+clipboard_fallback = true
+
+# Transcription
+#-------------------------------------------------------------------------------
+
+[local-whisper]
+model_path = "${XDG_DATA_HOME}/whisrs/models/ggml-small.en.bin"
+segmentation = "silence"
+phrase_silence_ms = 400
+
+# Recording hooks
+#-------------------------------------------------------------------------------
+
+[hooks]
+media_auto_pause = true

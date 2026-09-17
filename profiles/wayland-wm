@@ -1,5 +1,5 @@
 profile.extends=
 
 modules.lib=lib-wayland-utils
-modules.install=fuzzel hyprlock mako waybar scripts-desktop xkb
-modules.enable=
+modules.install=fuzzel hyprlock mako waybar scripts-desktop whisrs xkb
+modules.enable=whisrs
