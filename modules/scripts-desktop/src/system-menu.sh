@@ -15,6 +15,6 @@ case "$choice" in
     "Logout")             loginctl kill-session "$XDG_SESSION_ID" ;;
     "Suspend")            systemctl suspend ;;
     "Reboot")             systemctl reboot ;;
-    "Reboot to Windows")  systemctl reboot --boot-loader-entry=02-windows.conf ;;
+    "Reboot to Windows")  windows ;;
     "Shutdown")           systemctl poweroff ;;
 esac
