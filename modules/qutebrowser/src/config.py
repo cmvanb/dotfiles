@@ -503,7 +503,7 @@ config.bind('tj', 'config-cycle -p -t -u *://*.{url:host}/* content.javascript.e
 config.bind('tJ', 'config-cycle -p -u *://*.{url:host}/* content.javascript.enabled ;; reload ;; spawn notify-send \"Toggled javascript for: {url:host}\"')
 
 # Dark mode
-config.bind('td', 'config-cycle colors.webpage.darkmode.enabled ;; reload ;; spawn notify-send \"Toggled dark mode.\"')
+config.bind('td', 'config-cycle -p -t -u *://*.{url:host}/* colors.webpage.darkmode.enabled ;; reload ;; spawn notify-send \"Toggled dark mode for: {url:host}\"')
 
 # Printing
 config.bind('<Ctrl-p>', 'print')
