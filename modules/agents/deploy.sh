@@ -15,13 +15,24 @@ agents::install() {
     local src="$base_dir/modules/agents/src"
 
     fs::ensure_directory "$XDG_CONFIG_HOME/agents"
-    fs::force_link "$src/AGENTS.md"   "$XDG_CONFIG_HOME/agents/AGENTS.md"
-    fs::force_link "$src/skills"      "$XDG_CONFIG_HOME/agents/skills"
+    fs::force_link "$src/AGENTS.md" "$XDG_CONFIG_HOME/agents/AGENTS.md"
+
+    fs::ensure_directory "$XDG_BIN_HOME"
+    fs::force_link "$src/agent-skills.sh" "$XDG_BIN_HOME/agent-skills"
+
+    echo "└> Installing agent skills."
+
+    "$src/agent-skills.sh" sync
 }
 
 agents::uninstall() {
     echo "└> Uninstalling shared agent instructions."
 
     rm "$XDG_CONFIG_HOME/agents/AGENTS.md"
-    rm "$XDG_CONFIG_HOME/agents/skills"
+    rm -f "$XDG_BIN_HOME/agent-skills"
+
+    echo "└> Uninstalling agent skills."
+
+    rm -rf "$XDG_CONFIG_HOME/agents/skills"
+    rm -rf "$XDG_DATA_HOME/agents/vendor"
 }

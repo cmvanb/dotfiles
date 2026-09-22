@@ -1,0 +1,11 @@
+#-------------------------------------------------------------------------------
+# Vendored agent skill sources
+#
+# Format: <name> <url> <ref> <path>...
+#
+# Each path is a directory of skills inside the repository. Skills are linked
+# into the shared skills directory. Local skills take precedence over vendored
+# skills with the same name.
+#-------------------------------------------------------------------------------
+
+cursor-plugins https://github.com/cursor/plugins.git main pstack/skills cursor-team-kit/skills
