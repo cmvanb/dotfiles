@@ -1,0 +1,12 @@
+/* pull request overview: description, checks, merge conflicts, activity feed
+*-----------------------------------------------------------------------------*/
+
+.repos-pr-description-card,
+.repos-pr-details-page .bolt-table-card,
+.repos-activity-filter-dropdown,
+.activity-feed-list {
+    max-width: 800px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
