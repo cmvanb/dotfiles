@@ -472,6 +472,12 @@ config.bind('<Ctrl-d>', 'cmd-run-with-count 10 scroll up')
 config.bind('<Ctrl-PgDown>', 'cmd-run-with-count 25 scroll down')
 config.bind('<Ctrl-PgUp>', 'cmd-run-with-count 25 scroll up')
 
+# Use native key events (same path as Home/End) instead of the default
+# scroll-to-perc JS, which fails to scroll on some sites (e.g. when the
+# real scroll container isn't the document, or scrollHeight is miscalculated).
+config.bind('gg', 'fake-key <Home>')
+config.bind('G', 'fake-key <End>')
+
 # Selection
 config.bind('<Ctrl-a>', 'mode-enter caret ;; selection-toggle ;; move-to-end-of-document')
 
