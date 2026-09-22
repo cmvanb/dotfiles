@@ -35,3 +35,15 @@ description: Apply git conventions for commits and version control.
 
 - Use lowercase kebab-case, three to five words.
 - Default to `<type>/<name>`, with the same prefixes as commit messages.
+
+## Pull Requests
+
+- Use markdown headers: `Context`, `Changes`, `Tests`. Other headers as appropriate.
+- `Context`: what motivates the change and why it matters.
+  - For a feature, the concrete gap or need it addresses.
+  - For a fix, the concrete failure mechanism. What broke, in what scenario and why.
+- `Changes`: a complete changelist.
+  - Short bullets, each naming what changed and why it is correct.
+- `Tests`:
+  - One line per case, plain English scenario and outcome.
+  - Never a pass count or a checklist.
