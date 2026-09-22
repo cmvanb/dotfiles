@@ -38,24 +38,36 @@ notify() {
     notify-send "$(basename "$0")" "$*"
 }
 
-# Fill a form field by CSS selector using jseval.
+# Fill a form field using jseval, trying each CSS selector in order and
+# using the first match. A comma-joined CSS selector list is matched in
+# document order, not selector priority, so sites with an unrelated text
+# input earlier in the DOM (e.g. a header search box) can shadow the real
+# field; querying selectors one at a time preserves the intended priority.
 # Sets the value and fires input+change events so JS frameworks react.
 # The value is passed URL-encoded to avoid any quoting issues with special
 # characters (single quotes, backslashes, etc.) in passwords.
 fill_field() {
-    local selector="$1"
-    local value="$2"
+    local value="$1"
+    shift
+    local selectors=("$@")
     # URL-encode the value so it survives embedding in a JS string literal.
     # jq @uri percent-encodes everything outside RFC 3986 unreserved characters
     # (including % and ') so a single decodeURIComponent restores it exactly.
     local encoded
     encoded=$(printf '%s' "$value" | jq -Rr @uri)
+
+    local finder="" sel
+    for sel in "${selectors[@]}"; do
+        finder+="document.querySelector('${sel}') || "
+    done
+    finder+="null"
+
     # Use a heredoc for readability, then strip all newlines before writing to
     # the FIFO — qutebrowser treats each newline as a separate command.
     local js
     js=$(tr -d '\n' <<ENDOFJS
     (function(){
-        var el = document.querySelector('${selector}');
+        var el = ${finder};
         if (!el) return;
         var val = decodeURIComponent('${encoded}');
         var n = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value');
@@ -309,28 +321,39 @@ totp_secret=$(echo "$entry_json" | jq -r '.data.totp // empty')
 #-------------------------------------------------------------------------------
 # For username/password modes we use jseval to locate and fill the correct
 # input field directly — no reliance on prior focus state.
-# Candidates for the username field (querySelector returns the first in
-# document order, not the first matching alternative):
+# Candidates for the username field, tried in priority order (see fill_field):
+#   - input[autocomplete=username] — explicit, unambiguous signal
 #   - input[type=email]  — most login forms
 #   - input[type=text]   — fallback for non-email username fields
 #   - input:not([type])  — some JS frameworks (e.g. Proton's login) omit the
 #     type attribute entirely; the browser still treats it as text, but the
 #     [type=text] selector only matches when the attribute is present.
+# [role=searchbox] is excluded from the generic fallbacks since some sites
+# (e.g. name.com) place a site-wide search input earlier in the DOM than the
+# actual login form.
 # For TOTP there is no reliable heuristic, so we fall back to fake-key into
 # whatever element the user has focused.
 
-USERNAME_SELECTOR="input[type=email]:not([disabled]):not([hidden]), input[type=text]:not([disabled]):not([hidden]), input:not([type]):not([disabled]):not([hidden])"
+USERNAME_SELECTORS=(
+    "input[autocomplete=username]:not([disabled]):not([hidden])"
+    "input[type=email]:not([disabled]):not([hidden]):not([role=searchbox])"
+    "input[type=text]:not([disabled]):not([hidden]):not([role=searchbox])"
+    "input:not([type]):not([disabled]):not([hidden]):not([role=searchbox])"
+)
+# Comma-joined form only used by submit_form to check field *presence* for
+# form-scoping, where document-order priority doesn't matter.
+USERNAME_SELECTOR=$(IFS=,; echo "${USERNAME_SELECTORS[*]}")
 PASSWORD_SELECTOR="input[type=password]:not([disabled]):not([hidden])"
 
 case "$mode" in
     username)
         [[ -z "$username" ]] && { debug::error_notify "no username for '${selected_name}'."; exit 1; }
-        fill_field "$USERNAME_SELECTOR" "$username"
+        fill_field "$username" "${USERNAME_SELECTORS[@]}"
         ;;
 
     password)
         [[ -z "$password" ]] && { debug::error_notify "no password for '${selected_name}'."; exit 1; }
-        fill_field "$PASSWORD_SELECTOR" "$password"
+        fill_field "$password" "$PASSWORD_SELECTOR"
         ;;
 
     totp)
@@ -351,8 +374,8 @@ case "$mode" in
             debug::error_notify "no credentials for '${selected_name}'."
             exit 1
         fi
-        [[ -n "$username" ]] && fill_field "$USERNAME_SELECTOR" "$username"
-        [[ -n "$password" ]] && fill_field "$PASSWORD_SELECTOR" "$password"
+        [[ -n "$username" ]] && fill_field "$username" "${USERNAME_SELECTORS[@]}"
+        [[ -n "$password" ]] && fill_field "$password" "$PASSWORD_SELECTOR"
         ;;
 esac
 
