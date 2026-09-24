@@ -154,8 +154,8 @@ print(git.update_pull_request(
     project="<PROJECT>").target_ref_name)
 ```
 
-Run it with the Azure CLI interpreter.
-The system python has no `azure` module.
+Run it with the Azure CLI interpreter, not the system python.
+See [Find the interpreter](#find-the-interpreter).
 
 ## Comments
 
@@ -223,11 +223,26 @@ conn.get_client("azext_devops.devops_sdk.v6_0.work_item_tracking.work_item_track
 conn.get_client("azext_devops.devops_sdk.v6_0.build.build_client.BuildClient")
 ```
 
-### Find the extension and the interpreter
+### Find the extension
 
 ```bash
 EXT=$(find ~/.azure/cliextensions -maxdepth 1 -name azure-devops)
-head -1 $(command -v az)
+```
+
+Add it to `sys.path` before importing `azext_devops`.
+The interpreter does not see the extension on its own.
+
+### Find the interpreter
+
+```bash
+cat "$(command -v az)"
+AZPY=$(grep -oE '\S+/python[0-9.]*' "$(command -v az)" | head -1)
+```
+
+Verify it's working:
+
+```bash
+"$AZPY" -c "import azure.cli; print('ok')"
 ```
 
 ### Read a method signature
