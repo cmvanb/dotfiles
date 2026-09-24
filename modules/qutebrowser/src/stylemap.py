@@ -5,7 +5,7 @@ styles = {
     'hackernews.css': ['*news.ycombinator.com*'],
     'codemuch.css': ['*git.codemu.ch*'],
     'github.css': ['*github.com*'],
-    'azure-devops.css': ['*dev.azure.com*'],
+    'azure-devops.css': ['*dev.azure.com*/pullrequest/*'],
     'wikipedia.css': ['*wikipedia.org*'],
     'reddit.css': ['*old.reddit.com*'],
     'claude.css': ['*claude.ai*'],

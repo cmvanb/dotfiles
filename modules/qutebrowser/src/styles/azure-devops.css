@@ -15,3 +15,12 @@
     margin-left: auto;
     margin-right: auto;
 }
+
+/* files tab: auto margins on this flex-grow item eat the free space before
+   flex-grow can, shrinking diffs to content width instead of filling it
+*-----------------------------------------------------------------------------*/
+
+.page-content:has(.repos-compare-toolbar) {
+    margin-left: 0;
+    margin-right: 0;
+}
