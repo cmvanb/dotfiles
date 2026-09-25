@@ -10,7 +10,7 @@ source "$base_dir/lib/fs.sh"
 source "$base_dir/lib/template.sh"
 
 
-whisrs_model="ggml-small.en.bin"
+whisrs_model="ggml-large-v3.bin"
 whisrs_model_url="https://huggingface.co/ggerganov/whisper.cpp/resolve/main/$whisrs_model"
 
 
