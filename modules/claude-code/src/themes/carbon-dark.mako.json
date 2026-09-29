@@ -1,0 +1,94 @@
+<%
+# Maps Claude Code's theme keys (reverse-engineered from the installed binary;
+# there is no public schema) onto the carbon-dark palette so the CLI matches
+# the rest of the desktop theme instead of its own hardcoded colors.
+#
+# Prefer a semantic alias (syn_*, ansi_*, terminal_*, selection_*, ...) over a
+# raw palette step whenever the alias's own meaning genuinely matches the
+# Claude Code key's role -- that way retuning the alias in carbon-dark.yaml
+# flows through here automatically. Fall back to a raw palette step where no
+# alias covers that role, rather than force-fitting an unrelated one.
+overrides = [
+    ("autoAccept", "purple_6"),
+    ("autoAcceptShimmer", "purple_8"),
+    ("skill", "purple_6"),
+    ("bashBorder", "ansi_magenta"),
+    ("claude", "primary_12"),
+    ("claudeShimmer", "primary_15"),
+    ("claudeBlue_FOR_SYSTEM_SPINNER", "primary_11"),
+    ("claudeBlueShimmer_FOR_SYSTEM_SPINNER", "primary_14"),
+    ("permission", "primary_8"),
+    ("permissionShimmer", "primary_11"),
+    ("planMode", "cyan_3"),
+    ("ide", "terminal_file"),
+    ("promptBorder", "gray_9"),
+    ("promptBorderShimmer", "gray_12"),
+    ("text", "system_text"),
+    ("inverseText", "black"),
+    ("inactive", "gray_12"),
+    ("inactiveShimmer", "gray_15"),
+    ("subtle", "gray_12"),
+    ("suggestion", "primary_12"),
+    ("remember", "primary_11"),
+    ("background", "black"),
+    ("success", "ansi_green"),
+    ("error", "ansi_red"),
+    ("warning", "ansi_yellow"),
+    ("merged", "purple_6"),
+    ("warningShimmer", "ansi_bryellow"),
+    ("diffAdded", "ansi_green"),
+    ("diffRemoved", "ansi_red"),
+    ("diffAddedDimmed", "green_1"),
+    ("diffRemovedDimmed", "red_1"),
+    ("diffAddedWord", "ansi_brgreen"),
+    ("diffRemovedWord", "ansi_brred"),
+    ("red_FOR_SUBAGENTS_ONLY", "ansi_red"),
+    ("blue_FOR_SUBAGENTS_ONLY", "ansi_blue"),
+    ("green_FOR_SUBAGENTS_ONLY", "ansi_green"),
+    ("yellow_FOR_SUBAGENTS_ONLY", "ansi_yellow"),
+    ("purple_FOR_SUBAGENTS_ONLY", "purple_5"),
+    ("orange_FOR_SUBAGENTS_ONLY", "orange_5"),
+    ("pink_FOR_SUBAGENTS_ONLY", "ansi_brmagenta"),
+    ("cyan_FOR_SUBAGENTS_ONLY", "ansi_cyan"),
+    ("professionalBlue", "primary_11"),
+    ("chromeYellow", "ansi_bryellow"),
+    ("clawd_body", "primary_15"),
+    ("clawd_background", "black"),
+    ("userMessageBackground", "secondary_2"),
+    ("userMessageBackgroundHover", "secondary_3"),
+    ("composerSidebarBackground", "secondary_1"),
+    ("selectionBg", "selection_bg"),
+    ("bashMessageBackgroundColor", "gray_4"),
+    ("memoryBackgroundColor", "gray_5"),
+    ("rate_limit_fill", "primary_15"),
+    ("rate_limit_empty", "secondary_4"),
+    ("fastMode", "orange_5"),
+    ("fastModeShimmer", "orange_7"),
+    ("effortUltra", "purple_6"),
+    ("briefLabelYou", "primary_13"),
+    ("briefLabelClaude", "orange_5"),
+    ("rainbow_red", "ansi_red"),
+    ("rainbow_orange", "orange_6"),
+    ("rainbow_yellow", "ansi_yellow"),
+    ("rainbow_green", "ansi_green"),
+    ("rainbow_blue", "ansi_blue"),
+    ("rainbow_indigo", "purple_5"),
+    ("rainbow_violet", "ansi_magenta"),
+    ("rainbow_red_shimmer", "ansi_brred"),
+    ("rainbow_orange_shimmer", "orange_7"),
+    ("rainbow_yellow_shimmer", "ansi_bryellow"),
+    ("rainbow_green_shimmer", "ansi_brgreen"),
+    ("rainbow_blue_shimmer", "ansi_brblue"),
+    ("rainbow_indigo_shimmer", "purple_7"),
+    ("rainbow_violet_shimmer", "ansi_brmagenta"),
+]
+%>
+{
+  "name": "Carbon Dark",
+  "base": "dark",
+  "overrides": {
+% for i, (key, color) in enumerate(overrides):
+    "${key}": "${color_hash(color)}"${',' if i < len(overrides) - 1 else ''}
+% endfor
+  }
+}
