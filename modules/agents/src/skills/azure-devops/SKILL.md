@@ -211,6 +211,64 @@ az devops invoke --org "$ORG" --area git --resource pullRequestThreadComments \
 
 Use `4` for a note that needs no reply.
 
+## Work items
+
+### Turn on Markdown rendering for a field
+
+Add `{"op": "add", "path": "/multilineFieldsFormat/<field>", "value": "Markdown"}`
+to the patch document, alongside the `/fields/<field>` op.
+
+### Create
+
+```bash
+REQ=$(mktemp)
+trap 'rm -f "$REQ"' EXIT
+cat > "$REQ" <<'JSON'
+[
+  {"op": "add", "path": "/fields/System.Title", "value": "<title>"},
+  {"op": "add", "path": "/fields/System.Description", "value": "### Context\n\n..."},
+  {"op": "add", "path": "/multilineFieldsFormat/System.Description", "value": "Markdown"}
+]
+JSON
+
+az devops invoke --org "$ORG" --area wit --resource workitems \
+  --route-parameters project="$PROJECT" type=Issue \
+  --http-method POST --in-file "$REQ" \
+  --media-type application/json-patch+json --api-version 7.1
+```
+
+### Update
+
+Use the SDK, and include the `/fields/<field>` op in
+the same call.
+
+```python
+# /opt/azure-cli/bin/python set_markdown.py <id>
+import sys
+sys.path.insert(0, "<EXT>")
+from azext_devops.dev.common.services import get_connection
+
+conn = get_connection("https://dev.azure.com/<organization>/")
+wit = conn.get_client(
+    "azext_devops.devops_sdk.v6_0.work_item_tracking.work_item_tracking_client.WorkItemTrackingClient")
+
+ops = [
+    {"op": "add", "path": "/fields/System.Description", "value": "<same or new text>"},
+    {"op": "add", "path": "/multilineFieldsFormat/System.Description", "value": "Markdown"},
+]
+wit.update_work_item(document=ops, id=int(sys.argv[1]), project="<PROJECT>")
+```
+
+### Query
+
+Check a recent Issue before writing a new one:
+
+```bash
+az boards query --org "$ORG" --project "$PROJECT" \
+  --wiql "SELECT [System.Id],[System.Title] FROM WorkItems ORDER BY [System.CreatedDate] DESC" -o table
+az boards work-item show --org "$ORG" --id <recent-id> -o json
+```
+
 ## The SDK escape hatch
 
 ### Get a client
