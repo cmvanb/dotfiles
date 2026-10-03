@@ -313,9 +313,9 @@ fi
 #-------------------------------------------------------------------------------
 
 selected_name=$(echo "$entry_json" | jq -r '.name // "entry"')
-username=$(echo "$entry_json" | jq -r '.data.username // empty')
-password=$(echo "$entry_json" | jq -r '.data.password // empty')
-totp_secret=$(echo "$entry_json" | jq -r '.data.totp // empty')
+username=$(echo "$entry_json" | jq -r '.data.Login.username // .data.username // empty')
+password=$(echo "$entry_json" | jq -r '.data.Login.password // .data.password // empty')
+totp_secret=$(echo "$entry_json" | jq -r '.data.Login.totp // .data.totp // empty')
 
 # Fill the form
 #-------------------------------------------------------------------------------
