@@ -1,6 +1,6 @@
 function git-push-all-remotes
     set remotes (git remote)
-    if test (count $remotes) -eq 0
+    if test (count $remotes) -le 1
         echo "git push"
         return
     end
