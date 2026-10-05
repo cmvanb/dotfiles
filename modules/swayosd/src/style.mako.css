@@ -1,7 +1,7 @@
 window#osd {
     border-radius: 12px;
-    border: 2px solid ${color_hash('primary_10')};
-    background: ${color_css_rgba('gray_3', 0.92)};
+    border: none;
+    background: ${color_css_rgba('black', 0.92)};
 }
 
 window#osd #container {
@@ -10,7 +10,8 @@ window#osd #container {
 
 window#osd image,
 window#osd label {
-    color: ${color_hash('text_11')};
+    color: ${color_hash('system_text')};
+    -gtk-icon-shadow: 0 1px 0 ${color_hash('black')};
 }
 
 window#osd progressbar:disabled,
@@ -31,7 +32,7 @@ window#osd segment {
     min-height: inherit;
     border-radius: inherit;
     border: none;
-    background: ${color_css_rgba('secondary_5', 0.6)};
+    background: ${color_css_rgba('gray_6', 0.6)};
 }
 
 window#osd progress,

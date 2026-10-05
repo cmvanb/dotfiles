@@ -4,7 +4,7 @@ PartOf=graphical-session.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/swayosd-server
+ExecStart=/usr/bin/swayosd-server --duration 1000
 
 [Install]
 WantedBy=graphical-session.target
