@@ -42,6 +42,11 @@ input "43256:6199:Bastard_Keyboards_Dilemma_Max_Mouse" {
     pointer_accel -0.15
 }
 
+# MX Vertical scroll direction
+input "1133:45088:Logitech_MX_Vertical_Advanced_Ergonomic_Mouse" {
+    natural_scroll disabled
+}
+
 # Touchpad
 input type:touchpad {
     natural_scroll enabled
