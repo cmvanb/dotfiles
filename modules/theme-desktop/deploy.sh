@@ -10,6 +10,18 @@ source "$base_dir/lib/fs.sh"
 source "$base_dir/lib/template.sh"
 
 
+theme-desktop::install_icons () {
+    echo "└> Installing icon overrides."
+
+    local icons_src="$base_dir/modules/theme-desktop/src/icons/carbon-dark"
+    local icons_dest="$HOME/.local/share/icons/carbon-dark"
+
+    fs::ensure_directory "$icons_dest/scalable/actions"
+    fs::force_link "$icons_src/index.theme"                           "$icons_dest/index.theme"
+    fs::force_link "$icons_src/scalable/actions/sink-volume-medium-symbolic.svg"  "$icons_dest/scalable/actions/sink-volume-medium-symbolic.svg"
+    fs::force_link "$icons_src/scalable/actions/source-volume-muted-symbolic.svg" "$icons_dest/scalable/actions/source-volume-muted-symbolic.svg"
+}
+
 theme-desktop::install_gtk_theme () {
     echo "└> Installing GTK theme."
 
@@ -62,7 +74,7 @@ theme-desktop::configure_gtk () {
     gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 
     # see: https://github.com/yeyushengfan258/Win11-icon-theme
-    gsettings set org.gnome.desktop.interface icon-theme 'Win11-dark'
+    gsettings set org.gnome.desktop.interface icon-theme 'carbon-dark'
 
     gsettings set org.gnome.desktop.interface font-name "$font_sans $font_size_medium"
     gsettings set org.gnome.desktop.interface document-font-name "$font_sans $font_size_medium"
@@ -80,6 +92,7 @@ theme-desktop::install () {
     fs::ensure_directory "$XDG_SCRIPTS_HOME"
     fs::force_link "$base_dir/modules/theme-desktop/src/generate-color-gradient-palette.py" "$XDG_SCRIPTS_HOME/generate-color-gradient-palette.py"
 
+    theme-desktop::install_icons
     theme-desktop::install_gtk_theme
     theme-desktop::configure_gtk
 }
@@ -88,6 +101,8 @@ theme-desktop::uninstall () {
     echo "└> Uninstalling theme desktop configuration."
 
     rm -f "$XDG_SCRIPTS_HOME/generate-color-gradient-palette.py"
+
+    rm -rf "$HOME/.local/share/icons/carbon-dark"
 
     rm -f "$XDG_CONFIG_HOME/gtk-3.0/settings.ini"
     rm -f "$XDG_CONFIG_HOME/gtk-4.0/gtk.css"

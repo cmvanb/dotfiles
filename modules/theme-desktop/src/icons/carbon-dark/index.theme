@@ -1,0 +1,11 @@
+[Icon Theme]
+Name=carbon-dark
+Comment=Carbon dark icon overrides
+Inherits=Win11-dark,Adwaita,hicolor
+Directories=scalable/actions
+
+[scalable/actions]
+Size=16
+MinSize=8
+MaxSize=512
+Type=Scalable
