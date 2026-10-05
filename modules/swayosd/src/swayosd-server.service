@@ -5,6 +5,8 @@ PartOf=graphical-session.target
 [Service]
 Type=simple
 ExecStart=/usr/bin/swayosd-server --duration 1000
+Restart=on-failure
+RestartSec=2
 
 [Install]
 WantedBy=graphical-session.target
