@@ -1,0 +1,4 @@
+[Unit]
+Description=Sway compositor session
+Wants=graphical-session-pre.target graphical-session.target
+After=graphical-session-pre.target

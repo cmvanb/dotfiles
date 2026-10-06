@@ -55,6 +55,9 @@ sway::install () {
 
         fs::force_link "$src/init.sway" "$XDG_BIN_HOME/init"
     fi
+
+    fs::ensure_directory "$XDG_CONFIG_HOME/systemd/user"
+    fs::force_link "$src/sway-session.target" "$XDG_CONFIG_HOME/systemd/user/sway-session.target"
 }
 
 sway::uninstall () {
@@ -71,4 +74,6 @@ sway::uninstall () {
     if fs::same_file "$XDG_BIN_HOME/init" "$src/init.sway"; then
         rm "$XDG_BIN_HOME/init"
     fi
+
+    rm -f "$XDG_CONFIG_HOME/systemd/user/sway-session.target"
 }

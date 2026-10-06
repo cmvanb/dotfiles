@@ -1,6 +1,6 @@
 [Unit]
 Description=SwayOSD server
-PartOf=graphical-session.target
+PartOf=sway-session.target
 
 [Service]
 Type=simple
@@ -9,4 +9,4 @@ Restart=on-failure
 RestartSec=2
 
 [Install]
-WantedBy=graphical-session.target
+WantedBy=sway-session.target

@@ -108,3 +108,6 @@ include $config_dir/sway/keymaps.conf
 
 # System config
 include /etc/sway/config.d/*
+
+# Activate systemd user services for this sway session
+exec systemctl --user start sway-session.target
