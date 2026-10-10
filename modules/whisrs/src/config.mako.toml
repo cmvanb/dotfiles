@@ -8,7 +8,15 @@
 # large-v3 runs on the GPU through the whisrs-vulkan package. Measured on the
 # 7900 XTX it decodes 24x faster than real time, and it cuts the word error
 # rate of the small.en model by 71% on accented speech.
+# casino has no discrete GPU and runs the CPU package with small.en.
 #-------------------------------------------------------------------------------
+
+<%
+    whisrs_model = 'ggml-small.en.bin' if DEPLOY_HOST == 'casino' else 'ggml-large-v3.bin'
+    # "default" follows a connected Bluetooth headset, whose mic forces the
+    # A2DP to HSP/HFP profile switch and degrades playback while recording.
+    whisrs_device = 'alsa_input.pci-0000_65_00.6.analog-stereo' if DEPLOY_HOST == 'casino' else 'default'
+%>
 
 [general]
 backend = "local-whisper"
@@ -40,7 +48,7 @@ glow = "#${red_4}"
 #-------------------------------------------------------------------------------
 
 [audio]
-device = "default"
+device = "${whisrs_device}"
 
 # Text injection
 #-------------------------------------------------------------------------------
@@ -53,7 +61,7 @@ clipboard_fallback = true
 #-------------------------------------------------------------------------------
 
 [local-whisper]
-model_path = "${XDG_DATA_HOME}/whisrs/models/ggml-large-v3.bin"
+model_path = "${XDG_DATA_HOME}/whisrs/models/${whisrs_model}"
 segmentation = "silence"
 phrase_silence_ms = 400
 
