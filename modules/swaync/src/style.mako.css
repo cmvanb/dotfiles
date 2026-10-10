@@ -158,3 +158,63 @@
 .control-center {
     padding-bottom: 11px;
 }
+
+.widget-mpris {
+    padding: 0;
+}
+
+.widget-mpris .widget-mpris-player {
+    margin: 8px 16px;
+    border: 3px solid ${color_hash('primary_8')};
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.widget-mpris .widget-mpris-player .mpris-background {
+    filter: none;
+    opacity: 0;
+}
+
+.widget-mpris .widget-mpris-player .mpris-overlay {
+    padding: 15px 17px 14px 11px;
+    background-color: ${color_hash('primary_1')};
+}
+
+.widget-mpris .widget-mpris-player .mpris-overlay .widget-mpris-album-art {
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.widget-mpris .widget-mpris-player .mpris-overlay .widget-mpris-title {
+    color: ${color_hash('system_text')};
+    font-size: ${int(font_size_xlarge) + 4}px;
+    font-weight: bold;
+}
+
+.widget-mpris .widget-mpris-player .mpris-overlay .widget-mpris-subtitle {
+    margin: 4px 0 26px;
+    color: ${color_hash('system_text')};
+    font-size: ${int(font_size_xlarge) + 4}px;
+}
+
+.widget-mpris .widget-mpris-player .mpris-overlay > box:last-child {
+    margin: -22px 0 0 13px;
+}
+
+.widget-mpris .widget-mpris-player .mpris-overlay > box > button {
+    min-height: 24px;
+    padding: 0 6px;
+    color: ${color_hash('system_text')};
+    background: transparent;
+    border: none;
+    border-radius: 999px;
+}
+
+.widget-mpris .widget-mpris-player .mpris-overlay > box > button:hover {
+    background: ${color_hash('primary_3')};
+}
+
+.widget-mpris > box > button {
+    color: ${color_hash('system_text')};
+    border-radius: 999px;
+}
