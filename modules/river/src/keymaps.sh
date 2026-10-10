@@ -17,7 +17,7 @@ source "$opt_dir/shell-utils/debug.sh"
 # Validation
 #-------------------------------------------------------------------------------
 
-debug::assert_dependency makoctl
+debug::assert_dependency swaync-client
 debug::assert_dependency qutebrowser
 debug::assert_dependency riverctl
 debug::assert_dependency river-shifttags
@@ -60,7 +60,10 @@ riverctl map normal Super M spawn "spawn-terminal.sh --command btop"
 riverctl map normal Super R spawn "toggle-waybar.sh"
 
 # Dismiss all notifications
-riverctl map normal Super Y spawn "makoctl dismiss -a"
+riverctl map normal Super Y spawn "swaync-client --close-all"
+
+# Toggle notification center
+riverctl map normal Super+Shift Y spawn "swaync-client --toggle-panel --skip-wait"
 
 # Take screenshot of a selected rectangle
 riverctl map normal Super P spawn "screenshot-rectangle.sh"
