@@ -1,5 +1,5 @@
 window#osd {
-    border-radius: 12px;
+    border-radius: 20px;
     border: none;
     background: ${color_css_rgba('black', 0.92)};
 }
