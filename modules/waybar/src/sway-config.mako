@@ -87,7 +87,9 @@
     "bluetooth": {
         "format": " {status}",
         "tooltip": true,
-        "tooltip-format": "{device_alias} · {device_address}",
+        "tooltip-format": "{controller_alias}",
+        "tooltip-format-connected": "{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias} · {device_address}",
         "tooltip-format-disabled": "controller disabled",
         "tooltip-format-off": "controller off"
     },
