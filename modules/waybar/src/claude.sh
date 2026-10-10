@@ -24,11 +24,13 @@ humanize_remaining() {
     fi
 }
 
+prefix="󰚩 "
+
 creds="${XDG_CONFIG_HOME:-$HOME/.config}/claude/.credentials.json"
 token=$(jq -r '.claudeAiOauth.accessToken // empty' "$creds" 2>/dev/null)
 
 if [[ -z $token ]]; then
-    printf '{"text":"claude —"}\n'
+    printf '{"text":"%s —"}\n' "$prefix"
     exit 0
 fi
 
@@ -38,7 +40,7 @@ response=$(curl -sf --max-time 10 "https://api.anthropic.com/api/oauth/usage" \
     -H "User-Agent: claude-code/2.1.170")
 
 if [[ -z $response ]]; then
-    printf '{"text":"claude —"}\n'
+    printf '{"text":"%s —"}\n' "$prefix"
     exit 0
 fi
 
@@ -57,7 +59,7 @@ d7_left=$(humanize_remaining "$d7_resets")
 tooltip="5h: ${h5}%  ·  resets in ${h5_left}"$'\n'"7d: ${d7}%  ·  resets in ${d7_left}"$'\n'"extra: ${credits_used}/${credits_limit} ${currency}  (${credits_pct}%)"
 
 jq -cn \
-    --arg text "claude ${h5}%" \
+    --arg text "${prefix} ${h5}%" \
     --arg tooltip "$tooltip" \
     --argjson pct "$h5" \
     '{"text": $text, "tooltip": $tooltip, "percentage": $pct}'
