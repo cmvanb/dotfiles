@@ -21,9 +21,22 @@ dtotal=$((total2 - total1))
 didle=$((idle2 - idle1))
 usage=$(( dtotal > 0 ? 100 * (dtotal - didle) / dtotal : 0 ))
 
-temp=$(sensors coretemp-isa-0000 2>/dev/null \
-    | awk '/^Package id 0:/ { match($0, /\+([0-9.]+)°/, a); printf "%d", int(a[1]) }')
-temp=${temp:-0}
+# Intel: coretemp "Package id 0". AMD: k10temp "Tctl".
+temp=0
+for hw in /sys/class/hwmon/hwmon*; do
+    case $(<"$hw/name") in
+        coretemp)
+            for label in "$hw"/temp*_label; do
+                [[ $(<"$label") == "Package id 0" ]] || continue
+                temp=$(( $(<"${label%_label}_input") / 1000 ))
+                break
+            done
+            break ;;
+        k10temp)
+            temp=$(( $(<"$hw/temp1_input") / 1000 ))
+            break ;;
+    esac
+done
 
 class=$( [ "$usage" -ge 90 ] && echo critical || ( [ "$usage" -ge 70 ] && echo heavy || ( [ "$usage" -ge 50 ] && echo medium || echo "" ) ) )
 printf '{"text":"cpu %d%%","tooltip":"%d°C","percentage":%d,"class":"%s"}\n' "$usage" "$temp" "$usage" "$class"
