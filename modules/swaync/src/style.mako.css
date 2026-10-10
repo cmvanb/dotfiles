@@ -1,0 +1,160 @@
+/* Theme the stock grey palette used by hover, focus and collapsed states. */
+:root {
+    --cc-bg: ${color_css_rgba('black', 0.92)};
+    --noti-bg: ${color_rgb_int('primary_1')};
+    --noti-bg-alpha: 1;
+    --noti-bg-darker: ${color_hash('primary_0')};
+    --noti-bg-hover: ${color_hash('primary_2')};
+    --noti-bg-focus: transparent;
+    --noti-close-bg: ${color_hash('primary_3')};
+    --noti-close-bg-hover: ${color_hash('primary_5')};
+    --text-color: ${color_hash('system_text')};
+    --noti-border-color: ${color_hash('primary_8')};
+}
+
+* {
+    font-family: ${font_sans};
+    font-size: ${font_size_medium}px;
+}
+
+.notification-row .notification-background {
+    padding: 12px 12px;
+}
+
+.notification-row .notification-background .notification {
+    background: ${color_hash('primary_1')};
+    border: 3px solid ${color_hash('primary_8')};
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0;
+}
+
+.notification-row .notification-background .notification.critical {
+    border-color: ${color_hash('red_5')};
+}
+
+.notification-row .notification-background .notification .notification-default-action {
+    padding: 13px 21px 13px 13px;
+    border-radius: 0;
+}
+
+.notification-row .notification-background .notification .notification-default-action:hover {
+    background: ${color_css_rgba('primary_8', 0.25)};
+}
+
+.notification-row .notification-background .notification .notification-default-action .notification-content {
+    padding: 0;
+}
+
+.notification-row .notification-background .notification .notification-default-action .notification-content .app-icon,
+.notification-row .notification-background .notification .notification-default-action .notification-content .image {
+    margin: 0 12px 0 0;
+}
+
+.notification-row .notification-background .notification .notification-default-action .notification-content .text-box {
+    margin-top: 9px;
+}
+
+.notification-row .notification-background .notification .notification-default-action .notification-content .text-box label {
+    color: ${color_hash('system_text')};
+}
+
+.notification-row .notification-background .notification .notification-default-action .notification-content .text-box .summary {
+    font-size: ${int(font_size_xlarge) + 4}px;
+    font-weight: bold;
+}
+
+.notification-row .notification-background .notification .notification-default-action .notification-content .text-box .time {
+    font-size: ${font_size_large}px;
+    margin-right: 0;
+}
+
+.notification-row .notification-background .notification .notification-default-action .notification-content .text-box .body {
+    font-size: ${int(font_size_xlarge) + 4}px;
+}
+
+.notification-row .notification-background .notification .notification-action {
+    border-radius: 0;
+}
+
+.close-button {
+    background: ${color_hash('primary_3')};
+    color: ${color_hash('system_text')};
+    border-radius: 0;
+    margin: 4px;
+}
+
+.control-center {
+    background: ${color_css_rgba('black', 0.92)};
+    border: none;
+    border-radius: 20px;
+}
+
+.control-center .notification-row .notification-background {
+    margin: 0;
+    padding: 6px;
+}
+
+.notification-row:focus,
+.notification-group:focus {
+    background: transparent;
+}
+
+.widget-title {
+    margin: 16px 16px 8px;
+}
+
+.widget-title > label {
+    color: ${color_hash('system_text')};
+    font-size: ${int(font_size_xxlarge) + 4}px;
+    font-weight: bold;
+}
+
+.widget-title > button {
+    background: ${color_hash('primary_3')};
+    color: ${color_hash('system_text')};
+    font-size: ${font_size_xlarge}px;
+    border: none;
+    border-radius: 999px;
+    padding: 8px 18px 4px;
+}
+
+.widget-title > button:hover {
+    background: ${color_hash('primary_5')};
+}
+
+.widget-dnd {
+    margin: 8px 16px;
+}
+
+.widget-dnd > label {
+    color: ${color_hash('system_text')};
+    font-size: ${int(font_size_xxlarge) + 4}px;
+}
+
+.widget-dnd > switch {
+    min-width: 58px;
+    min-height: 34px;
+    background: ${color_hash('primary_3')};
+    border: none;
+    border-radius: 999px;
+    box-shadow: none;
+}
+
+.widget-dnd > switch:checked {
+    background: ${color_hash('green_3')};
+}
+
+.widget-dnd > switch slider {
+    min-width: 30px;
+    min-height: 30px;
+    margin: 2px;
+    background: ${color_hash('system_text')};
+    border: none;
+    border-radius: 999px;
+    box-shadow: 0 2px 4px ${color_css_rgba('black', 0.4)};
+}
+
+.control-center {
+    padding-bottom: 11px;
+}
