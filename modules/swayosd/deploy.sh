@@ -20,6 +20,12 @@ swayosd::install() {
 
     fs::ensure_directory "$XDG_CONFIG_HOME/systemd/user"
     fs::force_link "$src/swayosd-server.service" "$XDG_CONFIG_HOME/systemd/user/swayosd-server.service"
+
+    if systemctl --user is-active --quiet swayosd-server; then
+        echo "└> Restarting running swayosd server."
+        systemctl --user daemon-reload
+        systemctl --user restart swayosd-server
+    fi
 }
 
 swayosd::uninstall() {
