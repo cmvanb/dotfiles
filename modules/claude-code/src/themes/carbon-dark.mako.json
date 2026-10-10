@@ -6,7 +6,9 @@
 # Prefer a semantic alias (syn_*, ansi_*, terminal_*, selection_*, ...) over a
 # raw palette step whenever the alias's own meaning genuinely matches the
 # Claude Code key's role -- that way retuning the alias in carbon-dark.yaml
-# flows through here automatically. Fall back to a raw palette step where no
+# flows through here automatically. Diff colors mirror the git delta styles in
+# modules/git/src/config.mako (line backgrounds red_0/green_0, word backgrounds
+# red_3/green_3). Fall back to a raw palette step where no
 # alias covers that role, rather than force-fitting an unrelated one.
 overrides = [
     ("autoAccept", "purple_6"),
@@ -36,12 +38,12 @@ overrides = [
     ("warning", "ansi_yellow"),
     ("merged", "purple_6"),
     ("warningShimmer", "ansi_bryellow"),
-    ("diffAdded", "ansi_green"),
-    ("diffRemoved", "ansi_red"),
-    ("diffAddedDimmed", "green_1"),
-    ("diffRemovedDimmed", "red_1"),
-    ("diffAddedWord", "ansi_brgreen"),
-    ("diffRemovedWord", "ansi_brred"),
+    ("diffAdded", "green_0"),
+    ("diffRemoved", "red_0"),
+    ("diffAddedDimmed", "green_0"),
+    ("diffRemovedDimmed", "red_0"),
+    ("diffAddedWord", "green_3"),
+    ("diffRemovedWord", "red_3"),
     ("red_FOR_SUBAGENTS_ONLY", "ansi_red"),
     ("blue_FOR_SUBAGENTS_ONLY", "ansi_blue"),
     ("green_FOR_SUBAGENTS_ONLY", "ansi_green"),
