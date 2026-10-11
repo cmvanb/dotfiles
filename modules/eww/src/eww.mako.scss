@@ -40,6 +40,7 @@ $medium: ${color_hash('yellow_7')};
 $heavy: ${color_hash('orange_6')};
 $critical: ${color_hash('red_6')};
 $critical-dim: ${color_hash('red_2')};
+$outline: ${color_hash('black')};
 
 $icon: ${icon_size}px;
 
@@ -169,6 +170,7 @@ tooltip {
 
 .panel {
     background: $panel;
+    border: 1px solid $outline;
     border-radius: 20px;
     padding: 16px;
     min-width: 380px;
