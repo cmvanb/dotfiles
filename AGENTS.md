@@ -23,6 +23,9 @@ Linux dotfiles managed via a profile/module deployment system. Configs are symli
 ./deploy.sh list                    # list all profiles and modules
 ./deploy.sh show <profile>          # show resolved module set
 
+theme switch dark|light|toggle      # switch the color scheme at runtime
+theme status                        # show the active color scheme
+
 agent-skills sync                   # link local and vendored agent skills
 agent-skills update                 # fetch vendored skills, then relink
 agent-skills list                   # show linked skills and their source

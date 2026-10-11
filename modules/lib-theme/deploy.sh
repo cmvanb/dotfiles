@@ -16,10 +16,14 @@ lib-theme::install () {
 
     fs::ensure_directory "$XDG_OPT_HOME"
     fs::force_link "$src" "$XDG_OPT_HOME/theme"
+
+    fs::ensure_directory "$XDG_BIN_HOME"
+    fs::force_link "$src/theme-cli.sh" "$XDG_BIN_HOME/theme"
 }
 
 lib-theme::uninstall () {
     echo "└> Uninstalling theme libraries."
 
     rm -rf "$XDG_OPT_HOME/theme"
+    rm -f "$XDG_BIN_HOME/theme"
 }
