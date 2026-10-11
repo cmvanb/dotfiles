@@ -1,0 +1,34 @@
+;;------------------------------------------------------------------------------
+;; Network panel
+;;------------------------------------------------------------------------------
+
+(defwidget network-panel []
+  (box :class "network" :orientation "v" :space-evenly false :spacing 12
+    (heading :text "Network"
+      (label :class "switch-label" :text "Wi-Fi")
+      (switch :active {network.wifi_enabled}
+              :onclick "nmcli radio wifi ${network.wifi_enabled ? 'off' : 'on'}"))
+    (card
+      (row :key "Connection" :value {network.type == "none" ? "Disconnected" : network.name})
+      (box :visible {network.type == "wifi"}
+        (row :key "Signal" :value "${network.signal}%"))
+      (row :key "Interface" :value {network.iface ?: "—"})
+      (row :key "Address" :value {network.ip ?: "—"})
+      (row :key "Gateway" :value {network.gateway ?: "—"}))
+    (card
+      (rate :label "Download" :icon "network-receive-symbolic" :class "down"
+            :value {EWW_NET?.[network.iface]?.NET_DOWN ?: 0})
+      (rate :label "Upload" :icon "network-transmit-symbolic" :class "up"
+            :value {EWW_NET?.[network.iface]?.NET_UP ?: 0}))
+    (box :halign "end"
+      (pill :text "Connections" :icon "preferences-system-symbolic"
+            :onclick "scripts/popup.sh close; nm-connection-editor &"))))
+
+;; Transfer rate in bytes per second, with a one-minute history graph.
+(defwidget rate [label icon value class]
+  (box :class "rate ${class}" :orientation "v" :space-evenly false :spacing 4
+    (box :space-evenly false :spacing 8
+      (icon :name icon :class "small")
+      (label :class "meter-label" :halign "start" :hexpand true :text label)
+      (label :class "meter-detail" :text "${formatbytes(round(value, 0), true)}/s"))
+    (graph :class "graph" :height 48 :value value :time-range "60s" :dynamic true :min 0 :max 1024 :line-style "round")))

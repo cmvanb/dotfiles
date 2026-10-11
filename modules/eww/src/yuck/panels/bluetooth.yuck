@@ -1,0 +1,29 @@
+;;------------------------------------------------------------------------------
+;; Bluetooth panel
+;;------------------------------------------------------------------------------
+
+(defwidget bluetooth-panel []
+  (box :class "bluetooth" :orientation "v" :space-evenly false :spacing 12
+    (heading :text "Bluetooth"
+      (switch :active {bluetooth.powered}
+              :onclick "bluetoothctl power ${bluetooth.powered ? 'off' : 'on'}"))
+    (box :visible {bluetooth.powered} :orientation "v" :space-evenly false :spacing 8
+      (for device in {bluetooth.devices}
+        (button :class "device ${device.connected ? 'connected' : ''}"
+                :tooltip {device.connected ? "Disconnect" : "Connect"}
+                :onclick "bluetoothctl ${device.connected ? 'disconnect' : 'connect'} ${device.address}"
+          (card
+            (box :space-evenly false :spacing 12
+              (icon :name "${device.icon ?: 'bluetooth'}-symbolic" :class "medium")
+              (box :orientation "v" :space-evenly false :hexpand true
+                (label :class "device-name" :halign "start" :limit-width 28 :text {device.name})
+                (label :class "device-state" :halign "start"
+                       :text {device.connected ? "Connected" : "Not connected"}))
+              (box :visible {device.battery_icon != ""} :space-evenly false :spacing 4
+                (icon :name {device.battery_icon} :class "small")
+                (label :class "device-battery" :text "${device.battery}%"))))))
+      (label :class "placeholder" :visible {arraylength(bluetooth.devices) == 0} :text "No paired devices"))
+    (label :class "placeholder" :visible {!bluetooth.powered} :text "Bluetooth is off")
+    (box :halign "end"
+      (pill :text "Manager" :icon "preferences-system-symbolic"
+            :onclick "scripts/popup.sh close; blueman-manager &"))))

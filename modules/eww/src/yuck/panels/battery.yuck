@@ -1,0 +1,21 @@
+;;------------------------------------------------------------------------------
+;; Battery panel
+;;------------------------------------------------------------------------------
+
+(defwidget battery-panel []
+  (box :class "battery" :orientation "v" :space-evenly false :spacing 12
+    (heading :text "Battery")
+    (card
+      (box :class "battery-summary" :space-evenly false :spacing 16
+        (icon :name {battery.icon} :class "huge")
+        (box :orientation "v" :space-evenly false :valign "center"
+          (label :class "big-value" :halign "start" :text "${battery.capacity}%")
+          (label :class "muted-text" :halign "start" :text {battery.status})))
+      (progress :class "level" :value {battery.capacity}))
+    (card
+      (row :key {battery.status == "Charging" ? "Time to full" : "Time left"}
+           :value {battery.remaining ?: "—"})
+      (row :key {battery.status == "Charging" ? "Charge rate" : "Power draw"}
+           :value "${battery.watts} W")
+      (row :key "Health" :value "${battery.health}%")
+      (row :key "Charge cycles" :value {battery.cycles}))))

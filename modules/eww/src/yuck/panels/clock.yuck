@@ -1,0 +1,16 @@
+;;------------------------------------------------------------------------------
+;; Clock panel
+;;------------------------------------------------------------------------------
+
+(defwidget clock-panel []
+  (box :class "clock" :orientation "v" :space-evenly false :spacing 12
+    (box :class "clock-face" :halign "center" :space-evenly false
+      (label :class "clock-time" :text {formattime(EWW_TIME, "%H:%M")})
+      (label :class "clock-seconds" :valign "end" :text {formattime(EWW_TIME, ":%S")}))
+    (label :class "clock-date" :text {formattime(EWW_TIME, "%A, %B %-d, %Y")})
+    (card
+      (row :key "ISO week" :value {formattime(EWW_TIME, "%G-W%V")})
+      (row :key "Day of year" :value {formattime(EWW_TIME, "%-j")})
+      (row :key "Time zone" :value {timezone})
+      (row :key "UTC offset" :value {formattime(EWW_TIME, "%:z")})
+      (row :key "Unix time" :value {EWW_TIME}))))

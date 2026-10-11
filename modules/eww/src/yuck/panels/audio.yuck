@@ -1,0 +1,34 @@
+;;------------------------------------------------------------------------------
+;; Audio panel
+;;------------------------------------------------------------------------------
+
+(defwidget audio-panel []
+  (box :class "audio" :orientation "v" :space-evenly false :spacing 12
+    (heading :text "Audio"
+      (pill :text "Mixer" :icon "preferences-system-symbolic"
+            :onclick "scripts/popup.sh close; $XDG_CONFIG_HOME/sway/scripts/open-pavucontrol.sh"))
+    (card
+      (label :class "card-title" :halign "start" :text "Output")
+      (volume-slider :muted {audio.muted} :value {audio.volume}
+                     :icon {audio.muted ? "audio-volume-muted-symbolic" : audio.volume < 34 ? "audio-volume-low-symbolic" : audio.volume < 67 ? "audio-volume-medium-symbolic" : "audio-volume-high-symbolic"}
+                     :target "@DEFAULT_AUDIO_SINK@")
+      (box :orientation "v" :space-evenly false
+        (for sink in {audio.sinks}
+          (button :class "choice ${sink.default ? 'selected' : ''}"
+                  :onclick "pactl set-default-sink '${sink.name}'"
+            (box :space-evenly false :spacing 8
+              (icon :name {sink.default ? "emblem-ok-symbolic" : "audio-speakers-symbolic"} :class "small")
+              (label :halign "start" :limit-width 40 :text {sink.description}))))))
+    (card
+      (label :class "card-title" :halign "start" :text "Input")
+      (volume-slider :muted {audio.mic_muted} :value {audio.mic_volume}
+                     :icon {audio.mic_muted ? "audio-input-microphone-muted-symbolic" : "audio-input-microphone-symbolic"}
+                     :target "@DEFAULT_AUDIO_SOURCE@"))))
+
+(defwidget volume-slider [muted value icon target]
+  (box :class "slider ${muted ? 'muted' : ''}" :space-evenly false :spacing 10
+    (icon-button :icon icon :tooltip {muted ? "Unmute" : "Mute"}
+                 :onclick "wpctl set-mute ${target} toggle")
+    (scale :hexpand true :min 0 :max 101 :value value
+           :onchange "wpctl set-volume ${target} {}%")
+    (label :class "slider-value" :text "${value}%")))

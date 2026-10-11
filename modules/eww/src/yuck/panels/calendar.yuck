@@ -1,0 +1,54 @@
+;;------------------------------------------------------------------------------
+;; Calendar panel
+;;
+;; Month view with ISO week numbers, and a 12-month year view. Scroll pages,
+;; the title switches views, and a month in the year view opens it.
+;;------------------------------------------------------------------------------
+
+(defwidget calendar-panel []
+  (box :class "calendar" :orientation "v" :space-evenly false :spacing 12
+    (box :class "calendar-nav" :space-evenly false :spacing 8
+      (icon-button :icon "go-previous-symbolic"
+                   :onclick `eww update calendar="$(scripts/month-grid.py ${calendar.view} ${calendar.offset - 1})"`)
+      (button :class "calendar-title" :hexpand true
+              :tooltip {calendar.view == "month" ? "Show year" : "Show this month"}
+              :onclick {calendar.view == "month"
+                          ? `eww update calendar="$(scripts/month-grid.py year ${calendar.year_offset})"`
+                          : `eww update calendar="$(scripts/month-grid.py month 0)"`}
+        (label :text {calendar.title}))
+      (box :visible {!calendar.current}
+        (pill :text "Today" :icon "calendar-go-today-symbolic"
+              :onclick `eww update calendar="$(scripts/month-grid.py ${calendar.view} 0)"`))
+      (icon-button :icon "go-next-symbolic"
+                   :onclick `eww update calendar="$(scripts/month-grid.py ${calendar.view} ${calendar.offset + 1})"`))
+    (eventbox :onscroll `[ {} = up ] && step=-1 || step=1; eww update calendar="$(scripts/month-grid.py ${calendar.view} $((${calendar.offset} + step)))"`
+      (box
+        (box :visible {calendar.view == "month"}
+          (card :class "month"
+            (month-grid :weekdays {calendar.weekdays} :weeks {calendar.weeks ?: "[]"})))
+        (box :visible {calendar.view == "year"}
+          (year-grid :months {calendar.months ?: "[]"} :weekdays {calendar.weekdays}))))))
+
+(defwidget month-grid [weekdays weeks ?small]
+  (box :class "grid ${small == true ? 'small' : ''}" :orientation "v" :space-evenly false
+    (box :class "grid-row header" :space-evenly true
+      (for wd in weekdays
+        (label :class "cell weekday" :text wd))
+      (label :class "cell week" :text "Wk"))
+    (for wk in weeks
+      (box :class "grid-row" :space-evenly true
+        (for day in {wk.days}
+          (box :class "cell"
+            (label :class "day ${day.class}" :halign "center" :valign "center" :text {day.day})))
+        (label :class "cell week" :text {wk.week})))))
+
+(defwidget year-grid [months weekdays]
+  (box :class "year" :orientation "v" :space-evenly false :spacing 12
+    (for rowstart in "[0, 3, 6, 9]"
+      (box :space-evenly true :spacing 12
+        (for m in {jq(months, ".[${rowstart}:${rowstart + 3}]")}
+          (eventbox :class "mini-month ${m.current ? 'current' : ''}" :cursor "pointer"
+                    :onclick `eww update calendar="$(scripts/month-grid.py month ${m.offset})"`
+            (card
+              (label :class "mini-title" :halign "start" :text {m.title})
+              (month-grid :weekdays weekdays :weeks {m.weeks} :small true))))))))

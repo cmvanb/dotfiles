@@ -1,0 +1,54 @@
+;;------------------------------------------------------------------------------
+;; CPU and memory panels
+;;------------------------------------------------------------------------------
+
+(defwidget cpu-panel []
+  (box :class "system" :orientation "v" :space-evenly false :spacing 12
+    (heading :text "Processor"
+      (pill :text "btop" :icon "utilities-terminal-symbolic"
+            :onclick "scripts/popup.sh close; spawn-terminal.sh --command btop &"))
+    (card
+      (box :space-evenly false
+        (label :class "big-value" :halign "start" :hexpand true :text "${round(EWW_CPU.avg, 0)}%")
+        (box :space-evenly false :spacing 6 :valign "center"
+          (icon :name "temperature-symbolic" :class "small")
+          (label :class "muted-text"
+                 :text "${round(EWW_TEMPS?.K10TEMP_TCTL ?: EWW_TEMPS?.CORETEMP_PACKAGE_ID_0 ?: 0, 0)}°C  ·  ${round(jq(EWW_CPU.cores, '[.[].freq] | add / length'), 0)} MHz")))
+      (graph :class "graph" :height 48 :value {EWW_CPU.avg} :time-range "60s" :min 0 :max 100 :line-style "round"))
+    (card
+      (label :class "card-title" :halign "start" :text "Cores")
+      (box :class "cores" :space-evenly true :spacing 3
+        (for core in {EWW_CPU.cores}
+          (progress :class "core ${core.usage >= 90 ? 'critical' : core.usage >= 70 ? 'heavy' : core.usage >= 50 ? 'medium' : ''}"
+                    :orientation "v" :flipped true :value {core.usage}
+                    :tooltip "${core.core}: ${core.usage}% · ${core.freq} MHz"))))
+    (process-list :processes processes_cpu :field "cpu")))
+
+(defwidget memory-panel []
+  (box :class "system" :orientation "v" :space-evenly false :spacing 12
+    (heading :text "Memory"
+      (pill :text "btop" :icon "utilities-terminal-symbolic"
+            :onclick "scripts/popup.sh close; spawn-terminal.sh --command btop &"))
+    (card
+      (box :space-evenly false
+        (label :class "big-value" :halign "start" :hexpand true :text "${round(EWW_RAM.used_mem_perc, 0)}%")
+        (label :class "muted-text" :valign "center"
+               :text "${formatbytes(round(EWW_RAM.used_mem, 0), true)} / ${formatbytes(round(EWW_RAM.total_mem, 0), true)}"))
+      (graph :class "graph" :height 48 :value {EWW_RAM.used_mem_perc} :time-range "60s" :min 0 :max 100 :line-style "round"))
+    (card
+      (meter :label "Swap"
+             :value {EWW_RAM.total_swap > 0 ? 100 * (EWW_RAM.total_swap - EWW_RAM.free_swap) / EWW_RAM.total_swap : 0}
+             :detail "${formatbytes(round(EWW_RAM.total_swap - EWW_RAM.free_swap, 0), true)} / ${formatbytes(round(EWW_RAM.total_swap, 0), true)}")
+      (meter :label "Available"
+             :value {100 * EWW_RAM.available_mem / EWW_RAM.total_mem}
+             :detail {formatbytes(round(EWW_RAM.available_mem, 0), true)}))
+    (process-list :processes processes_memory :field "mem")))
+
+(defwidget process-list [processes field]
+  (card
+    (label :class "card-title" :halign "start" :text "Top processes")
+    (box :orientation "v" :space-evenly false
+      (for proc in processes
+        (box :class "row" :space-evenly false
+          (label :class "row-key" :halign "start" :hexpand true :limit-width 24 :text {proc.name})
+          (label :class "row-value" :text "${proc[field]}%"))))))

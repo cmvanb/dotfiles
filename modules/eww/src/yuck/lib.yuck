@@ -1,0 +1,65 @@
+;;------------------------------------------------------------------------------
+;; Shared widgets
+;;------------------------------------------------------------------------------
+
+;; Theme icon by name, or image by absolute path. Drawn as a CSS background so
+;; GTK renders it at the exact size and output scale; symbolic icons follow the
+;; CSS `color`. Size comes from the size class (see eww.scss).
+(defwidget icon [name ?class]
+  (box :class "icon ${class}"
+       :style `background-image: ${matches(name, '^/') ? 'url("' + name + '")' : '-gtk-icontheme("' + name + '")'};`))
+
+;; Bar item: left-click toggles its popup, hover shows a short hint.
+(defwidget module [name output ?class ?tooltip ?onrightclick ?onmiddleclick ?onscroll]
+  (eventbox :cursor "pointer"
+            :tooltip tooltip
+            :onclick "scripts/popup.sh toggle ${name} ${output}"
+            :onrightclick onrightclick
+            :onmiddleclick onmiddleclick
+            :onscroll onscroll
+    (box :class "module ${class} ${popup == name ? 'active' : ''}" :space-evenly false :spacing 6
+      (children))))
+
+;; Popup heading, styled like the swaync control center title.
+(defwidget heading [text]
+  (box :class "heading" :space-evenly false
+    (label :class "heading-text" :halign "start" :hexpand true :text text)
+    (box :space-evenly false :spacing 8
+      (children))))
+
+;; Bordered section, styled like a swaync notification.
+(defwidget card [?class]
+  (box :class "card ${class}" :orientation "v" :space-evenly false :spacing 8
+    (children)))
+
+;; Key/value row.
+(defwidget row [key value]
+  (box :class "row" :space-evenly false
+    (label :class "row-key" :halign "start" :hexpand true :text key)
+    (label :class "row-value" :halign "end" :text value)))
+
+;; Labelled pill progress bar, styled like a swayOSD progress bar.
+(defwidget meter [label value ?detail ?class]
+  (box :class "meter ${class}" :orientation "v" :space-evenly false :spacing 4
+    (box :space-evenly false
+      (label :class "meter-label" :halign "start" :hexpand true :text label)
+      (label :class "meter-detail" :halign "end" :text detail))
+    (progress :class "level" :value value)))
+
+;; Pill button with optional icon.
+(defwidget pill [text onclick ?icon]
+  (button :class "pill" :onclick onclick
+    (box :space-evenly false :spacing 6 :halign "center"
+      (box :visible {icon != ""} (icon :name icon :class "small"))
+      (label :text text))))
+
+;; Round icon button.
+(defwidget icon-button [icon onclick ?class ?tooltip]
+  (button :class "icon-button ${class}" :onclick onclick :tooltip tooltip
+    (icon :name icon :class "medium")))
+
+;; On/off pill switch, styled like the swaync do-not-disturb switch.
+(defwidget switch [active onclick]
+  (eventbox :cursor "pointer" :onclick onclick :valign "center"
+    (box :class "switch ${active ? 'on' : 'off'}"
+      (box :class "knob" :hexpand true :halign {active ? "end" : "start"} :valign "center"))))

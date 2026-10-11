@@ -1,0 +1,389 @@
+<%
+    if DEPLOY_HOST == 'casino':
+        bar_font_size = font_size_large
+        icon_size = 20
+    else:
+        bar_font_size = font_size_medium
+        icon_size = 18
+
+    bar_height = 28
+
+    # Bar labels are bottom-aligned (yalign 1) so the baseline sits a fixed
+    # descent above the bottom edge, whatever fallback fonts a title pulls in.
+    # Nimbus Sans: descent 0.3125em, cap height 0.71em. The bottom padding puts
+    # the cap midline on the bar midline, where the icons are centered.
+    bar_label_padding = round(bar_height / 2 - (0.3125 + 0.71 / 2) * int(bar_font_size))
+%>
+//------------------------------------------------------------------------------
+// Eww style
+//
+// The bar follows the waybar look; popups follow swayOSD and the swaync
+// control center: a translucent black rounded panel holding square cards with
+// a primary border, pill buttons, pill progress bars and pill switches.
+//------------------------------------------------------------------------------
+
+$bg: ${color_hash('system_bg')};
+$text: ${color_hash('system_text')};
+$panel: ${color_css_rgba('black', 0.92)};
+$card: ${color_hash('primary_1')};
+$card-border: ${color_hash('primary_8')};
+$button: ${color_hash('primary_3')};
+$button-hover: ${color_hash('primary_5')};
+$accent: ${color_hash('primary_13')};
+$trough: ${color_css_rgba('gray_6', 0.6)};
+$muted: ${color_hash('text_8')};
+$good: ${color_hash('green_5')};
+$switch-on: ${color_hash('green_3')};
+$medium: ${color_hash('yellow_7')};
+$heavy: ${color_hash('orange_6')};
+$critical: ${color_hash('red_6')};
+$critical-dim: ${color_hash('red_2')};
+
+$icon: ${icon_size}px;
+
+* {
+    all: unset;
+    font-family: "${font_sans}", sans-serif;
+    font-weight: bold;
+    color: $text;
+}
+
+// Icons
+//------------------------------------------------------------------------------
+
+.icon {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: $icon $icon;
+    min-width: $icon;
+    min-height: $icon;
+
+    &.app { background-size: 18px 18px; min-width: 18px; min-height: 18px; }
+    &.battery { background-size: 22px 22px; min-width: 22px; min-height: 22px; }
+    &.small { background-size: 16px 16px; min-width: 16px; min-height: 16px; }
+    &.medium { background-size: 24px 24px; min-width: 24px; min-height: 24px; }
+    &.large { background-size: 40px 40px; min-width: 40px; min-height: 40px; }
+    &.huge { background-size: 56px 56px; min-width: 56px; min-height: 56px; }
+
+    // Optical centering for glyphs whose ink is off-center in their canvas.
+    // Percentages move the image within the spare height (bar minus icon), so
+    // with a 28px bar and 20px icon, 6.25% is half a pixel.
+    &.wifi { background-position: 50% 43.75%; }
+    &.memory { background-position: 50% 56.25%; }
+}
+
+// Bar
+//------------------------------------------------------------------------------
+
+.bar {
+    background: $bg;
+    min-height: ${bar_height}px;
+    font-size: ${bar_font_size}px;
+
+    label { padding-bottom: ${bar_label_padding}px; }
+
+    .left { padding-left: 16px; }
+    .right { padding-right: 6px; }
+}
+
+.title { color: $text; }
+
+.mode {
+    padding: 0 10px;
+    background: $critical-dim;
+}
+
+.workspaces {
+    .workspace {
+        padding: 0 10px;
+        transition: background-color 150ms;
+
+        &:hover { box-shadow: inset 0 -3px ${color_css_rgba('primary_12', 0.65)}; }
+        &.visible { background: ${color_css_rgba('primary_3', 0.85)}; }
+        &.focused { background: ${color_hash('primary_8')}; }
+        &.urgent { background: ${color_hash('primary_3')}; box-shadow: inset 0 -3px $heavy; }
+    }
+
+    .more { font-size: ${font_size_small}px; color: $muted; }
+}
+
+.module {
+    padding: 0 10px;
+    transition: background-color 150ms;
+
+    &:hover { background: ${color_css_rgba('primary_3', 0.6)}; }
+    &.active { background: ${color_hash('primary_3')}; }
+
+    &.medium label, &.medium .icon { color: $medium; }
+    &.heavy label, &.heavy .icon { color: $heavy; }
+    &.critical label, &.critical .icon { color: $critical; }
+    &.disconnected label, &.disconnected .icon { color: $critical; }
+    &.off label, &.off .icon { color: $muted; }
+    &.muted label, &.muted .icon { color: $muted; }
+    &.charging label { color: $good; }
+    &.full label { color: ${color_hash('primary_15')}; }
+    &.warning label { color: $heavy; }
+    &.critical label { animation: blink 0.5s steps(12) infinite alternate; }
+}
+
+@keyframes blink {
+    to { color: $critical-dim; }
+}
+
+// Tooltips (hover hints)
+//------------------------------------------------------------------------------
+
+tooltip {
+    background: $panel;
+    border-radius: 12px;
+    padding: 8px 12px;
+
+    label { font-size: ${font_size_medium}px; }
+}
+
+// Popup panel
+//------------------------------------------------------------------------------
+
+.panel {
+    background: $panel;
+    border-radius: 20px;
+    padding: 16px;
+    min-width: 380px;
+    font-size: ${font_size_large}px;
+}
+
+.heading {
+    margin: 0 4px;
+
+    .heading-text {
+        font-size: ${int(font_size_xxlarge) + 4}px;
+    }
+
+    .switch-label { margin-right: 4px; }
+}
+
+.card {
+    background: $card;
+    border: 3px solid $card-border;
+    padding: 13px;
+}
+
+.card-title {
+    color: $muted;
+    font-size: ${font_size_medium}px;
+}
+
+.row {
+    padding: 2px 0;
+
+    .row-key { color: $muted; }
+}
+
+.muted-text { color: $muted; }
+
+.placeholder {
+    color: $muted;
+    padding: 12px;
+}
+
+.big-value { font-size: ${int(font_size_xxlarge) + 12}px; }
+
+// Controls
+//------------------------------------------------------------------------------
+
+.pill {
+    background: $button;
+    border-radius: 999px;
+    padding: 6px 16px;
+
+    &:hover { background: $button-hover; }
+}
+
+.icon-button {
+    border-radius: 999px;
+    padding: 6px;
+
+    &:hover { background: $button; }
+    &.primary { background: $button; padding: 10px; }
+    &.primary:hover { background: $button-hover; }
+}
+
+.switch {
+    background: $button;
+    border-radius: 999px;
+    min-width: 58px;
+    min-height: 34px;
+
+    &.on { background: $switch-on; }
+
+    .knob {
+        background: $text;
+        border-radius: 999px;
+        min-width: 30px;
+        min-height: 30px;
+        margin: 2px;
+        box-shadow: 0 2px 4px ${color_css_rgba('black', 0.4)};
+    }
+}
+
+.choice, .device, .peer {
+    border-radius: 0;
+    padding: 4px 6px;
+
+    &:hover { background: ${color_css_rgba('primary_8', 0.25)}; }
+}
+
+.choice.selected label { color: $accent; }
+
+// Progress bars and sliders (swayOSD)
+//------------------------------------------------------------------------------
+
+progressbar.level {
+    trough {
+        min-height: 6px;
+        border-radius: 999px;
+        background: $trough;
+    }
+
+    progress {
+        min-height: 6px;
+        border-radius: 999px;
+        background: $accent;
+    }
+}
+
+.meter {
+    .meter-detail { color: $muted; font-size: ${font_size_medium}px; }
+
+    &.medium progress { background: $medium; }
+    &.heavy progress { background: $heavy; }
+    &.critical progress { background: $critical; }
+}
+
+.rate .meter-detail { color: $muted; }
+
+scale {
+    trough {
+        min-height: 6px;
+        border-radius: 999px;
+        background: $trough;
+        margin: 0 8px;
+    }
+
+    highlight {
+        border-radius: 999px;
+        background: $accent;
+    }
+
+    slider {
+        min-width: 18px;
+        min-height: 18px;
+        margin: -6px;
+        border-radius: 999px;
+        background: $text;
+        box-shadow: 0 2px 4px ${color_css_rgba('black', 0.4)};
+    }
+}
+
+.slider {
+    .slider-value { min-width: 48px; }
+    &.muted highlight { background: $muted; }
+}
+
+.graph {
+    color: $accent;
+    min-height: 48px;
+    margin-top: 6px;
+}
+
+.rate.up .graph { color: ${color_hash('green_5')}; }
+
+.cores {
+    min-height: 56px;
+
+    progressbar {
+        trough {
+            min-width: 6px;
+            border-radius: 999px;
+            background: $trough;
+        }
+
+        progress {
+            min-width: 6px;
+            border-radius: 999px;
+            background: $accent;
+        }
+
+        &.medium progress { background: $medium; }
+        &.heavy progress { background: $heavy; }
+        &.critical progress { background: $critical; }
+    }
+}
+
+// Calendar
+//------------------------------------------------------------------------------
+
+.calendar-title {
+    border-radius: 999px;
+    padding: 4px 12px;
+    font-size: ${int(font_size_xxlarge) + 4}px;
+
+    &:hover { background: $button; }
+}
+
+.grid {
+    .cell { min-width: 40px; min-height: 40px; }
+
+    .day {
+        min-width: 36px;
+        min-height: 36px;
+        border-radius: 999px;
+    }
+
+    .header .cell { color: $muted; font-size: ${font_size_medium}px; }
+    .week { color: $muted; font-size: ${font_size_medium}px; }
+    .day.weekend { color: ${color_hash('text_14')}; }
+    .day.other { color: ${color_hash('gray_6')}; }
+    .day.today { background: $card-border; color: ${color_hash('text_15')}; }
+
+    &.small {
+        .cell { min-width: 26px; min-height: 24px; font-size: ${font_size_xsmall}px; }
+        .day { min-width: 22px; min-height: 22px; font-size: ${font_size_xsmall}px; }
+    }
+}
+
+.mini-month {
+    .mini-title { margin-bottom: 4px; }
+
+    &:hover .card { border-color: ${color_hash('primary_12')}; }
+    &.current .mini-title { color: ${color_hash('primary_15')}; }
+}
+
+// Clock
+//------------------------------------------------------------------------------
+
+.clock {
+    .clock-time { font-size: 72px; }
+    .clock-seconds { font-size: 32px; color: $muted; margin-bottom: 12px; margin-left: 4px; }
+    .clock-date { font-size: ${int(font_size_xlarge) + 4}px; }
+}
+
+// Bluetooth, tailscale
+//------------------------------------------------------------------------------
+
+.device {
+    .device-state { color: $muted; font-size: ${font_size_medium}px; }
+    &.connected .device-state { color: $good; }
+}
+
+.peer {
+    .dot {
+        min-width: 10px;
+        min-height: 10px;
+        border-radius: 999px;
+        background: $muted;
+    }
+
+    &.online .dot { background: $good; }
+    &.offline label { color: $muted; }
+}

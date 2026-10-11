@@ -1,0 +1,20 @@
+;;------------------------------------------------------------------------------
+;; Eww configuration
+;;
+;; A per-output system bar for sway with click-to-open popups. Scripts run
+;; with the config directory as working directory.
+;;------------------------------------------------------------------------------
+
+(include "yuck/variables.yuck")
+(include "yuck/lib.yuck")
+(include "yuck/bar.yuck")
+(include "yuck/popup.yuck")
+(include "yuck/panels/audio.yuck")
+(include "yuck/panels/battery.yuck")
+(include "yuck/panels/bluetooth.yuck")
+(include "yuck/panels/calendar.yuck")
+(include "yuck/panels/claude.yuck")
+(include "yuck/panels/clock.yuck")
+(include "yuck/panels/network.yuck")
+(include "yuck/panels/system.yuck")
+(include "yuck/panels/tailscale.yuck")

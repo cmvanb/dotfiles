@@ -1,0 +1,21 @@
+;;------------------------------------------------------------------------------
+;; Tailscale panel
+;;------------------------------------------------------------------------------
+
+(defwidget tailscale-panel []
+  (box :class "tailscale" :orientation "v" :space-evenly false :spacing 12
+    (heading :text "Tailscale")
+    (card
+      (row :key {tailscale.name} :value {tailscale.ip}))
+    (card
+      (label :class "card-title" :halign "start" :text "Peers")
+      (box :orientation "v" :space-evenly false
+        (for peer in {tailscale.peers}
+          (button :class "peer ${peer.online ? 'online' : 'offline'}"
+                  :tooltip "Copy ${peer.ip}"
+                  :onclick "wl-copy '${peer.ip}'"
+            (box :space-evenly false :spacing 10
+              (box :class "dot" :valign "center")
+              (label :class "row-key" :halign "start" :hexpand true :limit-width 24 :text {peer.name})
+              (label :class "muted-text" :text {peer.os})
+              (label :class "row-value" :text {peer.ip}))))))))

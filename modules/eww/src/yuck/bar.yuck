@@ -1,0 +1,134 @@
+;;------------------------------------------------------------------------------
+;; Bar
+;;
+;; One instance per output, opened by eww-bar.sh with --arg output=<name>.
+;;------------------------------------------------------------------------------
+
+(defwindow bar [output]
+  :monitor output
+  :geometry (geometry :x "0px" :y "0px" :width "100%" :anchor "top center")
+  :stacking "fg"
+  :exclusive true
+  :focusable "none"
+  :namespace "eww-bar"
+  (bar :output output))
+
+(defwidget bar [output]
+  (centerbox :class "bar"
+    (box :class "left" :halign "start" :space-evenly false :spacing 8
+      (sway-mode)
+      (window-title :output output))
+    (workspaces :output output)
+    (box :class "right" :halign "end" :space-evenly false
+      (tailscale-module :output output)
+      (network-module :output output)
+      (bluetooth-module :output output)
+      (audio-module :output output)
+      (battery-module :output output)
+      (claude-module :output output)
+      (cpu-module :output output)
+      (memory-module :output output)
+      (date-module :output output)
+      (clock-module :output output))))
+
+;; Sway
+;;------------------------------------------------------------------------------
+
+(defwidget workspaces [output]
+  (box :class "workspaces" :space-evenly false
+    (for ws in {sway.outputs?.[output]?.workspaces ?: "[]"}
+      (button :class "workspace ${ws.focused ? 'focused' : ws.visible ? 'visible' : ''} ${ws.urgent ? 'urgent' : ''}"
+              :onclick `swaymsg 'workspace "${ws.name}"' > /dev/null`
+        (box :space-evenly false :spacing 6
+          (for app in {ws.icons}
+            (icon :name app :class "app"))
+          (label :yalign 1 :class "more" :visible {ws.more > 0} :text "+${ws.more}")
+          (label :yalign 1 :text {ws.label}))))))
+
+(defwidget window-title [output]
+  (box :class "title" :space-evenly false :spacing 8
+    (box :visible {(sway.outputs?.[output]?.icon ?: "") != ""}
+      (icon :name {sway.outputs?.[output]?.icon ?: "application-x-executable"} :class "app"))
+    (label :yalign 1 :limit-width 160 :text {sway.outputs?.[output]?.title ?: ""})))
+
+(defwidget sway-mode []
+  (label :yalign 1 :class "mode" :visible {sway.mode != "default"} :text {sway.mode}))
+
+;; Status modules
+;;------------------------------------------------------------------------------
+
+(defwidget tailscale-module [output]
+  (box :visible {tailscale.up}
+    (module :name "tailscale" :output output :tooltip "Tailscale · ${tailscale.ip}"
+      (icon :name "network-vpn-symbolic"))))
+
+(defwidget network-module [output]
+  (module :name "network" :output output
+          :class {network.type == "none" ? "disconnected" : ""}
+          :tooltip "↑ ${formatbytes(round(EWW_NET?.[network.iface]?.NET_UP ?: 0, 0), true)}/s  ↓ ${formatbytes(round(EWW_NET?.[network.iface]?.NET_DOWN ?: 0, 0), true)}/s"
+    (icon :name {network.type == "wifi"
+                   ? "network-wireless-signal-${network.signal >= 80 ? 'excellent' : network.signal >= 55 ? 'good' : network.signal >= 30 ? 'ok' : network.signal >= 5 ? 'weak' : 'none'}-symbolic"
+                   : network.type == "ethernet" ? "network-wired-symbolic" : "network-wireless-offline-symbolic"}
+          :class {network.type == "wifi" ? "wifi" : ""})
+    (label :yalign 1 :text {network.type == "wifi" ? network.name : network.type == "ethernet" ? network.iface : "no network"})))
+
+(defwidget bluetooth-module [output]
+  (module :name "bluetooth" :output output
+          :class {!bluetooth.powered ? "off" : bluetooth.connected > 0 ? "connected" : ""}
+          :tooltip {bluetooth.connected > 0 ? jq(bluetooth, '[.devices[] | select(.connected) | .name] | join(", ")', "r") : bluetooth.powered ? "No devices connected" : "Bluetooth off"}
+    (icon :name {bluetooth.powered ? "bluetooth-active-symbolic" : "bluetooth-disabled-symbolic"})
+    (label :yalign 1 :text {!bluetooth.powered ? "off" : bluetooth.connected > 0 ? bluetooth.devices[0].name : "on"})))
+
+(defwidget audio-module [output]
+  (module :name "audio" :output output
+          :class {audio.muted ? "muted" : ""}
+          :tooltip "Scroll to change volume, right-click to mute"
+          :onrightclick "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+          :onscroll "[ {} = up ] && swayosd-client --output-volume raise || swayosd-client --output-volume lower"
+    (icon :name {audio.muted ? "audio-volume-muted-symbolic" : audio.volume < 34 ? "audio-volume-low-symbolic" : audio.volume < 67 ? "audio-volume-medium-symbolic" : "audio-volume-high-symbolic"})
+    (label :yalign 1 :text "${audio.volume}%")))
+
+(defwidget battery-module [output]
+  (box :visible {battery.present}
+    (module :name "battery" :output output
+            :class {battery.status == "Charging" || battery.status == "Not charging" ? "charging"
+                    : battery.status == "Full" ? "full"
+                    : battery.capacity <= 15 ? "critical"
+                    : battery.capacity <= 30 ? "warning" : ""}
+            :tooltip {battery.remaining != "" ? "${battery.status} · ${battery.remaining}" : battery.status}
+      (icon :name {battery.icon} :class "battery")
+      (label :yalign 1 :text "${battery.capacity}%"))))
+
+(defwidget claude-module [output]
+  (module :name "claude" :output output
+          :class {claude.session >= 90 ? "critical" : claude.session >= 70 ? "heavy" : claude.session >= 50 ? "medium" : ""}
+          :tooltip {claude.ok ? "5h ${claude.session}% · resets in ${claude.session_reset}" : "Usage unavailable"}
+    (icon :name "claude-ai-symbolic")
+    (label :yalign 1 :text {claude.ok ? "${claude.session}%" : "—"})))
+
+(defwidget cpu-module [output]
+  (module :name "cpu" :output output
+          :class {EWW_CPU.avg >= 90 ? "critical" : EWW_CPU.avg >= 70 ? "heavy" : EWW_CPU.avg >= 50 ? "medium" : ""}
+          :tooltip "${round(EWW_TEMPS?.K10TEMP_TCTL ?: EWW_TEMPS?.CORETEMP_PACKAGE_ID_0 ?: 0, 0)}°C"
+    (icon :name "am-cpu-symbolic")
+    (label :yalign 1 :text "${round(EWW_CPU.avg, 0)}%")))
+
+(defwidget memory-module [output]
+  (module :name "memory" :output output
+          :class {EWW_RAM.used_mem_perc >= 90 ? "critical" : EWW_RAM.used_mem_perc >= 70 ? "heavy" : EWW_RAM.used_mem_perc >= 50 ? "medium" : ""}
+          :tooltip "${formatbytes(round(EWW_RAM.used_mem, 0), true)} / ${formatbytes(round(EWW_RAM.total_mem, 0), true)}"
+    (icon :name "am-memory-symbolic" :class "memory")
+    (label :yalign 1 :text "${round(EWW_RAM.used_mem_perc, 0)}%")))
+
+(defwidget date-module [output]
+  (module :name "calendar" :output output
+          :tooltip {formattime(EWW_TIME, "%A, %B %d, %Y")}
+          :onrightclick "scripts/popup.sh toggle calendar ${output} year"
+    (icon :name "calendar-month-symbolic")
+    (label :yalign 1 :text {formattime(EWW_TIME, "%Y-%m-%d")})))
+
+(defwidget clock-module [output]
+  (module :name "clock" :output output
+          :tooltip "${formattime(EWW_TIME, '%A, %B %d, %Y  %H:%M:%S')} (${timezone})"
+    (icon :name "clock-applet-symbolic")
+    (label :yalign 1 :text {formattime(EWW_TIME, "%H:%M")})))

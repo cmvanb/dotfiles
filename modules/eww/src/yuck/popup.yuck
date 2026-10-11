@@ -1,0 +1,17 @@
+;;------------------------------------------------------------------------------
+;; Popup
+;;
+;; A single popup window, opened by scripts/popup.sh with --arg name=<panel>.
+;; It renders the matching `<name>-panel` widget, anchored under the bar's
+;; right edge like the swaync control center.
+;;------------------------------------------------------------------------------
+
+(defwindow popup [name]
+  :geometry (geometry :x "6px" :y "6px" :anchor "top right")
+  :stacking "overlay"
+  :focusable "none"
+  :namespace "eww-popup"
+  (eventbox :onhover "eww update popup_hover=true"
+            :onhoverlost "eww update popup_hover=false; scripts/popup.sh leave"
+    (box :class "panel" :orientation "v" :space-evenly false
+      (literal :content "(${name}-panel)"))))
