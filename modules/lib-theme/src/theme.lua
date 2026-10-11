@@ -42,6 +42,14 @@ local function _cursor(name)
     return v
 end
 
+local function _scheme(name)
+    local v = _dict.scheme[name]
+    if v == nil then
+        error('[theme.lua] Scheme property `' .. name .. '` not found.', 3)
+    end
+    return v
+end
+
 -- ANSI index lookup
 local _ansi_index = {
     ['black']     = 0,
@@ -126,6 +134,11 @@ end
 -- Returns a cursor value by key
 function Theme.cursor(name)
     return _cursor(name)
+end
+
+-- Returns a scheme property by key (e.g. `variant`: dark or light)
+function Theme.scheme(name)
+    return _scheme(name)
 end
 
 return Theme

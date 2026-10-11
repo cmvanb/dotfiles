@@ -64,7 +64,7 @@ def _parse_aliases(path: Path) -> dict[str, str]:
 
     return aliases
 
-def _parse_one(path: Path) -> tuple[dict, dict, dict, dict]:
+def _parse_one(path: Path) -> tuple[dict, dict, dict, dict, dict]:
     if not _is_readable_file(path):
         _raise(f'`{path}` is not readable.')
 
@@ -74,25 +74,27 @@ def _parse_one(path: Path) -> tuple[dict, dict, dict, dict]:
     colors  = { k: Color(str(v)) for k, v in data.get('colors', {}).items() }
     fonts   = { k: str(v)        for k, v in data.get('fonts', {}).items() }
     cursor  = { k: str(v)        for k, v in data.get('cursor', {}).items() }
+    scheme  = { k: str(v)        for k, v in data.get('scheme', {}).items() }
     aliases = _parse_aliases(path)
 
-    return colors, fonts, cursor, aliases
+    return colors, fonts, cursor, scheme, aliases
 
-def _parse(*paths: Path) -> tuple[dict, dict, dict, dict]:
-    colors, fonts, cursor, aliases = {}, {}, {}, {}
+def _parse(*paths: Path) -> tuple[dict, dict, dict, dict, dict]:
+    colors, fonts, cursor, scheme, aliases = {}, {}, {}, {}, {}
     for path in paths:
-        c, f, cu, a = _parse_one(path)
+        c, f, cu, s, a = _parse_one(path)
         colors.update(c)
         fonts.update(f)
         cursor.update(cu)
+        scheme.update(s)
         aliases.update(a)
-    return colors, fonts, cursor, aliases
+    return colors, fonts, cursor, scheme, aliases
 
 
 # Cache generation
 #-------------------------------------------------------------------------------
 
-def _write_lua(colors: dict, fonts: dict, cursor: dict):
+def _write_lua(colors: dict, fonts: dict, cursor: dict, scheme: dict):
     CACHE_DIR.mkdir(parents=True, exist_ok=True)
 
     lines = ['return {\n']
@@ -112,13 +114,18 @@ def _write_lua(colors: dict, fonts: dict, cursor: dict):
         lines.append(f'    {k} = "{v}",\n')
     lines.append('  },\n')
 
+    lines.append('  scheme = {\n')
+    for k, v in scheme.items():
+        lines.append(f'    {k} = "{v}",\n')
+    lines.append('  },\n')
+
     lines.append('}\n')
 
     with open(LUA_PATH, 'w') as f:
         f.writelines(lines)
 
 
-def _write_sh(colors: dict, fonts: dict, cursor: dict):
+def _write_sh(colors: dict, fonts: dict, cursor: dict, scheme: dict):
     CACHE_DIR.mkdir(parents=True, exist_ok=True)
 
     lines = []
@@ -128,12 +135,14 @@ def _write_sh(colors: dict, fonts: dict, cursor: dict):
         lines.append(f"{k}='{v}'\n")
     for k, v in cursor.items():
         lines.append(f"{k}='{v}'\n")
+    for k, v in scheme.items():
+        lines.append(f"scheme_{k}='{v}'\n")
 
     with open(SH_PATH, 'w') as f:
         f.writelines(lines)
 
 
-def _write_fish(colors: dict, fonts: dict, cursor: dict):
+def _write_fish(colors: dict, fonts: dict, cursor: dict, scheme: dict):
     CACHE_DIR.mkdir(parents=True, exist_ok=True)
 
     lines = []
@@ -143,6 +152,8 @@ def _write_fish(colors: dict, fonts: dict, cursor: dict):
         lines.append(f"set -g {k} '{v}'\n")
     for k, v in cursor.items():
         lines.append(f"set -g {k} '{v}'\n")
+    for k, v in scheme.items():
+        lines.append(f"set -g scheme_{k} '{v}'\n")
 
     with open(FISH_PATH, 'w') as f:
         f.writelines(lines)
@@ -151,14 +162,14 @@ def _write_fish(colors: dict, fonts: dict, cursor: dict):
 # Entry point
 #-------------------------------------------------------------------------------
 
-_colors, _fonts, _cursor, _aliases = _parse(COLORS_PATH, FONTS_PATH, CURSOR_PATH)
+_colors, _fonts, _cursor, _scheme, _aliases = _parse(COLORS_PATH, FONTS_PATH, CURSOR_PATH)
 
 
 def parse(*paths: Path):
-    colors, fonts, cursor, _aliases = _parse(*paths)
-    _write_lua(colors, fonts, cursor)
-    _write_sh(colors, fonts, cursor)
-    _write_fish(colors, fonts, cursor)
+    colors, fonts, cursor, scheme, _aliases = _parse(*paths)
+    _write_lua(colors, fonts, cursor, scheme)
+    _write_sh(colors, fonts, cursor, scheme)
+    _write_fish(colors, fonts, cursor, scheme)
 
 
 # Lookup API
@@ -178,6 +189,11 @@ def _get_cursor(name: str) -> str:
     if name not in _cursor:
         _raise(f'Cursor `{name}` not found in theme.')
     return _cursor[name]
+
+def _get_scheme(name: str) -> str:
+    if name not in _scheme:
+        _raise(f'Scheme property `{name}` not found in theme.')
+    return _scheme[name]
 
 
 _PALETTE_OFFSETS = {
@@ -306,6 +322,9 @@ def font(name: str) -> str:
 def cursor(name: str) -> str:
     return _get_cursor(name)
 
+def scheme(name: str) -> str:
+    return _get_scheme(name)
+
 
 # CLI
 #-------------------------------------------------------------------------------
@@ -313,7 +332,7 @@ def cursor(name: str) -> str:
 if __name__ == '__main__':
     if len(sys.argv) < 2:
         print(f'Usage: theme.py <command> [args]', file=sys.stderr)
-        print(f'Commands: parse, color_named, color_hash, color_zerox, color_css_rgba, color_css_rgba_hex, color_rgb_int, color_rgb_int_hex, color_256, color_ansi, color_ansi_hex, color_ansi_fg, color_ansi_fg_hex, color_ansi_bg, color_ansi_bg_hex, color_ansi_reset, font, cursor', file=sys.stderr)
+        print(f'Commands: parse, color_named, color_hash, color_zerox, color_css_rgba, color_css_rgba_hex, color_rgb_int, color_rgb_int_hex, color_256, color_ansi, color_ansi_hex, color_ansi_fg, color_ansi_fg_hex, color_ansi_bg, color_ansi_bg_hex, color_ansi_reset, font, cursor, scheme', file=sys.stderr)
         sys.exit(1)
 
     cmd = sys.argv[1]
@@ -374,6 +393,9 @@ if __name__ == '__main__':
 
     elif cmd == 'cursor':
         print(cursor(sys.argv[2]), end='')
+
+    elif cmd == 'scheme':
+        print(scheme(sys.argv[2]), end='')
 
     else:
         print(f'Unknown command: {cmd}', file=sys.stderr)
