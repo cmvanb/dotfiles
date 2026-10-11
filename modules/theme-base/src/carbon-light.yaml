@@ -225,6 +225,28 @@ colors:
   editor_nontext:     *gray_2
   editor_nontext_hl:  *gray_4
 
+  # GTK
+  # Raised surfaces are lighter than the window in light UIs, so elevation
+  # does not mirror: content and popovers sit on the paper canvas.
+  gtk_window_bg:        *secondary_0
+  gtk_window_fg:        *text_12
+  gtk_view_bg:          *canvas
+  gtk_view_fg:          *text_10
+  gtk_headerbar_bg:     *secondary_1
+  gtk_headerbar_fg:     *text_15
+  gtk_sidebar_bg:       *secondary_1
+  gtk_sidebar_fg:       *text_14
+  gtk_sidebar_backdrop: *secondary_0
+  gtk_popover_bg:       *canvas
+  gtk_popover_fg:       *text_15
+  gtk_thumbnail_bg:     *secondary_1
+  gtk_accent_bg:        *primary_12
+  gtk_accent_fg:        *canvas
+  gtk_accent:           *primary_14
+  gtk_muted_accent_bg:  *secondary_12
+  gtk_muted_accent_fg:  *canvas
+  gtk_muted_accent:     *secondary_14
+
   # Web
   web_page_bg:        *primary_0
   web_link:           *primary_12
