@@ -16,10 +16,16 @@ chromium::install () {
 
     fs::ensure_directory "$XDG_DATA_HOME/applications"
     fs::force_link "$src/chromium.desktop" "$XDG_DATA_HOME/applications/chromium.desktop"
+    fs::force_link "$src/netflix.desktop" "$XDG_DATA_HOME/applications/netflix.desktop"
+
+    fs::ensure_directory "$XDG_DATA_HOME/icons/hicolor/64x64/apps"
+    fs::force_link "$src/netflix.png" "$XDG_DATA_HOME/icons/hicolor/64x64/apps/netflix.png"
 }
 
 chromium::uninstall () {
     echo "└> Uninstalling chromium configuration."
 
     rm "$XDG_DATA_HOME/applications/chromium.desktop"
+    rm "$XDG_DATA_HOME/applications/netflix.desktop"
+    rm "$XDG_DATA_HOME/icons/hicolor/64x64/apps/netflix.png"
 }
