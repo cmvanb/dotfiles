@@ -42,9 +42,19 @@ The `render-mako` command (invoked via `template::render_mako`) injects these in
 All theme color, font, and cursor values are pre-loaded and available as plain variables:
 
 ```
-primary_8    →  "2a68ca"   (6-digit hex, no prefix)
-font_sans    →  "Inter"
-cursor_size  →  "24"
+primary_8       →  "2a68ca"   (6-digit hex, no prefix)
+font_sans       →  "Inter"
+cursor_size     →  "24"
+scheme_variant  →  "dark"     (or "light")
+scheme_name     →  "carbon-dark"
+```
+
+Reference palette steps and semantic aliases rather than branching on
+`scheme_variant`; see [theme.md](theme.md).
+Branch only for true polarity flags:
+
+```ini
+gtk-application-prefer-dark-theme=${1 if scheme_variant == 'dark' else 0}
 ```
 
 Color formatting functions are also available:

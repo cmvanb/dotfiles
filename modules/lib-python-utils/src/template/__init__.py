@@ -66,6 +66,10 @@ def _build_context(theme) -> dict:
     for name, value in theme._cursor.items():
         ctx[name] = value
 
+    # --- Scheme properties (e.g. scheme_variant = "dark") ---
+    for name, value in theme._scheme.items():
+        ctx[f'scheme_{name}'] = value
+
     # --- XDG environment variables ---
     for key in (
         'XDG_CONFIG_HOME', 'XDG_CACHE_HOME', 'XDG_DATA_HOME', 'XDG_STATE_HOME',
