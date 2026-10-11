@@ -58,7 +58,7 @@ Some modules provide `enable` / `disable` for systemd user services.
 | `fs::force_copy <src> <dest>` | `cp -rfT` — removes existing file/link at dest first |
 | `fs::ensure_directory <path>` | `mkdir -p` — removes existing file/link at path first |
 | `fs::happy_move <src> <dest>` | `mv` — no-ops if src == dest |
-| `template::render_mako <tpl> <dest>` | Render Mako template to dest |
+| `template::render_mako <tpl> <dest> [scheme]` | Render Mako template to dest; a scheme pins the output |
 
 ## Common deployment patterns
 

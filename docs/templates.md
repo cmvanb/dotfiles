@@ -123,3 +123,10 @@ Modules use the `template::render_mako` wrapper (from `lib-shell-utils`), which 
 ```bash
 template::render_mako "$src/config.mako" "$XDG_CONFIG_HOME/app/config"
 ```
+
+An optional third argument renders against one color scheme instead of the
+active one:
+
+```bash
+template::render_mako "$src/gtk.mako.css" "$theme_dest/gtk-3.0/gtk.css" carbon-light
+```
