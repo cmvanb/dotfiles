@@ -96,13 +96,23 @@ $icon: ${icon_size}px;
 }
 
 .workspaces {
+    // Hover raises a workspace's fill one step along the primary scale, so it
+    // reads as the same state language as visible and focused.
     .workspace {
         padding: 0 10px;
-        transition: background-color 150ms;
+        transition: background-color 120ms ease-out;
 
-        &:hover { box-shadow: inset 0 -3px ${color_css_rgba('primary_12', 0.65)}; }
+        label { transition: color 120ms ease-out; }
+
+        &:hover { background: ${color_css_rgba('primary_3', 0.65)}; }
+        &:hover label { color: ${color_hash('text_15')}; }
+
         &.visible { background: ${color_css_rgba('primary_3', 0.85)}; }
+        &.visible:hover { background: ${color_hash('primary_5')}; }
+
         &.focused { background: ${color_hash('primary_8')}; }
+        &.focused:hover { background: ${color_hash('primary_10')}; }
+
         &.urgent { background: ${color_hash('primary_3')}; box-shadow: inset 0 -3px $heavy; }
     }
 
