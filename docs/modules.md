@@ -112,7 +112,7 @@ bat::install() {
     fs::force_link "$src/syntaxes" "$XDG_CONFIG_HOME/bat/syntaxes"
 
     fs::ensure_directory "$XDG_CONFIG_HOME/bat/themes"
-    template::render_mako "$base_dir/modules/theme-base/src/carbon-dark.syntect.mako.tmTheme" "$XDG_CONFIG_HOME/bat/themes/carbon-dark.syntect.tmTheme"
+    template::render_mako "$base_dir/modules/theme-base/src/carbon.syntect.mako.tmTheme" "$XDG_CONFIG_HOME/bat/themes/carbon.tmTheme"
 
     bat cache --build
 }

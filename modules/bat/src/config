@@ -1,5 +1,5 @@
 # bat is like cat, but better
 
 # use the custom theme
---theme="carbon-dark"
+--theme="carbon"
 --italic-text=always

@@ -22,7 +22,7 @@
     line-numbers-left-format = "{nm:>2}⋮"
     line-numbers-right-format = "{np:>2}│"
     hunk-header-style = 'omit'
-    syntax-theme = carbon-dark
+    syntax-theme = carbon
     file-style = '"${color_hash('primary_11')}"'
     line-numbers-zero-style = '"${color_hash('primary_8')}"'
     minus-style = '"${color_hash('red_5')}" "${color_hash('red_0')}"'
