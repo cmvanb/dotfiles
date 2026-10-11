@@ -1,4 +1,1 @@
 profile.extends=workstation sway
-
-modules.install=kanata
-modules.enable=kanata

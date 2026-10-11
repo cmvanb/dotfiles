@@ -12,7 +12,7 @@ source "$base_dir/lib/fs.sh"
 kanata::install() {
     echo "└> Installing kanata configuration."
 
-    local src="$base_dir/modules/kanata/src"
+    local src="$base_dir/extras/kanata/src"
 
     fs::ensure_directory "$XDG_CONFIG_HOME/kanata"
     fs::force_link "$src/kanata.kbd" "$XDG_CONFIG_HOME/kanata/kanata.kbd"
