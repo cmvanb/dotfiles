@@ -57,8 +57,8 @@ modules.enable=swaync
 profile.extends=wayland-wm
 profile.wm=sway
 
-modules.install=sway
-modules.enable=
+modules.install=eww sway swayosd
+modules.enable=swayosd
 ```
 
 **`profiles/cyxwel`** — top-level host profile:

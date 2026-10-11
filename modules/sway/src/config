@@ -94,8 +94,8 @@ include $config_dir/sway/theme.conf
 # Apply wallpaper
 exec waypaper --restore
 
-# Start waybar
-exec waybar
+# Start the eww bar (follows output hotplug)
+exec eww-bar.sh start
 
 # Includes
 #-------------------------------------------------------------------------------

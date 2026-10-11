@@ -1,5 +1,5 @@
 profile.extends=wayland-wm
 profile.wm=sway
 
-modules.install=sway swayosd
+modules.install=eww sway swayosd
 modules.enable=swayosd

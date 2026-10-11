@@ -5,9 +5,10 @@
 # Sway matches "workspace number N" / "move ... workspace number N" against
 # the leading "N:" of a workspace's name (see workspace(5)), independent of
 # the rest of the name. Renaming to "<num>:<new-name>" therefore keeps
-# $mod+N switching working and preserves indexed ordering, while waybar's
-# sway/workspaces {name} format strips the "N:" prefix and shows just the
-# new name. Entering an empty name clears it back to the bare number.
+# $mod+N switching working and preserves indexed ordering, while the bar
+# (eww, or waybar's sway/workspaces {name} format) strips the "N:" prefix and
+# shows just the new name. Entering an empty name clears it back to the bare
+# number.
 #-------------------------------------------------------------------------------
 
 set -euo pipefail
