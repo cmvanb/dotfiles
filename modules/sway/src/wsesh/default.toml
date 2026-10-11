@@ -22,21 +22,10 @@
 # named_workspaces list.
 
 [[entry]]
-type = "terminal"
-workspace = "todo"
-cwd = "~/Wiki/todo"
-command = "edit"
-
-[[entry]]
 type = "browser"
 workspace = "mail"
 session = "mail"
 wait_for_network = true
-
-[[entry]]
-type = "app"
-workspace = "audio"
-desktop = "org.pulseaudio.pavucontrol"
 
 [[entry]]
 type = "focus"
