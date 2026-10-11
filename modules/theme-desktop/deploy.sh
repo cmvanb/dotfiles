@@ -9,17 +9,25 @@ base_dir=$(realpath "$script_dir/../..")
 source "$base_dir/lib/fs.sh"
 source "$base_dir/lib/template.sh"
 
+# Every variant is installed so `theme switch` only has to select one.
+theme_desktop_variants=(dark light)
+
 
 theme-desktop::install_icons () {
     echo "└> Installing icon overrides."
 
-    local icons_src="$base_dir/modules/theme-desktop/src/icons/carbon-dark"
-    local icons_dest="$HOME/.local/share/icons/carbon-dark"
+    local icons_src="$base_dir/modules/theme-desktop/src/icons"
 
-    fs::ensure_directory "$icons_dest/scalable/actions"
-    fs::force_link "$icons_src/index.theme"                           "$icons_dest/index.theme"
-    fs::force_link "$icons_src/scalable/actions/sink-volume-medium-symbolic.svg"  "$icons_dest/scalable/actions/sink-volume-medium-symbolic.svg"
-    fs::force_link "$icons_src/scalable/actions/source-volume-muted-symbolic.svg" "$icons_dest/scalable/actions/source-volume-muted-symbolic.svg"
+    # The symbolic overrides are recolored by GTK, so both variants share them.
+    local variant
+    for variant in "${theme_desktop_variants[@]}"; do
+        local icons_dest="$XDG_DATA_HOME/icons/carbon-$variant"
+
+        fs::ensure_directory "$icons_dest/scalable/actions"
+        fs::force_link "$icons_src/carbon-$variant/index.theme" "$icons_dest/index.theme"
+        fs::force_link "$icons_src/carbon-dark/scalable/actions/sink-volume-medium-symbolic.svg"  "$icons_dest/scalable/actions/sink-volume-medium-symbolic.svg"
+        fs::force_link "$icons_src/carbon-dark/scalable/actions/source-volume-muted-symbolic.svg" "$icons_dest/scalable/actions/source-volume-muted-symbolic.svg"
+    done
 }
 
 theme-desktop::install_gtk_theme () {
@@ -74,7 +82,7 @@ theme-desktop::configure_gtk () {
     gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 
     # see: https://github.com/yeyushengfan258/Win11-icon-theme
-    gsettings set org.gnome.desktop.interface icon-theme 'carbon-dark'
+    gsettings set org.gnome.desktop.interface icon-theme "carbon-$scheme_variant"
 
     gsettings set org.gnome.desktop.interface font-name "$font_sans $font_size_medium"
     gsettings set org.gnome.desktop.interface document-font-name "$font_sans $font_size_medium"
@@ -104,7 +112,10 @@ theme-desktop::uninstall () {
     rm -f "$XDG_SCRIPTS_HOME/generate-color-gradient-palette.py"
     rm -f "$XDG_SCRIPTS_HOME/generate-contrast-mirror-palette.py"
 
-    rm -rf "$HOME/.local/share/icons/carbon-dark"
+    local variant
+    for variant in "${theme_desktop_variants[@]}"; do
+        rm -rf "$XDG_DATA_HOME/icons/carbon-$variant"
+    done
 
     rm -f "$XDG_CONFIG_HOME/gtk-3.0/settings.ini"
     rm -f "$XDG_CONFIG_HOME/gtk-4.0/gtk.css"
