@@ -90,7 +90,8 @@ theme-desktop::install () {
     echo "└> Installing theme desktop configuration."
 
     fs::ensure_directory "$XDG_SCRIPTS_HOME"
-    fs::force_link "$base_dir/modules/theme-desktop/src/generate-color-gradient-palette.py" "$XDG_SCRIPTS_HOME/generate-color-gradient-palette.py"
+    fs::force_link "$base_dir/modules/theme-desktop/src/generate-color-gradient-palette.py"   "$XDG_SCRIPTS_HOME/generate-color-gradient-palette.py"
+    fs::force_link "$base_dir/modules/theme-desktop/src/generate-contrast-mirror-palette.py" "$XDG_SCRIPTS_HOME/generate-contrast-mirror-palette.py"
 
     theme-desktop::install_icons
     theme-desktop::install_gtk_theme
@@ -101,6 +102,7 @@ theme-desktop::uninstall () {
     echo "└> Uninstalling theme desktop configuration."
 
     rm -f "$XDG_SCRIPTS_HOME/generate-color-gradient-palette.py"
+    rm -f "$XDG_SCRIPTS_HOME/generate-contrast-mirror-palette.py"
 
     rm -rf "$HOME/.local/share/icons/carbon-dark"
 
