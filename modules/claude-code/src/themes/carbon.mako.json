@@ -87,7 +87,7 @@ overrides = [
 %>
 {
   "name": "Carbon",
-  "base": "dark",
+  "base": "${scheme_variant}",
   "overrides": {
 % for i, (key, color) in enumerate(overrides):
     "${key}": "${color_hash(color)}"${',' if i < len(overrides) - 1 else ''}
