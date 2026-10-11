@@ -45,30 +45,36 @@ theme-desktop::install_gtk_theme () {
     template::render_mako "$src/gtk-3.0-settings.mako.ini" "$XDG_CONFIG_HOME/gtk-3.0/settings.ini"
     template::render_mako "$src/gtk-4.0-settings.mako.ini" "$XDG_CONFIG_HOME/gtk-4.0/settings.ini"
 
-    # Install GTK CSS files
-    local theme_src="$src/carbon-gtk/carbon-dark-gtk"
-    local theme_dest="$HOME/.local/share/themes/carbon-dark-gtk"
+    # Install GTK CSS files. Static files and templates are shared; each variant
+    # brings its own index and Adwaita widget base.
+    local shared_src="$src/carbon-gtk/carbon-dark-gtk"
 
-    fs::ensure_directory "$theme_dest"
-    fs::ensure_directory "$theme_dest/gtk-3.0"
-    fs::ensure_directory "$theme_dest/gtk-4.0"
+    local variant
+    for variant in "${theme_desktop_variants[@]}"; do
+        local theme_src="$src/carbon-gtk/carbon-$variant-gtk"
+        local theme_dest="$XDG_DATA_HOME/themes/carbon-$variant-gtk"
 
-    fs::force_link "$theme_src/index.theme" "$theme_dest/index.theme"
+        fs::ensure_directory "$theme_dest"
+        fs::ensure_directory "$theme_dest/gtk-3.0"
+        fs::ensure_directory "$theme_dest/gtk-4.0"
 
-    # GTK3: static assets + widget CSS (symlinked); color palette + dark variant (rendered)
-    fs::force_link "$theme_src/gtk-3.0/libadwaita-tweaks.css" "$theme_dest/gtk-3.0/libadwaita-tweaks.css"
-    fs::force_link "$theme_src/gtk-3.0/gtk-dark-widgets.css"  "$theme_dest/gtk-3.0/gtk-dark-widgets.css"
-    fs::force_link "$theme_src/gtk-3.0/assets"                "$theme_dest/gtk-3.0/assets"
+        fs::force_link "$theme_src/index.theme" "$theme_dest/index.theme"
 
-    # GTK4: tail and tweaks are symlinked (static); libadwaita is rendered with full palette inline
-    fs::force_link "$theme_src/gtk-4.0/gtk.css"               "$theme_dest/gtk-4.0/gtk.css"
-    fs::force_link "$theme_src/gtk-4.0/libadwaita-tweaks.css" "$theme_dest/gtk-4.0/libadwaita-tweaks.css"
-    fs::force_link "$theme_src/gtk-4.0/libadwaita-tail.css"   "$theme_dest/gtk-4.0/libadwaita-tail.css"
+        # GTK3: static assets + widget CSS (symlinked); color palette + dark variant (rendered)
+        fs::force_link "$shared_src/gtk-3.0/libadwaita-tweaks.css"           "$theme_dest/gtk-3.0/libadwaita-tweaks.css"
+        fs::force_link "$theme_src/gtk-3.0/gtk-$variant-widgets.css"         "$theme_dest/gtk-3.0/gtk-$variant-widgets.css"
+        fs::force_link "$shared_src/gtk-3.0/assets"                          "$theme_dest/gtk-3.0/assets"
 
-    # Render CSS templates
-    template::render_mako "$theme_src/gtk-3.0/gtk.mako.css"        "$theme_dest/gtk-3.0/gtk.css"
-    template::render_mako "$theme_src/gtk-3.0/gtk-dark.mako.css"   "$theme_dest/gtk-3.0/gtk-dark.css"
-    template::render_mako "$theme_src/gtk-4.0/libadwaita.mako.css" "$theme_dest/gtk-4.0/libadwaita.css"
+        # GTK4: tail and tweaks are symlinked (static); libadwaita is rendered with full palette inline
+        fs::force_link "$shared_src/gtk-4.0/gtk.css"               "$theme_dest/gtk-4.0/gtk.css"
+        fs::force_link "$shared_src/gtk-4.0/libadwaita-tweaks.css" "$theme_dest/gtk-4.0/libadwaita-tweaks.css"
+        fs::force_link "$shared_src/gtk-4.0/libadwaita-tail.css"   "$theme_dest/gtk-4.0/libadwaita-tail.css"
+
+        # Render CSS templates pinned to the variant's scheme
+        template::render_mako "$shared_src/gtk-3.0/gtk.mako.css"        "$theme_dest/gtk-3.0/gtk.css"         "carbon-$variant"
+        template::render_mako "$shared_src/gtk-3.0/gtk-dark.mako.css"   "$theme_dest/gtk-3.0/gtk-dark.css"    "carbon-$variant"
+        template::render_mako "$shared_src/gtk-4.0/libadwaita.mako.css" "$theme_dest/gtk-4.0/libadwaita.css"  "carbon-$variant"
+    done
 }
 
 theme-desktop::configure_gtk () {
@@ -77,9 +83,11 @@ theme-desktop::configure_gtk () {
     # shellcheck disable=SC1091
     source "$XDG_CACHE_HOME/theme/theme-data.sh"
 
-    # Select GTK theme.
-    gsettings set org.gnome.desktop.interface gtk-theme 'carbon-dark-gtk'
-    gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+    # Select GTK theme. GTK_THEME in the session environment names the stable
+    # `carbon-gtk` alias, which `theme switch` repoints.
+    ln -sfn "carbon-$scheme_variant-gtk" "$XDG_DATA_HOME/themes/carbon-gtk"
+    gsettings set org.gnome.desktop.interface gtk-theme "carbon-$scheme_variant-gtk"
+    gsettings set org.gnome.desktop.interface color-scheme "prefer-$scheme_variant"
 
     # see: https://github.com/yeyushengfan258/Win11-icon-theme
     gsettings set org.gnome.desktop.interface icon-theme "carbon-$scheme_variant"
@@ -112,16 +120,17 @@ theme-desktop::uninstall () {
     rm -f "$XDG_SCRIPTS_HOME/generate-color-gradient-palette.py"
     rm -f "$XDG_SCRIPTS_HOME/generate-contrast-mirror-palette.py"
 
-    local variant
-    for variant in "${theme_desktop_variants[@]}"; do
-        rm -rf "$XDG_DATA_HOME/icons/carbon-$variant"
-    done
-
     rm -f "$XDG_CONFIG_HOME/gtk-3.0/settings.ini"
     rm -f "$XDG_CONFIG_HOME/gtk-4.0/gtk.css"
     rm -f "$XDG_CONFIG_HOME/gtk-4.0/settings.ini"
 
-    rm -rf "$HOME/.local/share/themes/carbon-dark-gtk"
+    rm -f "$XDG_DATA_HOME/themes/carbon-gtk"
+
+    local variant
+    for variant in "${theme_desktop_variants[@]}"; do
+        rm -rf "$XDG_DATA_HOME/icons/carbon-$variant"
+        rm -rf "$XDG_DATA_HOME/themes/carbon-$variant-gtk"
+    done
 
     gsettings reset org.gnome.desktop.interface gtk-theme
     gsettings reset org.gnome.desktop.interface color-scheme
