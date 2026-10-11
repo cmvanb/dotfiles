@@ -6,7 +6,7 @@
 #
 #   {"powered": true, "connected": 1,
 #    "devices": [{"address": "...", "name": "...", "icon": "audio-headset",
-#                 "connected": true, "battery": 80, "battery_icon": "battery-080"}]}
+#                 "connected": true, "battery": 80, "battery_icon": "battery-level-80-symbolic"}]}
 #-------------------------------------------------------------------------------
 
 set -uo pipefail
@@ -19,7 +19,7 @@ device_json() {
         /^\tBattery Percentage: / { gsub(/[()]/, "", $4); battery = $4 }
         END {
             gsub(/["\\]/, "", name)
-            battery_icon = battery == "" ? "" : sprintf("battery-%03d", int((battery + 5) / 10) * 10)
+            battery_icon = battery == "" ? "" : sprintf("battery-level-%d-symbolic", int((battery + 5) / 10) * 10)
             printf "{\"address\":\"%s\",\"name\":\"%s\",\"icon\":\"%s\",\"connected\":%s,\"battery\":%s,\"battery_icon\":\"%s\"}\n",
                 address, name, icon, connected ? "true" : "false", battery == "" ? "null" : battery, battery_icon
         }'
