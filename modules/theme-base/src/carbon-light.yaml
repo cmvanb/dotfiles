@@ -212,6 +212,7 @@ colors:
   # System
   system_bg:          *text_12
   system_text:        *text_4
+  shadow:             *gray_15
 
   # Terminal
   terminal_bg:        *text_12

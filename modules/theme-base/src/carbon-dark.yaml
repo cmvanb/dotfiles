@@ -213,6 +213,7 @@ colors:
   # System
   system_bg:          *canvas
   system_text:        *text_11
+  shadow:             *canvas
 
   # Terminal
   terminal_bg:        *canvas

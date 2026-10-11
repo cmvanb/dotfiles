@@ -152,7 +152,7 @@
     background: ${color_hash('system_text')};
     border: none;
     border-radius: 999px;
-    box-shadow: 0 2px 4px ${color_css_rgba('canvas', 0.4)};
+    box-shadow: 0 2px 4px ${color_css_rgba('shadow', 0.4)};
 }
 
 .control-center {

@@ -188,7 +188,7 @@
 
         /* Scrollbar */
         "editorOverviewRuler.background": "${color_hash('primary_2')}",
-        "scrollbar.shadow": "${color_hash('canvas', 0.25)}",
+        "scrollbar.shadow": "${color_hash('shadow', 0.25)}",
         "scrollbarSlider.background": "${color_hash('primary_6', 0.25)}",
         "scrollbarSlider.hoverBackground": "${color_hash('primary_6', 0.25)}",
         "scrollbarSlider.activeBackground": "${color_hash('primary_10', 0.38)}",
