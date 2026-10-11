@@ -97,7 +97,7 @@
         "format": "{icon}  {volume}%",
         "format-muted": "󰝟  {volume}%",
         "format-icons": ["󰕿", "󰖀", "󰕾"],
-        "on-click": "pavucontrol",
+        "on-click": "${XDG_CONFIG_HOME}/sway/scripts/open-pavucontrol.sh",
         "on-click-right": "wpctl set-mute 167 toggle"
     },
     "custom/claude": {
