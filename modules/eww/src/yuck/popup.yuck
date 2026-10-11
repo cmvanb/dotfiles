@@ -16,10 +16,11 @@
     (box :class "popup-row" :orientation "v" :space-evenly false
       (status-modules :output output :open name))))
 
-;; The panel renders the matching `<name>-panel` widget.
+;; The panel renders the matching `<name>-panel` widget. `leave` waits out a
+;; grace period, longer than eww's 200ms command timeout, so it runs detached.
 (defwidget popup-panel [name halign]
   (eventbox :halign halign
             :onhover "eww update popup_hover=true"
-            :onhoverlost "eww update popup_hover=false; scripts/popup.sh leave"
+            :onhoverlost "eww update popup_hover=false; scripts/popup.sh leave &"
     (box :class "panel" :orientation "v" :space-evenly false
       (literal :content "(${name}-panel)"))))
