@@ -24,6 +24,15 @@ fi
 tmp_dir="/tmp/md"
 mkdir -p "$tmp_dir"
 
+# Mermaid diagrams follow the active color scheme.
+# shellcheck disable=SC1091
+source "${XDG_CACHE_HOME:-$HOME/.local/cache}/theme/theme-data.sh"
+if [ "${scheme_variant:-dark}" = "light" ]; then
+    mermaid_theme=default
+else
+    mermaid_theme=dark
+fi
+
 fq_path=$(realpath -- "$1")
 header=$(grep -m1 -E '^# ' "$1" | sed -E 's/^#[[:space:]]+//') || true
 if [ -n "$header" ]; then
@@ -42,7 +51,7 @@ tmp_html="$tmp_dir/$file_name.html.tmp"
     cd "$tmp_dir" &&
     PUPPETEER_EXECUTABLE_PATH=$(command -v chromium) \
     MERMAID_FILTER_FORMAT=svg \
-    MERMAID_FILTER_THEME=dark \
+    MERMAID_FILTER_THEME="$mermaid_theme" \
     MERMAID_FILTER_BACKGROUND=transparent \
     pandoc -s -f markdown+alerts+emoji+autolink_bare_uris-implicit_figures -t html --toc \
         --embed-resources \
