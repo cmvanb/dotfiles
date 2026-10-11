@@ -20,7 +20,7 @@ opencode::install () {
     fs::force_link "$XDG_CONFIG_HOME/agents/skills"     "$XDG_CONFIG_HOME/opencode/skills"
 
     fs::ensure_directory "$XDG_CONFIG_HOME/opencode/themes"
-    template::render_mako "$src/themes/carbon-dark.mako.json" "$XDG_CONFIG_HOME/opencode/themes/carbon-dark.json"
+    template::render_mako "$src/themes/carbon.mako.json" "$XDG_CONFIG_HOME/opencode/themes/carbon.json"
 }
 
 opencode::uninstall () {
@@ -30,5 +30,5 @@ opencode::uninstall () {
     rm "$XDG_CONFIG_HOME/opencode/tui.json"
     rm "$XDG_CONFIG_HOME/opencode/AGENTS.md"
     rm "$XDG_CONFIG_HOME/opencode/skills"
-    rm "$XDG_CONFIG_HOME/opencode/themes/carbon-dark.json"
+    rm "$XDG_CONFIG_HOME/opencode/themes/carbon.json"
 }
