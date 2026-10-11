@@ -17,7 +17,7 @@
 [delta]
     paging = always
     pager = less
-    dark = true
+    ${scheme_variant} = true
     line-numbers = true
     line-numbers-left-format = "{nm:>2}⋮"
     line-numbers-right-format = "{np:>2}│"
