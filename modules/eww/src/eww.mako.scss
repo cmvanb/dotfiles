@@ -123,7 +123,14 @@ $icon: ${icon_size}px;
         &.focused { background: ${color_hash('primary_8')}; }
         &.focused:hover { background: ${color_hash('primary_10')}; }
 
-        &.urgent { background: ${color_hash('primary_3')}; box-shadow: inset 0 -3px $heavy; }
+        // Attention: a solid amber block, the urgent counterpart of the focused
+        // block, breathing slowly so it is noticed without flashing.
+        &.urgent {
+            background: ${color_hash('orange_2')};
+            animation: attention 1.2s steps(12) infinite alternate;
+        }
+        &.urgent label { color: ${color_hash('orange_9')}; }
+        &.urgent:hover { background: ${color_hash('orange_4')}; animation: none; }
     }
 
     .more { font-size: ${font_size_small}px; color: $muted; }
@@ -146,6 +153,10 @@ $icon: ${icon_size}px;
     &.full label { color: ${color_hash('primary_15')}; }
     &.warning label { color: $heavy; }
     &.critical label { animation: blink 0.5s steps(12) infinite alternate; }
+}
+
+@keyframes attention {
+    to { background: ${color_hash('orange_3')}; }
 }
 
 @keyframes blink {
