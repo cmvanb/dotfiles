@@ -9,7 +9,7 @@ colors:
 
   # Special
   debug: &debug "#ff00ff"
-  black: &black "#01080f"
+  canvas: &canvas "#01080f"
 
   # Primary (16-31)
   # generate-color-gradient-palette.py --samples 16 --start '#305070' --middle '#7090b0' --end '#a0c0e0' --midpoint 0.6 --curve linear
@@ -192,7 +192,7 @@ colors:
   magenta_9: &magenta_9 "#ff99cc"
 
   # ANSI named shortcuts
-  ansi_black:     *black
+  ansi_black:     *canvas
   ansi_red:       *red_4
   ansi_green:     *green_4
   ansi_yellow:    *orange_7

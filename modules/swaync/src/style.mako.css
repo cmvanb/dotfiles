@@ -1,6 +1,6 @@
 /* Theme the stock grey palette used by hover, focus and collapsed states. */
 :root {
-    --cc-bg: ${color_css_rgba('black', 0.92)};
+    --cc-bg: ${color_css_rgba('canvas', 0.92)};
     --noti-bg: ${color_rgb_int('primary_1')};
     --noti-bg-alpha: 1;
     --noti-bg-darker: ${color_hash('primary_0')};
@@ -25,7 +25,7 @@
     background: ${color_hash('primary_1')};
     border: 3px solid ${color_hash('primary_8')};
     border-radius: 0;
-    box-shadow: 0 0 0 1px ${color_hash('black')};
+    box-shadow: 0 0 0 1px ${color_hash('canvas')};
     padding: 0;
 }
 
@@ -85,8 +85,8 @@
 }
 
 .control-center {
-    background: ${color_css_rgba('black', 0.92)};
-    border: 1px solid ${color_hash('black')};
+    background: ${color_css_rgba('canvas', 0.92)};
+    border: 1px solid ${color_hash('canvas')};
     border-radius: 20px;
 }
 
@@ -152,7 +152,7 @@
     background: ${color_hash('system_text')};
     border: none;
     border-radius: 999px;
-    box-shadow: 0 2px 4px ${color_css_rgba('black', 0.4)};
+    box-shadow: 0 2px 4px ${color_css_rgba('canvas', 0.4)};
 }
 
 .control-center {

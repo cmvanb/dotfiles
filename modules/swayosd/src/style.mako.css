@@ -1,7 +1,7 @@
 window#osd {
     border-radius: 20px;
-    border: 1px solid ${color_hash('black')};
-    background: ${color_css_rgba('black', 0.92)};
+    border: 1px solid ${color_hash('canvas')};
+    background: ${color_css_rgba('canvas', 0.92)};
 }
 
 window#osd #container {
@@ -11,7 +11,7 @@ window#osd #container {
 window#osd image,
 window#osd label {
     color: ${color_hash('system_text')};
-    -gtk-icon-shadow: 0 1px 0 ${color_hash('black')};
+    -gtk-icon-shadow: 0 1px 0 ${color_hash('canvas')};
 }
 
 window#osd progressbar:disabled,

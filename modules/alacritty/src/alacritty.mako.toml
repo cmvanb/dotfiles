@@ -19,7 +19,7 @@ COLORTERM = 'truecolor'
 
 [bell]
 animation = 'Linear'
-color = '${color_zerox('black')}'
+color = '${color_zerox('canvas')}'
 duration = 100
 
 [cursor.style]

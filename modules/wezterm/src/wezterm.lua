@@ -244,7 +244,7 @@ return {
         selection_bg = theme.color_hash('selection_bg'),
         selection_fg = theme.color_hash('selection_fg'),
 
-        visual_bell = theme.color_hash('black'),
+        visual_bell = theme.color_hash('canvas'),
 
         tab_bar = {
             background = theme.color_hash('system_bg'),

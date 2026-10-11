@@ -35,13 +35,13 @@
 // Eww style
 //
 // The bar follows the waybar look; popups follow swayOSD and the swaync
-// control center: a translucent black rounded panel holding square cards with
+// control center: a translucent canvas rounded panel holding square cards with
 // a primary border, pill buttons, pill progress bars and pill switches.
 //------------------------------------------------------------------------------
 
 $bg: ${color_hash('system_bg')};
 $text: ${color_hash('system_text')};
-$panel: ${color_css_rgba('black', 0.92)};
+$panel: ${color_css_rgba('canvas', 0.92)};
 $card: ${color_hash('primary_1')};
 $card-border: ${color_hash('primary_8')};
 $button: ${color_hash('primary_3')};
@@ -55,7 +55,7 @@ $medium: ${color_hash('yellow_7')};
 $heavy: ${color_hash('orange_6')};
 $critical: ${color_hash('red_6')};
 $critical-dim: ${color_hash('red_2')};
-$outline: ${color_hash('black')};
+$outline: ${color_hash('canvas')};
 
 $icon: ${icon_size}px;
 
@@ -303,7 +303,7 @@ tooltip {
         min-width: 30px;
         min-height: 30px;
         margin: 2px;
-        box-shadow: 0 2px 4px ${color_css_rgba('black', 0.4)};
+        box-shadow: 0 2px 4px ${color_css_rgba('canvas', 0.4)};
     }
 }
 
@@ -362,7 +362,7 @@ scale {
         margin: -6px;
         border-radius: 999px;
         background: $text;
-        box-shadow: 0 2px 4px ${color_css_rgba('black', 0.4)};
+        box-shadow: 0 2px 4px ${color_css_rgba('canvas', 0.4)};
     }
 }
 

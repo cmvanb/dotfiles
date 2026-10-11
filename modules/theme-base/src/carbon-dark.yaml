@@ -9,7 +9,7 @@ colors:
 
   # Special
   debug: &debug "#ff00ff"
-  black: &black "#01080f"
+  canvas: &canvas "#01080f"
 
   # Primary (16-31)
   # generate-color-gradient-palette.py --samples 16 --start '#0f1229' --middle '#2050b0' --end '#4099ff' --midpoint 0.6 --curve linear
@@ -193,7 +193,7 @@ colors:
   magenta_9: &magenta_9 "#ff99cc"
 
   # ANSI named shortcuts
-  ansi_black:     *black
+  ansi_black:     *canvas
   ansi_red:       *red_4
   ansi_green:     *green_4
   ansi_yellow:    *orange_6
@@ -211,17 +211,17 @@ colors:
   ansi_brwhite:   *text_13
 
   # System
-  system_bg:          *black
+  system_bg:          *canvas
   system_text:        *text_11
 
   # Terminal
-  terminal_bg:        *black
+  terminal_bg:        *canvas
   terminal_text:      *text_11
   terminal_file:      *primary_15
   terminal_dir:       *primary_11
 
   # Editor
-  editor_bg:          *black
+  editor_bg:          *canvas
   editor_text:        *text_11
   editor_nontext:     *gray_2
   editor_nontext_hl:  *gray_4
@@ -242,13 +242,13 @@ colors:
 
   # Selection
   selection_bg:       *primary_12
-  selection_fg:       *black
+  selection_fg:       *canvas
 
   # Search
   search_bg:          *primary_12
-  search_fg:          *black
+  search_fg:          *canvas
   search_active_bg:   *green_4
-  search_active_fg:   *black
+  search_active_fg:   *canvas
 
   # Menus
   menu_selection_bg:  *primary_8
