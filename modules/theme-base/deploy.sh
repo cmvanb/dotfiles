@@ -36,7 +36,7 @@ theme-base::install () {
 
     template::render_mako "$src/dircolors.mako" "$XDG_CONFIG_HOME/theme/dircolors"
     template::render_mako "$src/eza-colors.mako" "$XDG_CONFIG_HOME/theme/eza-colors"
-    template::render_mako "$src/carbon-dark.pygments.mako.theme" "$XDG_CONFIG_HOME/theme/carbon-dark.pygments.theme"
+    template::render_mako "$src/carbon.pygments.mako.theme" "$XDG_CONFIG_HOME/theme/carbon.pygments.theme"
 }
 
 theme-base::uninstall () {
@@ -54,5 +54,5 @@ theme-base::uninstall () {
 
     rm -f "$XDG_CONFIG_HOME/theme/dircolors"
     rm -f "$XDG_CONFIG_HOME/theme/eza-colors"
-    rm -f "$XDG_CONFIG_HOME/theme/carbon-dark.pygments.theme"
+    rm -f "$XDG_CONFIG_HOME/theme/carbon.pygments.theme"
 }

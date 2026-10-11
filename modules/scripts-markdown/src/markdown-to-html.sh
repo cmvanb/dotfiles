@@ -47,7 +47,7 @@ tmp_html="$tmp_dir/$file_name.html.tmp"
     pandoc -s -f markdown+alerts+emoji+autolink_bare_uris-implicit_figures -t html --toc \
         --embed-resources \
         --resource-path "$(dirname "$fq_path")" \
-        --syntax-highlighting "$XDG_CONFIG_HOME/theme/carbon-dark.pygments.theme" \
+        --syntax-highlighting "$XDG_CONFIG_HOME/theme/carbon.pygments.theme" \
         --css "$XDG_DATA_HOME/pandoc/templates/markdown.css" \
         --metadata pagetitle="$page_title" \
         --filter mermaid-filter \
