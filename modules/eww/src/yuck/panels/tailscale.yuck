@@ -4,7 +4,8 @@
 
 (defwidget tailscale-panel []
   (box :class "tailscale" :orientation "v" :space-evenly false :spacing 12
-    (heading :text "Tailscale")
+    (heading :text "Tailscale"
+      (icon :name "tailscale-logo-symbolic" :class "medium"))
     (card
       (row :key {tailscale.name} :value {tailscale.ip}))
     (card

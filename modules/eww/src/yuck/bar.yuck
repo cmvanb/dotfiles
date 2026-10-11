@@ -60,7 +60,7 @@
 (defwidget tailscale-module [output]
   (box :visible {tailscale.up}
     (module :name "tailscale" :output output :tooltip "Tailscale · ${tailscale.ip}"
-      (icon :name "network-vpn-symbolic"))))
+      (icon :name "tailscale-logo-symbolic"))))
 
 (defwidget network-module [output]
   (module :name "network" :output output

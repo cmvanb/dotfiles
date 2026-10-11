@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 26 26">
+  <title>Tailscale</title>
+  <g opacity="0.35">
+    <circle cx="3" cy="3" r="3"/>
+    <circle cx="12" cy="3" r="3"/>
+    <circle cx="21" cy="3" r="3"/>
+    <circle cx="3" cy="21" r="3"/>
+    <circle cx="21" cy="21" r="3"/>
+  </g>
+  <circle cx="3" cy="12" r="3"/>
+  <circle cx="12" cy="12" r="3"/>
+  <circle cx="21" cy="12" r="3"/>
+  <circle cx="12" cy="21" r="3"/>
+</svg>

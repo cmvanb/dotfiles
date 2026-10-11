@@ -24,8 +24,11 @@ eww::install () {
     fs::ensure_directory "$XDG_SCRIPTS_HOME"
     fs::force_link "$src/eww-bar.sh" "$XDG_SCRIPTS_HOME/eww-bar.sh"
 
+    local icon
     fs::ensure_directory "$XDG_DATA_HOME/icons/hicolor/scalable/apps"
-    fs::force_link "$src/icons/claude-ai-symbolic.svg" "$XDG_DATA_HOME/icons/hicolor/scalable/apps/claude-ai-symbolic.svg"
+    for icon in "$src"/icons/*.svg; do
+        fs::force_link "$icon" "$XDG_DATA_HOME/icons/hicolor/scalable/apps/$(basename "$icon")"
+    done
     gtk-update-icon-cache -q -f -t "$XDG_DATA_HOME/icons/hicolor"
 
     # Eww does not watch files behind the symlinked config.
@@ -40,6 +43,9 @@ eww::uninstall () {
 
     rm -r "$XDG_CONFIG_HOME/eww"
     rm "$XDG_SCRIPTS_HOME/eww-bar.sh"
-    rm "$XDG_DATA_HOME/icons/hicolor/scalable/apps/claude-ai-symbolic.svg"
+    local icon
+    for icon in "$base_dir"/modules/eww/src/icons/*.svg; do
+        rm "$XDG_DATA_HOME/icons/hicolor/scalable/apps/$(basename "$icon")"
+    done
     gtk-update-icon-cache -q -f -t "$XDG_DATA_HOME/icons/hicolor"
 }
