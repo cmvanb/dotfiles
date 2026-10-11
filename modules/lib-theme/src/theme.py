@@ -15,7 +15,9 @@ LUA_PATH   = CACHE_DIR / 'theme-data.lua'
 SH_PATH    = CACHE_DIR / 'theme-data.sh'
 FISH_PATH  = CACHE_DIR / 'theme-data.fish'
 
-COLORS_PATH = CONFIG_DIR / 'colors.yaml'
+# THEME_COLORS selects a scheme other than the active one (e.g. to render a
+# GTK theme for the inactive variant).
+COLORS_PATH = Path(os.environ.get('THEME_COLORS', CONFIG_DIR / 'colors.yaml'))
 FONTS_PATH  = CONFIG_DIR / 'fonts.yaml'
 CURSOR_PATH = CONFIG_DIR / 'cursor.yaml'
 
