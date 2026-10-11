@@ -34,6 +34,11 @@ qutebrowser::install () {
     fs::force_link "$src/styles/reddit.css" "$XDG_CONFIG_HOME/qutebrowser/styles/reddit.css"
     fs::force_link "$src/styles/wikipedia.css" "$XDG_CONFIG_HOME/qutebrowser/styles/wikipedia.css"
 
+    # Packaged rasters win icon lookups by name, so the desktop entry names a distinct icon.
+    fs::ensure_directory "$XDG_DATA_HOME/icons/hicolor/scalable/apps"
+    fs::force_link "$src/icons/qutebrowser-globe.svg" "$XDG_DATA_HOME/icons/hicolor/scalable/apps/qutebrowser-globe.svg"
+    gtk-update-icon-cache -q -f -t "$XDG_DATA_HOME/icons/hicolor"
+
     fs::ensure_directory "$XDG_DATA_HOME/applications"
     fs::force_link "$src/org.qutebrowser.qutebrowser.desktop" "$XDG_DATA_HOME/applications/org.qutebrowser.qutebrowser.desktop"
 
@@ -83,6 +88,8 @@ qutebrowser::uninstall () {
     rmdir "$XDG_CONFIG_HOME/qutebrowser" 2>/dev/null || true
 
     rm "$XDG_DATA_HOME/applications/org.qutebrowser.qutebrowser.desktop"
+    rm "$XDG_DATA_HOME/icons/hicolor/scalable/apps/qutebrowser-globe.svg"
+    gtk-update-icon-cache -q -f -t "$XDG_DATA_HOME/icons/hicolor"
 
     rm "$XDG_DATA_HOME/qutebrowser/userscripts/format_json.sh"
     rm "$XDG_DATA_HOME/qutebrowser/userscripts/rebuild-grease-styles.py"

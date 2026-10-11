@@ -2,7 +2,7 @@
 Name=Qutebrowser
 StartupWMClass=qutebrowser
 GenericName=Web Browser
-Icon=qutebrowser
+Icon=qutebrowser-globe
 Type=Application
 Categories=Network;WebBrowser;
 Exec=qutebrowser --target window --untrusted-args %u
