@@ -22,7 +22,7 @@ broot::install () {
     fs::force_link "$src/verbs.hjson" "$XDG_CONFIG_HOME/broot/verbs.hjson"
 
     fs::ensure_directory "$XDG_CONFIG_HOME/broot/skins"
-    template::render_mako "$src/skins/carbon-dark.mako.hjson" "$XDG_CONFIG_HOME/broot/skins/carbon-dark.hjson"
+    template::render_mako "$src/skins/carbon.mako.hjson" "$XDG_CONFIG_HOME/broot/skins/carbon.hjson"
 }
 
 broot::uninstall () {

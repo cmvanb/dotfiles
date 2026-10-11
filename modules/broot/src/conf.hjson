@@ -273,7 +273,7 @@ imports: [
     # can also add another files for your personal verbs
     verbs.hjson
 
-    skins/carbon-dark.hjson
+    skins/carbon.hjson
 
     # # This file contains the skin to use when the terminal
     # # is dark (or when this couldn't be determined)
