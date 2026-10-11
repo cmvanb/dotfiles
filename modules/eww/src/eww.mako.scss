@@ -6,7 +6,7 @@
         bar_font_size = font_size_medium
         icon_size = 18
 
-    bar_height = 28
+    bar_height = 30
 
     # Bar labels are bottom-aligned (yalign 1) so the baseline sits a fixed
     # descent above the bottom edge, whatever fallback fonts a title pulls in.
@@ -15,6 +15,11 @@
     # x-height midlines, on the bar midline where the icons are centered.
     optical_midline = (0.71 + 0.523) / 4
     bar_label_padding = round(bar_height / 2 - (0.3125 + optical_midline) * int(bar_font_size))
+
+    # Optical centering for icons whose ink is off-center in their canvas.
+    # Percentages move the image within the spare height (bar minus icon).
+    def icon_nudge(px):
+        return '%.2f%%' % (50 + 100 * px / (bar_height - icon_size))
 %>
 //------------------------------------------------------------------------------
 // Eww style
@@ -69,10 +74,8 @@ $icon: ${icon_size}px;
     &.huge { background-size: 56px 56px; min-width: 56px; min-height: 56px; }
 
     // Optical centering for glyphs whose ink is off-center in their canvas.
-    // Percentages move the image within the spare height (bar minus icon), so
-    // with a 28px bar and 20px icon, 6.25% is half a pixel.
-    &.wifi { background-position: 50% 43.75%; }
-    &.memory { background-position: 50% 56.25%; }
+    &.wifi { background-position: 50% ${icon_nudge(-0.5)}; }
+    &.memory { background-position: 50% ${icon_nudge(0.5)}; }
 }
 
 // Bar
