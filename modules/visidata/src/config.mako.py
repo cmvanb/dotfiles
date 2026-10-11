@@ -1,12 +1,12 @@
 <%
-# Carbon Dark theme for VisiData
+# Carbon theme for VisiData
 # Colors specified as: <index> <fallback-name>
-# All indices are 256-color palette indices mapped from carbon-dark.yaml
+# All indices are 256-color palette indices mapped from the active scheme
 # via color_256('palette_name').
 #
 # Design notes:
-#   - Backgrounds use the primary/gray cool-blue darks
-#   - Foregrounds use text palette warm creams
+#   - Backgrounds use the primary/gray scales
+#   - Foregrounds use the text scale
 #   - Accents: cyan=identifiers/keys, orange=selected, yellow=notes/warnings,
 #              green=add/ok, red=delete/error, magenta=special/misc
 %>
@@ -14,7 +14,7 @@ import subprocess
 
 Sheet.addCommand('gx', 'open-cell-url', 'subprocess.Popen(["xdg-open", cursorDisplay])', 'open current cell value as URL with xdg-open')
 
-vd.themes['carbon-dark'] = dict(
+vd.themes['carbon'] = dict(
     # Base
     # terminal bg (primary_0) + warm text (text_11)
     color_default          = '${color_256("text_11")} on ${color_256("primary_0")}',
@@ -118,4 +118,4 @@ vd.themes['carbon-dark'] = dict(
     plot_colors            = '${color_256("cyan_6")} ${color_256("orange_6")} ${color_256("green_5")} ${color_256("purple_6")} ${color_256("yellow_5")} ${color_256("red_6")} ${color_256("blue_7")} ${color_256("magenta_6")}',
 )
 
-options.theme = 'carbon-dark'
+options.theme = 'carbon'
