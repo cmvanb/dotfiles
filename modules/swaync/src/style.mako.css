@@ -218,3 +218,14 @@
     color: ${color_hash('system_text')};
     border-radius: 999px;
 }
+
+.control-center .control-center-list-placeholder,
+.control-center .control-center-list-placeholder image,
+.control-center .control-center-list-placeholder label {
+    color: ${color_hash('gray_8')};
+    opacity: 1;
+}
+
+.control-center .control-center-list-placeholder label {
+    font-size: ${int(font_size_xlarge) + 4}px;
+}
