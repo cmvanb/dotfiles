@@ -1,11 +1,11 @@
 <%
 # Maps Claude Code's theme keys (reverse-engineered from the installed binary;
-# there is no public schema) onto the carbon-dark palette so the CLI matches
+# there is no public schema) onto the carbon palette so the CLI matches
 # the rest of the desktop theme instead of its own hardcoded colors.
 #
 # Prefer a semantic alias (syn_*, ansi_*, terminal_*, selection_*, ...) over a
 # raw palette step whenever the alias's own meaning genuinely matches the
-# Claude Code key's role -- that way retuning the alias in carbon-dark.yaml
+# Claude Code key's role -- that way retuning the alias in the scheme YAML
 # flows through here automatically. Diff colors mirror the git delta styles in
 # modules/git/src/config.mako (line backgrounds red_0/green_0, word backgrounds
 # red_3/green_3). Fall back to a raw palette step where no
@@ -86,7 +86,7 @@ overrides = [
 ]
 %>
 {
-  "name": "Carbon Dark",
+  "name": "Carbon",
   "base": "dark",
   "overrides": {
 % for i, (key, color) in enumerate(overrides):

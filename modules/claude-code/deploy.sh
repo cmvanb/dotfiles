@@ -23,7 +23,7 @@ claude-code::install() {
     fs::force_link "$src/fish/claude-code.fish"          "$XDG_CONFIG_HOME/fish/conf.d/claude-code.fish"
 
     fs::ensure_directory "$XDG_CONFIG_HOME/claude/themes"
-    template::render_mako "$src/themes/carbon-dark.mako.json" "$XDG_CONFIG_HOME/claude/themes/carbon-dark.json"
+    template::render_mako "$src/themes/carbon.mako.json" "$XDG_CONFIG_HOME/claude/themes/carbon.json"
 }
 
 claude-code::uninstall() {

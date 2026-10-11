@@ -42,7 +42,7 @@
     ]
   },
   "model": "sonnet",
-  "theme": "custom:carbon-dark",
+  "theme": "custom:carbon",
   "hooks": {
     "SessionStart": [
       {
