@@ -31,10 +31,11 @@ eww::install () {
     done
     gtk-update-icon-cache -q -f -t "$XDG_DATA_HOME/icons/hicolor"
 
-    # Eww does not watch files behind the symlinked config.
+    # Eww does not watch files behind the symlinked config. Its own watcher
+    # may still be reloading the re-rendered stylesheet, so retry once.
     if eww ping &> /dev/null; then
         echo "└> Reloading running eww daemon."
-        eww reload
+        eww reload &> /dev/null || { sleep 0.5; eww reload; }
     fi
 }
 
