@@ -5,11 +5,16 @@
 # Retrieve system theme
 #-------------------------------------------------------------------------------
 
+import importlib
 import os
 import sys
 
 sys.path.append(f"{os.environ['XDG_OPT_HOME']}/theme")
 import theme
+
+# `:config-source` re-runs this file in the same interpreter; reload so a
+# `theme switch` takes effect.
+importlib.reload(theme)
 
 # General settings
 #-------------------------------------------------------------------------------
