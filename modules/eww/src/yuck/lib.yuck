@@ -9,10 +9,12 @@
   (box :class "icon ${class}"
        :style `background-image: ${matches(name, '^/') ? 'url("' + name + '")' : '-gtk-icontheme("' + name + '")'};`))
 
-;; Bar item: left-click toggles its popup, hover shows a short hint.
+;; Bar item: left-click toggles its popup, hover shows a short hint. The hint
+;; is empty while its own popup is open, which keeps GTK from showing it over
+;; the panel.
 (defwidget module [name output ?class ?tooltip ?onrightclick ?onmiddleclick ?onscroll]
   (eventbox :cursor "pointer"
-            :tooltip tooltip
+            :tooltip {popup == name ? "" : tooltip}
             :onclick "scripts/popup.sh toggle ${name} ${output}"
             :onrightclick onrightclick
             :onmiddleclick onmiddleclick
