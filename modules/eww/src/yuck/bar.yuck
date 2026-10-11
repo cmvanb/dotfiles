@@ -108,7 +108,7 @@
           :class {audio.muted ? "muted" : ""}
           :tooltip "Scroll to change volume, right-click to mute"
           :onrightclick "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-          :onscroll "[ {} = up ] && swayosd-client --output-volume raise || swayosd-client --output-volume lower"
+          :onscroll "$XDG_CONFIG_HOME/sway/scripts/volume.sh $([ {} = up ] && echo raise || echo lower)"
     (icon :name {audio.muted ? "audio-volume-muted-symbolic" : audio.volume < 34 ? "audio-volume-low-symbolic" : audio.volume < 67 ? "audio-volume-medium-symbolic" : "audio-volume-high-symbolic"})
     (label :yalign 1 :text "${audio.volume}%")))
 
