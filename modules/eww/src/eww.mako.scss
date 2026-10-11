@@ -165,7 +165,7 @@ tooltip {
 // Negative margins keep a panel's width out of the column layout, so the
 // panel can be wider than its module without moving the other columns.
 .panel-anchor { margin: 0 -2000px; }
-.edge-anchor { margin-left: -2000px; }
+.edge-anchor { margin-left: -2000px; margin-right: 1px; }
 
 .panel {
     background: $panel;
