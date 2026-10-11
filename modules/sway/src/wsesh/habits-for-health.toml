@@ -3,8 +3,8 @@
 [[entry]]
 type = "browser"
 workspace = "1"
-workspace_name = "kanban"
-session = "omnia-hfh-kanban"
+workspace_name = "pr"
+session = "omnia-hfh-pr"
 
 [[entry]]
 type = "browser"
@@ -19,6 +19,11 @@ workspace_name = "teams"
 desktop = "teams-for-linux"
 
 [[entry]]
+type = "browser"
+workspace = "todo"
+session = "omnia-hfh-kanban"
+
+[[entry]]
 type = "terminal"
 workspace = "dev"
 cwd = "~/Code/wellbeing-people-mobile-app"
@@ -31,4 +36,4 @@ command = "edit"
 
 [[entry]]
 type = "focus"
-workspace = "dev"
+workspace = "todo"
