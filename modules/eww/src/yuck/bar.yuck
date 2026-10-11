@@ -154,5 +154,17 @@
 (defwidget clock-module [output]
   (module :name "clock" :output output
           :tooltip "${formattime(EWW_TIME, '%A, %B %d, %Y  %H:%M:%S')} (${timezone})"
-    (icon :name "clock-applet-symbolic")
+    (clock-face)
     (label :yalign 1 :text {formattime(EWW_TIME, "%H:%M")})))
+
+;; Analog clock icon showing the current time, drawn after the theme's
+;; clock-applet-symbolic. The hands rotate as vectors, so they stay sharp.
+(defwidget clock-face []
+  (overlay :class "clock-face" :valign "center"
+    (box :class "ring")
+    (transform :rotate {(formattime(EWW_TIME, "%I") % 12 + formattime(EWW_TIME, "%M") / 60) * 100 / 12}
+               :transform-origin-x "50%" :transform-origin-y "50%"
+      (box (box :class "hand hour" :halign "center" :valign "start")))
+    (transform :rotate {formattime(EWW_TIME, "%M") * 100 / 60}
+               :transform-origin-x "50%" :transform-origin-y "50%"
+      (box (box :class "hand minute" :halign "center" :valign "start")))))

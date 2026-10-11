@@ -167,6 +167,31 @@ $icon: ${icon_size}px;
     to { color: $critical-dim; }
 }
 
+// Analog clock icon: proportions of clock-applet-symbolic (16px grid), scaled
+// to the icon size. Hands start at the top and overshoot the center slightly.
+<%
+    clock_unit = icon_size / 16
+%>
+.clock-face {
+    // An overlay takes its size from its first child, the ring. GTK adds the
+    // border outside min-width, so the inner size leaves room for it.
+    .ring {
+        min-width: ${icon_size - 2}px;
+        min-height: ${icon_size - 2}px;
+        border: ${clock_unit}px solid currentColor;
+        border-radius: 999px;
+    }
+
+    .hand {
+        background: currentColor;
+        border-radius: 999px;
+        min-width: 2px;
+    }
+
+    .minute { margin-top: ${round(2 * clock_unit)}px; min-height: ${round(icon_size / 2 - 2 * clock_unit + clock_unit)}px; }
+    .hour { margin-top: ${round(4 * clock_unit)}px; min-height: ${round(icon_size / 2 - 4 * clock_unit + clock_unit)}px; }
+}
+
 // Tooltips (hover hints)
 //------------------------------------------------------------------------------
 
