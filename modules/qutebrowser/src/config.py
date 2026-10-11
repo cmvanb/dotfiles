@@ -325,11 +325,11 @@ c.colors.contextmenu.selected.fg = theme.color_hash('gray_15')
 
 # Websites
 c.colors.webpage.bg = theme.color_hash('web_page_bg')
-c.colors.webpage.preferred_color_scheme = 'dark'
+c.colors.webpage.preferred_color_scheme = theme.scheme('variant')
 
 # Dark mode
 # see: https://github.com/qutebrowser/qutebrowser/discussions/5733
-c.colors.webpage.darkmode.enabled = True
+c.colors.webpage.darkmode.enabled = theme.scheme('variant') == 'dark'
 c.colors.webpage.darkmode.policy.images = 'smart'
 c.colors.webpage.darkmode.policy.page = 'smart'
 
