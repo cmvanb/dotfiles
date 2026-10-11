@@ -3,6 +3,7 @@ Name=Netflix
 GenericName=Streaming Video
 Exec=/usr/bin/chromium --ozone-platform=wayland --gtk-version=4 --app=https://www.netflix.com
 StartupNotify=true
+StartupWMClass=chrome-www.netflix.com__-Default
 Terminal=false
 Icon=netflix
 Type=Application
