@@ -10,9 +10,11 @@
 
     # Bar labels are bottom-aligned (yalign 1) so the baseline sits a fixed
     # descent above the bottom edge, whatever fallback fonts a title pulls in.
-    # Nimbus Sans: descent 0.3125em, cap height 0.71em. The bottom padding puts
-    # the cap midline on the bar midline, where the icons are centered.
-    bar_label_padding = round(bar_height / 2 - (0.3125 + 0.71 / 2) * int(bar_font_size))
+    # Nimbus Sans: descent 0.3125em, cap height 0.71em, x-height 0.523em. The
+    # bottom padding puts the optical midline, halfway between the cap and
+    # x-height midlines, on the bar midline where the icons are centered.
+    optical_midline = (0.71 + 0.523) / 4
+    bar_label_padding = round(bar_height / 2 - (0.3125 + optical_midline) * int(bar_font_size))
 %>
 //------------------------------------------------------------------------------
 // Eww style
