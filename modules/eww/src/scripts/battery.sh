@@ -4,7 +4,7 @@
 #
 # Supports both energy (µWh/µW) and charge (µAh/µA) reporting batteries.
 #
-#   {"present": true, "capacity": 33, "status": "Discharging", "icon": "battery-030",
+#   {"present": true, "capacity": 33, "status": "Discharging", "icon": "battery-level-30-symbolic",
 #    "watts": 16.4, "remaining": "1h 37m", "health": 96, "cycles": 12}
 #-------------------------------------------------------------------------------
 
@@ -49,9 +49,14 @@ remaining=$(awk -v now="$now" -v full="$full" -v rate="$rate" -v status="$status
     printf "%dh %02dm", int(hours), int((hours - int(hours)) * 60)
 }')
 
-# Theme icons come in 10% steps: battery-000 ... battery-100[-charging].
-icon=$(printf 'battery-%03d' $(( (capacity + 5) / 10 * 10 )))
-[[ $status == Charging ]] && icon+=-charging
+# Symbolic icons follow the text color in either scheme. They come in 10%
+# steps: battery-level-0 ... battery-level-100, charging up to 90, then charged.
+level=$(( (capacity + 5) / 10 * 10 ))
+icon="battery-level-$level"
+if [[ $status == Charging ]]; then
+    (( level == 100 )) && icon+=-charged || icon+=-charging
+fi
+icon+=-symbolic
 
 health=$(awk -v full="$full" -v design="$design" 'BEGIN { printf "%d", (design > 0 ? 100 * full / design : 0) }')
 
