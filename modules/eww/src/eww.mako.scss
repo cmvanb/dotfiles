@@ -77,15 +77,21 @@ $icon: ${icon_size}px;
 // Bar
 //------------------------------------------------------------------------------
 
+// The popup row copies the bar's status modules, so it shares the font size
+// that determines their widths.
+.bar, .popup-row {
+    font-size: ${bar_font_size}px;
+
+    .right { padding-right: 6px; }
+}
+
 .bar {
     background: $bg;
     min-height: ${bar_height}px;
-    font-size: ${bar_font_size}px;
 
     label { padding-bottom: ${bar_label_padding}px; }
 
     .left { padding-left: 16px; }
-    .right { padding-right: 6px; }
 }
 
 .title { color: $text; }
@@ -155,6 +161,11 @@ tooltip {
 
 // Popup panel
 //------------------------------------------------------------------------------
+
+// Negative margins keep a panel's width out of the column layout, so the
+// panel can be wider than its module without moving the other columns.
+.panel-anchor { margin: 0 -2000px; }
+.edge-anchor { margin-left: -2000px; }
 
 .panel {
     background: $panel;

@@ -4,6 +4,7 @@
 #
 # Usage: popup.sh toggle <name> <output> [view]  # open <name> on <output>, or close it
 #        popup.sh close                           # close any open popup
+#        popup.sh dismiss                         # close now, unless the pointer is on it
 #        popup.sh leave                           # close soon, unless the pointer is on it
 #        popup.sh watch                           # internal: run `leave` on window focus
 #
@@ -63,7 +64,7 @@ case ${1:-} in
 
         prepare "$name" "${4:-}"
         eww update popup="$name"
-        eww open popup --screen "$output" --arg name="$name" &> /dev/null
+        eww open popup --screen "$output" --arg name="$name" --arg output="$output" &> /dev/null
         start_watch
         ;;
 
@@ -79,13 +80,17 @@ case ${1:-} in
             | while read -r _; do "$script_dir/popup.sh" leave & done
         ;;
 
+    dismiss)
+        [[ $(eww get popup_hover 2>/dev/null) == true ]] || close
+        ;;
+
     leave)
         sleep "$grace"
         [[ $(eww get popup_hover 2>/dev/null) == true ]] || close
         ;;
 
     *)
-        echo "Usage: $(basename "$0") toggle <name> <output> [view] | close | leave | watch" >&2
+        echo "Usage: $(basename "$0") toggle <name> <output> [view] | close | dismiss | leave | watch" >&2
         exit 1
         ;;
 esac

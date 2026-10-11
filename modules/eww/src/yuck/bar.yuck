@@ -19,17 +19,41 @@
       (sway-mode)
       (window-title :output output))
     (workspaces :output output)
-    (box :class "right" :halign "end" :space-evenly false
-      (tailscale-module :output output)
-      (network-module :output output)
-      (bluetooth-module :output output)
-      (audio-module :output output)
-      (battery-module :output output)
-      (claude-module :output output)
-      (cpu-module :output output)
-      (memory-module :output output)
-      (date-module :output output)
-      (clock-module :output output))))
+    (status-modules :output output)))
+
+;; Status modules, right-aligned. The popup window renders a hidden copy of
+;; this row with `open` set, so GTK lays out each panel under its module using
+;; the exact same widths as the bar.
+(defwidget status-modules [output ?open]
+  (box :class "right" :halign "end" :space-evenly false
+    (slot :name "tailscale" :open open (tailscale-module :output output))
+    (slot :name "network" :open open (network-module :output output))
+    (slot :name "bluetooth" :open open (bluetooth-module :output output))
+    (slot :name "audio" :open open (audio-module :output output))
+    (slot :name "battery" :open open (battery-module :output output))
+    (slot :name "claude" :open open (claude-module :output output))
+    (slot :name "cpu" :open open (cpu-module :output output))
+    (slot :name "memory" :open open (memory-module :output output))
+    (slot :name "calendar" :open open (date-module :output output))
+    (slot :name "clock" :open open (clock-module :output output))
+    ;; Panels of the rightmost modules would overflow the screen when
+    ;; centered, so they align to the screen edge instead.
+    (box :class "edge-anchor" :valign "start"
+      (literal :content {matches(open ?: "", "^(calendar|clock)$") ? "(popup-panel :name '${open}' :halign 'end')" : ""}))))
+
+;; A module column. In the bar it shows the module. In the popup copy the
+;; module collapses to zero height but keeps its width, and the open module
+;; hangs its panel centered below it.
+(defwidget slot [name ?open]
+  (box :orientation "v" :space-evenly false
+    ;; Only the bar's columns fill the height. Collapsed revealers keep an
+    ;; input window, so in the popup they must stay zero-height or they would
+    ;; swallow clicks on the panel.
+    (revealer :reveal {(open ?: "") == ""} :transition "slidedown" :duration "0ms"
+              :vexpand {(open ?: "") == ""}
+      (children))
+    (box :class "panel-anchor" :valign "start"
+      (literal :content {open == name && !matches(name, "^(calendar|clock)$") ? "(popup-panel :name '${name}' :halign 'center')" : ""}))))
 
 ;; Sway
 ;;------------------------------------------------------------------------------

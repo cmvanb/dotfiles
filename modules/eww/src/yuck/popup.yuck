@@ -1,17 +1,25 @@
 ;;------------------------------------------------------------------------------
 ;; Popup
 ;;
-;; A single popup window, opened by scripts/popup.sh with --arg name=<panel>.
-;; It renders the matching `<name>-panel` widget, anchored under the bar's
-;; right edge like the swaync control center.
+;; A transparent, full-width window under the bar, opened by scripts/popup.sh
+;; with --arg name=<panel> --arg output=<output>. It holds a hidden copy of the
+;; bar's status modules (see `status-modules`), which positions the panel
+;; under the module that opened it. Clicking beside the panel dismisses it.
 ;;------------------------------------------------------------------------------
 
-(defwindow popup [name]
-  :geometry (geometry :x "6px" :y "6px" :anchor "top right")
+(defwindow popup [name output]
+  :geometry (geometry :x "0px" :y "6px" :width "100%" :anchor "top center")
   :stacking "overlay"
   :focusable "none"
   :namespace "eww-popup"
-  (eventbox :onhover "eww update popup_hover=true"
+  (eventbox :onclick "scripts/popup.sh dismiss"
+    (box :class "popup-row" :orientation "v" :space-evenly false
+      (status-modules :output output :open name))))
+
+;; The panel renders the matching `<name>-panel` widget.
+(defwidget popup-panel [name halign]
+  (eventbox :halign halign
+            :onhover "eww update popup_hover=true"
             :onhoverlost "eww update popup_hover=false; scripts/popup.sh leave"
     (box :class "panel" :orientation "v" :space-evenly false
       (literal :content "(${name}-panel)"))))
