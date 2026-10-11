@@ -108,8 +108,10 @@ $icon: ${icon_size}px;
 .workspaces {
     // Hover raises a workspace's fill one step along the primary scale, so it
     // reads as the same state language as visible and focused.
+    // Highlights take a browser tab's shape: rounded top, square base.
     .workspace {
         padding: 0 10px;
+        border-radius: 8px 8px 0 0;
         transition: background-color 120ms ease-out;
 
         label { transition: color 120ms ease-out; }
@@ -136,8 +138,10 @@ $icon: ${icon_size}px;
     .more { font-size: ${font_size_small}px; color: $muted; }
 }
 
+// Same tab shape as the workspaces.
 .module {
     padding: 0 10px;
+    border-radius: 8px 8px 0 0;
     transition: background-color 150ms;
 
     &:hover { background: ${color_css_rgba('primary_3', 0.6)}; }
