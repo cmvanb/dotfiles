@@ -84,7 +84,7 @@
 (defwidget tailscale-module [output]
   (box :visible {tailscale.up}
     (module :name "tailscale" :output output :tooltip "Tailscale · ${tailscale.ip}"
-      (icon :name "tailscale-logo-symbolic"))))
+      (icon :name "tailscale-logo-symbolic" :class "tailscale"))))
 
 (defwidget network-module [output]
   (module :name "network" :output output
@@ -127,14 +127,14 @@
   (module :name "claude" :output output
           :class {claude.session >= 90 ? "critical" : claude.session >= 70 ? "heavy" : claude.session >= 50 ? "medium" : ""}
           :tooltip {claude.ok ? "5h ${claude.session}% · resets in ${claude.session_reset}" : "Usage unavailable"}
-    (icon :name "claude-ai-symbolic")
+    (icon :name "claude-ai-symbolic" :class "claude")
     (label :yalign 1 :text {claude.ok ? "${claude.session}%" : "—"})))
 
 (defwidget cpu-module [output]
   (module :name "cpu" :output output
           :class {EWW_CPU.avg >= 90 ? "critical" : EWW_CPU.avg >= 70 ? "heavy" : EWW_CPU.avg >= 50 ? "medium" : ""}
           :tooltip "${round(EWW_TEMPS?.K10TEMP_TCTL ?: EWW_TEMPS?.CORETEMP_PACKAGE_ID_0 ?: 0, 0)}°C"
-    (icon :name "am-cpu-symbolic")
+    (icon :name "am-cpu-symbolic" :class "cpu")
     (label :yalign 1 :text "${round(EWW_CPU.avg, 0)}%")))
 
 (defwidget memory-module [output]
@@ -148,7 +148,7 @@
   (module :name "calendar" :output output
           :tooltip {formattime(EWW_TIME, "%A, %B %d, %Y")}
           :onrightclick "scripts/popup.sh toggle calendar ${output} year"
-    (icon :name "calendar-month-symbolic")
+    (icon :name "calendar-month-symbolic" :class "calendar")
     (label :yalign 1 :text {formattime(EWW_TIME, "%Y-%m-%d")})))
 
 (defwidget clock-module [output]
