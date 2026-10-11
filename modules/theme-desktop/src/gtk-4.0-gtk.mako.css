@@ -4,30 +4,30 @@
  Sets the full semantic color surface so any GTK4 app that reads these
  named colors (with or without the theme installed) gets the right palette.
 */
-@define-color accent_bg_color  ${color_hash('secondary_10')};
-@define-color accent_fg_color  ${color_hash('text_15')};
-@define-color accent_color     ${color_hash('secondary_15')};
+@define-color accent_bg_color  ${color_hash('gtk_muted_accent_bg')};
+@define-color accent_fg_color  ${color_hash('gtk_muted_accent_fg')};
+@define-color accent_color     ${color_hash('gtk_muted_accent')};
 
-@define-color window_bg_color  ${color_hash('secondary_2')};
-@define-color window_fg_color  ${color_hash('text_12')};
-@define-color view_bg_color    ${color_hash('secondary_1')};
-@define-color view_fg_color    ${color_hash('text_10')};
+@define-color window_bg_color  ${color_hash('gtk_window_bg')};
+@define-color window_fg_color  ${color_hash('gtk_window_fg')};
+@define-color view_bg_color    ${color_hash('gtk_view_bg')};
+@define-color view_fg_color    ${color_hash('gtk_view_fg')};
 
-@define-color headerbar_bg_color         ${color_hash('secondary_4')};
-@define-color headerbar_fg_color         ${color_hash('text_15')};
-@define-color headerbar_border_color     ${color_hash('text_15')};
+@define-color headerbar_bg_color         ${color_hash('gtk_headerbar_bg')};
+@define-color headerbar_fg_color         ${color_hash('gtk_headerbar_fg')};
+@define-color headerbar_border_color     ${color_hash('gtk_headerbar_fg')};
 @define-color headerbar_backdrop_color   @window_bg_color;
 @define-color headerbar_shade_color      rgba(0, 0, 0, 0.36);
 @define-color headerbar_darker_shade_color rgba(0, 0, 0, 0.9);
 
-@define-color sidebar_bg_color           ${color_hash('secondary_3')};
-@define-color sidebar_fg_color           ${color_hash('text_14')};
-@define-color sidebar_backdrop_color     ${color_hash('secondary_2')};
+@define-color sidebar_bg_color           ${color_hash('gtk_sidebar_bg')};
+@define-color sidebar_fg_color           ${color_hash('gtk_sidebar_fg')};
+@define-color sidebar_backdrop_color     ${color_hash('gtk_sidebar_backdrop')};
 
 @define-color card_bg_color   rgba(255, 255, 255, 0.06);
-@define-color card_fg_color   ${color_hash('text_15')};
+@define-color card_fg_color   ${color_hash('gtk_popover_fg')};
 
-@define-color dialog_bg_color   ${color_hash('secondary_4')};
-@define-color dialog_fg_color   ${color_hash('text_15')};
-@define-color popover_bg_color  ${color_hash('secondary_4')};
-@define-color popover_fg_color  ${color_hash('text_15')};
+@define-color dialog_bg_color   ${color_hash('gtk_popover_bg')};
+@define-color dialog_fg_color   ${color_hash('gtk_popover_fg')};
+@define-color popover_bg_color  ${color_hash('gtk_popover_bg')};
+@define-color popover_fg_color  ${color_hash('gtk_popover_fg')};
