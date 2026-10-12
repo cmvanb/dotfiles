@@ -44,7 +44,7 @@ All theme color, font, and cursor values are pre-loaded and available as plain v
 ```
 primary_8       →  "2a68ca"   (6-digit hex, no prefix)
 font_sans       →  "Inter"
-cursor_size     →  "24"
+cursor_size     →  "32"
 scheme_variant  →  "dark"     (or "light")
 scheme_name     →  "carbon-dark"
 ```

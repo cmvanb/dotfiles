@@ -83,9 +83,11 @@ theme::apply_gtk () {
     gsettings set org.gnome.desktop.interface color-scheme "prefer-$variant"
     gsettings set org.gnome.desktop.interface icon-theme "carbon-$variant"
 
-    local cursor_theme
+    local cursor_theme cursor_size
     cursor_theme=$(sed -n "s/^cursor_theme='\(.*\)'$/\1/p" "$cache_dir/theme-data.sh" 2>/dev/null)
+    cursor_size=$(sed -n "s/^cursor_size='\(.*\)'$/\1/p" "$cache_dir/theme-data.sh" 2>/dev/null)
     [[ -n "$cursor_theme" ]] && gsettings set org.gnome.desktop.interface cursor-theme "$cursor_theme"
+    [[ -n "$cursor_size" ]] && gsettings set org.gnome.desktop.interface cursor-size "$cursor_size"
 }
 
 theme::is_running () {
