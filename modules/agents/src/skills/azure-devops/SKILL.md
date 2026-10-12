@@ -40,12 +40,32 @@ Route parameters need the GUID. The name works only for `az repos`.
 
 ## Authentication
 
+### Check the environment first
+
+Run this before any other auth step, and before asking the user to log in:
+
+```bash
+env | grep -i '^azure'
+```
+
+The extension reads `AZURE_DEVOPS_EXT_PAT`.
+A direnv `.envrc` in the working directory normally exports it.
+
+If it is unset, load the `.envrc` and retry:
+
+```bash
+direnv exec . az repos pr list ...
+```
+
+Ask for `az login` only after the retry fails.
+
 ### Diagnose a failure
 
 Run the command first. If it fails, match the symptom.
 
 | Symptom | Cause | Fix |
 | --- | --- | --- |
+| `Before you can run Azure DevOps commands` | `AZURE_DEVOPS_EXT_PAT` not in the shell environment | Run [Check the environment first](#check-the-environment-first) |
 | 403 on every `az repos` command | No credential | Run `az login`, then `az devops login` |
 | 403 "identity has not been materialized" | The AAD identity has never opened the web UI | Sign in to the organization in a browser once, or use a PAT |
 | Works in `az repos`, fails in `curl` | Different credential | Stop using `curl` |
