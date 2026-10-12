@@ -14,15 +14,23 @@ Three modules cooperate:
 `modules/theme-base/src/`:
 
 ```
-carbon-dark.yaml    # colors: dark scheme
-carbon-light.yaml   # colors: light scheme
-cursor.yaml         # cursor: shared
+carbon-dark.yaml    # colors and cursor theme: dark scheme
+carbon-light.yaml   # colors and cursor theme: light scheme
+cursor.yaml         # cursor: shared size
 fonts-linux.yaml    # fonts: Linux
 fonts-windows.yaml  # fonts: Windows
 ```
 
 Font and cursor files have a single top-level key (`fonts:`, `cursor:`).
-Color schemes have two: `scheme:` and `colors:`.
+Color schemes have three: `scheme:`, `cursor:` and `colors:`.
+
+### Cursor theme
+
+Each scheme names the cursor theme that contrasts with its canvas:
+`Simp1e` (light fill) in carbon-dark, `Simp1e-Dark` (dark fill) in
+carbon-light.
+`theme switch` applies it to gsettings and re-renders the sway config.
+Manifesto installs both (`xcursor-simp1e`, `xcursor-simp1e-dark`).
 
 ### Scheme properties
 
@@ -197,7 +205,7 @@ and inherit `Win11-dark` and `Win11`.
 | Function | Output |
 |---|---|
 | `font <key>` | Font value (e.g. `Agave Nerd Font Mono`) |
-| `cursor <key>` | Cursor value (e.g. `Simp1e`) |
+| `cursor <key>` | Cursor value (e.g. `Simp1e`, `24`) |
 | `scheme <key>` | Scheme property (e.g. `light`); Python and Lua |
 
 ## Usage in modules

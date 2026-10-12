@@ -10,6 +10,10 @@ scheme:
   variant: light
 
 
+cursor:
+  cursor_theme: "Simp1e-Dark"
+
+
 colors:
 #-------------------------------------------------------------------------------
 
