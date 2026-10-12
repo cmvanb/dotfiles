@@ -18,6 +18,11 @@ inxi
 
 - Use vim, not nano
 
+## Package Management
+
+- Install from the official repositories with `pacman`.
+- Install from the AUR with `paru`.
+
 ## Making Changes
 
 All changes to the system must be versioned and deployed through the appropriate repository.
