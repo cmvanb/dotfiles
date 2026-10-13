@@ -311,15 +311,6 @@ c.colors.prompts.fg = theme.color_hash('text_12')
 c.colors.prompts.selected.bg = theme.color_hash('primary_6')
 c.colors.prompts.selected.fg = theme.color_hash('gray_15')
 
-# Context menu component
-#-------------------------------------------------------------------------------
-c.colors.contextmenu.disabled.bg = theme.color_hash('primary_1')
-c.colors.contextmenu.disabled.fg = theme.color_hash('text_6')
-c.colors.contextmenu.menu.bg = theme.color_hash('primary_2')
-c.colors.contextmenu.menu.fg = theme.color_hash('text_12')
-c.colors.contextmenu.selected.bg = theme.color_hash('primary_6')
-c.colors.contextmenu.selected.fg = theme.color_hash('gray_15')
-
 # Website color settings
 #-------------------------------------------------------------------------------
 
