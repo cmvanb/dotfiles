@@ -7,6 +7,7 @@ script_dir=$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)
 base_dir=$(realpath "$script_dir/../..")
 
 source "$base_dir/lib/fs.sh"
+source "$base_dir/lib/template.sh"
 
 
 teams-for-linux::install () {
@@ -17,7 +18,7 @@ teams-for-linux::install () {
     # Packaged rasters win icon lookups by name, so the user desktop entry
     # shadows the system one and points at a distinctly named icon.
     fs::ensure_directory "$XDG_DATA_HOME/icons/hicolor/scalable/apps"
-    fs::force_link "$src/icons/teams-badge.svg" "$XDG_DATA_HOME/icons/hicolor/scalable/apps/teams-badge.svg"
+    template::render_mako "$src/icons/teams-badge.mako.svg" "$XDG_DATA_HOME/icons/hicolor/scalable/apps/teams-badge.svg" carbon-dark
     gtk-update-icon-cache -q -f -t "$XDG_DATA_HOME/icons/hicolor"
 
     fs::ensure_directory "$XDG_DATA_HOME/applications"
