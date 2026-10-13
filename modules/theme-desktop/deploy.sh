@@ -33,7 +33,7 @@ theme-desktop::install_icons () {
 theme-desktop::install_gtk_theme () {
     echo "└> Installing GTK theme."
 
-    git submodule update --recursive --remote
+    git -C "$base_dir" submodule update --init modules/theme-desktop/src/carbon-gtk
 
     # Install GTK settings files
     local src="$base_dir/modules/theme-desktop/src"

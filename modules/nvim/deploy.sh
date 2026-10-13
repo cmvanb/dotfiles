@@ -14,7 +14,7 @@ nvim::install () {
 
     local src="$base_dir/modules/nvim/src"
 
-    git submodule update --recursive --remote
+    git -C "$base_dir" submodule update --init modules/nvim/src
 
     fs::force_link "$src" "$XDG_CONFIG_HOME/nvim"
 }
