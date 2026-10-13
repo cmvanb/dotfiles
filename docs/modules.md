@@ -92,6 +92,22 @@ fs::force_link "$src/config.variant.ext" "$XDG_CONFIG_HOME/app/config.ext"
 fs::force_link "$src/upload-to-0x0.sh" "$XDG_BIN_HOME/0x0"
 ```
 
+**Git submodule** (config kept in its own repository)
+
+```bash
+git -C "$base_dir" submodule update --init modules/<name>/src
+```
+
+The module syncs only its own submodule to the commit pinned in this repo.
+To adopt upstream changes, commit and push inside the submodule,
+then commit the new pin here with the module prefix.
+
+> [!IMPORTANT]
+> Push the submodule before pushing the pin.
+> A pin to an unpushed commit breaks fresh clones.
+
+`.gitmodules` lists the submodules.
+
 ## Example module
 
 `modules/bat/deploy.sh`:

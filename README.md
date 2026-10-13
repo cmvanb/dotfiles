@@ -2,7 +2,8 @@
 
 ## Setup
 
-Initialize the [neovim](https://github.com/cmvanb/nvimfiles) submodule.
+Initialize the [neovim](https://github.com/cmvanb/nvimfiles) and
+[carbon-gtk](https://github.com/cmvanb/carbon-gtk) submodules.
 
 ```bash
 git submodule update --init --recursive
