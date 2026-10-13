@@ -47,6 +47,7 @@ description: Apply git conventions for commits and version control.
 - `Tests`:
   - One line per case, plain English scenario and outcome.
   - Never a pass count or a checklist.
+- Never add attribution or generator footers.
 - Use precise and plain language:
   - Never narrate process.
   - State a scope boundary as a fact about the code, not an excuse.
