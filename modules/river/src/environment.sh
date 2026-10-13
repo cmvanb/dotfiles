@@ -17,5 +17,8 @@ export QT_SCALE_FACTOR_ROUNDING_POLICY=round
 # libadwaita ignores the gsettings gtk-theme-name; GTK_THEME env var is required.
 export GTK_THEME=carbon-gtk
 
+# Qt apps read the carbon Qt theme through qt6ct, which follows `theme switch`.
+export QT_QPA_PLATFORMTHEME=qt6ct
+
 # XDG desktop portal integration.
 export XDG_CURRENT_DESKTOP=river
