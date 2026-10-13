@@ -42,7 +42,6 @@
     ]
   },
   "model": "sonnet",
-  "theme": "custom:carbon",
   "hooks": {
     "SessionStart": [
       {
@@ -70,5 +69,6 @@
     "context7@claude-plugins-official": true
   },
   "tui": "fullscreen",
+  "theme": "custom:carbon",
   "agentPushNotifEnabled": false
 }
