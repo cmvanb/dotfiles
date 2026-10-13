@@ -112,6 +112,7 @@ theme::reload_apps () {
         touch "$config_home/wezterm/wezterm.lua"
     fi
     if theme::is_running nvim;     then pkill -u "$USER" -USR1 -x nvim; fi
+    if theme::is_running herdr;    then herdr server reload-config &> /dev/null; fi
     if command -v bat &> /dev/null && [[ -f "$config_home/bat/themes/carbon.tmTheme" ]]; then
         bat cache --build &> /dev/null
     fi
