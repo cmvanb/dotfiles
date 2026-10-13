@@ -1,0 +1,25 @@
+onboarding = false
+
+[theme]
+name = "catppuccin"
+
+[theme.custom]
+panel_bg      = "${color_hash('canvas')}"
+sidebar_bg    = "${color_hash('gtk_sidebar_bg')}"
+surface_dim   = "${color_hash('canvas')}"
+surface0      = "${color_hash('gtk_window_bg')}"
+surface1      = "${color_hash('gtk_headerbar_bg')}"
+overlay0      = "${color_hash('gray_8')}"
+overlay1      = "${color_hash('gray_10')}"
+subtext0      = "${color_hash('text_9')}"
+text          = "${color_hash('terminal_text')}"
+active_row_bg = "${color_hash('menu_selection_bg')}"
+selection_bg  = "${color_hash('selection_bg')}"
+accent        = "${color_hash('gtk_accent')}"
+blue          = "${color_hash('ansi_blue')}"
+teal          = "${color_hash('ansi_cyan')}"
+mauve         = "${color_hash('ansi_magenta')}"
+green         = "${color_hash('ansi_green')}"
+yellow        = "${color_hash('ansi_bryellow')}"
+peach         = "${color_hash('ansi_yellow')}"
+red           = "${color_hash('ansi_red')}"
