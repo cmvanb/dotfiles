@@ -7,7 +7,7 @@ Three modules cooperate:
 |---|---|
 | `lib-theme` | Runtime APIs (Bash, Fish, Lua, Python), cache generator, `theme` command |
 | `theme-base` | YAML source files, terminal assets, cache generation at deploy time |
-| `theme-desktop` | GTK configuration, GTK and icon themes, palette generators |
+| `theme-desktop` | GTK and Qt configuration, GTK, Qt and icon themes, palette generators |
 
 ## YAML source files
 
@@ -173,6 +173,35 @@ onto the variant's steps and take surfaces from the `gtk_*` aliases.
 
 Icon themes `carbon-dark` and `carbon-light` share the symbolic overrides
 and inherit `Win11-dark` and `Win11`.
+
+## Qt
+
+`theme-desktop` installs the carbon Qt theme from the `carbon-qt` submodule
+for qt6ct.
+Sway, river and Hyprland export `QT_QPA_PLATFORMTHEME=qt6ct`.
+Manifesto installs `qt6ct`.
+
+| File | Role |
+|---|---|
+| `colors/carbon.mako.conf` | QPalette, one `gtk_*` alias or step per role |
+| `qss/carbon.mako.qss` | Menus, tooltips, scrollbars, buttons, item hover |
+| `icons/icons.tsv` | Icon overrides: name, context, source |
+| `icons/src/` | Icons Win11 lacks, drawn in its 16px style |
+| `generate-icons.py` | Writes the `carbon-dark-qt` and `carbon-light-qt` icon themes |
+
+Palette and stylesheet render for both variants under
+`$XDG_DATA_HOME/qt6ct/`.
+`qt6ct.conf` follows the active scheme, so `theme switch` re-renders it and
+qt6ct restyles running Qt apps.
+
+The icon themes inherit `Win11-dark,Win11` and `Win11`.
+`Win11-dark` only overlays `Win11`, and Win11's `status/` directories ship
+white tray art under action names, so lookups need both corrections.
+Each override is its source recolored to Win11's ink: `#dedede` on dark,
+`#363636` on light.
+
+qutebrowser leaves `colors.contextmenu.*` unset, so context menus take the
+Qt theme and match GTK popovers.
 
 ## Runtime API
 

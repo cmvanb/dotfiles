@@ -6,3 +6,7 @@
 	path = modules/theme-desktop/src/carbon-gtk
 	url = git@github.com:cmvanb/carbon-gtk.git
 	branch = main
+[submodule "modules/theme-desktop/src/carbon-qt"]
+	path = modules/theme-desktop/src/carbon-qt
+	url = git@github.com:cmvanb/carbon-qt.git
+	branch = main

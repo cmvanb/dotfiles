@@ -77,6 +77,30 @@ theme-desktop::install_gtk_theme () {
     done
 }
 
+theme-desktop::install_qt_theme () {
+    echo "└> Installing Qt theme."
+
+    git -C "$base_dir" submodule update --init modules/theme-desktop/src/carbon-qt
+
+    local src="$base_dir/modules/theme-desktop/src"
+    local theme_src="$src/carbon-qt"
+
+    fs::ensure_directory "$XDG_CONFIG_HOME/qt6ct"
+    fs::ensure_directory "$XDG_DATA_HOME/qt6ct/colors"
+    fs::ensure_directory "$XDG_DATA_HOME/qt6ct/qss"
+
+    # Settings follow the active scheme, so `theme switch` re-renders them and
+    # qt6ct restyles running apps.
+    template::render_mako "$src/qt6ct.mako.conf" "$XDG_CONFIG_HOME/qt6ct/qt6ct.conf"
+
+    local variant
+    for variant in "${theme_desktop_variants[@]}"; do
+        template::render_mako "$theme_src/colors/carbon.mako.conf" "$XDG_DATA_HOME/qt6ct/colors/carbon-$variant.conf" "carbon-$variant"
+        template::render_mako "$theme_src/qss/carbon.mako.qss"     "$XDG_DATA_HOME/qt6ct/qss/carbon-$variant.qss"    "carbon-$variant"
+        python "$theme_src/generate-icons.py" "$variant" "$XDG_DATA_HOME/icons/carbon-$variant-qt"
+    done
+}
+
 theme-desktop::configure_gtk () {
     echo "└> Configuring GTK."
 
@@ -111,6 +135,7 @@ theme-desktop::install () {
 
     theme-desktop::install_icons
     theme-desktop::install_gtk_theme
+    theme-desktop::install_qt_theme
     theme-desktop::configure_gtk
 }
 
@@ -126,11 +151,18 @@ theme-desktop::uninstall () {
 
     rm -f "$XDG_DATA_HOME/themes/carbon-gtk"
 
+    rm -f "$XDG_CONFIG_HOME/qt6ct/qt6ct.conf"
+    rmdir "$XDG_CONFIG_HOME/qt6ct" 2>/dev/null || true
+
     local variant
     for variant in "${theme_desktop_variants[@]}"; do
         rm -rf "$XDG_DATA_HOME/icons/carbon-$variant"
+        rm -rf "$XDG_DATA_HOME/icons/carbon-$variant-qt"
         rm -rf "$XDG_DATA_HOME/themes/carbon-$variant-gtk"
+        rm -f "$XDG_DATA_HOME/qt6ct/colors/carbon-$variant.conf"
+        rm -f "$XDG_DATA_HOME/qt6ct/qss/carbon-$variant.qss"
     done
+    rmdir "$XDG_DATA_HOME/qt6ct/colors" "$XDG_DATA_HOME/qt6ct/qss" "$XDG_DATA_HOME/qt6ct" 2>/dev/null || true
 
     gsettings reset org.gnome.desktop.interface gtk-theme
     gsettings reset org.gnome.desktop.interface color-scheme
