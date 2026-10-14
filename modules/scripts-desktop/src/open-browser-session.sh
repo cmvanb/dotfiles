@@ -77,7 +77,7 @@ fi
 #-------------------------------------------------------------------------------
 
 case "$browser" in
-    qutebrowser)
+    *qutebrowser*)
         if pgrep qutebrowser; then
             qutebrowser --target window ":session-load $session"
 
@@ -86,7 +86,7 @@ case "$browser" in
         fi
         ;;
 
-    chromium|firefox)
+    *chromium*|*firefox*)
         # Extract URLs from qutebrowser session YAML
         urls=$(python3 - "$session_file" <<'EOF'
 import sys
