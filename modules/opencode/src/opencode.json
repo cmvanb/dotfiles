@@ -3,24 +3,6 @@
   "plugins": [
     "@ex-machina/opencode-anthropic-auth@next"
   ],
-  "provider": {
-    "llama-cpp": {
-      "npm": "@ai-sdk/openai-compatible",
-      "name": "llama-server (local)",
-      "options": {
-        "baseURL": "http://127.0.0.1:8080/v1"
-      },
-      "models": {
-        "gpt-oss-20b-mxfp4": {
-          "name": "GPT-OSS 20B mxfp4 (local)",
-          "limit": {
-            "context": 128000,
-            "output": 65536
-          }
-        }
-      }
-    }
-  },
   "model": "anthropic/claude-opus-5-5",
   "autoupdate": false,
   "permission": {
