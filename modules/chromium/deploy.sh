@@ -23,6 +23,9 @@ chromium::install () {
 
     fs::ensure_directory "$XDG_CONFIG_HOME/chromium"
     fs::force_link "$src/extensions" "$XDG_CONFIG_HOME/chromium/External Extensions"
+
+    "$src/vimium-c/seed-key-mappings.py" "$XDG_CONFIG_HOME/chromium/Default" \
+        --mappings "$src/vimium-c/key-mappings" || true
 }
 
 chromium::uninstall () {
@@ -32,4 +35,7 @@ chromium::uninstall () {
     rm "$XDG_DATA_HOME/applications/netflix.desktop"
     rm "$XDG_DATA_HOME/icons/hicolor/64x64/apps/netflix.png"
     rm "$XDG_CONFIG_HOME/chromium/External Extensions"
+
+    "$base_dir/modules/chromium/src/vimium-c/seed-key-mappings.py" "$XDG_CONFIG_HOME/chromium/Default" \
+        --clear || true
 }
