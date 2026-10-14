@@ -24,9 +24,26 @@ theme-desktop::install_icons () {
         local icons_dest="$XDG_DATA_HOME/icons/carbon-$variant"
 
         fs::ensure_directory "$icons_dest/scalable/actions"
+        fs::ensure_directory "$icons_dest/scalable/status"
         fs::force_link "$icons_src/carbon-$variant/index.theme" "$icons_dest/index.theme"
         fs::force_link "$icons_src/carbon-dark/scalable/actions/sink-volume-medium-symbolic.svg"  "$icons_dest/scalable/actions/sink-volume-medium-symbolic.svg"
         fs::force_link "$icons_src/carbon-dark/scalable/actions/source-volume-muted-symbolic.svg" "$icons_dest/scalable/actions/source-volume-muted-symbolic.svg"
+        theme-desktop::install_battery_icons "$variant" "$icons_dest/scalable/status"
+    done
+}
+
+# The battery fill hard-codes its fill or state class, so GTK recolors it
+# independently of the text color. Copies without them follow the module's
+# state color like the rest of the icon.
+theme-desktop::install_battery_icons () {
+    local variant=$1 dest=$2
+    local base_theme=Win11
+    [[ $variant == dark ]] && base_theme=Win11-dark
+
+    local icon
+    for icon in /usr/share/icons/"$base_theme"/status/symbolic/battery-level-*-symbolic.svg; do
+        rm -f "$dest/${icon##*/}"
+        sed -E '/<(path|rect)/{s/ fill="#[0-9a-fA-F]{3,6}"//; s/ class="(success|warning|error)"//}' "$icon" > "$dest/${icon##*/}"
     done
 }
 

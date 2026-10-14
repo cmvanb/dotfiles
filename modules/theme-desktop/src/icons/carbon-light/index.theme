@@ -2,9 +2,15 @@
 Name=carbon-light
 Comment=Carbon light icon overrides
 Inherits=Win11,Adwaita,hicolor
-Directories=scalable/actions
+Directories=scalable/actions,scalable/status
 
 [scalable/actions]
+Size=16
+MinSize=8
+MaxSize=512
+Type=Scalable
+
+[scalable/status]
 Size=16
 MinSize=8
 MaxSize=512
