@@ -7,7 +7,7 @@
     (heading :text "Processor"
       (pill :text "btop" :icon "utilities-terminal-symbolic"
             :onclick "scripts/popup.sh close; spawn-terminal.sh --command btop &"))
-    (card
+    (card :class {EWW_CPU.avg >= 90 ? "critical" : EWW_CPU.avg >= 70 ? "heavy" : EWW_CPU.avg >= 50 ? "medium" : ""}
       (box :space-evenly false
         (label :class "big-value" :halign "start" :hexpand true :text "${round(EWW_CPU.avg, 0)}%")
         (box :space-evenly false :spacing 6 :valign "center"
@@ -29,7 +29,7 @@
     (heading :text "Memory"
       (pill :text "btop" :icon "utilities-terminal-symbolic"
             :onclick "scripts/popup.sh close; spawn-terminal.sh --command btop &"))
-    (card
+    (card :class {EWW_RAM.used_mem_perc >= 90 ? "critical" : EWW_RAM.used_mem_perc >= 70 ? "heavy" : EWW_RAM.used_mem_perc >= 50 ? "medium" : ""}
       (box :space-evenly false
         (label :class "big-value" :halign "start" :hexpand true :text "${round(EWW_RAM.used_mem_perc, 0)}%")
         (label :class "muted-text" :valign "center"

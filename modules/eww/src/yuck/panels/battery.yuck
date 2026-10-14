@@ -5,7 +5,10 @@
 (defwidget battery-panel []
   (box :class "battery" :orientation "v" :space-evenly false :spacing 12
     (heading :text "Battery")
-    (card
+    (card :class {battery.status == "Charging" || battery.status == "Not charging" ? "charging"
+                  : battery.status == "Full" ? "full"
+                  : battery.capacity <= 15 ? "critical"
+                  : battery.capacity <= 30 ? "warning" : ""}
       (box :class "battery-summary" :space-evenly false :spacing 16
         (icon :name {battery.icon} :class "huge")
         (box :orientation "v" :space-evenly false :valign "center"

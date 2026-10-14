@@ -166,9 +166,9 @@ $icon: ${icon_size}px;
     &.disconnected label, &.disconnected .icon { color: $critical; }
     &.off label, &.off .icon { color: $muted; }
     &.muted label, &.muted .icon { color: $muted; }
-    &.charging label { color: $good; }
-    &.full label { color: ${color_hash('primary_15')}; }
-    &.warning label { color: $heavy; }
+    &.charging label, &.charging .icon { color: $good; }
+    &.full label, &.full .icon { color: ${color_hash('primary_15')}; }
+    &.warning label, &.warning .icon { color: $heavy; }
     &.critical label { animation: blink 0.5s steps(12) infinite alternate; }
 }
 
@@ -247,6 +247,16 @@ tooltip {
     background: $card;
     border: 3px solid $card-border;
     padding: 13px;
+}
+
+// Threshold states color a panel's value, icon, graph and progress bar like
+// the bar module.
+.card {
+    &.charging { .big-value, .icon { color: $good; } progress { background: $good; } }
+    &.full { .big-value, .icon { color: ${color_hash('primary_15')}; } progress { background: ${color_hash('primary_15')}; } }
+    &.medium { .big-value, .icon, .graph { color: $medium; } progress { background: $medium; } }
+    &.heavy, &.warning { .big-value, .icon, .graph { color: $heavy; } progress { background: $heavy; } }
+    &.critical { .big-value, .icon, .graph { color: $critical; } progress { background: $critical; } }
 }
 
 .card-title {
