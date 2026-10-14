@@ -21,7 +21,7 @@
       }
     }
   },
-  "model": "llama-cpp/gpt-oss-20b-mxfp4",
+  "model": "anthropic/claude-opus-5-5",
   "autoupdate": false,
   "permission": {
     "external_directory": {
