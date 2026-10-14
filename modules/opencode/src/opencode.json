@@ -20,9 +20,6 @@
   },
   "model": "llama-cpp/gpt-oss-20b-mxfp4",
   "autoupdate": false,
-  "plugin": [
-    "opencode-anthropic-oauth@latest"
-  ],
   "permission": {
     "external_directory": {
       "*": "ask",
