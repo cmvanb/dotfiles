@@ -151,7 +151,7 @@ Entries whose template or output is gone are pruned.
 | wezterm | Config touch |
 | herdr | `herdr server reload-config` |
 | Neovim | `SIGUSR1`, replays every highlight against the new theme |
-| qutebrowser | `:config-source` |
+| qutebrowser | `:restart`, required by `preferred_color_scheme` |
 | bat, delta | `bat cache --build` |
 
 Apps that read colors only at startup pick up the scheme on their next

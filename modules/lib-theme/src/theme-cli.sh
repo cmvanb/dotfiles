@@ -116,8 +116,9 @@ theme::reload_apps () {
     if command -v bat &> /dev/null && [[ -f "$config_home/bat/themes/carbon.tmTheme" ]]; then
         bat cache --build &> /dev/null
     fi
+    # prefers-color-scheme only changes on restart; the session is restored.
     if pgrep -u "$USER" -f '/qutebrowser' &> /dev/null; then
-        qutebrowser ':config-source' &> /dev/null &
+        qutebrowser ':restart' &> /dev/null &
     fi
 }
 
