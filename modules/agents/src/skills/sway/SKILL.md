@@ -1,6 +1,6 @@
 ---
 name: sway
-description: Control the Sway (i3-compatible Wayland) window manager programmatically via swaymsg. Identify windows, target them with criteria, and float/tile/resize/position them.
+description: Control the Sway (i3-compatible Wayland) window manager programmatically via swaymsg. Identify windows, target them with criteria, and float/tile/resize/position them. Run a headless Sway instance to launch and drive GUI apps in a feedback loop without touching the user's session.
 ---
 
 # Sway Skill
@@ -158,3 +158,47 @@ swaymsg move scratchpad                                 # hide focused window
 swaymsg scratchpad show                                 # cycle visible scratchpad windows
 swaymsg '[app_id="telegram"] scratchpad show'           # show a specific one
 ```
+
+## Headless Sway
+
+Run GUI apps in a headless Sway instance whenever a feedback loop needs to launch, drive, or restart them. This keeps windows, focus, and input out of the user's session.
+
+### Start
+
+```bash
+dir=/tmp/opencode/headless; mkdir -p "$dir"
+printf 'output HEADLESS-1 resolution 1280x800\n' > "$dir/sway.conf"
+before=$(ls "$XDG_RUNTIME_DIR" | grep -x 'wayland-[0-9]*')
+
+env -u SWAYSOCK -u WAYLAND_DISPLAY -u DISPLAY \
+    WLR_BACKENDS=headless WLR_LIBINPUT_NO_DEVICES=1 WLR_RENDERER=pixman \
+    setsid sway -c "$dir/sway.conf" > "$dir/sway.log" 2>&1 < /dev/null &
+pid=$!; sleep 2
+
+sock=$XDG_RUNTIME_DIR/sway-ipc.$UID.$pid.sock
+display=$(comm -13 <(echo "$before") <(ls "$XDG_RUNTIME_DIR" | grep -x 'wayland-[0-9]*'))
+```
+
+Shell variables are lost between tool calls. Record `pid`, `sock` and `display` in the output.
+
+### Use
+
+```bash
+env -u DISPLAY WAYLAND_DISPLAY=$display <app> ...       # launch an app inside it
+swaymsg -s "$sock" -t get_tree                          # query or drive it
+WAYLAND_DISPLAY=$display grim "$dir/shot.png"           # screenshot
+```
+
+- Unset `DISPLAY`: the headless instance has no Xwayland, so apps must use Wayland.
+- Give the app its own config and state directory, such as `qutebrowser --basedir` or a separate `XDG_CONFIG_HOME`. Single-instance apps otherwise forward commands to the user's running instance.
+- Report results with a probe that is independent of the display, such as a local HTTP beacon, a log file, or `grim`.
+
+### Stop
+
+```bash
+kill <app-pid> "$pid"
+rm -rf "$dir"
+```
+
+- Kill by PID. `pkill -f <pattern>` also matches the shell running the command and kills it.
+- Confirm the `wayland-N` and `sway-ipc` sockets are gone.
