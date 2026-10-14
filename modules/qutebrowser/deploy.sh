@@ -61,6 +61,7 @@ qutebrowser::install () {
 
     fs::ensure_directory "$XDG_BIN_HOME"
     fs::force_link "$src/browse.sh" "$XDG_BIN_HOME/browse"
+    fs::force_link "$src/qutebrowser-window.sh" "$XDG_BIN_HOME/qutebrowser-window"
 
     echo "└> Building qutebrowser custom CSS."
 
@@ -107,4 +108,5 @@ qutebrowser::uninstall () {
     echo "└> Uninstalling qutebrowser shortcuts."
 
     rm "$XDG_BIN_HOME/browse"
+    rm "$XDG_BIN_HOME/qutebrowser-window"
 }

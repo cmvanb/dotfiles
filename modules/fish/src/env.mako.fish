@@ -19,7 +19,7 @@ set -x BASH_ENV $HOME/.config/bash/env
 set -x BROWSER "chromium"
 % else:
 
-set -x BROWSER "qutebrowser"
+set -x BROWSER "qutebrowser-window"
 % endif
 
 set -x LAUNCHER "fuzzel"

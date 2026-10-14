@@ -20,7 +20,7 @@ export BASH_ENV="$HOME/.config/bash/env"
 export BROWSER="chromium"
 % else:
 
-export BROWSER="qutebrowser"
+export BROWSER="qutebrowser-window"
 % endif
 
 export LAUNCHER="fuzzel"
