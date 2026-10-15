@@ -11,7 +11,51 @@ set -uo pipefail
 
 unavailable='{"ok":false,"session":0,"session_reset":"","week":0,"week_reset":"","extra_used":0,"extra_limit":0,"extra":0,"currency":""}'
 
-creds="${XDG_CONFIG_HOME:-$HOME/.config}/claude/.credentials.json"
+config="${XDG_CONFIG_HOME:-$HOME/.config}/claude"
+creds="$config/.credentials.json"
+lock="$config/.oauth_refresh.lock"
+token_url="https://platform.claude.com/v1/oauth/token"
+client_id="9d1c250a-e61b-44d9-88ed-5944d1962f5e"
+
+expiring() {
+    jq -e --argjson now "$(date +%s%3N)" \
+        '.claudeAiOauth.expiresAt < $now + 300000' "$creds" >/dev/null 2>&1
+}
+
+refresh() {
+    expiring || return 0
+
+    tokens=$(jq -c --arg client_id "$client_id" '.claudeAiOauth | {
+        grant_type: "refresh_token",
+        refresh_token: .refreshToken,
+        client_id: $client_id,
+        scope: (.scopes | join(" "))
+    }' "$creds" | curl -sf --max-time 10 "$token_url" \
+        -H "Content-Type: application/json" --data @-) || return 0
+
+    tmp=$(mktemp "$creds.XXXXXX")
+    if jq --argjson t "$tokens" --argjson now "$(date +%s%3N)" '.claudeAiOauth += ({
+        accessToken: $t.access_token,
+        refreshToken: ($t.refresh_token // .claudeAiOauth.refreshToken),
+        expiresAt: ($now + $t.expires_in * 1000)
+    } + if $t.refresh_token_expires_in then
+        {refreshTokenExpiresAt: ($now + $t.refresh_token_expires_in * 1000)}
+    else {} end)' "$creds" >"$tmp"; then
+        mv "$tmp" "$creds"
+    else
+        rm -f "$tmp"
+    fi
+}
+
+# Shares Claude Code's refresh lock so only one process rotates the refresh token.
+if expiring; then
+    find "$lock" -maxdepth 0 -mmin +1 -exec rmdir {} \; 2>/dev/null
+    if mkdir "$lock" 2>/dev/null; then
+        refresh
+        rmdir "$lock"
+    fi
+fi
+
 token=$(jq -r '.claudeAiOauth.accessToken // empty' "$creds" 2>/dev/null)
 
 if [[ -z $token ]]; then
