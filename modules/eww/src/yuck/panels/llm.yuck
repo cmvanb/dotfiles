@@ -1,0 +1,46 @@
+;;------------------------------------------------------------------------------
+;; LLM usage panel
+;;------------------------------------------------------------------------------
+
+(defwidget llm-panel []
+  (box :class "llm" :orientation "v" :space-evenly false :spacing 12
+    (heading :text "LLM Usage"
+      (icon :name "llm-symbolic" :class "medium"))
+    (claude-usage)
+    (openrouter-usage)))
+
+(defwidget provider-title [text icon]
+  (box :space-evenly false :spacing 8
+    (icon :name icon :class "small")
+    (label :class "card-title" :halign "start" :text text)))
+
+(defwidget claude-usage []
+  (card
+    (provider-title :text "Claude" :icon "claude-ai-symbolic")
+    (label :class "placeholder" :visible {!claude.ok} :text "Usage unavailable")
+    (box :visible {claude.ok} :orientation "v" :space-evenly false :spacing 12
+      (meter :label "Session (5 hours)" :value {claude.session}
+             :class {claude.session >= 90 ? "critical" : claude.session >= 70 ? "heavy" : claude.session >= 50 ? "medium" : ""}
+             :detail "${claude.session}% · resets in ${claude.session_reset}")
+      (meter :label "Week (7 days)" :value {claude.week}
+             :class {claude.week >= 90 ? "critical" : claude.week >= 70 ? "heavy" : claude.week >= 50 ? "medium" : ""}
+             :detail "${claude.week}% · resets in ${claude.week_reset}")
+      (meter :label "Extra usage" :value {claude.extra}
+             :detail "${claude.extra_used} / ${claude.extra_limit} ${claude.currency}"))))
+
+(defwidget openrouter-usage []
+  (card
+    (provider-title :text "OpenRouter" :icon "openrouter-symbolic")
+    (label :class "placeholder" :visible {!openrouter.ok} :text "Usage unavailable")
+    (box :visible {openrouter.ok} :orientation "v" :space-evenly false :spacing 12
+      (box :visible {openrouter.has_budget}
+        (meter :label "Budget" :value {openrouter.budget}
+               :class {openrouter.budget >= 90 ? "critical" : openrouter.budget >= 70 ? "heavy" : openrouter.budget >= 50 ? "medium" : ""}
+               :detail "$${openrouter.budget_spent} / $${openrouter.budget_limit}${openrouter.budget_reset != '' ? ' · resets in ' + openrouter.budget_reset : ''}"))
+      (box :visible {openrouter.has_credits}
+        (meter :label "Credits" :value {openrouter.credits}
+               :detail "$${openrouter.credits_left} left of $${openrouter.credits_total}"))
+      (box :orientation "v" :space-evenly false
+        (row :key "Today" :value "$${openrouter.today}")
+        (row :key "This week" :value "$${openrouter.week}")
+        (row :key "This month" :value "$${openrouter.month}")))))

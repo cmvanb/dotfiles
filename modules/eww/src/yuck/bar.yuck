@@ -31,7 +31,7 @@
     (slot :name "bluetooth" :open open (bluetooth-module :output output))
     (slot :name "audio" :open open (audio-module :output output))
     (slot :name "battery" :open open (battery-module :output output))
-    (slot :name "claude" :open open (claude-module :output output))
+    (slot :name "llm" :open open (llm-module :output output))
     (slot :name "cpu" :open open (cpu-module :output output))
     (slot :name "memory" :open open (memory-module :output output))
     (slot :name "calendar" :open open (date-module :output output))
@@ -123,12 +123,17 @@
       (icon :name {battery.icon} :class "battery")
       (label :yalign 1 :text "${battery.capacity}%"))))
 
-(defwidget claude-module [output]
-  (module :name "claude" :output output
-          :class {claude.session >= 90 ? "critical" : claude.session >= 70 ? "heavy" : claude.session >= 50 ? "medium" : ""}
-          :tooltip {claude.ok ? "5h ${claude.session}% · resets in ${claude.session_reset}" : "Usage unavailable"}
-    (icon :name "claude-ai-symbolic" :class "claude")
-    (label :yalign 1 :text {claude.ok ? "${claude.session}%" : "—"})))
+;; Shows the most used limit: the Claude session or the OpenRouter budget.
+(defwidget llm-module [output]
+  (llm-status :output output
+              :peak {claude.session > openrouter.budget ? claude.session : openrouter.budget}))
+
+(defwidget llm-status [output peak]
+  (module :name "llm" :output output
+          :class {peak >= 90 ? "critical" : peak >= 70 ? "heavy" : peak >= 50 ? "medium" : ""}
+          :tooltip "Claude ${claude.ok ? claude.session + '%' : '—'} · OpenRouter ${openrouter.ok && openrouter.has_budget ? openrouter.budget + '%' : '—'}"
+    (icon :name "llm-symbolic" :class "llm")
+    (label :yalign 1 :text {claude.ok || openrouter.ok ? "${peak}%" : "—"})))
 
 (defwidget cpu-module [output]
   (module :name "cpu" :output output

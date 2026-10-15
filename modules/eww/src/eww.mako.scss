@@ -27,7 +27,7 @@
         return round(px * icon_size / 20)
 
     bar_icon_sizes = {
-        'calendar': 18, 'claude': 16, 'cpu': 17, 'memory': 17, 'tailscale': 16,
+        'calendar': 18, 'cpu': 17, 'llm': 16, 'memory': 17, 'tailscale': 16,
     }
     clock_size = icon_px(17)
 %>
