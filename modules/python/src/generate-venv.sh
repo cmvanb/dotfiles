@@ -9,5 +9,5 @@ echo "Generating python virtual environment in \`{$PWD}\`."
 
 python -m venv .venv
 
-# Configure direnv to activate venv automatically.
-echo "activate_venv $PWD/.venv" > "$PWD/.envrc"
+# Configure mise to activate venv automatically.
+printf '[env]\n_.python.venv = ".venv"\n' > "$PWD/mise.local.toml"
