@@ -102,8 +102,8 @@ unset _completion_file
 # Integrations
 #-------------------------------------------------------------------------------
 
-# Enable direnv.
-eval "$(direnv hook bash)"
+# Enable mise.
+eval "$(mise activate bash)"
 
 # Enable Zoxide.
 eval "$(zoxide init bash)"
