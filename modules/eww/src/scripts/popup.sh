@@ -19,7 +19,7 @@ set -uo pipefail
 script_dir=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)
 runtime_dir="${XDG_RUNTIME_DIR:-/tmp}/eww"
 watch_pid="$runtime_dir/popup-watch.pid"
-grace=0.6
+grace=2.5
 
 # The watcher runs in its own process group so one signal stops the whole
 # pipeline. This may include the calling `leave`, so it runs last.
