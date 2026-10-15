@@ -4,3 +4,5 @@ CLAUDE.md
 **/.claude
 **/.claude/settings.local.json
 **/.claude/*
+mise.local.toml
+**/.secrets
