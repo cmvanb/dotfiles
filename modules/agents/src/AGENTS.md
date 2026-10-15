@@ -53,6 +53,10 @@ Confine every write to the current working directory. Get explicit approval from
 
 The CWD may be a git worktree rather than the primary checkout. Confirm the active branch before writing. Never read for action or write into a sibling worktree or any other checkout outside the working directory.
 
+## Development Environment
+
+When a build, run, or test fails because a tool, SDK, device, service, secret, or config is missing, follow `.agents/DEVENV.md` in the main checkout. If it is absent, invoke the `setup-devenv` skill. When a DEVENV.md step fails, fix the step and update the document.
+
 ## Skills
 
 Evaluate every trigger below against the full task before starting. Load all skills whose conditions match, not just the first one.
