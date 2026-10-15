@@ -49,12 +49,14 @@ env | grep -i '^azure'
 ```
 
 The extension reads `AZURE_DEVOPS_EXT_PAT`.
-A direnv `.envrc` in the working directory normally exports it.
+The project's `mise.local.toml` normally exports it, from a file in
+`.secrets/`. A project that still uses direnv exports it from `.envrc`.
 
-If it is unset, load the `.envrc` and retry:
+If it is unset, load the project environment and retry:
 
 ```bash
-direnv exec . az repos pr list ...
+mise exec -- az repos pr list ...
+direnv exec . az repos pr list ...    # project with an .envrc
 ```
 
 Ask for `az login` only after the retry fails.
