@@ -76,6 +76,26 @@ state::write() {
     echo "$wm" > "$state_dir/wm"
 }
 
+# Templates gate content on DEPLOY_PROFILE and DEPLOY_WM, so module installs
+# render against the tracked profile to keep profile-specific blocks.
+load_tracked_profile() {
+    [[ -n "${DEPLOY_PROFILE:-}" ]] && return 0
+
+    local profile modules wm
+    if ! state::read profile modules wm; then
+        log_item "Warning: no tracked profile; rendering without profile context."
+        return 0
+    fi
+
+    local chain_str
+    chain_str=$(profile::get_inheritance_chain "$profile" profiles) || log_error "Failed to resolve tracked profile: $profile"
+    local -a chain=($chain_str)
+
+    export DEPLOY_PROFILE="${chain[*]}"
+    [[ -n "$wm" ]] && export DEPLOY_WM="$wm"
+    log_item "Using tracked profile: $profile"
+}
+
 state::read() {
     local -n ref_profile="$1"
     local -n ref_modules="$2"
@@ -225,6 +245,7 @@ cmd_install() {
     fi
 
     log_header "Installing modules..."
+    load_tracked_profile
     for target in "${targets[@]}"; do
         install_module "$target"
     done
