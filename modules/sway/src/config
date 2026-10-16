@@ -109,5 +109,6 @@ include $config_dir/sway/keymaps.conf
 # System config
 include /etc/sway/config.d/*
 
-# Activate systemd user services for this sway session
-exec systemctl --user start sway-session.target
+# Activate systemd user services for this sway session. After a compositor
+# crash, targets stay active while their services fail, so restart fresh.
+exec "systemctl --user stop sway-session.target graphical-session.target; systemctl --user reset-failed; systemctl --user start sway-session.target"
