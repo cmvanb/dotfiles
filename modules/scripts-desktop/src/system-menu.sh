@@ -16,7 +16,7 @@ choice=$(echo -e "$options" | spawn-launcher.sh --menu --prompt "System")
 
 case "$choice" in
     "Lock")               hyprlock ;;
-    "Logout")             loginctl kill-session "$XDG_SESSION_ID" ;;
+    "Logout")             logout ;;
     "Suspend")            systemctl suspend ;;
     "Reboot")             systemctl reboot ;;
     "Reboot to Windows")  windows ;;

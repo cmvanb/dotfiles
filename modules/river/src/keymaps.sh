@@ -29,8 +29,8 @@ debug::assert_dependency spawn-terminal.sh
 # Lock river
 riverctl map normal Super+Shift Z spawn "hyprlock"
 
-# Exit river
-riverctl map normal Super+Shift W exit
+# Log out
+riverctl map normal Super+Shift W spawn logout
 
 # Shortcut mappings
 #-------------------------------------------------------------------------------
