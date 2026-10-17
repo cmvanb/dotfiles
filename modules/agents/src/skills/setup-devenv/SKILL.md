@@ -92,34 +92,41 @@ These local files stay out of version control:
 - `mise.local.toml`
 - `.secrets/`
 - Symlinks that point into `.secrets/`
+- Downloaded public config files
 
 The global git ignore covers `.agents/`, `mise.local.toml`, and `.secrets/`.
 For each other local file, run `git check-ignore -q <path>`.
 If the command fails, append the path to `$MAIN/.git/info/exclude`.
 
+### Credentials
+
+Classify each credential that a run command or a test tier reads.
+
+| Kind | Examples | Action | `DEVENV.md` section |
+|---|---|---|---|
+| Account | `az login`, `firebase login`, `gcloud auth application-default login` | Log in. Record the login command and a check. | Accounts |
+| Public config | `google-services.json`, `GoogleService-Info.plist`, a web client config | Download it with its CLI to the path that the tool reads. | Public config |
+| Local value | An emulator project ID, a fake API key, a local database URL | Write it in `[env]` of `mise.local.toml`. | Project toolchain |
+| Secret | An API token, a service account key, a signing key | Store it in `.secrets/`. | Secrets |
+
+Run test tiers against local services with local values when the project supports it.
+
 ### Secrets
 
-Secret values live in `$MAIN/.secrets/`.
-`DEVENV.md` and `mise.local.toml` hold names, paths, and sources only.
-
+- Secret values live in `$MAIN/.secrets/`.
+  `DEVENV.md` and `mise.local.toml` hold names and paths only.
 - Put environment secrets in `.secrets/<name>.env`.
   Load them with `_.file = { path = ".secrets/<name>.env", redact = true }`.
 - If a tool reads a secret from a fixed path, store the file in `.secrets/`.
   Then make a symlink at the fixed path.
-- Get each secret that a run command or a test tier needs.
-  List the other secrets as optional.
-
-Record the source of each secret.
-Use the first source that applies:
-
-1. The secret store of the project.
-   The project docs and the CI config name the store and its CLI.
-   If CI reads a variable group, ask the user for the store behind it.
-   If CI decodes the value, the get command decodes it the same way.
-2. A CLI that downloads or creates the secret, for example `firebase apps:sdkconfig`.
-3. A copy from `.secrets/` on an existing machine.
-4. The personal password manager of the user, through `rbw`.
-   This source needs explicit approval from the user for each secret.
+- If the project has a secret tool, the tool gets each value.
+  Examples are `fnox.toml`, a SOPS file, and references for `op`, `doppler`, `infisical`, or `vault`.
+  Record the get command of the tool.
+- Otherwise, the user gives each value in the question batch.
+  Record "the user" as the source.
+  Report that the project needs a secret store.
+- Store each secret that a run command or a test tier needs.
+  List the other secrets by name as optional.
 
 ## Workflow
 
@@ -167,7 +174,7 @@ Make an inventory from the discovery:
 - CLIs and SDKs
 - SDK components, from the build files, for example compile SDK and NDK versions
 - Services and devices, with their ports
-- Secrets and the path where each one goes
+- Credentials, the kind of each one, and the path where each one goes
 - Run commands
 - Test tiers: every tier that CI runs, and every tier that the docs or scripts run locally
 
@@ -176,7 +183,7 @@ Make an inventory from the discovery:
 Ask the user one batch of questions.
 Use the question tool of the harness, or one message.
 Ask only for facts that only the user knows.
-Examples are preferences and the secret sources that the user chooses.
+Examples are preferences and secret values that only the user holds.
 Put the discovered default first in each option list.
 
 ### 3. Collect root steps
@@ -192,7 +199,9 @@ Then do the check of each root step.
 Do each user-level step as a check, then an action.
 Skip the action when the check passes.
 
-1. Get each secret from its source into `.secrets/`.
+1. Log in to each account.
+   Download each public config file.
+   Get each secret into `.secrets/`.
 2. Write `mise.local.toml`.
 3. Run `mise trust` in the repository root.
 4. Run `mise install`.
@@ -236,7 +245,7 @@ Write `$MAIN/.agents/DEVENV.md` from
 
 Give the user a short summary:
 
-- The tools, services, devices, and secrets that you installed
+- The tools, services, devices, accounts, and secrets that you installed
 - The test tiers and their results
 - Each fact in a committed doc that disagrees with what you saw
 

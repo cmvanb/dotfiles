@@ -47,15 +47,27 @@ paru -S --needed <aur-package>
 | `pacman -Q <package>` | `<package> <version>` |
 | `command -v <command>` | `/usr/bin/<command>` |
 
+## Accounts
+
+| Account | Needed by | Check | Expected output | Login |
+|---|---|---|---|---|
+| <service> | <tiers> | `<command>` | `<output>` | `<login command>` |
+
+## Public config
+
+| File | Needed by | Get command |
+|---|---|---|
+| `<path>` | <tiers> | `<command> > "<path>"` |
+
 ## Secrets
 
 Secret values live in `$MAIN/.secrets/`.
 
-| File in `.secrets/` | Used at | Needed by | Source | Get command |
-|---|---|---|---|---|
-| `<name>.env` | `[env]` through `_.file` | <tiers> | <project secret store> | `<command> > "$MAIN/.secrets/<name>.env"` |
-| `<file>` | Symlink at `<fixed path>` | <tiers> | <CLI> | `<command> > "$MAIN/.secrets/<file>"` |
-| `<file>` | <use> | Optional | <source> | `<command>` |
+| File in `.secrets/` | Used at | Needed by | Get command |
+|---|---|---|---|
+| `<name>.env` | `[env]` through `_.file` | <tiers> | `<secret tool command> > "$MAIN/.secrets/<name>.env"` |
+| `<file>` | Symlink at `<fixed path>` | <tiers> | The user supplies the value |
+| `<file>` | <use> | Optional | <get command, or the user> |
 
 Make each symlink:
 
@@ -138,7 +150,7 @@ ln -sfn "$MAIN/.secrets" .secrets
 ln -sfn "$MAIN/.secrets/<file>" "<fixed path>"
 ```
 
-Then do the steps in "Project convention" and "Dependencies" in the worktree.
+Then do the steps in "Public config", "Project convention", and "Dependencies" in the worktree.
 
 ## Services and devices
 
