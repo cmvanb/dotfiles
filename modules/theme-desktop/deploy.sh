@@ -28,7 +28,24 @@ theme-desktop::install_icons () {
         fs::force_link "$icons_src/carbon-$variant/index.theme" "$icons_dest/index.theme"
         fs::force_link "$icons_src/carbon-dark/scalable/actions/sink-volume-medium-symbolic.svg"  "$icons_dest/scalable/actions/sink-volume-medium-symbolic.svg"
         fs::force_link "$icons_src/carbon-dark/scalable/actions/source-volume-muted-symbolic.svg" "$icons_dest/scalable/actions/source-volume-muted-symbolic.svg"
+        theme-desktop::install_status_icons "$variant" "$icons_dest/scalable/status"
         theme-desktop::install_battery_icons "$variant" "$icons_dest/scalable/status"
+    done
+}
+
+# Win11 also ships its symbolic status names as fixed 22 and 24px panel icons
+# with a larger canvas. GTK prefers those at 17 to 24px on a scale 1 output, so
+# icons render oversized and clipped. Links in a scalable directory of the
+# overriding theme always win.
+theme-desktop::install_status_icons () {
+    local variant=$1 dest=$2
+    local base_theme=Win11
+    [[ $variant == dark ]] && base_theme=Win11-dark
+
+    local icon
+    for icon in /usr/share/icons/"$base_theme"/status/symbolic/*-symbolic.svg; do
+        [[ ${icon##*/} == battery-level-* ]] && continue
+        fs::force_link "$icon" "$dest/${icon##*/}"
     done
 }
 

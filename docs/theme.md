@@ -173,6 +173,10 @@ onto the variant's steps and take surfaces from the `gtk_*` aliases.
 
 Icon themes `carbon-dark` and `carbon-light` share the symbolic overrides
 and inherit `Win11-dark` and `Win11`.
+Win11 also ships its symbolic status names as fixed 22 and 24px panel art,
+which GTK picks at 17 to 24px on a scale 1 output.
+Both themes link every Win11 symbolic status icon into `scalable/status`,
+so lookups at any size resolve to the symbolic glyph.
 
 ## Qt
 
