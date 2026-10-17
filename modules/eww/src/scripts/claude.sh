@@ -16,22 +16,40 @@ creds="$config/.credentials.json"
 lock="$config/.oauth_refresh.lock"
 token_url="https://platform.claude.com/v1/oauth/token"
 client_id="9d1c250a-e61b-44d9-88ed-5944d1962f5e"
+backoff="${XDG_RUNTIME_DIR:-/tmp}/eww/claude-refresh-backoff"
 
 expiring() {
     jq -e --argjson now "$(date +%s%3N)" \
         '.claudeAiOauth.expiresAt < $now + 300000' "$creds" >/dev/null 2>&1
 }
 
+# Retrying every poll after a failure keeps the token endpoint rate limited.
+backing_off() {
+    [[ -f $backoff ]] && (( $(date +%s) < $(cut -d' ' -f1 "$backoff") ))
+}
+
+back_off() {
+    read -r _ delay 2>/dev/null <"$backoff" || delay=150
+    delay=$(( delay * 2 > 3600 ? 3600 : delay * 2 ))
+    mkdir -p "${backoff%/*}"
+    echo "$(( $(date +%s) + delay )) $delay" >"$backoff"
+}
+
 refresh() {
     expiring || return 0
 
-    tokens=$(jq -c --arg client_id "$client_id" '.claudeAiOauth | {
+    if ! tokens=$(jq -c --arg client_id "$client_id" '.claudeAiOauth | {
         grant_type: "refresh_token",
         refresh_token: .refreshToken,
         client_id: $client_id,
         scope: (.scopes | join(" "))
-    }' "$creds" | curl -sf --max-time 10 "$token_url" \
-        -H "Content-Type: application/json" --data @-) || return 0
+    }' "$creds" | curl -sS --fail-with-body --max-time 10 "$token_url" \
+        -H "Content-Type: application/json" --data @- 2>&1); then
+        echo "claude.sh: token refresh failed: $tokens" >&2
+        back_off
+        return 0
+    fi
+    rm -f "$backoff"
 
     tmp=$(mktemp "$creds.XXXXXX")
     if jq --argjson t "$tokens" --argjson now "$(date +%s%3N)" '.claudeAiOauth += ({
@@ -48,7 +66,7 @@ refresh() {
 }
 
 # Shares Claude Code's refresh lock so only one process rotates the refresh token.
-if expiring; then
+if expiring && ! backing_off; then
     find "$lock" -maxdepth 0 -mmin +1 -exec rmdir {} \; 2>/dev/null
     if mkdir "$lock" 2>/dev/null; then
         refresh
