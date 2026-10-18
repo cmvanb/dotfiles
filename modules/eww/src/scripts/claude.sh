@@ -16,6 +16,8 @@ creds="$config/.credentials.json"
 lock="$config/.oauth_refresh.lock"
 token_url="https://platform.claude.com/v1/oauth/token"
 client_id="9d1c250a-e61b-44d9-88ed-5944d1962f5e"
+# The token endpoint rate limits curl and claude-code User-Agents.
+token_user_agent="axios/1.13.6"
 backoff="${XDG_RUNTIME_DIR:-/tmp}/eww/claude-refresh-backoff"
 
 expiring() {
@@ -44,7 +46,7 @@ refresh() {
         client_id: $client_id,
         scope: (.scopes | join(" "))
     }' "$creds" | curl -sS --fail-with-body --max-time 10 "$token_url" \
-        -H "Content-Type: application/json" --data @- 2>&1); then
+        -A "$token_user_agent" -H "Content-Type: application/json" --data @- 2>&1); then
         echo "claude.sh: token refresh failed: $tokens" >&2
         back_off
         return 0
