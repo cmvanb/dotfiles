@@ -18,7 +18,7 @@ if ! rbw unlocked &> /dev/null; then
     exit 0
 fi
 
-token=$(rbw get "OpenRouter API Key" 2>/dev/null)
+token=$(rbw get "OpenRouter API Key OpenCode Local Dev" 2>/dev/null)
 
 if [[ -z $token ]]; then
     echo "$unavailable"
