@@ -4,7 +4,7 @@ GenericName=Web Browser
 Exec=/usr/bin/chromium --ozone-platform=wayland --gtk-version=4 %U
 StartupNotify=true
 Terminal=false
-Icon=chromium
+Icon=chromium-browser
 Type=Application
 Categories=Network;WebBrowser;
 MimeType=x-scheme-handler/http;x-scheme-handler/https;

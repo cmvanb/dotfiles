@@ -21,6 +21,10 @@ chromium::install () {
     fs::ensure_directory "$XDG_DATA_HOME/icons/hicolor/64x64/apps"
     fs::force_link "$src/netflix.png" "$XDG_DATA_HOME/icons/hicolor/64x64/apps/netflix.png"
 
+    fs::ensure_directory "$XDG_DATA_HOME/icons/hicolor/scalable/apps"
+    fs::force_link "$src/icons/chromium-browser.svg" "$XDG_DATA_HOME/icons/hicolor/scalable/apps/chromium.svg"
+    fs::force_link "$src/icons/chromium-browser.svg" "$XDG_DATA_HOME/icons/hicolor/scalable/apps/chromium-browser.svg"
+
     fs::ensure_directory "$XDG_CONFIG_HOME/chromium"
     fs::force_link "$src/extensions" "$XDG_CONFIG_HOME/chromium/External Extensions"
 
@@ -34,6 +38,8 @@ chromium::uninstall () {
     rm "$XDG_DATA_HOME/applications/chromium.desktop"
     rm "$XDG_DATA_HOME/applications/netflix.desktop"
     rm "$XDG_DATA_HOME/icons/hicolor/64x64/apps/netflix.png"
+    rm "$XDG_DATA_HOME/icons/hicolor/scalable/apps/chromium.svg"
+    rm "$XDG_DATA_HOME/icons/hicolor/scalable/apps/chromium-browser.svg"
     rm "$XDG_CONFIG_HOME/chromium/External Extensions"
 
     "$base_dir/modules/chromium/src/vimium-c/seed-key-mappings.py" "$XDG_CONFIG_HOME/chromium/Default" \
