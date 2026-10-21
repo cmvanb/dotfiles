@@ -5,7 +5,7 @@
         # 14 leaves most of a row unused.
         terminal_font_size = 14.1
     else:
-        terminal_font_size = font_size_msmall
+        terminal_font_size = font_size_xsmall
 %>
 #-------------------------------------------------------------------------------
 # GhosTTY configuration file
