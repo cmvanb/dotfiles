@@ -17,7 +17,7 @@ Three modules cooperate:
 carbon-dark.yaml    # colors and cursor theme: dark scheme
 carbon-light.yaml   # colors and cursor theme: light scheme
 cursor.yaml         # cursor: shared size
-fonts-linux.yaml    # fonts: Linux
+fonts.yaml          # fonts: faces, sizes, content zoom
 ```
 
 Font and cursor files have a single top-level key (`fonts:`, `cursor:`).
@@ -109,7 +109,7 @@ It prints the palette section of `carbon-light.yaml`.
 ├── carbon-dark.yaml   -> modules/theme-base/src/carbon-dark.yaml
 ├── carbon-light.yaml  -> modules/theme-base/src/carbon-light.yaml
 ├── cursor.yaml        -> modules/theme-base/src/cursor.yaml
-├── fonts.yaml         -> modules/theme-base/src/fonts-linux.yaml
+├── fonts.yaml         -> modules/theme-base/src/fonts.yaml
 └── colors.yaml        -> carbon-dark.yaml or carbon-light.yaml
 ```
 

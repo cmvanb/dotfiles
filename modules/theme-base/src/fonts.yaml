@@ -1,14 +1,17 @@
 #-------------------------------------------------------------------------------
-# Fonts — Linux
+# Fonts
 #-------------------------------------------------------------------------------
 
 
 fonts:
 #-------------------------------------------------------------------------------
 
+  # Faces
   font_mono:         "Nordwand Mono"
   font_sans:         "Nimbus Sans"
   font_serif:        "Noto Serif"
+
+  # Sizes
   font_size_tiny:    10
   font_size_xsmall:  11
   font_size_small:   12
@@ -18,4 +21,6 @@ fonts:
   font_size_large:   16
   font_size_xlarge:  18
   font_size_xxlarge: 20
+
+  # Content zoom: qutebrowser pages, draw.io
   zoom_level:        1.00

@@ -20,6 +20,7 @@ theme-base::install () {
     fs::force_link "$src/carbon-dark.yaml"  "$XDG_CONFIG_HOME/theme/carbon-dark.yaml"
     fs::force_link "$src/carbon-light.yaml" "$XDG_CONFIG_HOME/theme/carbon-light.yaml"
     fs::force_link "$src/cursor.yaml"       "$XDG_CONFIG_HOME/theme/cursor.yaml"
+    fs::force_link "$src/fonts.yaml"        "$XDG_CONFIG_HOME/theme/fonts.yaml"
 
     # Keep the scheme selected by `theme switch`; default to dark.
     if [[ ! -e "$XDG_CONFIG_HOME/theme/colors.yaml" ]]; then
@@ -27,8 +28,6 @@ theme-base::install () {
     fi
 
     # TODO: Select fonts based on hostname.
-    fs::force_link "$src/fonts-linux.yaml" "$XDG_CONFIG_HOME/theme/fonts.yaml"
-
     python3 "$XDG_OPT_HOME/theme/theme.py" parse \
         "$XDG_CONFIG_HOME/theme/colors.yaml" \
         "$XDG_CONFIG_HOME/theme/fonts.yaml" \
