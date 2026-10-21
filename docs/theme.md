@@ -18,7 +18,6 @@ carbon-dark.yaml    # colors and cursor theme: dark scheme
 carbon-light.yaml   # colors and cursor theme: light scheme
 cursor.yaml         # cursor: shared size
 fonts-linux.yaml    # fonts: Linux
-fonts-windows.yaml  # fonts: Windows
 ```
 
 Font and cursor files have a single top-level key (`fonts:`, `cursor:`).
