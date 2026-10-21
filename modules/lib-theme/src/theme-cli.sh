@@ -25,8 +25,7 @@ theme::active_variant () {
 theme::select_scheme () {
     local scheme="$1"
     ln -sfn "$config_dir/$scheme.yaml" "$config_dir/colors.yaml"
-    python3 "$opt_dir/theme/theme.py" parse \
-        "$config_dir/colors.yaml" "$config_dir/fonts.yaml" "$config_dir/cursor.yaml"
+    python3 "$opt_dir/theme/theme.py" parse
 }
 
 # Re-render every recorded template that follows the active scheme. Entries

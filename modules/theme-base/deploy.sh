@@ -27,11 +27,13 @@ theme-base::install () {
         fs::force_link "$XDG_CONFIG_HOME/theme/carbon-dark.yaml" "$XDG_CONFIG_HOME/theme/colors.yaml"
     fi
 
-    # TODO: Select fonts based on hostname.
-    python3 "$XDG_OPT_HOME/theme/theme.py" parse \
-        "$XDG_CONFIG_HOME/theme/colors.yaml" \
-        "$XDG_CONFIG_HOME/theme/fonts.yaml" \
-        "$XDG_CONFIG_HOME/theme/cursor.yaml"
+    if [[ -f "$src/hosts/$DEPLOY_HOST.yaml" ]]; then
+        fs::force_link "$src/hosts/$DEPLOY_HOST.yaml" "$XDG_CONFIG_HOME/theme/host.yaml"
+    else
+        rm -f "$XDG_CONFIG_HOME/theme/host.yaml"
+    fi
+
+    python3 "$XDG_OPT_HOME/theme/theme.py" parse
 
     template::render_mako "$src/dircolors.mako" "$XDG_CONFIG_HOME/theme/dircolors"
     template::render_mako "$src/eza-colors.mako" "$XDG_CONFIG_HOME/theme/eza-colors"
@@ -46,6 +48,7 @@ theme-base::uninstall () {
     rm -f "$XDG_CONFIG_HOME/theme/cursor.yaml"
     rm -f "$XDG_CONFIG_HOME/theme/colors.yaml"
     rm -f "$XDG_CONFIG_HOME/theme/fonts.yaml"
+    rm -f "$XDG_CONFIG_HOME/theme/host.yaml"
 
     rm -f "$XDG_CACHE_HOME/theme/theme-data.lua"
     rm -f "$XDG_CACHE_HOME/theme/theme-data.sh"

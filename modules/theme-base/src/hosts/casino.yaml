@@ -1,0 +1,14 @@
+#-------------------------------------------------------------------------------
+# Host overlay — casino
+#-------------------------------------------------------------------------------
+
+
+fonts:
+#-------------------------------------------------------------------------------
+
+  # Tuned for Agave Nerd Font Mono: 14.1 rather than 14 gives a 19px cell (at
+  # 2x) that fills a tiled window under the 32px bar with 61 rows and 3px to
+  # spare. Nordwand Mono has other metrics, so this needs retuning.
+  font_size_terminal:     14.1
+  font_size_bar:          16
+  font_size_bar_tooltip:  14

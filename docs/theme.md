@@ -17,7 +17,8 @@ Three modules cooperate:
 carbon-dark.yaml    # colors and cursor theme: dark scheme
 carbon-light.yaml   # colors and cursor theme: light scheme
 cursor.yaml         # cursor: shared size
-fonts.yaml          # fonts: faces, sizes, content zoom
+fonts.yaml          # fonts: faces, sizes, roles, content zoom
+hosts/<host>.yaml   # fonts, cursor: keys one host changes
 ```
 
 Font and cursor files have a single top-level key (`fonts:`, `cursor:`).
@@ -43,6 +44,31 @@ scheme:
 Consumers with a polarity flag read it, for example GTK
 `prefer-dark-theme`, delta `dark`/`light`, Claude Code `base`,
 qutebrowser dark mode and the mermaid theme.
+
+### Fonts
+
+`fonts.yaml` groups four kinds of keys:
+
+- Faces: `font_mono`, `font_sans`, `font_serif`.
+- Sizes: the ladder `font_size_tiny` to `font_size_xxlarge`, for hierarchy within one surface.
+- Roles: the size of one surface, shared by every app that draws it.
+- Content zoom: `zoom_level`, the page scale of qutebrowser and draw.io.
+
+Sizes and roles depend on the face.
+A face change retunes them in `fonts.yaml` and in every host file that sets them.
+
+| Role | Unit | Consumers |
+|---|---|---|
+| `font_size_terminal` | pt | ghostty, alacritty |
+| `font_size_bar` | px | waybar, eww |
+| `font_size_bar_tooltip` | px | waybar |
+
+### Host overlay
+
+A host file overrides any key of `fonts` or `cursor`.
+It merges last and `theme-base::install()` selects it by `DEPLOY_HOST`.
+Hosts without a file use the defaults.
+Consumers read the merged keys and never branch on the host.
 
 ### Color scheme structure
 
@@ -110,6 +136,7 @@ It prints the palette section of `carbon-light.yaml`.
 ├── carbon-light.yaml  -> modules/theme-base/src/carbon-light.yaml
 ├── cursor.yaml        -> modules/theme-base/src/cursor.yaml
 ├── fonts.yaml         -> modules/theme-base/src/fonts.yaml
+├── host.yaml          -> modules/theme-base/src/hosts/<host>.yaml (when present)
 └── colors.yaml        -> carbon-dark.yaml or carbon-light.yaml
 ```
 
@@ -215,7 +242,7 @@ Qt theme and match GTK popovers.
 | `theme.sh` | Bash | `$XDG_CACHE_HOME/theme/theme-data.sh` |
 | `theme.fish` | Fish | `$XDG_CACHE_HOME/theme/theme-data.fish` |
 | `theme.lua` | Lua | `$XDG_CACHE_HOME/theme/theme-data.lua` |
-| `theme.py` | Python | `$XDG_CONFIG_HOME/theme/{colors,fonts,cursor}.yaml` directly |
+| `theme.py` | Python | `$XDG_CONFIG_HOME/theme/{colors,fonts,cursor,host}.yaml` directly |
 
 `theme.py` reads `$THEME_COLORS` instead of `colors.yaml` when set.
 

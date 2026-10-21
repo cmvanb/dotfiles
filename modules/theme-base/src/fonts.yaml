@@ -22,5 +22,10 @@ fonts:
   font_size_xlarge:  18
   font_size_xxlarge: 20
 
+  # Roles: one surface each, tuned per host in hosts/<host>.yaml.
+  font_size_terminal:    11
+  font_size_bar:         14
+  font_size_bar_tooltip: 13
+
   # Content zoom: qutebrowser pages, draw.io
   zoom_level:        1.00

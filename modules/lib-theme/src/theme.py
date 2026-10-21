@@ -20,6 +20,7 @@ FISH_PATH  = CACHE_DIR / 'theme-data.fish'
 COLORS_PATH = Path(os.environ.get('THEME_COLORS', CONFIG_DIR / 'colors.yaml'))
 FONTS_PATH  = CONFIG_DIR / 'fonts.yaml'
 CURSOR_PATH = CONFIG_DIR / 'cursor.yaml'
+HOST_PATH   = CONFIG_DIR / 'host.yaml'
 
 
 # Utilities
@@ -30,6 +31,12 @@ def _is_readable_file(path: Path) -> bool:
 
 def _raise(message: str) -> None:
     raise Exception(f'[theme.py] {message}')
+
+def _theme_paths() -> list[Path]:
+    paths = [COLORS_PATH, FONTS_PATH, CURSOR_PATH]
+    if HOST_PATH.is_file():
+        paths.append(HOST_PATH)
+    return paths
 
 
 # Parsing
@@ -164,11 +171,11 @@ def _write_fish(colors: dict, fonts: dict, cursor: dict, scheme: dict):
 # Entry point
 #-------------------------------------------------------------------------------
 
-_colors, _fonts, _cursor, _scheme, _aliases = _parse(COLORS_PATH, FONTS_PATH, CURSOR_PATH)
+_colors, _fonts, _cursor, _scheme, _aliases = _parse(*_theme_paths())
 
 
-def parse(*paths: Path):
-    colors, fonts, cursor, scheme, _aliases = _parse(*paths)
+def parse():
+    colors, fonts, cursor, scheme, _aliases = _parse(*_theme_paths())
     _write_lua(colors, fonts, cursor, scheme)
     _write_sh(colors, fonts, cursor, scheme)
     _write_fish(colors, fonts, cursor, scheme)
@@ -340,10 +347,7 @@ if __name__ == '__main__':
     cmd = sys.argv[1]
 
     if cmd == 'parse':
-        if len(sys.argv) < 3:
-            print('Usage: theme.py parse <file1.yaml> [file2.yaml ...]', file=sys.stderr)
-            sys.exit(1)
-        parse(*[Path(p) for p in sys.argv[2:]])
+        parse()
 
     elif cmd == 'color_256':
         print(color_256(sys.argv[2]), end='')
