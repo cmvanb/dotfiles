@@ -105,14 +105,12 @@ export BROWSER="qutebrowser"
 
 ```toml
 <%
-    if DEPLOY_HOST == 'casino':
-        terminal_font_size = font_size_medium
-    else:
-        terminal_font_size = font_size_msmall
+    whisrs_model = 'ggml-small.en.bin' if DEPLOY_HOST == 'casino' else 'ggml-large-v3.bin'
 %>
-[font]
-size = ${terminal_font_size}
+model = "${whisrs_model}"
 ```
+
+Font sizes per host come from the [host overlay](theme.md#host-overlay).
 
 ## Rendering
 

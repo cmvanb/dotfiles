@@ -1,12 +1,3 @@
-<%
-    if DEPLOY_HOST == 'casino':
-        # 14.1 rather than font_size_medium (14): its 19px cell (at 2x) fills a
-        # tiled window under the 32px bar with 61 rows and 3px to spare, where
-        # 14 leaves most of a row unused.
-        terminal_font_size = 14.1
-    else:
-        terminal_font_size = font_size_xsmall
-%>
 #-------------------------------------------------------------------------------
 # GhosTTY configuration file
 #-------------------------------------------------------------------------------
@@ -17,7 +8,7 @@
 background-opacity = 0.84
 
 font-family = "${font_mono}"
-font-size = ${terminal_font_size}
+font-size = ${font_size_terminal}
 
 cursor-style = "block"
 cursor-style-blink = false

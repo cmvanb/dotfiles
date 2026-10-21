@@ -1,7 +1,7 @@
 * {
     /* `otf-font-awesome` is required to be installed for icons */
     font-family: 'sans-serif';
-    font-size: ${font_size_medium}px;
+    font-size: ${font_size_bar}px;
     font-weight: bold;
 }
 
@@ -27,7 +27,7 @@ button:hover {
 }
 
 tooltip {
-    font-size: ${font_size_msmall}px;
+    font-size: ${font_size_bar_tooltip}px;
     background: ${color_hash('primary_0')};
     border: 1px solid ${color_hash('primary_8')};
 }

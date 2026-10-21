@@ -1,18 +1,10 @@
-<%
-    if DEPLOY_HOST == 'casino':
-        waybar_font_size = font_size_large
-        waybar_tooltip_font_size = font_size_medium
-    else:
-        waybar_font_size = font_size_medium
-        waybar_tooltip_font_size = font_size_msmall
-%>
 /*------------------------------------------------------------------------------
 * Waybar style on Sway
 *-----------------------------------------------------------------------------*/
 * {
     /* `otf-font-awesome` is required to be installed for icons */
     font-family: ${font_sans}, sans-serif;
-    font-size: ${waybar_font_size}px;
+    font-size: ${font_size_bar}px;
     font-weight: bold;
 }
 
@@ -38,7 +30,7 @@ button:hover {
 }
 
 tooltip {
-    font-size: ${waybar_tooltip_font_size}px;
+    font-size: ${font_size_bar_tooltip}px;
     background: ${color_hash('primary_0')};
     border: 2px solid ${color_hash('primary_8')};
 }

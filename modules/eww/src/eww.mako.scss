@@ -1,11 +1,5 @@
 <%
-    if DEPLOY_HOST == 'casino':
-        bar_font_size = font_size_large
-        icon_size = 20
-    else:
-        bar_font_size = font_size_medium
-        icon_size = 18
-
+    icon_size = int(font_size_bar) + 4
     bar_height = 32
 
     # Bar labels are bottom-aligned (yalign 1) so the baseline sits a fixed
@@ -14,7 +8,7 @@
     # bottom padding puts the optical midline, halfway between the cap and
     # x-height midlines, on the bar midline where the icons are centered.
     optical_midline = (0.71 + 0.523) / 4
-    bar_label_padding = round(bar_height / 2 - (0.3125 + optical_midline) * int(bar_font_size))
+    bar_label_padding = round(bar_height / 2 - (0.3125 + optical_midline) * int(font_size_bar))
 
     # Optical centering for icons whose ink is off-center in their canvas.
     # Percentages move the image within the spare height (bar minus icon).
@@ -97,7 +91,7 @@ $icon: ${icon_size}px;
 // The popup row copies the bar's status modules, so it shares the font size
 // that determines their widths.
 .bar, .popup-row {
-    font-size: ${bar_font_size}px;
+    font-size: ${font_size_bar}px;
 
     .right { padding-right: 6px; }
 }
