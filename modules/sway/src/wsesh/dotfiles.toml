@@ -10,6 +10,7 @@ type = "terminal"
 workspace = "config"
 cwd = "~/Code/dotfiles"
 command = "opencode"
+focused = true
 
 [[entry]]
 type = "terminal"
