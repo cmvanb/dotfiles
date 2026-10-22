@@ -40,8 +40,8 @@ spawn_entry() {
     # Fields are unit-separator (\x1f) delimited, not tab: bash's `read`
     # collapses consecutive *tab* delimiters (it treats tab as IFS
     # whitespace), which would silently swallow empty fields.
-    local type workspace workspace_name cwd command floating title browser session exec_cmd desktop wait_for_network
-    IFS=$'\x1f' read -r type workspace workspace_name cwd command floating title browser session exec_cmd desktop wait_for_network
+    local type workspace workspace_name cwd command floating title browser session exec_cmd desktop wait_for_network _focused
+    IFS=$'\x1f' read -r type workspace workspace_name cwd command floating title browser session exec_cmd desktop wait_for_network _focused
 
     workspace=$(workspace::resolve "$workspace") || return 1
     [[ -n $workspace_name ]] && { workspace=$(workspace::rename "$workspace" "$workspace_name") || return 1; }
@@ -113,12 +113,17 @@ spawn_entry() {
 # fall back to a blank window instead of attaching to the running instance.
 #-------------------------------------------------------------------------------
 
+window_ids() {
+    swaymsg -t get_tree | jq -c '[.. | objects | select(.pid?) | .id]'
+}
+
 wait_for_window() {
     local before="$1"
-    local after i
+    local new i
     for ((i = 0; i < 75; i++)); do
-        after=$(swaymsg -t get_tree | jq '[.. | objects | select(.pid?)] | length')
-        [[ $after -gt $before ]] && return 0
+        new=$(swaymsg -t get_tree | jq --argjson before "$before" \
+            '[.. | objects | select(.pid?) | .id] - $before | first // empty')
+        [[ -n $new ]] && { echo "$new"; return 0; }
         sleep 0.2
     done
     debug::error "Timed out waiting for a window to appear"
@@ -150,20 +155,27 @@ wsesh_launch() {
         (.session // ""),
         (.exec // ""),
         (.desktop // ""),
-        (.wait_for_network // "" | tostring)
+        (.wait_for_network // "" | tostring),
+        (.focused // "" | tostring)
     ] | join("\u001f")' "$file"); then
         debug::error_notify "Failed to parse wsesh file: $file"
         exit 1
     fi
 
+    local focus_id=""
     while IFS= read -r line; do
-        local window_count
-        window_count=$(swaymsg -t get_tree | jq '[.. | objects | select(.pid?)] | length')
+        local before window_id
+        before=$(window_ids)
 
         if spawn_entry <<< "$line"; then
-            wait_for_window "$window_count" || true
+            window_id=$(wait_for_window "$before") || continue
+            [[ ${line##*$'\x1f'} == "true" ]] && focus_id=$window_id
         fi
     done <<< "$entries"
+
+    if [[ -n $focus_id ]]; then
+        swaymsg "[con_id=$focus_id] focus" > /dev/null
+    fi
 }
 
 # Pick a wsesh file to launch

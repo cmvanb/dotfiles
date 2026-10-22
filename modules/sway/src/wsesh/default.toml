@@ -20,6 +20,9 @@
 # at launch time. Use it to give an ad-hoc numeric workspace (e.g. "1") a
 # display name without pre-registering it in workspaces.mako.conf's
 # named_workspaces list.
+#
+# `focused = true` on a terminal/browser/app entry focuses its window once
+# all entries have spawned. It overrides any earlier `focus` entry.
 
 [[entry]]
 type = "browser"
