@@ -175,7 +175,6 @@ Entries whose template or output is gone are pruned.
 | waybar, eww, swaync, swayosd | Signal, reload command or service restart |
 | ghostty | `SIGUSR2` |
 | wezterm | Config touch |
-| herdr | `herdr server reload-config` |
 | Neovim | `SIGUSR1`, replays every highlight against the new theme |
 | qutebrowser | `:restart`, required by `preferred_color_scheme` |
 | bat, delta | `bat cache --build` |
