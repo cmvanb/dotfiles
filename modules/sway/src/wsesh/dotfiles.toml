@@ -1,0 +1,18 @@
+# Workspace session for the dotfiles.
+
+[[entry]]
+type = "terminal"
+workspace = "config"
+cwd = "~/Code/dotfiles"
+
+[[entry]]
+type = "terminal"
+workspace = "config"
+cwd = "~/Code/dotfiles"
+command = "opencode"
+
+[[entry]]
+type = "terminal"
+workspace = "config"
+cwd = "~/Code/dotfiles"
+command = "edit"
