@@ -30,7 +30,7 @@ Each scheme names the cursor theme that contrasts with its canvas:
 `Simp1e` (light fill) in carbon-dark, `Simp1e-Dark` (dark fill) in
 carbon-light.
 `theme switch` applies it to gsettings and re-renders the sway config.
-Manifesto installs both (`xcursor-simp1e`, `xcursor-simp1e-dark`).
+Manifesto installs both.
 
 ### Scheme properties
 
