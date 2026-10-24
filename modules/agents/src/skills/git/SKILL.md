@@ -21,6 +21,12 @@ description: Apply git conventions for commits and version control.
 - Never bundle unrelated changes into one commit.
 - Split a refactor from the feature or fix that motivated it.
 
+## Integrating Upstream
+
+- Always rebase onto the target branch.
+- Never create merge commits.
+- After rebase, push with `--force-with-lease`.
+
 ## Commit Messages
 
 - Single line only.
