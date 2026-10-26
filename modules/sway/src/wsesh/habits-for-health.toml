@@ -15,14 +15,9 @@ session = "omnia-hfh-cicd"
 [[entry]]
 type = "browser"
 workspace = "3"
-workspace_name = "tickets"
+workspace_name = "tix"
 session = "omnia-hfh-tickets"
-
-[[entry]]
-type = "browser"
-workspace = "4"
-workspace_name = "firebase"
-session = "omnia-hfh-firebase"
+focused = true
 
 [[entry]]
 type = "app"
@@ -39,8 +34,9 @@ cwd = "~/Code/habits-for-health"
 type = "terminal"
 workspace = "dev"
 cwd = "~/Code/habits-for-health"
-command = "edit"
+command = "opencode"
 
 [[entry]]
-type = "focus"
-workspace = "3:tickets"
+type = "terminal"
+workspace = "dev"
+cwd = "~/Code/habits-for-health"
