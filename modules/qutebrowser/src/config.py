@@ -71,7 +71,7 @@ c.zoom.default = f"{int(float(theme.font('zoom_level')) * 100)}%"
 
 # Defaults
 c.fonts.default_family = [ f"{theme.font('font_mono')}" ]
-c.fonts.default_size = f"{theme.font('font_size_medium')}pt"
+c.fonts.default_size = f"{theme.font('font_size_small')}pt"
 
 # Webpages
 c.fonts.web.family.fixed = f"{theme.font('font_mono')}"
