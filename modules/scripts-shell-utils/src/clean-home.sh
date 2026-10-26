@@ -12,7 +12,6 @@ declare -a dirs=(
     ".kube"
     ".java"
     ".npm"
-    ".pki"
     ".qne"
     ".terraform.d"
     ".yarn"
