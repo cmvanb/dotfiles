@@ -35,8 +35,12 @@ chromium::install () {
     "$src/generate-ui-font.py" "$XDG_DATA_HOME/fonts/nimbus-sans-chromium"
     fc-cache "$XDG_DATA_HOME/fonts/nimbus-sans-chromium"
 
+    fs::force_link "$src/chromium-flags.conf" "$XDG_CONFIG_HOME/chromium-flags.conf"
+
     fs::ensure_directory "$XDG_CONFIG_HOME/chromium"
     fs::force_link "$src/extensions" "$XDG_CONFIG_HOME/chromium/External Extensions"
+
+    "$src/seed-default-zoom.py" "$XDG_CONFIG_HOME/chromium/Default" --percent 110 || true
 
     "$src/vimium-c/seed-key-mappings.py" "$XDG_CONFIG_HOME/chromium/Default" \
         --mappings "$src/vimium-c/key-mappings" || true
@@ -54,6 +58,10 @@ chromium::uninstall () {
     rm -rf "$XDG_DATA_HOME/themes/carbon-chromium-gtk"
     rm -rf "$XDG_DATA_HOME/fonts/nimbus-sans-chromium"
     fc-cache
+    rm "$XDG_CONFIG_HOME/chromium-flags.conf"
+
+    "$base_dir/modules/chromium/src/seed-default-zoom.py" "$XDG_CONFIG_HOME/chromium/Default" \
+        --clear || true
 
     "$base_dir/modules/chromium/src/vimium-c/seed-key-mappings.py" "$XDG_CONFIG_HOME/chromium/Default" \
         --clear || true
