@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Netflix
 GenericName=Streaming Video
-Exec=/usr/bin/chromium --ozone-platform=wayland --gtk-version=4 --app=https://www.netflix.com
+Exec=env GTK_THEME=carbon-chromium-gtk /usr/bin/chromium --ozone-platform=wayland --gtk-version=4 --app=https://www.netflix.com
 StartupNotify=true
 StartupWMClass=chrome-www.netflix.com__-Default
 Terminal=false

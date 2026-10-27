@@ -1,0 +1,12 @@
+@import url("../../carbon-gtk/gtk-4.0/gtk.css");
+
+/*
+ Chromium takes its UI font from an unparented label. Nimbus Sans Chromium is
+ Nimbus Sans with vertical metrics that Chromium centers. 14px matches the
+ fixed omnibox font size.
+*/
+label {
+  font-family: "Nimbus Sans Chromium";
+  font-size: 15.5px;
+}
+
