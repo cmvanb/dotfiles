@@ -10,3 +10,12 @@ label {
   font-size: 15.5px;
 }
 
+/*
+ Chromium paints the tab strip with the menubar background when it uses the
+ system title bar. Tab contents are centered on the strip, not on the tab
+ shape below its top padding, so matching the strip to the active tab makes
+ them read as centered.
+*/
+menubar {
+  background-color: var(--window-bg-color);
+}
