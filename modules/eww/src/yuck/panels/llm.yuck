@@ -17,7 +17,10 @@
 (defwidget claude-usage []
   (card
     (provider-title :text "Claude" :icon "claude-ai-symbolic")
-    (label :class "placeholder" :visible {!claude.ok} :text "Usage unavailable")
+    (label :class "placeholder" :visible {!claude.ok} :text {claude.login ? "Login expired" : "Usage unavailable"})
+    (box :visible {claude.login}
+      (pill :text "Log in" :icon "utilities-terminal-symbolic"
+            :onclick "scripts/popup.sh close; spawn-terminal.sh --floating --command 'claude auth login && eww poll claude' &"))
     (box :visible {claude.ok} :orientation "v" :space-evenly false :spacing 12
       (meter :label "Session (5 hours)" :value {claude.session}
              :class {claude.session >= 90 ? "critical" : claude.session >= 70 ? "heavy" : claude.session >= 50 ? "medium" : ""}
@@ -26,7 +29,9 @@
              :class {claude.week >= 90 ? "critical" : claude.week >= 70 ? "heavy" : claude.week >= 50 ? "medium" : ""}
              :detail "${claude.week}% · resets in ${claude.week_reset}")
       (meter :label "Extra usage" :value {claude.extra}
-             :detail "${claude.extra_used} / ${claude.extra_limit} ${claude.currency}"))))
+             :detail "${claude.extra_used} / ${claude.extra_limit} ${claude.currency}")
+      (box :visible {claude.login_left != ""}
+        (row :key "Login expires in" :value {claude.login_left})))))
 
 (defwidget openrouter-usage []
   (card

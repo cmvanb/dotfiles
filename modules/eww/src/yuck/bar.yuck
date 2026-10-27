@@ -131,7 +131,7 @@
 (defwidget llm-status [output peak]
   (module :name "llm" :output output
           :class {peak >= 90 ? "critical" : peak >= 70 ? "heavy" : peak >= 50 ? "medium" : ""}
-          :tooltip "Claude ${claude.ok ? claude.session + '%' : '—'} · OpenRouter ${openrouter.ok && openrouter.has_budget ? openrouter.budget + '%' : '—'}"
+          :tooltip "Claude ${claude.ok ? claude.session + '%' : claude.login ? 'login expired' : '—'} · OpenRouter ${openrouter.ok && openrouter.has_budget ? openrouter.budget + '%' : '—'}"
     (icon :name "llm-symbolic" :class "llm")
     (label :yalign 1 :text {claude.ok || openrouter.ok ? "${peak}%" : "—"})))
 

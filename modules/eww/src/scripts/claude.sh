@@ -4,13 +4,14 @@
 #
 #   {"ok": true, "session": 42, "session_reset": "2h 10m", "week": 12,
 #    "week_reset": "4d 3h", "extra_used": 1.5, "extra_limit": 50,
-#    "extra": 3, "currency": "USD"}
+#    "extra": 3, "currency": "USD", "login": false, "login_left": "12d 3h"}
 #-------------------------------------------------------------------------------
 
 set -uo pipefail
 
-unavailable='{"ok":false,"session":0,"session_reset":"","week":0,"week_reset":"","extra_used":0,"extra_limit":0,"extra":0,"currency":""}'
+unavailable='{"ok":false,"session":0,"session_reset":"","week":0,"week_reset":"","extra_used":0,"extra_limit":0,"extra":0,"currency":"","login":false,"login_left":""}'
 
+scripts="$(dirname "${BASH_SOURCE[0]}")"
 config="${XDG_CONFIG_HOME:-$HOME/.config}/claude"
 creds="$config/.credentials.json"
 lock="$config/.oauth_refresh.lock"
@@ -18,11 +19,24 @@ token_url="https://platform.claude.com/v1/oauth/token"
 client_id="9d1c250a-e61b-44d9-88ed-5944d1962f5e"
 # The token endpoint rate limits curl and claude-code User-Agents.
 token_user_agent="axios/1.13.6"
-backoff="${XDG_RUNTIME_DIR:-/tmp}/eww/claude-refresh-backoff"
+runtime="${XDG_RUNTIME_DIR:-/tmp}/eww"
+backoff="$runtime/claude-refresh-backoff"
+rejected="$runtime/claude-rejected-refresh-token"
 
 expiring() {
     jq -e --argjson now "$(date +%s%3N)" \
         '.claudeAiOauth.expiresAt < $now + 300000' "$creds" >/dev/null 2>&1
+}
+
+refresh_token_hash() {
+    jq -r '.claudeAiOauth.refreshToken // empty' "$creds" 2>/dev/null | sha256sum | cut -d' ' -f1
+}
+
+# A login lasts a fixed time: refreshing rotates the tokens without extending it.
+login_expired() {
+    jq -e --argjson now "$(date +%s%3N)" \
+        '(.claudeAiOauth.refreshTokenExpiresAt // infinite) < $now' "$creds" >/dev/null 2>&1 \
+        || [[ -f $rejected && $(<"$rejected") == "$(refresh_token_hash)" ]]
 }
 
 # Retrying every poll after a failure keeps the token endpoint rate limited.
@@ -33,7 +47,7 @@ backing_off() {
 back_off() {
     read -r _ delay 2>/dev/null <"$backoff" || delay=150
     delay=$(( delay * 2 > 3600 ? 3600 : delay * 2 ))
-    mkdir -p "${backoff%/*}"
+    mkdir -p "$runtime"
     echo "$(( $(date +%s) + delay )) $delay" >"$backoff"
 }
 
@@ -48,7 +62,12 @@ refresh() {
     }' "$creds" | curl -sS --fail-with-body --max-time 10 "$token_url" \
         -A "$token_user_agent" -H "Content-Type: application/json" --data @- 2>&1); then
         echo "claude.sh: token refresh failed: $tokens" >&2
-        back_off
+        if [[ $tokens == *'"invalid_grant"'* ]]; then
+            mkdir -p "$runtime"
+            refresh_token_hash >"$rejected"
+        else
+            back_off
+        fi
         return 0
     fi
     rm -f "$backoff"
@@ -67,8 +86,24 @@ refresh() {
     fi
 }
 
+# Adds the login state: whether a new login is required, and the time it has left.
+emit() {
+    local login=false
+    expiring && login_expired && login=true
+    jq -c -L "$scripts" --argjson login "$login" --argjson now "$(date +%s)" \
+        --slurpfile creds "$creds" '
+        include "remaining";
+        . + {
+            login: $login,
+            login_left: ($creds[0].claudeAiOauth
+                | if .refreshTokenExpiresAt then
+                    [.expiresAt, .refreshTokenExpiresAt] | max / 1000 - $now | duration
+                  else "" end)
+        }' <<< "$1" 2>/dev/null || echo "$unavailable"
+}
+
 # Shares Claude Code's refresh lock so only one process rotates the refresh token.
-if expiring && ! backing_off; then
+if expiring && ! login_expired && ! backing_off; then
     find "$lock" -maxdepth 0 -mmin +1 -exec rmdir {} \; 2>/dev/null
     if mkdir "$lock" 2>/dev/null; then
         refresh
@@ -78,8 +113,8 @@ fi
 
 token=$(jq -r '.claudeAiOauth.accessToken // empty' "$creds" 2>/dev/null)
 
-if [[ -z $token ]]; then
-    echo "$unavailable"
+if [[ -z $token ]] || { expiring && login_expired; }; then
+    emit "$unavailable"
     exit 0
 fi
 
@@ -89,11 +124,11 @@ response=$(curl -sf --max-time 10 "https://api.anthropic.com/api/oauth/usage" \
     -H "User-Agent: claude-code/2.1.170")
 
 if [[ -z $response ]]; then
-    echo "$unavailable"
+    emit "$unavailable"
     exit 0
 fi
 
-jq -c -L "$(dirname "${BASH_SOURCE[0]}")" --argjson now "$(date +%s)" '
+usage=$(jq -c -L "$scripts" --argjson now "$(date +%s)" '
     include "remaining";
     {
         ok: true,
@@ -106,4 +141,6 @@ jq -c -L "$(dirname "${BASH_SOURCE[0]}")" --argjson now "$(date +%s)" '
         extra: ((.extra_usage.utilization // 0) | round),
         currency: (.extra_usage.currency // "")
     }
-' <<< "$response" 2>/dev/null || echo "$unavailable"
+' <<< "$response" 2>/dev/null) || usage=$unavailable
+
+emit "$usage"
