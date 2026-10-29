@@ -63,6 +63,10 @@
 [color]
     ui = always
 
+[color "status"]
+    added = green
+    changed = red
+
 [pager]
     branch = false
 
