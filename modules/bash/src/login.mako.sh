@@ -46,6 +46,7 @@ fi
 # Virtual terminal theme
 if [[ $TERM == "linux" ]]; then
     "$XDG_CONFIG_HOME/vt/apply-vt-colors.sh" | systemd-cat -t bash-login
+    export DELTA_FEATURES=+vt
 fi
 
 % if 'workstation' in DEPLOY_PROFILE.split():
