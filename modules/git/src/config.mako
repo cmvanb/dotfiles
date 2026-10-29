@@ -23,6 +23,10 @@
     line-numbers-right-format = "{np:>2}│"
     hunk-header-style = 'omit'
     syntax-theme = carbon
+    features = carbon
+
+# Options in [delta] override features, so styles live in features.
+[delta "carbon"]
     file-style = '"${color_hash('primary_11')}"'
     line-numbers-zero-style = '"${color_hash('primary_8')}"'
     minus-style = '"${color_hash('red_5')}" "${color_hash('red_0')}"'
