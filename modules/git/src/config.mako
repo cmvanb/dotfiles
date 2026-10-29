@@ -36,6 +36,17 @@
     plus-emph-style = '"${color_hash('text_15')}" bold "${color_hash('green_3')}"'
     line-numbers-plus-style = '"${color_hash('green_4')}"'
 
+# Linux console: 8 background colors, activated via DELTA_FEATURES.
+[delta "vt"]
+    file-style = 'syntax blue'
+    line-numbers-zero-style = 'brightblue'
+    minus-style = 'syntax red'
+    minus-emph-style = 'brightred red'
+    line-numbers-minus-style = 'brightred'
+    plus-style = 'syntax green'
+    plus-emph-style = 'brightgreen green'
+    line-numbers-plus-style = 'brightgreen'
+
 [filter "lfs"]
     clean = git-lfs clean -- %f
     smudge = git-lfs smudge -- %f
