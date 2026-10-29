@@ -203,20 +203,20 @@ colors:
 
   # ANSI named shortcuts
   ansi_black:     *canvas
-  ansi_red:       *red_4
-  ansi_green:     *green_4
-  ansi_yellow:    *orange_6
-  ansi_blue:      *primary_11
-  ansi_magenta:   *magenta_4
-  ansi_cyan:      *cyan_4
-  ansi_white:     *text_11
+  ansi_red:       *red_2
+  ansi_green:     *green_2
+  ansi_yellow:    *orange_4
+  ansi_blue:      *primary_8
+  ansi_magenta:   *magenta_2
+  ansi_cyan:      *cyan_2
+  ansi_white:     *text_10
   ansi_brblack:   *gray_8
-  ansi_brred:     *red_6
-  ansi_brgreen:   *green_6
-  ansi_bryellow:  *yellow_6
-  ansi_brblue:    *primary_15
-  ansi_brmagenta: *magenta_6
-  ansi_brcyan:    *cyan_6
+  ansi_brred:     *red_5
+  ansi_brgreen:   *green_5
+  ansi_bryellow:  *yellow_5
+  ansi_brblue:    *primary_12
+  ansi_brmagenta: *magenta_5
+  ansi_brcyan:    *cyan_5
   ansi_brwhite:   *text_13
 
   # System
