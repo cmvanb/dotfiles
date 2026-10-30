@@ -6,19 +6,20 @@
 #        eww-bar.sh toggle    # hide or show the bars
 #        eww-bar.sh restart   # restart the eww daemon and the bars
 #
-# `start` keeps running: it subscribes to sway output events and opens or
-# closes a bar per output as monitors come and go. Hidden state survives
-# hotplug events.
+# `start` keeps running: it follows the window manager's output events and
+# opens or closes a bar per output as monitors come and go. Hidden state
+# survives hotplug events.
 #-------------------------------------------------------------------------------
 
 set -uo pipefail
 
 runtime_dir="${XDG_RUNTIME_DIR:-/tmp}/eww"
+wm="${XDG_CONFIG_HOME:-$HOME/.config}/eww/scripts/wm.sh"
 hidden_flag="$runtime_dir/bar-hidden"
 pid_file="$runtime_dir/bar.pid"
 
 active_outputs() {
-    swaymsg -t get_outputs 2>/dev/null | jq -r '.[] | select(.active) | .name'
+    "$wm" outputs
 }
 
 open_bars() {
@@ -47,14 +48,14 @@ start() {
     mkdir -p "$runtime_dir"
     rm -f "$hidden_flag"
 
-    # Replace a previous instance (e.g. after a sway reload).
+    # Replace a previous instance (e.g. after a window manager reload).
     [[ -f $pid_file ]] && kill "$(<"$pid_file")" 2>/dev/null
     echo $$ > "$pid_file"
 
     eww ping &> /dev/null || eww daemon
     until eww ping &> /dev/null; do sleep 0.1; done
 
-    exec {events}< <(swaymsg -r -m -t subscribe '["output"]' 2>/dev/null)
+    exec {events}< <("$wm" output-events)
     local subscriber=$!
     trap 'kill "$subscriber" 2>/dev/null; exit 0' TERM INT
 
