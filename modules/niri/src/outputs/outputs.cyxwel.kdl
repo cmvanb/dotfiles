@@ -2,10 +2,11 @@
 // Niri output configuration - cyxwel
 //
 // HDMI-A-6 is optional; niri ignores it when disconnected.
+// niri rotates in the opposite direction to sway: sway's 270 is niri's 90.
 //------------------------------------------------------------------------------
 
 output "HDMI-A-6" {
-    transform "270"
+    transform "90"
     position x=-1200 y=0
 }
 
@@ -16,6 +17,6 @@ output "Iiyama North America PL2790QS 1178024901361" {
 }
 
 output "DP-4" {
-    transform "270"
+    transform "90"
     position x=2242 y=0
 }
