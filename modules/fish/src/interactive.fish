@@ -64,3 +64,8 @@ or test "$TERM" = "xterm-256color"
 or test "$TERM" = "xterm-ghostty"
     set -g fish_term24bit 1
 end
+
+# Linux console delta colors. Set per shell, since login shells also start Sway.
+if test "$TERM" = "linux"
+    set -x DELTA_FEATURES +vt
+end

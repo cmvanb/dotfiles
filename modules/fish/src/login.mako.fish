@@ -40,7 +40,6 @@ end
 # Virtual terminal theme
 if test "$TERM" = "linux"
     $XDG_CONFIG_HOME/vt/apply-vt-colors.sh | systemd-cat -t fish-login
-    set -x DELTA_FEATURES +vt
 end
 
 % if 'workstation' in DEPLOY_PROFILE.split():

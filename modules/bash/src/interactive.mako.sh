@@ -85,6 +85,11 @@ eval "$(dircolors --bourne-shell "$XDG_CONFIG_HOME/theme/dircolors")"
 EZA_COLORS="$(tr -d '\n' < "$XDG_CONFIG_HOME/theme/eza-colors")$LS_COLORS"
 export EZA_COLORS
 
+# Linux console delta colors. Set per shell, since login shells also start Sway.
+if [[ $TERM == "linux" ]]; then
+    export DELTA_FEATURES=+vt
+fi
+
 # Prompt
 #-------------------------------------------------------------------------------
 
