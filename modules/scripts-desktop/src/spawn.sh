@@ -28,6 +28,9 @@ case "${wm,,}" in
     hyprland)
         hyprctl dispatch exec "$@"
         ;;
+    niri)
+        niri msg action spawn -- "$@"
+        ;;
     *)
         debug::error "Unsupported or unknown window manager: $wm — falling back to direct spawn"
         nohup "$@" >/dev/null 2>&1 &
