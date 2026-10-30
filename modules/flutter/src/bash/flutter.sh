@@ -1,0 +1,1 @@
+export FLUTTER_SUPPRESS_ANALYTICS="true"

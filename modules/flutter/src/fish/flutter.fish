@@ -1,0 +1,1 @@
+set -x FLUTTER_SUPPRESS_ANALYTICS true
