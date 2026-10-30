@@ -1,8 +1,8 @@
 ;;------------------------------------------------------------------------------
 ;; Eww configuration
 ;;
-;; A per-output system bar for sway with click-to-open popups. Scripts run
-;; with the config directory as working directory.
+;; A per-output system bar for sway or niri with click-to-open popups. Scripts
+;; run with the config directory as working directory.
 ;;------------------------------------------------------------------------------
 
 (include "yuck/variables.yuck")

@@ -16,7 +16,7 @@
 (defwidget bar [output]
   (centerbox :class "bar"
     (box :class "left" :halign "start" :space-evenly false :spacing 8
-      (sway-mode)
+      (wm-mode)
       (window-title :output output))
     (workspaces :output output)
     (status-modules :output output)))
@@ -55,14 +55,14 @@
     (box :class "panel-anchor" :valign "start"
       (literal :content {open == name && !matches(name, "^(calendar|clock)$") ? "(popup-panel :name '${name}' :halign 'center')" : ""}))))
 
-;; Sway
+;; Window manager
 ;;------------------------------------------------------------------------------
 
 (defwidget workspaces [output]
   (box :class "workspaces" :space-evenly false
-    (for ws in {sway.outputs?.[output]?.workspaces ?: "[]"}
+    (for ws in {wm.outputs?.[output]?.workspaces ?: "[]"}
       (button :class "workspace ${ws.focused ? 'focused' : ws.visible ? 'visible' : ''} ${ws.urgent ? 'urgent' : ''}"
-              :onclick `swaymsg 'workspace "${ws.name}"' > /dev/null`
+              :onclick "scripts/wm.sh focus-workspace '${output}' '${ws.name}'"
         (box :space-evenly false :spacing 6
           (for app in {ws.icons}
             (icon :name app :class "app"))
@@ -71,12 +71,12 @@
 
 (defwidget window-title [output]
   (box :class "title" :space-evenly false :spacing 8
-    (box :visible {(sway.outputs?.[output]?.icon ?: "") != ""}
-      (icon :name {sway.outputs?.[output]?.icon ?: "application-x-executable"} :class "app"))
-    (label :yalign 1 :limit-width 160 :text {sway.outputs?.[output]?.title ?: ""})))
+    (box :visible {(wm.outputs?.[output]?.icon ?: "") != ""}
+      (icon :name {wm.outputs?.[output]?.icon ?: "application-x-executable"} :class "app"))
+    (label :yalign 1 :limit-width 160 :text {wm.outputs?.[output]?.title ?: ""})))
 
-(defwidget sway-mode []
-  (label :yalign 1 :class "mode" :visible {sway.mode != "default"} :text {sway.mode}))
+(defwidget wm-mode []
+  (label :yalign 1 :class "mode" :visible {wm.mode != "default"} :text {wm.mode}))
 
 ;; Status modules
 ;;------------------------------------------------------------------------------

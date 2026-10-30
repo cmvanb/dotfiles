@@ -10,9 +10,9 @@
 (defvar calendar '{"view":"month","offset":0,"year_offset":0,"title":"","current":true,"weekdays":[],"weeks":[],"months":[]}')
 
 ;; Event-driven listeners
-(deflisten sway
+(deflisten wm
   :initial '{"mode":"default","outputs":{}}'
-  "scripts/sway.py")
+  "scripts/wm.sh listen")
 
 (deflisten audio
   :initial '{"volume":0,"muted":false,"mic_volume":0,"mic_muted":false,"sinks":[]}'

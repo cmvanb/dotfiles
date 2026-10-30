@@ -8,10 +8,10 @@
 #        popup.sh leave                           # close soon, unless the pointer is on it
 #        popup.sh watch                           # internal: run `leave` on window focus
 #
-# Layer-shell popups never hold keyboard focus under sway, so eww's
-# `unfocus-close` cannot dismiss them. Instead a popup closes shortly after the
-# pointer leaves it or another window takes focus, unless the pointer is over
-# the popup by then.
+# Layer-shell popups never hold keyboard focus under the window manager, so
+# eww's `unfocus-close` cannot dismiss them. Instead a popup closes shortly
+# after the pointer leaves it or another window takes focus, unless the pointer
+# is over the popup by then.
 #-------------------------------------------------------------------------------
 
 set -uo pipefail
@@ -75,8 +75,7 @@ case ${1:-} in
     # Any window focus change (e.g. focus following the pointer onto a window)
     # starts the leave grace period.
     watch)
-        swaymsg -r -m -t subscribe '["window"]' 2>/dev/null \
-            | grep --line-buffered '"change": *"focus"' \
+        "$script_dir/wm.sh" focus-events \
             | while read -r _; do "$script_dir/popup.sh" leave & done
         ;;
 
