@@ -1,0 +1,5 @@
+profile.extends=wayland-wm
+profile.wm=niri
+
+modules.install=eww niri swayosd
+modules.enable=swayosd

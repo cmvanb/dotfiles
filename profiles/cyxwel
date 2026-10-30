@@ -1,4 +1,4 @@
-profile.extends=workstation sway river hyprland
+profile.extends=workstation sway niri river hyprland
 profile.wm=sway
 
 modules.install=

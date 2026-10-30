@@ -1,1 +1,2 @@
-profile.extends=workstation sway
+profile.extends=workstation sway niri
+profile.wm=sway
