@@ -12,7 +12,7 @@
 set -uo pipefail
 
 sound=/usr/share/sounds/freedesktop/stereo/audio-volume-change.oga
-stamp="${XDG_RUNTIME_DIR:-/tmp}/sway/volume-sound"
+stamp="${XDG_RUNTIME_DIR:-/tmp}/volume-sound"
 interval_ms=100
 
 play_feedback() {
@@ -21,7 +21,6 @@ play_feedback() {
     last=$(cat "$stamp" 2>/dev/null || echo 0)
     (( now - last >= interval_ms )) || return 0
 
-    mkdir -p "$(dirname "$stamp")"
     echo "$now" > "$stamp"
     # Detached, so callers with a command timeout (eww) do not cut it short.
     setsid -f paplay "$sound" &> /dev/null

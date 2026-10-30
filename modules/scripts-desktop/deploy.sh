@@ -27,6 +27,7 @@ scripts-desktop::install () {
     fs::force_link "$src/upload-to-0x0.sh" "$XDG_SCRIPTS_HOME/upload-to-0x0.sh"
     fs::force_link "$src/system-menu.sh" "$XDG_SCRIPTS_HOME/system-menu.sh"
     fs::force_link "$src/usb-disks.sh" "$XDG_SCRIPTS_HOME/usb-disks.sh"
+    fs::force_link "$src/volume.sh" "$XDG_SCRIPTS_HOME/volume.sh"
 
     echo "└> Installing desktop shortcuts."
 
@@ -51,6 +52,7 @@ scripts-desktop::uninstall () {
     rm "$XDG_SCRIPTS_HOME/upload-to-0x0.sh"
     rm "$XDG_SCRIPTS_HOME/system-menu.sh"
     rm "$XDG_SCRIPTS_HOME/usb-disks.sh"
+    rm "$XDG_SCRIPTS_HOME/volume.sh"
 
     echo "└> Uninstalling desktop shortcuts."
 
