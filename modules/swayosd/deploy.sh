@@ -39,7 +39,7 @@ swayosd::uninstall() {
 swayosd::enable() {
     echo "└> Enabling swayosd server service."
 
-    systemctl --user enable swayosd-server
+    systemctl --user reenable swayosd-server
 }
 
 swayosd::disable() {
