@@ -45,6 +45,9 @@ input {
 layout {
     gaps 6
 
+    // Workspaces show the wallpaper, which lives in the backdrop (see layer rules).
+    background-color "transparent"
+
     // Negative struts cancel the gap at the screen edges.
     struts {
         left -6
