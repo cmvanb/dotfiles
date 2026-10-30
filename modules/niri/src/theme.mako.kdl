@@ -1,0 +1,20 @@
+//------------------------------------------------------------------------------
+// Niri theme configuration (auto-generated)
+//------------------------------------------------------------------------------
+
+// Color scheme
+layout {
+    border {
+        on
+        active-color "${color_hash('primary_8')}"
+        inactive-color "${color_hash('primary_3')}"
+        urgent-color "${color_hash('primary_3')}"
+    }
+}
+
+// Cursor theme
+cursor {
+    xcursor-theme "${cursor_theme}"
+    xcursor-size ${cursor_size}
+    hide-after-inactive-ms 3000
+}

@@ -1,0 +1,226 @@
+#!/usr/bin/env bash
+#-------------------------------------------------------------------------------
+# Workspace sessions (wsesh)
+#
+# Launches a named set of programs into niri workspaces, defined in
+# $XDG_CONFIG_HOME/niri/wsesh/<name>.toml (shared with sway). See
+# wsesh/default.toml for the entry format (terminal, browser, app, focus).
+#-------------------------------------------------------------------------------
+
+set -euo pipefail
+
+# Dependencies
+#-------------------------------------------------------------------------------
+
+# shellcheck disable=SC1091
+source "$XDG_OPT_HOME/shell-utils/debug.sh"
+
+debug::assert_dependency tomlq
+debug::assert_dependency niri
+debug::assert_dependency jq
+
+script_dir=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)
+wsesh_dir="${XDG_CONFIG_HOME:-$HOME/.config}/niri/wsesh"
+
+usage() {
+    echo "$(basename "$0") <launch|select> [name]"
+    echo "Options:"
+    echo "    launch NAME    Launch the wsesh file wsesh/NAME.toml."
+    echo "    select         Pick a wsesh file with spawn-launcher.sh, then launch it."
+    exit 1
+}
+
+# Focus a workspace reference
+#
+# A bare number is an index on the focused output; a name goes through ws.sh,
+# which creates the named workspace on demand.
+#-------------------------------------------------------------------------------
+
+focus_workspace() {
+    local workspace="$1"
+
+    if [[ $workspace =~ ^[0-9]+$ ]]; then
+        niri msg action focus-workspace "$workspace"
+    else
+        "$script_dir/ws.sh" focus "$workspace"
+    fi
+}
+
+# Run one wsesh entry
+#-------------------------------------------------------------------------------
+
+spawn_entry() {
+    # Fields are unit-separator (\x1f) delimited, not tab: bash's `read`
+    # collapses consecutive *tab* delimiters (it treats tab as IFS
+    # whitespace), which would silently swallow empty fields.
+    local type workspace workspace_name cwd command floating title browser session exec_cmd desktop wait_for_network _focused
+    IFS=$'\x1f' read -r type workspace workspace_name cwd command floating title browser session exec_cmd desktop wait_for_network _focused
+
+    if [[ -n $workspace_name ]]; then
+        if [[ -z $workspace ]]; then
+            debug::error "workspace_name given without a workspace"
+            return 1
+        fi
+
+        focus_workspace "$workspace" || return 1
+        "$script_dir/rename-workspace.sh" "$workspace_name" > /dev/null || return 1
+        workspace=$workspace_name
+    fi
+
+    local cmd=()
+
+    case "$type" in
+        terminal)
+            cmd=(spawn-terminal.sh)
+            [[ -n $cwd ]] && cmd+=(--working-directory "$cwd")
+            [[ -n $command ]] && cmd+=(--command "$command")
+            [[ -n $title ]] && cmd+=(--title "$title")
+            [[ $floating == "true" ]] && cmd+=(--floating)
+            ;;
+
+        browser)
+            if [[ -n $session ]]; then
+                cmd=(open-browser-session.sh --session "$session")
+                [[ -n $browser ]] && cmd+=(--browser "$browser")
+            else
+                cmd=("${browser:-${BROWSER:-qutebrowser}}")
+            fi
+            ;;
+
+        app)
+            if [[ -n $desktop ]]; then
+                cmd=(open-desktop-app.sh "$desktop")
+            else
+                cmd=(sh -c "$exec_cmd")
+            fi
+            ;;
+
+        focus)
+            focus_workspace "$workspace"
+            return 1
+            ;;
+
+        *)
+            debug::error "Unknown entry type: $type"
+            return 1
+            ;;
+    esac
+
+    if [[ $wait_for_network == "true" ]]; then
+        cmd=(sh -c "nm-online -qs && sleep 1 && $(printf '%q ' "${cmd[@]}")")
+    fi
+
+    if [[ -n $workspace ]]; then
+        focus_workspace "$workspace" || return 1
+    fi
+
+    niri msg action spawn -- "${cmd[@]}"
+}
+
+# Wait for a new window to map
+#
+# niri opens a new window on whichever workspace is *focused at map time*, not
+# at spawn time. Firing entries back-to-back with no synchronization races
+# slow-starting apps (GUI apps in particular) against the next entry's
+# workspace switch, landing their window on the wrong workspace — or, for
+# single-instance apps like qutebrowser, racing a second invocation against
+# the first one's still-starting IPC server, causing it to fall back to a
+# blank window instead of attaching to the running instance.
+#-------------------------------------------------------------------------------
+
+window_ids() {
+    niri msg -j windows | jq -c '[.[].id]'
+}
+
+wait_for_window() {
+    local before="$1"
+    local new i
+    for ((i = 0; i < 75; i++)); do
+        new=$(niri msg -j windows | jq --argjson before "$before" \
+            '[.[].id] - $before | first // empty')
+        [[ -n $new ]] && { echo "$new"; return 0; }
+        sleep 0.2
+    done
+    debug::error "Timed out waiting for a window to appear"
+    return 1
+}
+
+# Launch a wsesh file
+#-------------------------------------------------------------------------------
+
+wsesh_launch() {
+    local name="$1"
+    local file="$wsesh_dir/$name.toml"
+
+    if [[ ! -f $file ]]; then
+        debug::error_notify "No such wsesh '$name' ($file)"
+        exit 1
+    fi
+
+    local entries
+    if ! entries=$(tomlq -r '.entry[] | [
+        .type,
+        (.workspace // ""),
+        (.workspace_name // ""),
+        (.cwd // ""),
+        (.command // ""),
+        (.floating // "" | tostring),
+        (.title // ""),
+        (.browser // ""),
+        (.session // ""),
+        (.exec // ""),
+        (.desktop // ""),
+        (.wait_for_network // "" | tostring),
+        (.focused // "" | tostring)
+    ] | join("\u001f")' "$file"); then
+        debug::error_notify "Failed to parse wsesh file: $file"
+        exit 1
+    fi
+
+    local focus_id=""
+    while IFS= read -r line; do
+        local before window_id
+        before=$(window_ids)
+
+        if spawn_entry <<< "$line"; then
+            window_id=$(wait_for_window "$before") || continue
+            [[ ${line##*$'\x1f'} == "true" ]] && focus_id=$window_id
+        fi
+    done <<< "$entries"
+
+    if [[ -n $focus_id ]]; then
+        niri msg action focus-window --id "$focus_id" > /dev/null
+    fi
+}
+
+# Pick a wsesh file to launch
+#-------------------------------------------------------------------------------
+
+wsesh_select() {
+    debug::assert_dependency spawn-launcher.sh
+
+    local name
+    name=$(find -L "$wsesh_dir" -maxdepth 1 -name '*.toml' -exec basename {} .toml \; \
+        | sort \
+        | spawn-launcher.sh --menu --prompt="Launch workspace session..." 2> /dev/null) || exit 0
+
+    [[ -z $name ]] && exit 0
+
+    wsesh_launch "$name"
+}
+
+# Dispatch
+#-------------------------------------------------------------------------------
+
+case "${1:-}" in
+    launch)
+        [[ -n "${2:-}" ]] || usage
+        wsesh_launch "$2"
+        ;;
+    select)
+        wsesh_select
+        ;;
+    *)
+        usage
+        ;;
+esac

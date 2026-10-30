@@ -1,0 +1,16 @@
+//------------------------------------------------------------------------------
+// Niri output configuration - casino (laptop)
+//------------------------------------------------------------------------------
+
+output "Iiyama North America PL2790QS 1178024901361" {
+    mode "2560x1440@239.950"
+    scale 1.125
+    position x=0 y=0
+}
+
+// Refresh omitted: niri picks the highest rate for the resolution.
+output "eDP-1" {
+    mode "2560x1600"
+    scale 1.5
+    position x=2560 y=0
+}

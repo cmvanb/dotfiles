@@ -1,0 +1,21 @@
+//------------------------------------------------------------------------------
+// Niri output configuration - cyxwel
+//
+// HDMI-A-6 is optional; niri ignores it when disconnected.
+//------------------------------------------------------------------------------
+
+output "HDMI-A-6" {
+    transform "270"
+    position x=-1200 y=0
+}
+
+output "Iiyama North America PL2790QS 1178024901361" {
+    mode "2560x1440@239.950"
+    scale 1.1428571
+    position x=0 y=0
+}
+
+output "DP-4" {
+    transform "270"
+    position x=2242 y=0
+}

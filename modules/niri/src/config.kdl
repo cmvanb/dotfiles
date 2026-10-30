@@ -1,5 +1,5 @@
 //------------------------------------------------------------------------------
-// Niri configuration file
+// Niri configuration
 //  see: https://github.com/YaLTeR/niri/wiki/Configuration:-Overview
 //------------------------------------------------------------------------------
 
@@ -10,57 +10,32 @@ prefer-no-csd
 
 screenshot-path "~/Media/Images/screenshots/niri--%Y-%m-%d--%H-%M-%S.png"
 
+hotkey-overlay {
+    skip-at-startup
+}
+
 // Input
 //  see: https://github.com/YaLTeR/niri/wiki/Configuration:-Input
 //------------------------------------------------------------------------------
 
+// niri has no per-device pointer settings, so mice keep the libinput defaults.
 input {
     keyboard {
         repeat-delay 300
         repeat-rate 50
+
+        // custom:fkeys restores F13-F15 keysyms (see xkb module)
+        xkb {
+            options "custom:fkeys"
+        }
     }
 
     touchpad {
         tap
         natural-scroll
-        accel-speed -0.92
-        accel-profile "flat"
     }
 
-    mouse {
-        accel-speed 0.15
-        accel-profile "flat"
-    }
-}
-
-// Outputs
-//  see: https://github.com/YaLTeR/niri/wiki/Configuration:-Outputs
-//------------------------------------------------------------------------------
-
-output "DP-4" {
-    mode "1920x1200@60"
-    scale 1
-    transform "90"
-    position x=0 y=0
-    background-color "#0b0b0e"
-}
-
-output "DP-3" {
-    mode "2560x1440@240"
-    scale 1.125
-    transform "normal"
-    position x=1200 y=0
-    background-color "#0b0b0e"
-}
-
-output "HDMI-A-6" {
-    mode "1920x1200@60"
-    scale 1
-    transform "90"
-    // 2560 / 1.125 = ~2276
-    // 2276 + 1200 = 3476
-    position x=3476 y=0
-    background-color "#0b0b0e"
+    focus-follows-mouse max-scroll-amount="0%"
 }
 
 // Layout
@@ -69,6 +44,14 @@ output "HDMI-A-6" {
 
 layout {
     gaps 6
+
+    // Negative struts cancel the gap at the screen edges.
+    struts {
+        left -6
+        right -6
+        top -6
+        bottom -6
+    }
 
     center-focused-column "always"
 
@@ -86,7 +69,7 @@ layout {
         proportion 1.0
     }
 
-    default-column-width { proportion 0.333333 ; }
+    default-column-width { proportion 0.333333; }
 
     focus-ring {
         off
@@ -94,241 +77,61 @@ layout {
 
     border {
         width 3
-        active-color "#055eb5"
-        inactive-color "#023469"
-    }
-
-    struts {
-        left -1
-        right -1
-        top 0
-        bottom 0
     }
 }
 
-// Cursor
+// Environment
 //------------------------------------------------------------------------------
 
-cursor {
-    xcursor-theme "Simp1e"
-    xcursor-size 24
+environment {
+    // Cursor theme path
+    XCURSOR_PATH "/usr/share/icons"
 
-    // NOTE: Will work in future release (1.10).
-    hide-after-inactive-ms 3000
-    hide-when-typing
+    // Qt performance flag
+    QT_QPA_PLATFORM "wayland"
+    QT_SCALE_FACTOR_ROUNDING_POLICY "round"
+
+    // libadwaita ignores the gsettings gtk-theme-name. `carbon-gtk` is an
+    // alias for the active variant, repointed by `theme switch`.
+    GTK_THEME "carbon-gtk"
+
+    // Qt apps read the carbon Qt theme through qt6ct, which follows `theme switch`.
+    QT_QPA_PLATFORMTHEME "qt6ct"
 }
 
-// Animations
-// https://github.com/YaLTeR/niri/wiki/Configuration:-Animations
+// Layer rules
 //------------------------------------------------------------------------------
 
-animations {
-    slowdown 0.85
+layer-rule {
+    match namespace="^wallpaper$"
+    place-within-backdrop true
 }
 
-// Workspaces
+// Includes
 //------------------------------------------------------------------------------
 
-workspace "todo" {
-    open-on-output "DP-4"
-}
-
-workspace "auth" {
-    open-on-output "DP-4"
-}
-
-workspace "audio" {
-    open-on-output "HDMI-A-6"
-}
-
-workspace "home" {
-    open-on-output "DP-3"
-}
-
-workspace "browse" {
-    open-on-output "DP-3"
-}
-
-workspace "project" {
-    open-on-output "DP-3"
-}
-
-// Window rules
-// https://github.com/YaLTeR/niri/wiki/Configuration:-Window-Rules
-//------------------------------------------------------------------------------
-
-// All windows
-window-rule {
-    geometry-corner-radius 4
-    clip-to-geometry true
-}
-
-window-rule {
-    match app-id=r#"^org\.wezfurlong\.wezterm$"#
-
-    // NOTE: Work around for WezTerm's initial configure bug
-    default-column-width {}
-}
-
-window-rule {
-    match app-id=r#"^org\.qutebrowser\.qutebrowser$"#
-
-    default-column-width { proportion 0.5; }
-}
-
-window-rule {
-    match app-id=r#"^Bitwarden$"#
-
-    open-on-workspace "auth"
-    open-maximized true
-    // TODO: Test whether this works.
-    block-out-from "screen-capture"
-}
-
-window-rule {
-    match app-id=r#"^org\.pulseaudio\.pavucontrol$"#
-
-    open-on-workspace "audio"
-    open-maximized true
-}
-
-window-rule {
-    match app-id=r#"^spotify$"#
-
-    open-on-workspace "audio"
-    open-maximized true
-}
-
-// Key bindings
-//------------------------------------------------------------------------------
-binds {
-    Super+Shift+Q { quit; }
-    Super+Shift+Z { spawn "hyprlock"; }
-
-    Super+Q { close-window; }
-    Super+T { spawn "alacritty"; }
-    Super+O { spawn "wofi" "-p" "..." "--show" "drun"; }
-    Super+B { spawn "qutebrowser"; }
-    Super+Shift+T { spawn "bash" "-c" "$XDG_SCRIPTS_HOME/open-terminal-cwd.sh"; }
-    Super+Shift+B { spawn "bash" "-c" "$XDG_SCRIPTS_HOME/open-qutebrowser-session.sh"; }
-    Super+A { spawn "bash" "-c" "$XDG_CONFIG_HOME/niri/focus-window.sh"; }
-
-    XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
-    XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
-    XF86AudioMute        allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
-    XF86AudioMicMute     allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
-
-    Super+Left  { focus-column-left; }
-    Super+Down  { focus-window-or-workspace-down; }
-    Super+Up    { focus-window-or-workspace-up; }
-    Super+Right { focus-column-right; }
-    Super+H     { focus-column-left; }
-    Super+J     { focus-window-or-workspace-down; }
-    Super+K     { focus-window-or-workspace-up; }
-    Super+L     { focus-column-right; }
-
-    Super+Ctrl+Left  { move-column-left; }
-    Super+Ctrl+Down  { move-window-down-or-to-workspace-down; }
-    Super+Ctrl+Up    { move-window-up-or-to-workspace-up; }
-    Super+Ctrl+Right { move-column-right; }
-    Super+Ctrl+H     { move-column-left; }
-    Super+Ctrl+J     { move-window-down-or-to-workspace-down; }
-    Super+Ctrl+K     { move-window-up-or-to-workspace-up; }
-    Super+Ctrl+L     { move-column-right; }
-
-    Super+Home { focus-column-first; }
-    Super+End  { focus-column-last; }
-    Super+Ctrl+Home { move-column-to-first; }
-    Super+Ctrl+End  { move-column-to-last; }
-
-    Super+Shift+Left  { focus-monitor-left; }
-    Super+Shift+Down  { focus-monitor-down; }
-    Super+Shift+Up    { focus-monitor-up; }
-    Super+Shift+Right { focus-monitor-right; }
-    Super+Shift+H     { focus-monitor-left; }
-    Super+Shift+J     { focus-monitor-down; }
-    Super+Shift+K     { focus-monitor-up; }
-    Super+Shift+L     { focus-monitor-right; }
-
-    Super+Shift+Ctrl+Left  { move-column-to-monitor-left; }
-    Super+Shift+Ctrl+Down  { move-column-to-monitor-down; }
-    Super+Shift+Ctrl+Up    { move-column-to-monitor-up; }
-    Super+Shift+Ctrl+Right { move-column-to-monitor-right; }
-    Super+Shift+Ctrl+H     { move-column-to-monitor-left; }
-    Super+Shift+Ctrl+J     { move-column-to-monitor-down; }
-    Super+Shift+Ctrl+K     { move-column-to-monitor-up; }
-    Super+Shift+Ctrl+L     { move-column-to-monitor-right; }
-
-    // TODO: Find better key bindings.
-    // Super+Shift+Page_Down { move-workspace-down; }
-    // Super+Shift+Page_Up   { move-workspace-up; }
-    // Super+Shift+U         { move-workspace-down; }
-    // Super+Shift+I         { move-workspace-up; }
-
-    Super+WheelScrollDown      cooldown-ms=150 { focus-workspace-down; }
-    Super+WheelScrollUp        cooldown-ms=150 { focus-workspace-up; }
-    Super+Ctrl+WheelScrollDown cooldown-ms=150 { move-column-to-workspace-down; }
-    Super+Ctrl+WheelScrollUp   cooldown-ms=150 { move-column-to-workspace-up; }
-
-    Super+WheelScrollRight      { focus-column-right; }
-    Super+WheelScrollLeft       { focus-column-left; }
-    Super+Ctrl+WheelScrollRight { move-column-right; }
-    Super+Ctrl+WheelScrollLeft  { move-column-left; }
-
-    Super+Shift+WheelScrollDown      { focus-column-right; }
-    Super+Shift+WheelScrollUp        { focus-column-left; }
-    Super+Ctrl+Shift+WheelScrollDown { move-column-right; }
-    Super+Ctrl+Shift+WheelScrollUp   { move-column-left; }
-
-    Super+1 { focus-workspace 1; }
-    Super+2 { focus-workspace 2; }
-    Super+3 { focus-workspace 3; }
-    Super+4 { focus-workspace 4; }
-    Super+5 { focus-workspace 5; }
-    Super+6 { focus-workspace 6; }
-    Super+7 { focus-workspace 7; }
-    Super+8 { focus-workspace 8; }
-    Super+9 { focus-workspace 9; }
-    Super+Ctrl+1 { move-column-to-workspace 1; }
-    Super+Ctrl+2 { move-column-to-workspace 2; }
-    Super+Ctrl+3 { move-column-to-workspace 3; }
-    Super+Ctrl+4 { move-column-to-workspace 4; }
-    Super+Ctrl+5 { move-column-to-workspace 5; }
-    Super+Ctrl+6 { move-column-to-workspace 6; }
-    Super+Ctrl+7 { move-column-to-workspace 7; }
-    Super+Ctrl+8 { move-column-to-workspace 8; }
-    Super+Ctrl+9 { move-column-to-workspace 9; }
-
-    Super+S { consume-or-expel-window-left; }
-    Super+G { consume-or-expel-window-right; }
-
-    Super+Space { switch-preset-column-width; }
-    Super+Shift+Space { switch-preset-window-height; }
-    Super+Ctrl+R { reset-window-height; }
-    Super+F { maximize-column; }
-    Super+Shift+F { fullscreen-window; }
-    Super+C { center-column; }
-
-    // TODO: Find better key bindings.
-    // Super+Minus { set-column-width "-10%"; }
-    // Super+Equal { set-column-width "+10%"; }
-    // Super+Shift+Minus { set-window-height "-10%"; }
-    // Super+Shift+Equal { set-window-height "+10%"; }
-
-    // TODO: Find better key bindings.
-    // Print { screenshot; }
-    // Ctrl+Print { screenshot-screen; }
-    // Alt+Print { screenshot-window; }
-}
+include optional=true "outputs.kdl"
+include "theme.kdl"
+include "winrules.kdl"
+include "keymaps.kdl"
 
 // Startup
 //------------------------------------------------------------------------------
 
-hotkey-overlay {
-    skip-at-startup
-}
-
+// Adjust screen brightness
 spawn-at-startup "wlsunset" "-l" "52.155472" "-L" "5.389358"
-spawn-at-startup "bash" "-c" "$XDG_CONFIG_HOME/wallpaper/wallpaper.sh"
 
-spawn-at-startup "bash" "-c" "$XDG_CONFIG_HOME/niri/workspace.sh"
+// Clean home
+spawn-sh-at-startup "$XDG_SCRIPTS_HOME/clean-home.sh"
+
+// Apply wallpaper
+spawn-at-startup "waypaper" "--restore"
+
+// Start the eww bar (follows output hotplug)
+spawn-at-startup "eww-bar.sh" "start"
+
+// Named workspace rules
+spawn-sh-at-startup "$XDG_CONFIG_HOME/niri/scripts/workspaces.sh daemon"
+
+// Default workspace session
+spawn-sh-at-startup "$XDG_CONFIG_HOME/niri/scripts/wsesh.sh launch default"
