@@ -30,5 +30,5 @@
     (icon-button :icon icon :tooltip {muted ? "Unmute" : "Mute"}
                  :onclick "wpctl set-mute ${target} toggle")
     (scale :hexpand true :min 0 :max 101 :value value
-           :onchange "$XDG_CONFIG_HOME/sway/scripts/volume.sh set ${target} {}")
+           :onchange "$XDG_SCRIPTS_HOME/volume.sh set ${target} {}")
     (label :class "slider-value" :text "${value}%")))
