@@ -13,15 +13,14 @@ The XDG Base Directory Specification defines standard environment variables that
 
 | Variable | Default | Purpose |
 |---|---|---|
-| `XDG_CONFIG_HOME` | `~/.config` | User-specific configuration files |
-| `XDG_DATA_HOME` | `~/.local/share` | User-specific data files |
-| `XDG_CACHE_HOME` | `~/.cache` | Non-essential cached data |
+| `XDG_CONFIG_HOME` | `~/.config` | Configuration: settings files, preferences, ini/toml/yaml |
+| `XDG_DATA_HOME` | `~/.local/share` | Data: databases, assets, application data |
+| `XDG_CACHE_HOME` | `~/.cache` | Non-essential cache: downloads, build artifacts, thumbnails |
 | `XDG_STATE_HOME` | `~/.local/state` | Persistent state: logs, history, lock files |
-| `XDG_RUNTIME_DIR` |  `/run/user/<uid>` | Ephemeral runtime files: sockets, pipes |
+| `XDG_RUNTIME_DIR` | `/run/user/<uid>` | Ephemeral runtime files: sockets, pipes |
 
-`XDG_RUNTIME_DIR` holds only ephemeral data — it is cleared on logout. Never persist data there.
 
-## Rules
+## General Rules
 
 Never hardcode paths under `$HOME`. Always use the appropriate XDG variable.
 
@@ -52,9 +51,15 @@ Guard against unset variables with `${VAR:-default}`:
 "${XDG_STATE_HOME:-$HOME/.local/state}/foo/state.json"
 ```
 
-## Choosing the Right Directory
+## Relocation
 
-- **Config** — settings files, preferences, ini/toml/yaml → `$XDG_CONFIG_HOME/<app>/`
-- **Data** — databases, assets, application data → `$XDG_DATA_HOME/<app>/`
-- **Cache** — downloads, build artifacts, thumbnails → `$XDG_CACHE_HOME/<app>/`
-- **State** — logs, history, lock files, persistent runtime state → `$XDG_STATE_HOME/<app>/`
+Use application's environment variable overrides to relocate config files.
+Never use symlinks to relocate files.
+
+```bash
+# Wrong
+ln -s "$XDG_CONFIG_HOME/NuGet" "$DOTNET_CLI_HOME/.nuget/NuGet"
+
+# Correct
+export DOTNET_CLI_HOME="$XDG_DATA_HOME/dotnet"
+```
