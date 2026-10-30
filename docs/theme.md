@@ -29,7 +29,8 @@ Color schemes have three: `scheme:`, `cursor:` and `colors:`.
 Each scheme names the cursor theme that contrasts with its canvas:
 `Simp1e` (light fill) in carbon-dark, `Simp1e-Dark` (dark fill) in
 carbon-light.
-`theme switch` applies it to gsettings and re-renders the sway config.
+`theme switch` applies it to gsettings and re-renders the sway and niri
+configs.
 Manifesto installs both.
 
 ### Scheme properties
@@ -172,6 +173,7 @@ Entries whose template or output is gone are pruned.
 | App | Reload |
 |---|---|
 | sway, Hyprland, river | Config reload or theme script |
+| niri | Watches its included theme file |
 | waybar, eww, swaync, swayosd | Signal, reload command or service restart |
 | ghostty | `SIGUSR2` |
 | wezterm | Config touch |
@@ -183,8 +185,10 @@ Apps that read colors only at startup pick up the scheme on their next
 launch.
 
 > [!NOTE]
-> Sway exports `GTK_THEME=carbon-gtk`, an alias that `theme switch`
-> repoints. Running GTK apps keep their theme until restarted.
+> Sway exports `GTK_THEME=carbon-gtk`, niri sets it in its `environment`
+> block.
+> It is an alias that `theme switch` repoints.
+> Running GTK apps keep their theme until restarted.
 
 ## GTK
 
@@ -207,7 +211,8 @@ so lookups at any size resolve to the symbolic glyph.
 
 `theme-desktop` installs the carbon Qt theme from the `carbon-qt` submodule
 for qt6ct.
-Sway, river and Hyprland export `QT_QPA_PLATFORMTHEME=qt6ct`.
+Sway, river and Hyprland export `QT_QPA_PLATFORMTHEME=qt6ct`,
+niri sets it in its `environment` block.
 Manifesto installs `qt6ct`.
 
 | File | Role |
