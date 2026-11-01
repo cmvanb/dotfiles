@@ -1,0 +1,10 @@
+#-------------------------------------------------------------------------------
+# wayrcursor cursor locator
+#
+# The daemon reloads this file on change, so theme switch applies at once.
+#-------------------------------------------------------------------------------
+
+[ring]
+color = "${color_hash('primary_13')}"
+outline = "${color_hash('shadow', 0.7)}"
+outline_width = 0.0
