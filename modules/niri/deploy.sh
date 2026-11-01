@@ -39,8 +39,6 @@ niri::install () {
     template::render_mako "$src/outputs/workspaces.mako" "$XDG_CONFIG_HOME/niri/workspaces"
     template::render_mako "$src/theme.mako.kdl" "$XDG_CONFIG_HOME/niri/theme.kdl"
 
-    # The old module made niri.service want waybar and mako, which fight eww
-    # and swaync.
     rm -rf "$XDG_CONFIG_HOME/systemd/user/niri.service.wants"
 
     fs::ensure_directory "$XDG_CONFIG_HOME/xdg-desktop-portal"

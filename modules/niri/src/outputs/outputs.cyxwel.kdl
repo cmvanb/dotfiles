@@ -19,4 +19,8 @@ output "Iiyama North America PL2790QS 1178024901361" {
 output "DP-4" {
     transform "90"
     position x=2242 y=0
+
+    layout {
+        default-column-width { proportion 1.0; }
+    }
 }

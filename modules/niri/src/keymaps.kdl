@@ -91,11 +91,12 @@ binds {
     // Center window
     Mod+C { center-window; }
 
-    // Toggle window fullscreen
-    Mod+F { fullscreen-window; }
+    // TODO: Needs a better key map.
+    // Toggle window maximized to screen edges
+    Mod+F { switch-preset-column-width; }
 
-    // Reader mode: float, half-width, full-height, centered
-    Mod+Shift+F { spawn-sh "niri msg action move-window-to-floating && niri msg action set-window-width 40% && niri msg action set-window-height 96% && niri msg action center-window"; }
+    // Toggle window fullscreen
+    Mod+Alt+F { fullscreen-window; }
 
     // Close window
     Mod+W { close-window; }
@@ -138,20 +139,8 @@ binds {
     Mod+Shift+N { spawn-sh "$XDG_CONFIG_HOME/niri/scripts/rename-workspace.sh"; }
 
     // Cycle focused workspaces
-    Mod+Shift+H { focus-workspace-up; }
-    Mod+Shift+L { focus-workspace-down; }
-
-    // Focus workspaces numerically (indices are per monitor)
-    Mod+1 { focus-workspace 1; }
-    Mod+2 { focus-workspace 2; }
-    Mod+3 { focus-workspace 3; }
-    Mod+4 { focus-workspace 4; }
-    Mod+5 { focus-workspace 5; }
-    Mod+6 { focus-workspace 6; }
-    Mod+7 { focus-workspace 7; }
-    Mod+8 { focus-workspace 8; }
-    Mod+9 { focus-workspace 9; }
-    Mod+0 { focus-workspace 10; }
+    Mod+Shift+J { focus-workspace-down; }
+    Mod+Shift+K { focus-workspace-up; }
 
     // Focus special workspaces
     Mod+F1 { spawn-sh "$XDG_CONFIG_HOME/niri/scripts/ws.sh focus home"; }
@@ -166,18 +155,6 @@ binds {
     Mod+F10 { spawn-sh "$XDG_CONFIG_HOME/niri/scripts/ws.sh focus ssh"; }
     Mod+F11 { spawn-sh "$XDG_CONFIG_HOME/niri/scripts/ws.sh focus chat"; }
     Mod+F12 { spawn-sh "$XDG_CONFIG_HOME/niri/scripts/ws.sh focus audio"; }
-
-    // Send window to workspace
-    Mod+Ctrl+1 { move-window-to-workspace focus=false 1; }
-    Mod+Ctrl+2 { move-window-to-workspace focus=false 2; }
-    Mod+Ctrl+3 { move-window-to-workspace focus=false 3; }
-    Mod+Ctrl+4 { move-window-to-workspace focus=false 4; }
-    Mod+Ctrl+5 { move-window-to-workspace focus=false 5; }
-    Mod+Ctrl+6 { move-window-to-workspace focus=false 6; }
-    Mod+Ctrl+7 { move-window-to-workspace focus=false 7; }
-    Mod+Ctrl+8 { move-window-to-workspace focus=false 8; }
-    Mod+Ctrl+9 { move-window-to-workspace focus=false 9; }
-    Mod+Ctrl+0 { move-window-to-workspace focus=false 10; }
 
     // Send to special workspaces
     Mod+Ctrl+F1 { spawn-sh "$XDG_CONFIG_HOME/niri/scripts/ws.sh move home"; }
