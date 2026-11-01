@@ -70,6 +70,10 @@ GREEN: Write minimal code to pass → test passes
 
 This is your tracer bullet - proves the path works end-to-end.
 
+Run the test before writing code and read the failure.
+It must fail on the missing behavior, not on a typo, import error, or broken setup.
+Otherwise fix the test first: a wrong RED makes the GREEN meaningless.
+
 ### 3. Incremental Loop
 
 For each remaining behavior:
@@ -85,6 +89,9 @@ Rules:
 - Only enough code to pass current test
 - Don't anticipate future tests
 - Keep tests focused on observable behavior
+- Confirm each RED fails for the intended reason
+- Never edit a test to match a wrong implementation
+- Never weaken an existing assertion unless the expected behavior changed, and state why
 
 ### 4. Refactor
 
@@ -104,6 +111,16 @@ After all tests pass, look for [refactor candidates](refactoring.md):
 [ ] Test describes behavior, not implementation
 [ ] Test uses public interface only
 [ ] Test would survive internal refactor
+[ ] RED failed for the intended reason
 [ ] Code is minimal for this test
 [ ] No speculative features added
+[ ] Existing assertions unchanged
 ```
+
+## Final Response
+
+Report evidence, not just the outcome:
+
+- Each test written, with its RED failure and GREEN pass
+- Final full test run result
+- Any test or assertion changed, and why
