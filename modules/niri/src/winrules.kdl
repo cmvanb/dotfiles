@@ -5,6 +5,17 @@
 // Workspace assignments live in scripts/workspaces.sh.
 //------------------------------------------------------------------------------
 
+// Borders
+//------------------------------------------------------------------------------
+
+window-rule {
+    // GTK4 lacks xdg-decoration, so niri would draw the border as a solid
+    // background that shows through Ghostty's background-opacity.
+    match app-id=r#"^com\.mitchellh\.ghostty$"#
+
+    draw-border-with-background false
+}
+
 // Floating windows
 //------------------------------------------------------------------------------
 
