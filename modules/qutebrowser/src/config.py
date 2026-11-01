@@ -311,6 +311,29 @@ c.colors.prompts.fg = theme.color_hash('text_12')
 c.colors.prompts.selected.bg = theme.color_hash('primary_6')
 c.colors.prompts.selected.fg = theme.color_hash('gray_15')
 
+# Tooltip component
+#-------------------------------------------------------------------------------
+
+c.fonts.tooltip = f"{theme.font('font_size_xsmall')}pt {theme.font('font_sans')}"
+
+c.colors.tooltip.bg = theme.color_hash('system_bg')
+c.colors.tooltip.fg = theme.color_hash('text_12')
+
+# Padding and border have no setting; extend the window stylesheet, which
+# cascades to tooltips. Windows read it at creation, so changes need a restart.
+# Guarded because `:config-source` re-runs this file.
+from qutebrowser.mainwindow.mainwindow import MainWindow
+
+TOOLTIP_STYLESHEET = """
+    QToolTip {
+        border: none;
+        padding: 1px 3px;
+    }
+"""
+
+if TOOLTIP_STYLESHEET not in MainWindow.STYLESHEET:
+    MainWindow.STYLESHEET += TOOLTIP_STYLESHEET
+
 # Website color settings
 #-------------------------------------------------------------------------------
 
