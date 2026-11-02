@@ -81,8 +81,15 @@
 ;; Status modules
 ;;------------------------------------------------------------------------------
 
+;; Optional module, collapsed while `shown` is false. Opening a window runs
+;; GTK's show_all, which briefly reveals `:visible false` widgets and would
+;; shift the popup's panels. A revealer keeps its collapsed size.
+(defwidget optional [shown]
+  (revealer :reveal shown :transition "slideleft" :duration "0ms"
+    (children)))
+
 (defwidget tailscale-module [output]
-  (box :visible {tailscale.up}
+  (optional :shown {tailscale.up}
     (module :name "tailscale" :output output :tooltip "Tailscale · ${tailscale.ip}"
       (icon :name "tailscale-logo-symbolic" :class "tailscale"))))
 
@@ -113,7 +120,7 @@
     (label :yalign 1 :text "${audio.volume}%")))
 
 (defwidget battery-module [output]
-  (box :visible {battery.present}
+  (optional :shown {battery.present}
     (module :name "battery" :output output
             :class {battery.status == "Charging" || battery.status == "Not charging" ? "charging"
                     : battery.status == "Full" ? "full"
