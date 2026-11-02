@@ -4,17 +4,18 @@ Profiles declare which modules to install for a specific host or role. They are 
 
 ## Format
 
-```
-profile.extends=<parents>   # space-separated parent profile names (optional)
-profile.wm=<wm>             # window manager name (optional)
+| Key | Value |
+|---|---|
+| `profile.extends` | Parent profiles |
+| `profile.wm` | Window manager |
+| `modules.lib` | Library modules, installed first |
+| `modules.theme` | Theme modules, installed second |
+| `modules.install` | Application modules, installed last |
+| `modules.enable` | Modules whose services are enabled |
 
-modules.lib=<modules>       # library modules — installed first
-modules.theme=<modules>     # theme modules — installed second
-modules.install=<modules>   # application modules — installed third
-modules.enable=<modules>    # systemd user services to enable
-```
-
-Comments and blank lines are ignored.
+Lists are space-separated.
+Every key is optional.
+Lines starting with `#` are comments.
 
 ## Inheritance
 
