@@ -21,6 +21,6 @@ dotnet::install () {
 dotnet::uninstall () {
     echo "└> Uninstalling dotnet configuration."
 
-    rm -f "$XDG_CONFIG_HOME/bash/conf.d/dotnet.sh"
-    rm -f "$XDG_CONFIG_HOME/fish/conf.d/dotnet.fish"
+    fs::remove "$XDG_CONFIG_HOME/bash/conf.d/dotnet.sh"
+    fs::remove "$XDG_CONFIG_HOME/fish/conf.d/dotnet.fish"
 }

@@ -26,5 +26,5 @@ justpager::install () {
 justpager::uninstall () {
     echo "└> Uninstalling justpager configuration."
 
-    rm -r "$XDG_CONFIG_HOME/justpager"
+    fs::remove "$XDG_CONFIG_HOME/justpager"
 }

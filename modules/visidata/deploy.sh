@@ -25,5 +25,5 @@ visidata::install () {
 visidata::uninstall () {
     echo "└> Uninstalling visidata configuration."
 
-    rm -f "$XDG_CONFIG_HOME/visidata/config.py"
+    fs::remove "$XDG_CONFIG_HOME/visidata/config.py"
 }

@@ -22,5 +22,5 @@ fuzzel::install () {
 fuzzel::uninstall () {
     echo "└> Uninstalling fuzzel configuration."
 
-    rm -r "$XDG_CONFIG_HOME/fuzzel"
+    fs::remove "$XDG_CONFIG_HOME/fuzzel"
 }

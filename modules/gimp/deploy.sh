@@ -21,5 +21,5 @@ gimp::install () {
 gimp::uninstall () {
     echo "└> Uninstalling gimp configuration."
 
-    rm "$XDG_CONFIG_HOME/GIMP/3.0/gimprc"
+    fs::remove "$XDG_CONFIG_HOME/GIMP/3.0/gimprc"
 }

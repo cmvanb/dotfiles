@@ -29,12 +29,12 @@ scripts-system-utils::uninstall () {
     local src="$base_dir/modules/scripts-system-utils/src"
 
     if fs::same_file "$XDG_BIN_HOME/init" "$src/init.basic"; then
-        rm "$XDG_BIN_HOME/init"
+        fs::remove "$XDG_BIN_HOME/init"
     fi
-    rm "$XDG_BIN_HOME/logout"
-    rm "$XDG_BIN_HOME/reboot"
-    rm "$XDG_BIN_HOME/windows"
-    rm "$XDG_BIN_HOME/windows-entry"
-    rm "$XDG_BIN_HOME/shutdown"
-    rm "$XDG_BIN_HOME/suspend"
+    fs::remove "$XDG_BIN_HOME/logout"
+    fs::remove "$XDG_BIN_HOME/reboot"
+    fs::remove "$XDG_BIN_HOME/windows"
+    fs::remove "$XDG_BIN_HOME/windows-entry"
+    fs::remove "$XDG_BIN_HOME/shutdown"
+    fs::remove "$XDG_BIN_HOME/suspend"
 }

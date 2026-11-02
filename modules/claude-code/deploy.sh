@@ -29,10 +29,10 @@ claude-code::install() {
 claude-code::uninstall() {
     echo "└> Uninstalling Claude Code configuration."
 
-    rm "$XDG_CONFIG_HOME/claude/settings.json"
-    rm "$XDG_CONFIG_HOME/claude/CLAUDE.md"
-    rm "$XDG_CONFIG_HOME/claude/skills"
-    rm -f "$XDG_CONFIG_HOME/bash/conf.d/claude-code.sh"
-    rm -f "$XDG_CONFIG_HOME/fish/conf.d/claude-code.fish"
-    rm -rf "$XDG_CONFIG_HOME/claude/themes"
+    fs::remove "$XDG_CONFIG_HOME/claude/settings.json"
+    fs::remove "$XDG_CONFIG_HOME/claude/CLAUDE.md"
+    fs::remove "$XDG_CONFIG_HOME/claude/skills"
+    fs::remove "$XDG_CONFIG_HOME/bash/conf.d/claude-code.sh"
+    fs::remove "$XDG_CONFIG_HOME/fish/conf.d/claude-code.fish"
+    fs::remove "$XDG_CONFIG_HOME/claude/themes"
 }

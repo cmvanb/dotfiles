@@ -23,8 +23,7 @@ npm::install () {
 npm::uninstall () {
     echo "└> Uninstalling npm configuration."
 
-    rm -f "$XDG_CONFIG_HOME/npm/npmrc"
-    rmdir "$XDG_CONFIG_HOME/npm" 2>/dev/null || true
-    rm -f "$XDG_CONFIG_HOME/bash/conf.d/npm.sh"
-    rm -f "$XDG_CONFIG_HOME/fish/conf.d/npm.fish"
+    fs::remove "$XDG_CONFIG_HOME/npm/npmrc"
+    fs::remove "$XDG_CONFIG_HOME/bash/conf.d/npm.sh"
+    fs::remove "$XDG_CONFIG_HOME/fish/conf.d/npm.fish"
 }

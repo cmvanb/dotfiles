@@ -22,8 +22,7 @@ wayrcursor::install () {
 wayrcursor::uninstall () {
     echo "└> Uninstalling wayrcursor configuration."
 
-    rm "$XDG_CONFIG_HOME/wayrcursor/config.toml"
-    rmdir --ignore-fail-on-non-empty "$XDG_CONFIG_HOME/wayrcursor"
+    fs::remove "$XDG_CONFIG_HOME/wayrcursor/config.toml"
 }
 
 wayrcursor::enable () {

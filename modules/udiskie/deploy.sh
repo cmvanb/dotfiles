@@ -21,7 +21,7 @@ udiskie::install () {
 udiskie::uninstall () {
     echo "└> Uninstalling udiskie configuration."
 
-    rm "$XDG_CONFIG_HOME/systemd/user/udiskie.service"
+    fs::remove "$XDG_CONFIG_HOME/systemd/user/udiskie.service"
 }
 
 udiskie::enable () {

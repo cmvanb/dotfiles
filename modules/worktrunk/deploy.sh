@@ -17,5 +17,5 @@ worktrunk::install() {
 worktrunk::uninstall() {
     echo "└> Uninstalling worktrunk configuration."
 
-    rm -f "$XDG_CONFIG_HOME/worktrunk/config.toml"
+    fs::remove "$XDG_CONFIG_HOME/worktrunk/config.toml"
 }

@@ -21,5 +21,5 @@ xdg-mimetype-associations::install () {
 xdg-mimetype-associations::uninstall () {
     echo "└> Uninstalling xdg-mimetype-associations configuration."
 
-    rm "$XDG_CONFIG_HOME/mimeapps.list"
+    fs::remove "$XDG_CONFIG_HOME/mimeapps.list"
 }

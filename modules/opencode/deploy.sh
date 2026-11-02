@@ -26,9 +26,9 @@ opencode::install () {
 opencode::uninstall () {
     echo "└> Uninstalling opencode configuration."
 
-    rm "$XDG_CONFIG_HOME/opencode/opencode.json"
-    rm "$XDG_CONFIG_HOME/opencode/tui.json"
-    rm "$XDG_CONFIG_HOME/opencode/AGENTS.md"
-    rm "$XDG_CONFIG_HOME/opencode/skills"
-    rm "$XDG_CONFIG_HOME/opencode/themes/carbon.json"
+    fs::remove "$XDG_CONFIG_HOME/opencode/opencode.json"
+    fs::remove "$XDG_CONFIG_HOME/opencode/tui.json"
+    fs::remove "$XDG_CONFIG_HOME/opencode/AGENTS.md"
+    fs::remove "$XDG_CONFIG_HOME/opencode/skills"
+    fs::remove "$XDG_CONFIG_HOME/opencode/themes/carbon.json"
 }

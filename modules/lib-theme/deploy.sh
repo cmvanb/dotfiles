@@ -24,6 +24,6 @@ lib-theme::install () {
 lib-theme::uninstall () {
     echo "└> Uninstalling theme libraries."
 
-    rm -rf "$XDG_OPT_HOME/theme"
-    rm -f "$XDG_BIN_HOME/theme"
+    fs::remove "$XDG_OPT_HOME/theme"
+    fs::remove "$XDG_BIN_HOME/theme"
 }

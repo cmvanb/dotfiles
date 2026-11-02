@@ -30,11 +30,10 @@ pipewire::install () {
 pipewire::uninstall () {
     echo "└> Uninstalling pipewire configuration."
 
-    rm -f "$XDG_CONFIG_HOME/alsa/asoundrc"
-    rm -f "$XDG_DATA_HOME/icons/hicolor/scalable/apps/pavucontrol-mixer.svg"
+    fs::remove "$XDG_CONFIG_HOME/alsa/asoundrc"
+    fs::remove "$XDG_DATA_HOME/icons/hicolor/scalable/apps/pavucontrol-mixer.svg"
     gtk-update-icon-cache -q -f -t "$XDG_DATA_HOME/icons/hicolor"
-    rm -f "$XDG_DATA_HOME/applications/org.pulseaudio.pavucontrol.desktop"
-    rmdir --ignore-fail-on-non-empty "$XDG_CONFIG_HOME/alsa"
+    fs::remove "$XDG_DATA_HOME/applications/org.pulseaudio.pavucontrol.desktop"
 }
 
 pipewire::enable () {

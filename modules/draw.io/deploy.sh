@@ -22,5 +22,5 @@ draw.io::install () {
 draw.io::uninstall () {
     echo "└> Uninstalling draw.io configuration."
 
-    rm "$XDG_DATA_HOME/applications/draw.io.desktop"
+    fs::remove "$XDG_DATA_HOME/applications/draw.io.desktop"
 }

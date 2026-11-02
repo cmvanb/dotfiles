@@ -25,7 +25,7 @@ zathura::install () {
 zathura::uninstall () {
     echo "└> Uninstalling zathura configuration."
 
-    rm -r "$XDG_CONFIG_HOME/zathura"
+    fs::remove "$XDG_CONFIG_HOME/zathura"
 
-    rm "$XDG_DATA_HOME/applications/org.pwmt.zathura.desktop"
+    fs::remove "$XDG_DATA_HOME/applications/org.pwmt.zathura.desktop"
 }

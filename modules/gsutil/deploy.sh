@@ -25,7 +25,7 @@ gsutil::install () {
 gsutil::uninstall () {
     echo "└> Uninstalling gsutil configuration."
 
-    rm -r "$XDG_CONFIG_HOME/boto"
-    rm -f "$XDG_CONFIG_HOME/bash/conf.d/gsutil.sh"
-    rm -f "$XDG_CONFIG_HOME/fish/conf.d/gsutil.fish"
+    fs::remove "$XDG_CONFIG_HOME/boto"
+    fs::remove "$XDG_CONFIG_HOME/bash/conf.d/gsutil.sh"
+    fs::remove "$XDG_CONFIG_HOME/fish/conf.d/gsutil.fish"
 }

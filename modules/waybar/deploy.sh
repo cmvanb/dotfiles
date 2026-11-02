@@ -49,7 +49,7 @@ waybar::install () {
 waybar::uninstall () {
     echo "└> Uninstalling waybar configuration."
 
-    rm "$XDG_CONFIG_HOME/waybar"
-    rm "$XDG_SCRIPTS_HOME/restart-waybar.sh"
-    rm "$XDG_SCRIPTS_HOME/toggle-waybar.sh"
+    fs::remove "$XDG_CONFIG_HOME/waybar"
+    fs::remove "$XDG_SCRIPTS_HOME/restart-waybar.sh"
+    fs::remove "$XDG_SCRIPTS_HOME/toggle-waybar.sh"
 }

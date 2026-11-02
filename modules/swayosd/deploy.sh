@@ -31,9 +31,8 @@ swayosd::install() {
 swayosd::uninstall() {
     echo "└> Uninstalling swayosd configuration."
 
-    rm "$XDG_CONFIG_HOME/swayosd/style.css"
-    rmdir --ignore-fail-on-non-empty "$XDG_CONFIG_HOME/swayosd"
-    rm "$XDG_CONFIG_HOME/systemd/user/swayosd-server.service"
+    fs::remove "$XDG_CONFIG_HOME/swayosd/style.css"
+    fs::remove "$XDG_CONFIG_HOME/systemd/user/swayosd-server.service"
 }
 
 swayosd::enable() {

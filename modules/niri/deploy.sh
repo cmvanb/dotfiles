@@ -57,10 +57,10 @@ niri::uninstall () {
 
     local src="$base_dir/modules/niri/src"
 
-    rm -r "$XDG_CONFIG_HOME/niri"
-    rm "$XDG_CONFIG_HOME/xdg-desktop-portal/niri-portals.conf"
+    fs::remove "$XDG_CONFIG_HOME/niri"
+    fs::remove "$XDG_CONFIG_HOME/xdg-desktop-portal/niri-portals.conf"
 
     if fs::same_file "$XDG_BIN_HOME/init" "$src/init.niri"; then
-        rm "$XDG_BIN_HOME/init"
+        fs::remove "$XDG_BIN_HOME/init"
     fi
 }

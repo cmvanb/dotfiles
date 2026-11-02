@@ -22,5 +22,5 @@ fontconfig::install () {
 fontconfig::uninstall () {
     echo "└> Uninstalling fontconfig configuration."
 
-    rm -r "$XDG_CONFIG_HOME/fontconfig"
+    fs::remove "$XDG_CONFIG_HOME/fontconfig"
 }

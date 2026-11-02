@@ -21,5 +21,5 @@ discord::install () {
 discord::uninstall () {
     echo "└> Uninstalling discord configuration."
 
-    rm "$XDG_DATA_HOME/applications/discord.desktop"
+    fs::remove "$XDG_DATA_HOME/applications/discord.desktop"
 }

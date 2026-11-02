@@ -21,6 +21,6 @@ gnupg::install () {
 gnupg::uninstall () {
     echo "└> Uninstalling gnupg configuration."
 
-    rm -f "$XDG_CONFIG_HOME/bash/conf.d/gnupg.sh"
-    rm -f "$XDG_CONFIG_HOME/fish/conf.d/gnupg.fish"
+    fs::remove "$XDG_CONFIG_HOME/bash/conf.d/gnupg.sh"
+    fs::remove "$XDG_CONFIG_HOME/fish/conf.d/gnupg.fish"
 }

@@ -42,11 +42,11 @@ eww::install () {
 eww::uninstall () {
     echo "└> Uninstalling eww configuration."
 
-    rm -r "$XDG_CONFIG_HOME/eww"
-    rm "$XDG_SCRIPTS_HOME/eww-bar.sh"
+    fs::remove "$XDG_CONFIG_HOME/eww"
+    fs::remove "$XDG_SCRIPTS_HOME/eww-bar.sh"
     local icon
     for icon in "$base_dir"/modules/eww/src/icons/*.svg; do
-        rm "$XDG_DATA_HOME/icons/hicolor/scalable/apps/$(basename "$icon")"
+        fs::remove "$XDG_DATA_HOME/icons/hicolor/scalable/apps/$(basename "$icon")"
     done
     gtk-update-icon-cache -q -f -t "$XDG_DATA_HOME/icons/hicolor"
 }

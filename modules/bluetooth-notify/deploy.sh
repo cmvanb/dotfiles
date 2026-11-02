@@ -24,8 +24,8 @@ bluetooth-notify::install () {
 bluetooth-notify::uninstall () {
     echo "└> Uninstalling bluetooth-notify configuration."
 
-    rm "$XDG_SCRIPTS_HOME/bluetooth-notify.sh"
-    rm "$XDG_CONFIG_HOME/systemd/user/bluetooth-notify.service"
+    fs::remove "$XDG_SCRIPTS_HOME/bluetooth-notify.sh"
+    fs::remove "$XDG_CONFIG_HOME/systemd/user/bluetooth-notify.service"
 }
 
 bluetooth-notify::enable () {

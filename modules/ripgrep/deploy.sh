@@ -27,9 +27,9 @@ ripgrep::install () {
 ripgrep::uninstall () {
     echo "└> Uninstalling ripgrep configuration."
 
-    rm -r "$XDG_CONFIG_HOME/ripgrep"
+    fs::remove "$XDG_CONFIG_HOME/ripgrep"
 
     echo "└> Uninstalling ripgrep shortcuts."
 
-    rm "$XDG_BIN_HOME/rg"
+    fs::remove "$XDG_BIN_HOME/rg"
 }

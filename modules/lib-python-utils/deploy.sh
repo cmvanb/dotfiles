@@ -6,6 +6,8 @@
 script_dir=$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)
 base_dir=$(realpath "$script_dir/../..")
 
+source "$base_dir/lib/fs.sh"
+
 lib-python-utils::install () {
     echo "└> Installing Python utility libraries."
 
@@ -27,6 +29,6 @@ lib-python-utils::uninstall () {
     local venv_dir="${XDG_OPT_HOME:-$HOME/.local/opt}/python-utils"
     local bin_dir="${XDG_BIN_HOME:-$HOME/.local/bin}"
 
-    rm -f "$bin_dir/render-mako"
-    rm -rf "$venv_dir"
+    fs::remove "$bin_dir/render-mako"
+    fs::remove "$venv_dir"
 }

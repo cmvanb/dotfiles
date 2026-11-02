@@ -21,5 +21,5 @@ wezterm::install () {
 wezterm::uninstall () {
     echo "└> Uninstalling wezterm configuration."
 
-    rm -r "$XDG_CONFIG_HOME/wezterm"
+    fs::remove "$XDG_CONFIG_HOME/wezterm"
 }

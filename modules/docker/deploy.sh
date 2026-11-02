@@ -21,6 +21,6 @@ docker::install () {
 docker::uninstall () {
     echo "└> Uninstalling docker configuration."
 
-    rm -f "$XDG_CONFIG_HOME/bash/conf.d/docker.sh"
-    rm -f "$XDG_CONFIG_HOME/fish/conf.d/docker.fish"
+    fs::remove "$XDG_CONFIG_HOME/bash/conf.d/docker.sh"
+    fs::remove "$XDG_CONFIG_HOME/fish/conf.d/docker.fish"
 }

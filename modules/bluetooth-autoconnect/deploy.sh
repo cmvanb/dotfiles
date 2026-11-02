@@ -21,7 +21,7 @@ bluetooth-autoconnect::install () {
 bluetooth-autoconnect::uninstall () {
     echo "└> Uninstalling bluetooth-autoconnect configuration."
 
-    rm "$XDG_CONFIG_HOME/systemd/user/bluetooth-autoconnect.service"
+    fs::remove "$XDG_CONFIG_HOME/systemd/user/bluetooth-autoconnect.service"
 }
 
 bluetooth-autoconnect::enable () {

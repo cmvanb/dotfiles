@@ -23,8 +23,8 @@ scripts-markdown::install () {
 scripts-markdown::uninstall () {
     echo "└> Uninstalling markdown scripts."
 
-    rm "$XDG_SCRIPTS_HOME/markdown-to-html.sh"
-    rm "$XDG_SCRIPTS_HOME/preview-markdown.sh"
-    rm "$XDG_SCRIPTS_HOME/preview-server.py"
-    rm "$XDG_SCRIPTS_HOME/svg-inject-style.py"
+    fs::remove "$XDG_SCRIPTS_HOME/markdown-to-html.sh"
+    fs::remove "$XDG_SCRIPTS_HOME/preview-markdown.sh"
+    fs::remove "$XDG_SCRIPTS_HOME/preview-server.py"
+    fs::remove "$XDG_SCRIPTS_HOME/svg-inject-style.py"
 }

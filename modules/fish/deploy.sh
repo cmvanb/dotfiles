@@ -48,5 +48,5 @@ fish::install () {
 fish::uninstall () {
     echo "└> Uninstalling fish configuration."
 
-    rm -r "$XDG_CONFIG_HOME/fish"
+    fs::remove "$XDG_CONFIG_HOME/fish"
 }

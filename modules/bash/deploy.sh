@@ -36,6 +36,6 @@ bash::install () {
 bash::uninstall () {
     echo "└> Uninstalling bash configuration."
 
-    rm -rf "$XDG_CONFIG_HOME/bash"
+    fs::remove "$XDG_CONFIG_HOME/bash"
 }
 

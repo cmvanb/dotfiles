@@ -20,5 +20,5 @@ readline::install () {
 readline::uninstall () {
     echo "└> Uninstalling readline configuration."
 
-    rm "$XDG_CONFIG_HOME/readline"
+    fs::remove "$XDG_CONFIG_HOME/readline"
 }

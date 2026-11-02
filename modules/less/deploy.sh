@@ -23,7 +23,7 @@ less::install () {
 less::uninstall () {
     echo "└> Uninstalling less configuration."
 
-    rm "$XDG_CONFIG_HOME/lesskey"
-    rm -f "$XDG_CONFIG_HOME/bash/conf.d/less.sh"
-    rm -f "$XDG_CONFIG_HOME/fish/conf.d/less.fish"
+    fs::remove "$XDG_CONFIG_HOME/lesskey"
+    fs::remove "$XDG_CONFIG_HOME/bash/conf.d/less.sh"
+    fs::remove "$XDG_CONFIG_HOME/fish/conf.d/less.fish"
 }

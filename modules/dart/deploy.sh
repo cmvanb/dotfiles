@@ -21,6 +21,6 @@ dart::install () {
 dart::uninstall () {
     echo "└> Uninstalling dart configuration."
 
-    rm -f "$XDG_CONFIG_HOME/bash/conf.d/dart.sh"
-    rm -f "$XDG_CONFIG_HOME/fish/conf.d/dart.fish"
+    fs::remove "$XDG_CONFIG_HOME/bash/conf.d/dart.sh"
+    fs::remove "$XDG_CONFIG_HOME/fish/conf.d/dart.fish"
 }

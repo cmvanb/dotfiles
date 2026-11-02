@@ -47,19 +47,19 @@ theme-base::install () {
 theme-base::uninstall () {
     echo "└> Uninstalling theme base configuration."
 
-    rm -f "$XDG_CONFIG_HOME/theme/carbon-dark.yaml"
-    rm -f "$XDG_CONFIG_HOME/theme/carbon-light.yaml"
-    rm -f "$XDG_CONFIG_HOME/theme/cursor.yaml"
-    rm -f "$XDG_CONFIG_HOME/theme/colors.yaml"
-    rm -f "$XDG_CONFIG_HOME/theme/fonts.yaml"
-    rm -f "$XDG_CONFIG_HOME/theme/host.yaml"
+    fs::remove "$XDG_CONFIG_HOME/theme/carbon-dark.yaml"
+    fs::remove "$XDG_CONFIG_HOME/theme/carbon-light.yaml"
+    fs::remove "$XDG_CONFIG_HOME/theme/cursor.yaml"
+    fs::remove "$XDG_CONFIG_HOME/theme/colors.yaml"
+    fs::remove "$XDG_CONFIG_HOME/theme/fonts.yaml"
+    fs::remove "$XDG_CONFIG_HOME/theme/host.yaml"
 
-    rm -f "$XDG_CACHE_HOME/theme/theme-data.lua"
-    rm -f "$XDG_CACHE_HOME/theme/theme-data.sh"
-    rm -f "$XDG_CACHE_HOME/theme/theme-data.fish"
+    fs::remove "$XDG_CACHE_HOME/theme/theme-data.lua"
+    fs::remove "$XDG_CACHE_HOME/theme/theme-data.sh"
+    fs::remove "$XDG_CACHE_HOME/theme/theme-data.fish"
 
-    rm -f "$XDG_CONFIG_HOME/theme/dircolors"
-    rm -f "$XDG_CONFIG_HOME/theme/eza-colors"
-    rm -f "$XDG_CONFIG_HOME/theme/carbon.pygments.theme"
-    rm -rf "$XDG_CONFIG_HOME/theme/forgejo"
+    fs::remove "$XDG_CONFIG_HOME/theme/dircolors"
+    fs::remove "$XDG_CONFIG_HOME/theme/eza-colors"
+    fs::remove "$XDG_CONFIG_HOME/theme/carbon.pygments.theme"
+    fs::remove "$XDG_CONFIG_HOME/theme/forgejo"
 }

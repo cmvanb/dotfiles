@@ -28,5 +28,5 @@ broot::install () {
 broot::uninstall () {
     echo "└> Uninstalling broot configuration."
 
-    rm -r "$XDG_CONFIG_HOME/broot"
+    fs::remove "$XDG_CONFIG_HOME/broot"
 }

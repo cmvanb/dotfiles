@@ -24,5 +24,5 @@ vt::install () {
 vt::uninstall () {
     echo "└> Uninstalling virtual terminal configuration."
 
-    rm "$XDG_CONFIG_HOME/vt"
+    fs::remove "$XDG_CONFIG_HOME/vt"
 }

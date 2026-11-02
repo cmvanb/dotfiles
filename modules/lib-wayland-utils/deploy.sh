@@ -21,5 +21,5 @@ lib-wayland-utils::install () {
 lib-wayland-utils::uninstall () {
     echo "└> Uninstalling wayland utility libraries."
 
-    rm -rf "$XDG_OPT_HOME/wayland-utils"
+    fs::remove "$XDG_OPT_HOME/wayland-utils"
 }

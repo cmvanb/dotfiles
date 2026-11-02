@@ -21,6 +21,6 @@ ansible::install () {
 ansible::uninstall () {
     echo "└> Uninstalling ansible configuration."
 
-    rm -f "$XDG_CONFIG_HOME/bash/conf.d/ansible.sh"
-    rm -f "$XDG_CONFIG_HOME/fish/conf.d/ansible.fish"
+    fs::remove "$XDG_CONFIG_HOME/bash/conf.d/ansible.sh"
+    fs::remove "$XDG_CONFIG_HOME/fish/conf.d/ansible.fish"
 }

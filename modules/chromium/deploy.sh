@@ -49,16 +49,16 @@ chromium::install () {
 chromium::uninstall () {
     echo "└> Uninstalling chromium configuration."
 
-    rm "$XDG_DATA_HOME/applications/chromium.desktop"
-    rm "$XDG_DATA_HOME/applications/netflix.desktop"
-    rm "$XDG_DATA_HOME/icons/hicolor/64x64/apps/netflix.png"
-    rm "$XDG_DATA_HOME/icons/hicolor/scalable/apps/chromium.svg"
-    rm "$XDG_DATA_HOME/icons/hicolor/scalable/apps/chromium-browser.svg"
-    rm "$XDG_CONFIG_HOME/chromium/External Extensions"
-    rm -rf "$XDG_DATA_HOME/themes/carbon-chromium-gtk"
-    rm -rf "$XDG_DATA_HOME/fonts/nimbus-sans-chromium"
+    fs::remove "$XDG_DATA_HOME/applications/chromium.desktop"
+    fs::remove "$XDG_DATA_HOME/applications/netflix.desktop"
+    fs::remove "$XDG_DATA_HOME/icons/hicolor/64x64/apps/netflix.png"
+    fs::remove "$XDG_DATA_HOME/icons/hicolor/scalable/apps/chromium.svg"
+    fs::remove "$XDG_DATA_HOME/icons/hicolor/scalable/apps/chromium-browser.svg"
+    fs::remove "$XDG_CONFIG_HOME/chromium/External Extensions"
+    fs::remove "$XDG_DATA_HOME/themes/carbon-chromium-gtk"
+    fs::remove "$XDG_DATA_HOME/fonts/nimbus-sans-chromium"
     fc-cache
-    rm "$XDG_CONFIG_HOME/chromium-flags.conf"
+    fs::remove "$XDG_CONFIG_HOME/chromium-flags.conf"
 
     "$base_dir/modules/chromium/src/seed-default-zoom.py" "$XDG_CONFIG_HOME/chromium/Default" \
         --clear || true

@@ -22,7 +22,7 @@ scripts-misc::install () {
 scripts-misc::uninstall () {
     echo "└> Uninstalling miscellaneous scripts."
 
-    rm "$XDG_SCRIPTS_HOME/count-command-usage.sh"
-    rm "$XDG_SCRIPTS_HOME/matrix.sh"
-    rm "$XDG_SCRIPTS_HOME/show-webcam.sh"
+    fs::remove "$XDG_SCRIPTS_HOME/count-command-usage.sh"
+    fs::remove "$XDG_SCRIPTS_HOME/matrix.sh"
+    fs::remove "$XDG_SCRIPTS_HOME/show-webcam.sh"
 }

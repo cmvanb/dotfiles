@@ -176,27 +176,25 @@ theme-desktop::install () {
 theme-desktop::uninstall () {
     echo "└> Uninstalling theme desktop configuration."
 
-    rm -f "$XDG_SCRIPTS_HOME/generate-color-gradient-palette.py"
-    rm -f "$XDG_SCRIPTS_HOME/generate-contrast-mirror-palette.py"
+    fs::remove "$XDG_SCRIPTS_HOME/generate-color-gradient-palette.py"
+    fs::remove "$XDG_SCRIPTS_HOME/generate-contrast-mirror-palette.py"
 
-    rm -f "$XDG_CONFIG_HOME/gtk-3.0/settings.ini"
-    rm -f "$XDG_CONFIG_HOME/gtk-4.0/gtk.css"
-    rm -f "$XDG_CONFIG_HOME/gtk-4.0/settings.ini"
+    fs::remove "$XDG_CONFIG_HOME/gtk-3.0/settings.ini"
+    fs::remove "$XDG_CONFIG_HOME/gtk-4.0/gtk.css"
+    fs::remove "$XDG_CONFIG_HOME/gtk-4.0/settings.ini"
 
-    rm -f "$XDG_DATA_HOME/themes/carbon-gtk"
+    fs::remove "$XDG_DATA_HOME/themes/carbon-gtk"
 
-    rm -f "$XDG_CONFIG_HOME/qt6ct/qt6ct.conf"
-    rmdir "$XDG_CONFIG_HOME/qt6ct" 2>/dev/null || true
+    fs::remove "$XDG_CONFIG_HOME/qt6ct/qt6ct.conf"
 
     local variant
     for variant in "${theme_desktop_variants[@]}"; do
-        rm -rf "$XDG_DATA_HOME/icons/carbon-$variant"
-        rm -rf "$XDG_DATA_HOME/icons/carbon-$variant-qt"
-        rm -rf "$XDG_DATA_HOME/themes/carbon-$variant-gtk"
-        rm -f "$XDG_DATA_HOME/qt6ct/colors/carbon-$variant.conf"
-        rm -f "$XDG_DATA_HOME/qt6ct/qss/carbon-$variant.qss"
+        fs::remove "$XDG_DATA_HOME/icons/carbon-$variant"
+        fs::remove "$XDG_DATA_HOME/icons/carbon-$variant-qt"
+        fs::remove "$XDG_DATA_HOME/themes/carbon-$variant-gtk"
+        fs::remove "$XDG_DATA_HOME/qt6ct/colors/carbon-$variant.conf"
+        fs::remove "$XDG_DATA_HOME/qt6ct/qss/carbon-$variant.qss"
     done
-    rmdir "$XDG_DATA_HOME/qt6ct/colors" "$XDG_DATA_HOME/qt6ct/qss" "$XDG_DATA_HOME/qt6ct" 2>/dev/null || true
 
     gsettings reset org.gnome.desktop.interface gtk-theme
     gsettings reset org.gnome.desktop.interface color-scheme

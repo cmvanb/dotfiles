@@ -28,7 +28,7 @@ swaync::install() {
 swaync::uninstall() {
     echo "└> Uninstalling swaync configuration."
 
-    rm -r "$XDG_CONFIG_HOME/swaync"
+    fs::remove "$XDG_CONFIG_HOME/swaync"
 }
 
 swaync::enable() {

@@ -20,5 +20,5 @@ gitui::install () {
 gitui::uninstall () {
     echo "└> Uninstalling gitui configuration."
 
-    rm "$XDG_CONFIG_HOME/gitui"
+    fs::remove "$XDG_CONFIG_HOME/gitui"
 }

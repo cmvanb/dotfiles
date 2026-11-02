@@ -24,6 +24,6 @@ git::install () {
 git::uninstall () {
     echo "└> Uninstalling git configuration."
 
-    rm "$XDG_CONFIG_HOME/git/config"
-    rm "$XDG_CONFIG_HOME/git/ignore"
+    fs::remove "$XDG_CONFIG_HOME/git/config"
+    fs::remove "$XDG_CONFIG_HOME/git/ignore"
 }

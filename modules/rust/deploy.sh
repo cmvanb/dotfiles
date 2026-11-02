@@ -21,6 +21,6 @@ rust::install () {
 rust::uninstall () {
     echo "└> Uninstalling rust configuration."
 
-    rm -f "$XDG_CONFIG_HOME/bash/conf.d/rust.sh"
-    rm -f "$XDG_CONFIG_HOME/fish/conf.d/rust.fish"
+    fs::remove "$XDG_CONFIG_HOME/bash/conf.d/rust.sh"
+    fs::remove "$XDG_CONFIG_HOME/fish/conf.d/rust.fish"
 }

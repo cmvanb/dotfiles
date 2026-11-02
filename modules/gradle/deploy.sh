@@ -21,6 +21,6 @@ gradle::install () {
 gradle::uninstall () {
     echo "└> Uninstalling gradle configuration."
 
-    rm -f "$XDG_CONFIG_HOME/bash/conf.d/gradle.sh"
-    rm -f "$XDG_CONFIG_HOME/fish/conf.d/gradle.fish"
+    fs::remove "$XDG_CONFIG_HOME/bash/conf.d/gradle.sh"
+    fs::remove "$XDG_CONFIG_HOME/fish/conf.d/gradle.fish"
 }

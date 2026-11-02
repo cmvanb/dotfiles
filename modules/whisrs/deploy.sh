@@ -51,13 +51,11 @@ whisrs::uninstall () {
     local whisrs_model
     whisrs_model=$(whisrs::model)
 
-    rm "$XDG_CONFIG_HOME/whisrs/config.toml"
-    rmdir --ignore-fail-on-non-empty "$XDG_CONFIG_HOME/whisrs"
+    fs::remove "$XDG_CONFIG_HOME/whisrs/config.toml"
 
     echo "└> Uninstalling whisper model: $whisrs_model"
 
-    rm -f "$XDG_DATA_HOME/whisrs/models/$whisrs_model"
-    rmdir --ignore-fail-on-non-empty "$XDG_DATA_HOME/whisrs/models" "$XDG_DATA_HOME/whisrs"
+    fs::remove "$XDG_DATA_HOME/whisrs/models/$whisrs_model"
 }
 
 whisrs::enable () {

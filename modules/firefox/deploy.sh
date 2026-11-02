@@ -21,5 +21,5 @@ firefox::install () {
 firefox::uninstall () {
     echo "└> Uninstalling firefox configuration."
 
-    rm -r "$XDG_DATA_HOME/applications/firefox.desktop"
+    fs::remove "$XDG_DATA_HOME/applications/firefox.desktop"
 }

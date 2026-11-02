@@ -27,11 +27,10 @@ python::install () {
 python::uninstall () {
     echo "└> Uninstalling python configuration."
 
-    rm -f "$XDG_CONFIG_HOME/pip/pip.conf"
-    rmdir --ignore-fail-on-non-empty "$XDG_CONFIG_HOME/pip"
+    fs::remove "$XDG_CONFIG_HOME/pip/pip.conf"
 
-    rm -f "$XDG_SCRIPTS_HOME/generate-venv.sh"
+    fs::remove "$XDG_SCRIPTS_HOME/generate-venv.sh"
 
-    rm -f "$XDG_CONFIG_HOME/bash/conf.d/python.sh"
-    rm -f "$XDG_CONFIG_HOME/fish/conf.d/python.fish"
+    fs::remove "$XDG_CONFIG_HOME/bash/conf.d/python.sh"
+    fs::remove "$XDG_CONFIG_HOME/fish/conf.d/python.fish"
 }

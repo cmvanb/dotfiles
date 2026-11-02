@@ -21,6 +21,6 @@ pi::install () {
 pi::uninstall () {
     echo "└> Uninstalling pi configuration."
 
-    rm -f "$XDG_CONFIG_HOME/bash/conf.d/pi.sh"
-    rm -f "$XDG_CONFIG_HOME/fish/conf.d/pi.fish"
+    fs::remove "$XDG_CONFIG_HOME/bash/conf.d/pi.sh"
+    fs::remove "$XDG_CONFIG_HOME/fish/conf.d/pi.fish"
 }

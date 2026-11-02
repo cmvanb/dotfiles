@@ -21,6 +21,6 @@ flutter::install () {
 flutter::uninstall () {
     echo "└> Uninstalling flutter configuration."
 
-    rm -f "$XDG_CONFIG_HOME/bash/conf.d/flutter.sh"
-    rm -f "$XDG_CONFIG_HOME/fish/conf.d/flutter.fish"
+    fs::remove "$XDG_CONFIG_HOME/bash/conf.d/flutter.sh"
+    fs::remove "$XDG_CONFIG_HOME/fish/conf.d/flutter.fish"
 }

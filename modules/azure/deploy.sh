@@ -21,6 +21,6 @@ azure::install () {
 azure::uninstall () {
     echo "└> Uninstalling azure configuration."
 
-    rm -f "$XDG_CONFIG_HOME/bash/conf.d/azure.sh"
-    rm -f "$XDG_CONFIG_HOME/fish/conf.d/azure.fish"
+    fs::remove "$XDG_CONFIG_HOME/bash/conf.d/azure.sh"
+    fs::remove "$XDG_CONFIG_HOME/fish/conf.d/azure.fish"
 }

@@ -20,5 +20,5 @@ mpv::install () {
 mpv::uninstall () {
     echo "└> Uninstalling mpv configuration."
 
-    rm "$XDG_CONFIG_HOME/mpv"
+    fs::remove "$XDG_CONFIG_HOME/mpv"
 }

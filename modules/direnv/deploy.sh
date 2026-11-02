@@ -20,5 +20,5 @@ direnv::install () {
 direnv::uninstall () {
     echo "└> Uninstalling direnv configuration."
 
-    rm -r "$XDG_CONFIG_HOME/direnv"
+    fs::remove "$XDG_CONFIG_HOME/direnv"
 }

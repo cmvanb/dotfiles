@@ -65,15 +65,15 @@ sway::uninstall () {
 
     local src="$base_dir/modules/sway/src"
 
-    rm -r "$XDG_CONFIG_HOME/sway"
+    fs::remove "$XDG_CONFIG_HOME/sway"
 
     echo "└> Uninstalling sway shortcuts."
 
-    rm "$XDG_BIN_HOME/sway-run"
+    fs::remove "$XDG_BIN_HOME/sway-run"
 
     if fs::same_file "$XDG_BIN_HOME/init" "$src/init.sway"; then
-        rm "$XDG_BIN_HOME/init"
+        fs::remove "$XDG_BIN_HOME/init"
     fi
 
-    rm -f "$XDG_CONFIG_HOME/systemd/user/sway-session.target"
+    fs::remove "$XDG_CONFIG_HOME/systemd/user/sway-session.target"
 }

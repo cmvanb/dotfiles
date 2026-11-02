@@ -24,5 +24,5 @@ pandoc::install () {
 pandoc::uninstall () {
     echo "└> Uninstalling pandoc configuration."
 
-    rm -r "$XDG_DATA_HOME/pandoc/templates"
+    fs::remove "$XDG_DATA_HOME/pandoc/templates"
 }

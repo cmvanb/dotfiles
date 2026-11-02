@@ -29,7 +29,7 @@ teams-for-linux::install () {
 teams-for-linux::uninstall () {
     echo "└> Uninstalling teams-for-linux configuration."
 
-    rm "$XDG_DATA_HOME/applications/teams-for-linux.desktop"
-    rm "$XDG_DATA_HOME/icons/hicolor/scalable/apps/teams-badge.svg"
+    fs::remove "$XDG_DATA_HOME/applications/teams-for-linux.desktop"
+    fs::remove "$XDG_DATA_HOME/icons/hicolor/scalable/apps/teams-badge.svg"
     gtk-update-icon-cache -q -f -t "$XDG_DATA_HOME/icons/hicolor"
 }

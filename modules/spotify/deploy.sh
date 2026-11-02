@@ -21,5 +21,5 @@ spotify::install () {
 spotify::uninstall () {
     echo "└> Uninstalling spotify configuration."
 
-    rm "$XDG_DATA_HOME/applications/spotify.desktop"
+    fs::remove "$XDG_DATA_HOME/applications/spotify.desktop"
 }

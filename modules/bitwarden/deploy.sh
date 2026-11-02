@@ -24,7 +24,7 @@ bitwarden::install () {
 bitwarden::uninstall () {
     echo "└> Uninstalling bitwarden configuration."
 
-    rm -r "$XDG_CONFIG_HOME/Bitwarden/data.json"
+    fs::remove "$XDG_CONFIG_HOME/Bitwarden/data.json"
 
-    rm "$XDG_DATA_HOME/applications/bitwarden.desktop"
+    fs::remove "$XDG_DATA_HOME/applications/bitwarden.desktop"
 }

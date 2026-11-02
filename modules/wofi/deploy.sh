@@ -23,5 +23,5 @@ wofi::install () {
 wofi::uninstall () {
     echo "└> Uninstalling wofi configuration."
 
-    rm -r "$XDG_CONFIG_HOME/wofi"
+    fs::remove "$XDG_CONFIG_HOME/wofi"
 }

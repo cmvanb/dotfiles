@@ -23,7 +23,7 @@ wireplumber::install () {
 wireplumber::uninstall () {
     echo "└> Uninstalling wireplumber configuration."
 
-    rm -f "$XDG_CONFIG_HOME/wireplumber/wireplumber.conf.d/50-audio-priority.conf"
+    fs::remove "$XDG_CONFIG_HOME/wireplumber/wireplumber.conf.d/50-audio-priority.conf"
 }
 
 wireplumber::enable () {

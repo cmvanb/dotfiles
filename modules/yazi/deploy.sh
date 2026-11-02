@@ -35,6 +35,6 @@ yazi::install () {
 yazi::uninstall () {
     echo "└> Uninstalling yazi configuration."
 
-    rm -r "$XDG_CONFIG_HOME/yazi"
-    rm "$XDG_DATA_HOME/applications/yazi-open.desktop"
+    fs::remove "$XDG_CONFIG_HOME/yazi"
+    fs::remove "$XDG_DATA_HOME/applications/yazi-open.desktop"
 }

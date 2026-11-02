@@ -31,5 +31,5 @@ bat::install () {
 bat::uninstall () {
     echo "└> Uninstalling bat configuration."
 
-    rm -r "$XDG_CONFIG_HOME/bat"
+    fs::remove "$XDG_CONFIG_HOME/bat"
 }

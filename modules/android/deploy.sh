@@ -21,6 +21,6 @@ android::install () {
 android::uninstall () {
     echo "└> Uninstalling android configuration."
 
-    rm -f "$XDG_CONFIG_HOME/bash/conf.d/android.sh"
-    rm -f "$XDG_CONFIG_HOME/fish/conf.d/android.fish"
+    fs::remove "$XDG_CONFIG_HOME/bash/conf.d/android.sh"
+    fs::remove "$XDG_CONFIG_HOME/fish/conf.d/android.fish"
 }

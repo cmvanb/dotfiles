@@ -34,8 +34,8 @@ ghostty::install () {
 ghostty::uninstall () {
     echo "└> Uninstalling ghostty configuration."
 
-    rm -r "$XDG_CONFIG_HOME/ghostty"
-    rm "$XDG_DATA_HOME/icons/hicolor/scalable/apps/ghostty-ghost.svg"
+    fs::remove "$XDG_CONFIG_HOME/ghostty"
+    fs::remove "$XDG_DATA_HOME/icons/hicolor/scalable/apps/ghostty-ghost.svg"
     gtk-update-icon-cache -q -f -t "$XDG_DATA_HOME/icons/hicolor"
-    rm "$XDG_DATA_HOME/applications/com.mitchellh.ghostty.desktop"
+    fs::remove "$XDG_DATA_HOME/applications/com.mitchellh.ghostty.desktop"
 }

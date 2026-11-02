@@ -20,5 +20,5 @@ imv::install () {
 imv::uninstall () {
     echo "└> Uninstalling imv configuration."
 
-    rm "$XDG_CONFIG_HOME/imv"
+    fs::remove "$XDG_CONFIG_HOME/imv"
 }

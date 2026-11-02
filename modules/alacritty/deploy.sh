@@ -21,5 +21,5 @@ alacritty::install () {
 alacritty::uninstall () {
     echo "└> Uninstalling alacritty configuration."
 
-    rm -r "$XDG_CONFIG_HOME/alacritty"
+    fs::remove "$XDG_CONFIG_HOME/alacritty"
 }

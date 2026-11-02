@@ -22,5 +22,5 @@ nvim::install () {
 nvim::uninstall () {
     echo "└> Uninstalling nvim configuration."
 
-    rm "$XDG_CONFIG_HOME/nvim"
+    fs::remove "$XDG_CONFIG_HOME/nvim"
 }

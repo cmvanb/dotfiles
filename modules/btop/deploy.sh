@@ -25,5 +25,5 @@ btop::install () {
 btop::uninstall () {
     echo "└> Uninstalling btop configuration."
 
-    rm -r "$XDG_CONFIG_HOME/btop"
+    fs::remove "$XDG_CONFIG_HOME/btop"
 }

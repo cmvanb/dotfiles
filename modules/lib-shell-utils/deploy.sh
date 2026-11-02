@@ -21,5 +21,5 @@ lib-shell-utils::install () {
 lib-shell-utils::uninstall () {
     echo "└> Uninstalling shell utility libraries."
 
-    rm -rf "$XDG_OPT_HOME/shell-utils"
+    fs::remove "$XDG_OPT_HOME/shell-utils"
 }

@@ -28,11 +28,11 @@ agents::install() {
 agents::uninstall() {
     echo "└> Uninstalling shared agent instructions."
 
-    rm "$XDG_CONFIG_HOME/agents/AGENTS.md"
-    rm -f "$XDG_BIN_HOME/agent-skills"
+    fs::remove "$XDG_CONFIG_HOME/agents/AGENTS.md"
+    fs::remove "$XDG_BIN_HOME/agent-skills"
 
     echo "└> Uninstalling agent skills."
 
-    rm -rf "$XDG_CONFIG_HOME/agents/skills"
-    rm -rf "$XDG_DATA_HOME/agents/vendor"
+    fs::remove "$XDG_CONFIG_HOME/agents/skills"
+    fs::remove "$XDG_DATA_HOME/agents/vendor"
 }

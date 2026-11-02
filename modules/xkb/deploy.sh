@@ -20,5 +20,5 @@ xkb::install () {
 xkb::uninstall () {
     echo "└> Uninstalling xkb configuration."
 
-    rm "$XDG_CONFIG_HOME/xkb"
+    fs::remove "$XDG_CONFIG_HOME/xkb"
 }
