@@ -65,7 +65,7 @@ modules.enable=swayosd
 **`profiles/cyxwel`** — top-level host profile:
 ```
 profile.extends=workstation sway niri
-profile.wm=sway
+profile.wm=niri
 
 modules.install=
 modules.enable=
