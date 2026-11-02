@@ -12,7 +12,7 @@ source "$base_dir/lib/fs.sh"
 bluetooth-autoconnect::install () {
     echo "└> Installing bluetooth-autoconnect configuration."
 
-    local src="$base_dir/modules/bluetooth-autoconnect/src"
+    local src="$base_dir/extras/bluetooth-autoconnect/src"
 
     fs::ensure_directory "$XDG_CONFIG_HOME/systemd/user"
     fs::force_link "$src/bluetooth-autoconnect.service" "$XDG_CONFIG_HOME/systemd/user/bluetooth-autoconnect.service"
