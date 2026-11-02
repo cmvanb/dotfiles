@@ -126,6 +126,3 @@ spawn-at-startup "eww-bar.sh" "start"
 
 // Named workspace rules
 spawn-sh-at-startup "$XDG_CONFIG_HOME/niri/scripts/workspaces.sh daemon"
-
-// Default workspace session
-spawn-sh-at-startup "$XDG_CONFIG_HOME/niri/scripts/wsesh.sh launch default"
