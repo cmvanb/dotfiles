@@ -48,8 +48,8 @@ modules.enable=pipewire ssh syncthing udiskie
 profile.extends=
 
 modules.lib=lib-wayland-utils
-modules.install=wm-shared fuzzel hyprlock swaync waybar scripts-desktop
-modules.enable=swaync
+modules.install=wm-shared fuzzel hyprlock swaync waybar scripts-desktop wayrcursor whisrs xkb
+modules.enable=swaync wayrcursor whisrs
 ```
 
 **`profiles/sway`** — window manager profile, extends `wayland-wm`:
