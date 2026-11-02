@@ -38,7 +38,10 @@ swayosd::uninstall() {
 swayosd::enable() {
     echo "└> Enabling swayosd server service."
 
-    systemctl --user reenable swayosd-server
+    # NOTE: `reenable` would delete the linked unit file, so drop the wants link
+    # left by the former sway-session.target install target instead.
+    fs::remove "$XDG_CONFIG_HOME/systemd/user/sway-session.target.wants/swayosd-server.service"
+    systemctl --user enable swayosd-server
 }
 
 swayosd::disable() {
