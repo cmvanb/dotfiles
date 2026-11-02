@@ -14,6 +14,7 @@ disable-xdg-desktop-files::install () {
 
     local src="$base_dir/modules/disable-xdg-desktop-files/src"
 
+    fs::ensure_directory "$XDG_DATA_HOME/applications"
     fs::force_link "$src/avahi-discover.desktop" "$XDG_DATA_HOME/applications/avahi-discover.desktop"
     fs::force_link "$src/bssh.desktop" "$XDG_DATA_HOME/applications/bssh.desktop"
     fs::force_link "$src/bvnc.desktop" "$XDG_DATA_HOME/applications/bvnc.desktop"
