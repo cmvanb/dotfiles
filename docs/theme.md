@@ -31,7 +31,6 @@ Each scheme names the cursor theme that contrasts with its canvas:
 carbon-light.
 `theme switch` applies it to gsettings and re-renders the sway and niri
 configs.
-Manifesto installs both.
 
 ### Scheme properties
 
@@ -213,7 +212,6 @@ so lookups at any size resolve to the symbolic glyph.
 for qt6ct.
 Sway exports `QT_QPA_PLATFORMTHEME=qt6ct`,
 niri sets it in its `environment` block.
-Manifesto installs `qt6ct`.
 
 | File | Role |
 |---|---|
