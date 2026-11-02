@@ -49,8 +49,8 @@ modules.enable=bluetooth-notify pipewire wireplumber ssh syncthing udiskie
 profile.extends=
 
 modules.lib=lib-wayland-utils
-modules.install=wm-shared fuzzel hyprlock swaync waybar scripts-desktop wayrcursor whisrs xkb
-modules.enable=swaync wayrcursor whisrs
+modules.install=wm-shared fuzzel hypridle hyprlock swaync waybar scripts-desktop wayrcursor whisrs xkb
+modules.enable=hypridle swaync wayrcursor whisrs
 ```
 
 **`profiles/sway`** — window manager profile, extends `wayland-wm`:
