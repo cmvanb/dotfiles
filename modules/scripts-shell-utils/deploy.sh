@@ -45,10 +45,12 @@ scripts-shell-utils::uninstall () {
     echo "└> Uninstalling shell utility scripts."
 
     fs::remove "$XDG_SCRIPTS_HOME/clean-home.sh"
+    fs::remove "$XDG_SCRIPTS_HOME/edit.sh"
     fs::remove "$XDG_SCRIPTS_HOME/estimate-disk-space-usage.sh"
     fs::remove "$XDG_SCRIPTS_HOME/format-text.sh"
     fs::remove "$XDG_SCRIPTS_HOME/interactive-grep.sh"
     fs::remove "$XDG_SCRIPTS_HOME/kebabify.sh"
+    fs::remove "$XDG_SCRIPTS_HOME/lsds.py"
     fs::remove "$XDG_SCRIPTS_HOME/print-environment.py"
     fs::remove "$XDG_SCRIPTS_HOME/print-terminal-colors.sh"
     fs::remove "$XDG_SCRIPTS_HOME/rename-kebabcase.sh"
@@ -62,6 +64,7 @@ scripts-shell-utils::uninstall () {
     fs::remove "$XDG_BIN_HOME/edit"
     fs::remove "$XDG_BIN_HOME/kebab"
     fs::remove "$XDG_BIN_HOME/kebabify"
+    fs::remove "$XDG_BIN_HOME/lsds"
     fs::remove "$XDG_BIN_HOME/printenv"
     fs::remove "$XDG_BIN_HOME/view"
 }
