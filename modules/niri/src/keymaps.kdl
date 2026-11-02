@@ -124,12 +124,6 @@ binds {
     Mod+Alt+L { set-window-width "+200"; }
     Mod+Alt+H { set-window-width "-200"; }
 
-    // Move floating window (not a bind action, only an IPC one)
-    Mod+Ctrl+D { spawn "niri" "msg" "action" "move-floating-window" "--y=-100"; }
-    Mod+Ctrl+F { spawn "niri" "msg" "action" "move-floating-window" "--y=+100"; }
-    Mod+Ctrl+G { spawn "niri" "msg" "action" "move-floating-window" "--x=+200"; }
-    Mod+Ctrl+S { spawn "niri" "msg" "action" "move-floating-window" "--x=-200"; }
-
     // Workspace mappings
     //--------------------------------------------------------------------------
 
@@ -192,13 +186,6 @@ binds {
 
     // Layout mappings
     //--------------------------------------------------------------------------
-
-    // Adjust column width
-    Mod+Shift+Equal { set-column-width "+5%"; }
-    Mod+Minus { set-column-width "-5%"; }
-
-    // Equalize window heights in the focused column
-    Mod+Equal { reset-window-height; }
 
     // Move the window into or out of the column on the left
     Mod+S { consume-or-expel-window-left; }
