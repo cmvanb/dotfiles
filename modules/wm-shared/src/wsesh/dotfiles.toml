@@ -1,6 +1,12 @@
 # Workspace session for the dotfiles.
 
 [[entry]]
+type = "browser"
+workspace = "config"
+session = "dotfiles"
+wait_for_network = true
+
+[[entry]]
 type = "terminal"
 workspace = "config"
 cwd = "~/Code/dotfiles"
