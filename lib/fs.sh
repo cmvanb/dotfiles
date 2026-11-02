@@ -32,14 +32,7 @@ fs::same_file() {
         return 1
     fi
 
-    if [[ ! -f "$1" || ! -f "$2" ]]; then
-        debug::error "Arguments must be files"
-        return 1
-    fi
-    if [[ "$1" -ef "$2" ]]; then
-        return 0
-    fi
-    return 1
+    [[ -f "$1" && -f "$2" && "$1" -ef "$2" ]]
 }
 
 fs::force_link () {
