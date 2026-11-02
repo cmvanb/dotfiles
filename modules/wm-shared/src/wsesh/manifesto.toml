@@ -1,0 +1,19 @@
+# Workspace session for the manifesto system configuration.
+
+[[entry]]
+type = "terminal"
+workspace = "system"
+cwd = "~/Code/manifesto"
+
+[[entry]]
+type = "terminal"
+workspace = "system"
+cwd = "~/Code/manifesto"
+command = "opencode"
+focused = true
+
+[[entry]]
+type = "terminal"
+workspace = "system"
+cwd = "~/Code/manifesto"
+command = "edit"
