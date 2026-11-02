@@ -172,7 +172,7 @@ Entries whose template or output is gone are pruned.
 
 | App | Reload |
 |---|---|
-| sway, Hyprland, river | Config reload or theme script |
+| sway | Config reload |
 | niri | Watches its included theme file |
 | waybar, eww, swaync, swayosd | Signal, reload command or service restart |
 | ghostty | `SIGUSR2` |
@@ -211,7 +211,7 @@ so lookups at any size resolve to the symbolic glyph.
 
 `theme-desktop` installs the carbon Qt theme from the `carbon-qt` submodule
 for qt6ct.
-Sway, river and Hyprland export `QT_QPA_PLATFORMTHEME=qt6ct`,
+Sway exports `QT_QPA_PLATFORMTHEME=qt6ct`,
 niri sets it in its `environment` block.
 Manifesto installs `qt6ct`.
 

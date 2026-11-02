@@ -63,7 +63,7 @@ modules.enable=swayosd
 
 **`profiles/cyxwel`** — top-level host profile:
 ```
-profile.extends=workstation sway river hyprland
+profile.extends=workstation sway niri
 profile.wm=sway
 
 modules.install=
