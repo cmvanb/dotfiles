@@ -48,7 +48,7 @@ modules.enable=pipewire ssh syncthing udiskie
 profile.extends=
 
 modules.lib=lib-wayland-utils
-modules.install=fuzzel hyprlock swaync waybar scripts-desktop
+modules.install=wm-shared fuzzel hyprlock swaync waybar scripts-desktop
 modules.enable=swaync
 ```
 

@@ -1,4 +1,4 @@
-# Workspace session (wsesh) launched at sway startup.
+# Workspace session (wsesh) launched at window manager startup.
 #
 # Entry types:
 #   terminal  workspace? cwd? command? title? floating?  -- spawn-terminal.sh

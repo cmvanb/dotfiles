@@ -3,7 +3,7 @@
 # Workspace sessions (wsesh)
 #
 # Launches a named set of programs into niri workspaces, defined in
-# $XDG_CONFIG_HOME/niri/wsesh/<name>.toml (shared with sway). See
+# $XDG_CONFIG_HOME/wsesh/<name>.toml. See
 # wsesh/default.toml for the entry format (terminal, browser, app, focus).
 #-------------------------------------------------------------------------------
 
@@ -20,7 +20,7 @@ debug::assert_dependency niri
 debug::assert_dependency jq
 
 script_dir=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)
-wsesh_dir="${XDG_CONFIG_HOME:-$HOME/.config}/niri/wsesh"
+wsesh_dir="${XDG_CONFIG_HOME:-$HOME/.config}/wsesh"
 
 usage() {
     echo "$(basename "$0") <launch|select> [name]"

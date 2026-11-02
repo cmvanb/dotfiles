@@ -22,18 +22,15 @@ sway::install () {
     fs::force_link "$src/keymaps.conf" "$XDG_CONFIG_HOME/sway/keymaps.conf"
     fs::force_link "$src/winrules.conf" "$XDG_CONFIG_HOME/sway/winrules.conf"
     fs::force_link "$src/scripts" "$XDG_CONFIG_HOME/sway/scripts"
-    fs::force_link "$src/wsesh" "$XDG_CONFIG_HOME/sway/wsesh"
 
     fs::ensure_directory "$XDG_CONFIG_HOME/sway/outputs"
     fs::force_link "$src/outputs/outputs-workspace-mapper.sh" "$XDG_CONFIG_HOME/sway/outputs/outputs-workspace-mapper.sh"
 
     if [[ $host == "casino" ]]; then
         fs::force_link "$src/outputs/outputs.casino.conf" "$XDG_CONFIG_HOME/sway/outputs/outputs.conf"
-        fs::force_link "$src/outputs/output-order.casino" "$XDG_CONFIG_HOME/sway/outputs/output-order"
 
     elif [[ $host == "cyxwel" ]]; then
         fs::force_link "$src/outputs/outputs.cyxwel.conf" "$XDG_CONFIG_HOME/sway/outputs/outputs.conf"
-        fs::force_link "$src/outputs/output-order.cyxwel" "$XDG_CONFIG_HOME/sway/outputs/output-order"
 
     else
         echo "└> Warning: No outputs configuration for host '$host'."

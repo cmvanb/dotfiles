@@ -15,22 +15,18 @@ niri::install () {
     echo "└> Installing niri configuration."
 
     local src="$base_dir/modules/niri/src"
-    local sway_src="$base_dir/modules/sway/src"
 
     fs::ensure_directory "$XDG_CONFIG_HOME/niri"
     fs::force_link "$src/config.kdl" "$XDG_CONFIG_HOME/niri/config.kdl"
     fs::force_link "$src/keymaps.kdl" "$XDG_CONFIG_HOME/niri/keymaps.kdl"
     fs::force_link "$src/winrules.kdl" "$XDG_CONFIG_HOME/niri/winrules.kdl"
     fs::force_link "$src/scripts" "$XDG_CONFIG_HOME/niri/scripts"
-    fs::force_link "$sway_src/wsesh" "$XDG_CONFIG_HOME/niri/wsesh"
 
     if [[ $host == "casino" ]]; then
         fs::force_link "$src/outputs/outputs.casino.kdl" "$XDG_CONFIG_HOME/niri/outputs.kdl"
-        fs::force_link "$sway_src/outputs/output-order.casino" "$XDG_CONFIG_HOME/niri/output-order"
 
     elif [[ $host == "cyxwel" ]]; then
         fs::force_link "$src/outputs/outputs.cyxwel.kdl" "$XDG_CONFIG_HOME/niri/outputs.kdl"
-        fs::force_link "$sway_src/outputs/output-order.cyxwel" "$XDG_CONFIG_HOME/niri/output-order"
 
     else
         echo "└> Warning: No outputs configuration for host '$host'."

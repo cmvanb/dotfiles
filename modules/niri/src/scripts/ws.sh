@@ -24,7 +24,7 @@ debug::assert_dependency flock
 
 config_dir="${XDG_CONFIG_HOME:-$HOME/.config}/niri"
 workspaces_file="$config_dir/workspaces"
-order_file="$config_dir/output-order"
+order_file="${XDG_CONFIG_HOME:-$HOME/.config}/wm/output-order"
 # Shared with workspaces.sh, which holds off reaping while a workspace is set up.
 lock_file="${XDG_RUNTIME_DIR:-/tmp}/niri-workspaces.lock"
 

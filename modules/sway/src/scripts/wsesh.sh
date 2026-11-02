@@ -3,7 +3,7 @@
 # Workspace sessions (wsesh)
 #
 # Launches a named set of programs into sway workspaces, defined in
-# $XDG_CONFIG_HOME/sway/wsesh/<name>.toml. See wsesh/default.toml for the
+# $XDG_CONFIG_HOME/wsesh/<name>.toml. See wsesh/default.toml for the
 # entry format (terminal, browser, app, focus).
 #-------------------------------------------------------------------------------
 
@@ -23,7 +23,7 @@ debug::assert_dependency tomlq
 debug::assert_dependency swaymsg
 debug::assert_dependency jq
 
-wsesh_dir="${XDG_CONFIG_HOME:-$HOME/.config}/sway/wsesh"
+wsesh_dir="${XDG_CONFIG_HOME:-$HOME/.config}/wsesh"
 
 usage() {
     echo "$(basename "$0") <launch|select> [name]"
