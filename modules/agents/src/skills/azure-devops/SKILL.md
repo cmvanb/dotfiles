@@ -306,8 +306,11 @@ conn.get_client("azext_devops.devops_sdk.v6_0.build.build_client.BuildClient")
 ### Find the extension
 
 ```bash
-EXT=$(find ~/.azure/cliextensions -maxdepth 1 -name azure-devops)
+EXT=$(az extension list --query "[?name=='azure-devops'].path" -o tsv)
 ```
+
+Ask `az` for the path. The location depends on the Azure CLI configuration,
+for example `~/.local/share/azure/cliextensions/azure-devops`.
 
 Add it to `sys.path` before importing `azext_devops`.
 The interpreter does not see the extension on its own.
