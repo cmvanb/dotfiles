@@ -48,14 +48,11 @@ whisrs::install_model () {
 whisrs::uninstall () {
     echo "└> Uninstalling whisrs configuration."
 
-    local whisrs_model
-    whisrs_model=$(whisrs::model)
-
     fs::remove "$XDG_CONFIG_HOME/whisrs/config.toml"
 
-    echo "└> Uninstalling whisper model: $whisrs_model"
+    echo "└> Uninstalling whisper models."
 
-    fs::remove "$XDG_DATA_HOME/whisrs/models/$whisrs_model"
+    fs::remove "$XDG_DATA_HOME/whisrs/models"
 }
 
 whisrs::enable () {
