@@ -1,0 +1,15 @@
+[Unit]
+Description=whisrs dictation daemon
+Documentation=https://github.com/whisrs/whisrs
+PartOf=graphical-session.target
+After=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/whisrsd
+Restart=on-failure
+RestartSec=3
+PassEnvironment=HYPRLAND_INSTANCE_SIGNATURE NIRI_SOCKET SWAYSOCK WAYLAND_DISPLAY DISPLAY XAUTHORITY XDG_SESSION_TYPE XDG_CURRENT_DESKTOP XDG_RUNTIME_DIR
+
+[Install]
+WantedBy=graphical-session.target

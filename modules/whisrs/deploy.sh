@@ -28,6 +28,9 @@ whisrs::install () {
     template::render_mako "$src/config.mako.toml" "$XDG_CONFIG_HOME/whisrs/config.toml"
     chmod 600 "$XDG_CONFIG_HOME/whisrs/config.toml"
 
+    fs::ensure_directory "$XDG_CONFIG_HOME/systemd/user"
+    fs::force_link "$src/whisrs.service" "$XDG_CONFIG_HOME/systemd/user/whisrs.service"
+
     whisrs::install_model "$(whisrs::model)"
 }
 
@@ -49,6 +52,7 @@ whisrs::uninstall () {
     echo "└> Uninstalling whisrs configuration."
 
     fs::remove "$XDG_CONFIG_HOME/whisrs/config.toml"
+    fs::remove "$XDG_CONFIG_HOME/systemd/user/whisrs.service"
 
     echo "└> Uninstalling whisper models."
 
@@ -58,6 +62,9 @@ whisrs::uninstall () {
 whisrs::enable () {
     echo "└> Enabling whisrs user service."
 
+    # NOTE: The packaged unit starts before the compositor and never sees its
+    # WAYLAND_DISPLAY, so drop its default.target wants link.
+    fs::remove "$XDG_CONFIG_HOME/systemd/user/default.target.wants/whisrs.service"
     systemctl --user enable whisrs
 }
 
