@@ -74,6 +74,7 @@ qutebrowser::uninstall () {
     fs::remove "$XDG_CONFIG_HOME/qutebrowser/config.py"
     fs::remove "$XDG_CONFIG_HOME/qutebrowser/stylesheet.css"
     fs::remove "$XDG_CONFIG_HOME/qutebrowser/stylemap.py"
+    fs::remove "$XDG_CONFIG_HOME/qutebrowser/modern-normalize.css"
     fs::remove "$XDG_CONFIG_HOME/qutebrowser/styles/qute.css"
     fs::remove "$XDG_CONFIG_HOME/qutebrowser/styles/ansible-docs.css"
     fs::remove "$XDG_CONFIG_HOME/qutebrowser/styles/arch-linux-forum.css"
