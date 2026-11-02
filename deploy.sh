@@ -30,7 +30,7 @@ export XDG_TEMPLATES_DIR="${XDG_TEMPLATES_DIR:-$HOME/.local/share/templates}"
 export DEPLOY_DISTRO="$(linux::get_distro_id)"
 export DEPLOY_HOST="$(uname -n)"
 
-state_dir="$HOME/.local/state/dotfiles"
+state_dir="$XDG_STATE_HOME/dotfiles"
 
 # Makes render-mako available outside of user shells.
 path_prepend "$XDG_BIN_HOME"

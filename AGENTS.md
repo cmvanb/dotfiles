@@ -39,7 +39,7 @@ agent-skills list                   # show linked skills and their source
 - Module install order within a profile: `modules.lib` → `modules.theme` → `modules.install`
 - Templates use [Mako](https://www.makotemplates.org/); template files use a `.mako` infix and rendered output is never committed
 - All paths are XDG compliant.
-- Deployment state is tracked in `~/.local/state/dotfiles/`
+- Deployment state is tracked in `$XDG_STATE_HOME/dotfiles/`
 
 ## Git conventions
 
