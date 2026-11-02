@@ -114,14 +114,23 @@ then commit the new pin here with the module prefix.
 
 `modules/bat/deploy.sh`:
 ```bash
+#-------------------------------------------------------------------------------
+# Deploy bat configuration
+#-------------------------------------------------------------------------------
+
+
 script_dir=$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)
 base_dir=$(realpath "$script_dir/../..")
 
+source "$base_dir/lib/debug.sh"
 source "$base_dir/lib/fs.sh"
 source "$base_dir/lib/template.sh"
 
-bat::install() {
-    assert_dependency bat
+
+bat::install () {
+    debug::assert_dependency bat
+
+    echo "└> Installing bat configuration."
 
     local src="$base_dir/modules/bat/src"
 
@@ -135,7 +144,9 @@ bat::install() {
     bat cache --build
 }
 
-bat::uninstall() {
+bat::uninstall () {
+    echo "└> Uninstalling bat configuration."
+
     fs::remove "$XDG_CONFIG_HOME/bat"
 }
 ```
