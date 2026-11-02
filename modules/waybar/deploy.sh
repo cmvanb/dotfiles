@@ -37,6 +37,7 @@ waybar::install () {
 
     template::render_mako "$style" "$XDG_CONFIG_HOME/waybar/style.css"
 
+    fs::ensure_directory "$XDG_SCRIPTS_HOME"
     fs::force_link "$src/restart-waybar.sh" "$XDG_SCRIPTS_HOME/restart-waybar.sh"
     fs::force_link "$src/toggle-waybar.sh" "$XDG_SCRIPTS_HOME/toggle-waybar.sh"
 
