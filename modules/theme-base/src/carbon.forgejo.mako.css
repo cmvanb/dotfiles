@@ -1,9 +1,173 @@
-/* Forgejo theme: the forgejo theme of the same variant with carbon syntax colors */
+/* Forgejo theme: the forgejo theme of the same variant recolored with carbon */
 @import "theme-forgejo-${scheme_variant}.css";
 
+## Forgejo indexes steps by contrast against the page, like carbon:
+## `dark-N` gains contrast and `light-N` loses it in both variants.
 :root {
+  /* primary */
+  --color-primary: ${color_hash('primary_12')};
+  --color-primary-contrast: ${color_hash('canvas')};
+  --color-primary-dark-1: ${color_hash('primary_13')};
+  --color-primary-dark-2: ${color_hash('primary_14')};
+  --color-primary-dark-3: ${color_hash('primary_15')};
+  --color-primary-dark-4: ${color_hash('primary_15')};
+  --color-primary-light-1: ${color_hash('primary_11')};
+  --color-primary-light-2: ${color_hash('primary_10')};
+  --color-primary-light-3: ${color_hash('primary_9')};
+  --color-primary-light-4: ${color_hash('primary_8')};
+  --color-primary-light-5: ${color_hash('primary_6')};
+  --color-primary-light-6: ${color_hash('primary_4')};
+  --color-primary-light-7: ${color_hash('primary_2')};
+% for step in range(1, 10):
+  --color-primary-alpha-${step}0: ${color_hash('primary_12', step / 10)};
+% endfor
+  --color-primary-hover: ${color_hash('primary_13')};
+  --color-primary-active: ${color_hash('primary_14')};
+
+  /* secondary */
+  --color-secondary: ${color_hash('secondary_4')};
+% for step, color in enumerate(['secondary_5', 'secondary_6', 'secondary_7', 'secondary_8', 'secondary_9', 'secondary_10', 'secondary_11', 'secondary_12', 'secondary_13', 'secondary_14', 'secondary_15', 'gray_14', 'gray_15'], start=1):
+  --color-secondary-dark-${step}: ${color_hash(color)};
+% endfor
+  --color-secondary-light-1: ${color_hash('secondary_3')};
+  --color-secondary-light-2: ${color_hash('secondary_2')};
+  --color-secondary-light-3: ${color_hash('secondary_1')};
+  --color-secondary-light-4: ${color_hash('secondary_0')};
+% for step in range(1, 10):
+  --color-secondary-alpha-${step}0: ${color_hash('secondary_4', step / 10)};
+% endfor
+  --color-secondary-hover: ${color_hash('secondary_5')};
+  --color-secondary-active: ${color_hash('secondary_6')};
+
+  /* console */
+  --color-console-fg: ${color_hash('terminal_text')};
+  --color-console-fg-subtle: ${color_hash('text_8')};
+  --color-console-bg: ${color_hash('terminal_bg')};
+  --color-console-border: ${color_hash('secondary_4')};
+  --color-console-hover-bg: ${color_hash('secondary_2')};
+  --color-console-active-bg: ${color_hash('secondary_5')};
+  --color-console-menu-bg: ${color_hash('secondary_4')};
+  --color-console-menu-border: ${color_hash('secondary_6')};
+% for name in ['black', 'red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white']:
+  --color-ansi-${name}: ${color_hash('ansi_' + name)};
+  --color-ansi-bright-${name}: ${color_hash('ansi_br' + name)};
+% endfor
+
+  /* named colors */
+% for name, hue in [('red', 'red'), ('orange', 'orange'), ('yellow', 'yellow'), ('green', 'green'), ('teal', 'cyan'), ('blue', 'blue'), ('violet', 'purple'), ('purple', 'purple'), ('pink', 'magenta')]:
+  --color-${name}: ${color_hash(hue + '_4')};
+  --color-${name}-light: ${color_hash(hue + '_5')};
+  --color-${name}-dark-1: ${color_hash(hue + '_5')};
+  --color-${name}-dark-2: ${color_hash(hue + '_6')};
+% endfor
+  --color-grey: ${color_hash('gray_10')};
+  --color-grey-light: ${color_hash('gray_12')};
+  ## Text on named color backgrounds, which gain contrast like any step.
+  --color-white: ${color_hash('canvas')};
+
+  /* diff */
+  --color-diff-removed-word-bg: ${color_hash('red_2')};
+  --color-diff-added-word-bg: ${color_hash('green_2')};
+  --color-diff-removed-row-bg: ${color_hash('red_0')};
+  --color-diff-moved-row-bg: ${color_hash('orange_1')};
+  --color-diff-added-row-bg: ${color_hash('green_0')};
+  --color-diff-removed-row-border: ${color_hash('red_2')};
+  --color-diff-moved-row-border: ${color_hash('orange_3')};
+  --color-diff-added-row-border: ${color_hash('green_2')};
+  --color-diff-inactive: ${color_hash('secondary_2')};
+
+  /* messages */
+  --color-error-border: ${color_hash('red_3')};
+  --color-error-bg: ${color_hash('red_1')};
+  --color-error-bg-active: ${color_hash('red_2')};
+  --color-error-bg-hover: ${color_hash('red_2')};
+  --color-error-text: ${color_hash('red_9')};
+  --color-success-border: ${color_hash('green_3')};
+  --color-success-bg: ${color_hash('green_1')};
+  --color-success-text: ${color_hash('green_9')};
+  --color-warning-border: ${color_hash('orange_3')};
+  --color-warning-bg: ${color_hash('orange_1')};
+  --color-warning-text: ${color_hash('yellow_9')};
+  --color-info-border: ${color_hash('blue_4')};
+  --color-info-bg: ${color_hash('blue_1')};
+  --color-info-text: ${color_hash('blue_9')};
+% for name in ['red', 'green', 'yellow', 'orange']:
+  --color-${name}-badge: ${color_hash(name + '_5')};
+  --color-${name}-badge-bg: ${color_hash(name + '_5', 0.13)};
+  --color-${name}-badge-hover-bg: ${color_hash(name + '_5', 0.27)};
+% endfor
+
+  /* surfaces */
+  --color-body: ${color_hash('gray_0')};
+  --color-box-header: ${color_hash('secondary_3')};
+  --color-box-body: ${color_hash('secondary_1')};
+  --color-box-body-highlight: ${color_hash('secondary_4')};
+  --color-footer: ${color_hash('secondary_0')};
+  --color-timeline: ${color_hash('secondary_5')};
+  --color-header-wrapper: ${color_hash('secondary_1')};
+  --color-header-wrapper-transparent: ${color_hash('secondary_1', 0)};
+  --color-hover: ${color_hash('secondary_4')};
+  --color-active: ${color_hash('secondary_5')};
+  --color-menu: ${color_hash('gtk_popover_bg')};
+  --color-card: ${color_hash('secondary_2')};
+  --fancy-card-bg: ${color_hash('secondary_3')};
+  --fancy-card-border: ${color_hash('secondary_5')};
+  --color-button: ${color_hash('secondary_4')};
+  --color-secondary-bg: ${color_hash('secondary_3')};
+  --color-expand-button: ${color_hash('secondary_5')};
+  --color-nav-bg: ${color_hash('secondary_2')};
+  --color-nav-hover-bg: ${color_hash('secondary_5')};
+  --color-shadow: ${color_hash('shadow', 0.38)};
+  --color-overlay-backdrop: ${color_hash('shadow', 0.75)};
+
+  /* text */
+  --color-text-dark: ${color_hash('text_15')};
+  --color-text: ${color_hash('text_12')};
+  --color-text-light: ${color_hash('text_11')};
+  --color-text-light-1: ${color_hash('text_10')};
+  --color-text-light-2: ${color_hash('text_9')};
+  --color-text-light-3: ${color_hash('text_8')};
+  --color-text-focus: ${color_hash('text_15')};
+  --color-selection-bg: ${color_hash('selection_bg')};
+  --color-selection-fg: ${color_hash('selection_fg')};
+  --color-tooltip-text: ${color_hash('gtk_popover_fg')};
+  --color-tooltip-bg: ${color_hash('gtk_popover_bg')};
+
+  /* inputs */
+  --color-input-text: ${color_hash('text_12')};
+  --color-input-background: ${color_hash('secondary_1')};
+  --color-input-toggle-background: ${color_hash('secondary_4')};
+  --color-input-border: ${color_hash('secondary_6')};
+  --color-input-border-hover: ${color_hash('secondary_9')};
+
+  /* labels */
+  --color-label-text: ${color_hash('text_15')};
+  --color-label-bg: ${color_hash('secondary_5')};
+  --color-label-hover-bg: ${color_hash('secondary_6')};
+  --color-label-active-bg: ${color_hash('secondary_7')};
+  --color-label-bg-alt: ${color_hash('secondary_6')};
+
+  /* code */
   --color-code-bg: ${color_hash('editor_bg')};
   --color-markup-code-block: ${color_hash('editor_bg')};
+  --color-markup-code-inline: ${color_hash('secondary_2')};
+  --color-editor-line-highlight: ${color_hash('primary_4')};
+
+  /* indicators */
+  --color-indicator-offline: ${color_hash('gray_10')};
+  --color-indicator-offline-20: ${color_hash('gray_10', 0.2)};
+  --color-indicator-idle: ${color_hash('green_5')};
+  --color-indicator-idle-20: ${color_hash('green_5', 0.2)};
+  --color-indicator-active: ${color_hash('primary_12')};
+  --color-indicator-active-20: ${color_hash('primary_12', 0.2)};
+}
+
+i.grey.icon.icon.icon.icon {
+  color: var(--color-text-light-3) !important;
+}
+.ui.primary.button,
+.ui.primary.buttons .button {
+  color: var(--color-primary-contrast);
 }
 
 /* https://github.com/alecthomas/chroma/blob/master/types.go */
