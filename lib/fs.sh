@@ -79,6 +79,27 @@ fs::force_copy () {
     cp -rfT "$1" "$2"
 }
 
+# Remove each path if present, then prune parent directories left empty.
+fs::remove () {
+    if [[ $# -eq 0 ]]; then
+        debug::error "Missing argument: path"
+        return 1
+    fi
+
+    local path
+    for path in "$@"; do
+        if [[ -z "$path" ]]; then
+            debug::error "Refusing to remove an empty path"
+            return 1
+        fi
+
+        rm -rf -- "$path"
+        rmdir --parents --ignore-fail-on-non-empty -- "$(dirname -- "$path")" 2> /dev/null || true
+    done
+
+    return 0
+}
+
 fs::happy_move() {
     # NOTE: `mv` returns an error code if the source and destination are the
     # same, so exit early with a success code.

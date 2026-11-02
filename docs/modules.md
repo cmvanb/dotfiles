@@ -27,12 +27,13 @@ The install function typically uses `fs::force_link` or `template::render_mako` 
 }
 ```
 
-The uninstall function simply removes installed files or links.
+The uninstall function removes installed files or links with `fs::remove`,
+which is idempotent and prunes directories left empty.
 
 ```bash
 <name>::uninstall() {
-    rm "$XDG_CONFIG_HOME/<app>/config"
-    rm "$XDG_CONFIG_HOME/<app>/style.css"
+    fs::remove "$XDG_CONFIG_HOME/<app>/config"
+    fs::remove "$XDG_CONFIG_HOME/<app>/style.css"
 }
 ```
 
@@ -57,6 +58,7 @@ Some modules provide `enable` / `disable` for systemd user services.
 | `fs::force_link <src> <dest>` | `ln -sfT` — removes existing dir/file at dest first |
 | `fs::force_copy <src> <dest>` | `cp -rfT` — removes existing file/link at dest first |
 | `fs::ensure_directory <path>` | `mkdir -p` — removes existing file/link at path first |
+| `fs::remove <path...>` | `rm -rf`, then prunes parent directories left empty |
 | `fs::happy_move <src> <dest>` | `mv` — no-ops if src == dest |
 | `template::render_mako <tpl> <dest> [scheme]` | Render Mako template to dest; a scheme pins the output |
 
@@ -134,6 +136,6 @@ bat::install() {
 }
 
 bat::uninstall() {
-    rm -r "$XDG_CONFIG_HOME/bat"
+    fs::remove "$XDG_CONFIG_HOME/bat"
 }
 ```
