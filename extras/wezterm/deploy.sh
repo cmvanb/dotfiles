@@ -12,7 +12,7 @@ source "$base_dir/lib/fs.sh"
 wezterm::install () {
     echo "└> Installing wezterm configuration."
 
-    local src="$base_dir/modules/wezterm/src"
+    local src="$base_dir/extras/wezterm/src"
 
     fs::ensure_directory "$XDG_CONFIG_HOME/wezterm"
     fs::force_link "$src/wezterm.lua" "$XDG_CONFIG_HOME/wezterm/wezterm.lua"

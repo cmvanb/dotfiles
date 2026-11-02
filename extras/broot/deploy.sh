@@ -13,7 +13,7 @@ source "$base_dir/lib/template.sh"
 broot::install () {
     echo "└> Installing broot configuration."
 
-    local src="$base_dir/modules/broot/src"
+    local src="$base_dir/extras/broot/src"
 
     fs::ensure_directory "$XDG_CONFIG_HOME/broot"
     fs::force_link "$src/brcd.sh" "$XDG_CONFIG_HOME/broot/brcd.sh"

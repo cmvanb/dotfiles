@@ -12,7 +12,7 @@ source "$base_dir/lib/fs.sh"
 gitui::install () {
     echo "└> Installing gitui configuration."
 
-    local src="$base_dir/modules/gitui/src"
+    local src="$base_dir/extras/gitui/src"
 
     fs::force_link "$src" "$XDG_CONFIG_HOME/gitui"
 }

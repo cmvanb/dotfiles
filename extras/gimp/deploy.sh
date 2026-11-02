@@ -12,7 +12,7 @@ source "$base_dir/lib/fs.sh"
 gimp::install () {
     echo "└> Installing gimp configuration."
 
-    local src="$base_dir/modules/gimp/src"
+    local src="$base_dir/extras/gimp/src"
 
     fs::ensure_directory "$XDG_CONFIG_HOME/GIMP/3.0"
     fs::force_link "$src/gimprc" "$XDG_CONFIG_HOME/GIMP/3.0/gimprc"

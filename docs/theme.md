@@ -155,7 +155,6 @@ In sway, `$mod+Shift+c` toggles the scheme.
 | niri | Watches its included theme file |
 | waybar, eww, swaync, swayosd | Signal, reload command, or service restart |
 | ghostty | `SIGUSR2` |
-| wezterm | Config touch |
 | Neovim | `SIGUSR1`, replays every highlight |
 | qutebrowser | `:restart`, required by `preferred_color_scheme` |
 | bat, delta | `bat cache --build` |
