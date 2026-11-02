@@ -12,6 +12,25 @@ One set of colors, fonts, and cursors drives every app.
 ## Colors
 
 The schemes `carbon-dark` and `carbon-light` define the same keys.
+Each strip sits on its scheme's canvas, with step `0` on the left.
+
+| Palette | carbon-dark | carbon-light |
+|---|---|---|
+| `canvas` | ![canvas carbon-dark](theme/carbon-dark-canvas.svg) | ![canvas carbon-light](theme/carbon-light-canvas.svg) |
+| `primary` | ![primary carbon-dark](theme/carbon-dark-primary.svg) | ![primary carbon-light](theme/carbon-light-primary.svg) |
+| `secondary` | ![secondary carbon-dark](theme/carbon-dark-secondary.svg) | ![secondary carbon-light](theme/carbon-light-secondary.svg) |
+| `text` | ![text carbon-dark](theme/carbon-dark-text.svg) | ![text carbon-light](theme/carbon-light-text.svg) |
+| `gray` | ![gray carbon-dark](theme/carbon-dark-gray.svg) | ![gray carbon-light](theme/carbon-light-gray.svg) |
+| `red` | ![red carbon-dark](theme/carbon-dark-red.svg) | ![red carbon-light](theme/carbon-light-red.svg) |
+| `orange` | ![orange carbon-dark](theme/carbon-dark-orange.svg) | ![orange carbon-light](theme/carbon-light-orange.svg) |
+| `yellow` | ![yellow carbon-dark](theme/carbon-dark-yellow.svg) | ![yellow carbon-light](theme/carbon-light-yellow.svg) |
+| `green` | ![green carbon-dark](theme/carbon-dark-green.svg) | ![green carbon-light](theme/carbon-light-green.svg) |
+| `cyan` | ![cyan carbon-dark](theme/carbon-dark-cyan.svg) | ![cyan carbon-light](theme/carbon-light-cyan.svg) |
+| `blue` | ![blue carbon-dark](theme/carbon-dark-blue.svg) | ![blue carbon-light](theme/carbon-light-blue.svg) |
+| `purple` | ![purple carbon-dark](theme/carbon-dark-purple.svg) | ![purple carbon-light](theme/carbon-light-purple.svg) |
+| `magenta` | ![magenta carbon-dark](theme/carbon-dark-magenta.svg) | ![magenta carbon-light](theme/carbon-light-magenta.svg) |
+| `ansi` | ![ansi carbon-dark](theme/carbon-dark-ansi.svg) | ![ansi carbon-light](theme/carbon-light-ansi.svg) |
+| `ansi_br` | ![ansi_br carbon-dark](theme/carbon-dark-ansi_br.svg) | ![ansi_br carbon-light](theme/carbon-light-ansi_br.svg) |
 
 Color keys are `#RRGGBB` strings named `<palette>_<step>`, such as
 `primary_8`.
@@ -228,3 +247,7 @@ bg=$(color_hash $primary_0)
 | `font <key>` | Font value | `Nordwand Mono` |
 | `cursor <key>` | Cursor value | `Simp1e`, `32` |
 | `scheme <key>` | Scheme property, Python and Lua only | `light` |
+
+## Further Documentation
+
+- [docs/theme/README.md](theme/README.md) explains how to regenerate the strips.
