@@ -96,8 +96,6 @@ theme::is_running () {
 # Apps that read their colors at startup are told to reload.
 theme::reload_apps () {
     if theme::is_running sway;     then swaymsg reload &> /dev/null; fi
-    if theme::is_running Hyprland; then hyprctl reload &> /dev/null; fi
-    if theme::is_running river;    then "$config_home/river/theme.sh" &> /dev/null; fi
 
     if theme::is_running waybar;   then pkill -u "$USER" -USR2 -x waybar; fi
     if theme::is_running eww;      then eww reload &> /dev/null; fi
