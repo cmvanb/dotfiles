@@ -38,6 +38,10 @@ theme-base::install () {
     template::render_mako "$src/dircolors.mako" "$XDG_CONFIG_HOME/theme/dircolors"
     template::render_mako "$src/eza-colors.mako" "$XDG_CONFIG_HOME/theme/eza-colors"
     template::render_mako "$src/carbon.pygments.mako.theme" "$XDG_CONFIG_HOME/theme/carbon.pygments.theme"
+
+    fs::ensure_directory "$XDG_CONFIG_HOME/theme/forgejo"
+    template::render_mako "$src/carbon.forgejo.mako.css" "$XDG_CONFIG_HOME/theme/forgejo/theme-carbon-dark.css" carbon-dark
+    template::render_mako "$src/carbon.forgejo.mako.css" "$XDG_CONFIG_HOME/theme/forgejo/theme-carbon-light.css" carbon-light
 }
 
 theme-base::uninstall () {
@@ -57,4 +61,5 @@ theme-base::uninstall () {
     rm -f "$XDG_CONFIG_HOME/theme/dircolors"
     rm -f "$XDG_CONFIG_HOME/theme/eza-colors"
     rm -f "$XDG_CONFIG_HOME/theme/carbon.pygments.theme"
+    rm -rf "$XDG_CONFIG_HOME/theme/forgejo"
 }

@@ -1,0 +1,84 @@
+/* Forgejo theme: the forgejo theme of the same variant with carbon syntax colors */
+@import "theme-forgejo-${scheme_variant}.css";
+
+:root {
+  --color-code-bg: ${color_hash('editor_bg')};
+  --color-markup-code-block: ${color_hash('editor_bg')};
+}
+
+/* https://github.com/alecthomas/chroma/blob/master/types.go */
+.chroma { color: ${color_hash('editor_text')}; }
+.chroma .bp { color: ${color_hash('syn_identifier')}; } /* NameBuiltinPseudo */
+.chroma .c { color: ${color_hash('syn_comment')}; font-style: italic; } /* Comment */
+.chroma .c1 { color: ${color_hash('syn_comment')}; font-style: italic; } /* CommentSingle */
+.chroma .ch { color: ${color_hash('syn_comment')}; font-style: italic; } /* CommentHashbang */
+.chroma .cm { color: ${color_hash('syn_comment')}; font-style: italic; } /* CommentMultiline */
+.chroma .cp { color: ${color_hash('syn_special')}; font-weight: bold; } /* CommentPreproc */
+.chroma .cpf { color: ${color_hash('syn_string')}; } /* CommentPreprocFile */
+.chroma .cs { color: ${color_hash('syn_comment')}; font-style: italic; font-weight: bold; } /* CommentSpecial */
+.chroma .dl { color: ${color_hash('syn_string')}; } /* LiteralStringDelimiter */
+.chroma .fm { color: ${color_hash('syn_function')}; font-weight: bold; } /* NameFunctionMagic */
+.chroma .g { color: ${color_hash('syn_generic')}; } /* Generic */
+.chroma .gd { color: ${color_hash('red_5')}; background-color: ${color_hash('red_1')}; } /* GenericDeleted */
+.chroma .ge { font-style: italic; } /* GenericEmph */
+.chroma .gh { color: ${color_hash('heading_1')}; font-weight: bold; } /* GenericHeading */
+.chroma .gi { color: ${color_hash('green_6')}; background-color: ${color_hash('green_1')}; } /* GenericInserted */
+.chroma .gl { text-decoration: underline; } /* GenericUnderline */
+.chroma .go { color: ${color_hash('syn_comment')}; } /* GenericOutput */
+.chroma .gp { color: ${color_hash('syn_keyword')}; font-weight: bold; } /* GenericPrompt */
+.chroma .gr { color: ${color_hash('red_5')}; } /* GenericError */
+.chroma .gs { font-weight: bold; } /* GenericStrong */
+.chroma .gt { color: ${color_hash('red_5')}; } /* GenericTraceback */
+.chroma .gu { color: ${color_hash('heading_2')}; font-weight: bold; } /* GenericSubheading */
+.chroma .il { color: ${color_hash('syn_number')}; } /* LiteralNumberIntegerLong */
+.chroma .k { color: ${color_hash('syn_keyword')}; font-weight: bold; } /* Keyword */
+.chroma .kc { color: ${color_hash('syn_boolean')}; } /* KeywordConstant */
+.chroma .kd { color: ${color_hash('syn_keyword')}; font-weight: bold; } /* KeywordDeclaration */
+.chroma .kn { color: ${color_hash('syn_special')}; font-weight: bold; } /* KeywordNamespace */
+.chroma .kp { color: ${color_hash('syn_keyword')}; font-weight: bold; } /* KeywordPseudo */
+.chroma .kr { color: ${color_hash('syn_keyword')}; font-weight: bold; } /* KeywordReserved */
+.chroma .kt { color: ${color_hash('syn_type')}; } /* KeywordType */
+.chroma .l { color: ${color_hash('syn_constant')}; } /* Literal */
+.chroma .ld { color: ${color_hash('syn_constant')}; } /* LiteralDate */
+.chroma .m { color: ${color_hash('syn_number')}; } /* LiteralNumber */
+.chroma .mb { color: ${color_hash('syn_number')}; } /* LiteralNumberBin */
+.chroma .mf { color: ${color_hash('syn_number')}; } /* LiteralNumberFloat */
+.chroma .mh { color: ${color_hash('syn_number')}; } /* LiteralNumberHex */
+.chroma .mi { color: ${color_hash('syn_number')}; } /* LiteralNumberInteger */
+.chroma .mo { color: ${color_hash('syn_number')}; } /* LiteralNumberOct */
+.chroma .n { color: ${color_hash('syn_identifier')}; } /* Name */
+.chroma .na { color: ${color_hash('syn_type')}; } /* NameAttribute */
+.chroma .nb { color: ${color_hash('syn_special')}; font-weight: bold; } /* NameBuiltin */
+.chroma .nc { color: ${color_hash('syn_type')}; } /* NameClass */
+.chroma .nd { color: ${color_hash('syn_special')}; font-weight: bold; } /* NameDecorator */
+.chroma .ne { color: ${color_hash('syn_type')}; } /* NameException */
+.chroma .nf { color: ${color_hash('syn_function')}; font-weight: bold; } /* NameFunction */
+.chroma .ni { color: ${color_hash('syn_special')}; } /* NameEntity */
+.chroma .nl { color: ${color_hash('syn_special')}; } /* NameLabel */
+.chroma .nn { color: ${color_hash('syn_identifier')}; } /* NameNamespace */
+.chroma .no { color: ${color_hash('syn_constant')}; } /* NameConstant */
+.chroma .nt { color: ${color_hash('syn_special')}; font-weight: bold; } /* NameTag */
+.chroma .nv { color: ${color_hash('syn_identifier')}; } /* NameVariable */
+.chroma .nx { color: ${color_hash('syn_identifier')}; } /* NameOther */
+.chroma .o { color: ${color_hash('syn_keyword')}; font-weight: bold; } /* Operator */
+.chroma .ow { color: ${color_hash('syn_keyword')}; font-weight: bold; } /* OperatorWord */
+.chroma .p { color: ${color_hash('syn_delimiter')}; } /* Punctuation */
+.chroma .py { color: ${color_hash('syn_identifier')}; } /* NameProperty */
+.chroma .s { color: ${color_hash('syn_string')}; } /* LiteralString */
+.chroma .s1 { color: ${color_hash('syn_string')}; } /* LiteralStringSingle */
+.chroma .s2 { color: ${color_hash('syn_string')}; } /* LiteralStringDouble */
+.chroma .sa { color: ${color_hash('syn_special')}; } /* LiteralStringAffix */
+.chroma .sb { color: ${color_hash('syn_string')}; } /* LiteralStringBacktick */
+.chroma .sc { color: ${color_hash('syn_string')}; } /* LiteralStringChar */
+.chroma .sd { color: ${color_hash('syn_comment')}; font-style: italic; } /* LiteralStringDoc */
+.chroma .se { color: ${color_hash('syn_special')}; font-weight: bold; } /* LiteralStringEscape */
+.chroma .sh { color: ${color_hash('syn_string')}; } /* LiteralStringHeredoc */
+.chroma .si { color: ${color_hash('syn_special')}; } /* LiteralStringInterpol */
+.chroma .sr { color: ${color_hash('syn_special')}; } /* LiteralStringRegex */
+.chroma .ss { color: ${color_hash('syn_constant')}; } /* LiteralStringSymbol */
+.chroma .sx { color: ${color_hash('syn_string')}; } /* LiteralStringOther */
+.chroma .vc { color: ${color_hash('syn_identifier')}; } /* NameVariableClass */
+.chroma .vg { color: ${color_hash('syn_identifier')}; } /* NameVariableGlobal */
+.chroma .vi { color: ${color_hash('syn_identifier')}; } /* NameVariableInstance */
+.chroma .vm { color: ${color_hash('syn_identifier')}; } /* NameVariableMagic */
+.chroma .w { color: ${color_hash('editor_nontext')}; } /* TextWhitespace */
