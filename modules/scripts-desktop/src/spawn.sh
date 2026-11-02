@@ -19,14 +19,8 @@ fi
 wm="${XDG_CURRENT_DESKTOP:-unknown}"
 
 case "${wm,,}" in
-    river)
-        riverctl spawn "$@"
-        ;;
     sway)
         swaymsg exec "$@"
-        ;;
-    hyprland)
-        hyprctl dispatch exec "$@"
         ;;
     niri)
         niri msg action spawn -- "$@"
