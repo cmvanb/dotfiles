@@ -26,5 +26,5 @@ hyprlock::install () {
 hyprlock::uninstall () {
     echo "└> Uninstalling hyprlock configuration."
 
-    fs::remove "$XDG_CONFIG_HOME/hyprlock"
+    fs::remove "$XDG_CONFIG_HOME/hypr/hyprlock.conf"
 }
