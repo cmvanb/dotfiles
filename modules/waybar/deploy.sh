@@ -17,31 +17,25 @@ waybar::install () {
 
     fs::ensure_directory "$XDG_CONFIG_HOME/waybar"
 
-    # TODO: Use a symlink with window manager suffix to point to the correct waybar profile.
-    if [[ $DEPLOY_WM == "hyprland" ]]; then
-        fs::force_link "$src/hyprland-config" "$XDG_CONFIG_HOME/waybar/config"
-        template::render_mako "$src/hyprland-style.mako.css" "$XDG_CONFIG_HOME/waybar/style.css"
-
-    elif [[ $DEPLOY_WM == "niri" ]]; then
-        fs::force_link "$src/niri-config" "$XDG_CONFIG_HOME/waybar/config"
-        template::render_mako "$src/niri-style.mako.css" "$XDG_CONFIG_HOME/waybar/style.css"
-
-    elif [[ $DEPLOY_WM == "river" ]]; then
-        fs::force_link "$src/river-config" "$XDG_CONFIG_HOME/waybar/config"
-        template::render_mako "$src/river-style.mako.css" "$XDG_CONFIG_HOME/waybar/style.css"
-
-    elif [[ $DEPLOY_WM == "sway" ]]; then
-        template::render_mako "$src/sway-config.mako" "$XDG_CONFIG_HOME/waybar/config"
-        template::render_mako "$src/sway-style.mako.css" "$XDG_CONFIG_HOME/waybar/style.css"
-
-    elif [[ -z $DEPLOY_WM ]]; then
+    # Each window manager has its own variant: config.<wm>[.mako], style.<wm>.mako.css
+    if [[ -z $DEPLOY_WM ]]; then
         debug::error "\$DEPLOY_WM not set."
         exit 2
+    fi
 
+    local config="$src/config.$DEPLOY_WM"
+    local style="$src/style.$DEPLOY_WM.mako.css"
+
+    if [[ -f "$config.mako" ]]; then
+        template::render_mako "$config.mako" "$XDG_CONFIG_HOME/waybar/config"
+    elif [[ -f "$config" ]]; then
+        fs::force_link "$config" "$XDG_CONFIG_HOME/waybar/config"
     else
-        debug::error "\`$DEPLOY_WM\` is not accounted for."
+        debug::error "No waybar config for \`$DEPLOY_WM\`."
         exit 1
     fi
+
+    template::render_mako "$style" "$XDG_CONFIG_HOME/waybar/style.css"
 
     fs::force_link "$src/restart-waybar.sh" "$XDG_SCRIPTS_HOME/restart-waybar.sh"
     fs::force_link "$src/toggle-waybar.sh" "$XDG_SCRIPTS_HOME/toggle-waybar.sh"
