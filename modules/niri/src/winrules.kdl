@@ -69,7 +69,6 @@ window-rule {
 window-rule {
     match app-id=r#"^waypaper$"#
 
-    open-floating true
     default-column-width { fixed 900; }
     default-window-height { fixed 1200; }
 }
