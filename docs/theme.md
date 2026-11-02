@@ -268,8 +268,8 @@ Qt theme and match GTK popovers.
 
 | Function | Output |
 |---|---|
-| `font <key>` | Font value (e.g. `Agave Nerd Font Mono`) |
-| `cursor <key>` | Cursor value (e.g. `Simp1e`, `24`) |
+| `font <key>` | Font value (e.g. `Nordwand Mono`) |
+| `cursor <key>` | Cursor value (e.g. `Simp1e`, `32`) |
 | `scheme <key>` | Scheme property (e.g. `light`); Python and Lua |
 
 ## Usage in modules

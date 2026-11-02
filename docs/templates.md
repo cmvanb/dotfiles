@@ -42,8 +42,8 @@ The `render-mako` command (invoked via `template::render_mako`) injects these in
 All theme color, font, and cursor values are pre-loaded and available as plain variables:
 
 ```
-primary_8       →  "2a68ca"   (6-digit hex, no prefix)
-font_sans       →  "Inter"
+primary_8       →  "1e49a1"   (6-digit hex, no prefix)
+font_sans       →  "Nimbus Sans"
 cursor_size     →  "32"
 scheme_variant  →  "dark"     (or "light")
 scheme_name     →  "carbon-dark"
