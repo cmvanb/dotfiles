@@ -28,13 +28,13 @@ The `render-mako` command (invoked via `template::render_mako`) injects these in
 | `DEPLOY_HOST` | Hostname |
 | `USER` | Current user name |
 | `XDG_CONFIG_HOME` | `~/.config` |
-| `XDG_CACHE_HOME` | `~/.cache` |
+| `XDG_CACHE_HOME` | `~/.local/cache` |
 | `XDG_DATA_HOME` | `~/.local/share` |
 | `XDG_STATE_HOME` | `~/.local/state` |
 | `XDG_BIN_HOME` | `~/.local/bin` |
 | `XDG_OPT_HOME` | `~/.local/opt` |
 | `XDG_SCRIPTS_HOME` | `~/.local/scripts` |
-| `XDG_TEMPLATES_DIR` | `~/.local/templates` |
+| `XDG_TEMPLATES_DIR` | `~/.local/share/templates` |
 
 
 ## Theme context
