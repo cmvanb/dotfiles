@@ -25,7 +25,9 @@ dotfiles/
     ├── fs.sh          # create links, move and copy files, etc.
     ├── profile.sh     # parse/resolve/merge profile files
     ├── linux.sh       # distro detection
-    └── debug.sh
+    ├── debug.sh       # -> modules/lib-shell-utils/src/debug.sh
+    ├── path.sh        # -> modules/lib-shell-utils/src/path.sh
+    └── template.sh    # -> modules/lib-shell-utils/src/template.sh
 ```
 
 ## Core concepts
