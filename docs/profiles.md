@@ -29,7 +29,7 @@ Circular dependencies are rejected.
 ```
 profile.extends=
 
-modules.lib=lib-shell-utils lib-theme
+modules.lib=lib-shell-utils lib-theme lib-python-utils
 modules.theme=theme-base
 modules.install=bash bat fish git less npm nvim python readline ripgrep scripts-shell-utils wget yazi
 modules.enable=
@@ -40,8 +40,8 @@ modules.enable=
 profile.extends=server
 
 modules.theme=theme-desktop
-modules.install=alacritty bitwarden btop chromium direnv disable-xdg-desktop-files discord draw.io fontconfig ghostty gitui imv mpv opencode pandoc qutebrowser scripts-markdown scripts-misc scripts-system-utils spotify udiskie vscodium vt wezterm xdg-mimetype-associations yay zathura
-modules.enable=pipewire ssh syncthing udiskie
+modules.install=agents alacritty android ansible azure bitwarden bluetooth-notify btop chromium claude-code dart direnv disable-xdg-desktop-files discord docker dotnet draw.io flutter fontconfig ghostty gimp gitui gnupg gradle gsutil imv justpager mpv opencode pandoc pipewire qutebrowser rust scripts-markdown scripts-misc scripts-system-utils spotify teams-for-linux udiskie vt wezterm wireplumber worktrunk xdg-mimetype-associations zathura
+modules.enable=bluetooth-notify pipewire wireplumber ssh syncthing udiskie
 ```
 
 **`profiles/wayland-wm`** — wayland desktop shell:
