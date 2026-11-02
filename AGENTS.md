@@ -53,6 +53,7 @@ agent-skills list                   # show linked skills and their source
 | `XDG_CONFIG_HOME` | Config root (defaults to `~/.config`) |
 | `XDG_CACHE_HOME` | Cache root (defaults to `~/.local/cache`) |
 | `XDG_DATA_HOME` | Data root (defaults to `~/.local/share`) |
+| `XDG_STATE_HOME` | State root (defaults to `~/.local/state`) |
 | `XDG_BIN_HOME` | User bin dir (defaults to `~/.local/bin`) |
 | `XDG_OPT_HOME` | User opt dir (defaults to `~/.local/opt`) |
 | `XDG_SCRIPTS_HOME` | User scripts dir (defaults to `~/.local/scripts`) |
