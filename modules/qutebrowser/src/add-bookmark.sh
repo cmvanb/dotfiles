@@ -72,14 +72,19 @@ fi
 # Validate tags.
 declare -a input_tags=()
 declare -a new_bookmark_tags=()
+declare -A seen_tags=()
 
 IFS=' ' read -r -a input_tags <<< "$new_bookmark_tags_raw"
 
 for t in "${input_tags[@]+"${input_tags[@]}"}"; do
-    # TODO: Ignore duplicate tags.
     # Ignore 1-char tags and empty tags.
     if [[ "${#t}" -gt 1 ]] && [[ -n "$t"  ]]; then
-        new_bookmark_tags+=("$(convert_to_kebab_case "$t")")
+        tag=$(convert_to_kebab_case "$t")
+        # Ignore duplicate tags.
+        if [[ -z "${seen_tags[$tag]+set}" ]]; then
+            seen_tags[$tag]=1
+            new_bookmark_tags+=("$tag")
+        fi
     fi
 done
 
