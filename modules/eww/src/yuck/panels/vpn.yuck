@@ -1,0 +1,29 @@
+;;------------------------------------------------------------------------------
+;; VPN panel
+;;------------------------------------------------------------------------------
+
+(defwidget vpn-panel []
+  (box :class "vpn" :orientation "v" :space-evenly false :spacing 12
+    (heading :text "VPN"
+      (switch :active {vpn.up}
+              :onclick "scripts/vpn.sh ${vpn.up ? 'disconnect' : 'connect'} &"))
+    (card
+      (label :class "card-title" :halign "start" :text "ProtonVPN")
+      (box :orientation "v" :space-evenly false
+        (for profile in {vpn_profiles.profiles}
+          (vpn-profile :name profile
+                       :selected {profile == vpn_profiles.selected}
+                       :connected {vpn.up && profile == vpn_profiles.selected})))
+      (label :class "placeholder" :visible {arraylength(vpn_profiles.profiles) == 0}
+             :text "No profiles"))))
+
+;; Clicking the connected profile disconnects. Any other profile becomes the
+;; tunnel's config and connects.
+(defwidget vpn-profile [name selected connected]
+  (button :class "peer ${connected ? 'online' : ''}"
+          :tooltip {connected ? "Disconnect" : "Connect"}
+          :onclick {connected ? "scripts/vpn.sh disconnect &" : "scripts/vpn.sh connect '${name}' &"}
+    (box :space-evenly false :spacing 10
+      (box :class "dot" :valign "center")
+      (label :class "row-key" :halign "start" :hexpand true :text name)
+      (label :class "muted-text" :text {connected ? "Connected" : selected ? "Disconnected" : ""}))))

@@ -27,6 +27,7 @@
 (defwidget status-modules [output ?open]
   (box :class "right" :halign "end" :space-evenly false
     (slot :name "tailscale" :open open (tailscale-module :output output))
+    (slot :name "vpn" :open open (vpn-module :output output))
     (slot :name "network" :open open (network-module :output output))
     (slot :name "bluetooth" :open open (bluetooth-module :output output))
     (slot :name "audio" :open open (audio-module :output output))
@@ -92,6 +93,13 @@
   (optional :shown {tailscale.up}
     (module :name "tailscale" :output output :tooltip "Tailscale · ${tailscale.ip}"
       (icon :name "tailscale-logo-symbolic" :class "tailscale"))))
+
+(defwidget vpn-module [output]
+  (optional :shown {vpn.present}
+    (module :name "vpn" :output output
+            :class {vpn.up ? "" : "off"}
+            :tooltip {vpn.up ? "VPN connected" : "VPN off"}
+      (icon :name {vpn.up ? "network-vpn-symbolic" : "network-vpn-disabled-symbolic"}))))
 
 (defwidget network-module [output]
   (module :name "network" :output output
