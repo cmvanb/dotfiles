@@ -32,6 +32,10 @@ niri::install () {
         echo "└> Warning: No outputs configuration for host '$host'."
     fi
 
+    if [[ -f "$src/layout/layout.$host.kdl" ]]; then
+        fs::force_link "$src/layout/layout.$host.kdl" "$XDG_CONFIG_HOME/niri/layout.kdl"
+    fi
+
     template::render_mako "$src/outputs/workspaces.mako" "$XDG_CONFIG_HOME/niri/workspaces"
     template::render_mako "$src/theme.mako.kdl" "$XDG_CONFIG_HOME/niri/theme.kdl"
 

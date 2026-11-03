@@ -105,6 +105,7 @@ layer-rule {
 //------------------------------------------------------------------------------
 
 include optional=true "outputs.kdl"
+include optional=true "layout.kdl"
 include "theme.kdl"
 include "winrules.kdl"
 include "keymaps.kdl"
