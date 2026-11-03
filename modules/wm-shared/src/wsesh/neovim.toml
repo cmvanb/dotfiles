@@ -1,0 +1,19 @@
+# Workspace session for the Neovim configuration.
+
+[[entry]]
+type = "terminal"
+workspace = "vim"
+cwd = "~/Code/dotfiles/modules/nvim/src"
+
+[[entry]]
+type = "terminal"
+workspace = "vim"
+cwd = "~/Code/dotfiles/modules/nvim/src"
+command = "opencode"
+focused = true
+
+[[entry]]
+type = "terminal"
+workspace = "vim"
+cwd = "~/Code/dotfiles/modules/nvim/src"
+command = "edit"
