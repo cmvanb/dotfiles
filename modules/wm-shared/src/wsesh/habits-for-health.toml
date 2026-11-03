@@ -3,27 +3,9 @@
 [[entry]]
 type = "browser"
 workspace = "1"
-workspace_name = "pr"
-session = "omnia-hfh-pr"
-
-[[entry]]
-type = "browser"
-workspace = "2"
-workspace_name = "cicd"
-session = "omnia-hfh-cicd"
-
-[[entry]]
-type = "browser"
-workspace = "3"
 workspace_name = "tix"
 session = "omnia-hfh-tickets"
 focused = true
-
-[[entry]]
-type = "app"
-workspace = "10"
-workspace_name = "teams"
-desktop = "teams-for-linux"
 
 [[entry]]
 type = "terminal"
@@ -40,3 +22,4 @@ command = "opencode"
 type = "terminal"
 workspace = "dev"
 cwd = "~/Code/habits-for-health"
+command = "edit"
