@@ -153,6 +153,7 @@ In sway, `$mod+Shift+c` toggles the scheme.
 |---|---|
 | sway | Config reload |
 | niri | Watches its included theme file |
+| pi | Watches its theme file |
 | waybar, eww, swaync, swayosd | Signal, reload command, or service restart |
 | ghostty | `SIGUSR2` |
 | Neovim | `SIGUSR1`, replays every highlight |

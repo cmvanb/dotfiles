@@ -1,0 +1,10 @@
+{
+  "theme": "carbon",
+  "defaultProvider": "anthropic",
+  "defaultModel": "claude-opus-5-5",
+  "defaultThinkingLevel": "medium",
+  "packages": [
+    "npm:@gotgenes/pi-anthropic-auth@2.0.10"
+  ],
+  "lastChangelogVersion": "0.84.2"
+}
