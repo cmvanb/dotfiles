@@ -5,3 +5,6 @@ __pycache__
 
 # direnv
 .envrc
+
+# submodule worktrees
+modules/*/src.*/
