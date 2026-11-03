@@ -6,9 +6,9 @@
 fonts:
 #-------------------------------------------------------------------------------
 
-  # Tuned for Agave Nerd Font Mono: 14.1 rather than 14 gives a 19px cell (at
-  # 2x) that fills a tiled window under the 32px bar with 61 rows and 3px to
-  # spare. Nordwand Mono has other metrics, so this needs retuning.
-  font_size_terminal:     14.1
+  # Tuned for Nordwand Mono: 12.6 to 12.9 gives a 45px cell at buffer scale 2.
+  # A tiled window is 2298px tall, so it fits 51 rows with 3px to spare. 12.95
+  # jumps to a 46px cell, which leaves 44px.
+  font_size_terminal:     12.9
   font_size_bar:          16
   font_size_bar_tooltip:  14
