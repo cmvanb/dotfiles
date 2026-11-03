@@ -50,11 +50,10 @@ set -U fish_pager_color_selected_background --background=(color_named 'menu_sele
 set -U fish_pager_color_selected_completion (color_named 'menu_selection_fg')
 set -U fish_pager_color_selected_description (color_named 'terminal_text')
 
-# Unknown
-# TODO: Find where these colors are used by fish.
-set -U fish_color_cancel (color_named 'debug') # -r
-set -U fish_color_history_current (color_named 'debug') # --bold
-set -U fish_color_selection (color_named 'selection_bg')  # Used when manually selecting text.
+# Other
+set -U fish_color_cancel (color_named 'debug')  # ^C indicator on a canceled command
+set -U fish_color_history_current (color_named 'debug')  # current entry in dirh and cdh
+set -U fish_color_selection (color_named 'selection_bg')  # vi visual mode selection
 
 # Terminal color support
 #-------------------------------------------------------------------------------
