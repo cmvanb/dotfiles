@@ -170,6 +170,11 @@ i.grey.icon.icon.icon.icon {
   color: var(--color-primary-contrast);
 }
 
+/* Activity heatmap */
+% for level, color in [('primary-light-4', 'orange_1'), ('primary-light-2', 'orange_3'), ('primary', 'orange_5'), ('primary-dark-2', 'orange_7'), ('primary-dark-4', 'orange_9')]:
+#user-heatmap rect[style*="var(--color-${level})"] { fill: ${color_hash(color)} !important; }
+% endfor
+
 /* https://github.com/alecthomas/chroma/blob/master/types.go */
 .chroma { color: ${color_hash('editor_text')}; }
 .chroma .bp { color: ${color_hash('syn_identifier')}; } /* NameBuiltinPseudo */
