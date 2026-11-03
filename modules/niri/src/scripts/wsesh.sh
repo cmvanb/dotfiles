@@ -32,18 +32,41 @@ usage() {
 
 # Focus a workspace reference
 #
-# A bare number is an index on the focused output; a name goes through ws.sh,
-# which creates the named workspace on demand.
+# niri stacks workspaces, so a number only matters to sway. Numbered entries
+# need a workspace_name, which append_workspace creates. A name goes through
+# ws.sh, which creates the named workspace on demand.
 #-------------------------------------------------------------------------------
 
 focus_workspace() {
     local workspace="$1"
 
     if [[ $workspace =~ ^[0-9]+$ ]]; then
-        niri msg action focus-workspace "$workspace"
-    else
-        "$script_dir/ws.sh" focus "$workspace"
+        debug::error "Numbered workspace $workspace needs a workspace_name"
+        return 1
     fi
+
+    "$script_dir/ws.sh" focus "$workspace"
+}
+
+# Append a named workspace
+#
+# Names the trailing empty workspace of the focused output, the slot niri
+# appends at. An existing workspace of that name is reused.
+#-------------------------------------------------------------------------------
+
+append_workspace() {
+    local name="$1"
+    local workspaces output idx
+
+    workspaces=$(niri msg -j workspaces)
+    jq -e --arg name "$name" 'any(.[]; (.name // "" | ascii_downcase) == ($name | ascii_downcase))' <<< "$workspaces" > /dev/null && return 0
+
+    output=$(niri msg -j focused-output | jq -r '.name')
+    idx=$(jq -r --arg output "$output" \
+        '[.[] | select(.output == $output and .name == null and .active_window_id == null)] | max_by(.idx) | .idx' <<< "$workspaces")
+
+    niri msg action focus-workspace "$idx"
+    "$script_dir/rename-workspace.sh" "$name" > /dev/null
 }
 
 # Run one wsesh entry
@@ -62,8 +85,7 @@ spawn_entry() {
             return 1
         fi
 
-        focus_workspace "$workspace" || return 1
-        "$script_dir/rename-workspace.sh" "$workspace_name" > /dev/null || return 1
+        append_workspace "$workspace_name" || return 1
         workspace=$workspace_name
     fi
 
