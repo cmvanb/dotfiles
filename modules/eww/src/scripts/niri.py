@@ -5,8 +5,8 @@
 # Follows the niri event stream and prints one JSON object per change, in the
 # shape sway.py documents. Workspaces are referenced by name when named, else
 # by their index on the output, which `focus-workspace` accepts either way.
-# Empty unnamed inactive workspaces are hidden: niri always keeps one trailing
-# empty workspace per output, which sway has no counterpart for.
+# Empty workspaces are hidden unless active: niri keeps one trailing empty
+# workspace per output, and declared named workspaces always exist.
 #-------------------------------------------------------------------------------
 
 import json
@@ -111,7 +111,7 @@ def snapshot(resolver, state):
                 output['title'] = active.get('title') or ''
                 output['icon'] = resolver.resolve(active.get('app_id'))
 
-        if ws['active_window_id'] is None and ws['name'] is None and not ws['is_active']:
+        if ws['active_window_id'] is None and not ws['is_active']:
             continue
 
         apps = []
