@@ -91,8 +91,7 @@ binds {
     // Center window
     Mod+C { center-window; }
 
-    // TODO: Needs a better key map.
-    // Toggle window maximized to screen edges
+    // Cycle column width
     Mod+F { switch-preset-column-width; }
 
     // Toggle window fullscreen
