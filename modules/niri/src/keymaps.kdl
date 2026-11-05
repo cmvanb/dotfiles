@@ -118,6 +118,10 @@ binds {
     Mod+Ctrl+H { move-column-left-or-to-monitor-left; }
     Mod+Ctrl+L { move-column-right-or-to-monitor-right; }
 
+    // Move the focused window to the previous or next monitor
+    Mod+Ctrl+Shift+H { move-window-to-monitor-previous; }
+    Mod+Ctrl+Shift+L { move-window-to-monitor-next; }
+
     // Resize window
     Mod+Alt+K { set-window-height "-100"; }
     Mod+Alt+J { set-window-height "+100"; }
@@ -130,6 +134,8 @@ binds {
     // Workspace navigation
     Mod+Tab { focus-workspace-down; }
     Mod+BackSpace { focus-workspace-up; }
+    Mod+Ctrl+Tab { move-window-to-workspace-down focus=false; }
+    Mod+Ctrl+BackSpace { move-window-to-workspace-up focus=false; }
     Mod+Semicolon { focus-workspace-previous; }
     Mod+Ctrl+Semicolon { spawn-sh "$XDG_CONFIG_HOME/niri/scripts/move-to-previous-workspace.sh"; }
 
@@ -143,7 +149,10 @@ binds {
     Mod+Shift+WheelScrollUp { focus-workspace-up; }
 
     // Focus the next empty workspace
-    Mod+O { spawn-sh "$XDG_CONFIG_HOME/niri/scripts/focus-empty-workspace.sh"; }
+    Mod+O { spawn-sh "niri msg action focus-workspace $($XDG_CONFIG_HOME/niri/scripts/next-empty-workspace.sh)"; }
+
+    // Move the focused window to the next empty workspace
+    Mod+Ctrl+O { spawn-sh "niri msg action move-window-to-workspace --focus false $($XDG_CONFIG_HOME/niri/scripts/next-empty-workspace.sh)"; }
 
     // Focus special workspaces
     Mod+F1 { spawn-sh "$XDG_CONFIG_HOME/niri/scripts/ws.sh focus home"; }
