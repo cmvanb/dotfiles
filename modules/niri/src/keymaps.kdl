@@ -139,8 +139,6 @@ binds {
     // Cycle focused workspaces
     Mod+Shift+J { focus-workspace-down; }
     Mod+Shift+K { focus-workspace-up; }
-    Mod+Shift+L { focus-workspace-down; }
-    Mod+Shift+H { focus-workspace-up; }
     Mod+Shift+WheelScrollDown { focus-workspace-down; }
     Mod+Shift+WheelScrollUp { focus-workspace-up; }
 
