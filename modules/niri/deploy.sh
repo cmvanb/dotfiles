@@ -36,8 +36,11 @@ niri::install () {
         fs::force_link "$src/layout/layout.$host.kdl" "$XDG_CONFIG_HOME/niri/layout.kdl"
     fi
 
-    template::render_mako "$src/outputs/workspaces.mako" "$XDG_CONFIG_HOME/niri/workspaces"
+    template::render_mako "$src/outputs/workspaces.mako.kdl" "$XDG_CONFIG_HOME/niri/workspaces.kdl"
     template::render_mako "$src/theme.mako.kdl" "$XDG_CONFIG_HOME/niri/theme.kdl"
+
+    fs::ensure_directory "$XDG_BIN_HOME"
+    fs::force_link "$src/scripts/niri-ws.sh" "$XDG_BIN_HOME/niri-ws"
 
     rm -rf "$XDG_CONFIG_HOME/systemd/user/niri.service.wants"
 
@@ -59,6 +62,7 @@ niri::uninstall () {
 
     fs::remove "$XDG_CONFIG_HOME/niri"
     fs::remove "$XDG_CONFIG_HOME/xdg-desktop-portal/niri-portals.conf"
+    fs::remove "$XDG_BIN_HOME/niri-ws"
 
     if fs::same_file "$XDG_BIN_HOME/init" "$src/init.niri"; then
         fs::remove "$XDG_BIN_HOME/init"

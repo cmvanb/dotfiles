@@ -1,0 +1,16 @@
+//------------------------------------------------------------------------------
+// Niri named workspaces (auto-generated)
+//  see: https://github.com/YaLTeR/niri/wiki/Configuration:-Named-Workspaces
+//
+// A workspace whose output is disconnected opens on another output and returns
+// once its output reconnects.
+//------------------------------------------------------------------------------
+<%
+    named_workspaces = ['home', 'mail', 'todo', 'vim', 'auth', 'system', 'config', 'dev', 'project', 'ssh', 'chat', 'audio']
+    primary = 'Iiyama North America PL2790QS 1178024901361'
+    # Named workspaces open on the primary output unless overridden per host.
+    output_overrides = {'cyxwel': {'audio': 'DP-4', 'chat': 'DP-4'}}.get(DEPLOY_HOST, {})
+%>
+% for ws in named_workspaces:
+workspace "${ws}" { open-on-output "${output_overrides.get(ws, primary)}"; }
+% endfor

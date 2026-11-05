@@ -130,56 +130,57 @@ binds {
     // Workspace mappings
     //--------------------------------------------------------------------------
 
-    // Workspace navigation
-    Mod+Tab { focus-workspace-down; }
-    Mod+BackSpace { focus-workspace-up; }
-    Mod+Ctrl+Tab { move-window-to-workspace-down focus=false; }
-    Mod+Ctrl+BackSpace { move-window-to-workspace-up focus=false; }
-    Mod+Semicolon { focus-workspace-previous; }
-    Mod+Ctrl+Semicolon { spawn-sh "$XDG_CONFIG_HOME/niri/scripts/move-to-previous-workspace.sh"; }
+    // Toggle the overview
+    Mod+E { toggle-overview; }
+
+    // Focus the most recent occupied workspace
+    Mod+Semicolon { spawn "niri-ws" "back"; }
+
+    // Move the focused window to the most recent occupied workspace
+    Mod+Ctrl+Semicolon { spawn "niri-ws" "back" "--move"; }
 
     // Rename the focused workspace
     Mod+Shift+N { spawn-sh "$XDG_CONFIG_HOME/niri/scripts/rename-workspace.sh"; }
 
-    // Cycle focused workspaces
-    Mod+Shift+J { focus-workspace-down; }
-    Mod+Shift+K { focus-workspace-up; }
-    Mod+Shift+WheelScrollDown { focus-workspace-down; }
-    Mod+Shift+WheelScrollUp { focus-workspace-up; }
+    // Cycle occupied workspaces
+    Mod+Shift+J { spawn "niri-ws" "step" "down"; }
+    Mod+Shift+K { spawn "niri-ws" "step" "up"; }
+    Mod+Shift+WheelScrollDown { spawn "niri-ws" "step" "down"; }
+    Mod+Shift+WheelScrollUp { spawn "niri-ws" "step" "up"; }
 
-    // Focus the next empty workspace
-    Mod+O { spawn-sh "niri msg action focus-workspace $($XDG_CONFIG_HOME/niri/scripts/next-empty-workspace.sh)"; }
+    // Focus a fresh workspace
+    Mod+O { spawn "niri-ws" "fresh"; }
 
-    // Move the focused window to the next empty workspace
-    Mod+Ctrl+O { spawn-sh "niri msg action move-window-to-workspace --focus false $($XDG_CONFIG_HOME/niri/scripts/next-empty-workspace.sh)"; }
+    // Move the focused window to a fresh workspace
+    Mod+Ctrl+O { spawn "niri-ws" "fresh" "--move"; }
 
     // Focus special workspaces
-    Mod+F1 { spawn-sh "$XDG_CONFIG_HOME/niri/scripts/ws.sh focus home"; }
-    Mod+F2 { spawn-sh "$XDG_CONFIG_HOME/niri/scripts/ws.sh focus mail"; }
-    Mod+F3 { spawn-sh "$XDG_CONFIG_HOME/niri/scripts/ws.sh focus todo"; }
-    Mod+F4 { spawn-sh "$XDG_CONFIG_HOME/niri/scripts/ws.sh focus vim"; }
-    Mod+F5 { spawn-sh "$XDG_CONFIG_HOME/niri/scripts/ws.sh focus auth"; }
-    Mod+F6 { spawn-sh "$XDG_CONFIG_HOME/niri/scripts/ws.sh focus system"; }
-    Mod+F7 { spawn-sh "$XDG_CONFIG_HOME/niri/scripts/ws.sh focus config"; }
-    Mod+F8 { spawn-sh "$XDG_CONFIG_HOME/niri/scripts/ws.sh focus dev"; }
-    Mod+F9 { spawn-sh "$XDG_CONFIG_HOME/niri/scripts/ws.sh focus project"; }
-    Mod+F10 { spawn-sh "$XDG_CONFIG_HOME/niri/scripts/ws.sh focus ssh"; }
-    Mod+F11 { spawn-sh "$XDG_CONFIG_HOME/niri/scripts/ws.sh focus chat"; }
-    Mod+F12 { spawn-sh "$XDG_CONFIG_HOME/niri/scripts/ws.sh focus audio"; }
+    Mod+F1 { focus-workspace "home"; }
+    Mod+F2 { focus-workspace "mail"; }
+    Mod+F3 { focus-workspace "todo"; }
+    Mod+F4 { focus-workspace "vim"; }
+    Mod+F5 { focus-workspace "auth"; }
+    Mod+F6 { focus-workspace "system"; }
+    Mod+F7 { focus-workspace "config"; }
+    Mod+F8 { focus-workspace "dev"; }
+    Mod+F9 { focus-workspace "project"; }
+    Mod+F10 { focus-workspace "ssh"; }
+    Mod+F11 { focus-workspace "chat"; }
+    Mod+F12 { focus-workspace "audio"; }
 
     // Send to special workspaces
-    Mod+Ctrl+F1 { spawn-sh "$XDG_CONFIG_HOME/niri/scripts/ws.sh move home"; }
-    Mod+Ctrl+F2 { spawn-sh "$XDG_CONFIG_HOME/niri/scripts/ws.sh move mail"; }
-    Mod+Ctrl+F3 { spawn-sh "$XDG_CONFIG_HOME/niri/scripts/ws.sh move todo"; }
-    Mod+Ctrl+F4 { spawn-sh "$XDG_CONFIG_HOME/niri/scripts/ws.sh move vim"; }
-    Mod+Ctrl+F5 { spawn-sh "$XDG_CONFIG_HOME/niri/scripts/ws.sh move auth"; }
-    Mod+Ctrl+F6 { spawn-sh "$XDG_CONFIG_HOME/niri/scripts/ws.sh move system"; }
-    Mod+Ctrl+F7 { spawn-sh "$XDG_CONFIG_HOME/niri/scripts/ws.sh move config"; }
-    Mod+Ctrl+F8 { spawn-sh "$XDG_CONFIG_HOME/niri/scripts/ws.sh move dev"; }
-    Mod+Ctrl+F9 { spawn-sh "$XDG_CONFIG_HOME/niri/scripts/ws.sh move project"; }
-    Mod+Ctrl+F10 { spawn-sh "$XDG_CONFIG_HOME/niri/scripts/ws.sh move ssh"; }
-    Mod+Ctrl+F11 { spawn-sh "$XDG_CONFIG_HOME/niri/scripts/ws.sh move chat"; }
-    Mod+Ctrl+F12 { spawn-sh "$XDG_CONFIG_HOME/niri/scripts/ws.sh move audio"; }
+    Mod+Ctrl+F1 { move-window-to-workspace "home" focus=false; }
+    Mod+Ctrl+F2 { move-window-to-workspace "mail" focus=false; }
+    Mod+Ctrl+F3 { move-window-to-workspace "todo" focus=false; }
+    Mod+Ctrl+F4 { move-window-to-workspace "vim" focus=false; }
+    Mod+Ctrl+F5 { move-window-to-workspace "auth" focus=false; }
+    Mod+Ctrl+F6 { move-window-to-workspace "system" focus=false; }
+    Mod+Ctrl+F7 { move-window-to-workspace "config" focus=false; }
+    Mod+Ctrl+F8 { move-window-to-workspace "dev" focus=false; }
+    Mod+Ctrl+F9 { move-window-to-workspace "project" focus=false; }
+    Mod+Ctrl+F10 { move-window-to-workspace "ssh" focus=false; }
+    Mod+Ctrl+F11 { move-window-to-workspace "chat" focus=false; }
+    Mod+Ctrl+F12 { move-window-to-workspace "audio" focus=false; }
 
     // Laptop keys
     //--------------------------------------------------------------------------

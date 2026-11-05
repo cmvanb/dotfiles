@@ -33,8 +33,8 @@ usage() {
 # Focus a workspace reference
 #
 # niri stacks workspaces, so a number only matters to sway. Numbered entries
-# need a workspace_name, which append_workspace creates. A name goes through
-# ws.sh, which creates the named workspace on demand.
+# need a workspace_name, which append_workspace creates. A name refers to a
+# declared workspace or one append_workspace created.
 #-------------------------------------------------------------------------------
 
 focus_workspace() {
@@ -45,7 +45,7 @@ focus_workspace() {
         return 1
     fi
 
-    "$script_dir/ws.sh" focus "$workspace"
+    niri msg action focus-workspace "$workspace"
 }
 
 # Append a named workspace

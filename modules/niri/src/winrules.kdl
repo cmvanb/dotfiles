@@ -1,9 +1,36 @@
 //------------------------------------------------------------------------------
 // Niri window rules
 //  see: https://github.com/YaLTeR/niri/wiki/Configuration:-Window-Rules
-//
-// Workspace assignments live in scripts/workspaces.sh.
 //------------------------------------------------------------------------------
+
+// Workspaces
+//------------------------------------------------------------------------------
+
+window-rule {
+    match app-id=r#"^org\.gnome\.Geary$"#
+
+    open-on-workspace "mail"
+}
+
+window-rule {
+    match app-id=r#"^discord$"#
+    match app-id=r#"^com\.tosta\.zapzap$"#
+
+    open-on-workspace "chat"
+}
+
+window-rule {
+    match app-id=r#"^Bitwarden$"#
+
+    open-on-workspace "auth"
+}
+
+window-rule {
+    match app-id=r#"^spotify$"#
+    match app-id=r#"^org\.pulseaudio\.pavucontrol$"#
+
+    open-on-workspace "audio"
+}
 
 // Borders
 //------------------------------------------------------------------------------

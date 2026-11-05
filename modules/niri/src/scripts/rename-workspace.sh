@@ -2,9 +2,8 @@
 #-------------------------------------------------------------------------------
 # Rename the focused workspace
 #
-# niri keeps the index of a named workspace, so $mod+N switching keeps working.
-# Entering an empty name clears the name. workspaces.sh removes a named
-# workspace once it is empty and hidden, like sway does.
+# Entering an empty name clears the name. `niri-ws daemon` removes a runtime
+# name once its workspace is empty and hidden, like sway does.
 #-------------------------------------------------------------------------------
 
 set -euo pipefail

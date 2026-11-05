@@ -106,6 +106,7 @@ layer-rule {
 
 include optional=true "outputs.kdl"
 include optional=true "layout.kdl"
+include "workspaces.kdl"
 include "theme.kdl"
 include "winrules.kdl"
 include "keymaps.kdl"
@@ -125,5 +126,5 @@ spawn-at-startup "waypaper" "--restore"
 // Start the eww bar (follows output hotplug)
 spawn-at-startup "eww-bar.sh" "start"
 
-// Named workspace rules
-spawn-sh-at-startup "$XDG_CONFIG_HOME/niri/scripts/workspaces.sh daemon"
+// Workspace focus history
+spawn-at-startup "niri-ws" "daemon"

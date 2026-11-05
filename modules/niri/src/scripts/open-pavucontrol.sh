@@ -5,9 +5,7 @@
 
 set -euo pipefail
 
-script_dir=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)
-
-"$script_dir/ws.sh" focus audio
+niri msg action focus-workspace audio
 
 id=$(niri msg -j windows | jq -r 'first(.[] | select(.app_id == "org.pulseaudio.pavucontrol") | .id) // empty')
 
