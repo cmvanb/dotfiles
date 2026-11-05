@@ -144,6 +144,9 @@ binds {
     Mod+Shift+WheelScrollDown { focus-workspace-down; }
     Mod+Shift+WheelScrollUp { focus-workspace-up; }
 
+    // Focus the next empty workspace
+    Mod+O { spawn-sh "$XDG_CONFIG_HOME/niri/scripts/focus-empty-workspace.sh"; }
+
     // Focus special workspaces
     Mod+F1 { spawn-sh "$XDG_CONFIG_HOME/niri/scripts/ws.sh focus home"; }
     Mod+F2 { spawn-sh "$XDG_CONFIG_HOME/niri/scripts/ws.sh focus mail"; }
