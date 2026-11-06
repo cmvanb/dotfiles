@@ -29,8 +29,8 @@ if [[ -n ${NIRI_SOCKET:-} ]]; then
 else
     wm=sway
     debug::assert_dependency swaymsg
-    debug::assert_dependency jq
 fi
+debug::assert_dependency jq
 
 # Commands
 #-------------------------------------------------------------------------------
@@ -64,7 +64,11 @@ sway::focus-workspace() {
     swaymsg "workspace \"$2\"" > /dev/null
 }
 niri::focus-workspace() {
-    niri msg action focus-monitor "$1"
+    # NOTE: focus-monitor warps the cursor to the output center, so skip it
+    # when the clicked bar is already on the focused output.
+    if [[ $(niri msg -j focused-output | jq -r '.name') != "$1" ]]; then
+        niri msg action focus-monitor "$1"
+    fi
     niri msg action focus-workspace "$2"
 }
 
