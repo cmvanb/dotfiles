@@ -25,8 +25,10 @@ history_size=50
 usage() {
     echo "$(basename "$0") <step|back|fresh|daemon> [options]"
     echo "Options:"
-    echo "    step up|down     Focus the previous or next occupied workspace on the"
-    echo "                     focused output, wrapping around."
+    echo "    step up|down [--move]"
+    echo "                     Focus the previous or next occupied workspace on the"
+    echo "                     focused output, wrapping around, or move the focused"
+    echo "                     window there."
     echo "    back [--move]    Focus the most recent occupied workspace, or move the"
     echo "                     focused window there."
     echo "    fresh [--move]   Focus the trailing empty workspace, or move the focused"
@@ -48,7 +50,7 @@ focused_window() {
 #-------------------------------------------------------------------------------
 
 ws_step() {
-    local direction=$1 idx
+    local direction=$1 move=$2 idx
 
     idx=$(niri msg -j workspaces | jq -r --arg direction "$direction" '
         (.[] | select(.is_focused)) as $focused
@@ -61,7 +63,12 @@ ws_step() {
         | (first | .idx) // empty')
 
     [[ -n $idx ]] || return 0
-    niri msg action focus-workspace "$idx"
+
+    if [[ $move == true ]]; then
+        niri msg action move-window-to-workspace --focus false "$idx"
+    else
+        niri msg action focus-workspace "$idx"
+    fi
 }
 
 # Return to the most recent occupied workspace
@@ -178,19 +185,19 @@ ws_daemon() {
 #-------------------------------------------------------------------------------
 
 move=false
-[[ ${2:-} == "--move" ]] && move=true
+[[ ${2:-} == "--move" || ${3:-} == "--move" ]] && move=true
 
-case "${1:-}:${2:-}:$#" in
-    step:up:2 | step:down:2)
-        ws_step "$2"
+case "${1:-}:${2:-}:${3:-}:$#" in
+    step:up::2 | step:down::2 | step:up:--move:3 | step:down:--move:3)
+        ws_step "$2" "$move"
         ;;
-    back::1 | back:--move:2)
+    back:::1 | back:--move::2)
         ws_back "$move"
         ;;
-    fresh::1 | fresh:--move:2)
+    fresh:::1 | fresh:--move::2)
         ws_fresh "$move"
         ;;
-    daemon::1)
+    daemon:::1)
         ws_daemon
         ;;
     *)
