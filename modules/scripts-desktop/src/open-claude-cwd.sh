@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# TODO: Generalize to any coding agent.
 #-------------------------------------------------------------------------------
 # Open Claude Code in a floating terminal, choosing a working directory from
 # zoxide frecency history.

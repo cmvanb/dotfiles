@@ -13,14 +13,11 @@ binds {
     // System menu (lock / log out / suspend / reboot / reboot to Windows / shutdown)
     Mod+Shift+X { spawn "system-menu.sh"; }
 
-    // Log out
-    Mod+Shift+W { spawn "logout"; }
+    // Toggle between the dark and light color schemes
+    Mod+Shift+C { spawn "theme" "switch" "toggle"; }
 
     // Reload niri configuration
     Mod+Shift+R { spawn-sh "$XDG_CONFIG_HOME/niri/scripts/reload.sh"; }
-
-    // Toggle between the dark and light color schemes
-    Mod+Shift+C { spawn "theme" "switch" "toggle"; }
 
     // Shortcut mappings
     //--------------------------------------------------------------------------
@@ -70,6 +67,7 @@ binds {
     // Wooz
     Mod+Shift+P { spawn "wooz"; }
 
+    // TODO: Generalize to configured coding agent.
     // Open Claude Code in a floating terminal at a zoxide directory
     Mod+A { spawn "open-claude-cwd.sh"; }
 
