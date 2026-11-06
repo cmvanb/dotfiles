@@ -159,7 +159,8 @@ reap() {
 }
 
 ws_daemon() {
-    pkill -f "niri-ws daemon" --ignore-ancestors || true
+    # Anchored, so shells whose command line mentions the daemon survive.
+    pkill -f "^bash [^ ]*niri-ws(\.sh)? daemon$" --ignore-ancestors || true
 
     local event id
     while IFS=$'\t' read -r event id; do
