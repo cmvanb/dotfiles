@@ -125,6 +125,9 @@ binds {
     Mod+Alt+L { set-window-width "+200"; }
     Mod+Alt+H { set-window-width "-200"; }
 
+    // Move the window into or out of the column on the left
+    Mod+S { consume-or-expel-window-left; }
+
     // Workspace mappings
     //--------------------------------------------------------------------------
 
@@ -145,6 +148,10 @@ binds {
     Mod+Shift+K { spawn "niri-ws" "step" "up"; }
     Mod+Shift+WheelScrollDown { spawn "niri-ws" "step" "down"; }
     Mod+Shift+WheelScrollUp { spawn "niri-ws" "step" "up"; }
+
+    // Move the focused window to the previous or next occupied workspace
+    Mod+Ctrl+Shift+J { spawn "niri-ws" "step" "down" "--move"; }
+    Mod+Ctrl+Shift+K { spawn "niri-ws" "step" "up" "--move"; }
 
     // Focus a fresh workspace
     Mod+O { spawn "niri-ws" "fresh"; }
@@ -193,10 +200,4 @@ binds {
     XF86MonBrightnessDown allow-when-locked=true { spawn "swayosd-client" "--brightness" "lower"; }
 
     // Caps Lock indicator: niri has no release binds, so swayosd misses the LED state.
-
-    // Layout mappings
-    //--------------------------------------------------------------------------
-
-    // Move the window into or out of the column on the left
-    Mod+S { consume-or-expel-window-left; }
 }
