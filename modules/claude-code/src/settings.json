@@ -33,7 +33,11 @@
     ],
     "deny": [
       "Read(*.env)",
-      "Read(*.env.*)"
+      "Read(*.env.*)",
+      "Bash(env)",
+      "Bash(env *)",
+      "Bash(mise env)",
+      "Bash(mise env *)"
     ],
     "defaultMode": "auto",
     "additionalDirectories": [
