@@ -110,6 +110,7 @@ include "workspaces.kdl"
 include "theme.kdl"
 include "winrules.kdl"
 include "keymaps.kdl"
+include optional=true "dictation.kdl"
 
 // Startup
 //------------------------------------------------------------------------------

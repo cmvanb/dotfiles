@@ -31,6 +31,9 @@ whisrs::install () {
     fs::ensure_directory "$XDG_CONFIG_HOME/systemd/user"
     fs::force_link "$src/whisrs.service" "$XDG_CONFIG_HOME/systemd/user/whisrs.service"
 
+    fs::ensure_directory "$XDG_BIN_HOME"
+    fs::force_link "$src/whisrs-escape.sh" "$XDG_BIN_HOME/whisrs-escape"
+
     whisrs::install_model "$(whisrs::model)"
 }
 
@@ -53,6 +56,8 @@ whisrs::uninstall () {
 
     fs::remove "$XDG_CONFIG_HOME/whisrs/config.toml"
     fs::remove "$XDG_CONFIG_HOME/systemd/user/whisrs.service"
+    fs::remove "$XDG_BIN_HOME/whisrs-escape"
+    fs::remove "$XDG_CONFIG_HOME/niri/dictation.kdl"
 
     echo "└> Uninstalling whisper models."
 

@@ -70,3 +70,5 @@ phrase_silence_ms = 400
 
 [hooks]
 media_auto_pause = true
+on_record_start = "${XDG_BIN_HOME}/whisrs-escape grab"
+on_record_stop = "${XDG_BIN_HOME}/whisrs-escape release"
