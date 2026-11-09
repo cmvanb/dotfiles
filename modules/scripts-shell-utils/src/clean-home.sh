@@ -8,11 +8,11 @@ set -euo pipefail
 declare -a dirs=(
     ".cache"
     ".cert"
+    ".electron-gyp"
     ".k3d"
     ".kube"
     ".java"
     ".npm"
-    ".qne"
     ".terraform.d"
     ".yarn"
 )
