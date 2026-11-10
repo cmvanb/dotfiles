@@ -2,7 +2,11 @@
 
 ## Memory
 
-Never use the memory system. Keep all persistent knowledge in `AGENTS.md` files instead.
+Agent documentation lives in `AGENTS.md` files and `.agents/` directories.
+`AGENTS.md` is leading and indexes `.agents/` contents.
+Read `.agents/` files when they are deemed relevant to the task.
+
+Never use the harness memory system.
 
 When you need to remember something for a future session, first determine its position in the hierarchy.
 
@@ -14,6 +18,7 @@ Facts or rules scoped to a specific domain, tool, language, or task type. Loaded
 
 **Project**: project root `AGENTS.md`
 Facts or rules specific to one repository: commands, architecture, conventions, gotchas. Create if absent.
+Move detailed topics into `.agents/` files and index each one in `AGENTS.md`.
 
 - Keep a single source of truth.
 - Don't duplicate instructions across levels.
