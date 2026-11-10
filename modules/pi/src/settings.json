@@ -6,11 +6,7 @@
   "packages": [
     "npm:@gotgenes/pi-anthropic-auth@3.4.4"
   ],
-  "lastChangelogVersion": "1.5.1",
   "warnings": {
     "anthropicExtraUsage": false
-  },
-  "extensionChangelogVersions": {
-    "{\"source\":\"npm:@gotgenes/pi-anthropic-auth@2.0.10\",\"scope\":\"user\"}": "2.0.10"
   }
 }

@@ -15,6 +15,10 @@ pi::install () {
 
     local src="$base_dir/modules/pi/src"
 
+    # Pi stores runtime state in settings.json; strip it from git.
+    git -C "$base_dir" config filter.pi-state.clean \
+        "jq --indent 2 'del(.lastChangelogVersion, .extensionChangelogVersions)'"
+
     fs::force_link "$src/bash/pi.sh"   "$XDG_CONFIG_HOME/bash/conf.d/pi.sh"
     fs::force_link "$src/fish/pi.fish" "$XDG_CONFIG_HOME/fish/conf.d/pi.fish"
 
@@ -29,6 +33,8 @@ pi::install () {
 
 pi::uninstall () {
     echo "└> Uninstalling pi configuration."
+
+    git -C "$base_dir" config --remove-section filter.pi-state 2>/dev/null || true
 
     fs::remove "$XDG_CONFIG_HOME/bash/conf.d/pi.sh"
     fs::remove "$XDG_CONFIG_HOME/fish/conf.d/pi.fish"
