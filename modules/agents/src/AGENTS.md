@@ -28,8 +28,8 @@ Move detailed topics into `.agents/` files and index each one in `AGENTS.md`.
 
 Verify before concluding. Every claim about system state must be backed by direct and recent observation.
 
-Observations expire when the user sends a new message.
-Repeat a check before assuming system state that may have changed since the last check.
+Observations can expire between user session messages.
+Repeat a check before assuming system state that may have changed.
 
 ## Writing Style
 
