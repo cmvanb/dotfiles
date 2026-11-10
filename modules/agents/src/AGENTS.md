@@ -23,6 +23,9 @@ Facts or rules specific to one repository: commands, architecture, conventions, 
 
 Verify before concluding. Every claim about system state must be backed by direct observation this session.
 
+Observations expire when the user sends a new message.
+Repeat a check before reporting system state that may have changed since the last check.
+
 ## Writing Style
 
 - Use as few words as possible.
