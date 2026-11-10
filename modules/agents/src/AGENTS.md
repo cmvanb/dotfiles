@@ -26,10 +26,10 @@ Move detailed topics into `.agents/` files and index each one in `AGENTS.md`.
 
 ## Never Assume, Always Verify
 
-Verify before concluding. Every claim about system state must be backed by direct observation this session.
+Verify before concluding. Every claim about system state must be backed by direct and recent observation.
 
 Observations expire when the user sends a new message.
-Repeat a check before reporting system state that may have changed since the last check.
+Repeat a check before assuming system state that may have changed since the last check.
 
 ## Writing Style
 
