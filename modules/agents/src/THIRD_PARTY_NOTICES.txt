@@ -1,0 +1,132 @@
+Third party agent skills
+
+Source: https://github.com/cursor/plugins at de8ee15
+
+pstack (pstack/skills), except tdd:
+  architect
+  arena
+  automate-me
+  benchmark-checklist
+  blast-radius
+  bro
+  correct
+  create-formal-verification-skill
+  create-verification-skill
+  figure-it-out
+  how
+  interrogate
+  in-your-own-words
+  ketchup
+  ketchup-video
+  maintain-formal-verification-skill
+  maintain-verification-skill
+  make-bot-ui
+  no-comments
+  poteto-help
+  poteto-mode
+  principle-attack-the-premise
+  principle-boundary-discipline
+  principle-build-the-lever
+  principle-encode-lessons-in-structure
+  principle-exhaust-the-design-space
+  principle-experience-first
+  principle-explain-the-number
+  principle-fix-root-causes
+  principle-foundational-thinking
+  principle-guard-the-context-window
+  principle-laziness-protocol
+  principle-make-operations-idempotent
+  principle-migrate-callers-then-delete-legacy-apis
+  principle-minimize-reader-load
+  principle-model-the-domain
+  principle-never-block-on-the-human
+  principle-outcome-oriented-execution
+  principle-prove-it-works
+  principle-redesign-from-first-principles
+  principle-separate-before-serializing-shared-state
+  principle-sequence-verifiable-units
+  principle-subtract-before-you-add
+  principle-test-behavior-not-implementation
+  principle-type-system-discipline
+  recall
+  reflect
+  setup-pstack
+  sharpen
+  show-me-your-work
+  statechart
+  swarm
+  teach
+  technical-writing
+  typescript-best-practices
+  unslop
+  why
+
+cursor-team-kit (cursor-team-kit/skills):
+  check-compiler-errors
+  control-cli
+  control-ui
+  deslop
+  fix-ci
+  fix-merge-conflicts
+  get-pr-comments
+  loop-on-ci
+  make-pr-easy-to-review
+  new-branch-and-pr
+  pr-review-canvas
+  review-and-ship
+  run-smoke-tests
+  thermo-nuclear-code-quality-review
+  verify-this
+  weekly-review
+  what-did-i-get-done
+  workflow-from-chats
+
+
+=== pstack LICENSE ===
+
+MIT License
+
+Copyright (c) 2026 Lauren Tan
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
+=== cursor-team-kit LICENSE ===
+
+MIT License
+
+Copyright (c) 2026 Cursor
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

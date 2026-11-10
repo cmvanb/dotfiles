@@ -25,10 +25,6 @@ Linux dotfiles managed via a profile/module deployment system. Configs are symli
 
 theme switch dark|light|toggle      # switch the color scheme at runtime
 theme status                        # show the active color scheme
-
-agent-skills sync                   # link local and vendored agent skills
-agent-skills update                 # fetch vendored skills, then relink
-agent-skills list                   # show linked skills and their source
 ```
 
 ## Key conventions
