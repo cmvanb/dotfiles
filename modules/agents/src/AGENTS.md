@@ -2,7 +2,7 @@
 
 ## Memory
 
-Agent documentation lives in `AGENTS.md` files and `.agents/` directories.
+Agent context lives in `AGENTS.md` files and `.agents/` directories.
 `AGENTS.md` is leading and indexes `.agents/` contents.
 Read `.agents/` files when they are deemed relevant to the task.
 
@@ -14,15 +14,15 @@ When you need to remember something for a future session, first determine its po
 Facts or rules that apply in every project and every context: agent behavior, universal conventions, skill triggers.
 
 **Skill**: `~/.config/agents/skills/`
-Facts or rules scoped to a specific domain, tool, language, or task type. Loaded only when relevant. Create a new skill file if none fits.
+Facts or rules scoped to a specific domain, tool, language, or task type. Loaded only when relevant. Offer to create a new skill if none fits.
 
 **Project**: project root `AGENTS.md`
-Facts or rules specific to one repository: commands, architecture, conventions, gotchas. Create if absent.
+Facts or rules specific to one repository: commands, architecture, conventions, gotchas. Offer to create if absent.
 Move detailed topics into `.agents/` files and index each one in `AGENTS.md`.
 
 - Keep a single source of truth.
 - Don't duplicate instructions across levels.
-- Always get permission before modifying **Global** or **Skill** files.
+- Always get permission before modifying context.
 
 ## Never Assume, Always Verify
 
