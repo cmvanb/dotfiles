@@ -2,8 +2,12 @@
 
 [[entry]]
 type = "browser"
-workspace = "1"
-workspace_name = "tix"
+workspace_name = "dev"
+session = "omnia-hfh-github"
+
+[[entry]]
+type = "browser"
+workspace_name = "dev"
 session = "omnia-hfh-tickets"
 focused = true
 
