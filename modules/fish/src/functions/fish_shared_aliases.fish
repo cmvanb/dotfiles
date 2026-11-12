@@ -10,6 +10,7 @@ function fish_shared_aliases
     abbr -a gaa git add -A
     abbr -a gai git add -i
     abbr -a gb git branch -v
+    abbr -a gbd git branch -D
     abbr -a gc git commit -m
     abbr -a gca git commit --amend
     abbr -a gcl git clone
