@@ -529,6 +529,7 @@ config.bind('tJ', 'config-cycle -p -u *://*.{url:host}/* content.javascript.enab
 
 # Dark mode
 config.bind('td', 'config-cycle -p -t -u *://*.{url:host}/* colors.webpage.darkmode.enabled ;; reload ;; spawn notify-send \"Toggled dark mode for: {url:host}\"')
+config.bind('tD', 'config-cycle -p -u *://*.{url:host}/* colors.webpage.darkmode.enabled ;; reload ;; spawn notify-send \"Toggled dark mode for: {url:host}\"')
 
 # Printing
 config.bind('<Ctrl-p>', 'print')
