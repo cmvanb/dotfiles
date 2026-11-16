@@ -347,9 +347,6 @@ c.colors.webpage.darkmode.enabled = theme.scheme('variant') == 'dark'
 c.colors.webpage.darkmode.policy.images = 'smart'
 c.colors.webpage.darkmode.policy.page = 'smart'
 
-# Per-site dark mode overrides
-config.set('colors.webpage.darkmode.enabled', False, '*://portal.azure.com/*')
-
 # Key bindings
 #-------------------------------------------------------------------------------
 
