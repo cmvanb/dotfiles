@@ -25,15 +25,3 @@ wireplumber::uninstall () {
 
     fs::remove "$XDG_CONFIG_HOME/wireplumber/wireplumber.conf.d/50-audio-priority.conf"
 }
-
-wireplumber::enable () {
-    echo "└> Enabling wireplumber user service."
-
-    systemctl --user enable wireplumber
-}
-
-wireplumber::disable () {
-    echo "└> Disabling wireplumber user service."
-
-    systemctl --user disable wireplumber
-}

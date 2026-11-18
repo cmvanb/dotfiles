@@ -31,15 +31,3 @@ pipewire::uninstall () {
     gtk-update-icon-cache -q -f -t "$XDG_DATA_HOME/icons/hicolor"
     fs::remove "$XDG_DATA_HOME/applications/org.pulseaudio.pavucontrol.desktop"
 }
-
-pipewire::enable () {
-    echo "└> Enabling pipewire user service."
-
-    systemctl --user enable pipewire
-}
-
-pipewire::disable () {
-    echo "└> Disabling pipewire user service."
-
-    systemctl --user disable pipewire
-}
