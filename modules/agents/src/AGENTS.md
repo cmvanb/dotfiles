@@ -50,6 +50,7 @@ Repeat a check before assuming system state that may have changed.
 - Immediately update changed or removed references.
 - Never write "I should" or end with deferred offers.
 - Stop only when done or genuinely blocked.
+- Before you ask the user a question, write everything they need to answer it in your response. Put only the question in the question tool.
 
 ## Startup
 
