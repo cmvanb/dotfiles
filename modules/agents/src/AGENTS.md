@@ -77,7 +77,8 @@ When a build, run, or test fails because a tool, SDK, device, service, secret, o
 
 Evaluate every trigger below against the full task before starting. Load all skills whose conditions match, not just the first one.
 
-- **Markdown formatting**: When writing or editing any `.md` file, invoke the `markdown` skill.
+- **Markdown formatting**: When writing or editing a `.md` file, invoke the `markdown` skill. A draft of an issue, PR, or comment body is not a markdown file.
+- **Platform markdown**: When writing an issue, PR, merge request, review, or comment body for any ticketing or VCS system, including a draft in a file, invoke the `platform-markdown` skill.
 - **Linux context**: When making system level changes, modifying system or user configuration, debugging or troubleshooting in a live linux environment, invoke the `linux-context` skill.
 - **Software Developer**: When writing, modifying or refactoring code, designing or developing software, invoke the `software-developer` skill.
 - **Diagnose**: When the user says "diagnose this" / "debug this", reports a bug, says something is broken/throwing/failing, or describes a performance regression, invoke the `diagnose` skill.
