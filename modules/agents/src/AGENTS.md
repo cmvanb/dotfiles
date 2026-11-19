@@ -27,6 +27,7 @@ Move detailed topics into `.agents/` files and index each one in `AGENTS.md`.
 ## Never Assume, Always Verify
 
 Verify before concluding. Every claim about system state must be backed by direct and recent observation.
+Run every check your access allows before you answer. Report results, not open checks.
 
 Observations can expire between user session messages.
 Repeat a check before assuming system state that may have changed.
