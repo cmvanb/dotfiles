@@ -27,10 +27,24 @@ Move detailed topics into `.agents/` files and index each one in `AGENTS.md`.
 ## Never Assume, Always Verify
 
 Verify before concluding. Every claim about system state must be backed by direct and recent observation.
-Run every check your access allows before you answer. Report results, not open checks.
 
 Observations can expire between user session messages.
 Repeat a check before assuming system state that may have changed.
+
+## Execution
+
+- Act immediately if safe, in-scope, and permitted.
+- Correct wrong statements or inaccurate documentation.
+- Immediately update changed or removed references.
+- Never write "I should".
+- Never write "I haven't done ... yet".
+- Never end with deferred offers.
+- Stop only when done or genuinely blocked.
+
+## Questions
+
+- Before a question, give the user the context to answer it as a normal response.
+- Ask using available question tools, with only the question in it.
 
 ## Writing Style
 
@@ -43,15 +57,6 @@ Repeat a check before assuming system state that may have changed.
 - Avoid using parentheticals.
 - Keep information logically grouped.
 - Avoid counting list or group items.
-
-## Execution
-
-- Act immediately if safe, in-scope, and permitted.
-- Correct wrong statements or inaccurate documentation.
-- Immediately update changed or removed references.
-- Never write "I should" or end with deferred offers.
-- Stop only when done or genuinely blocked.
-- Before a question, give the user the context to answer it in your response text. Then ask through the question tool, with only the question in it.
 
 ## Startup
 
