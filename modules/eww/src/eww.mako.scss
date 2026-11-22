@@ -472,3 +472,8 @@ scale {
     &.online .dot { background: $good; }
     &.offline label { color: $muted; }
 }
+
+// Updates
+//------------------------------------------------------------------------------
+
+.updates .pacnew { font-size: ${font_size_medium}px; }

@@ -53,6 +53,11 @@
   :initial '{"ok":false,"has_budget":false,"budget":0,"budget_spent":"","budget_limit":"","budget_reset":"","has_credits":false,"credits":0,"credits_left":"","credits_total":"","today":"","week":"","month":""}'
   "scripts/openrouter.sh")
 
+(defpoll updates
+  :interval "30s"
+  :initial '{"state":"ok","needs_attention":false,"reboot_required":false,"running_kernel":"","installed_kernel":"","aur_count":0,"aur_packages":[],"pacnew_count":0,"pacnew_files":[],"pacman_status":"ok","pacman_timestamp":"","pacman_error":"","pacman_upgraded_count":0}'
+  "sysupdate status --json")
+
 ;; Time zone name; formattime's %Z only yields the UTC offset
 (defpoll timezone
   :interval "10m"

@@ -18,4 +18,5 @@
 (include "yuck/panels/network.yuck")
 (include "yuck/panels/system.yuck")
 (include "yuck/panels/tailscale.yuck")
+(include "yuck/panels/updates.yuck")
 (include "yuck/panels/vpn.yuck")

@@ -26,6 +26,7 @@
 ;; the exact same widths as the bar.
 (defwidget status-modules [output ?open]
   (box :class "right" :halign "end" :space-evenly false
+    (slot :name "updates" :open open (updates-module :output output))
     (slot :name "tailscale" :open open (tailscale-module :output output))
     (slot :name "vpn" :open open (vpn-module :output output))
     (slot :name "network" :open open (network-module :output output))
@@ -88,6 +89,23 @@
 (defwidget optional [shown]
   (revealer :reveal shown :transition "slideleft" :duration "0ms"
     (children)))
+
+(defwidget updates-module [output]
+  (optional :shown {updates.needs_attention}
+    (module :name "updates" :output output
+            :class {updates.state == "error" ? "critical" : updates.state == "reboot" ? "warning" : updates.state == "warning" ? "medium" : ""}
+            :tooltip {updates.state == "error" ? "System upgrade failed"
+                      : updates.state == "reboot" ? "Reboot required · kernel ${updates.installed_kernel}"
+                      : updates.state == "warning" ? "${updates.pacnew_count} .pacnew files to merge"
+                      : "${updates.aur_count} AUR updates to review"}
+      (icon :name {updates.state == "error" ? "dialog-error-symbolic"
+                   : updates.state == "reboot" ? "system-reboot-symbolic"
+                   : updates.state == "warning" ? "dialog-warning-symbolic"
+                   : "software-update-available-symbolic"})
+      (label :yalign 1 :text {updates.state == "error" ? "!"
+                              : updates.state == "reboot" ? "reboot"
+                              : updates.state == "warning" ? "${updates.pacnew_count} pacnew"
+                              : updates.aur_count}))))
 
 (defwidget tailscale-module [output]
   (optional :shown {tailscale.up}

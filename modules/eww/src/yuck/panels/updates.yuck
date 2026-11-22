@@ -1,0 +1,48 @@
+;;------------------------------------------------------------------------------
+;; Updates panel
+;;------------------------------------------------------------------------------
+
+(defwidget updates-panel []
+  (box :class "updates" :orientation "v" :space-evenly false :spacing 12
+    (heading :text "Updates"
+      (icon :name "software-update-available-symbolic" :class "medium")
+      (pill :text "Check" :icon "view-refresh-symbolic"
+            :onclick "(sysupdate check; eww poll updates) &"))
+    (box :visible {updates.pacman_status == "failed"}
+      (card :class "critical"
+        (box :space-evenly false :spacing 10
+          (icon :name "dialog-error-symbolic" :class "medium")
+          (label :class "card-title" :halign "start" :hexpand true :text "Background upgrade failed"))
+        (label :halign "start" :xalign 0 :wrap true :limit-width 200 :text {updates.pacman_error != "" ? updates.pacman_error : "Unknown error"})
+        (box :halign "end"
+          (pill :text "Fix in terminal" :icon "utilities-terminal-symbolic"
+                :onclick "scripts/popup.sh close; spawn-terminal.sh --floating --title 'System Update' --command 'sysupdate --pacman; eww poll updates' &"))))
+    (box :visible {updates.reboot_required}
+      (card :class "warning"
+        (box :space-evenly false :spacing 10
+          (icon :name "system-reboot-symbolic" :class "medium")
+          (label :class "card-title" :halign "start" :hexpand true :text "Reboot required"))
+        (row :key "Running kernel" :value {updates.running_kernel})
+        (row :key "Installed kernel" :value {updates.installed_kernel})
+        (box :halign "end"
+          (pill :text "Reboot" :icon "system-reboot-symbolic"
+                :onclick "systemctl reboot"))))
+    (box :visible {updates.aur_count > 0}
+      (card
+        (label :class "card-title" :halign "start" :text "AUR updates")
+        (box :orientation "v" :space-evenly false
+          (for pkg in {updates.aur_packages}
+            (row :key {pkg.name} :value "${pkg.old} → ${pkg.new}")))
+        (box :halign "end"
+          (pill :text "Review AUR" :icon "utilities-terminal-symbolic"
+                :onclick "scripts/popup.sh close; spawn-terminal.sh --floating --title 'System Update' --command 'sysupdate; eww poll updates' &"))))
+    (box :visible {updates.pacnew_count > 0}
+      (card :class "medium"
+        (label :class "card-title" :halign "start" :text "Configuration files to merge (sudo pacdiff)")
+        (box :orientation "v" :space-evenly false
+          (for file in {updates.pacnew_files}
+            (label :class "pacnew" :halign "start" :limit-width 48 :text file)))))
+    (box :visible {updates.pacman_timestamp != ""}
+      (card
+        (row :key "Last background run"
+             :value "${updates.pacman_timestamp} · ${updates.pacman_upgraded_count} upgraded")))))
