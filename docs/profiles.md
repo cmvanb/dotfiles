@@ -40,8 +40,8 @@ modules.enable=
 profile.extends=server
 
 modules.theme=theme-desktop
-modules.install=agents alacritty android ansible azure bitwarden bluetooth-notify btop chromium claude-code dart direnv disable-xdg-desktop-files discord docker dotnet draw.io flutter fontconfig ghostty gnupg gradle gsutil imv justpager mpv opencode pandoc pi pipewire qutebrowser rust scripts-markdown scripts-misc scripts-system-utils spotify teams-for-linux vt wireplumber worktrunk xdg-mimetype-associations zathura
-modules.enable=bluetooth-notify
+modules.install=agents alacritty android ansible azure bitwarden bluetooth-notify btop chromium claude-code dart direnv disable-xdg-desktop-files discord docker dotnet draw.io flutter fontconfig ghostty gnupg gradle gsutil imv justpager mpv opencode pandoc pi pipewire qutebrowser rust scripts-markdown scripts-misc scripts-system-utils spotify sysupdate teams-for-linux vt wireplumber worktrunk xdg-mimetype-associations zathura
+modules.enable=bluetooth-notify sysupdate
 ```
 
 **`profiles/wayland-wm`** — wayland desktop shell:
