@@ -1,0 +1,9 @@
+[Unit]
+Description=Check system update status after background upgrades
+
+[Path]
+PathChanged=/var/lib/sysupdate/status.json
+Unit=sysupdate-check.service
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,349 @@
+#!/usr/bin/env python3
+"""System update status, notifications and interactive upgrades.
+
+Official packages upgrade in the background through a system service that
+writes /var/lib/sysupdate/status.json. This tool combines that result with
+live local state (running kernel, AUR updates, .pacnew files) into one status.
+
+Usage: sysupdate [--pacman]      # interactive pacman, AUR and reboot flow
+       sysupdate status [--json] # local status, no network
+       sysupdate check           # refresh AUR updates and notify on changes
+"""
+
+import argparse
+import hashlib
+import json
+import os
+import re
+import shutil
+import subprocess
+import sys
+import tempfile
+from dataclasses import asdict, dataclass, field
+from datetime import datetime
+from pathlib import Path
+
+SYSTEM_STATUS = Path("/var/lib/sysupdate/status.json")
+PACMAN_LOG = Path("/var/log/pacman.log")
+PACMAN_LOG_TAIL = 1 << 20
+KERNEL_PACKAGES = ("linux", "linux-lts", "linux-zen", "linux-hardened")
+
+STATE_DIR = Path(os.environ.get("XDG_STATE_HOME") or Path.home() / ".local/state") / "sysupdate"
+AUR_CACHE = STATE_DIR / "aur.json"
+NOTIFIED = STATE_DIR / "notified.json"
+
+APP_NAME = "System Update"
+
+
+@dataclass
+class Status:
+    state: str = "ok"
+    needs_attention: bool = False
+    reboot_required: bool = False
+    running_kernel: str = ""
+    installed_kernel: str = ""
+    aur_count: int = 0
+    aur_packages: list = field(default_factory=list)
+    pacnew_count: int = 0
+    pacnew_files: list = field(default_factory=list)
+    pacman_status: str = "ok"
+    pacman_timestamp: str = ""
+    pacman_error: str = ""
+    pacman_upgraded_count: int = 0
+
+
+# Helpers
+# ------------------------------------------------------------------------------
+
+def run(*cmd):
+    """Run a command and return its stdout, or None when it fails to start."""
+    try:
+        return subprocess.run(cmd, capture_output=True, text=True).stdout
+    except OSError:
+        return None
+
+
+def read_json(path):
+    try:
+        return json.loads(path.read_text())
+    except (OSError, ValueError):
+        return {}
+
+
+def write_json(path, data):
+    path.parent.mkdir(parents=True, exist_ok=True)
+    fd, tmp = tempfile.mkstemp(dir=path.parent, prefix=f".{path.name}.")
+    try:
+        with os.fdopen(fd, "w") as f:
+            json.dump(data, f, indent=2)
+            f.write("\n")
+        os.replace(tmp, path)
+    except BaseException:
+        os.unlink(tmp)
+        raise
+
+
+def parse_time(value):
+    try:
+        return datetime.fromisoformat(value)
+    except (TypeError, ValueError):
+        return None
+
+
+# Status sources
+# ------------------------------------------------------------------------------
+
+def installed_kernel(running):
+    """Kernel version of the installed package matching the running flavor."""
+    installed = (run("pacman", "-Qq", *KERNEL_PACKAGES) or "").split()
+    if not installed:
+        return ""
+
+    flavor = next((p for p in KERNEL_PACKAGES[1:] if running.endswith(p.removeprefix("linux"))), "linux")
+    package = flavor if flavor in installed else installed[0]
+
+    files = run("pacman", "-Ql", package) or ""
+    match = re.search(r"^\S+ /usr/lib/modules/([^/]+)/vmlinuz$", files, re.MULTILINE)
+    return match.group(1) if match else ""
+
+
+def transaction_completed_since(since):
+    """Whether pacman completed a transaction after `since`."""
+    try:
+        with PACMAN_LOG.open("rb") as f:
+            f.seek(max(0, PACMAN_LOG.stat().st_size - PACMAN_LOG_TAIL))
+            lines = f.read().decode(errors="replace").splitlines()
+    except OSError:
+        return False
+
+    for line in reversed(lines):
+        if "[ALPM] transaction completed" not in line:
+            continue
+        logged = parse_time(line[1:line.find("]")])
+        if logged and logged > since:
+            return True
+    return False
+
+
+def foreign_packages():
+    """Installed foreign packages as {name: version}."""
+    output = run("pacman", "-Qm") or ""
+    return dict(line.split(maxsplit=1) for line in output.splitlines() if " " in line)
+
+
+def aur_packages():
+    """Cached AUR updates still pending against the installed versions."""
+    cached = read_json(AUR_CACHE).get("packages", [])
+    installed = foreign_packages()
+    return [p for p in cached if installed.get(p["name"]) == p["old"]]
+
+
+def pacnew_files():
+    if shutil.which("pacdiff"):
+        output = run("pacdiff", "-o") or ""
+        files = output.splitlines()
+    else:
+        files = [str(p) for p in Path("/etc").rglob("*.pacnew")]
+    return sorted(f for f in files if f.endswith(".pacnew"))
+
+
+def build_status():
+    status = Status()
+
+    status.running_kernel = os.uname().release
+    status.installed_kernel = installed_kernel(status.running_kernel)
+    status.reboot_required = bool(status.installed_kernel) and status.running_kernel != status.installed_kernel
+
+    system = read_json(SYSTEM_STATUS)
+    status.pacman_status = system.get("status", "ok")
+    status.pacman_timestamp = system.get("timestamp", "")
+    status.pacman_error = system.get("error", "")
+    status.pacman_upgraded_count = system.get("upgraded_count", 0)
+
+    # A later successful transaction, e.g. a manual upgrade, resolves a failure.
+    failed_at = parse_time(status.pacman_timestamp)
+    if status.pacman_status == "failed" and failed_at and transaction_completed_since(failed_at):
+        status.pacman_status = "ok"
+        status.pacman_error = ""
+
+    status.aur_packages = aur_packages()
+    status.aur_count = len(status.aur_packages)
+    status.pacnew_files = pacnew_files()
+    status.pacnew_count = len(status.pacnew_files)
+
+    if status.pacman_status == "failed":
+        status.state = "error"
+    elif status.reboot_required:
+        status.state = "reboot"
+    elif status.pacnew_count:
+        status.state = "warning"
+    elif status.aur_count:
+        status.state = "aur"
+    status.needs_attention = status.state != "ok"
+    return status
+
+
+def summary(status):
+    lines = []
+    if status.pacman_status == "failed":
+        lines.append(f"Background upgrade failed at {status.pacman_timestamp}: {status.pacman_error or 'unknown error'}")
+    elif status.pacman_timestamp:
+        lines.append(f"Background upgrade ok at {status.pacman_timestamp} ({status.pacman_upgraded_count} packages)")
+    if status.reboot_required:
+        lines.append(f"Reboot required: running {status.running_kernel}, installed {status.installed_kernel}")
+    if status.pacnew_count:
+        lines.append(f"{status.pacnew_count} .pacnew files to merge")
+    if status.aur_count:
+        lines.append(f"{status.aur_count} AUR updates pending")
+    if not status.needs_attention:
+        lines.append("System up to date")
+    return "\n".join(lines)
+
+
+# AUR refresh and notifications
+# ------------------------------------------------------------------------------
+
+def refresh_aur():
+    """Query the AUR for updates and cache the result.
+
+    paru exits 1 both without updates and on errors, so errors are detected
+    from stderr. A failed query keeps the previously cached packages.
+    """
+    packages = read_json(AUR_CACHE).get("packages", [])
+    try:
+        result = subprocess.run(["paru", "-Qua", "--color", "never"], capture_output=True, text=True)
+        errors = [line for line in result.stderr.splitlines() if line.startswith("error")]
+        error = errors[0] if errors else ""
+    except OSError as e:
+        result, error = None, str(e)
+
+    if not error:
+        packages = []
+        for line in result.stdout.splitlines():
+            match = re.match(r"^(\S+) (\S+) -> (\S+)", line)
+            if match:
+                packages.append(dict(zip(("name", "old", "new"), match.groups())))
+
+    write_json(AUR_CACHE, {
+        "timestamp": datetime.now().astimezone().isoformat(timespec="seconds"),
+        "packages": packages,
+        "error": error,
+    })
+
+
+def fingerprint(value):
+    return hashlib.sha256(json.dumps(value, sort_keys=True).encode()).hexdigest()[:16]
+
+
+def alerts(status):
+    """Active alerts as {kind: (fingerprint, urgency, icon, summary, body)}."""
+    active = {}
+    if status.pacman_status == "failed":
+        active["error"] = (
+            fingerprint([status.pacman_timestamp, status.pacman_error]), "critical", "dialog-error-symbolic",
+            "System upgrade failed", f"{status.pacman_error or 'Unknown error'}\nRun sysupdate to fix.")
+    if status.reboot_required:
+        active["reboot"] = (
+            fingerprint(status.installed_kernel), "normal", "system-reboot-symbolic",
+            "Reboot required", f"Kernel {status.installed_kernel} installed, running {status.running_kernel}.")
+    if status.pacnew_count:
+        active["pacnew"] = (
+            fingerprint(status.pacnew_files), "normal", "dialog-warning-symbolic",
+            f"{status.pacnew_count} .pacnew files", "Merge them with sudo pacdiff.")
+    if status.aur_count:
+        names = ", ".join(p["name"] for p in status.aur_packages)
+        active["aur"] = (
+            fingerprint(status.aur_packages), "normal", "software-update-available-symbolic",
+            f"{status.aur_count} AUR updates", f"{names}\nReview them with sysupdate.")
+    return active
+
+
+def notify(urgency, icon, title, body):
+    try:
+        subprocess.run(["notify-send", "-a", APP_NAME, "-u", urgency, "-i", icon, title, body])
+    except OSError:
+        pass
+
+
+def check():
+    refresh_aur()
+    notified = read_json(NOTIFIED)
+    current = {}
+    for kind, (key, urgency, icon, title, body) in alerts(build_status()).items():
+        if notified.get(kind) != key:
+            notify(urgency, icon, title, body)
+        current[kind] = key
+    write_json(NOTIFIED, current)
+
+
+# Interactive upgrade
+# ------------------------------------------------------------------------------
+
+def heading(text):
+    print(f"\n\033[1m:: {text}\033[0m", flush=True)
+
+
+def official_updates():
+    """Whether official repositories have updates, per checkupdates."""
+    try:
+        return subprocess.run(["checkupdates"], stdout=subprocess.DEVNULL).returncode == 0
+    except OSError:
+        return False
+
+
+def interactive(force_pacman):
+    status = build_status()
+    heading("Status")
+    print(summary(status))
+
+    if force_pacman or status.pacman_status == "failed" or official_updates():
+        heading("Official packages")
+        subprocess.run(["sudo", "pacman", "-Syu"])
+
+    heading("AUR packages")
+    subprocess.run(["paru", "-Sua"])
+    refresh_aur()
+
+    status = build_status()
+    if status.pacnew_count:
+        heading(".pacnew files")
+        print("\n".join(status.pacnew_files))
+        print("Merge them with: sudo pacdiff")
+
+    if status.reboot_required:
+        heading("Reboot required")
+        print(f"Running kernel:   {status.running_kernel}")
+        print(f"Installed kernel: {status.installed_kernel}")
+        try:
+            answer = input("Reboot now? [y/N] ").strip().lower()
+        except EOFError:
+            answer = ""
+        if answer in ("y", "yes"):
+            subprocess.run(["systemctl", "reboot"])
+
+
+def main():
+    parser = argparse.ArgumentParser(prog="sysupdate", description="System update status and upgrades.")
+    parser.add_argument("--pacman", action="store_true", help="run pacman even without official updates")
+    commands = parser.add_subparsers(dest="command")
+    status_parser = commands.add_parser("status", help="show local update status")
+    status_parser.add_argument("--json", action="store_true", help="print status as JSON")
+    commands.add_parser("check", help="refresh AUR updates and notify on changes")
+    args = parser.parse_args()
+
+    if args.command == "status":
+        status = build_status()
+        print(json.dumps(asdict(status)) if args.json else summary(status))
+    elif args.command == "check":
+        check()
+    else:
+        try:
+            interactive(args.pacman)
+        except KeyboardInterrupt:
+            print()
+            return 130
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

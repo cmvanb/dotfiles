@@ -1,0 +1,6 @@
+[Unit]
+Description=Check for AUR updates and notify on system update status
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/sysupdate check
