@@ -8,7 +8,7 @@ function fish_deployed_aliases
     abbr -a p pacman
     abbr -a pa pacman
     abbr -a pac pacman
-    abbr -a uu sudo pacman -Syu
+    abbr -a uu sysupdate
 % endif
 
 % if DEPLOY_DISTRO == 'ubuntu':

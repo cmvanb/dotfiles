@@ -7,7 +7,7 @@
 alias p="pacman"
 alias pa="pacman"
 alias pac="pacman"
-alias uu="sudo pacman -Syu"
+alias uu="sysupdate"
 % endif
 
 % if DEPLOY_DISTRO == 'ubuntu':
