@@ -5,7 +5,14 @@
 
     "modules-left": ["niri/workspaces"],
     "modules-center": ["niri/window"],
-    "modules-right": ["network", "bluetooth", "wireplumber", "battery", "clock"],
+    "modules-right": ["custom/updates", "network", "bluetooth", "wireplumber", "battery", "clock"],
+
+    "custom/updates": {
+        "exec": "$XDG_CONFIG_HOME/waybar/updates.sh",
+        "return-type": "json",
+        "interval": 30,
+        "on-click": "$XDG_SCRIPTS_HOME/spawn-terminal.sh -f -t 'System Update' -c sysupdate"
+    },
 
     "niri/window": {
         "format": "{}"

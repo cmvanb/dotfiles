@@ -16,6 +16,7 @@
         "sway/workspaces"
     ],
     "modules-right": [
+        "custom/updates",
         "custom/tailscale",
         "network",
         "bluetooth",
@@ -68,6 +69,13 @@
             "on-scroll-up": "shift_down",
             "on-scroll-down": "shift_up"
         }
+    },
+    "custom/updates": {
+        "exec": "${XDG_CONFIG_HOME}/waybar/updates.sh",
+        "format": "{}",
+        "return-type": "json",
+        "interval": 30,
+        "on-click": "${XDG_SCRIPTS_HOME}/spawn-terminal.sh -f -t 'System Update' -c sysupdate"
     },
     "custom/tailscale": {
         "exec": "${XDG_CONFIG_HOME}/waybar/tailscale.sh",

@@ -45,6 +45,7 @@ waybar::install () {
     fs::force_link "$src/memory.sh" "$XDG_CONFIG_HOME/waybar/memory.sh"
     fs::force_link "$src/cpu.sh" "$XDG_CONFIG_HOME/waybar/cpu.sh"
     fs::force_link "$src/claude.sh" "$XDG_CONFIG_HOME/waybar/claude.sh"
+    fs::force_link "$src/updates.sh" "$XDG_CONFIG_HOME/waybar/updates.sh"
 }
 
 waybar::uninstall () {

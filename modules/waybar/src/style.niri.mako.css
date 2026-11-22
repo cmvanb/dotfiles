@@ -42,6 +42,20 @@ box > * > * {
     padding-right: 6px;
 }
 
+/* Updates
+*-----------------------------------------------------------------------------*/
+#custom-updates.error {
+    color: ${color_hash('red_6')};
+}
+
+#custom-updates.reboot {
+    color: ${color_hash('orange_6')};
+}
+
+#custom-updates.warning {
+    color: ${color_hash('yellow_7')};
+}
+
 /* Battery
 *-----------------------------------------------------------------------------*/
 #battery.charging, #battery.plugged {
