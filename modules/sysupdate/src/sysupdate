@@ -8,6 +8,7 @@ live local state (running kernel, AUR updates, .pacnew files) into one status.
 Usage: sysupdate [--pacman]      # interactive pacman, AUR and reboot flow
        sysupdate status [--json] # local status, no network
        sysupdate check           # refresh AUR updates and notify on changes
+       sysupdate pacnew          # interactively diff and merge .pacnew files
 """
 
 import argparse
@@ -249,7 +250,7 @@ def alerts(status):
     if status.pacnew_count:
         active["pacnew"] = (
             fingerprint(status.pacnew_files), "normal", "dialog-warning-symbolic",
-            f"{status.pacnew_count} .pacnew files", "Merge them with sudo pacdiff.")
+            f"{status.pacnew_count} .pacnew files", "Review them with sysupdate pacnew.")
     if status.aur_count:
         names = ", ".join(p["name"] for p in status.aur_packages)
         active["aur"] = (
@@ -306,9 +307,14 @@ def interactive(force_pacman):
 
     status = build_status()
     if status.pacnew_count:
-        heading(".pacnew files")
+        heading(f".pacnew files ({status.pacnew_count})")
         print("\n".join(status.pacnew_files))
-        print("Merge them with: sudo pacdiff")
+        try:
+            answer = input("Review .pacnew files now? [y/N] ").strip().lower()
+        except EOFError:
+            answer = ""
+        if answer in ("y", "yes"):
+            review_pacnew()
 
     if status.reboot_required:
         heading("Reboot required")
@@ -322,6 +328,73 @@ def interactive(force_pacman):
             subprocess.run(["systemctl", "reboot"])
 
 
+def show_diff(orig, pacnew):
+    diff_cmd = ["sudo", "diff", "-u", orig, pacnew]
+    if shutil.which("delta"):
+        diff_proc = subprocess.Popen(diff_cmd, stdout=subprocess.PIPE)
+        delta_proc = subprocess.Popen(["delta", "--paging=always"], stdin=diff_proc.stdout)
+        diff_proc.stdout.close()
+        delta_proc.wait()
+        diff_proc.wait()
+        return
+
+    diff_proc = subprocess.Popen(["sudo", "diff", "-u", "--color=always", orig, pacnew], stdout=subprocess.PIPE)
+    pager = subprocess.Popen(["less", "-FRX"], stdin=diff_proc.stdout)
+    diff_proc.stdout.close()
+    pager.wait()
+    diff_proc.wait()
+
+
+def review_pacnew():
+    files = pacnew_files()
+    if not files:
+        print("No .pacnew files to review.")
+        return
+
+    editor = "nvim" if shutil.which("nvim") else "vim"
+    total = len(files)
+    for idx, pacnew in enumerate(files, 1):
+        orig = pacnew.removesuffix(".pacnew")
+        pkg = (run("pacman", "-Qoq", orig) or "").strip()
+        label = f"{orig} ({pkg})" if pkg else orig
+        heading(f"[{idx}/{total}] {label}")
+
+        while True:
+            try:
+                choice = input("[d]iff  [e]dit  [k]eep mine  [o]verwrite  [s]kip  [q]uit: ").strip().lower()
+            except EOFError:
+                return
+
+            if choice in ("d", "diff"):
+                show_diff(orig, pacnew)
+            elif choice in ("e", "edit"):
+                subprocess.run(["sudo", editor, "-d", orig, pacnew])
+                try:
+                    rm = input(f"Delete {pacnew}? [y/N] ").strip().lower()
+                except EOFError:
+                    return
+                if rm in ("y", "yes"):
+                    subprocess.run(["sudo", "rm", "-f", pacnew], check=True)
+                    break
+            elif choice in ("k", "keep"):
+                subprocess.run(["sudo", "rm", "-f", pacnew], check=True)
+                print(f"Removed {pacnew}")
+                break
+            elif choice in ("o", "overwrite"):
+                try:
+                    confirm = input(f"Overwrite {orig} with {pacnew}? [y/N] ").strip().lower()
+                except EOFError:
+                    return
+                if confirm in ("y", "yes"):
+                    subprocess.run(["sudo", "mv", pacnew, orig], check=True)
+                    print(f"Replaced {orig}")
+                    break
+            elif choice in ("s", "skip"):
+                break
+            elif choice in ("q", "quit"):
+                return
+
+
 def main():
     parser = argparse.ArgumentParser(prog="sysupdate", description="System update status and upgrades.")
     parser.add_argument("--pacman", action="store_true", help="run pacman even without official updates")
@@ -329,6 +402,7 @@ def main():
     status_parser = commands.add_parser("status", help="show local update status")
     status_parser.add_argument("--json", action="store_true", help="print status as JSON")
     commands.add_parser("check", help="refresh AUR updates and notify on changes")
+    commands.add_parser("pacnew", help="interactively diff and merge .pacnew files")
     args = parser.parse_args()
 
     if args.command == "status":
@@ -336,6 +410,12 @@ def main():
         print(json.dumps(asdict(status)) if args.json else summary(status))
     elif args.command == "check":
         check()
+    elif args.command == "pacnew":
+        try:
+            review_pacnew()
+        except KeyboardInterrupt:
+            print()
+            return 130
     else:
         try:
             interactive(args.pacman)
