@@ -166,7 +166,7 @@ $icon: ${icon_size}px;
     &.charging label, &.charging .icon { color: $good; }
     &.full label, &.full .icon { color: ${color_hash('primary_15')}; }
     &.warning label, &.warning .icon { color: $heavy; }
-    &.available .icon { color: $accent; }
+    &.available .icon, &.connected .icon { color: $accent; }
     &.critical label { animation: blink 0.5s steps(12) infinite alternate; }
 }
 

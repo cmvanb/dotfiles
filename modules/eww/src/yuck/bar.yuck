@@ -118,19 +118,18 @@
 (defwidget network-module [output]
   (module :name "network" :output output
           :class {network.type == "none" ? "disconnected" : ""}
-          :tooltip "↑ ${formatbytes(round(EWW_NET?.[network.iface]?.NET_UP ?: 0, 0), true)}/s  ↓ ${formatbytes(round(EWW_NET?.[network.iface]?.NET_DOWN ?: 0, 0), true)}/s"
+          :tooltip {network.type == "none" ? "Disconnected"
+                    : "${network.name} · ↑ ${formatbytes(round(EWW_NET?.[network.iface]?.NET_UP ?: 0, 0), true)}/s  ↓ ${formatbytes(round(EWW_NET?.[network.iface]?.NET_DOWN ?: 0, 0), true)}/s"}
     (icon :name {network.type == "wifi"
                    ? "network-wireless-signal-${network.signal >= 80 ? 'excellent' : network.signal >= 55 ? 'good' : network.signal >= 30 ? 'ok' : network.signal >= 5 ? 'weak' : 'none'}-symbolic"
                    : network.type == "ethernet" ? "network-wired-symbolic" : "network-wireless-offline-symbolic"}
-          :class {network.type == "wifi" ? "wifi" : ""})
-    (label :yalign 1 :text {network.type == "wifi" ? network.name : network.type == "ethernet" ? network.iface : "no network"})))
+          :class {network.type == "wifi" ? "wifi" : ""})))
 
 (defwidget bluetooth-module [output]
   (module :name "bluetooth" :output output
           :class {!bluetooth.powered ? "off" : bluetooth.connected > 0 ? "connected" : ""}
           :tooltip {bluetooth.connected > 0 ? jq(bluetooth, '[.devices[] | select(.connected) | .name] | join(", ")', "r") : bluetooth.powered ? "No devices connected" : "Bluetooth off"}
-    (icon :name {bluetooth.powered ? "bluetooth-active-symbolic" : "bluetooth-disabled-symbolic"})
-    (label :yalign 1 :text {!bluetooth.powered ? "off" : bluetooth.connected > 0 ? bluetooth.devices[0].name : "on"})))
+    (icon :name {bluetooth.powered ? "bluetooth-active-symbolic" : "bluetooth-disabled-symbolic"})))
 
 (defwidget audio-module [output]
   (module :name "audio" :output output
