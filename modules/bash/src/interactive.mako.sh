@@ -116,5 +116,8 @@ eval "$(mise activate bash)"
 # Enable Zoxide.
 eval "$(zoxide init bash)"
 
+# Enable worktrunk.
+command -v wt >/dev/null && eval "$(wt config shell init bash)"
+
 # Yazi integration.
 source "$XDG_CONFIG_HOME/yazi/yzcd.sh"
