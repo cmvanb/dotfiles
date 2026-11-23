@@ -52,8 +52,7 @@
         (label :class "card-title" :halign "start" :text "Configuration files to merge (sudo pacdiff)")
         (box :orientation "v" :space-evenly false :spacing 6
           (for file in {updates.pacnew_files}
-            (label :class "mono" :halign "start" :limit-width 48 :truncate-left true
-                   :tooltip file :text file)))))
+            (label :class "mono" :halign "start" :tooltip {file.path} :text {file.label})))))
     (box :visible {updates.pacman_timestamp != ""}
       (card
         (row :key "Last background run"
