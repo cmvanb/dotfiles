@@ -164,16 +164,14 @@
 (defwidget cpu-module [output]
   (module :name "cpu" :output output
           :class {EWW_CPU.avg >= 90 ? "critical" : EWW_CPU.avg >= 70 ? "heavy" : EWW_CPU.avg >= 50 ? "medium" : ""}
-          :tooltip "${round(EWW_TEMPS?.K10TEMP_TCTL ?: EWW_TEMPS?.CORETEMP_PACKAGE_ID_0 ?: 0, 0)}°C"
-    (icon :name "am-cpu-symbolic" :class "cpu")
-    (label :yalign 1 :text "${round(EWW_CPU.avg, 0)}%")))
+          :tooltip "${round(EWW_CPU.avg, 0)}% · ${round(EWW_TEMPS?.K10TEMP_TCTL ?: EWW_TEMPS?.CORETEMP_PACKAGE_ID_0 ?: 0, 0)}°C"
+    (icon :name "am-cpu-symbolic" :class "cpu")))
 
 (defwidget memory-module [output]
   (module :name "memory" :output output
           :class {EWW_RAM.used_mem_perc >= 90 ? "critical" : EWW_RAM.used_mem_perc >= 70 ? "heavy" : EWW_RAM.used_mem_perc >= 50 ? "medium" : ""}
-          :tooltip "${formatbytes(round(EWW_RAM.used_mem, 0), true)} / ${formatbytes(round(EWW_RAM.total_mem, 0), true)}"
-    (icon :name "am-memory-symbolic" :class "memory")
-    (label :yalign 1 :text "${round(EWW_RAM.used_mem_perc, 0)}%")))
+          :tooltip "${round(EWW_RAM.used_mem_perc, 0)}% · ${formatbytes(round(EWW_RAM.used_mem, 0), true)} / ${formatbytes(round(EWW_RAM.total_mem, 0), true)}"
+    (icon :name "am-memory-symbolic" :class "memory")))
 
 (defwidget date-module [output]
   (module :name "calendar" :output output
