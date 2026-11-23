@@ -16,6 +16,7 @@
       "~/.config/opencode/skills/**": "allow",
       "~/.local/share/keyrings/**": "deny",
       "~/.local/share/opencode/auth.json": "deny",
+      "/tmp/opencode/**": "allow",
     },
     "read": {
       "*": "allow",
