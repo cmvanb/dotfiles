@@ -23,7 +23,7 @@ function fish_shared_aliases
     abbr -a gl git log --pretty=history
     abbr -a gp git push
     abbr -a gpa --function git-push-all-remotes
-    abbr -a gpf git push --force
+    abbr -a gpf git push --force-with-lease
     abbr -a gpu git pull --rebase
     abbr -a gr git remote -v
     abbr -a grb git rebase
