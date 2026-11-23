@@ -49,10 +49,15 @@
                 :onclick "scripts/popup.sh close; spawn-terminal.sh --floating --title 'System Update' --command 'sysupdate; eww poll updates' &"))))
     (box :visible {updates.pacnew_count > 0}
       (card :class "medium"
-        (label :class "card-title" :halign "start" :text "Configuration files to merge (sudo pacdiff)")
+        (label :class "card-title" :halign "start" :text "${updates.pacnew_count} configuration files to merge")
         (box :orientation "v" :space-evenly false :spacing 6
-          (for file in {updates.pacnew_files}
-            (label :class "mono" :halign "start" :tooltip {file.path} :text {file.label})))))
+          (for file in {jq(updates.pacnew_files, '.[0:5]')}
+            (label :class "mono" :halign "start" :tooltip {file.path} :text {file.label}))
+          (label :class "muted-text" :halign "start" :visible {updates.pacnew_count > 5}
+                 :text "+${updates.pacnew_count - 5} more"))
+        (box :halign "end"
+          (pill :text "Review .pacnew" :icon "utilities-terminal-symbolic"
+                :onclick "scripts/popup.sh close; spawn-terminal.sh --floating --title 'Review .pacnew' --command 'sysupdate pacnew; eww poll updates' &"))))
     (box :visible {updates.pacman_timestamp != ""}
       (card
         (row :key "Last background run"
