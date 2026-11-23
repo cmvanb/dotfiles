@@ -36,7 +36,7 @@
 
 ;; Key/value row.
 (defwidget row [key value]
-  (box :class "row" :space-evenly false
+  (box :class "row" :space-evenly false :spacing 16
     (label :class "row-key" :halign "start" :hexpand true :text key)
     (label :class "row-value" :halign "end" :text value)))
 
