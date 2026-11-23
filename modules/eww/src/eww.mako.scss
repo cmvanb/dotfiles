@@ -168,6 +168,8 @@ $icon: ${icon_size}px;
     &.warning label, &.warning .icon { color: $heavy; }
     &.available .icon, &.connected .icon { color: $accent; }
     &.critical label { animation: blink 0.5s steps(12) infinite alternate; }
+    // An animated color does not reach recolored icons, so they pulse instead.
+    &.critical .icon { animation: blink-icon 0.5s steps(12) infinite alternate; }
 }
 
 @keyframes attention {
@@ -176,6 +178,10 @@ $icon: ${icon_size}px;
 
 @keyframes blink {
     to { color: $critical-dim; }
+}
+
+@keyframes blink-icon {
+    to { opacity: 0.3; }
 }
 
 // Analog clock icon: proportions of clock-applet-symbolic (16px grid), scaled
