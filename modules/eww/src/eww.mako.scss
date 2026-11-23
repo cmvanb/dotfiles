@@ -278,6 +278,9 @@ tooltip {
 
 .mono { font-family: "${font_mono}", monospace; }
 
+// Columns of mixed fonts line up only if their cells share one height.
+.table label { min-height: ${round(int(font_size_large) * 1.4)}px; }
+
 .placeholder {
     color: $muted;
     padding: 12px;

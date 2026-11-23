@@ -31,7 +31,7 @@
       (card
         (label :class "card-title" :halign "start" :text "AUR updates")
         ;; One box per column keeps the versions and arrows aligned.
-        (box :space-evenly false :spacing 16
+        (box :class "table" :space-evenly false :spacing 16
           (box :orientation "v" :space-evenly false :spacing 6 :hexpand true
             (for pkg in {updates.aur_packages}
               (label :class "row-key mono" :halign "start" :text {pkg.name})))
