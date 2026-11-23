@@ -134,11 +134,10 @@
 (defwidget audio-module [output]
   (module :name "audio" :output output
           :class {audio.muted ? "muted" : ""}
-          :tooltip "Scroll to change volume, right-click to mute"
+          :tooltip "${audio.muted ? 'Muted' : audio.volume + '%'} · Scroll to change volume, right-click to mute"
           :onrightclick "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
           :onscroll "$XDG_SCRIPTS_HOME/volume.sh $([ {} = up ] && echo raise || echo lower)"
-    (icon :name {audio.muted ? "audio-volume-muted-symbolic" : audio.volume < 34 ? "audio-volume-low-symbolic" : audio.volume < 67 ? "audio-volume-medium-symbolic" : "audio-volume-high-symbolic"})
-    (label :yalign 1 :text "${audio.volume}%")))
+    (icon :name {audio.muted ? "audio-volume-muted-symbolic" : audio.volume < 34 ? "audio-volume-low-symbolic" : audio.volume < 67 ? "audio-volume-medium-symbolic" : "audio-volume-high-symbolic"})))
 
 (defwidget battery-module [output]
   (optional :shown {battery.present}
@@ -147,9 +146,8 @@
                     : battery.status == "Full" ? "full"
                     : battery.capacity <= 15 ? "critical"
                     : battery.capacity <= 30 ? "warning" : ""}
-            :tooltip {battery.remaining != "" ? "${battery.status} · ${battery.remaining}" : battery.status}
-      (icon :name {battery.icon} :class "battery")
-      (label :yalign 1 :text "${battery.capacity}%"))))
+            :tooltip {battery.remaining != "" ? "${battery.capacity}% · ${battery.status} · ${battery.remaining}" : "${battery.capacity}% · ${battery.status}"}
+      (icon :name {battery.icon} :class "battery"))))
 
 ;; Shows the most used limit: the Claude session or the OpenRouter budget.
 (defwidget llm-module [output]
