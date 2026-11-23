@@ -13,6 +13,7 @@
       "~/.gnupg/**": "deny",
       "~/.aws/**": "deny",
       "~/.config/gcloud/**": "deny",
+      "~/.config/opencode/skills/**": "allow",
       "~/.local/share/keyrings/**": "deny",
       "~/.local/share/opencode/auth.json": "deny",
     },
