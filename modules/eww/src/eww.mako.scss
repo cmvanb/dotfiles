@@ -69,6 +69,9 @@ $icon: ${icon_size}px;
     background-size: $icon $icon;
     min-width: $icon;
     min-height: $icon;
+    // Glyphs with semantic path classes (e.g. dialog-error) otherwise keep the
+    // theme's palette instead of the state color.
+    -gtk-icon-palette: success currentColor, warning currentColor, error currentColor;
 
     &.app { background-size: 18px 18px; min-width: 18px; min-height: 18px; }
     &.battery { background-size: 20px 20px; min-width: 20px; min-height: 20px; }
