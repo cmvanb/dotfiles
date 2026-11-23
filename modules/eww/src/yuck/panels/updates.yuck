@@ -32,18 +32,18 @@
         (label :class "card-title" :halign "start" :text "AUR updates")
         ;; One box per column keeps the versions and arrows aligned.
         (box :space-evenly false :spacing 16
-          (box :orientation "v" :space-evenly false :spacing 10 :hexpand true
+          (box :orientation "v" :space-evenly false :spacing 6 :hexpand true
             (for pkg in {updates.aur_packages}
-              (label :class "row-key" :halign "start" :text {pkg.name})))
-          (box :orientation "v" :space-evenly false :spacing 10
+              (label :class "row-key mono" :halign "start" :text {pkg.name})))
+          (box :orientation "v" :space-evenly false :spacing 6
             (for pkg in {updates.aur_packages}
-              (label :halign "end" :text {pkg.old})))
-          (box :orientation "v" :space-evenly false :spacing 10
+              (label :class "mono" :halign "end" :text {pkg.old})))
+          (box :orientation "v" :space-evenly false :spacing 6
             (for pkg in {updates.aur_packages}
               (label :class "muted-text" :text "→")))
-          (box :orientation "v" :space-evenly false :spacing 10
+          (box :orientation "v" :space-evenly false :spacing 6
             (for pkg in {updates.aur_packages}
-              (label :halign "start" :text {pkg.new}))))
+              (label :class "mono" :halign "start" :text {pkg.new}))))
         (box :halign "end"
           (pill :text "Review AUR" :icon "utilities-terminal-symbolic"
                 :onclick "scripts/popup.sh close; spawn-terminal.sh --floating --title 'System Update' --command 'sysupdate; eww poll updates' &"))))
