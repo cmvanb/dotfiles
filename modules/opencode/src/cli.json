@@ -5,7 +5,9 @@
   },
   "animations": true,
   "keybinds": {
-    "leader": "ctrl+o"
+    "leader": "ctrl+o",
+    "session.line.up": "ctrl+alt+y,ctrl+up",
+    "session.line.down": "ctrl+alt+e,ctrl+down"
   },
   "diffs": {
     "wrap": "word"
