@@ -93,7 +93,7 @@
 (defwidget updates-module [output]
   (optional :shown {updates.needs_attention}
     (module :name "updates" :output output
-            :class {updates.state == "error" ? "critical" : updates.state == "reboot" ? "warning" : updates.state == "warning" ? "medium" : ""}
+            :class {updates.state == "error" ? "critical" : updates.state == "reboot" ? "warning" : updates.state == "warning" ? "medium" : "available"}
             :tooltip {updates.state == "error" ? "System upgrade failed"
                       : updates.state == "reboot" ? "Reboot required · kernel ${updates.installed_kernel}"
                       : updates.state == "warning" ? "${updates.pacnew_count} .pacnew files to merge"
@@ -101,11 +101,7 @@
       (icon :name {updates.state == "error" ? "dialog-error-symbolic"
                    : updates.state == "reboot" ? "system-reboot-symbolic"
                    : updates.state == "warning" ? "dialog-warning-symbolic"
-                   : "software-update-available-symbolic"})
-      (label :yalign 1 :text {updates.state == "error" ? "!"
-                              : updates.state == "reboot" ? "reboot"
-                              : updates.state == "warning" ? "${updates.pacnew_count} pacnew"
-                              : updates.aur_count}))))
+                   : "software-update-available-symbolic"}))))
 
 (defwidget tailscale-module [output]
   (optional :shown {tailscale.up}
