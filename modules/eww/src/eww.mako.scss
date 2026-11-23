@@ -269,6 +269,8 @@ tooltip {
 
 .muted-text { color: $muted; }
 
+.mono { font-family: "${font_mono}", monospace; }
+
 .placeholder {
     color: $muted;
     padding: 12px;
@@ -475,8 +477,3 @@ scale {
     &.online .dot { background: $good; }
     &.offline label { color: $muted; }
 }
-
-// Updates
-//------------------------------------------------------------------------------
-
-.updates .pacnew { font-size: ${font_size_medium}px; }

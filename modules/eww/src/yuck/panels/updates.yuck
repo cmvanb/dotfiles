@@ -30,18 +30,30 @@
     (box :visible {updates.aur_count > 0}
       (card
         (label :class "card-title" :halign "start" :text "AUR updates")
-        (box :orientation "v" :space-evenly false
-          (for pkg in {updates.aur_packages}
-            (row :key {pkg.name} :value "${pkg.old} → ${pkg.new}")))
+        ;; One box per column keeps the versions and arrows aligned.
+        (box :space-evenly false :spacing 16
+          (box :orientation "v" :space-evenly false :spacing 10 :hexpand true
+            (for pkg in {updates.aur_packages}
+              (label :class "row-key" :halign "start" :text {pkg.name})))
+          (box :orientation "v" :space-evenly false :spacing 10
+            (for pkg in {updates.aur_packages}
+              (label :halign "end" :text {pkg.old})))
+          (box :orientation "v" :space-evenly false :spacing 10
+            (for pkg in {updates.aur_packages}
+              (label :class "muted-text" :text "→")))
+          (box :orientation "v" :space-evenly false :spacing 10
+            (for pkg in {updates.aur_packages}
+              (label :halign "start" :text {pkg.new}))))
         (box :halign "end"
           (pill :text "Review AUR" :icon "utilities-terminal-symbolic"
                 :onclick "scripts/popup.sh close; spawn-terminal.sh --floating --title 'System Update' --command 'sysupdate; eww poll updates' &"))))
     (box :visible {updates.pacnew_count > 0}
       (card :class "medium"
         (label :class "card-title" :halign "start" :text "Configuration files to merge (sudo pacdiff)")
-        (box :orientation "v" :space-evenly false
+        (box :orientation "v" :space-evenly false :spacing 6
           (for file in {updates.pacnew_files}
-            (label :class "pacnew" :halign "start" :limit-width 48 :text file)))))
+            (label :class "mono" :halign "start" :limit-width 48 :truncate-left true
+                   :tooltip file :text file)))))
     (box :visible {updates.pacman_timestamp != ""}
       (card
         (row :key "Last background run"
