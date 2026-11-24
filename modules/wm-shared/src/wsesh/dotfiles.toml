@@ -3,7 +3,7 @@
 [[entry]]
 type = "browser"
 workspace = "config"
-session = "dotfiles"
+session = "forges"
 wait_for_network = true
 
 [[entry]]
