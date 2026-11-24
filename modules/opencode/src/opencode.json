@@ -17,6 +17,7 @@
       "~/.local/share/keyrings/**": "deny",
       "~/.local/share/opencode/auth.json": "deny",
       "/tmp/opencode/**": "allow",
+      "/tmp/agents/**": "allow",
     },
     "read": {
       "*": "allow",
