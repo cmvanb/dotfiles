@@ -41,6 +41,7 @@ c.content.blocking.enabled = True
 c.content.blocking.method = 'both'
 c.content.headers.do_not_track = True
 c.content.javascript.enabled = False
+config.set('content.javascript.enabled', True, 'file:///*')
 # Possible values are True/False/'ask'.
 # NOTE: Some websites hide functionality if this is set to False (e.g. Slack).
 c.content.notifications.enabled = False
