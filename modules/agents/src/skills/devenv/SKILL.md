@@ -1,6 +1,6 @@
 ---
 name: devenv
-description: Discover, install, and verify the local development environment of a project. Record the result in `.agents/DEVENV.md` so that any agent can rebuild it unattended. Use when a build, run, or test fails because a tool, SDK, device, service, secret, or config is missing and `.agents/DEVENV.md` is absent. Also use when the user asks to set up the development environment.
+description: Set up the local development environment of a project and keep it in sync with the repository. Records the result in `.agents/DEVENV.md` so that any agent can rebuild it unattended. Use when `.agents/DEVENV.md` is absent, when one of its steps fails, after a change to a manifest, lockfile, version pin, CI config, or task runner, or when the user asks to set up or sync the development environment.
 ---
 
 # Devenv
@@ -14,9 +14,7 @@ This skill produces two results:
 - The file `.agents/DEVENV.md` in the main checkout.
   It holds every step that rebuilds this environment on a fresh Arch-family
   machine.
-
-Run this skill one time per project.
-After that, agents follow `DEVENV.md` and correct it when a step fails.
+  It records the commit that it matches.
 
 ## Locate the main checkout
 
@@ -26,10 +24,12 @@ The main checkout holds `DEVENV.md` for all worktrees of the repository.
 MAIN=$(dirname "$(git rev-parse --path-format=absolute --git-common-dir)")
 ```
 
-If `$MAIN/.agents/DEVENV.md` exists, follow it and stop this skill.
+If `$MAIN/.agents/DEVENV.md` is absent, do [Setup](#setup).
+Otherwise, do [Sync](#sync).
 
 The global rule that names `DEVENV.md` approves writes to these paths in
 `$MAIN`: `.agents/`, `mise.local.toml`, `.secrets/`, and `.git/info/exclude`.
+Keep every committed file unchanged.
 
 ## Policy
 
@@ -128,7 +128,7 @@ Run test tiers against local services with local values when the project support
 - Store each secret that a run command or a test tier needs.
   List the other secrets by name as optional.
 
-## Workflow
+## Setup
 
 ### 1. Discover
 
@@ -234,6 +234,7 @@ Write `$MAIN/.agents/DEVENV.md` from
 [references/devenv-template.md](references/devenv-template.md).
 
 - Include only steps that you ran and saw succeed.
+- Write the output of `git rev-parse HEAD` in the sync line.
 - Make the file complete without other files.
   Restate facts from committed docs.
 - Include the full text of `mise.local.toml`.
@@ -249,9 +250,56 @@ Give the user a short summary:
 - The test tiers and their results
 - Each fact in a committed doc that disagrees with what you saw
 
-Keep every committed file unchanged.
+## Sync
 
-## Correct forward
+Sync brings the environment and `DEVENV.md` back in line with the
+repository and the host.
 
-An agent that follows `DEVENV.md` and finds a failed step corrects the step.
-Then the agent updates `DEVENV.md` with the step that works.
+### 1. Find drift
+
+Read the commit in the sync line of `DEVENV.md` into `$SYNCED`.
+List the files that changed after it:
+
+```bash
+git diff --name-status "$SYNCED" HEAD
+```
+
+Keep the paths that match the project sources of Setup step 1.
+Read the diff of each kept path.
+Mark each inventory item that the diff adds, changes, or removes.
+
+If `git cat-file -e "$SYNCED"` fails, do Setup step 1 in full.
+Then compare its inventory with `DEVENV.md`.
+
+Do each check in `DEVENV.md`.
+Mark each check that fails.
+
+If you marked nothing, go to step 4.
+
+### 2. Apply
+
+- For each added or changed item, do Setup steps 2 to 4 for that item only.
+- For each removed item, remove its entry and its tasks from
+  `mise.local.toml`.
+  Keep its system packages and user data on the host.
+- For each failed check, correct the step until the check passes.
+
+### 3. Verify
+
+Do Setup step 5 for each run command and test tier that uses a marked item.
+If a runtime changed, do Setup step 5 for all of them.
+
+### 4. Update `DEVENV.md`
+
+Edit only the sections of the marked items.
+Apply the rules of Setup step 6.
+Write the output of `git rev-parse HEAD` in the sync line.
+
+### 5. Report
+
+Give the user a short summary:
+
+- Each marked item and its correction
+- The system packages and user data of removed items
+- The test tiers and their results
+- Each fact in a committed doc that disagrees with what you saw

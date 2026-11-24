@@ -23,6 +23,8 @@ machine.
 Run every project command from the repository root.
 Run every project command as `mise exec -- <command>` or `mise run <task>`.
 
+Synced at commit `<sha>`.
+
 ## Main checkout
 
 Each worktree shares this file, the mise config, and the secrets of the main
