@@ -1,9 +1,9 @@
 ---
-name: setup-devenv
+name: devenv
 description: Discover, install, and verify the local development environment of a project. Record the result in `.agents/DEVENV.md` so that any agent can rebuild it unattended. Use when a build, run, or test fails because a tool, SDK, device, service, secret, or config is missing and `.agents/DEVENV.md` is absent. Also use when the user asks to set up the development environment.
 ---
 
-# Setup Devenv
+# Devenv
 
 ## Outcome
 
