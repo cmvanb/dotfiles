@@ -79,6 +79,7 @@ This rule takes precedence over every skill and playbook.
 ## Development Environment
 
 When a build, run, or test fails because a tool, SDK, device, service, secret, or config is missing, follow `.agents/DEVENV.md` in the main checkout. If it is absent, invoke the `setup-devenv` skill. When a DEVENV.md step fails, fix the step and update the document.
+`DEVENV.md` is local-only. Keep its name and contents out of commits, docs, tickets, and pull requests.
 
 ## Skills
 
