@@ -158,8 +158,7 @@
   (module :name "llm" :output output
           :class {peak >= 90 ? "critical" : peak >= 70 ? "heavy" : peak >= 50 ? "medium" : ""}
           :tooltip "Claude ${claude.ok ? claude.session + '%' : claude.login ? 'login expired' : '—'} · OpenRouter ${openrouter.ok && openrouter.has_budget ? openrouter.budget + '%' : '—'}"
-    (icon :name "llm-symbolic" :class "llm")
-    (label :yalign 1 :text {claude.ok || openrouter.ok ? "${peak}%" : "—"})))
+    (icon :name "llm-symbolic" :class "llm")))
 
 (defwidget cpu-module [output]
   (module :name "cpu" :output output
