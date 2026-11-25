@@ -7,7 +7,8 @@
   "keybinds": {
     "leader": "ctrl+o",
     "session.line.up": "ctrl+alt+y,ctrl+up",
-    "session.line.down": "ctrl+alt+e,ctrl+down"
+    "session.line.down": "ctrl+alt+e,ctrl+down",
+    "variant.list": "<leader>v"
   },
   "diffs": {
     "wrap": "word"
