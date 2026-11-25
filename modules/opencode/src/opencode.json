@@ -4,6 +4,18 @@
     "@ex-machina/opencode-anthropic-auth@next"
   ],
   "model": "anthropic/claude-opus-5-5",
+  "providers": {
+    "anthropic": {
+      "models": {
+        "claude-opus-5-5": {
+          "settings": {
+            "thinking": { "type": "adaptive", "display": "summarized" },
+            "effort": "high",
+          },
+        },
+      },
+    },
+  },
   "autoupdate": false,
   "permission": {
     "external_directory": {
