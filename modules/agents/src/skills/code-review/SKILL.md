@@ -41,7 +41,7 @@ Skip `~/.cursor/rules/pstack-models.mdc`. The panel below replaces it.
 | --- | --- |
 | A | `anthropic/claude-opus-5-5` |
 | B | `openrouter/openai/gpt-6.1-sol` |
-| C | `openrouter/moonshotai/kimi-k2.7-code` |
+| C | `openrouter/google/gemini-4-neon` |
 
 If a model fails to resolve, pick the closest available model of the same
 family with the `models` tool and report the swap.
