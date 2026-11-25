@@ -3,7 +3,7 @@
 [[entry]]
 type = "browser"
 workspace = "dev"
-session = "omnia-hfh-github"
+session = "omnia-hfh-cicd"
 
 [[entry]]
 type = "browser"
