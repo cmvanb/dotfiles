@@ -17,7 +17,7 @@ choice=$(echo -e "$options" | spawn-launcher.sh --menu --prompt "System")
 case "$choice" in
     "Lock")               hyprlock ;;
     "Logout")             env logout ;;  # bypass the bash builtin
-    "Suspend")            systemctl suspend ;;
+    "Suspend")            env suspend ;;  # bypass the bash builtin
     "Reboot")             systemctl reboot ;;
     "Reboot to Windows")  windows ;;
     "Shutdown")           systemctl poweroff ;;
