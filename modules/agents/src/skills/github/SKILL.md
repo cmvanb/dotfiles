@@ -31,6 +31,11 @@ Format PR descriptions and comments with the `platform-markdown` skill.
 Pass bodies through `--body-file -` with a quoted heredoc `'EOF'` so shell
 expansion leaves `$` and backticks intact.
 
+Attach images and videos with `--attach` on `gh pr create`, `gh pr edit`,
+or `gh pr comment`.
+Reference each file in the body as `![alt](./file.png)`, relative to the
+body file.
+
 ```bash
 gh pr create --base <branch> --title "<title>" --body-file - <<'EOF'
 Body text.
