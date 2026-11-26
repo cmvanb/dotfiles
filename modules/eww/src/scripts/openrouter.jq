@@ -27,9 +27,9 @@ def percent($of): if $of > 0 then 100 * . / $of | floor | [., 0] | max | [., 100
 | ([$days[].spend] | add) as $week
 | ([$days[].spend] | max) as $peak
 | (($now - $midnight + 6 * 86400) / 86400) as $elapsed
-| ([$rows[] | select(.date == $today)]
+| ([$rows[] | select(.date == $today) | .model |= (sub("^[^/]+/"; "") | sub("-[0-9]{8}$"; ""))]
    | group_by(.model)
-   | map({name: (.[0].model | sub("^[^/]+/"; "")), spend: ([.[].spend] | add), requests: ([.[].requests] | add)})
+   | map({name: .[0].model, spend: ([.[].spend] | add), requests: ([.[].requests] | add)})
    | sort_by(-.spend)) as $models
 | ($days[-1].spend) as $spent_today
 | {
