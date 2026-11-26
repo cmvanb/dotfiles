@@ -34,7 +34,7 @@ Repeat a check before assuming system state that may have changed.
 ## Execution
 
 - Act immediately if safe, in-scope, and permitted.
-- Correct wrong statements or inaccurate documentation.
+- Correct wrong statements and inaccurate documentation.
 - Immediately update changed or removed references.
 - Never write "I should".
 - Never write "I haven't done ... yet".
