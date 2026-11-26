@@ -5,16 +5,25 @@
 #   {"ok": true, "has_budget": true, "budget": 12, "budget_spent": "2.40",
 #    "budget_limit": "20.00", "budget_reset": "17d 7h", "has_credits": true,
 #    "credits": 61, "credits_left": "43.36", "credits_topup": "70.00",
-#    "today": "0.10", "week": "1.20", "month": "2.40"}
+#    "credits_runway": "9d 4h", "today": "0.10", "week": "1.20", "month": "2.40",
+#    "has_activity": true, "days_spend": "4.10",
+#    "days": [{"label": "Thu", "today": true, "value": 80, "tooltip": "…"}, …],
+#    "models_spend": "0.10",
+#    "models": [{"name": "claude-opus-5.5", "requests": 3, "spend": "0.08"}, …],
+#    "models_more": 0, "models_more_spend": "0.00"}
 #
 # The credits meter drains from the balance at the last top-up. OpenRouter
 # reports only lifetime purchases, so that balance is recorded whenever they
 # change.
+#
+# Spend by day and model comes from the analytics API, which only answers a
+# management key. Without one, the panel falls back to the key's totals.
 #-------------------------------------------------------------------------------
 
 set -uo pipefail
 
-unavailable='{"ok":false,"has_budget":false,"budget":0,"budget_spent":"","budget_limit":"","budget_reset":"","has_credits":false,"credits":0,"credits_left":"","credits_topup":"","today":"","week":"","month":""}'
+script_dir=$(dirname "${BASH_SOURCE[0]}")
+unavailable='{"ok":false,"has_budget":false,"budget":0,"budget_spent":"","budget_limit":"","budget_reset":"","has_credits":false,"credits":0,"credits_left":"","credits_topup":"","credits_runway":"","today":"","week":"","month":"","has_activity":false,"days_spend":"","days":[],"models_spend":"","models":[],"models_more":0,"models_more_spend":""}'
 topup_file="${XDG_STATE_HOME:-$HOME/.local/state}/eww/openrouter-topup.json"
 
 # A locked vault would prompt for the master password on every poll.
@@ -24,6 +33,7 @@ if ! rbw unlocked &> /dev/null; then
 fi
 
 token=$(rbw get "OpenRouter API Key OpenCode Local Dev" 2>/dev/null)
+management_token=$(rbw get "OpenRouter Management Key" 2>/dev/null)
 
 if [[ -z $token ]]; then
     echo "$unavailable"
@@ -44,6 +54,21 @@ fi
 
 credits=$(fetch credits)
 
+# Spend and requests by model for each UTC day of the last week.
+activity=
+if [[ -n $management_token ]]; then
+    activity=$(curl -sf --max-time 10 "https://openrouter.ai/api/v1/analytics/query" \
+        -H "Authorization: Bearer $management_token" \
+        -H "Content-Type: application/json" \
+        -d "$(jq -cn --arg start "$(date -u -d '6 days ago' +%Y-%m-%dT00:00:00Z)" \
+                     --arg end "$(date -u +%Y-%m-%dT%H:%M:%SZ)" '{
+                metrics: ["total_usage", "request_count"],
+                dimensions: ["model"],
+                granularity: "day",
+                time_range: {start: $start, end: $end}
+            }')")
+fi
+
 # {"purchased": 370, "balance": 120.5}: lifetime purchases and the balance
 # right after they last changed.
 topup=$(jq -c . "$topup_file" 2>/dev/null)
@@ -61,30 +86,9 @@ if [[ -n $credits ]]; then
     topup=$latest
 fi
 
-jq -c -L "$(dirname "${BASH_SOURCE[0]}")" --argjson now "$(date +%s)" \
-    --argjson credits "${credits:-null}" --argjson topup "${topup:-null}" '
-    include "remaining";
-    def money: (. * 100 | round) as $c
-        | "\($c / 100 | floor).\($c % 100 | tostring | if length == 1 then "0" + . else . end)";
-    .data as $key
-    | $key.effective_budget as $budget
-    | $credits.data as $account
-    | (($account.total_credits // 0) - ($account.total_usage // 0)) as $left
-    | {
-        ok: true,
-        has_budget: ($budget != null),
-        budget: (if $budget != null and $budget.limit_usd > 0
-                 then 100 * $budget.spend_usd / $budget.limit_usd | floor else 0 end),
-        budget_spent: ($budget.spend_usd // 0 | money),
-        budget_limit: ($budget.limit_usd // 0 | money),
-        budget_reset: ($budget.resets_at | remaining),
-        has_credits: ($account != null),
-        credits: (if ($topup.balance // 0) > 0
-                  then 100 * $left / $topup.balance | floor | [., 0] | max | [., 100] | min else 0 end),
-        credits_left: ($left | money),
-        credits_topup: ($topup.balance // 0 | money),
-        today: ($key.usage_daily // 0 | money),
-        week: ($key.usage_weekly // 0 | money),
-        month: ($key.usage_monthly // 0 | money)
-    }
-' <<< "$key" 2>/dev/null || echo "$unavailable"
+jq -c -L "$script_dir" -f "$script_dir/openrouter.jq" \
+    --argjson now "$(date +%s)" \
+    --argjson credits "${credits:-null}" \
+    --argjson topup "${topup:-null}" \
+    --argjson activity "${activity:-null}" \
+    <<< "$key" 2>/dev/null || echo "$unavailable"

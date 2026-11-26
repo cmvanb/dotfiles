@@ -399,9 +399,17 @@ scale {
 
 .rate.up .graph { color: ${color_hash('green_5')}; }
 
-.cores {
-    min-height: 56px;
+.cores { min-height: 56px; }
 
+.days {
+    min-height: 64px;
+
+    progressbar trough, progressbar progress { min-width: 12px; }
+    .day { color: $muted; font-size: ${font_size_small}px; }
+    .day.today { color: $accent; }
+}
+
+.cores, .days {
     progressbar {
         trough {
             min-width: 6px;

@@ -45,8 +45,43 @@
       (box :visible {openrouter.has_credits}
         (meter :label "Credits" :value {openrouter.credits}
                :class {openrouter.credits <= 10 ? "critical" : openrouter.credits <= 30 ? "heavy" : openrouter.credits <= 50 ? "medium" : ""}
-               :detail "$${openrouter.credits_left} left of $${openrouter.credits_topup} top-up"))
-      (box :orientation "v" :space-evenly false
+               :detail "$${openrouter.credits_left} / $${openrouter.credits_topup}${openrouter.credits_runway != '' ? ' · lasts ' + openrouter.credits_runway : ''}"))
+      (box :visible {openrouter.has_activity} :orientation "v" :space-evenly false :spacing 12
+        (openrouter-days)
+        (openrouter-models))
+      (box :visible {!openrouter.has_activity} :orientation "v" :space-evenly false
         (row :key "Today" :value "$${openrouter.today}")
         (row :key "This week" :value "$${openrouter.week}")
         (row :key "This month" :value "$${openrouter.month}")))))
+
+(defwidget section-title [label detail]
+  (box :space-evenly false
+    (label :class "meter-label" :halign "start" :hexpand true :text label)
+    (label :class "meter-detail" :halign "end" :text detail)))
+
+(defwidget openrouter-days []
+  (box :orientation "v" :space-evenly false :spacing 4
+    (section-title :label "Last 7 days" :detail "$${openrouter.days_spend}")
+    (box :class "days" :space-evenly true :spacing 6
+      (for day in {openrouter.days}
+        (box :orientation "v" :space-evenly false :spacing 2 :tooltip {day.tooltip}
+          (progress :vexpand true :halign "center" :orientation "v" :flipped true :value {day.value})
+          (label :class {day.today ? "day today" : "day"} :text {day.label}))))))
+
+(defwidget openrouter-models []
+  (box :orientation "v" :space-evenly false :spacing 4
+    (section-title :label "Today by model" :detail "$${openrouter.models_spend}")
+    (label :class "muted-text" :halign "start" :visible {arraylength(openrouter.models) == 0} :text "No requests yet")
+    ;; One box per column keeps the counts and amounts aligned.
+    (box :class "table" :visible {arraylength(openrouter.models) > 0} :space-evenly false :spacing 16
+      (box :orientation "v" :space-evenly false :hexpand true
+        (for model in {openrouter.models}
+          (label :halign "start" :limit-width 24 :tooltip {model.name} :text {model.name})))
+      (box :orientation "v" :space-evenly false
+        (for model in {openrouter.models}
+          (label :class "muted-text" :halign "end" :text "${model.requests} req")))
+      (box :orientation "v" :space-evenly false
+        (for model in {openrouter.models}
+          (label :halign "end" :text "$${model.spend}"))))
+    (label :class "muted-text" :halign "start" :visible {openrouter.models_more > 0}
+           :text "+${openrouter.models_more} more · $${openrouter.models_more_spend}")))
