@@ -1,6 +1,6 @@
 ---
 name: devenv
-description: Set up the local development environment of a project and keep it in sync with the repository. Records the result in `.agents/DEVENV.md` so that any agent can rebuild it unattended. Use when `.agents/DEVENV.md` is absent, when one of its steps fails, after a change to a manifest, lockfile, version pin, CI config, or task runner, or when the user asks to set up or sync the development environment.
+description: Set up the local development environment of a project and keep it in sync with the repository. Records the result in `.agents/DEVENV.md` so that any agent can rebuild it unattended. Use when `.agents/DEVENV.md` is absent, when one of its steps fails, after a change to a manifest, lockfile, version pin, CI config, or task runner, or when the user asks to set up or sync the development environment, or to run the project locally.
 ---
 
 # Devenv
@@ -26,6 +26,7 @@ MAIN=$(dirname "$(git rev-parse --path-format=absolute --git-common-dir)")
 
 If `$MAIN/.agents/DEVENV.md` is absent, do [Setup](#setup).
 Otherwise, do [Sync](#sync).
+If the user asks to run the project, finish with [Run](#run).
 
 The global rule that names `DEVENV.md` approves writes to these paths in
 `$MAIN`: `.agents/`, `mise.local.toml`, `.secrets/`, and `.git/info/exclude`.
@@ -57,7 +58,8 @@ Use these rules to select the layer of a tool:
 - Agents run every project command as `mise exec -- <command>` or `mise run <task>`.
 - Interactive shells load the same environment through the `mise activate` hook.
 - Define each run command, service, device, and test tier as a task in `mise.local.toml`.
-- Name the tasks `run`, `test:<tier>`, `test`, `<service>:start`, and `<service>:stop`.
+- Each run command starts one target of the project, for example `web`, `android`, or `api`.
+- Name the tasks `run:<target>`, `test:<tier>`, `test`, `<service>:start`, and `<service>:stop`.
 - If the project has a test runner, each tier task calls the runner.
   Use the tier names of the runner.
 - The task `test` runs the tiers in sequence.
@@ -175,7 +177,7 @@ Make an inventory from the discovery:
 - SDK components, from the build files, for example compile SDK and NDK versions
 - Services and devices, with their ports
 - Credentials, the kind of each one, and the path where each one goes
-- Run commands
+- Run commands and the target of each one
 - Test tiers: every tier that CI runs, and every tier that the docs or scripts run locally
 
 ### 2. Ask
@@ -303,3 +305,21 @@ Give the user a short summary:
 - The system packages and user data of removed items
 - The test tiers and their results
 - Each fact in a committed doc that disagrees with what you saw
+
+## Run
+
+Select the targets to run:
+
+- If the user names one or more targets, select those targets.
+- If the project has one target, select that target.
+- Otherwise, ask the user which targets to run.
+  Offer each `run:<target>` task as an option, and allow more than one answer.
+
+For each selected target, do these steps in the current checkout:
+
+1. Start each service and device that the "Run" table of `DEVENV.md` lists as "Needs" for the target.
+2. Start `mise run run:<target>`.
+3. Wait for the success signal of the target.
+
+Leave the targets, services, and devices running.
+For each target, report its address or device and the account that it signs in with.

@@ -94,7 +94,7 @@ _.path = ["{{config_root}}/<dir>"]
 <NAME> = "<value>"
 <CONFLICTING_HOST_VAR> = false
 
-[tasks.run]
+[tasks."run:<target>"]
 run = "<command>"
 raw = true
 
@@ -165,9 +165,9 @@ Each service writes its log to `$XDG_STATE_HOME/<project>/<service>.log`.
 
 ## Run
 
-| Task | Needs | Success signal |
-|---|---|---|
-| `mise run run` | <services, devices> | `<first ready line>` |
+| Task | Needs | Success signal | Address or device | Account |
+|---|---|---|---|---|
+| `mise run run:<target>` | <services, devices> | `<first ready line>` | `<URL, port, or device name>` | <sign-in account> |
 
 ## Test tiers
 
