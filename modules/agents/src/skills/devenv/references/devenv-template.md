@@ -188,5 +188,8 @@ Each service writes its log to `$XDG_STATE_HOME/<project>/<service>.log`.
   Derive SDK components from the build files of the project.
 - Put devices in `$XDG_DATA_HOME`, for example
   `ANDROID_AVD_HOME = "{{env.XDG_DATA_HOME}}/android-avd"` in `[env]`.
-- Use `setsid -f` for a background process, so that it continues after the task exits.
-- Use the success line that the tool prints, for example `All tests passed!`.
+- Use `setsid -f` for a background process, so that it continues after the
+  task exits.
+- Use the success line that the tool prints, without counts or durations,
+  such as `All tests passed!`. Don't use counts which go stale with each
+  new test.
