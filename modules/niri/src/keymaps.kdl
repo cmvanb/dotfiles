@@ -105,6 +105,10 @@ binds {
     Mod+H { focus-column-or-monitor-left; }
     Mod+L { focus-column-or-monitor-right; }
 
+    // Focus the monitor on the left or right
+    Mod+Shift+H { focus-monitor-left; }
+    Mod+Shift+L { focus-monitor-right; }
+
     // Cycle windows with the scroll wheel
     Mod+WheelScrollDown { focus-window-down-or-column-right; }
     Mod+WheelScrollUp { focus-window-up-or-column-left; }
