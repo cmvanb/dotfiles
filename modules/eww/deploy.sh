@@ -43,6 +43,7 @@ eww::uninstall () {
     echo "└> Uninstalling eww configuration."
 
     fs::remove "$XDG_CONFIG_HOME/eww"
+    fs::remove "$XDG_STATE_HOME/eww"
     fs::remove "$XDG_SCRIPTS_HOME/eww-bar.sh"
     local icon
     for icon in "$base_dir"/modules/eww/src/icons/*.svg; do

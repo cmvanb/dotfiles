@@ -50,7 +50,7 @@
 
 (defpoll openrouter
   :interval "60s"
-  :initial '{"ok":false,"has_budget":false,"budget":0,"budget_spent":"","budget_limit":"","budget_reset":"","has_credits":false,"credits":0,"credits_left":"","credits_total":"","today":"","week":"","month":""}'
+  :initial '{"ok":false,"has_budget":false,"budget":0,"budget_spent":"","budget_limit":"","budget_reset":"","has_credits":false,"credits":0,"credits_left":"","credits_topup":"","today":"","week":"","month":""}'
   "scripts/openrouter.sh")
 
 (defpoll updates
