@@ -74,6 +74,14 @@ layout {
     }
 }
 
+// Animations
+//  see: https://github.com/YaLTeR/niri/wiki/Configuration:-Animations
+//------------------------------------------------------------------------------
+
+animations {
+    slowdown 1.25
+}
+
 // Environment
 //------------------------------------------------------------------------------
 
