@@ -17,6 +17,14 @@
     },
   },
   "autoupdate": false,
+  "mcp": {
+    "servers": {
+      "figma": {
+        "type": "remote",
+        "url": "https://mcp.figma.com/mcp",
+      },
+    },
+  },
   "permission": {
     "external_directory": {
       "*": "ask",
