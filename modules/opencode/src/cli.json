@@ -8,7 +8,9 @@
     "leader": "ctrl+o",
     "session.line.up": "ctrl+alt+y,ctrl+up",
     "session.line.down": "ctrl+alt+e,ctrl+down",
-    "variant.list": "<leader>v"
+    "variant.list": "<leader>v",
+    "session.tab.previous": "ctrl+h,ctrl+shift+tab,alt+up",
+    "session.tab.next": "ctrl+l,ctrl+tab,alt+down"
   },
   "diffs": {
     "wrap": "word"
