@@ -10,7 +10,7 @@
     "info":                      "${color_hash('terminal_text')}",
     "text":                      "${color_hash('terminal_text')}",
     "textMuted":                 "${color_hash('text_7')}",
-    "background":                "${color_hash('terminal_bg')}",
+    "background":                "transparent",
     "backgroundPanel":           "${color_hash('primary_1')}",
     "backgroundElement":         "${color_hash('gray_2')}",
     "border":                    "${color_hash('gray_5')}",
