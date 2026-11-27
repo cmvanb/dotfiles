@@ -52,6 +52,7 @@ layout {
 
     preset-column-widths {
         proportion 0.36
+        proportion 0.45
         proportion 0.666667
         proportion 1.0
     }
